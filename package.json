@@ -1,7 +1,13 @@
 {
   "name": "root",
   "private": true,
+  "workspaces": [
+		"packages/*"
+	],
   "devDependencies": {
-    "lerna": "^3.4.0"
+    "@wpquark/eslint-config": "^3.0.0",
+    "eslint": "^5.6.0",
+    "lerna": "^3.4.0",
+    "prettier": "^1.14.3"
   }
 }
