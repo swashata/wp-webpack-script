@@ -1,5 +1,5 @@
 {
-  "name": "wpws-scripts",
+  "name": "@wpw/scripts",
   "version": "0.0.0",
   "description": "wpws-scripts is a single dependency for using WordPress webpack script.",
   "main": "index.js",
