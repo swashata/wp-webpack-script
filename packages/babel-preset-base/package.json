@@ -4,6 +4,7 @@
   "description": "Babel preset for @wps/scripts, without react specific transforms.",
   "main": "lib/index.js",
   "repository": "https://github.com/swashata/wp-webpack-script",
+  "homepage": "https://wpack.io",
   "author": "Swashata Ghosh",
   "license": "MIT",
   "private": false,
