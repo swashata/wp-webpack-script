@@ -1,5 +1,5 @@
 {
-  "name": "@wps/babel-preset-base",
+  "name": "@wpw/babel-preset-base",
   "version": "0.0.0",
   "description": "Babel preset for @wps/scripts, without react specific transforms.",
   "main": "lib/index.js",
@@ -24,5 +24,8 @@
     "build": "babel src --out-dir lib --ignore **/__tests__",
     "prepare": "cross-env NODE_ENV=production yarn build",
     "watch": "babel -w src --out-dir lib --ignore **/__tests__"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
