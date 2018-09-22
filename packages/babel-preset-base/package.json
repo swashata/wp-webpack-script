@@ -1,14 +1,12 @@
 {
   "name": "@wpw/babel-preset-base",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Babel preset for @wps/scripts, without react specific transforms.",
   "main": "lib/index.js",
   "repository": "https://github.com/swashata/wp-webpack-script",
   "author": "Swashata Ghosh",
   "license": "MIT",
   "private": false,
-  "devDependencies": {
-  },
   "dependencies": {
     "@babel/helper-plugin-utils": "^7.0.0",
     "@babel/plugin-proposal-class-properties": "^7.1.0",
