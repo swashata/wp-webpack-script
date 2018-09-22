@@ -7,7 +7,7 @@ based on `@babel/preset-env` and includes some [`stage-3`](https://github.com/ba
 
 > `@babel/preset-env`.
 
-You should add `browserslist` to your `package.json` to target your environment.
+You should add `.browserslistrc` to your project to target your environment.
 More information can be found [here](https://babeljs.io/docs/en/next/babel-preset-env#browserslist-integration).
 
 If you have incorporated using `@wpw/cli`, it is already taken care for you.
@@ -57,7 +57,7 @@ exclude.
 ```js
 module.exports = {
 	extends: [
-		'@wpw',
+		'@wpw/base',
 		{
 			noDynamicImport: true, // disable @babel/plugin-syntax-dynamic-import
 			target: 'not dead, > 0.25%', // browserslist query to pass to @babel/preset-env
