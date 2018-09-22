@@ -1,5 +1,7 @@
 # WordPress webpack Script
 
+`@wpw`
+
 **This is just a preface and under development. Watch out!**
 
 The goal of this project is to ease up setting and using webpack with WordPress.
@@ -18,5 +20,6 @@ structure, but shouldn't come to you way, if you don't want to.
 4. It should work with existing build system, like gulp.
 5. It should harness webpack's power of compiling JS, SASS files, SVG etc.
 6. It should hackable to extend webpack config for power users.
+7. Provide all tooling for modern javascript development, like linting, formatting, compiling etc.
 
 With that in mind, I start to develop this and hope this will help people out there.
