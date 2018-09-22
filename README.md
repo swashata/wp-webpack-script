@@ -1,8 +1,12 @@
 # WordPress webpack Script
 
-`@wpw`
+[![Build Status](https://travis-ci.com/swashata/wp-webpack-script.svg?branch=master)](https://travis-ci.com/swashata/wp-webpack-script)
 
-**This is just a preface and under development. Watch out!**
+## Project npm scope
+
+> `@wpw`
+
+## 🚧👀This is just a preface and under development. Watch out!👀🚧
 
 The goal of this project is to ease up setting and using webpack with WordPress.
 The first few problems I had when going through this
