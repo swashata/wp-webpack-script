@@ -3,7 +3,7 @@
 /* eslint-enable */
 
 import wpwBabelPresetReact from '../index';
-import mockedApi from '../../__mocks__/@babel/helper-plugin-utils';
+import mockedApi from '../../../../__mocks__/@babel/helper-plugin-utils';
 
 describe('@wpw/babel-preset-react', () => {
 	test('checks for babel 7', () => {
