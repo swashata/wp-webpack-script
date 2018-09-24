@@ -5,7 +5,7 @@ module.exports = api => {
 			'@babel/preset-env',
 			{
 				targets: {
-					node: '8.12',
+					node: '8.9.0',
 				},
 				modules: 'commonjs',
 			},

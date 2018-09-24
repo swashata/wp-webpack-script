@@ -1,9 +1,16 @@
 {
-  "name": "root",
+  "name": "wp-webpack-script",
   "private": true,
+  "repository": "https://github.com/swashata/wp-webpack-script",
+  "homepage": "https://wpack.io",
+  "author": "Swashata Ghosh <swashata4u@gmail.com> (https://swas.io)",
   "workspaces": [
     "packages/*"
   ],
+  "engines": {
+    "yarn": "^1.2.1",
+    "node": ">=8.9.0"
+  },
   "devDependencies": {
     "@babel/cli": "^7.1.0",
     "@babel/core": "^7.1.0",
@@ -16,9 +23,11 @@
     "eslint": "^5.6.0",
     "jest": "^23.6.0",
     "lerna": "^3.4.0",
+    "plop": "^2.1.0",
     "prettier": "^1.14.3"
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "plop": "plop"
   }
 }

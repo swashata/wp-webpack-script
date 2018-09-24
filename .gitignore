@@ -1,6 +1,12 @@
-## Project specifics
+## Project specifics ##
+
+# Compiled libraries
 packages/*/lib
 
+# Lerna
+lerna-debug.log*
+
+## Standard gitignore ##
 # Logs
 logs
 *.log
