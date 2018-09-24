@@ -6,8 +6,6 @@
 const pkg = require('./package.json');
 
 module.exports = plop => {
-	// A shortcut for packagename
-	plop.setPartial('pkgName', '{{kebabCase name}}');
 	// Add new package
 	plop.setGenerator('package', {
 		description: 'Setup basic files for a new package.',
@@ -34,30 +32,30 @@ module.exports = plop => {
 			// Add package.json
 			{
 				type: 'add',
-				path: 'packages/{{pkgName}}/package.json',
+				path: 'packages/{{kebabCase name}}/package.json',
 				templateFile: 'plop-templates/package/package.json.hbs',
 			},
 			// Add src
 			{
 				type: 'add',
-				path: 'packages/{{pkgName}}/src/index.js',
+				path: 'packages/{{kebabCase name}}/src/index.js',
 			},
 			// Add .npmignore
 			{
 				type: 'add',
-				path: 'packages/{{pkgName}}/.npmignore',
+				path: 'packages/{{kebabCase name}}/.npmignore',
 				templateFile: 'plop-templates/package/.npmignore.hbs',
 			},
 			// Add babel.config.js
 			{
 				type: 'add',
-				path: 'packages/{{pkgName}}/babel.config.js',
+				path: 'packages/{{kebabCase name}}/babel.config.js',
 				templateFile: 'plop-templates/package/babel.config.js.hbs',
 			},
 			// Add README.md
 			{
 				type: 'add',
-				path: 'packages/{{pkgName}}/README.md',
+				path: 'packages/{{kebabCase name}}/README.md',
 				templateFile: 'plop-templates/package/README.md.hbs',
 			},
 		],
