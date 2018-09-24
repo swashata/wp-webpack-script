@@ -12,11 +12,13 @@ describe('@wpw/babel-preset-base/preset', () => {
 		expect(typeof configWithNull).toBe('object');
 	});
 
-	test('passes all options to @babel/preset-env', () => {
+	test('passes all options from presetEnv to @babel/preset-env', () => {
 		const envOptions = {
-			targets: 'not-dead, > 25%',
-			modules: 'umd',
-			debug: true,
+			presetEnv: {
+				targets: 'not-dead, > 25%',
+				modules: 'umd',
+				debug: true,
+			},
 		};
 		const config = preset(envOptions);
 		expect(config).toHaveProperty('presets');
@@ -26,8 +28,8 @@ describe('@wpw/babel-preset-base/preset', () => {
 			p => Array.isArray(p) && p[0] === '@babel/preset-env'
 		);
 		expect(presetEnv).toHaveLength(2);
-		Object.keys(envOptions).forEach(key => {
-			expect(presetEnv[1][key]).toBe(envOptions[key]);
+		Object.keys(envOptions.presetEnv).forEach(key => {
+			expect(presetEnv[1][key]).toBe(envOptions.presetEnv[key]);
 		});
 	});
 

@@ -81,7 +81,9 @@ module.exports = {
 		'@wpw/base',
 		{
 			noDynamicImport: true, // disable @babel/plugin-syntax-dynamic-import
-			target: 'not dead, > 0.25%', // browserslist query to pass to @babel/preset-env
+			presetEnv: {
+				target: 'not dead, > 0.25%', // browserslist query to pass to @babel/preset-env
+			},
 		},
 	],
 };
@@ -111,10 +113,10 @@ Set to `true` to disable [`@babel/plugin-proposal-class-properties`](https://bab
 
 Set to `true` to disable [`@babel/plugin-proposal-json-strings`](https://babeljs.io/docs/en/babel-plugin-proposal-json-strings).
 
-#### Options for `@babel/preset-env`
+#### `presetEnv` Options for `@babel/preset-env`
 
-What-ever else you pass to the config, is passed directly to `@babel/preset-env`. This
-gives you more control on how to configure the most stable `env` preset.
+What-ever you pass to the `presetEnv` directive, is passed directly to `@babel/preset-env`. This
+gives you more control on how to configure the `@babel/preset-env` preset.
 
 Please [read the documentation](https://babeljs.io/docs/en/babel-preset-env) for
 available options.

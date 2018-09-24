@@ -5,11 +5,11 @@ export default (opts = {}) => {
 		noImportMeta = false,
 		noClassProperties = false,
 		noJsonStrings = false,
-		...envOptions
+		presetEnv = {},
 	} = opts || {};
 
 	// Create the presets
-	const presets = [['@babel/preset-env', { ...envOptions }]];
+	const presets = [['@babel/preset-env', { ...presetEnv }]];
 
 	// Create the plugins
 	const plugins = [];
