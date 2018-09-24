@@ -8,6 +8,6 @@ import mockedApi from '../../../../__mocks__/@babel/helper-plugin-utils';
 describe('@wpw/babel-preset-base', () => {
 	test('checks for babel 7', () => {
 		wpwBabelPresetBase({}, undefined, __dirname);
-		expect(mockedApi.assertVersion).toHaveBeenCalledWith(7);
+		expect(mockedApi.assertVersion).toHaveBeenLastCalledWith(7);
 	});
 });
