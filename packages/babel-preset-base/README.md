@@ -8,13 +8,13 @@ based on `@babel/preset-env` and includes some [`stage-3`](https://github.com/ba
 If using `yarn`
 
 ```bash
-yarn add @wpw/babel-preset-base --dev
+yarn add @wpw/babel-preset-base @babel/core --dev
 ```
 
 or with `npm`
 
 ```bash
-npm i @wpw/babel-preset-base --save-dev
+npm i @wpw/babel-preset-base @babel/core --save-dev
 ```
 
 ## Usage
@@ -34,6 +34,9 @@ module.exports = {
 	extends: ['@wpw/base'],
 };
 ```
+
+Per [babel package naming shorthands](https://babeljs.io/docs/en/presets#preset-shorthand)
+we can use both `@wpw/base` or `@wpw/babel-preset-base` as the preset name.
 
 > **NOTE**: `babel.config.js` is used for project wide configuration.
 > Please [refer to the docs](https://babeljs.io/docs/en/config-files#project-wide-configuration) to find out which config formatting to use.
@@ -73,7 +76,7 @@ be loaded by default, but you can disable it through options.
 `@wpw/babel-preset-base` can be configured to select which `stage-3` plugins to
 exclude.
 
-**babelrc.js**
+**`babelrc.js`**
 
 ```js
 module.exports = {
@@ -124,7 +127,7 @@ available options.
 ## Development
 
 This package has the same `npm scripts` as this monorepo. These should be run
-using `lerna run <script>`. More information can be found under [CONTRIBUTION.md]('../../CONTRIBUTION.md').
+using `lerna run <script>`. More information can be found under [CONTRIBUTION.md](../../CONTRIBUTION.md).
 
 -   `build`: Use babel to build for nodejs 8.6+. Files inside `src` are compiled and put under `lib`.
 -   `prepare`: Run `build` after `yarn` and before `publish`.

@@ -1,0 +1,43 @@
+{
+  "name": "@wpw/babel-preset-react",
+  "version": "0.0.1",
+  "description": "Babel preset for @wpw/scripts with react and jsx support.",
+  "keywords": [
+    "wordpress",
+    "bundler",
+    "webpack",
+    "browser-sync",
+    "wordpress-bundler"
+  ],
+  "main": "lib/index.js",
+  "repository": "https://github.com/swashata/wp-webpack-script",
+  "homepage": "https://wpack.io",
+  "author": "Swashata Ghosh &lt;swashata4u@gmail.com&gt; (https://swas.io)",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "@babel/helper-plugin-utils": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
+    "@wpw/babel-preset-base": "^0.0.1"
+  },
+  "peerDependencies": {
+    "@babel/core": "^7.0.0-0"
+  },
+  "engines": {
+    "node": ">=8.9.0"
+  },
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "babel src --out-dir lib --ignore **/__tests__",
+    "prepare": "cross-env NODE_ENV=production yarn build",
+    "watch": "babel -w src --out-dir lib --ignore **/__tests__"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.1.0"
+  }
+}
