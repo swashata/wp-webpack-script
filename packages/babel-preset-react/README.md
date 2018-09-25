@@ -1,7 +1,7 @@
 # `@wpw/babel-preset-react`
 
-This is the react specific babel preset for `@wpw/scripts`. It inherits everything
-from `@wpw/babel-preset-base` and expands on `@babel/preset-react`.
+This is the react specific babel preset for `@wpw/scripts`. It is based on `@babel/preset-react`.
+It doesn't inherit from `@wpw/base`, so make sure to include it in your babel config.
 
 ## Installation
 
@@ -53,13 +53,6 @@ module.exports = {
 	extends: [
 		'@wpw/react',
 		{
-			// Pass to @wpw/base
-			presetBase: {
-				noDynamicImport: true, // disable @babel/plugin-syntax-dynamic-import
-				presetEnv: {
-					target: 'not dead, > 0.25%', // browserslist query to pass to @babel/preset-env
-				},
-			},
 			// Pass to @babel/preset-react
 			presetReact: {
 				pragma: 'wp.element.createElement',
@@ -103,13 +96,12 @@ be used instead.
 }
 ```
 
-### `presetBase`
+#### Why all `@babel/preset-react` is wrapped inside a separate object?
 
-`object`, defaults to `{}`.
-
-This is passed directly to [`@wpw/babel-preset-base`](https://github.com/swashata/wp-webpack-script/tree/master/packages/babel-preset-base).
-
-You can have a `.browserslistrc` file, which will be detected by it and used.
+Because, right now, I can not know whether this preset would require any standalone
+options for its own, like `@wpw/base`. So I think, it is best to separate react
+options in a separate hash. In future, if we need some other options, then it can
+be conflict free.
 
 ## Development
 

@@ -17,8 +17,7 @@
   "private": false,
   "dependencies": {
     "@babel/helper-plugin-utils": "^7.0.0",
-    "@babel/preset-react": "^7.0.0",
-    "@wpw/babel-preset-base": "^0.0.1"
+    "@babel/preset-react": "^7.0.0"
   },
   "peerDependencies": {
     "@babel/core": "^7.0.0-0"

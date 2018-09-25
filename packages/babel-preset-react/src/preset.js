@@ -1,9 +1,8 @@
 export default (opts = {}) => {
 	// Extract @babel/preset-react options and base options
-	const { presetReact = {}, presetBase = {} } = opts;
+	const { presetReact = {} } = opts;
 	// Create the presets
 	const presets = [
-		['@wpw/base', { ...presetBase }],
 		[
 			'@babel/preset-react',
 			{
