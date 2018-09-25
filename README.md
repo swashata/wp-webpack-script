@@ -4,7 +4,7 @@
 
 ## Project npm scope
 
-> `@wpw`
+> `@wpackio`
 
 ## 🚧👀This is just a preface and under development. Watch out!👀🚧
 

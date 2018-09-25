@@ -7,7 +7,7 @@ module.exports = api => {
 				targets: {
 					node: '8.9.0',
 				},
-				modules: 'commonjs',
+				modules: 'cjs',
 			},
 		],
 	];
