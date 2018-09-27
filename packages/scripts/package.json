@@ -42,11 +42,12 @@
     "lib"
   ],
   "scripts": {
-    "build": "babel src --out-dir lib --ignore **/__tests__",
-    "prepare": "cross-env NODE_ENV=production yarn build",
-    "watch": "babel -w src --out-dir lib --ignore **/__tests__"
+    "tsc": "tsc"
   },
   "publishConfig": {
     "access": "public"
+  },
+  "devDependencies": {
+    "typescript": "^3.0.3"
   }
 }
