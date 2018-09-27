@@ -1,4 +1,15 @@
+// @flow
 import path from 'path';
+
+export type bannerConfigType = {
+	name: string,
+	author: string,
+	license: string,
+	link: string,
+	version: string,
+	copyrightText: string,
+	credit: boolean,
+};
 
 export default {
 	// Project Identity

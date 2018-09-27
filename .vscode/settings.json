@@ -1,5 +1,8 @@
 {
-	"eslint.autoFixOnSave": true,
+  "eslint.autoFixOnSave": true,
+  "flow.enabled": true,
+  "flow.useNPMPackagedFlow": true,
+  "flow.showUncovered": false,
 	"[markdown]": {
 		"editor.formatOnSave": true
 	},
@@ -8,5 +11,6 @@
 	},
 	"[css]": {
 		"editor.formatOnSave": true
-	}
+  },
+  "flow.useLSP": true
 }

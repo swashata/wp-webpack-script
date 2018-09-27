@@ -1,13 +1,19 @@
+// @flow
 import webpack from 'webpack';
 import CleanWebpackPlugin from 'clean-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+
+type getPluginsParam = {
+	isDev: boolean,
+	bannerConfig: {},
+};
 /**
  * Get WebPack plugins.
  *
  * @param {Boolean} isDev Whether in development mode.
  * @return {Array} Array of WebPack plugins.
  */
-const getPlugins = ({ isDev = true, bannerConfig = {} }) => {
+const getPlugins = ({ isDev = true, bannerConfig = {} }: getPluginsParam) => {
 	// Figure the NODE_ENV string
 	const ENV = JSON.stringify(isDev ? 'production' : 'development');
 	// Add common plugins

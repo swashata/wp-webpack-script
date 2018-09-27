@@ -1,8 +1,32 @@
+// @flow
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
-const getModule = ({ hasReact = true, hasSass = true, isDev = true }) => {
+type getModuleParam = {
+	hasReact: boolean,
+	hasSass: boolean,
+	isDev: boolean,
+};
+
+type moduleRules = {
+	test: RegExp,
+	use: Array<string | Object>,
+	exclude?: RegExp,
+	options?: {
+		presets?: Array<string>,
+	},
+};
+
+type getModuleReturn = {
+	rules: Array<moduleRules>,
+};
+
+const getModule = ({
+	hasReact = true,
+	hasSass = true,
+	isDev = true,
+}: getModuleParam): getModuleReturn => {
 	// create the babel rules
-	const babelRules = {
+	const babelRules: moduleRules = {
 		test: /\.m?jsx?$/,
 		use: ['babel-loader'],
 		exclude: /(node_modules|bower_components)/,
@@ -10,8 +34,12 @@ const getModule = ({ hasReact = true, hasSass = true, isDev = true }) => {
 			presets: ['@wpackio/base'],
 		},
 	};
-	if (hasReact) {
-		babelRules.presets.push('@wpackio/react');
+	if (
+		hasReact &&
+		babelRules.options != null &&
+		babelRules.options.presets != null
+	) {
+		babelRules.options.presets.push('@wpackio/react');
 	}
 	// Create style rules
 	const styleRules = {
