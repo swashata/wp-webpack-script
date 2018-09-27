@@ -1,5 +1,5 @@
 {
-  "name": "@wpw/babel-preset-base",
+  "name": "@wpackio/babel-preset-base",
   "version": "0.0.1",
   "description": "Babel preset for @wps/scripts, without react specific transforms.",
   "keywords": [

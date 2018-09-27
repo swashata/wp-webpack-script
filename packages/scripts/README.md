@@ -1,8 +1,9 @@
-# `@wpw/scripts`
+# `@wpackio/scripts`
 
 Stub README
 
 // TODO
+
 > Intro
 
 ## Installation
@@ -10,23 +11,25 @@ Stub README
 If using `yarn`
 
 ```bash
-yarn add @wpw/scripts
+yarn add @wpackio/scripts
 ```
 
 or with `npm`
 
 ```bash
-npm i @wpw/scripts
+npm i @wpackio/scripts
 ```
 
 ## Usage
 
 // TODO
+
 > Usage instruction
 
 ## Configuration
 
 // TODO
+
 > Configuration instruction
 
 ## Development

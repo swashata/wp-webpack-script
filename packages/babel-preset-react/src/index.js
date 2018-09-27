@@ -3,7 +3,7 @@ import preset from './preset';
 /**
  * Export a function to declare this preset.
  *
- * It takes options from userland and passes to @wpw/base and @babel/preset-react
+ * It takes options from userland and passes to @wpackio/base and @babel/preset-react
  */
 
 export default declare((api, opts) => {

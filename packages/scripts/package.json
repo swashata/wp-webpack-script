@@ -1,7 +1,7 @@
 {
-  "name": "@wpw/scripts",
+  "name": "@wpackio/scripts",
   "version": "0.0.1",
-  "description": "Main single dependency of @wpw build tool.",
+  "description": "Main single dependency of @wpackio build tool.",
   "keywords": [
     "wordpress",
     "bundler",
@@ -30,8 +30,8 @@
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.0",
     "uglifyjs-webpack-plugin": "^2.0.1",
-    "webpack": "^4.19.1",
-    "webpack-dev-middleware": "^3.3.0",
+    "webpack": "^4.20.2",
+    "webpack-dev-middleware": "^3.4.0",
     "webpack-hot-middleware": "^2.24.0",
     "webpack-merge": "^4.1.4"
   },

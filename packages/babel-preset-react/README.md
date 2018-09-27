@@ -1,20 +1,20 @@
-# `@wpw/babel-preset-react`
+# `@wpackio/babel-preset-react`
 
-This is the react specific babel preset for `@wpw/scripts`. It is based on `@babel/preset-react`.
-It doesn't inherit from `@wpw/base`, so make sure to include it in your babel config.
+This is the react specific babel preset for `@wpackio/scripts`. It is based on `@babel/preset-react`.
+It doesn't inherit from `@wpackio/base`, so make sure to include it in your babel config.
 
 ## Installation
 
 If using `yarn`
 
 ```bash
-yarn add @wpw/babel-preset-react @babel/core --dev
+yarn add @wpackio/babel-preset-react @babel/core --dev
 ```
 
 or with `npm`
 
 ```bash
-npm i @wpw/babel-preset-react @babel/core --save-dev
+npm i @wpackio/babel-preset-react @babel/core --save-dev
 ```
 
 ## Usage
@@ -23,7 +23,7 @@ In your `.babelrc` put
 
 ```json
 {
-	"extends": ["@wpw/react"]
+	"extends": ["@wpackio/react"]
 }
 ```
 
@@ -31,19 +31,19 @@ or in your `babel.config.js`/`babelrc.js`
 
 ```js
 module.exports = {
-	extends: ['@wpw/react'],
+	extends: ['@wpackio/react'],
 };
 ```
 
 Per [babel package naming shorthands](https://babeljs.io/docs/en/presets#preset-shorthand)
-we can use both `@wpw/react` or `@wpw/babel-preset-react` as the preset name.
+we can use both `@wpackio/react` or `@wpackio/babel-preset-react` as the preset name.
 
 > **NOTE**: `babel.config.js` is used for project wide configuration.
 > Please [refer to the docs](https://babeljs.io/docs/en/config-files#project-wide-configuration) to find out which config formatting to use.
 
 ## Configuration
 
-`@wpw/babel-preset-react` allows options to pass through both `@wpw/base` and
+`@wpackio/babel-preset-react` allows options to pass through both `@wpackio/base` and
 `@babel/preset-react`.
 
 **`babelrc.js`**
@@ -51,7 +51,7 @@ we can use both `@wpw/react` or `@wpw/babel-preset-react` as the preset name.
 ```js
 module.exports = {
 	extends: [
-		'@wpw/react',
+		'@wpackio/react',
 		{
 			// Pass to @babel/preset-react
 			presetReact: {
@@ -72,9 +72,9 @@ So consult the documentation to find out how to use it.
 #### Note on `presetReact.development`
 
 `@babel/preset-react` has an option [`development`](https://babeljs.io/docs/en/babel-preset-react#development) which,
-if enabled, includes two development friendly plugins. `@wpw/react` automatically
+if enabled, includes two development friendly plugins. `@wpackio/react` automatically
 sets its value, depending on `BABEL_ENV` environment variable. This environment
-variable is taken care of automatically, when you are using `@wpw/scripts`.
+variable is taken care of automatically, when you are using `@wpackio/scripts`.
 
 However, you can pass a `Boolean` value to `presetReact.development` and it will
 be used instead.
@@ -85,7 +85,7 @@ be used instead.
 {
 	"extends": [
 		[
-			"@wpw/react",
+			"@wpackio/react",
 			{
 				"presetReact": {
 					"development": false
@@ -99,7 +99,7 @@ be used instead.
 #### Why all `@babel/preset-react` is wrapped inside a separate object?
 
 Because, right now, I can not know whether this preset would require any standalone
-options for its own, like `@wpw/base`. So I think, it is best to separate react
+options for its own, like `@wpackio/base`. So I think, it is best to separate react
 options in a separate hash. In future, if we need some other options, then it can
 be conflict free.
 

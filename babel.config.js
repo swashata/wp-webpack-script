@@ -9,6 +9,7 @@ module.exports = api => {
 				},
 				modules: 'cjs',
 			},
+			'flow',
 		],
 	];
 

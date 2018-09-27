@@ -7,11 +7,11 @@ const getModule = ({ hasReact = true, hasSass = true, isDev = true }) => {
 		use: ['babel-loader'],
 		exclude: /(node_modules|bower_components)/,
 		options: {
-			presets: ['@wpw/base'],
+			presets: ['@wpackio/base'],
 		},
 	};
 	if (hasReact) {
-		babelRules.presets.push('@wpw/react');
+		babelRules.presets.push('@wpackio/react');
 	}
 	// Create style rules
 	const styleRules = {

@@ -1,6 +1,6 @@
 import preset from '../preset';
 
-describe('@wpw/babel-preset-base/preset', () => {
+describe('@wpackio/babel-preset-base/preset', () => {
 	test('is a function', () => {
 		expect(typeof preset).toBe('function');
 	});

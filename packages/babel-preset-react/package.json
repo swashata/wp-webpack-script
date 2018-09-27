@@ -1,7 +1,7 @@
 {
-  "name": "@wpw/babel-preset-react",
+  "name": "@wpackio/babel-preset-react",
   "version": "0.0.1",
-  "description": "Babel preset for @wpw/scripts with react and jsx support.",
+  "description": "Babel preset for @wpackio/scripts with react and jsx support.",
   "keywords": [
     "wordpress",
     "bundler",

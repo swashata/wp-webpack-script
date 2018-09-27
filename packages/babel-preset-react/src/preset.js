@@ -15,6 +15,6 @@ export default (opts = {}) => {
 	];
 	// We don't need other plugins
 	// We could go for react-hot-loader, but it seems to me a scope for
-	// @wpw/scripts instead.
+	// @wpackio/scripts instead.
 	return { presets };
 };

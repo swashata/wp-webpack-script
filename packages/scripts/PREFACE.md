@@ -1,7 +1,7 @@
 ## Things it need to do
 
 -   Load project config file from cli --project-config or `wpw.project.config.js` (if present) `process.cwd`.
--   Load environment config file from cli --server-config or `wpw.dev.config.js` (if present) from `process.cwd`.
+-   Load server config file from cli --server-config or `wpw.dev.config.js` (if present) from `process.cwd`.
 -   DO NOT RELY ON `process.env.NODE_ENV`. Rather set it automatically depending on cli commands.
     -   `start` - Start browsersync sever with webpack middleware.
     -   `build` - Compile files.
@@ -51,9 +51,9 @@ Possible `package.json`
 
 ```json
 {
-	"name": "@wpw/scripts",
+	"name": "@wpackio/scripts",
 	"version": "0.0.0",
-	"description": "@wpws/scripts is a single dependency for using WordPress webpack script.",
+	"description": "@wpackios/scripts is a single dependency for using WordPress webpack script.",
 	"main": "index.js",
 	"repository": "https://github.com/swashata/wp-webpack-script",
 	"author": "Swashata Ghosh",

@@ -1,6 +1,6 @@
 import preset from '../preset';
 
-describe('@wpw/babel-preset-react', () => {
+describe('@wpackio/babel-preset-react', () => {
 	const OLD_ENV = process.env;
 
 	beforeEach(() => {

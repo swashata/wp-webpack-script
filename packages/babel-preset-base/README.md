@@ -1,4 +1,4 @@
-# `@wpw/babel-preset-base`
+# `@wpackio/babel-preset-base`
 
 This is the default base babel preset to include in non-react projects. It is
 based on `@babel/preset-env` and includes some [`stage-3`](https://github.com/babel/babel/blob/master/packages/babel-preset-stage-3/README.md) plugins.
@@ -8,13 +8,13 @@ based on `@babel/preset-env` and includes some [`stage-3`](https://github.com/ba
 If using `yarn`
 
 ```bash
-yarn add @wpw/babel-preset-base @babel/core --dev
+yarn add @wpackio/babel-preset-base @babel/core --dev
 ```
 
 or with `npm`
 
 ```bash
-npm i @wpw/babel-preset-base @babel/core --save-dev
+npm i @wpackio/babel-preset-base @babel/core --save-dev
 ```
 
 ## Usage
@@ -23,7 +23,7 @@ In your `.babelrc` put
 
 ```json
 {
-	"extends": ["@wpw/base"]
+	"extends": ["@wpackio/base"]
 }
 ```
 
@@ -31,12 +31,12 @@ or in your `babel.config.js`/`babelrc.js`
 
 ```js
 module.exports = {
-	extends: ['@wpw/base'],
+	extends: ['@wpackio/base'],
 };
 ```
 
 Per [babel package naming shorthands](https://babeljs.io/docs/en/presets#preset-shorthand)
-we can use both `@wpw/base` or `@wpw/babel-preset-base` as the preset name.
+we can use both `@wpackio/base` or `@wpackio/babel-preset-base` as the preset name.
 
 > **NOTE**: `babel.config.js` is used for project wide configuration.
 > Please [refer to the docs](https://babeljs.io/docs/en/config-files#project-wide-configuration) to find out which config formatting to use.
@@ -61,7 +61,7 @@ and you are good to go.
 You can also put it under `browserslist` directive under `package.json` file.
 
 We recommend `.browserslistrc` because it is shared across many tools. If you bootstrap
-your project using `@wpw/cli`, then it will be created automatically.
+your project using `@wpackio/cli`, then it will be created automatically.
 
 ### Options
 
@@ -73,7 +73,7 @@ be loaded by default, but you can disable it through options.
 -   `@babel/plugin-proposal-class-properties` - with option `{ "loose": false }`.
 -   `@babel/plugin-proposal-json-strings`
 
-`@wpw/babel-preset-base` can be configured to select which `stage-3` plugins to
+`@wpackio/babel-preset-base` can be configured to select which `stage-3` plugins to
 exclude.
 
 **`babelrc.js`**
@@ -81,7 +81,7 @@ exclude.
 ```js
 module.exports = {
 	extends: [
-		'@wpw/base',
+		'@wpackio/base',
 		{
 			noDynamicImport: true, // disable @babel/plugin-syntax-dynamic-import
 			presetEnv: {

@@ -1,5 +1,9 @@
+import path from 'path';
+
 export default {
 	// Project Identity
+	type: 'plugin', // Plugin or theme
+	slug: 'wpack-io', // Plugin or Theme slug, basically the directory name under `wp-content/<themes|plugins>`
 	// Used to generate banners on top of compiled stuff
 	bannerConfig: {
 		name: 'WordPress WebPack Bundler',
@@ -14,13 +18,16 @@ export default {
 	// Files we need to compile, and where to put
 	files: [
 		// If this has length === 1, then single compiler
-		// {
-		// 	entry: {
-		// 		// stuff
-		// 	},
-		// 	filename: '[name].js',
-		// 	path: path.resolve(__dirname, 'dist'),
-		// },
+		{
+			name: 'mobile',
+			entry: {
+				// stuff
+				vendor: 'vendor.js',
+				main: ['src/mobile.js'],
+			},
+			filename: '[name].js',
+			path: path.resolve(process.cwd(), 'dist'),
+		},
 		// If has more length, then multi-compiler
 	],
 	// Project specific config
