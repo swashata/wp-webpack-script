@@ -42,12 +42,15 @@
     "lib"
   ],
   "scripts": {
-    "tsc": "tsc"
+    "clean": "rimraf './lib'",
+    "type-check": "tsc --noEmit",
+		"type-check:watch": "yarn type-check --watch",
+		"build:js": "babel ./src --out-dir lib --extensions '.ts,.tsx'",
+		"build:types": "tsc --emitDeclarationOnly",
+		"build": "yarn clean && yarn build:types && yarn build:js",
+		"lint": "tslint --project './tsconfig.json'"
   },
   "publishConfig": {
     "access": "public"
-  },
-  "devDependencies": {
-    "typescript": "^3.0.3"
   }
 }

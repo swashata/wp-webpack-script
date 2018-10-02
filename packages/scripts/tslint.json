@@ -1,0 +1,28 @@
+{
+	"defaultSeverity": "error",
+	"extends": [
+		"tslint:recommended",
+		"tslint-react",
+		"tslint-microsoft-contrib",
+		"tslint-config-prettier"
+	],
+	"jsRules": {},
+	"rulesDirectory": ["tslint-plugin-prettier"],
+	"rules": {
+		"missing-jsdoc": false,
+		"export-name": false,
+		"no-relative-imports": false,
+		"no-console": {
+			"severity": "warning",
+			"options": ["debug", "info", "log", "time", "timeEnd", "trace"]
+		},
+		"strict-boolean-expressions": false,
+		"interface-name": [true, "never-prefix"],
+		"prettier": {
+			"severity": "warning"
+		}
+	},
+	"linterOptions": {
+		"exclude": ["lib/**/*", "**/node_modules/**"]
+	}
+}
