@@ -1,5 +1,7 @@
 declare module 'mini-css-extract-plugin' {
-	export default class miniCssExtractPlugin {
-		public static loader: Function;
+	import * as webpack from 'webpack';
+	export default class miniCssExtractPlugin extends webpack.Plugin {
+		public static loader: string;
+		constructor(config:{[x:string]:string})
 	}
 }

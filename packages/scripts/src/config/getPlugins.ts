@@ -1,32 +1,41 @@
-// @flow
+import cleanWebpackPlugin from 'clean-webpack-plugin';
+import miniCssExtractPlugin from 'mini-css-extract-plugin';
 import webpack from 'webpack';
-import CleanWebpackPlugin from 'clean-webpack-plugin';
-import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
-type getPluginsParam = {
-	isDev: boolean,
-	bannerConfig: {},
-};
+interface BannerConfig {
+	name: string;
+	author: string;
+	version: string;
+	link: string;
+	license: string;
+	copyrightText: string;
+	credit: boolean;
+}
+
+interface GetPluginsConfig {
+	isDev: boolean;
+	bannerConfig: BannerConfig;
+}
 /**
- * Get WebPack plugins.
- *
- * @param {Boolean} isDev Whether in development mode.
- * @return {Array} Array of WebPack plugins.
+ * Get WebPack plugins, depending on development or production
  */
-const getPlugins = ({ isDev = true, bannerConfig = {} }: getPluginsParam) => {
+export function getPlugins({
+	isDev,
+	bannerConfig,
+}: GetPluginsConfig): webpack.Plugin[] {
 	// Figure the NODE_ENV string
-	const ENV = JSON.stringify(isDev ? 'production' : 'development');
+	const ENV: string = JSON.stringify(isDev ? 'production' : 'development');
 	// Add common plugins
-	const plugins = [
+	const plugins: webpack.Plugin[] = [
 		// Define env
 		new webpack.DefinePlugin({
 			'process.env.NODE_ENV': ENV,
 			'process.env.BABEL_ENV': ENV,
 		}),
 		// Clean dist directory
-		new CleanWebpackPlugin(['dist']),
+		new cleanWebpackPlugin(['dist']),
 		// Initiate mini css extract
-		new MiniCssExtractPlugin({
+		new miniCssExtractPlugin({
 			filename: '[name].css',
 		}),
 	];
@@ -65,8 +74,7 @@ ${
 			})
 		);
 	}
+
 	// Return it
 	return plugins;
-};
-
-export default getPlugins;
+}
