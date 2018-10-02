@@ -2,7 +2,6 @@
 	"defaultSeverity": "error",
 	"extends": [
 		"tslint:recommended",
-		"tslint-react",
 		"tslint-microsoft-contrib",
 		"tslint-config-prettier"
 	],
@@ -20,7 +19,10 @@
 		"interface-name": [true, "never-prefix"],
 		"prettier": {
 			"severity": "warning"
-		}
+    },
+    "prefer-type-cast": false,
+    "no-angle-bracket-type-assertion": true,
+    "no-reserved-keywords": false
 	},
 	"linterOptions": {
 		"exclude": ["lib/**/*", "**/node_modules/**"]

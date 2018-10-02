@@ -1,8 +1,6 @@
 {
   "eslint.autoFixOnSave": true,
-  "flow.enabled": true,
-  "flow.useNPMPackagedFlow": true,
-  "flow.showUncovered": false,
+  "tslint.autoFixOnSave": true,
 	"[markdown]": {
 		"editor.formatOnSave": true
 	},
@@ -12,5 +10,6 @@
 	"[css]": {
 		"editor.formatOnSave": true
   },
-  "flow.useLSP": true
+	"flow.useLSP": true,
+	"typescript.tsdk": "node_modules/typescript/lib"
 }

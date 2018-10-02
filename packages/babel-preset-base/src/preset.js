@@ -10,7 +10,7 @@ export default (opts = {}) => {
 	} = opts || {};
 
 	// Create the presets
-	const presets = [['@babel/preset-env', { ...presetEnv }]];
+	const presets = [['@babel/preset-env', { modules: false, ...presetEnv }]];
 
 	// Create the plugins
 	const plugins = [];

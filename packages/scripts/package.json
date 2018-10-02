@@ -17,6 +17,10 @@
   "private": false,
   "dependencies": {
     "@babel/core": "^7.1.0",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
+    "@babel/preset-typescript": "^7.1.0",
+    "@types/webpack": "^4.4.13",
     "autoprefixer": "^9.1.5",
     "babel-loader": "^8.0.2",
     "browser-sync": "^2.24.7",
@@ -44,11 +48,11 @@
   "scripts": {
     "clean": "rimraf './lib'",
     "type-check": "tsc --noEmit",
-		"type-check:watch": "yarn type-check --watch",
-		"build:js": "babel ./src --out-dir lib --extensions '.ts,.tsx'",
-		"build:types": "tsc --emitDeclarationOnly",
-		"build": "yarn clean && yarn build:types && yarn build:js",
-		"lint": "tslint --project './tsconfig.json'"
+    "type-check:watch": "yarn type-check --watch",
+    "build:js": "babel ./src --out-dir lib --extensions '.ts,.tsx'",
+    "build:types": "tsc --emitDeclarationOnly",
+    "build": "yarn clean && yarn build:types && yarn build:js",
+    "lint": "tslint --project './tsconfig.json'"
   },
   "publishConfig": {
     "access": "public"

@@ -7,7 +7,7 @@ module.exports = api => {
 				targets: {
 					node: '8.9.0',
 				},
-				modules: 'cjs',
+				modules: 'commonjs',
 			},
 		],
 		'@babel/preset-typescript',
@@ -21,5 +21,6 @@ module.exports = api => {
 	return {
 		presets,
 		plugins,
+		ignore: ['./src/@types'],
 	};
 };
