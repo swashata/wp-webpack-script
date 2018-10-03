@@ -1,4 +1,4 @@
-import * as webpack from 'webpack';
+import webpack from 'webpack';
 
 // Export common interfaces
 
@@ -30,6 +30,7 @@ export interface FileConfig {
 	entry: EntryConfig;
 	path: string;
 	filename: string;
+	webpackConfig?: webpack.Configuration;
 }
 
 /**
@@ -46,7 +47,6 @@ export interface ProjectConfig {
 	alias?: webpack.Resolve['alias'];
 	errorOverlay?: boolean;
 	optimizeSplitChunks: boolean;
-	webpackConfig?: webpack.Configuration;
 }
 
 /**
@@ -79,6 +79,8 @@ export const projectConfigDefault: ProjectConfig = {
 		// 	},
 		// 	filename: '[name].js',
 		// 	path: path.resolve(process.cwd(), 'dist'),
+		// 	// Extra webpack config to be passed directly
+		// 	webpackConfig: undefined,
 		// },
 		// If has more length, then multi-compiler
 	],
@@ -100,6 +102,4 @@ export const projectConfigDefault: ProjectConfig = {
 	// <https://webpack.js.org/plugins/split-chunks-plugin/#optimization-splitchunks>
 	// Won't hurt because we use PHP to automate loading
 	optimizeSplitChunks: true,
-	// Extra webpack config to be passed directly
-	webpackConfig: undefined,
 };

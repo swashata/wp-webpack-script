@@ -1,6 +1,6 @@
 import cleanWebpackPlugin from 'clean-webpack-plugin';
 import miniCssExtractPlugin from 'mini-css-extract-plugin';
-import * as webpack from 'webpack';
+import webpack from 'webpack';
 import {
 	BannerConfig,
 	FileConfig,
@@ -20,13 +20,21 @@ interface Config {
 	hasReact: ProjectConfig['hasReact'];
 	hasSass: ProjectConfig['hasSass'];
 	bannerConfig: BannerConfig;
+	alias?: webpack.Resolve['alias'];
+	optimizeSplitChunks: ProjectConfig['optimizeSplitChunks'];
+}
+
+interface CommonWebpackConfig {
+	devtool: webpack.Configuration['devtool'];
+	target: webpack.Configuration['target'];
+	watch: webpack.Configuration['watch'];
+	mode: webpack.Configuration['mode'];
 }
 
 /**
- * Get Webpack compatible configuration object with `entry` and `output`
- * properties.
+ * A helper class to get different configuration of webpack.
  */
-export class WebpackConfig {
+export class WebpackConfigHelper {
 	private file: FileConfig;
 	private isDev: boolean;
 	private config: Config;
@@ -284,6 +292,46 @@ ${bannerConfig.credit ? creditNote : ''}
 
 		return {
 			rules: [jsRules, tsRules, styleRules, fileRules],
+		};
+	}
+
+	/**
+	 * Get webpack compatible resolve property.
+	 */
+	public getResolve(): webpack.Resolve {
+		return {
+			extensions: ['.js', '.jsx', '.ts', '.tsx'],
+			alias: this.config.alias != null ? { ...this.config.alias } : {},
+		};
+	}
+
+	/**
+	 * Get optimization for webpack.
+	 *
+	 * We optimize all chunks because
+	 */
+	public getOptimization(): webpack.Options.Optimization | undefined {
+		const { optimizeSplitChunks } = this.config;
+		if (optimizeSplitChunks) {
+			return {
+				splitChunks: {
+					chunks: 'all',
+				},
+			};
+		}
+
+		return undefined;
+	}
+
+	/**
+	 * Get common configuration, depending on just environment.
+	 */
+	public getCommon(): CommonWebpackConfig {
+		return {
+			devtool: this.isDev ? 'inline-source-map' : 'source-map',
+			target: 'web',
+			watch: this.isDev,
+			mode: this.env,
 		};
 	}
 }

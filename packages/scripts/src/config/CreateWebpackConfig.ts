@@ -1,25 +1,34 @@
-import * as webpack from 'webpack';
+import webpack from 'webpack';
+import webpackMerge from 'webpack-merge';
+
 import {
 	FileConfig,
 	ProjectConfig,
 	projectConfigDefault,
 } from './project.config.default';
 import { ServerConfig, serverConfigDefault } from './server.config.default';
+import { WebpackConfigHelper } from './WebpackConfigHelper';
 
 /**
  * Create the final webpack config through this class.
  */
-export class GetWebpackConfig {
+export class CreateWebpackConfig {
 	private projectConfig: ProjectConfig;
 	private serverConfig: ServerConfig;
+	private isDev: boolean;
 
 	/**
 	 * Create an instance of GetWebpackConfig class.
 	 *
 	 * @param projectConfig Project configuration as recovered from user directory.
 	 * @param serverConfig Server configuration as recovered from user directory.
+	 * @param isDev Whether this is development mode.
 	 */
-	constructor(projectConfig: ProjectConfig, serverConfig: ServerConfig) {
+	constructor(
+		projectConfig: ProjectConfig,
+		serverConfig: ServerConfig,
+		isDev: boolean = true
+	) {
 		// Create final configuration
 		// By doing a shallow override
 		this.projectConfig = {
@@ -31,9 +40,7 @@ export class GetWebpackConfig {
 			...serverConfig,
 		};
 
-		// Now it can be a single compiler, or multicompiler
-		// In any case, figure it out, create the compiler options
-		// and return the stuff.
+		this.isDev = isDev;
 	}
 
 	/**
@@ -46,6 +53,10 @@ export class GetWebpackConfig {
 	 * otherwise, it would be for multi compiler.
 	 */
 	public getConfig(): webpack.Configuration | webpack.Configuration[] {
+		// Now it can be a single compiler, or multicompiler
+		// In any case, figure it out, create the compiler options
+		// and return the stuff.
+
 		// If the configuration is for multiple compiler mode
 		// Then return an array of config.
 		if (this.projectConfig.files.length > 1) {
@@ -68,6 +79,50 @@ export class GetWebpackConfig {
 	 * @param file Single file object.
 	 */
 	private getSingleCompilerConfig(file: FileConfig): webpack.Configuration {
-		// TODO
+		const {
+			type,
+			slug,
+			hasReact,
+			hasSass,
+			bannerConfig,
+			alias,
+			optimizeSplitChunks,
+		} = this.projectConfig;
+		const { host, port } = this.serverConfig;
+		const helper: WebpackConfigHelper = new WebpackConfigHelper(
+			file,
+			{
+				type,
+				slug,
+				host,
+				port,
+				hasReact,
+				hasSass,
+				bannerConfig,
+				alias,
+				optimizeSplitChunks,
+			},
+			this.isDev
+		);
+
+		// Now create the config and return it
+		let config: webpack.Configuration = {
+			name: file.name,
+			entry: helper.getEntry(),
+			output: helper.getOutput(),
+			module: helper.getModule(),
+			plugins: helper.getPlugins(),
+			resolve: helper.getResolve(),
+			optimization: helper.getOptimization(),
+			...helper.getCommon(),
+		};
+
+		// Merge options if needed
+		// Loose comparison because it could very well be undefined
+		if (file.webpackConfig != null) {
+			config = webpackMerge(config, file.webpackConfig);
+		}
+
+		return config;
 	}
 }
