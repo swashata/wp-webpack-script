@@ -1,14 +1,14 @@
 ## Things it need to do
 
--   Load project config file from cli --project-config or `wpw.project.config.js` (if present) `process.cwd`.
--   Load server config file from cli --server-config or `wpw.dev.config.js` (if present) from `process.cwd`.
+-   Load project config file from cli --project-config or `wpackio.project.js` (if present) `process.cwd`.
+-   Load server config file from cli --server-config or `wpackio.server.js` (if present) from `process.cwd`.
 -   DO NOT RELY ON `process.env.NODE_ENV`. Rather set it automatically depending on cli commands.
     -   `start` - Start browsersync sever with webpack middleware.
     -   `build` - Compile files.
-    -   `init` - Create a `wpw.dev.config.js` through asking some questions (only if the file is not present).
+    -   `init` - Create a `wpackio.server.js` through asking some questions (only if the file is not present).
 -   Also set `process.env.BABEL_ENV` so that `babel-loader` can play nice, (especially with the preset-react).
 
-## Structure `wpw.project.config.js`
+## Structure `wpackio.project.js`
 
 ```js
 module.exports = {

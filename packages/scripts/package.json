@@ -20,6 +20,7 @@
     "@babel/plugin-proposal-class-properties": "^7.1.0",
     "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
     "@babel/preset-typescript": "^7.1.0",
+    "@types/node": "^10.11.3",
     "@types/webpack": "^4.4.13",
     "autoprefixer": "^9.1.5",
     "babel-loader": "^8.0.2",

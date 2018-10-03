@@ -2,15 +2,7 @@ import cleanWebpackPlugin from 'clean-webpack-plugin';
 import miniCssExtractPlugin from 'mini-css-extract-plugin';
 import webpack from 'webpack';
 
-interface BannerConfig {
-	name: string;
-	author: string;
-	version: string;
-	link: string;
-	license: string;
-	copyrightText: string;
-	credit: boolean;
-}
+import { BannerConfig } from './project.config.default';
 
 interface GetPluginsConfig {
 	isDev: boolean;

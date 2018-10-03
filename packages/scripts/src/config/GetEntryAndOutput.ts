@@ -1,14 +1,7 @@
-interface Entry {
-	[x: string]: string[] | string;
-}
+import { FileConfig, ProjectConfig } from './project.config.default';
+
 interface NormalizedEntry {
 	[x: string]: string[];
-}
-interface File {
-	name: string;
-	entry: Entry;
-	path: string;
-	filename: string;
 }
 interface Output {
 	path: string;
@@ -17,8 +10,8 @@ interface Output {
 }
 
 interface Config {
-	type: 'theme' | 'plugin';
-	slug: string;
+	type: ProjectConfig['type'];
+	slug: ProjectConfig['slug'];
 	host: string;
 	port: number;
 }
@@ -28,19 +21,15 @@ interface Config {
  * properties.
  */
 class GetEntryAndOutput {
-	private file: File;
-	private entry: Entry;
+	private file: FileConfig;
 	private isDev: boolean;
 	private config: Config;
 
-	constructor(
-		file: File,
-		entry: Entry,
-		config: Config,
-		isDev: boolean = true
-	) {
+	/**
+	 * Create an instance of GetEntryAndOutput class.
+	 */
+	constructor(file: FileConfig, config: Config, isDev: boolean = true) {
 		this.file = file;
-		this.entry = entry;
 		this.config = config;
 		this.isDev = isDev;
 	}
@@ -114,12 +103,17 @@ class GetEntryAndOutput {
 		const output: Output = {
 			path,
 			filename,
-			// leave blank because we would handle with free variable in runtime
+			// leave blank because we would handle with free variable
+			// __webpack_public_path__ in runtime.
 			publicPath: '',
 		};
 		// Add the publicPath if it is in devMode
 		if (this.isDev) {
 			const contentDir: string = `${type}s`;
+			// We are proxying stuff here. So I guess, we can safely assume
+			// That URL of the proxied server starts from root?
+			// Maybe we can have a `prefix` in Config, but let's not do that
+			// right now.
 			output.publicPath = `//${host ||
 				'localhost'}:${port}/wp-content/${contentDir}/${slug}/`;
 		}
@@ -131,7 +125,7 @@ class GetEntryAndOutput {
 	 * Get complete entry and output for using directly with
 	 * webpack config.
 	 */
-	public getEntryAndOutput(): { entry: Entry; output: Output } {
+	public getEntryAndOutput(): { entry: NormalizedEntry; output: Output } {
 		return {
 			entry: this.getEntry(),
 			output: this.getOutput(),

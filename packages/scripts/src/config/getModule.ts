@@ -1,9 +1,11 @@
 import miniCssExtractPlugin from 'mini-css-extract-plugin';
 import webpack from 'webpack';
 
+import { ProjectConfig } from './project.config.default';
+
 interface ModuleParam {
-	hasReact: boolean;
-	hasSass: boolean;
+	hasReact: ProjectConfig['hasReact'];
+	hasSass: ProjectConfig['hasSass'];
 	isDev: boolean;
 }
 
