@@ -52,7 +52,7 @@ export interface ProjectConfig {
 /**
  * The default configuration object.
  */
-const config: ProjectConfig = {
+export const projectConfigDefault: ProjectConfig = {
 	// Project Identity
 	type: 'plugin', // Plugin or theme
 	slug: 'wpack-io', // Plugin or Theme slug, basically the directory name under `wp-content/<themes|plugins>`
@@ -103,5 +103,3 @@ const config: ProjectConfig = {
 	// Extra webpack config to be passed directly
 	webpackConfig: undefined,
 };
-
-module.exports = config;
