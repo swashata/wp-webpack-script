@@ -28,6 +28,7 @@ interface Config {
 }
 
 interface CommonWebpackConfig {
+	context: webpack.Configuration['context'];
 	devtool: webpack.Configuration['devtool'];
 	target: webpack.Configuration['target'];
 	watch: webpack.Configuration['watch'];
@@ -42,6 +43,10 @@ export class WebpackConfigHelper {
 	private isDev: boolean;
 	private config: Config;
 	/**
+	 * Context directory, from where we read the stuff and put stuff.
+	 */
+	private cwd: string;
+	/**
 	 * Simulated NODE_ENV string, used internally and defined
 	 * in webpack with webpack.DefinePlugin.
 	 */
@@ -50,9 +55,15 @@ export class WebpackConfigHelper {
 	/**
 	 * Create an instance of GetEntryAndOutput class.
 	 */
-	constructor(file: FileConfig, config: Config, isDev: boolean = true) {
+	constructor(
+		file: FileConfig,
+		config: Config,
+		cwd: string,
+		isDev: boolean = true
+	) {
 		this.file = file;
 		this.config = config;
+		this.cwd = cwd;
 		this.isDev = isDev;
 		if (isDev) {
 			this.env = 'development';
@@ -134,7 +145,7 @@ export class WebpackConfigHelper {
 			// of this configuration object.
 			// Also here we assume, user has passed in the correct `relative`
 			// path for `outputPath`. Otherwise this will break.
-			path: path.join(process.cwd(), outputPath, outputInnerDir),
+			path: path.join(this.cwd, outputPath, outputInnerDir),
 			filename,
 			// leave blank because we would handle with free variable
 			// __webpack_public_path__ in runtime.
@@ -337,6 +348,7 @@ ${bannerConfig.credit ? creditNote : ''}
 	 */
 	public getCommon(): CommonWebpackConfig {
 		return {
+			context: this.cwd,
 			devtool: this.isDev ? 'inline-source-map' : 'source-map',
 			target: 'web',
 			watch: this.isDev,

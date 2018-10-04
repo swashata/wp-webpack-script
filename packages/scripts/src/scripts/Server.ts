@@ -11,6 +11,7 @@ import { ServerConfig } from '../config/server.config.default';
 export class Server {
 	private projectConfig: ProjectConfig;
 	private serverConfig: ServerConfig;
+	private cwd: string;
 
 	private isServing: boolean = false;
 
@@ -23,9 +24,14 @@ export class Server {
 	 * @param projectConfig Project configuration as recovered from user directory.
 	 * @param serverConfig Server configuration as recovered from user directory.
 	 */
-	constructor(projectConfig: ProjectConfig, serverConfig: ServerConfig) {
+	constructor(
+		projectConfig: ProjectConfig,
+		serverConfig: ServerConfig,
+		cwd: string
+	) {
 		this.projectConfig = projectConfig;
 		this.serverConfig = serverConfig;
+		this.cwd = cwd;
 	}
 
 	/**
@@ -44,6 +50,7 @@ export class Server {
 		const webpackConfig = new CreateWebpackConfig(
 			this.projectConfig,
 			this.serverConfig,
+			this.cwd,
 			true
 		).getConfig();
 		// Init middleware and stuff

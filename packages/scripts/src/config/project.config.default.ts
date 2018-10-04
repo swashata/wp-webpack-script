@@ -1,4 +1,3 @@
-import path from 'path';
 import webpack from 'webpack';
 
 // Export common interfaces
@@ -95,6 +94,8 @@ export const projectConfigDefault: ProjectConfig = {
 		// },
 		// If has more length, then multi-compiler
 	],
+	// Output path relative to the context directory
+	// We need relative path here, else, we can not map to publicPath
 	outputPath: 'dist',
 	// Project specific config
 	// Needs react?

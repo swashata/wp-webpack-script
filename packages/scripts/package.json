@@ -29,6 +29,7 @@
     "babel-loader": "^8.0.2",
     "browser-sync": "^2.24.7",
     "clean-webpack-plugin": "^0.1.19",
+    "commander": "^2.18.0",
     "cross-env": "^5.2.0",
     "css-loader": "^1.0.0",
     "mini-css-extract-plugin": "^0.4.3",

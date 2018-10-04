@@ -6,10 +6,16 @@ import { ServerConfig } from '../config/server.config.default';
 export class Build {
 	private projectConfig: ProjectConfig;
 	private serverConfig: ServerConfig;
+	private cwd: string;
 
-	constructor(projectConfig: ProjectConfig, serverConfig: ServerConfig) {
+	constructor(
+		projectConfig: ProjectConfig,
+		serverConfig: ServerConfig,
+		cwd: string
+	) {
 		this.projectConfig = projectConfig;
 		this.serverConfig = serverConfig;
+		this.cwd = cwd;
 	}
 
 	/**
@@ -20,6 +26,7 @@ export class Build {
 			const config = new CreateWebpackConfig(
 				this.projectConfig,
 				this.serverConfig,
+				this.cwd,
 				false
 			);
 			const compiler = webpack(

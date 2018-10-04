@@ -15,6 +15,7 @@ import { WebpackConfigHelper } from './WebpackConfigHelper';
 export class CreateWebpackConfig {
 	private projectConfig: ProjectConfig;
 	private serverConfig: ServerConfig;
+	private cwd: string;
 	private isDev: boolean;
 
 	/**
@@ -27,6 +28,7 @@ export class CreateWebpackConfig {
 	constructor(
 		projectConfig: ProjectConfig,
 		serverConfig: ServerConfig,
+		cwd: string,
 		isDev: boolean = true
 	) {
 		// Create final configuration
@@ -39,7 +41,7 @@ export class CreateWebpackConfig {
 			...serverConfigDefault,
 			...serverConfig,
 		};
-
+		this.cwd = cwd;
 		this.isDev = isDev;
 	}
 
@@ -104,6 +106,7 @@ export class CreateWebpackConfig {
 				optimizeSplitChunks,
 				outputPath,
 			},
+			this.cwd,
 			this.isDev
 		);
 
