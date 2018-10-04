@@ -11,10 +11,7 @@
 		"missing-jsdoc": false,
 		"export-name": false,
 		"no-relative-imports": false,
-		"no-console": {
-			"severity": "warning",
-			"options": ["debug", "info", "log", "time", "timeEnd", "trace"]
-		},
+		"no-console": false,
 		"strict-boolean-expressions": false,
 		"interface-name": [true, "never-prefix"],
 		"prettier": {
@@ -22,7 +19,10 @@
     },
     "prefer-type-cast": false,
     "no-angle-bracket-type-assertion": true,
-    "no-reserved-keywords": false
+    "no-reserved-keywords": false,
+    "typedef": [true, "call-signature", "parameter", "property-declaration", "member-variable-declaration"],
+    "import-name": false,
+    "no-submodule-imports": false
 	},
 	"linterOptions": {
 		"exclude": ["lib/**/*", "**/node_modules/**"]

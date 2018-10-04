@@ -1,5 +1,7 @@
 import cleanWebpackPlugin from 'clean-webpack-plugin';
 import miniCssExtractPlugin from 'mini-css-extract-plugin';
+import path from 'path';
+import slugify from 'slugify';
 import webpack from 'webpack';
 import {
 	BannerConfig,
@@ -17,6 +19,7 @@ interface Config {
 	slug: ProjectConfig['slug'];
 	host: ServerConfig['host'];
 	port: ServerConfig['port'];
+	outputPath: ProjectConfig['outputPath'];
 	hasReact: ProjectConfig['hasReact'];
 	hasSass: ProjectConfig['hasSass'];
 	bannerConfig: BannerConfig;
@@ -120,12 +123,18 @@ export class WebpackConfigHelper {
 	public getOutput(): webpack.Output {
 		// Now use the config to create a output
 		// Destucture stuff we need from config
-		const { type, slug, host, port } = this.config;
+		const { type, slug, host, port, outputPath } = this.config;
 		// and file
-		const { path, filename } = this.file;
+		const { name, filename } = this.file;
+		const outputInnerDir: string = slugify(name, { lower: true });
 		// Assuming it is production
 		const output: webpack.Output = {
-			path,
+			// Here we create a directory inside the user provided outputPath
+			// The name of the directory is the sluggified verion of `name`
+			// of this configuration object.
+			// Also here we assume, user has passed in the correct `relative`
+			// path for `outputPath`. Otherwise this will break.
+			path: path.join(process.cwd(), outputPath, outputInnerDir),
 			filename,
 			// leave blank because we would handle with free variable
 			// __webpack_public_path__ in runtime.
@@ -139,7 +148,7 @@ export class WebpackConfigHelper {
 			// Maybe we can have a `prefix` in Config, but let's not do that
 			// right now.
 			output.publicPath = `//${host ||
-				'localhost'}:${port}/wp-content/${contentDir}/${slug}/`;
+				'localhost'}:${port}/wp-content/${contentDir}/${slug}/${outputPath}/${outputInnerDir}`;
 		}
 
 		return output;

@@ -1,3 +1,4 @@
+import path from 'path';
 import webpack from 'webpack';
 
 // Export common interfaces
@@ -28,7 +29,6 @@ export interface EntryConfig {
 export interface FileConfig {
 	name: string;
 	entry: EntryConfig;
-	path: string;
 	filename: string;
 	webpackConfig?: webpack.Configuration;
 }
@@ -41,12 +41,24 @@ export interface ProjectConfig {
 	slug: string;
 	bannerConfig: BannerConfig;
 	files: FileConfig[];
+	/**
+	 * The relative path of the output directory, w.r.t the directory
+	 * from where the script has been called.
+	 *
+	 * It has to be relative, otherwise we possibly can not make
+	 * hot-reload work.
+	 *
+	 * The script should be called from the root of your project. Otherwise
+	 * we can not know how to create the URL of assets.
+	 */
+	outputPath: string;
 	hasReact: boolean;
 	hasSass: boolean;
 	externals?: webpack.Configuration['externals'];
 	alias?: webpack.Resolve['alias'];
 	errorOverlay?: boolean;
 	optimizeSplitChunks: boolean;
+	watch?: string;
 }
 
 /**
@@ -78,12 +90,12 @@ export const projectConfigDefault: ProjectConfig = {
 		// 		main: ['src/mobile.js'],
 		// 	},
 		// 	filename: '[name].js',
-		// 	path: path.resolve(process.cwd(), 'dist'),
 		// 	// Extra webpack config to be passed directly
 		// 	webpackConfig: undefined,
 		// },
 		// If has more length, then multi-compiler
 	],
+	outputPath: 'dist',
 	// Project specific config
 	// Needs react?
 	hasReact: true,
@@ -102,4 +114,6 @@ export const projectConfigDefault: ProjectConfig = {
 	// <https://webpack.js.org/plugins/split-chunks-plugin/#optimization-splitchunks>
 	// Won't hurt because we use PHP to automate loading
 	optimizeSplitChunks: true,
+	// Usually PHP and other files to watch and reload when changed
+	watch: 'inc/**/*.php',
 };

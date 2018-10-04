@@ -87,6 +87,7 @@ export class CreateWebpackConfig {
 			bannerConfig,
 			alias,
 			optimizeSplitChunks,
+			outputPath,
 		} = this.projectConfig;
 		const { host, port } = this.serverConfig;
 		const helper: WebpackConfigHelper = new WebpackConfigHelper(
@@ -101,6 +102,7 @@ export class CreateWebpackConfig {
 				bannerConfig,
 				alias,
 				optimizeSplitChunks,
+				outputPath,
 			},
 			this.isDev
 		);
