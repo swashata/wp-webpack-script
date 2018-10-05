@@ -11,5 +11,10 @@
 		"editor.formatOnSave": true
   },
 	"flow.useLSP": true,
-	"typescript.tsdk": "node_modules/typescript/lib"
+	"typescript.tsdk": "node_modules/typescript/lib",
+	"cSpell.words": [
+		"Packio",
+		"uglifyjs",
+		"wpack"
+	]
 }
