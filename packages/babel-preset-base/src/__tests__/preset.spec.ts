@@ -1,4 +1,4 @@
-import preset from '../preset';
+import { preset } from '../preset';
 
 describe('@wpackio/babel-preset-base/preset', () => {
 	test('is a function', () => {
@@ -26,7 +26,11 @@ describe('@wpackio/babel-preset-base/preset', () => {
 		// Now find the one with preset-env
 		const presetEnv = config.presets.find(
 			p => Array.isArray(p) && p[0] === '@babel/preset-env'
-		);
+		) as (
+			| string
+			| {
+					modules: boolean;
+			  })[];
 		expect(presetEnv).toHaveLength(2);
 		Object.keys(envOptions.presetEnv).forEach(key => {
 			expect(presetEnv[1][key]).toBe(envOptions.presetEnv[key]);

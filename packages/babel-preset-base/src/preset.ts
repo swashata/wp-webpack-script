@@ -21,7 +21,7 @@ interface PossiblePlugins {
 	[x: string]: singleBabelPlugin;
 }
 
-export const preset = (opts: PresetOptions = {}) => {
+export const preset = (opts: PresetOptions | null = {}) => {
 	// Extract this preset specific options and pass the rest to @babel/preset-env
 	const {
 		// noDynamicImport = false,

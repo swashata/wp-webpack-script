@@ -24,7 +24,10 @@
     "import-name": false,
     "no-submodule-imports": false,
     "match-default-export-name": false,
-    "promise-function-async": false
+    "promise-function-async": false,
+    "no-var-requires": false,
+    "mocha-no-side-effect-code": false,
+    "no-require-imports": false
 	},
 	"linterOptions": {
 		"exclude": ["lib/**/*", "**/node_modules/**"]

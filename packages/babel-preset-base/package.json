@@ -39,7 +39,8 @@
     "build:js": "babel ./src --out-dir lib --extensions '.ts,.tsx'",
     "build:types": "tsc --emitDeclarationOnly",
     "build": "yarn clean && yarn build:types && yarn build:js",
-    "lint": "tslint --project './tsconfig.json'"
+    "lint": "tslint --project './tsconfig.json'",
+    "test": "jest --color"
   },
   "publishConfig": {
     "access": "public"
