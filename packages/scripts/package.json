@@ -31,7 +31,6 @@
     "browser-sync": "^2.24.7",
     "clean-webpack-plugin": "^0.1.19",
     "commander": "^2.18.0",
-    "cross-env": "^5.2.0",
     "css-loader": "^1.0.0",
     "mini-css-extract-plugin": "^0.4.3",
     "node-sass": "^4.9.3",
@@ -61,7 +60,8 @@
     "build:js": "babel ./src --out-dir lib --extensions '.ts,.tsx'",
     "build:types": "tsc --emitDeclarationOnly",
     "build": "yarn clean && yarn build:types && yarn build:js",
-    "lint": "tslint --project './tsconfig.json'"
+    "lint": "tslint --project './tsconfig.json'",
+    "prepare": "cross-env NODE_ENV=production yarn build"
   },
   "publishConfig": {
     "access": "public"
