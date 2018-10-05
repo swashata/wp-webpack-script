@@ -1,5 +1,9 @@
 import { preset } from '../preset';
 
+interface PresetEnv {
+	[x: string]: string | boolean;
+}
+
 describe('@wpackio/babel-preset-base/preset', () => {
 	test('is a function', () => {
 		expect(typeof preset).toBe('function');
@@ -13,7 +17,7 @@ describe('@wpackio/babel-preset-base/preset', () => {
 	});
 
 	test('passes all options from presetEnv to @babel/preset-env', () => {
-		const envOptions = {
+		const envOptions: { presetEnv: PresetEnv } = {
 			presetEnv: {
 				targets: 'not-dead, > 25%',
 				modules: 'umd',
@@ -26,11 +30,7 @@ describe('@wpackio/babel-preset-base/preset', () => {
 		// Now find the one with preset-env
 		const presetEnv = config.presets.find(
 			p => Array.isArray(p) && p[0] === '@babel/preset-env'
-		) as (
-			| string
-			| {
-					modules: boolean;
-			  })[];
+		) as PresetEnv[];
 		expect(presetEnv).toHaveLength(2);
 		Object.keys(envOptions.presetEnv).forEach(key => {
 			expect(presetEnv[1][key]).toBe(envOptions.presetEnv[key]);
