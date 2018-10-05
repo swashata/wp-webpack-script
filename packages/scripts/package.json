@@ -10,6 +10,7 @@
     "wordpress-bundler"
   ],
   "main": "lib/index.js",
+  "bin": "lib/bin/index.js",
   "repository": "https://github.com/swashata/wp-webpack-script",
   "homepage": "https://wpack.io",
   "author": "Swashata Ghosh &lt;swashata4u@gmail.com&gt; (https://swas.io)",
