@@ -19,7 +19,6 @@
     "@babel/helper-plugin-utils": "^7.0.0",
     "@babel/plugin-proposal-class-properties": "^7.1.0",
     "@babel/plugin-proposal-json-strings": "^7.0.0",
-    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
     "@babel/plugin-syntax-dynamic-import": "^7.0.0",
     "@babel/plugin-syntax-import-meta": "^7.0.0",
     "@babel/preset-env": "^7.1.0"
@@ -46,6 +45,7 @@
     "access": "public"
   },
   "devDependencies": {
-    "@babel/core": "^7.1.0"
+    "@babel/core": "^7.1.0",
+    "dts-gen": "^0.5.7"
   }
 }
