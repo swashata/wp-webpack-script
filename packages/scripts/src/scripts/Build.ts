@@ -3,6 +3,9 @@ import { CreateWebpackConfig } from '../config/CreateWebpackConfig';
 import { ProjectConfig } from '../config/project.config.default';
 import { ServerConfig } from '../config/server.config.default';
 
+/**
+ * Create production ready files.
+ */
 export class Build {
 	private projectConfig: ProjectConfig;
 	private serverConfig: ServerConfig;

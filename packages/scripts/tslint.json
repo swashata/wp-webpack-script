@@ -1,30 +1,3 @@
 {
-	"defaultSeverity": "error",
-	"extends": [
-		"tslint:recommended",
-		"tslint-microsoft-contrib",
-		"tslint-config-prettier"
-	],
-	"jsRules": {},
-	"rulesDirectory": ["tslint-plugin-prettier"],
-	"rules": {
-		"missing-jsdoc": false,
-		"export-name": false,
-		"no-relative-imports": false,
-		"no-console": false,
-		"strict-boolean-expressions": false,
-		"interface-name": [true, "never-prefix"],
-		"prettier": {
-			"severity": "warning"
-    },
-    "prefer-type-cast": false,
-    "no-angle-bracket-type-assertion": true,
-    "no-reserved-keywords": false,
-    "typedef": [true, "call-signature", "parameter", "property-declaration", "member-variable-declaration"],
-    "import-name": false,
-    "no-submodule-imports": false
-	},
-	"linterOptions": {
-		"exclude": ["lib/**/*", "**/node_modules/**"]
-	}
+	"extends": ["../../tslint.json"]
 }

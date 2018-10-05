@@ -8,6 +8,10 @@ import { CreateWebpackConfig } from '../config/CreateWebpackConfig';
 import { ProjectConfig } from '../config/project.config.default';
 import { ServerConfig } from '../config/server.config.default';
 
+/**
+ * Create a development server with file watching, hot reload and live reload.
+ * Everything is done with browserSync and webpack middleware.
+ */
 export class Server {
 	private projectConfig: ProjectConfig;
 	private serverConfig: ServerConfig;

@@ -7,8 +7,14 @@ import { ServerConfig } from '../config/server.config.default';
 import { Build } from '../scripts/Build';
 import { Server } from '../scripts/Server';
 
+interface ProgramOptions {
+	context?: string;
+	projectConfig?: string;
+	serverConfig?: string;
+}
+
 /* tslint:disable:no-require-imports no-var-requires */
-const pkg = require('../../package.json');
+const pkg = require('../../package.json') as { version: string };
 
 const contextHelp: string = `Path to context or project root directory. Defaults to current working directory. It is recommended to use absolute path, else it is calculated from current working directory. The path you mention here should be what the URL 'localhost/wp-content/<themes|plugins>/<slug>/' map to. In most cases, you should leave it, because calling the program from npm or yarn script should automatically set it.`;
 let isValidCommand = false;
@@ -48,68 +54,54 @@ program
 		'-s, --server-config [path]',
 		'Path to server config. If it differs from ./wpackio.server.js'
 	)
-	.action(
-		(
-			options:
-				| {
-						context?: string;
-						projectConfig?: string;
-						serverConfig?: string;
-				  }
-				| undefined
-		) => {
-			isValidCommand = true;
-			signale.start('Starting up wpack.io development server');
-			// Set process.env.NODE_ENV to development
-			process.env.NODE_ENV = 'development';
-			// Set process.env.BABEL_ENV to development
-			process.env.BABEL_ENV = 'development';
-			// Get project and server config JSONs.
-			const cwd = resolveCWD(options);
-			signale.info(`Using startup path: ${cwd}`);
-			try {
-				const {
-					projectConfig,
-					serverConfig,
-					projectConfigPath,
-					serverConfigPath,
-				} = getProjectAndServerConfig(cwd, options);
-				signale.info(`Using project config from ${projectConfigPath}`);
-				signale.info(`Using server config from ${serverConfigPath}`);
-				// Start the webpack/browserSync server
-				const server: Server = new Server(
-					projectConfig,
-					serverConfig,
-					cwd
+	.action((options: ProgramOptions | undefined) => {
+		isValidCommand = true;
+		signale.start('Starting up wpack.io development server');
+		// Set process.env.NODE_ENV to development
+		process.env.NODE_ENV = 'development';
+		// Set process.env.BABEL_ENV to development
+		process.env.BABEL_ENV = 'development';
+		// Get project and server config JSONs.
+		const cwd = resolveCWD(options);
+		signale.info(`Using startup path: ${cwd}`);
+		try {
+			const {
+				projectConfig,
+				serverConfig,
+				projectConfigPath,
+				serverConfigPath,
+			} = getProjectAndServerConfig(cwd, options);
+			signale.info(`Using project config from ${projectConfigPath}`);
+			signale.info(`Using server config from ${serverConfigPath}`);
+			// Start the webpack/browserSync server
+			const server: Server = new Server(projectConfig, serverConfig, cwd);
+			server.serve();
+			// Listen for SIGINT and quit properly
+			process.on('SIGINT', () => {
+				signale.complete('Gracefully ending development server');
+				server.stop();
+				signale.success(
+					'To create production build, run `yarn build` or `npm run build`'
 				);
-				server.serve();
-				// Listen for SIGINT and quit properly
-				process.on('SIGINT', () => {
-					signale.complete('Gracefully ending development server');
-					server.stop();
-					signale.success(
-						'To create production build, run `yarn build` or `npm run build`'
-					);
-					signale.star('Thank you for using https://wpack.io.');
-					signale.star('To spread the ❤️ please tweet.');
-					process.exit(0);
-				});
-				process.on('SIGKILL', () => {
-					server.stop();
-				});
-				process.on('SIGTERM', () => {
-					server.stop();
-				});
-			} catch (e) {
-				signale.error(
-					'Could not start development server. Please check the log below.'
-				);
-				signale.fatal(e);
-				process.exit(1);
-			}
-			// Listen for keyinput <r> and invalidate webpack builds.
+				signale.star('Thank you for using https://wpack.io.');
+				signale.star('To spread the ❤️ please tweet.');
+				process.exit(0);
+			});
+			process.on('SIGKILL', () => {
+				server.stop();
+			});
+			process.on('SIGTERM', () => {
+				server.stop();
+			});
+		} catch (e) {
+			signale.error(
+				'Could not start development server. Please check the log below.'
+			);
+			signale.fatal(e);
+			process.exit(1);
 		}
-	);
+		// Listen for keyinput <r> and invalidate webpack builds.
+	});
 
 // Build the script
 program
@@ -124,7 +116,7 @@ program
 		'-s, --server-config [path]',
 		'Path to server config. If it differs from ./wpackio.server.js'
 	)
-	.action(options => {
+	.action((options: ProgramOptions | undefined) => {
 		isValidCommand = true;
 		signale.start('Creating production builds...');
 		// Set process.env.NODE_ENV to production
