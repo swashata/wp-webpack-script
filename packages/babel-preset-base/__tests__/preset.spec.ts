@@ -1,4 +1,4 @@
-import { preset } from '../preset';
+import { preset } from '../src/preset';
 
 interface PresetEnv {
 	[x: string]: string | boolean;

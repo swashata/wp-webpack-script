@@ -1,5 +1,5 @@
-import { mockedApi } from '../../__mocks__/@babel/helper-plugin-utils';
-const wpwBabelPresetBase = require('../index');
+import { mockedApi } from '../__mocks__/@babel/helper-plugin-utils';
+const wpwBabelPresetBase = require('../src/index');
 
 describe('@wpackio/babel-preset-base', () => {
 	test('checks for babel 7', () => {
