@@ -1,7 +1,7 @@
 # `@wpackio/babel-preset-base`
 
-This is the default base babel preset to include in non-react projects. It is
-based on `@babel/preset-env` and includes some [`stage-3`](https://github.com/babel/babel/blob/master/packages/babel-preset-stage-3/README.md) plugins.
+This is the default base babel preset to include in projects. It is
+based on `@babel/preset-env`, `@babel/preset-react` and includes some [`stage-3`](https://github.com/babel/babel/blob/master/packages/babel-preset-stage-3/README.md) plugins.
 
 ## Installation
 
@@ -45,7 +45,7 @@ we can use both `@wpackio/base` or `@wpackio/babel-preset-base` as the preset na
 
 ### `.browserslistrc`
 
-This preset is primarily based on `@babel/preset-env`.
+This preset is primarily based on `@babel/preset-env` and `@babel/preset-react`.
 
 You should add `.browserslistrc` to your project to target your environment.
 More information can be found [here](https://babeljs.io/docs/en/next/babel-preset-env#browserslist-integration).
@@ -92,6 +92,12 @@ module.exports = {
 };
 ```
 
+#### `hasReact`
+
+`boolean`, defaults to `true`.
+
+Set to `false` to completely disable all [`@babel/preset-react`](https://babeljs.io/docs/en/babel-preset-react) configuration.
+
 #### `noDynamicImport`
 
 `boolean`, defaults to `false`.
@@ -118,17 +124,53 @@ Set to `true` to disable [`@babel/plugin-proposal-json-strings`](https://babeljs
 
 #### `presetEnv` Options for `@babel/preset-env`
 
+`object`, defaults to `{}`.
+
 What-ever you pass to the `presetEnv` directive, is passed directly to `@babel/preset-env`. This
 gives you more control on how to configure the `@babel/preset-env` preset.
 
 Please [read the documentation](https://babeljs.io/docs/en/babel-preset-env) for
 available options.
 
+#### `presetReact` Options for `@babel/preset-react`
+
+`object`, defaults to `{}`.
+
+What ever you define here, is passed directly to [`@babel/preset-react`](https://babeljs.io/docs/en/babel-preset-react).
+So consult the documentation to find out how to use it.
+
+##### Note on `presetReact.development`
+
+`@babel/preset-react` has an option [`development`](https://babeljs.io/docs/en/babel-preset-react#development) which,
+if enabled, includes two development friendly plugins. `@wpackio/react` automatically
+sets its value, depending on `BABEL_ENV` environment variable. This environment
+variable is taken care of automatically, when you are using `@wpackio/scripts`.
+
+However, you can pass a `Boolean` value to `presetReact.development` and it will
+be used instead.
+
+**`.babelrc`**
+
+```json
+{
+	"extends": [
+		[
+			"@wpackio/react",
+			{
+				"presetReact": {
+					"development": false
+				}
+			}
+		]
+	]
+}
+```
+
 ## Development
 
 This package has the same `npm scripts` as this monorepo. These should be run
 using `lerna run <script>`. More information can be found under [CONTRIBUTION.md](../../CONTRIBUTION.md).
 
--   `build`: Use babel to build for nodejs 8.6+. Files inside `src` are compiled and put under `lib`.
--   `prepare`: Run `build` after `yarn` and before `publish`.
--   `watch`: Watch for changes in `src` and build in `lib`.
+-   `build`: Use babel to build for nodejs 8.6+. Files inside `src` are compiled and put under `lib`. All type definitions are stripped and individual type declaration files are created.
+-   `test`: Run tests using jest.
+-   `lint`: Run linter using tslint.

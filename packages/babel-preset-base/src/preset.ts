@@ -5,38 +5,61 @@ export interface PresetOptions {
 	noImportMeta?: boolean;
 	noClassProperties?: boolean;
 	noJsonStrings?: boolean;
+	hasReact?: boolean;
 	presetEnv?: {};
+	presetReact?: {};
 	[x: string]: any;
 }
 
-interface BabelPluginConfig {
+export interface BabelPluginConfig {
 	[x: string]: any;
 }
 
-type singleBabelPlugin = string | [string, BabelPluginConfig];
+export type singleBabelPlugin = string | [string, BabelPluginConfig];
 
-type babelPlugin = singleBabelPlugin[];
-
-interface PossiblePlugins {
+export interface PossiblePlugins {
 	[x: string]: singleBabelPlugin;
 }
+
+export type babelPresetConfiguration = {
+	[x: string]: boolean | string | babelPresetConfiguration;
+};
+export type babelPreset = [string, babelPresetConfiguration];
 
 export const preset = (opts: PresetOptions | null = {}) => {
 	// Extract this preset specific options and pass the rest to @babel/preset-env
 	const {
+		presetEnv = {},
+		presetReact = {},
+		hasReact = true,
+		// Put everything else inside noPlugins, which we will use later
+		// to put or cancel out stage-3 plugins.
 		// noDynamicImport = false,
 		// noImportMeta = false,
 		// noClassProperties = false,
 		// noJsonStrings = false,
-		presetEnv = {},
 		...noPlugins
 	} = opts || {};
 
 	// Create the presets
-	const presets = [['@babel/preset-env', { modules: false, ...presetEnv }]];
+	const presets: babelPreset[] = [
+		['@babel/preset-env', { modules: false, ...presetEnv }],
+	];
+	// Add react if needed
+	if (hasReact) {
+		presets.push([
+			'@babel/preset-react',
+			{
+				// Put development based on BABEL_ENV
+				development: process.env.BABEL_ENV !== 'production',
+				// But spread later, so that user can override it
+				...presetReact,
+			},
+		]);
+	}
 
 	// Create the plugins
-	const plugins: babelPlugin = [];
+	const plugins: singleBabelPlugin[] = [];
 	const wannabePlugins: PossiblePlugins = {
 		noDynamicImport: '@babel/plugin-syntax-dynamic-import',
 		noImportMeta: '@babel/plugin-syntax-import-meta',
@@ -47,13 +70,11 @@ export const preset = (opts: PresetOptions | null = {}) => {
 		noJsonStrings: '@babel/plugin-proposal-json-strings',
 	};
 	// Add them, only if user hasn't explicitly disabled it
-	if (noPlugins) {
-		Object.keys(wannabePlugins).forEach((pKey: string) => {
-			if (noPlugins[pKey] !== true) {
-				plugins.push(wannabePlugins[pKey]);
-			}
-		});
-	}
+	Object.keys(wannabePlugins).forEach((pKey: string) => {
+		if (noPlugins[pKey] !== true) {
+			plugins.push(wannabePlugins[pKey]);
+		}
+	});
 
 	// Return the preset and some of stage-3 plugins
 	// We will remove them, once it becomes stage-4, i.e included in preset-env
