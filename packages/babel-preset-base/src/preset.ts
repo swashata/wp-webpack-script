@@ -24,7 +24,7 @@ export interface PossiblePlugins {
 export type babelPresetConfiguration = {
 	[x: string]: boolean | string | babelPresetConfiguration;
 };
-export type babelPreset = [string, babelPresetConfiguration];
+export type babelPreset = [string] | [string, babelPresetConfiguration];
 
 export const preset = (opts: PresetOptions | null = {}) => {
 	// Extract this preset specific options and pass the rest to @babel/preset-env

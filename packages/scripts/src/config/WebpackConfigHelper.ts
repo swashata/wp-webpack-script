@@ -1,3 +1,4 @@
+import { babelPreset } from '@wpackio/babel-preset-base/lib/preset';
 import cleanWebpackPlugin from 'clean-webpack-plugin';
 import miniCssExtractPlugin from 'mini-css-extract-plugin';
 import path from 'path';
@@ -227,12 +228,9 @@ ${bannerConfig.credit ? creditNote : ''}
 	 * Get module object for webpack, depending on environment.
 	 */
 	public getModule(): webpack.Module {
-		// create the babel rules for es6+ code
-		const jsPresets: string[] = ['@wpackio/base'];
 		const { hasReact, hasSass } = this.config;
-		if (hasReact) {
-			jsPresets.push('@wpackio/react');
-		}
+		// create the babel rules for es6+ code
+		const jsPresets: babelPreset[] = [['@wpackio/base', { hasReact }]];
 		const jsRules: webpack.RuleSetRule = {
 			test: /\.m?jsx?$/,
 			use: ['babel-loader'],
@@ -243,11 +241,10 @@ ${bannerConfig.credit ? creditNote : ''}
 		};
 
 		// create the babel rules for typescript code
-		const tsPresets: string[] = ['@wpackio/base'];
-		if (hasReact) {
-			tsPresets.push('@wpackio/react');
-		}
-		tsPresets.push('@babel/preset-typescript');
+		const tsPresets: babelPreset[] = [
+			['@wpackio/base', { hasReact }],
+			['@babel/preset-typescript'],
+		];
 		const tsRules: webpack.RuleSetRule = {
 			test: /\.tsx?$/,
 			use: ['babel-loader'],
