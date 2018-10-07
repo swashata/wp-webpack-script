@@ -1,3 +1,4 @@
+import miniCssExtractPlugin from 'mini-css-extract-plugin';
 import {
 	ProjectConfig,
 	projectConfigDefault,
@@ -12,20 +13,20 @@ import {
 } from '../../src/config/WebpackConfigHelper';
 
 function getConfigFromProjectAndServer(
-	projectConfig: ProjectConfig,
-	serverConfig: ServerConfig
+	pCfg: ProjectConfig,
+	sCfg: ServerConfig
 ): WebpackConfigHelperConfig {
 	return {
-		type: projectConfig.type,
-		slug: projectConfig.slug,
-		host: serverConfig.host,
-		port: serverConfig.port,
-		outputPath: projectConfig.outputPath,
-		hasReact: projectConfig.hasReact,
-		hasSass: projectConfig.hasSass,
-		bannerConfig: projectConfig.bannerConfig,
-		alias: projectConfig.alias,
-		optimizeSplitChunks: projectConfig.optimizeSplitChunks,
+		type: pCfg.type,
+		slug: pCfg.slug,
+		host: sCfg.host,
+		port: sCfg.port,
+		outputPath: pCfg.outputPath,
+		hasReact: pCfg.hasReact,
+		hasSass: pCfg.hasSass,
+		bannerConfig: pCfg.bannerConfig,
+		alias: pCfg.alias,
+		optimizeSplitChunks: pCfg.optimizeSplitChunks,
 	};
 }
 
@@ -38,13 +39,14 @@ beforeEach(() => {
 		files: [
 			{
 				name: 'config1',
-				entry: { foo: 'bar.js', biz: 'baz.js' },
+				entry: { foo: 'bar.js', biz: ['baz.js'] },
 				filename: '[name].js',
 			},
 		],
 	};
 	serverConfig = { ...serverConfigDefault };
 });
+
 describe('CreateWebPackConfig', () => {
 	// Now do the testing
 
@@ -164,6 +166,95 @@ describe('CreateWebPackConfig', () => {
 
 	// getModule()
 	describe('getModule', () => {
+		test('has babel-loader for both typescript and javascript', () => {
+			const cwc = new WebpackConfigHelper(
+				projectConfig.files[0],
+				getConfigFromProjectAndServer(projectConfig, serverConfig),
+				'/foo/bar',
+				true
+			);
+			const modules = cwc.getModule();
+			if (Array.isArray(modules.rules)) {
+				const jsTsRules = modules.rules.filter(rule => {
+					const { test } = rule;
+
+					return (
+						test !== undefined &&
+						(test.toString() === '/\\.m?jsx?$/' ||
+							test.toString() === '/\\.tsx?$/')
+					);
+				}) as { use: string[] }[];
+				expect(jsTsRules).toHaveLength(2);
+				jsTsRules.forEach(rule => {
+					if (rule && rule.use) {
+						expect(rule.use[0]).toBe('babel-loader');
+					} else {
+						throw new Error('JavaScript rule is undefined');
+					}
+				});
+			} else {
+				throw new Error('Module is not an array');
+			}
+		});
+
+		test('uses style loader when in dev mode', () => {
+			const cwc = new WebpackConfigHelper(
+				projectConfig.files[0],
+				getConfigFromProjectAndServer(projectConfig, serverConfig),
+				'/foo/bar',
+				true
+			);
+			const modules = cwc.getModule();
+			if (Array.isArray(modules.rules)) {
+				const styleRule = modules.rules.find(rule => {
+					const { test } = rule;
+
+					return (
+						test !== undefined &&
+						(test.toString() === '/\\.css$/' ||
+							test.toString() === '/\\.(sa|sc|c)ss$/')
+					);
+				}) as { use: string[] };
+				if (styleRule !== undefined) {
+					expect(styleRule.use[0]).toBe('style-loader');
+				} else {
+					throw new Error('No style rule found');
+				}
+			} else {
+				throw new Error('Module.rules is not an array');
+			}
+		});
+
+		test('uses miniCssExtractPlugin when in production mode', () => {
+			const cwc = new WebpackConfigHelper(
+				projectConfig.files[0],
+				getConfigFromProjectAndServer(projectConfig, serverConfig),
+				'/foo/bar',
+				false
+			);
+			const modules = cwc.getModule();
+			if (Array.isArray(modules.rules)) {
+				const styleRule = modules.rules.find(rule => {
+					const { test } = rule;
+
+					return (
+						test !== undefined &&
+						(test.toString() === '/\\.css$/' ||
+							test.toString() === '/\\.(sa|sc|c)ss$/')
+					);
+				}) as { use: { loader: string }[] };
+				if (styleRule !== undefined) {
+					expect(styleRule.use[0].loader).toBe(
+						miniCssExtractPlugin.loader
+					);
+				} else {
+					throw new Error('No style rule found');
+				}
+			} else {
+				throw new Error('Module.rules is not an array');
+			}
+		});
+
 		test('matches snapshot', () => {
 			const cwc = new WebpackConfigHelper(
 				projectConfig.files[0],
@@ -173,6 +264,102 @@ describe('CreateWebPackConfig', () => {
 			);
 			const modules = cwc.getModule();
 			expect(modules).toMatchSnapshot();
+		});
+	});
+
+	// getResolve()
+	describe('getResolve', () => {
+		test('has all entry extensions and aliases', () => {
+			const alias: { [x: string]: string } = {
+				App: 'src/app',
+				Util: 'src/util',
+			};
+			const cwc = new WebpackConfigHelper(
+				projectConfig.files[0],
+				{
+					...getConfigFromProjectAndServer(
+						projectConfig,
+						serverConfig
+					),
+					alias: alias,
+				},
+				'/foo/bar',
+				false
+			);
+			const resolve = cwc.getResolve();
+			expect(resolve.extensions).toContain('.js');
+			expect(resolve.extensions).toContain('.jsx');
+			expect(resolve.extensions).toContain('.ts');
+			expect(resolve.extensions).toContain('.tsx');
+			expect(resolve.alias).toEqual(alias);
+		});
+	});
+
+	// getOptimization()
+	describe('getOptimization', () => {
+		test('returns undefined when not in use', () => {
+			const cwc = new WebpackConfigHelper(
+				projectConfig.files[0],
+				{
+					...getConfigFromProjectAndServer(
+						projectConfig,
+						serverConfig
+					),
+					optimizeSplitChunks: false,
+				},
+				'/foo/bar',
+				false
+			);
+			expect(cwc.getOptimization()).toBeUndefined();
+		});
+
+		test('returns object when in use', () => {
+			const cwc = new WebpackConfigHelper(
+				projectConfig.files[0],
+				{
+					...getConfigFromProjectAndServer(
+						projectConfig,
+						serverConfig
+					),
+					optimizeSplitChunks: true,
+				},
+				'/foo/bar',
+				false
+			);
+			expect(cwc.getOptimization()).not.toBeUndefined();
+			expect(cwc.getOptimization()).toMatchSnapshot();
+		});
+	});
+
+	// getCommmon
+	describe('getCommon', () => {
+		test('sends proper stuff depending on isDev', () => {
+			const cwc = new WebpackConfigHelper(
+				projectConfig.files[0],
+				{
+					...getConfigFromProjectAndServer(
+						projectConfig,
+						serverConfig
+					),
+				},
+				'/foo/bar',
+				false
+			);
+			expect(cwc.getCommon().devtool).toBe('source-map');
+			expect(cwc.getCommon()).toMatchSnapshot();
+			const cwcDev = new WebpackConfigHelper(
+				projectConfig.files[0],
+				{
+					...getConfigFromProjectAndServer(
+						projectConfig,
+						serverConfig
+					),
+				},
+				'/foo/bar',
+				true
+			);
+			expect(cwcDev.getCommon().devtool).toBe('inline-source-map');
+			expect(cwcDev.getCommon()).toMatchSnapshot();
 		});
 	});
 });

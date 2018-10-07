@@ -1,5 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`CreateWebPackConfig getCommon sends proper stuff depending on isDev 1`] = `
+Object {
+  "context": "/foo/bar",
+  "devtool": "source-map",
+  "mode": "production",
+  "target": "web",
+  "watch": false,
+}
+`;
+
+exports[`CreateWebPackConfig getCommon sends proper stuff depending on isDev 2`] = `
+Object {
+  "context": "/foo/bar",
+  "devtool": "inline-source-map",
+  "mode": "development",
+  "target": "web",
+  "watch": true,
+}
+`;
+
 exports[`CreateWebPackConfig getModule matches snapshot 1`] = `
 Object {
   "rules": Array [
@@ -77,6 +97,14 @@ Object {
       ],
     },
   ],
+}
+`;
+
+exports[`CreateWebPackConfig getOptimization returns object when in use 1`] = `
+Object {
+  "splitChunks": Object {
+    "chunks": "all",
+  },
 }
 `;
 
