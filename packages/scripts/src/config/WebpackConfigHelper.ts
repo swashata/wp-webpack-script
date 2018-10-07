@@ -235,11 +235,15 @@ ${bannerConfig.credit ? creditNote : ''}
 		const jsPresets: babelPreset[] = [['@wpackio/base', { hasReact }]];
 		const jsRules: webpack.RuleSetRule = {
 			test: /\.m?jsx?$/,
-			use: ['babel-loader'],
+			use: [
+				{
+					loader: 'babel-loader',
+					options: {
+						presets: jsPresets,
+					},
+				},
+			],
 			exclude: /(node_modules|bower_components)/,
-			options: {
-				presets: jsPresets,
-			},
 		};
 
 		// create the babel rules for typescript code
@@ -249,15 +253,19 @@ ${bannerConfig.credit ? creditNote : ''}
 		];
 		const tsRules: webpack.RuleSetRule = {
 			test: /\.tsx?$/,
-			use: ['babel-loader'],
+			use: [
+				{
+					loader: 'babel-loader',
+					options: {
+						presets: tsPresets,
+						plugins: [
+							'@babel/proposal-class-properties',
+							'@babel/proposal-object-rest-spread',
+						],
+					},
+				},
+			],
 			exclude: /(node_modules)/,
-			options: {
-				presets: tsPresets,
-				plugins: [
-					'@babel/proposal-class-properties',
-					'@babel/proposal-object-rest-spread',
-				],
-			},
 		};
 		// Create style rules
 		const styleRules: webpack.RuleSetRule = {

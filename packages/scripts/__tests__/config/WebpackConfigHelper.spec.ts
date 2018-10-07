@@ -183,11 +183,11 @@ describe('CreateWebPackConfig', () => {
 						(test.toString() === '/\\.m?jsx?$/' ||
 							test.toString() === '/\\.tsx?$/')
 					);
-				}) as { use: string[] }[];
+				}) as { use: { loader: string }[] }[];
 				expect(jsTsRules).toHaveLength(2);
 				jsTsRules.forEach(rule => {
 					if (rule && rule.use) {
-						expect(rule.use[0]).toBe('babel-loader');
+						expect(rule.use[0].loader).toBe('babel-loader');
 					} else {
 						throw new Error('JavaScript rule is undefined');
 					}

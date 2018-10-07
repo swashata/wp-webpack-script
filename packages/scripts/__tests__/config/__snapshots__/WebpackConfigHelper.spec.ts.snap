@@ -25,43 +25,47 @@ Object {
   "rules": Array [
     Object {
       "exclude": /\\(node_modules\\|bower_components\\)/,
-      "options": Object {
-        "presets": Array [
-          Array [
-            "@wpackio/base",
-            Object {
-              "hasReact": true,
-            },
-          ],
-        ],
-      },
       "test": /\\\\\\.m\\?jsx\\?\\$/,
       "use": Array [
-        "babel-loader",
+        Object {
+          "loader": "babel-loader",
+          "options": Object {
+            "presets": Array [
+              Array [
+                "@wpackio/base",
+                Object {
+                  "hasReact": true,
+                },
+              ],
+            ],
+          },
+        },
       ],
     },
     Object {
       "exclude": /\\(node_modules\\)/,
-      "options": Object {
-        "plugins": Array [
-          "@babel/proposal-class-properties",
-          "@babel/proposal-object-rest-spread",
-        ],
-        "presets": Array [
-          Array [
-            "@wpackio/base",
-            Object {
-              "hasReact": true,
-            },
-          ],
-          Array [
-            "@babel/preset-typescript",
-          ],
-        ],
-      },
       "test": /\\\\\\.tsx\\?\\$/,
       "use": Array [
-        "babel-loader",
+        Object {
+          "loader": "babel-loader",
+          "options": Object {
+            "plugins": Array [
+              "@babel/proposal-class-properties",
+              "@babel/proposal-object-rest-spread",
+            ],
+            "presets": Array [
+              Array [
+                "@wpackio/base",
+                Object {
+                  "hasReact": true,
+                },
+              ],
+              Array [
+                "@babel/preset-typescript",
+              ],
+            ],
+          },
+        },
       ],
     },
     Object {
