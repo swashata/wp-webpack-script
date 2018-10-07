@@ -51,7 +51,12 @@ export const preset = (opts: PresetOptions | null = {}) => {
 			'@babel/preset-react',
 			{
 				// Put development based on BABEL_ENV
+				// Adds component stack to warning messages
+				// Adds __self attribute to JSX which React will use for some warnings
 				development: process.env.BABEL_ENV !== 'production',
+				// Will use the native built-in instead of trying to polyfill
+				// behavior for any plugins that require one.
+				useBuiltIns: true,
 				// But spread later, so that user can override it
 				...presetReact,
 			},
