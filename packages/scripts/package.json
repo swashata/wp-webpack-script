@@ -26,6 +26,7 @@
     "@types/node": "^10.11.3",
     "@types/signale": "^1.2.0",
     "@types/webpack": "^4.4.13",
+    "@types/webpack-assets-manifest": "^3.0.0",
     "@types/webpack-dev-middleware": "^2.0.2",
     "@types/webpack-hot-middleware": "^2.16.4",
     "@wpackio/babel-preset-base": "0.0.1",
@@ -35,6 +36,7 @@
     "clean-webpack-plugin": "^0.1.19",
     "commander": "^2.18.0",
     "css-loader": "^1.0.0",
+    "file-loader": "^2.0.0",
     "mini-css-extract-plugin": "^0.4.3",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
     "postcss-loader": "^3.0.0",
@@ -44,6 +46,7 @@
     "style-loader": "^0.23.0",
     "uglifyjs-webpack-plugin": "^2.0.1",
     "webpack": "^4.20.2",
+    "webpack-assets-manifest": "^3.1.0",
     "webpack-dev-middleware": "^3.4.0",
     "webpack-hot-middleware": "^2.24.0",
     "webpack-merge": "^4.1.4"

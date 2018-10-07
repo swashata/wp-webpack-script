@@ -3,7 +3,10 @@ import webpack from 'webpack';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 
-import { CreateWebpackConfig } from '../config/CreateWebpackConfig';
+import {
+	CreateWebpackConfig,
+	WpackConfig,
+} from '../config/CreateWebpackConfig';
 import { ProjectConfig } from '../config/project.config.default';
 import { ServerConfig } from '../config/server.config.default';
 
@@ -68,35 +71,43 @@ export class Server {
 		// Create webpack compiler
 		// Put them together
 		if (Array.isArray(webpackConfig)) {
-			webpackConfig.forEach((config: webpack.Configuration) => {
+			webpackConfig.forEach((wpackConfig: WpackConfig) => {
+				const { config, hmrPublicPath } = wpackConfig;
 				const compiler = webpack(config);
 				// We can not have dashboard plugin for webpack multi
 				// compiler right now.
 				// compiler.apply(new DashboardPlugin());
 				const devMiddleware = webpackDevMiddleware(compiler, {
 					stats: { colors: true },
+					logLevel: 'warn',
 					publicPath:
 						config.output && config.output.publicPath
 							? config.output.publicPath
 							: '',
 				});
-				const hotMiddleware = webpackHotMiddleware(compiler);
+				const output = config.output as webpack.Output;
+				const hotMiddleware = webpackHotMiddleware(compiler, {
+					path: hmrPublicPath,
+				});
 				// Push them
 				middlewares.push(devMiddleware);
 				devMiddlewares.push(devMiddleware);
 				middlewares.push(hotMiddleware);
 			});
 		} else {
-			const compiler = webpack(webpackConfig);
-			// compiler.apply(new DashboardPlugin());
+			const { config, hmrPublicPath } = webpackConfig;
+			const compiler = webpack(config);
 			const devMiddleware = webpackDevMiddleware(compiler, {
 				stats: { colors: true },
 				publicPath:
-					webpackConfig.output && webpackConfig.output.publicPath
-						? webpackConfig.output.publicPath
+					config.output && config.output.publicPath
+						? config.output.publicPath
 						: '',
 			});
-			const hotMiddleware = webpackHotMiddleware(compiler);
+
+			const hotMiddleware = webpackHotMiddleware(compiler, {
+				path: hmrPublicPath,
+			});
 			// Push them
 			middlewares.push(devMiddleware);
 			devMiddlewares.push(devMiddleware);
@@ -107,7 +118,7 @@ export class Server {
 		bs.init({
 			// We need to silent browserSync, otherwise might conflict with
 			// webpack-dashboard
-			logLevel: 'silent',
+			logLevel: 'warn',
 			port: this.serverConfig.port,
 			ui: this.serverConfig.ui,
 			proxy: {
@@ -125,11 +136,9 @@ export class Server {
 		if (this.projectConfig.watch) {
 			bs.watch(this.projectConfig.watch).on('change', bs.reload);
 		}
-		// Watch for our own manifest file
-		bs.watch(`${this.projectConfig.outputPath}/manifest.json`).on(
-			'change',
-			bs.reload
-		);
+		// We don't need to watch for manifest, because if user is changing
+		// Config, then she does need to restart. It won't be picked up
+		// automatically by node.
 
 		// Mark server is running
 		this.isServing = true;

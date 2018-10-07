@@ -9,6 +9,11 @@ import {
 import { ServerConfig, serverConfigDefault } from './server.config.default';
 import { WebpackConfigHelper } from './WebpackConfigHelper';
 
+export interface WpackConfig {
+	config: webpack.Configuration;
+	hmrPublicPath: string;
+}
+
 /**
  * Create the final webpack config through this class.
  */
@@ -54,7 +59,7 @@ export class CreateWebpackConfig {
 	 * If `projectConfig.files` has length === 1, then it would be a single compiler
 	 * otherwise, it would be for multi compiler.
 	 */
-	public getConfig(): webpack.Configuration | webpack.Configuration[] {
+	public getConfig(): WpackConfig | WpackConfig[] {
 		// Now it can be a single compiler, or multicompiler
 		// In any case, figure it out, create the compiler options
 		// and return the stuff.
@@ -63,7 +68,7 @@ export class CreateWebpackConfig {
 		// Then return an array of config.
 		if (this.projectConfig.files.length > 1) {
 			// Return an array of configuration
-			const config: webpack.Configuration[] = [];
+			const config: WpackConfig[] = [];
 			this.projectConfig.files.forEach((file: FileConfig) => {
 				config.push(this.getSingleCompilerConfig(file));
 			});
@@ -80,7 +85,7 @@ export class CreateWebpackConfig {
 	 *
 	 * @param file Single file object.
 	 */
-	private getSingleCompilerConfig(file: FileConfig): webpack.Configuration {
+	private getSingleCompilerConfig(file: FileConfig): WpackConfig {
 		const {
 			type,
 			slug,
@@ -128,6 +133,9 @@ export class CreateWebpackConfig {
 			config = webpackMerge(config, file.webpackConfig);
 		}
 
-		return config;
+		// Get our hmr public path
+		const hmrPublicPath = helper.getHmrPath();
+
+		return { config, hmrPublicPath };
 	}
 }

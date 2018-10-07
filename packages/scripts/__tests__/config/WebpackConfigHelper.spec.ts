@@ -124,7 +124,7 @@ describe('CreateWebPackConfig', () => {
 				true
 			);
 			const devOutput = devCwc.getOutput();
-			expect(devOutput.publicPath).toMatch(/^\/\/(.*)\/config1$/);
+			expect(devOutput.publicPath).toMatch(/^\/\/(.*)\/config1\/$/);
 		});
 		test('respects type for constructing publicPath on dev server', () => {
 			const devCwc = new WebpackConfigHelper(
@@ -135,7 +135,7 @@ describe('CreateWebPackConfig', () => {
 			);
 			const devOutput = devCwc.getOutput();
 			expect(devOutput.publicPath).toMatch(
-				/^\/\/(.*)\/wp-content\/plugins\/(.*)\/config1$/
+				/^\/\/(.*)\/wp-content\/plugins\/(.*)\/config1\/$/
 			);
 		});
 	});

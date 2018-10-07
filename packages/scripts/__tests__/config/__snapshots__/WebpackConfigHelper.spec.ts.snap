@@ -5,6 +5,7 @@ Object {
   "context": "/foo/bar",
   "devtool": "source-map",
   "mode": "production",
+  "name": "config1",
   "target": "web",
   "watch": false,
 }
@@ -15,6 +16,7 @@ Object {
   "context": "/foo/bar",
   "devtool": "inline-source-map",
   "mode": "development",
+  "name": "config1",
   "target": "web",
   "watch": true,
 }
@@ -116,8 +118,8 @@ exports[`CreateWebPackConfig getPlugins has proper plugins for build mode 1`] = 
 Array [
   DefinePlugin {
     "definitions": Object {
-      "process.env.BABEL_ENV": "production",
-      "process.env.NODE_ENV": "production",
+      "process.env.BABEL_ENV": "\\"production\\"",
+      "process.env.NODE_ENV": "\\"production\\"",
     },
   },
   CleanWebpackPlugin {
@@ -137,6 +139,7 @@ Array [
       "filename": "[name].css",
     },
   },
+  Object {},
   BannerPlugin {
     "banner": [Function],
     "options": Object {
@@ -168,8 +171,8 @@ exports[`CreateWebPackConfig getPlugins has proper plugins for dev mode 1`] = `
 Array [
   DefinePlugin {
     "definitions": Object {
-      "process.env.BABEL_ENV": "development",
-      "process.env.NODE_ENV": "development",
+      "process.env.BABEL_ENV": "\\"development\\"",
+      "process.env.NODE_ENV": "\\"development\\"",
     },
   },
   CleanWebpackPlugin {
@@ -189,6 +192,7 @@ Array [
       "filename": "[name].css",
     },
   },
+  Object {},
   HotModuleReplacementPlugin {
     "fullBuildTimeout": 200,
     "multiStep": undefined,

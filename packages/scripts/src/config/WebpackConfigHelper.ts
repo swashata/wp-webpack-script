@@ -4,6 +4,7 @@ import miniCssExtractPlugin from 'mini-css-extract-plugin';
 import path from 'path';
 import slugify from 'slugify';
 import webpack from 'webpack';
+import WebpackAssetsManifest from 'webpack-assets-manifest';
 import {
 	BannerConfig,
 	FileConfig,
@@ -34,6 +35,7 @@ interface CommonWebpackConfig {
 	target: webpack.Configuration['target'];
 	watch: webpack.Configuration['watch'];
 	mode: webpack.Configuration['mode'];
+	name: webpack.Configuration['name'];
 }
 
 /**
@@ -55,6 +57,8 @@ export class WebpackConfigHelper {
 	 */
 	private env: 'development' | 'production';
 
+	private hmrPublicPath: string;
+
 	/**
 	 * Create an instance of GetEntryAndOutput class.
 	 */
@@ -75,11 +79,25 @@ export class WebpackConfigHelper {
 		}
 
 		// Create the outputPath, because we would be needing that
-		const { outputPath } = this.config;
+		const { outputPath, slug, type } = this.config;
+		const contentDir: string = `${type}s`;
 		// and file
 		const { name } = this.file;
 		this.outputInnerDir = slugify(name, { lower: true });
 		this.outputPath = path.join(this.cwd, outputPath, this.outputInnerDir);
+		this.hmrPublicPath = `/wp-content/${contentDir}/${slug}/${outputPath}/${
+			this.outputInnerDir
+		}/`;
+	}
+
+	/**
+	 * Get Hot Module Reload Path, which takes into consideration
+	 * the dynamicPublicPath.
+	 */
+	public getHmrPath(): string {
+		const { name } = this.file;
+
+		return `${this.hmrPublicPath}__wpackio_${name}`;
 	}
 
 	/**
@@ -122,9 +140,9 @@ export class WebpackConfigHelper {
 			// Here we need
 			// 1. dynamicPublicPath - Because we intend to use __webpack_public_path__
 			// 2. overlay and overlayStypes - To enable overlay on errors, we don't need warnings here
-			// 3. path - The output path, I am not sure if we need this, so let's skip
+			// 3. path - The output path, We need to make sure both server and client has the same value.
 			// 4. name - Because it could be multicompiler
-			const webpackHotClient: string = `webpack-hot-middleware/client?name=${name}&dynamicPublicPath=true&overlay=true&reload=true&overlayStyles=${encodeURIComponent(
+			const webpackHotClient: string = `webpack-hot-middleware/client?path=__wpackio_${name}&name=${name}&dynamicPublicPath=true&overlay=true&reload=true&overlayStyles=${encodeURIComponent(
 				JSON.stringify(overlayStyles)
 			)}`;
 			// Now add to each of the entries
@@ -144,7 +162,7 @@ export class WebpackConfigHelper {
 	public getOutput(): webpack.Output {
 		// Now use the config to create a output
 		// Destucture stuff we need from config
-		const { type, slug, host, port, outputPath } = this.config;
+		const { host, port } = this.config;
 		// and file
 		const { filename } = this.file;
 		// Assuming it is production
@@ -164,14 +182,16 @@ export class WebpackConfigHelper {
 		};
 		// Add the publicPath if it is in devMode
 		if (this.isDev) {
-			const contentDir: string = `${type}s`;
 			// We are proxying stuff here. So I guess, we can safely assume
 			// That URL of the proxied server starts from root?
 			// Maybe we can have a `prefix` in Config, but let's not do that
 			// right now.
-			output.publicPath = `//${host ||
-				'localhost'}:${port}/wp-content/${contentDir}/${slug}/${outputPath}/${
-				this.outputInnerDir
+			// tslint:disable: no-http-string
+			// Here we are hard-coding protocol http
+			// Maybe we can get an option from user for SSL?
+			// But this is needed for hot middleware
+			output.publicPath = `//${host || 'localhost'}:${port}${
+				this.hmrPublicPath
 			}`;
 		}
 
@@ -186,14 +206,22 @@ export class WebpackConfigHelper {
 		const plugins: webpack.Plugin[] = [
 			// Define env
 			new webpack.DefinePlugin({
-				'process.env.NODE_ENV': this.env,
-				'process.env.BABEL_ENV': this.env,
+				'process.env.NODE_ENV': JSON.stringify(this.env),
+				'process.env.BABEL_ENV': JSON.stringify(this.env),
 			}),
 			// Clean dist directory
 			new cleanWebpackPlugin([this.outputPath], { root: this.cwd }),
 			// Initiate mini css extract
 			new miniCssExtractPlugin({
 				filename: '[name].css',
+			}),
+			// Create Manifest for PHP Consumption
+			new WebpackAssetsManifest({
+				writeToDisk: true,
+				output: `${this.outputPath}/manifest.json`,
+				publicPath: `${this.outputInnerDir}/`, // We dont put ${this.config.outputPath}/ here because, PHP will pick it up anyway.
+				entrypoints: true,
+				entrypointsKey: 'wpackioEp',
 			}),
 		];
 		// Add development specific plugins
@@ -370,6 +398,7 @@ ${bannerConfig.credit ? creditNote : ''}
 			target: 'web',
 			watch: this.isDev,
 			mode: this.env,
+			name: this.file.name,
 		};
 	}
 }

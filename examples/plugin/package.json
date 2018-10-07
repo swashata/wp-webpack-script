@@ -7,7 +7,9 @@
   "license": "MIT",
   "private": true,
   "devDependencies": {
-    "@wpackio/scripts": "0.0.1"
+    "@wpackio/scripts": "0.0.1",
+    "autoprefixer": "^9.1.5",
+    "node-sass": "^4.9.3"
   },
   "scripts": {
     "exstart": "wpackio-scripts start",
