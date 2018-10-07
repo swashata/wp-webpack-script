@@ -100,7 +100,13 @@ describe('preset in module', () => {
 			) as babelPreset;
 			expect(presetEnv).toHaveLength(2);
 			Object.keys(envOptions.presetEnv).forEach(key => {
-				expect(presetEnv[1][key]).toBe(envOptions.presetEnv[key]);
+				if (typeof presetEnv[1] === 'object') {
+					const item = presetEnv[1][key];
+					expect(item).toEqual(envOptions.presetEnv[key]);
+				} else {
+					// Throw an error
+					throw new Error('preset is not passing options to env');
+				}
 			});
 		});
 	});
@@ -117,7 +123,13 @@ describe('preset in module', () => {
 				ps => Array.isArray(ps) && ps[0] === '@babel/preset-react'
 			) as babelPreset;
 			Object.keys(presetReact).forEach(pKey => {
-				expect(presetReactConfig[1][pKey]).toEqual(presetReact[pKey]);
+				if (typeof presetReactConfig[1] === 'object') {
+					const item = presetReactConfig[1][pKey];
+					expect(item).toEqual(presetReact[pKey]);
+				} else {
+					// Throw an error
+					throw new Error('preset is not passing options to react');
+				}
 			});
 		});
 		test('sets default development value on preset-react', () => {
@@ -132,7 +144,15 @@ describe('preset in module', () => {
 			}).presets.find(
 				ps => Array.isArray(ps) && ps[0] === '@babel/preset-react'
 			) as babelPreset;
-			expect(presetReactConfigWithProduction[1].development).toBe(false);
+			if (typeof presetReactConfigWithProduction[1] === 'object') {
+				expect(presetReactConfigWithProduction[1].development).toBe(
+					false
+				);
+			} else {
+				throw new Error(
+					'preset does not produce development config for react.'
+				);
+			}
 			// Get it when BABEL_ENV is in 'development'
 			process.env.BABEL_ENV = 'development';
 			const presetReactConfigWithDevelopment = preset({
@@ -140,7 +160,15 @@ describe('preset in module', () => {
 			}).presets.find(
 				ps => Array.isArray(ps) && ps[0] === '@babel/preset-react'
 			) as babelPreset;
-			expect(presetReactConfigWithDevelopment[1].development).toBe(true);
+			if (typeof presetReactConfigWithDevelopment[1] === 'object') {
+				expect(presetReactConfigWithDevelopment[1].development).toBe(
+					true
+				);
+			} else {
+				throw new Error(
+					'preset does not produce development config for react.'
+				);
+			}
 		});
 		test('overrides development value on preset-react from user input', () => {
 			const presetReact = {
@@ -153,7 +181,15 @@ describe('preset in module', () => {
 			}).presets.find(
 				ps => Array.isArray(ps) && ps[0] === '@babel/preset-react'
 			) as babelPreset;
-			expect(presetReactConfigWithDevelopment[1].development).toBe(false);
+			if (typeof presetReactConfigWithDevelopment[1] === 'object') {
+				expect(presetReactConfigWithDevelopment[1].development).toBe(
+					false
+				);
+			} else {
+				throw new Error(
+					'preset does not produce development config for react.'
+				);
+			}
 		});
 	});
 });

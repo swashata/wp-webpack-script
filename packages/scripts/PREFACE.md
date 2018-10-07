@@ -46,9 +46,17 @@ module.exports = {
 	files: [
 		// If this has length === 1, then single compiler
 		{
+			// Unique name for this file object
+			// This name is used to create a subdirectory inside the `outputPath`
+			// directory and also for some internal purpose. Make sure to keep
+			// it unique, otherwise hell will break loose. 😈
 			name: 'mobile',
 			entry: {
-				// stuff
+				// each key is going to be the name of the chunk. You can have
+				// One single key here, but because how to internally depend on
+				// a few things, we would only accept object with {[x:string]: string|string[]}
+				// We do not accept fully webpack compatible entry property, where
+				// you could just pass in string, string[] or the object.
 				vendor: 'vendor.js',
 				main: ['src/mobile.js'],
 			},

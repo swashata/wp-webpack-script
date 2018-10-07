@@ -15,7 +15,7 @@ interface NormalizedEntry {
 	[x: string]: string[];
 }
 
-interface Config {
+export interface WebpackConfigHelperConfig {
 	type: ProjectConfig['type'];
 	slug: ProjectConfig['slug'];
 	host: ServerConfig['host'];
@@ -24,7 +24,7 @@ interface Config {
 	hasReact: ProjectConfig['hasReact'];
 	hasSass: ProjectConfig['hasSass'];
 	bannerConfig: BannerConfig;
-	alias?: webpack.Resolve['alias'];
+	alias?: ProjectConfig['alias'];
 	optimizeSplitChunks: ProjectConfig['optimizeSplitChunks'];
 }
 
@@ -42,7 +42,7 @@ interface CommonWebpackConfig {
 export class WebpackConfigHelper {
 	private file: FileConfig;
 	private isDev: boolean;
-	private config: Config;
+	private config: WebpackConfigHelperConfig;
 	/**
 	 * Context directory, from where we read the stuff and put stuff.
 	 */
@@ -58,7 +58,7 @@ export class WebpackConfigHelper {
 	 */
 	constructor(
 		file: FileConfig,
-		config: Config,
+		config: WebpackConfigHelperConfig,
 		cwd: string,
 		isDev: boolean = true
 	) {
@@ -146,6 +146,8 @@ export class WebpackConfigHelper {
 			// of this configuration object.
 			// Also here we assume, user has passed in the correct `relative`
 			// path for `outputPath`. Otherwise this will break.
+			// We do not use path.resolve, because we expect outputPath to be
+			// relative. @todo: create a test here
 			path: path.join(this.cwd, outputPath, outputInnerDir),
 			filename,
 			// leave blank because we would handle with free variable

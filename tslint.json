@@ -27,7 +27,8 @@
     "promise-function-async": false,
     "no-var-requires": false,
     "mocha-no-side-effect-code": false,
-    "no-require-imports": false
+    "no-require-imports": false,
+    "no-suspicious-comment": false
 	},
 	"linterOptions": {
 		"exclude": ["lib/**/*", "**/node_modules/**"]

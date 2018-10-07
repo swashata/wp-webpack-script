@@ -1,0 +1,167 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CreateWebPackConfig getModule matches snapshot 1`] = `
+Object {
+  "rules": Array [
+    Object {
+      "exclude": /\\(node_modules\\|bower_components\\)/,
+      "options": Object {
+        "presets": Array [
+          Array [
+            "@wpackio/base",
+            Object {
+              "hasReact": true,
+            },
+          ],
+        ],
+      },
+      "test": /\\\\\\.m\\?jsx\\?\\$/,
+      "use": Array [
+        "babel-loader",
+      ],
+    },
+    Object {
+      "exclude": /\\(node_modules\\)/,
+      "options": Object {
+        "plugins": Array [
+          "@babel/proposal-class-properties",
+          "@babel/proposal-object-rest-spread",
+        ],
+        "presets": Array [
+          Array [
+            "@wpackio/base",
+            Object {
+              "hasReact": true,
+            },
+          ],
+          Array [
+            "@babel/preset-typescript",
+          ],
+        ],
+      },
+      "test": /\\\\\\.tsx\\?\\$/,
+      "use": Array [
+        "babel-loader",
+      ],
+    },
+    Object {
+      "test": /\\\\\\.\\(sa\\|sc\\|c\\)ss\\$/,
+      "use": Array [
+        "style-loader",
+        Object {
+          "loader": "css-loader",
+          "options": Object {
+            "importLoaders": 1,
+            "sourceMap": true,
+          },
+        },
+        "postcss-loader",
+        Object {
+          "loader": "sass-loader",
+          "options": Object {
+            "sourceMap": true,
+          },
+        },
+      ],
+    },
+    Object {
+      "test": /\\\\\\.\\(woff\\|woff2\\|eot\\|ttf\\|otf\\|svg\\|png\\|jpg\\|gif\\)\\(\\\\\\?v=\\\\d\\+\\\\\\.\\\\d\\+\\\\\\.\\\\d\\+\\)\\?\\$/,
+      "use": Array [
+        Object {
+          "loader": "file-loader",
+          "options": Object {
+            "name": "asset-[hash].[ext]",
+            "outputPath": "assets/",
+          },
+        },
+      ],
+    },
+  ],
+}
+`;
+
+exports[`CreateWebPackConfig getPlugins has proper plugins for build mode 1`] = `
+Array [
+  DefinePlugin {
+    "definitions": Object {
+      "process.env.BABEL_ENV": "production",
+      "process.env.NODE_ENV": "production",
+    },
+  },
+  CleanWebpackPlugin {
+    "options": Object {
+      "allowExternal": false,
+      "dry": false,
+      "root": "/Volumes/Development/PersonalProjects/wp-webpack-script/packages/scripts/src/config",
+      "verbose": false,
+    },
+    "paths": Array [
+      "dist",
+    ],
+  },
+  MiniCssExtractPlugin {
+    "options": Object {
+      "chunkFilename": "[name].css",
+      "filename": "[name].css",
+    },
+  },
+  BannerPlugin {
+    "banner": [Function],
+    "options": Object {
+      "banner": "
+WordPress WebPack Bundler
+
+@author Swashata Ghosh
+@version 1.0.0
+@link https://wpack.io
+@license GPL-3.0
+
+Copyright (c) 2018 Swashata Ghosh
+
+This software is released under the GPL-3.0 License
+https://opensource.org/licenses/GPL-3.0
+
+Compiled with the help of https://wpack.io
+A zero setup Webpack Bundler Script for WordPress
+",
+      "entryOnly": false,
+      "include": /\\\\\\.\\(\\(t\\|j\\)sx\\?\\|s\\?\\(c\\|a\\)ss\\)\\$/,
+      "raw": false,
+    },
+  },
+]
+`;
+
+exports[`CreateWebPackConfig getPlugins has proper plugins for dev mode 1`] = `
+Array [
+  DefinePlugin {
+    "definitions": Object {
+      "process.env.BABEL_ENV": "development",
+      "process.env.NODE_ENV": "development",
+    },
+  },
+  CleanWebpackPlugin {
+    "options": Object {
+      "allowExternal": false,
+      "dry": false,
+      "root": "/Volumes/Development/PersonalProjects/wp-webpack-script/packages/scripts/src/config",
+      "verbose": false,
+    },
+    "paths": Array [
+      "dist",
+    ],
+  },
+  MiniCssExtractPlugin {
+    "options": Object {
+      "chunkFilename": "[name].css",
+      "filename": "[name].css",
+    },
+  },
+  HotModuleReplacementPlugin {
+    "fullBuildTimeout": 200,
+    "multiStep": undefined,
+    "options": Object {},
+    "requestTimeout": 10000,
+  },
+]
+`;

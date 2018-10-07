@@ -21,6 +21,10 @@ module.exports = api => {
 	return {
 		presets,
 		plugins,
-		ignore: ['./src/@types', './src/__tests__'],
+		ignore: [
+			'./src/@types',
+			'./src/__tests__',
+			'./src/**/*.{spec|test}.{j|t}sx?',
+		],
 	};
 };
