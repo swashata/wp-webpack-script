@@ -124,11 +124,11 @@ Array [
     "options": Object {
       "allowExternal": false,
       "dry": false,
-      "root": "/Volumes/Development/PersonalProjects/wp-webpack-script/packages/scripts/src/config",
+      "root": "/foo/bar",
       "verbose": false,
     },
     "paths": Array [
-      "dist",
+      "/foo/bar/dist/config1",
     ],
   },
   MiniCssExtractPlugin {
@@ -176,11 +176,11 @@ Array [
     "options": Object {
       "allowExternal": false,
       "dry": false,
-      "root": "/Volumes/Development/PersonalProjects/wp-webpack-script/packages/scripts/src/config",
+      "root": "/foo/bar",
       "verbose": false,
     },
     "paths": Array [
-      "dist",
+      "/foo/bar/dist/config1",
     ],
   },
   MiniCssExtractPlugin {

@@ -40,6 +40,8 @@ interface CommonWebpackConfig {
  * A helper class to get different configuration of webpack.
  */
 export class WebpackConfigHelper {
+	public readonly outputInnerDir: string;
+	public readonly outputPath: string;
 	private file: FileConfig;
 	private isDev: boolean;
 	private config: WebpackConfigHelperConfig;
@@ -71,6 +73,13 @@ export class WebpackConfigHelper {
 		} else {
 			this.env = 'production';
 		}
+
+		// Create the outputPath, because we would be needing that
+		const { outputPath } = this.config;
+		// and file
+		const { name } = this.file;
+		this.outputInnerDir = slugify(name, { lower: true });
+		this.outputPath = path.join(this.cwd, outputPath, this.outputInnerDir);
 	}
 
 	/**
@@ -137,8 +146,7 @@ export class WebpackConfigHelper {
 		// Destucture stuff we need from config
 		const { type, slug, host, port, outputPath } = this.config;
 		// and file
-		const { name, filename } = this.file;
-		const outputInnerDir: string = slugify(name, { lower: true });
+		const { filename } = this.file;
 		// Assuming it is production
 		const output: webpack.Output = {
 			// Here we create a directory inside the user provided outputPath
@@ -148,7 +156,7 @@ export class WebpackConfigHelper {
 			// path for `outputPath`. Otherwise this will break.
 			// We do not use path.resolve, because we expect outputPath to be
 			// relative. @todo: create a test here
-			path: path.join(this.cwd, outputPath, outputInnerDir),
+			path: this.outputPath,
 			filename,
 			// leave blank because we would handle with free variable
 			// __webpack_public_path__ in runtime.
@@ -162,7 +170,9 @@ export class WebpackConfigHelper {
 			// Maybe we can have a `prefix` in Config, but let's not do that
 			// right now.
 			output.publicPath = `//${host ||
-				'localhost'}:${port}/wp-content/${contentDir}/${slug}/${outputPath}/${outputInnerDir}`;
+				'localhost'}:${port}/wp-content/${contentDir}/${slug}/${outputPath}/${
+				this.outputInnerDir
+			}`;
 		}
 
 		return output;
@@ -180,7 +190,7 @@ export class WebpackConfigHelper {
 				'process.env.BABEL_ENV': this.env,
 			}),
 			// Clean dist directory
-			new cleanWebpackPlugin(['dist']),
+			new cleanWebpackPlugin([this.outputPath], { root: this.cwd }),
 			// Initiate mini css extract
 			new miniCssExtractPlugin({
 				filename: '[name].css',
