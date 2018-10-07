@@ -37,6 +37,7 @@ npm i @wpackio/scripts
 This package has the same `npm scripts` as this monorepo. These should be run
 using `lerna run <script>`. More information can be found under [CONTRIBUTION.md](../../CONTRIBUTION.md).
 
--   `build`: Use babel to build for nodejs 8.6+. Files inside `src` are compiled and put under `lib`.
+-   `build`: Use babel to build for nodejs 8.6+. Files inside `src` are compiled and put under `lib`. All type definitions are stripped and individual type declaration files are created.
 -   `prepare`: Run `build` after `yarn` and before `publish`.
--   `watch`: Watch for changes in `src` and build in `lib`.
+-   `lint`: Lint all files using tslint.
+-   `test`: Run tests on files using jest.

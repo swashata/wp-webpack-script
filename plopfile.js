@@ -13,7 +13,7 @@ module.exports = plop => {
 			{
 				type: 'input',
 				name: 'name',
-				message: 'name of the package under the scope @wpw',
+				message: 'name of the package under the scope @wpackio',
 			},
 			{
 				type: 'input',
@@ -38,7 +38,7 @@ module.exports = plop => {
 			// Add src
 			{
 				type: 'add',
-				path: 'packages/{{kebabCase name}}/src/index.js',
+				path: 'packages/{{kebabCase name}}/src/index.ts',
 			},
 			// Add .npmignore
 			{
@@ -57,6 +57,24 @@ module.exports = plop => {
 				type: 'add',
 				path: 'packages/{{kebabCase name}}/README.md',
 				templateFile: 'plop-templates/package/README.md.hbs',
+			},
+			// Add jest.config.js
+			{
+				type: 'add',
+				path: 'packages/{{kebabCase name}}/jest.config.js',
+				templateFile: 'plop-templates/package/jest.config.js.hbs',
+			},
+			// Add tsconfig.json
+			{
+				type: 'add',
+				path: 'packages/{{kebabCase name}}/tsconfig.json',
+				templateFile: 'plop-templates/package/tsconfig.json.hbs',
+			},
+			// Add tslint.json
+			{
+				type: 'add',
+				path: 'packages/{{kebabCase name}}/tslint.json',
+				templateFile: 'plop-templates/package/tslint.json.hbs',
 			},
 		],
 	});
