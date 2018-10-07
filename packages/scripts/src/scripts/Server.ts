@@ -1,6 +1,5 @@
 import browserSync from 'browser-sync';
 import webpack from 'webpack';
-import DashboardPlugin from 'webpack-dashboard/plugin';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 
@@ -48,8 +47,8 @@ export class Server {
 				'Can not serve while the server is already running.'
 			);
 		}
-		// Init browserSync
-		const bs = browserSync.init();
+		// Create browserSync Instance
+		const bs = browserSync.create();
 		// Create configuration
 		const webpackConfig = new CreateWebpackConfig(
 			this.projectConfig,
@@ -89,7 +88,7 @@ export class Server {
 			});
 		} else {
 			const compiler = webpack(webpackConfig);
-			compiler.apply(new DashboardPlugin());
+			// compiler.apply(new DashboardPlugin());
 			const devMiddleware = webpackDevMiddleware(compiler, {
 				stats: { colors: true },
 				publicPath:

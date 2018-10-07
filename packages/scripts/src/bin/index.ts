@@ -87,12 +87,6 @@ program
 				signale.star('To spread the ❤️ please tweet.');
 				process.exit(0);
 			});
-			process.on('SIGKILL', () => {
-				server.stop();
-			});
-			process.on('SIGTERM', () => {
-				server.stop();
-			});
 		} catch (e) {
 			signale.error(
 				'Could not start development server. Please check the log below.'
@@ -263,21 +257,3 @@ function getProjectAndServerConfig(
 
 	return { projectConfig, serverConfig, projectConfigPath, serverConfigPath };
 }
-
-// Error out on force close
-process.on('SIGKILL', () => {
-	signale.fatal(
-		'The operation failed because the process exited too early. ' +
-			'This probably means the system ran out of memory or someone called ' +
-			'`kill -9` on the process.'
-	);
-	process.exit(1);
-});
-process.on('SIGTERM', () => {
-	signale.fatal(
-		'The operation failed because the process exited too early. ' +
-			'Someone might have called `kill` or `killall`, or the system could ' +
-			'be shutting down.'
-	);
-	process.exit(1);
-});
