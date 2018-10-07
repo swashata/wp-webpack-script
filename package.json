@@ -5,7 +5,8 @@
   "homepage": "https://wpack.io",
   "author": "Swashata Ghosh <swashata4u@gmail.com> (https://swas.io)",
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "examples/*"
   ],
   "engines": {
     "yarn": "^1.2.1",
