@@ -4,6 +4,8 @@ node_js:
 before_script:
   # We don't need to do lerna bootstrap, because it doesn't metter while using yarn workspaces
   - npm install -g codecov
+  - yarn build
+  - yarn
 script:
   - yarn test
   - codecov
