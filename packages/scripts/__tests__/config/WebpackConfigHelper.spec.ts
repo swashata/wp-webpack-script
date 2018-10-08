@@ -17,6 +17,7 @@ function getConfigFromProjectAndServer(
 	sCfg: ServerConfig
 ): WebpackConfigHelperConfig {
 	return {
+		appName: pCfg.appName,
 		type: pCfg.type,
 		slug: pCfg.slug,
 		host: sCfg.host,
@@ -27,6 +28,12 @@ function getConfigFromProjectAndServer(
 		bannerConfig: pCfg.bannerConfig,
 		alias: pCfg.alias,
 		optimizeSplitChunks: pCfg.optimizeSplitChunks,
+		publicPath: `/wp-content/${pCfg.type}s/${pCfg.slug}/${
+			pCfg.outputPath
+		}/`,
+		serverUrl: `//localhost/wp-content/${pCfg.type}s/${pCfg.slug}/${
+			pCfg.outputPath
+		}/`,
 	};
 }
 
@@ -40,7 +47,6 @@ beforeEach(() => {
 			{
 				name: 'config1',
 				entry: { foo: 'bar.js', biz: ['baz.js'] },
-				filename: '[name].js',
 			},
 		],
 	};
@@ -104,7 +110,8 @@ describe('CreateWebPackConfig', () => {
 				false
 			);
 			const output = cwc.getOutput();
-			expect(output.path).toMatch(/\/config1$/);
+			expect(output.path).toMatch(/\/dist$/);
+			expect(output.filename).toBe('config1/[name].js');
 		});
 		test('has empty publicPath on production build', () => {
 			const cwc = new WebpackConfigHelper(
@@ -124,7 +131,7 @@ describe('CreateWebPackConfig', () => {
 				true
 			);
 			const devOutput = devCwc.getOutput();
-			expect(devOutput.publicPath).toMatch(/^\/\/(.*)\/config1\/$/);
+			expect(devOutput.publicPath).toMatch(/^\/\/(.*)\/dist\/$/);
 		});
 		test('respects type for constructing publicPath on dev server', () => {
 			const devCwc = new WebpackConfigHelper(
@@ -135,7 +142,7 @@ describe('CreateWebPackConfig', () => {
 			);
 			const devOutput = devCwc.getOutput();
 			expect(devOutput.publicPath).toMatch(
-				/^\/\/(.*)\/wp-content\/plugins\/(.*)\/config1\/$/
+				/^\/\/(.*)\/wp-content\/plugins\/(.*)\/dist\/$/
 			);
 		});
 	});

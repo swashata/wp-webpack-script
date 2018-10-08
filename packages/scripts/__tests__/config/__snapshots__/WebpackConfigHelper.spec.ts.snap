@@ -97,7 +97,7 @@ Object {
           "loader": "file-loader",
           "options": Object {
             "name": "asset-[hash].[ext]",
-            "outputPath": "assets/",
+            "outputPath": "config1/assets/",
           },
         },
       ],
@@ -130,13 +130,13 @@ Array [
       "verbose": false,
     },
     "paths": Array [
-      "/foo/bar/dist/config1",
+      "/foo/bar/dist",
     ],
   },
   MiniCssExtractPlugin {
     "options": Object {
-      "chunkFilename": "[name].css",
-      "filename": "[name].css",
+      "chunkFilename": "config1/[name].css",
+      "filename": "config1/[name].css",
     },
   },
   Object {},
@@ -157,8 +157,7 @@ This software is released under the GPL-3.0 License
 https://opensource.org/licenses/GPL-3.0
 
 Compiled with the help of https://wpack.io
-A zero setup Webpack Bundler Script for WordPress
-",
+A zero setup Webpack Bundler Script for WordPress",
       "entryOnly": false,
       "include": /\\\\\\.\\(\\(t\\|j\\)sx\\?\\|s\\?\\(c\\|a\\)ss\\)\\$/,
       "raw": false,
@@ -183,13 +182,13 @@ Array [
       "verbose": false,
     },
     "paths": Array [
-      "/foo/bar/dist/config1",
+      "/foo/bar/dist",
     ],
   },
   MiniCssExtractPlugin {
     "options": Object {
-      "chunkFilename": "[name].css",
-      "filename": "[name].css",
+      "chunkFilename": "config1/[name].css",
+      "filename": "config1/[name].css",
     },
   },
   Object {},
