@@ -1,5 +1,6 @@
 module.exports = {
 	// Project Identity
+	appName: 'wpackplugin', // Unique name of your project
 	type: 'plugin', // Plugin or theme
 	slug: 'wpackio-plugin', // Plugin or Theme slug, basically the directory name under `wp-content/<themes|plugins>`
 	// Used to generate banners on top of compiled stuff

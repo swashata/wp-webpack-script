@@ -52,14 +52,23 @@ class Enqueue {
 	private $rootUrl = '';
 
 	/**
+	 * Application Name (userland).
+	 *
+	 * @var string
+	 */
+	private $appName = '';
+
+	/**
 	 * Create an instance of the Enqueue helper class.
 	 *
-	 * @param string $outputPath Output path relative to the root of this plugin/theme.
+	 * @param string $appName Name of the application, same as wpackio.project.js.
+	 * @param string $outputPath Output path relative to the root of this plugin/theme, same as wpackio.project.js
 	 * @param string $version Version of your plugin/theme, used to generate query URL.
-	 * @param string $type The type of enqueue, either 'plugin' or 'theme'.
+	 * @param string $type The type of enqueue, either 'plugin' or 'theme', same as wpackio.project.js
 	 * @param string|boolean $pluginPath If this is a plugin, then pass absolute path of the plugin main file, otherwise pass false.
 	 */
-	public function __construct( $outputPath, $version, $type = 'plugin', $pluginPath = false ) {
+	public function __construct( $appName, $outputPath, $version, $type = 'plugin', $pluginPath = false ) {
+		$this->appName = $appName;
 		$this->outputPath = $outputPath;
 		$this->version = $version;
 		if ( ! in_array( $type, [ 'plugin', 'theme' ] ) ) {
@@ -84,7 +93,7 @@ class Enqueue {
 
 	public function printPublicPath() {
 		$publicPath = $this->getUrl( '' );
-		$jsCode = 'window.wpackIo' . ucfirst( $this->outputPath ) . '=\'' . esc_js( $publicPath ) . '\';';
+		$jsCode = 'window.wpackIo' . ucfirst( $this->appName ) . ucfirst( $this->outputPath ) . '=\'' . esc_js( $publicPath ) . '\';';
 		echo '<script type="text/javascript">/* wpack.io publicPath */' . $jsCode . '</script>';
 	}
 

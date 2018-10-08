@@ -63,57 +63,8 @@ export class Server {
 		const middlewares: browserSync.MiddlewareHandler[] = [];
 		const devMiddlewares: webpackDevMiddleware.WebpackDevMiddleware[] = [];
 
-		// If we are doing multi-compiler mode, then spin up webpack compiler
-		// For each of the config. This is a hack that at-least makes hot reload
-		// work fast for now. Otherwise, webpack-dev-middlewares will compile everything,
-		// regardless of which entries are changed.
-		// see: https://github.com/webpack/webpack-dev-middleware/issues/338
-		// Create webpack compiler
-		// Put them together
-		// if (Array.isArray(webpackConfig)) {
-		// 	webpackConfig.forEach((wpackConfig: WpackConfig) => {
-		// 		const { config, hmrPublicPath } = wpackConfig;
-		// 		const compiler = webpack(config);
-		// 		// We can not have dashboard plugin for webpack multi
-		// 		// compiler right now.
-		// 		// compiler.apply(new DashboardPlugin());
-		// 		const devMiddleware = webpackDevMiddleware(compiler, {
-		// 			stats: { colors: true },
-		// 			logLevel: 'warn',
-		// 			publicPath:
-		// 				config.output && config.output.publicPath
-		// 					? config.output.publicPath
-		// 					: '',
-		// 		});
-		// 		const hotMiddleware = webpackHotMiddleware(compiler, {
-		// 			path: hmrPublicPath,
-		// 		});
-		// 		// Push them
-		// 		middlewares.push(devMiddleware);
-		// 		devMiddlewares.push(devMiddleware);
-		// 		middlewares.push(hotMiddleware);
-		// 	});
-		// } else {
-		// 	const { config, hmrPublicPath } = webpackConfig;
-		// 	const compiler = webpack(config);
-		// 	const devMiddleware = webpackDevMiddleware(compiler, {
-		// 		stats: { colors: true },
-		// 		publicPath:
-		// 			config.output && config.output.publicPath
-		// 				? config.output.publicPath
-		// 				: '',
-		// 	});
-
-		// 	const hotMiddleware = webpackHotMiddleware(compiler, {
-		// 		path: hmrPublicPath,
-		// 	});
-		// 	// Push them
-		// 	middlewares.push(devMiddleware);
-		// 	devMiddlewares.push(devMiddleware);
-		// 	middlewares.push(hotMiddleware);
-		// }
-
-		// Let's try with single config and see if this works!!
+		// We can have multi-compiler or single compiler, depending on the config
+		// we get. And both of them works for dev and hot middleware.
 		const compiler = webpack(
 			webpackConfig.getWebpackConfig() as webpack.Configuration
 		);
@@ -127,7 +78,7 @@ export class Server {
 			// we have to assume that it is prefixed. That's why we prefix it in the server too.
 			// Because it could be multi-compiler, I guess it will just work fine since we are
 			// passing in the `name` too.
-			path: `${webpackConfig.getPublicPath()}__wpackio`,
+			path: `${webpackConfig.getHmrPath()}`,
 		});
 		// Push them
 		middlewares.push(devMiddleware);

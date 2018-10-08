@@ -22,7 +22,7 @@
 // Create an admin page
 add_action( 'wp_enqueue_scripts', 'wpackio_plugin_enqueue' );
 require_once dirname( __FILE__ ) . '/inc/Enqueue.php';
-$enqueue = new \WPackio\Enqueue( 'dist', '1.0.0', 'plugin', __FILE__ );
+$enqueue = new \WPackio\Enqueue( 'wpackplugin', 'dist', '1.0.0', 'plugin', __FILE__ );
 
 function wpackio_plugin_enqueue() {
 	global $enqueue;

@@ -22,6 +22,7 @@ export class CreateWebpackConfig {
 	private serverConfig: ServerConfig;
 	private cwd: string;
 	private isDev: boolean;
+	private publicPath: string;
 
 	/**
 	 * Create an instance of GetWebpackConfig class.
@@ -48,6 +49,10 @@ export class CreateWebpackConfig {
 		};
 		this.cwd = cwd;
 		this.isDev = isDev;
+
+		// Also figure out the publicPath beforehand, because we do need it
+		const { slug, outputPath, type } = this.projectConfig;
+		this.publicPath = `/wp-content/${type}s/${slug}/${outputPath}/`;
 	}
 
 	/**
@@ -59,27 +64,6 @@ export class CreateWebpackConfig {
 	 * If `projectConfig.files` has length === 1, then it would be a single compiler
 	 * otherwise, it would be for multi compiler.
 	 */
-	public getConfig(): WpackConfig | WpackConfig[] {
-		// Now it can be a single compiler, or multicompiler
-		// In any case, figure it out, create the compiler options
-		// and return the stuff.
-
-		// If the configuration is for multiple compiler mode
-		// Then return an array of config.
-		if (this.projectConfig.files.length > 1) {
-			// Return an array of configuration
-			const config: WpackConfig[] = [];
-			this.projectConfig.files.forEach((file: FileConfig) => {
-				config.push(this.getSingleCompilerConfig(file));
-			});
-
-			return config;
-		}
-
-		// Otherwise, just return a single compiler mode config
-		return this.getSingleCompilerConfig(this.projectConfig.files[0]);
-	}
-
 	public getWebpackConfig(): webpack.Configuration | webpack.Configuration[] {
 		// Now it can be a single compiler, or multicompiler
 		// In any case, figure it out, create the compiler options
@@ -101,10 +85,29 @@ export class CreateWebpackConfig {
 		return this.getSingleWebpackConfig(this.projectConfig.files[0]);
 	}
 
+	/**
+	 * Get devServer publicPath for all sorts of middlewares.
+	 */
 	public getPublicPath(): string {
-		const { slug, outputPath, type } = this.projectConfig;
+		return this.publicPath;
+	}
 
-		return `/wp-content/${type}s/${slug}/${outputPath}/`;
+	/**
+	 * Get Hot Module Reload Path, which takes into consideration
+	 * the dynamicPublicPath.
+	 */
+	public getHmrPath(): string {
+		return `${this.publicPath}__wpackio`;
+	}
+
+	/**
+	 * Get server URL where the hot server is live and waiting to become
+	 * awesome.
+	 */
+	public getServerUrl(): string {
+		const { host, port } = this.serverConfig;
+
+		return `//${host || 'localhost'}:${port}${this.publicPath}`;
 	}
 
 	/**
@@ -112,7 +115,7 @@ export class CreateWebpackConfig {
 	 *
 	 * @param file Single file object.
 	 */
-	private getSingleCompilerConfig(file: FileConfig): WpackConfig {
+	private getSingleWebpackConfig(file: FileConfig): webpack.Configuration {
 		const {
 			type,
 			slug,
@@ -122,11 +125,13 @@ export class CreateWebpackConfig {
 			alias,
 			optimizeSplitChunks,
 			outputPath,
+			appName,
 		} = this.projectConfig;
 		const { host, port } = this.serverConfig;
 		const helper: WebpackConfigHelper = new WebpackConfigHelper(
 			file,
 			{
+				appName,
 				type,
 				slug,
 				host,
@@ -137,6 +142,8 @@ export class CreateWebpackConfig {
 				alias,
 				optimizeSplitChunks,
 				outputPath,
+				publicPath: this.getPublicPath(),
+				serverUrl: this.getServerUrl(),
 			},
 			this.cwd,
 			this.isDev
@@ -159,15 +166,6 @@ export class CreateWebpackConfig {
 		if (file.webpackConfig != null) {
 			config = webpackMerge(config, file.webpackConfig);
 		}
-
-		// Get our hmr public path
-		const hmrPublicPath = helper.getHmrPath();
-
-		return { config, hmrPublicPath };
-	}
-
-	private getSingleWebpackConfig(file: FileConfig): webpack.Configuration {
-		const { config } = this.getSingleCompilerConfig(file);
 
 		return config;
 	}

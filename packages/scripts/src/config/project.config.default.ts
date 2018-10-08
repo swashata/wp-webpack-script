@@ -28,7 +28,6 @@ export interface EntryConfig {
 export interface FileConfig {
 	name: string;
 	entry: EntryConfig;
-	filename: string;
 	webpackConfig?: webpack.Configuration;
 }
 
@@ -36,6 +35,7 @@ export interface FileConfig {
  * Main Project Config shape under `wpackio.project.js` file.
  */
 export interface ProjectConfig {
+	appName: string;
 	type: 'theme' | 'plugin';
 	slug: string;
 	bannerConfig: BannerConfig;
@@ -65,6 +65,7 @@ export interface ProjectConfig {
  */
 export const projectConfigDefault: ProjectConfig = {
 	// Project Identity
+	appName: 'wpackio', // Unique name of your project
 	type: 'plugin', // Plugin or theme
 	slug: 'wpack-io', // Plugin or Theme slug, basically the directory name under `wp-content/<themes|plugins>`
 	// Used to generate banners on top of compiled stuff
@@ -88,7 +89,6 @@ export const projectConfigDefault: ProjectConfig = {
 		// 		vendor: 'vendor.js',
 		// 		main: ['src/mobile.js'],
 		// 	},
-		// 	filename: '[name].js',
 		// 	// Extra webpack config to be passed directly
 		// 	webpackConfig: undefined,
 		// },

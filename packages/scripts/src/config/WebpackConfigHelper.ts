@@ -17,6 +17,7 @@ interface NormalizedEntry {
 }
 
 export interface WebpackConfigHelperConfig {
+	appName: ProjectConfig['appName'];
 	type: ProjectConfig['type'];
 	slug: ProjectConfig['slug'];
 	host: ServerConfig['host'];
@@ -27,6 +28,8 @@ export interface WebpackConfigHelperConfig {
 	bannerConfig: BannerConfig;
 	alias?: ProjectConfig['alias'];
 	optimizeSplitChunks: ProjectConfig['optimizeSplitChunks'];
+	publicPath: string;
+	serverUrl: string;
 }
 
 interface CommonWebpackConfig {
@@ -81,23 +84,17 @@ export class WebpackConfigHelper {
 		}
 
 		// Create the outputPath, because we would be needing that
-		const { outputPath, slug, type } = this.config;
-		const contentDir: string = `${type}s`;
-		// and file
+		const { outputPath } = this.config;
+		// and filename and inner directory name
+		// this innerDir will be prefixed to all filename
+		// because for multi-compiler to work, we need
+		// outputPath and publicPath themselves on the same path.
+		// all middlewares would actually use the `name` from webpack config
+		// to separate updates.
 		const { name } = this.file;
 		this.outputInnerDir = slugify(name, { lower: true });
 		this.outputPath = path.join(this.cwd, outputPath);
-		this.publicPath = `/wp-content/${contentDir}/${slug}/${outputPath}/`;
-	}
-
-	/**
-	 * Get Hot Module Reload Path, which takes into consideration
-	 * the dynamicPublicPath.
-	 */
-	public getHmrPath(): string {
-		const { name } = this.file;
-
-		return `${this.publicPath}__wpackio`;
+		this.publicPath = config.publicPath;
 	}
 
 	/**
@@ -122,7 +119,10 @@ export class WebpackConfigHelper {
 			// https://github.com/Microsoft/TypeScript/issues/10442#issuecomment-426203863
 			const entryPoint: string[] | string = entry[key];
 			normalizedEntry[key] = Array.isArray(entryPoint)
-				? entryPoint
+				? // maybe we can go a step futher and put an entry point which takes
+				  // care of the __webpack_public_path__
+				  // like `@wpackio/publicpath?outputPath=${this.config.outputPath}&appName=${this.config.appName}`
+				  entryPoint
 				: [entryPoint];
 		});
 		// Now, if in dev mode, then add the hot middleware client
@@ -139,6 +139,7 @@ export class WebpackConfigHelper {
 			// Define the hot client string
 			// Here we need
 			// 1. dynamicPublicPath - Because we intend to use __webpack_public_path__
+			// we can not know if user is going to use it in development too, but maybe it doesn't need to be?
 			// 2. overlay and overlayStypes - To enable overlay on errors, we don't need warnings here
 			// 3. path - The output path, We need to make sure both server and client has the same value.
 			// 4. name - Because it could be multicompiler
@@ -150,8 +151,9 @@ export class WebpackConfigHelper {
 			// not think ahead of ourselves
 			Object.keys(normalizedEntry).forEach((key: string) => {
 				normalizedEntry[key] = [
-					webpackHotClient,
 					...normalizedEntry[key],
+					// put webpack hot client in the entry
+					webpackHotClient,
 				];
 			});
 		}
@@ -163,11 +165,6 @@ export class WebpackConfigHelper {
 	 * Get webpack compatible output object.
 	 */
 	public getOutput(): webpack.Output {
-		// Now use the config to create a output
-		// Destucture stuff we need from config
-		const { host, port } = this.config;
-		// and file
-		// const { filename } = this.file;
 		// Assuming it is production
 		const output: webpack.Output = {
 			// Here we create a directory inside the user provided outputPath
@@ -189,13 +186,7 @@ export class WebpackConfigHelper {
 			// That URL of the proxied server starts from root?
 			// Maybe we can have a `prefix` in Config, but let's not do that
 			// right now.
-			// tslint:disable: no-http-string
-			// Here we are hard-coding protocol http
-			// Maybe we can get an option from user for SSL?
-			// But this is needed for hot middleware
-			output.publicPath = `//${host || 'localhost'}:${port}${
-				this.publicPath
-			}`;
+			output.publicPath = this.config.serverUrl;
 		}
 
 		return output;
@@ -239,7 +230,7 @@ export class WebpackConfigHelper {
 			// Add Production specific plugins
 			const { bannerConfig } = this.config;
 			const creditNote: string =
-				'Compiled with the help of https://wpack.io\nA zero setup Webpack Bundler Script for WordPress';
+				'\n\nCompiled with the help of https://wpack.io\nA zero setup Webpack Bundler Script for WordPress';
 			plugins.push(
 				// Banner plugin
 				new webpack.BannerPlugin({
@@ -257,10 +248,7 @@ ${bannerConfig.name}
 
 Copyright (c) ${new Date().getFullYear()} ${bannerConfig.author}
 
-${bannerConfig.copyrightText}
-
-${bannerConfig.credit ? creditNote : ''}
-`,
+${bannerConfig.copyrightText}${bannerConfig.credit ? creditNote : ''}`,
 				})
 			);
 		}
