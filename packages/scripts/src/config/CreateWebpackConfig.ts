@@ -71,7 +71,7 @@ export class CreateWebpackConfig {
 
 		// If the configuration is for multiple compiler mode
 		// Then return an array of config.
-		if (this.projectConfig.files.length > 1) {
+		if (this.isMultiCompiler()) {
 			// Return an array of configuration
 			const config: webpack.Configuration[] = [];
 			this.projectConfig.files.forEach((file: FileConfig) => {
@@ -83,6 +83,13 @@ export class CreateWebpackConfig {
 
 		// Otherwise, just return a single compiler mode config
 		return this.getSingleWebpackConfig(this.projectConfig.files[0]);
+	}
+
+	/**
+	 * Is the config going to be for multi-compiler?
+	 */
+	public isMultiCompiler(): boolean {
+		return this.projectConfig.files.length > 1;
 	}
 
 	/**
@@ -101,13 +108,20 @@ export class CreateWebpackConfig {
 	}
 
 	/**
+	 * Get Url to publicPath.
+	 */
+	public getPublicPathUrl(): string {
+		return `${this.getServerUrl()}${this.publicPath}`;
+	}
+
+	/**
 	 * Get server URL where the hot server is live and waiting to become
 	 * awesome.
 	 */
 	public getServerUrl(): string {
 		const { host, port } = this.serverConfig;
 
-		return `//${host || 'localhost'}:${port}${this.publicPath}`;
+		return `//${host || 'localhost'}:${port}`;
 	}
 
 	/**
@@ -143,7 +157,7 @@ export class CreateWebpackConfig {
 				optimizeSplitChunks,
 				outputPath,
 				publicPath: this.getPublicPath(),
-				serverUrl: this.getServerUrl(),
+				publicPathUrl: this.getPublicPathUrl(),
 			},
 			this.cwd,
 			this.isDev

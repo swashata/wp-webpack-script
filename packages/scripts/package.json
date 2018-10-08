@@ -36,6 +36,7 @@
     "clean-webpack-plugin": "^0.1.19",
     "commander": "^2.18.0",
     "css-loader": "^1.0.0",
+    "dev-ip": "^1.0.1",
     "file-loader": "^2.0.0",
     "mini-css-extract-plugin": "^0.4.3",
     "optimize-css-assets-webpack-plugin": "^5.0.1",

@@ -1,4 +1,7 @@
 import browserSync from 'browser-sync';
+import devIp from 'dev-ip';
+import formatWebpackMessages from 'react-dev-utils/formatWebpackMessages';
+import openBrowser from 'react-dev-utils/openBrowser';
 import webpack from 'webpack';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
@@ -24,6 +27,9 @@ export class Server {
 	private bs?: browserSync.BrowserSyncInstance;
 	private devMiddlewares?: webpackDevMiddleware.WebpackDevMiddleware[];
 
+	private webpackConfig: CreateWebpackConfig;
+	private isBrowserOpened: boolean = false;
+
 	/**
 	 * Create an instance.
 	 *
@@ -38,6 +44,20 @@ export class Server {
 		this.projectConfig = projectConfig;
 		this.serverConfig = serverConfig;
 		this.cwd = cwd;
+		// Override serverConfig host if it is undefined
+		if (!this.serverConfig.host) {
+			const possibleHost = devIp();
+			if (possibleHost) {
+				this.serverConfig.host = possibleHost[0];
+			}
+		}
+		// Create the webpackConfig
+		this.webpackConfig = new CreateWebpackConfig(
+			this.projectConfig,
+			this.serverConfig,
+			this.cwd,
+			true
+		);
 	}
 
 	/**
@@ -52,33 +72,38 @@ export class Server {
 		}
 		// Create browserSync Instance
 		const bs = browserSync.create();
-		// Create configuration
-		const webpackConfig = new CreateWebpackConfig(
-			this.projectConfig,
-			this.serverConfig,
-			this.cwd,
-			true
-		);
+
 		// Init middleware and stuff
 		const middlewares: browserSync.MiddlewareHandler[] = [];
 		const devMiddlewares: webpackDevMiddleware.WebpackDevMiddleware[] = [];
 
 		// We can have multi-compiler or single compiler, depending on the config
 		// we get. And both of them works for dev and hot middleware.
-		const compiler = webpack(
-			webpackConfig.getWebpackConfig() as webpack.Configuration
-		);
+		let compiler: webpack.Compiler | webpack.MultiCompiler;
+		if (this.webpackConfig.isMultiCompiler()) {
+			compiler = webpack(
+				this.webpackConfig.getWebpackConfig() as webpack.Configuration[]
+			);
+		} else {
+			compiler = webpack(
+				this.webpackConfig.getWebpackConfig() as webpack.Configuration
+			);
+		}
+
+		// tslint:disable:no-object-literal-type-assertion
 		const devMiddleware = webpackDevMiddleware(compiler, {
-			stats: { colors: true },
-			publicPath: webpackConfig.getPublicPath(),
-		});
+			stats: false,
+			publicPath: this.webpackConfig.getPublicPath(),
+			logLevel: 'silent',
+			logTime: false,
+		} as webpackDevMiddleware.Options);
 
 		const hotMiddleware = webpackHotMiddleware(compiler, {
 			// Now because we are already using publicPath(dynamicPublicPath = true) in client
 			// we have to assume that it is prefixed. That's why we prefix it in the server too.
 			// Because it could be multi-compiler, I guess it will just work fine since we are
 			// passing in the `name` too.
-			path: `${webpackConfig.getHmrPath()}`,
+			path: `${this.webpackConfig.getHmrPath()}`,
 		});
 		// Push them
 		middlewares.push(devMiddleware);
@@ -89,7 +114,7 @@ export class Server {
 		bs.init({
 			// We need to silent browserSync, otherwise might conflict with
 			// webpack-dashboard
-			logLevel: 'warn',
+			logLevel: 'silent',
 			port: this.serverConfig.port,
 			ui: this.serverConfig.ui,
 			proxy: {
@@ -98,9 +123,21 @@ export class Server {
 			// Middleware for webpack hot reload
 			middleware: middlewares,
 			host: this.serverConfig.host,
-			open: 'external', // We don't want to open right away
+			open: false, // We don't want to open right away
 			notify: this.serverConfig.notify,
 		});
+
+		// Now open the browser, when first compilation is done
+		const isBrowserOpen = false;
+		if ((compiler as webpack.MultiCompiler).compilers) {
+			// Apply hooks on each one
+			(compiler as webpack.MultiCompiler).compilers.forEach(
+				this.addHooks
+			);
+		} else {
+			// Apply hook on the single one
+			this.addHooks(compiler as webpack.Compiler);
+		}
 
 		// Watch for user defined files, when it changes, reload
 		// When that change, reload
@@ -119,6 +156,52 @@ export class Server {
 		this.devMiddlewares = devMiddlewares;
 	}
 
+	/**
+	 * Add hooks to compiler instances.
+	 */
+	public addHooks = (compiler: webpack.Compiler): void => {
+		const { done, afterEmit } = compiler.hooks;
+		const serverUrl = this.webpackConfig.getServerUrl();
+
+		// Open browser on last emit of first compilation
+		// Q: How do I know this is the last emit, for multi-compiler
+		// Maybe I can count?
+		afterEmit.tap('wpackio-hot-server', () => {
+			if (!this.isBrowserOpened) {
+				// tslint:disable:no-http-string
+				console.log(`opening url http:${serverUrl}`);
+				openBrowser(`http:${serverUrl}`);
+				this.isBrowserOpened = true;
+			}
+		});
+
+		// Show stats
+		done.tap('wpackio-hot-server', stats => {
+			return;
+
+			const raw = stats.toJson('verbose');
+			const messages = formatWebpackMessages(raw);
+			if (!messages.errors.length && !messages.warnings.length) {
+				// console.log(
+				// 	stats.toString({
+				// 		colors: true,
+				// 		modules: false,
+				// 		chunks: false,
+				// 	})
+				// );
+			}
+			if (messages.errors.length) {
+				console.log('Failed to compile.');
+				messages.errors.forEach(e => console.log(e));
+
+				return;
+			}
+			if (messages.warnings.length) {
+				console.log('Compiled with warnings.');
+				messages.warnings.forEach(w => console.log(w));
+			}
+		});
+	};
 	/**
 	 * Stop the server and clean up all processes.
 	 */

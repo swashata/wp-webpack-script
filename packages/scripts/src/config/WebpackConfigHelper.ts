@@ -29,7 +29,7 @@ export interface WebpackConfigHelperConfig {
 	alias?: ProjectConfig['alias'];
 	optimizeSplitChunks: ProjectConfig['optimizeSplitChunks'];
 	publicPath: string;
-	serverUrl: string;
+	publicPathUrl: string;
 }
 
 interface CommonWebpackConfig {
@@ -186,7 +186,7 @@ export class WebpackConfigHelper {
 			// That URL of the proxied server starts from root?
 			// Maybe we can have a `prefix` in Config, but let's not do that
 			// right now.
-			output.publicPath = this.config.serverUrl;
+			output.publicPath = this.config.publicPathUrl;
 		}
 
 		return output;
@@ -204,7 +204,10 @@ export class WebpackConfigHelper {
 				'process.env.BABEL_ENV': JSON.stringify(this.env),
 			}),
 			// Clean dist directory
-			new cleanWebpackPlugin([this.outputPath], { root: this.cwd }),
+			new cleanWebpackPlugin(
+				[`${this.outputPath}/${this.outputInnerDir}`],
+				{ root: this.cwd, verbose: false }
+			),
 			// Initiate mini css extract
 			new miniCssExtractPlugin({
 				filename: `${this.outputInnerDir}/[name].css`,
