@@ -42,7 +42,9 @@ interface CommonWebpackConfig {
  * A helper class to get different configuration of webpack.
  */
 export class WebpackConfigHelper {
+	// This is where all the filename will be prefixed, so we create a directory
 	public readonly outputInnerDir: string;
+	// Actual outputPath as provided by user
 	public readonly outputPath: string;
 	private file: FileConfig;
 	private isDev: boolean;
@@ -57,7 +59,7 @@ export class WebpackConfigHelper {
 	 */
 	private env: 'development' | 'production';
 
-	private hmrPublicPath: string;
+	private publicPath: string;
 
 	/**
 	 * Create an instance of GetEntryAndOutput class.
@@ -84,10 +86,8 @@ export class WebpackConfigHelper {
 		// and file
 		const { name } = this.file;
 		this.outputInnerDir = slugify(name, { lower: true });
-		this.outputPath = path.join(this.cwd, outputPath, this.outputInnerDir);
-		this.hmrPublicPath = `/wp-content/${contentDir}/${slug}/${outputPath}/${
-			this.outputInnerDir
-		}/`;
+		this.outputPath = path.join(this.cwd, outputPath);
+		this.publicPath = `/wp-content/${contentDir}/${slug}/${outputPath}/`;
 	}
 
 	/**
@@ -97,7 +97,7 @@ export class WebpackConfigHelper {
 	public getHmrPath(): string {
 		const { name } = this.file;
 
-		return `${this.hmrPublicPath}__wpackio_${name}`;
+		return `${this.publicPath}__wpackio`;
 	}
 
 	/**
@@ -142,14 +142,17 @@ export class WebpackConfigHelper {
 			// 2. overlay and overlayStypes - To enable overlay on errors, we don't need warnings here
 			// 3. path - The output path, We need to make sure both server and client has the same value.
 			// 4. name - Because it could be multicompiler
-			const webpackHotClient: string = `webpack-hot-middleware/client?path=__wpackio_${name}&name=${name}&dynamicPublicPath=true&overlay=true&reload=true&overlayStyles=${encodeURIComponent(
+			const webpackHotClient: string = `webpack-hot-middleware/client?path=__wpackio&name=${name}&dynamicPublicPath=true&overlay=true&reload=true&overlayStyles=${encodeURIComponent(
 				JSON.stringify(overlayStyles)
 			)}`;
 			// Now add to each of the entries
 			// We don't know if user want to specifically disable for some, but let's
 			// not think ahead of ourselves
 			Object.keys(normalizedEntry).forEach((key: string) => {
-				normalizedEntry[key].push(webpackHotClient);
+				normalizedEntry[key] = [
+					webpackHotClient,
+					...normalizedEntry[key],
+				];
 			});
 		}
 
@@ -164,7 +167,7 @@ export class WebpackConfigHelper {
 		// Destucture stuff we need from config
 		const { host, port } = this.config;
 		// and file
-		const { filename } = this.file;
+		// const { filename } = this.file;
 		// Assuming it is production
 		const output: webpack.Output = {
 			// Here we create a directory inside the user provided outputPath
@@ -175,7 +178,7 @@ export class WebpackConfigHelper {
 			// We do not use path.resolve, because we expect outputPath to be
 			// relative. @todo: create a test here
 			path: this.outputPath,
-			filename,
+			filename: `${this.outputInnerDir}/[name].js`,
 			// leave blank because we would handle with free variable
 			// __webpack_public_path__ in runtime.
 			publicPath: '',
@@ -191,7 +194,7 @@ export class WebpackConfigHelper {
 			// Maybe we can get an option from user for SSL?
 			// But this is needed for hot middleware
 			output.publicPath = `//${host || 'localhost'}:${port}${
-				this.hmrPublicPath
+				this.publicPath
 			}`;
 		}
 
@@ -213,13 +216,15 @@ export class WebpackConfigHelper {
 			new cleanWebpackPlugin([this.outputPath], { root: this.cwd }),
 			// Initiate mini css extract
 			new miniCssExtractPlugin({
-				filename: '[name].css',
+				filename: `${this.outputInnerDir}/[name].css`,
 			}),
 			// Create Manifest for PHP Consumption
 			new WebpackAssetsManifest({
 				writeToDisk: true,
-				output: `${this.outputPath}/manifest.json`,
-				publicPath: `${this.outputInnerDir}/`, // We dont put ${this.config.outputPath}/ here because, PHP will pick it up anyway.
+				output: `${this.outputPath}/${
+					this.outputInnerDir
+				}/manifest.json`,
+				publicPath: ``, // We dont put ${this.config.outputPath}/ here because, PHP will pick it up anyway.
 				entrypoints: true,
 				entrypointsKey: 'wpackioEp',
 			}),
@@ -349,7 +354,7 @@ ${bannerConfig.credit ? creditNote : ''}
 					loader: 'file-loader',
 					options: {
 						name: 'asset-[hash].[ext]',
-						outputPath: 'assets/',
+						outputPath: `${this.outputInnerDir}/assets/`,
 					},
 				},
 			],

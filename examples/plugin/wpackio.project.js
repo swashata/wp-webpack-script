@@ -22,11 +22,18 @@ module.exports = {
 				main: ['./src/app/index.js'],
 				mobile: ['./src/app/mobile.js'],
 			},
-			filename: '[name].js',
 			// Extra webpack config to be passed directly
 			webpackConfig: undefined,
 		},
 		// If has more length, then multi-compiler
+		{
+			name: 'foo',
+			entry: {
+				main: ['./src/foo/foo.js'],
+			},
+			// Extra webpack config to be passed directly
+			webpackConfig: undefined,
+		},
 	],
 	// Output path relative to the context directory
 	// We need relative path here, else, we can not map to publicPath

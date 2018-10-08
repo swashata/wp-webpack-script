@@ -80,6 +80,33 @@ export class CreateWebpackConfig {
 		return this.getSingleCompilerConfig(this.projectConfig.files[0]);
 	}
 
+	public getWebpackConfig(): webpack.Configuration | webpack.Configuration[] {
+		// Now it can be a single compiler, or multicompiler
+		// In any case, figure it out, create the compiler options
+		// and return the stuff.
+
+		// If the configuration is for multiple compiler mode
+		// Then return an array of config.
+		if (this.projectConfig.files.length > 1) {
+			// Return an array of configuration
+			const config: webpack.Configuration[] = [];
+			this.projectConfig.files.forEach((file: FileConfig) => {
+				config.push(this.getSingleWebpackConfig(file));
+			});
+
+			return config;
+		}
+
+		// Otherwise, just return a single compiler mode config
+		return this.getSingleWebpackConfig(this.projectConfig.files[0]);
+	}
+
+	public getPublicPath(): string {
+		const { slug, outputPath, type } = this.projectConfig;
+
+		return `/wp-content/${type}s/${slug}/${outputPath}/`;
+	}
+
 	/**
 	 * Get Webpack Configuration for single compiler mode.
 	 *
@@ -137,5 +164,11 @@ export class CreateWebpackConfig {
 		const hmrPublicPath = helper.getHmrPath();
 
 		return { config, hmrPublicPath };
+	}
+
+	private getSingleWebpackConfig(file: FileConfig): webpack.Configuration {
+		const { config } = this.getSingleCompilerConfig(file);
+
+		return config;
 	}
 }

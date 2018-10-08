@@ -58,7 +58,7 @@ export class Server {
 			this.serverConfig,
 			this.cwd,
 			true
-		).getConfig();
+		);
 		// Init middleware and stuff
 		const middlewares: browserSync.MiddlewareHandler[] = [];
 		const devMiddlewares: webpackDevMiddleware.WebpackDevMiddleware[] = [];
@@ -70,49 +70,69 @@ export class Server {
 		// see: https://github.com/webpack/webpack-dev-middleware/issues/338
 		// Create webpack compiler
 		// Put them together
-		if (Array.isArray(webpackConfig)) {
-			webpackConfig.forEach((wpackConfig: WpackConfig) => {
-				const { config, hmrPublicPath } = wpackConfig;
-				const compiler = webpack(config);
-				// We can not have dashboard plugin for webpack multi
-				// compiler right now.
-				// compiler.apply(new DashboardPlugin());
-				const devMiddleware = webpackDevMiddleware(compiler, {
-					stats: { colors: true },
-					logLevel: 'warn',
-					publicPath:
-						config.output && config.output.publicPath
-							? config.output.publicPath
-							: '',
-				});
-				const output = config.output as webpack.Output;
-				const hotMiddleware = webpackHotMiddleware(compiler, {
-					path: hmrPublicPath,
-				});
-				// Push them
-				middlewares.push(devMiddleware);
-				devMiddlewares.push(devMiddleware);
-				middlewares.push(hotMiddleware);
-			});
-		} else {
-			const { config, hmrPublicPath } = webpackConfig;
-			const compiler = webpack(config);
-			const devMiddleware = webpackDevMiddleware(compiler, {
-				stats: { colors: true },
-				publicPath:
-					config.output && config.output.publicPath
-						? config.output.publicPath
-						: '',
-			});
+		// if (Array.isArray(webpackConfig)) {
+		// 	webpackConfig.forEach((wpackConfig: WpackConfig) => {
+		// 		const { config, hmrPublicPath } = wpackConfig;
+		// 		const compiler = webpack(config);
+		// 		// We can not have dashboard plugin for webpack multi
+		// 		// compiler right now.
+		// 		// compiler.apply(new DashboardPlugin());
+		// 		const devMiddleware = webpackDevMiddleware(compiler, {
+		// 			stats: { colors: true },
+		// 			logLevel: 'warn',
+		// 			publicPath:
+		// 				config.output && config.output.publicPath
+		// 					? config.output.publicPath
+		// 					: '',
+		// 		});
+		// 		const hotMiddleware = webpackHotMiddleware(compiler, {
+		// 			path: hmrPublicPath,
+		// 		});
+		// 		// Push them
+		// 		middlewares.push(devMiddleware);
+		// 		devMiddlewares.push(devMiddleware);
+		// 		middlewares.push(hotMiddleware);
+		// 	});
+		// } else {
+		// 	const { config, hmrPublicPath } = webpackConfig;
+		// 	const compiler = webpack(config);
+		// 	const devMiddleware = webpackDevMiddleware(compiler, {
+		// 		stats: { colors: true },
+		// 		publicPath:
+		// 			config.output && config.output.publicPath
+		// 				? config.output.publicPath
+		// 				: '',
+		// 	});
 
-			const hotMiddleware = webpackHotMiddleware(compiler, {
-				path: hmrPublicPath,
-			});
-			// Push them
-			middlewares.push(devMiddleware);
-			devMiddlewares.push(devMiddleware);
-			middlewares.push(hotMiddleware);
-		}
+		// 	const hotMiddleware = webpackHotMiddleware(compiler, {
+		// 		path: hmrPublicPath,
+		// 	});
+		// 	// Push them
+		// 	middlewares.push(devMiddleware);
+		// 	devMiddlewares.push(devMiddleware);
+		// 	middlewares.push(hotMiddleware);
+		// }
+
+		// Let's try with single config and see if this works!!
+		const compiler = webpack(
+			webpackConfig.getWebpackConfig() as webpack.Configuration
+		);
+		const devMiddleware = webpackDevMiddleware(compiler, {
+			stats: { colors: true },
+			publicPath: webpackConfig.getPublicPath(),
+		});
+
+		const hotMiddleware = webpackHotMiddleware(compiler, {
+			// Now because we are already using publicPath(dynamicPublicPath = true) in client
+			// we have to assume that it is prefixed. That's why we prefix it in the server too.
+			// Because it could be multi-compiler, I guess it will just work fine since we are
+			// passing in the `name` too.
+			path: `${webpackConfig.getPublicPath()}__wpackio`,
+		});
+		// Push them
+		middlewares.push(devMiddleware);
+		devMiddlewares.push(devMiddleware);
+		middlewares.push(hotMiddleware);
 
 		// Init browsersync
 		bs.init({
@@ -127,7 +147,7 @@ export class Server {
 			// Middleware for webpack hot reload
 			middleware: middlewares,
 			host: this.serverConfig.host,
-			open: this.serverConfig.open,
+			open: 'external', // We don't want to open right away
 			notify: this.serverConfig.notify,
 		});
 

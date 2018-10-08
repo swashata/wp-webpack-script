@@ -22,8 +22,8 @@ module.exports = {
 	},
 	// Whether to show the "BrowserSync Connected"
 	notify: false,
-	// Open the local URL, set to false to disable
-	open: 'external',
+	// Open the dev server URL, set false to disable
+	open: true,
 	// BrowserSync ghostMode, set to false to completely disable
 	ghostMode: {
 		clicks: true,

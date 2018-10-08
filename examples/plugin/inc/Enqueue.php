@@ -77,6 +77,15 @@ class Enqueue {
 		}
 		$this->rootPath = $filepath;
 		$this->rootUrl = $url;
+
+		\add_action( 'wp_head', [ $this, 'printPublicPath' ], 1 );
+		\add_action( 'admin_head', [ $this, 'printPublicPath' ], 1 );
+	}
+
+	public function printPublicPath() {
+		$publicPath = $this->getUrl( '' );
+		$jsCode = 'window.wpackIo' . ucfirst( $this->outputPath ) . '=\'' . esc_js( $publicPath ) . '\';';
+		echo '<script type="text/javascript">/* wpack.io publicPath */' . $jsCode . '</script>';
 	}
 
 	/**
@@ -117,9 +126,6 @@ class Enqueue {
 			foreach ( $enqueue['js'] as $index => $js ) {
 				$handle = $identifier . '_' . $index;
 				wp_enqueue_script( $handle, $this->getUrl( $js ), $config['js_dep'], $this->version, $config['in_footer']);
-				wp_localize_script( $handle, $identifier, [
-					'publicPath' => $this->getUrl( $dir . '/' ),
-				] );
 				$js_handles[] = $handle;
 			}
 		}

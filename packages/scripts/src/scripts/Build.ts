@@ -33,7 +33,7 @@ export class Build {
 				false
 			);
 			const compiler = webpack(
-				config.getConfig() as webpack.Configuration
+				config.getWebpackConfig() as webpack.Configuration
 			);
 			compiler.run((err, stats) => {
 				if (err || stats.hasErrors()) {
