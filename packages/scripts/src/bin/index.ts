@@ -1,23 +1,24 @@
 #!/usr/bin/env node
+import chalk from 'chalk';
 import program from 'commander';
 import path from 'path';
-import signale from 'signale';
-import { ProjectConfig } from '../config/project.config.default';
-import { ServerConfig } from '../config/server.config.default';
-import { Build } from '../scripts/Build';
-import { Server } from '../scripts/Server';
+import clearConsole from 'react-dev-utils/clearConsole';
+import { build } from './build';
+import { serve } from './serve';
+import { contextHelp, printIntro } from './utils';
 
-interface ProgramOptions {
+export interface ProgramOptions {
 	context?: string;
 	projectConfig?: string;
 	serverConfig?: string;
 }
 
-/* tslint:disable:no-require-imports no-var-requires */
-const pkg = require('../../package.json') as { version: string };
-
-const contextHelp: string = `Path to context or project root directory. Defaults to current working directory. It is recommended to use absolute path, else it is calculated from current working directory. The path you mention here should be what the URL 'localhost/wp-content/<themes|plugins>/<slug>/' map to. In most cases, you should leave it, because calling the program from npm or yarn script should automatically set it.`;
 let isValidCommand = false;
+
+/* tslint:disable:no-require-imports no-var-requires non-literal-require */
+const pkg = require(path.resolve(__dirname, '../../package.json')) as {
+	version: string;
+};
 
 // Declare version and stuff
 program
@@ -27,7 +28,7 @@ program
 
 program.on('--help', () => {
 	console.log('');
-	console.log('Examples:');
+	console.log(chalk.cyan.bold('Examples:'));
 	console.log('');
 	console.log(
 		'  %s start -p /path/to/wpackio.project.js',
@@ -56,45 +57,7 @@ program
 	)
 	.action((options: ProgramOptions | undefined) => {
 		isValidCommand = true;
-		signale.start('Starting up wpack.io development server');
-		// Set process.env.NODE_ENV to development
-		process.env.NODE_ENV = 'development';
-		// Set process.env.BABEL_ENV to development
-		process.env.BABEL_ENV = 'development';
-		// Get project and server config JSONs.
-		const cwd = resolveCWD(options);
-		signale.info(`Using startup path: ${cwd}`);
-		try {
-			const {
-				projectConfig,
-				serverConfig,
-				projectConfigPath,
-				serverConfigPath,
-			} = getProjectAndServerConfig(cwd, options);
-			signale.info(`Using project config from ${projectConfigPath}`);
-			signale.info(`Using server config from ${serverConfigPath}`);
-			// Start the webpack/browserSync server
-			const server: Server = new Server(projectConfig, serverConfig, cwd);
-			server.serve();
-			// Listen for SIGINT and quit properly
-			process.on('SIGINT', () => {
-				signale.complete('Gracefully ending development server');
-				server.stop();
-				signale.success(
-					'To create production build, run `yarn build` or `npm run build`'
-				);
-				signale.star('Thank you for using https://wpack.io.');
-				signale.star('To spread the ❤️ please tweet.');
-				process.exit(0);
-			});
-		} catch (e) {
-			signale.error(
-				'Could not start development server. Please check the log below.'
-			);
-			signale.fatal(e);
-			process.exit(1);
-		}
-		// Listen for keyinput <r> and invalidate webpack builds.
+		serve(options);
 	});
 
 // Build the script
@@ -112,148 +75,21 @@ program
 	)
 	.action((options: ProgramOptions | undefined) => {
 		isValidCommand = true;
-		signale.start('Creating production builds...');
-		// Set process.env.NODE_ENV to production
-		process.env.NODE_ENV = 'production';
-		// Set process.env.BABEL_ENV to production
-		process.env.BABEL_ENV = 'production';
-		// Get project and server config JSONs.
-		const cwd = resolveCWD(options);
-		signale.info(`Using startup path: ${cwd}`);
-		try {
-			const {
-				projectConfig,
-				serverConfig,
-				projectConfigPath,
-				serverConfigPath,
-			} = getProjectAndServerConfig(cwd, options);
-			signale.info(`Using project config from ${projectConfigPath}`);
-			signale.info(`Using server config from ${serverConfigPath}`);
-			// Start the webpack/browserSync server
-			const build: Build = new Build(projectConfig, serverConfig, cwd);
-			build
-				.build()
-				.then(log => {
-					signale.success(
-						'Build Successful. Please check the log below'
-					);
-					console.log(log);
-					process.exit(0);
-				})
-				.catch(err => {
-					signale.fatal(
-						'Could not create production build. Please check the log below'
-					);
-					console.log(err);
-					process.exit(1);
-				});
-		} catch (e) {
-			signale.error(
-				'Could not start development server. Please check the log below.'
-			);
-			signale.fatal(e);
-			process.exit(1);
-		}
+		build(options);
 	});
+
+// Output our fancy stuff first
+clearConsole();
+printIntro();
 
 // Init
 program.parse(process.argv);
 
 // error on unknown commands
 if (!isValidCommand) {
-	signale.error(
+	console.error(
 		'Invalid command: %s\nSee usage below.\n\n',
 		program.args.join(' ')
 	);
 	program.help();
-}
-
-/**
- * Resolve `cwd`, a.k.a, current working directory or context from user input.
- * It takes into account the `--context [path]` option from CLI and uses process
- * cwd, if not provided.
- *
- * @param options Options as received from CLI
- */
-function resolveCWD(
-	options: { context?: string | undefined } | undefined
-): string {
-	let cwd = process.cwd();
-	// If user has provided cwd, then use that instead
-	if (options && options.context) {
-		const { context } = options;
-		if (path.isAbsolute(options.context)) {
-			cwd = context;
-		} else {
-			cwd = path.resolve(cwd, context);
-		}
-	}
-
-	return cwd;
-}
-
-// tslint:disable: non-literal-require
-function getProjectAndServerConfig(
-	cwd: string,
-	options: { projectConfig?: string; serverConfig?: string } | undefined
-): {
-	projectConfig: ProjectConfig;
-	serverConfig: ServerConfig;
-	projectConfigPath: string;
-	serverConfigPath: string;
-} {
-	// Get the config file paths from options
-	// If user is passing relative path, then it will be used along with cwd
-	// If it is absolute path, then the absolute would be used instead
-	// This is how path.resolve works.
-	const projectConfigPath = path.resolve(
-		cwd,
-		options && options.projectConfig
-			? options.projectConfig
-			: 'wpackio.project.js'
-	);
-
-	const serverConfigPath = path.resolve(
-		cwd,
-		options && options.serverConfig
-			? options.serverConfig
-			: 'wpackio.server.js'
-	);
-
-	// Now create the configuration objects
-	let projectConfig: ProjectConfig;
-	let serverConfig: ServerConfig;
-
-	// First check to see if the files are present
-	try {
-		projectConfig = require(projectConfigPath) as ProjectConfig;
-	} catch (e) {
-		throw new Error(
-			`Could not find project configuration at:\n${projectConfigPath}\nPlease make sure the file exists or adjust your --context or --project-config parameters.`
-		);
-	}
-	try {
-		serverConfig = require(serverConfigPath) as ServerConfig;
-	} catch (e) {
-		throw new Error(
-			`Could not find server configuration at:\n${serverConfigPath}\nPlease make sure the file exists or adjust your --context or --server-config parameters.`
-		);
-	}
-
-	// Now validate them
-	if (typeof projectConfig !== 'object') {
-		throw new Error(
-			`Project configuration must export an object literal. Right now it is ${typeof projectConfig}`
-		);
-	}
-	if (typeof serverConfig !== 'object') {
-		throw new Error(
-			`Server configuration must export an object literal. Right now it is ${typeof serverConfig}`
-		);
-	}
-	// @todo
-	// Also validate the config, but let's leave it for now
-	// Make sure to do it in future
-
-	return { projectConfig, serverConfig, projectConfigPath, serverConfigPath };
 }

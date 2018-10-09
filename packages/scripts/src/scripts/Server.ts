@@ -13,6 +13,14 @@ import {
 import { ProjectConfig } from '../config/project.config.default';
 import { ServerConfig } from '../config/server.config.default';
 
+interface Callbacks {
+	invalid(): void;
+	done(stats: webpack.Stats): void;
+	firstCompile(): void;
+	onError(err: { errors: string[]; warnings: string[] }): void;
+	onWarn(warn: { errors: string[]; warnings: string[] }): void;
+}
+
 /**
  * Create a development server with file watching, hot reload and live reload.
  * Everything is done with browserSync and webpack middleware.
@@ -29,6 +37,9 @@ export class Server {
 
 	private webpackConfig: CreateWebpackConfig;
 	private isBrowserOpened: boolean = false;
+	private firstCompileCompleted: boolean = false;
+
+	private callbacks: Callbacks;
 
 	/**
 	 * Create an instance.
@@ -39,11 +50,13 @@ export class Server {
 	constructor(
 		projectConfig: ProjectConfig,
 		serverConfig: ServerConfig,
-		cwd: string
+		cwd: string,
+		callbacks: Callbacks
 	) {
 		this.projectConfig = projectConfig;
 		this.serverConfig = serverConfig;
 		this.cwd = cwd;
+		this.callbacks = callbacks;
 		// Override serverConfig host if it is undefined
 		if (!this.serverConfig.host) {
 			const possibleHost = devIp();
@@ -127,16 +140,18 @@ export class Server {
 			notify: this.serverConfig.notify,
 		});
 
-		// Now open the browser, when first compilation is done
-		if ((compiler as webpack.MultiCompiler).compilers) {
-			// Apply hooks on each one
-			(compiler as webpack.MultiCompiler).compilers.forEach(
-				this.addHooks
-			);
-		} else {
-			// Apply hook on the single one
-			this.addHooks(compiler as webpack.Compiler);
-		}
+		// Open browser on first build
+		devMiddleware.waitUntilValid(() => {
+			if (!this.firstCompileCompleted) {
+				this.callbacks.firstCompile();
+				this.firstCompileCompleted = true;
+			}
+			this.openBrowser();
+		});
+
+		// Apply only the done hook for the single/multi compiler
+		// we pass as webpack.Compiler, because ts don't like it otherwise
+		this.addHooks(compiler as webpack.Compiler);
 
 		// Watch for user defined files, when it changes, reload
 		// When that change, reload
@@ -156,48 +171,53 @@ export class Server {
 	}
 
 	/**
+	 * Get URL to network IP where the server is alive.
+	 */
+	public getServerUrl(): string {
+		// tslint:disable:no-http-string
+		return `http:${this.webpackConfig.getServerUrl()}`;
+	}
+
+	/**
+	 * Open browser if not already opened and config says so.
+	 */
+	public openBrowser = (): void => {
+		const serverUrl = this.getServerUrl();
+		if (!this.isBrowserOpened && this.serverConfig.open) {
+			openBrowser(serverUrl);
+			this.isBrowserOpened = true;
+		}
+	};
+
+	/**
 	 * Add hooks to compiler instances.
 	 */
 	public addHooks = (compiler: webpack.Compiler): void => {
-		const { done, afterEmit } = compiler.hooks;
-		const serverUrl = this.webpackConfig.getServerUrl();
+		// We tap into done and invalid hooks, which are present
+		// in both single and multi-compiler instances.
+		const { done, invalid } = compiler.hooks;
 
-		// Open browser on last emit of first compilation
-		// Q: How do I know this is the last emit, for multi-compiler
-		// Maybe I can count?
-		afterEmit.tap('wpackio-hot-server', () => {
-			if (!this.isBrowserOpened) {
-				// tslint:disable:no-http-string
-				console.log(`opening url http:${serverUrl}`);
-				openBrowser(`http:${serverUrl}`);
-				this.isBrowserOpened = true;
-			}
-		});
-
-		// Show stats
+		// Run callbacks on events (taps)
 		done.tap('wpackio-hot-server', stats => {
 			const raw = stats.toJson('verbose');
 			const messages = formatWebpackMessages(raw);
 			if (!messages.errors.length && !messages.warnings.length) {
-				// Here be pretty stuff
-				// console.log(
-				// 	stats.toString({
-				// 		colors: true,
-				// 		modules: false,
-				// 		chunks: false,
-				// 	})
-				// );
+				// Here be pretty stuff.
+				this.callbacks.done(stats);
 			}
 			if (messages.errors.length) {
-				console.log('Failed to compile.');
-				messages.errors.forEach(e => console.log(e));
+				this.callbacks.onError(messages);
 
 				return;
 			}
 			if (messages.warnings.length) {
-				console.log('Compiled with warnings.');
-				messages.warnings.forEach(w => console.log(w));
+				this.callbacks.onWarn(messages);
 			}
+		});
+
+		// On compile start
+		invalid.tap('wpackio-hot-server', com => {
+			this.callbacks.invalid();
 		});
 	};
 	/**
