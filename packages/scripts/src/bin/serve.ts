@@ -119,15 +119,38 @@ export function serve(options: ProgramOptions | undefined): void {
 			},
 		});
 		server.serve();
-		// Listen for SIGINT and quit properly
-		process.on('SIGINT', () => {
+
+		const stopServer = () => {
 			spinner.stop();
 			console.log('');
 			console.log(`${logSymbols.error} shutting down development server`);
 			server.stop();
 			endServeInfo();
 			process.exit(0);
-		});
+		};
+
+		// Listen for `r`
+		if (process.stdin.setRawMode) {
+			process.stdin.setRawMode(true);
+			const { stdin } = process;
+			stdin.setEncoding('utf8');
+			stdin.on('data', (key: string) => {
+				// ctrl-c ( end of text )
+				if (key === '\u0003') {
+					stopServer();
+				}
+
+				// If pressing r, then just refresh
+				if (key.indexOf('r') === 0) {
+					server.refresh();
+				}
+			});
+		} else {
+			// Listen for SIGINT and quit properly
+			process.on('SIGINT', () => {
+				stopServer();
+			});
+		}
 	} catch (e) {
 		spinner.stop();
 		console.log(`${logSymbols.error} could not start server.`);

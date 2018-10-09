@@ -7,7 +7,7 @@ console.log('Heres an URL of dynamically imported asset.');
 console.log(imgURL);
 
 console.log('I can not be hot-reloaded!');
-console.log('But my imports can be😉');
+console.log('But my imports can be😉@');
 
 logger();
 

@@ -27,5 +27,6 @@ $enqueue = new \WPackio\Enqueue( 'wpackplugin', 'dist', '1.0.0', 'plugin', __FIL
 function wpackio_plugin_enqueue() {
 	global $enqueue;
 	$enqueue->enqueue( 'app', 'main', [] );
+	$enqueue->enqueue( 'app', 'mobile', [] );
 	$enqueue->enqueue( 'foo', 'main', [] );
 }

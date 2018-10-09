@@ -83,13 +83,14 @@ export function serverInfo(url: string): void {
 	const msg = `${wpackLogoSmall} server is running ${chalk.redBright('hot')}.
 You can now view it in your browser.
 
-    ${bulletSymbol} ${chalk.bold('Network address:')} ${chalk.blue.underline(
-		url
-	)}.
-    ${bulletSymbol} ${chalk.bold('Stop Server:')} ${chalk.cyan(
+    ${bulletSymbol} ${chalk.bold(
+		'Network address:'
+	)} visit ${chalk.blue.underline(url)}.
+    ${bulletSymbol} ${chalk.bold('Force Compile:')} press ${chalk.cyan('r')}.
+    ${bulletSymbol} ${chalk.bold('Stop Server:')} press ${chalk.cyan(
 		'Ctrl'
 	)} + ${chalk.cyan('c')}.
-    ${bulletSymbol} ${chalk.bold('Enqueue Assets:')} ${wpackLink}.
+    ${bulletSymbol} ${chalk.bold('Enqueue Assets:')} visit ${wpackLink}.
 
 No files are written on disk during ${chalk.cyan('development')} mode.
 
