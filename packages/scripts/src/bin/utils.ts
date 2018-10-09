@@ -16,7 +16,7 @@ export const wpackLogo = gradient.instagram.multiline(
 	})
 );
 
-export const watchSymbol = chalk.yellow(figures.circleDouble);
+export const watchSymbol = '👀';
 export const watchEllipsis = chalk.dim(figures.ellipsis);
 
 export const bulletSymbol = chalk.magenta(figures.pointer);

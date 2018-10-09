@@ -1,6 +1,6 @@
 import path from 'path';
-import { ProjectConfig } from '../config/project.config.default';
-import { ServerConfig } from '../config/server.config.default';
+import { ProjectConfig } from './project.config.default';
+import { ServerConfig } from './server.config.default';
 // tslint:disable: non-literal-require
 export function getProjectAndServerConfig(
 	cwd: string,

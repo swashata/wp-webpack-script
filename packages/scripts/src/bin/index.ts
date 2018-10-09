@@ -3,6 +3,7 @@ import chalk from 'chalk';
 import program from 'commander';
 import path from 'path';
 import clearConsole from 'react-dev-utils/clearConsole';
+import updateNotifier from 'update-notifier';
 import { build } from './build';
 import { serve } from './serve';
 import { contextHelp, printIntro } from './utils';
@@ -16,9 +17,13 @@ export interface ProgramOptions {
 let isValidCommand = false;
 
 /* tslint:disable:no-require-imports no-var-requires non-literal-require */
-const pkg = require(path.resolve(__dirname, '../../package.json')) as {
-	version: string;
-};
+const pkg = require(path.resolve(
+	__dirname,
+	'../../package.json'
+)) as updateNotifier.Package;
+
+// Notify for updates
+updateNotifier({ pkg }).notify();
 
 // Declare version and stuff
 program

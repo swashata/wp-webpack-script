@@ -4,8 +4,8 @@ import ora from 'ora';
 import path from 'path';
 import PrettyError from 'pretty-error';
 import clearConsole from 'react-dev-utils/clearConsole';
+import { getProjectAndServerConfig } from '../config/getProjectAndServerConfig';
 import { Server } from '../scripts/Server';
-import { getProjectAndServerConfig } from './getProjectAndServerConfig';
 import { ProgramOptions } from './index';
 import {
 	endServeInfo,
@@ -82,7 +82,7 @@ export function serve(options: ProgramOptions | undefined): void {
 				spinner.start('compiling...');
 				spinner.stopAndPersist({
 					symbol: logSymbols.success,
-					text: 'compiled successfully',
+					text: chalk.dim('compiled successfully'),
 				});
 				console.log(
 					`${watchSymbol} watching for changes${watchEllipsis}`
@@ -91,7 +91,9 @@ export function serve(options: ProgramOptions | undefined): void {
 			onError: msg => {
 				spinner.stop();
 				clearConsole();
-				console.error(`${logSymbols.error} Failed to compile.\n`);
+				console.error(
+					`${logSymbols.error} ${chalk.dim('failed to compile')}\n`
+				);
 				msg.errors.forEach(e => console.log(e));
 				console.log(
 					`${watchSymbol} watching for changes${watchEllipsis}`
@@ -100,7 +102,11 @@ export function serve(options: ProgramOptions | undefined): void {
 			onWarn: msg => {
 				spinner.stop();
 				clearConsole();
-				console.log(`${logSymbols.warning} Compiled with warnings..\n`);
+				console.log(
+					`${logSymbols.warning} ${chalk.dim(
+						'compiled with warnings...'
+					)}\n`
+				);
 				msg.warnings.forEach(e => console.log(e));
 				console.log(
 					`${watchSymbol} watching for changes${watchEllipsis}`
@@ -111,7 +117,7 @@ export function serve(options: ProgramOptions | undefined): void {
 				clearConsole();
 				serverInfo(server.getServerUrl());
 				console.log(
-					`${logSymbols.success} ${chalk.dim('server started')}`
+					`${logSymbols.success} ${chalk.dim('server started!')}`
 				);
 				console.log(
 					`${watchSymbol} watching for changes${watchEllipsis}`

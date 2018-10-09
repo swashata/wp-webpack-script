@@ -3,8 +3,8 @@ import logSymbols from 'log-symbols';
 import ora from 'ora';
 import path from 'path';
 import PrettyError from 'pretty-error';
+import { getProjectAndServerConfig } from '../config/getProjectAndServerConfig';
 import { Build } from '../scripts/Build';
-import { getProjectAndServerConfig } from './getProjectAndServerConfig';
 import { ProgramOptions } from './index';
 import {
 	endBuildInfo,
