@@ -31,7 +31,7 @@ function getConfigFromProjectAndServer(
 		publicPath: `/wp-content/${pCfg.type}s/${pCfg.slug}/${
 			pCfg.outputPath
 		}/`,
-		serverUrl: `//localhost/wp-content/${pCfg.type}s/${pCfg.slug}/${
+		publicPathUrl: `//localhost/wp-content/${pCfg.type}s/${pCfg.slug}/${
 			pCfg.outputPath
 		}/`,
 	};

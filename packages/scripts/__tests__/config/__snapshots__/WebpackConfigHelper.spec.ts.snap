@@ -130,7 +130,7 @@ Array [
       "verbose": false,
     },
     "paths": Array [
-      "/foo/bar/dist",
+      "/foo/bar/dist/config1",
     ],
   },
   MiniCssExtractPlugin {
@@ -182,7 +182,7 @@ Array [
       "verbose": false,
     },
     "paths": Array [
-      "/foo/bar/dist",
+      "/foo/bar/dist/config1",
     ],
   },
   MiniCssExtractPlugin {

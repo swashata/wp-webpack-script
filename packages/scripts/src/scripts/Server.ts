@@ -102,8 +102,10 @@ export class Server {
 			// Now because we are already using publicPath(dynamicPublicPath = true) in client
 			// we have to assume that it is prefixed. That's why we prefix it in the server too.
 			// Because it could be multi-compiler, I guess it will just work fine since we are
-			// passing in the `name` too.
+			// passing in the `name` too, as documented.
 			path: `${this.webpackConfig.getHmrPath()}`,
+			// We don't want any noise
+			log: false,
 		});
 		// Push them
 		middlewares.push(devMiddleware);
@@ -112,8 +114,6 @@ export class Server {
 
 		// Init browsersync
 		bs.init({
-			// We need to silent browserSync, otherwise might conflict with
-			// webpack-dashboard
 			logLevel: 'silent',
 			port: this.serverConfig.port,
 			ui: this.serverConfig.ui,
@@ -128,7 +128,6 @@ export class Server {
 		});
 
 		// Now open the browser, when first compilation is done
-		const isBrowserOpen = false;
 		if ((compiler as webpack.MultiCompiler).compilers) {
 			// Apply hooks on each one
 			(compiler as webpack.MultiCompiler).compilers.forEach(
@@ -177,11 +176,10 @@ export class Server {
 
 		// Show stats
 		done.tap('wpackio-hot-server', stats => {
-			return;
-
 			const raw = stats.toJson('verbose');
 			const messages = formatWebpackMessages(raw);
 			if (!messages.errors.length && !messages.warnings.length) {
+				// Here be pretty stuff
 				// console.log(
 				// 	stats.toString({
 				// 		colors: true,
