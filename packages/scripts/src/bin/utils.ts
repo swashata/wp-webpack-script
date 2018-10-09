@@ -132,3 +132,27 @@ To spread the ${chalk.red(figures.heart)} please tweet.`;
 		})
 	);
 }
+
+export function endBuildInfo(): void {
+	console.log('\n');
+	const msg = `${wpackLogoSmall} production build was ${chalk.green(
+		'successful'
+	)}.
+
+If your filesize is too large, remember you can use advanced
+dynamic import and multiple entry-points easily with ${wpackLogoSmall}.
+
+    ${bulletSymbol} For more info, visit: ${wpackLink}.
+
+To spread the ${chalk.red(figures.heart)} please tweet.`;
+
+	console.log(
+		boxen(msg, {
+			padding: 1,
+			borderColor: 'cyan',
+			align: 'left',
+			float: 'left',
+			borderStyle: 'round',
+		})
+	);
+}

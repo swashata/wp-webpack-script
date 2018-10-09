@@ -1,7 +1,17 @@
+import chalk from 'chalk';
+import logSymbols from 'log-symbols';
+import ora from 'ora';
+import path from 'path';
+import PrettyError from 'pretty-error';
 import { Build } from '../scripts/Build';
 import { getProjectAndServerConfig } from './getProjectAndServerConfig';
 import { ProgramOptions } from './index';
-import { resolveCWD } from './utils';
+import {
+	endBuildInfo,
+	resolveCWD,
+	watchEllipsis,
+	wpackLogoSmall,
+} from './utils';
 
 /**
  * Start the `wpackio-scripts build` command.
@@ -9,14 +19,26 @@ import { resolveCWD } from './utils';
  * @param options Option as received from CLI.
  */
 export function build(options: ProgramOptions | undefined): void {
-	console.log('Creating production builds...');
+	// For spinner
+	const spinner = ora({
+		text: `${wpackLogoSmall}: creating production builds${watchEllipsis}`,
+		spinner: 'dots',
+		color: 'yellow',
+	});
+	// For error handling
+	const pe = new PrettyError();
 	// Set process.env.NODE_ENV to production
 	process.env.NODE_ENV = 'production';
 	// Set process.env.BABEL_ENV to production
 	process.env.BABEL_ENV = 'production';
 	// Get project and server config JSONs.
 	const cwd = resolveCWD(options);
-	console.log(`Using startup path: ${cwd}`);
+	const relCwd = path.relative(process.cwd(), cwd);
+	console.log(
+		`${logSymbols.success} startup: ${chalk.cyan(
+			relCwd === '' ? '.' : relCwd
+		)}`
+	);
 	try {
 		const {
 			projectConfig,
@@ -24,29 +46,39 @@ export function build(options: ProgramOptions | undefined): void {
 			projectConfigPath,
 			serverConfigPath,
 		} = getProjectAndServerConfig(cwd, options);
-		console.log(`Using project config from ${projectConfigPath}`);
-		console.log(`Using server config from ${serverConfigPath}`);
+		console.log(
+			`${logSymbols.success} project config: ${chalk.cyan(
+				path.relative(cwd, projectConfigPath)
+			)}`
+		);
+		console.log(
+			`${logSymbols.success} server config: ${chalk.cyan(
+				path.relative(cwd, serverConfigPath)
+			)}`
+		);
 		// Start the webpack/browserSync server
+		spinner.start();
 		const builder: Build = new Build(projectConfig, serverConfig, cwd);
 		builder
 			.build()
-			.then(log => {
-				console.log('Build Successful. Please check the log below');
+			.then(({ status, log }) => {
+				if (status === 'success') {
+					spinner.succeed(`${wpackLogoSmall} build successful.`);
+				} else {
+					spinner.warn(`${wpackLogoSmall} build warnings.`);
+				}
 				console.log(log);
+				endBuildInfo();
 				process.exit(0);
 			})
 			.catch(err => {
-				console.error(
-					'Could not create production build. Please check the log below'
-				);
-				console.log(err);
+				spinner.fail(`${wpackLogoSmall} build failed.`);
+				console.error(err);
 				process.exit(1);
 			});
 	} catch (e) {
-		console.error(
-			'Could not start development server. Please check the log below.'
-		);
-		console.error(e);
+		spinner.fail(`${wpackLogoSmall} could not start webpack compiler.`);
+		console.error(pe.render(e));
 		process.exit(1);
 	}
 }

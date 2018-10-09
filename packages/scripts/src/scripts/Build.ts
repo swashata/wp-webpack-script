@@ -1,3 +1,4 @@
+import formatWebpackMessages from 'react-dev-utils/formatWebpackMessages';
 import webpack from 'webpack';
 import { CreateWebpackConfig } from '../config/CreateWebpackConfig';
 import { ProjectConfig } from '../config/project.config.default';
@@ -24,7 +25,10 @@ export class Build {
 	/**
 	 * Build the files.
 	 */
-	public build(): Promise<string> {
+	public build(): Promise<{
+		status: 'error' | 'warn' | 'success';
+		log: string;
+	}> {
 		return new Promise((resolve, reject) => {
 			const config = new CreateWebpackConfig(
 				this.projectConfig,
@@ -36,16 +40,29 @@ export class Build {
 				config.getWebpackConfig() as webpack.Configuration
 			);
 			compiler.run((err, stats) => {
-				if (err || stats.hasErrors()) {
-					reject(stats.toString({ colors: true }));
+				const raw = stats.toJson('verbose');
+				const messages = formatWebpackMessages(raw);
+				if (!messages.errors.length && !messages.warnings.length) {
+					// All good
+					resolve({
+						status: 'success',
+						log: stats.toString({
+							colors: true,
+							assets: true,
+							chunks: false,
+							entrypoints: true,
+							hash: false,
+							version: false,
+							modules: false,
+							builtAt: false,
+							timings: false,
+						}),
+					});
 				}
-				resolve(
-					stats.toString({
-						colors: true,
-						assets: true,
-						chunks: true,
-					})
-				);
+				if (messages.errors.length) {
+					reject(messages.errors.join('\n'));
+				}
+				resolve({ status: 'warn', log: messages.warnings.join('\n') });
 			});
 		});
 	}
