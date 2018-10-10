@@ -292,10 +292,12 @@ ${bannerConfig.copyrightText}${bannerConfig.credit ? creditNote : ''}`,
 					loader: 'babel-loader',
 					options: {
 						presets: tsPresets,
-						plugins: [
-							'@babel/proposal-class-properties',
-							'@babel/proposal-object-rest-spread',
-						],
+						// We don't need plugin-proposal-class-properties
+						// because taken care of by @wpackio/base
+						// '@babel/proposal-class-properties',
+						// We don't need object-rest-spread because it is
+						// already in stage-4 and taken care of by preset-env
+						// '@babel/proposal-object-rest-spread',
 					},
 				},
 			],

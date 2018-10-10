@@ -51,10 +51,6 @@ Object {
         Object {
           "loader": "babel-loader",
           "options": Object {
-            "plugins": Array [
-              "@babel/proposal-class-properties",
-              "@babel/proposal-object-rest-spread",
-            ],
             "presets": Array [
               Array [
                 "@wpackio/base",
