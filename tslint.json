@@ -29,7 +29,8 @@
     "mocha-no-side-effect-code": false,
     "no-require-imports": false,
     "no-suspicious-comment": false,
-    "max-func-body-length": false
+    "max-func-body-length": false,
+    "newline-before-return": false
 	},
 	"linterOptions": {
 		"exclude": ["lib/**/*", "**/node_modules/**"]
