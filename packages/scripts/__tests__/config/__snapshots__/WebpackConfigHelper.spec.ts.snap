@@ -36,7 +36,6 @@ Object {
               Array [
                 "@wpackio/base",
                 Object {
-                  "hasFlow": false,
                   "hasReact": true,
                 },
               ],

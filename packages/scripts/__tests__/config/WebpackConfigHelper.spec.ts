@@ -1,4 +1,6 @@
+import { PresetOptions } from '@wpackio/babel-preset-base/lib/preset';
 import miniCssExtractPlugin from 'mini-css-extract-plugin';
+import webpack from 'webpack';
 import {
 	ProjectConfig,
 	projectConfigDefault,
@@ -11,6 +13,39 @@ import {
 	WebpackConfigHelper,
 	WebpackConfigHelperConfig,
 } from '../../src/config/WebpackConfigHelper';
+
+type babelLoaderModuleRules = {
+	use: {
+		loader: string;
+		// tslint:disable-next-line:no-any
+		options?: { [x: string]: any };
+	}[];
+}[];
+
+const findWpackIoBabelOnJs = (
+	modules: webpack.Module
+): babelLoaderModuleRules => {
+	return modules.rules.filter(rule => {
+		const { test } = rule;
+
+		return test !== undefined && test.toString() === '/\\.m?jsx?$/';
+	}) as babelLoaderModuleRules;
+};
+const findWpackIoBabelOnTs = (
+	modules: webpack.Module
+): babelLoaderModuleRules => {
+	return modules.rules.filter(rule => {
+		const { test } = rule;
+
+		return test !== undefined && test.toString() === '/\\.tsx?$/';
+	}) as babelLoaderModuleRules;
+};
+
+const findWpackIoBabelOnTJs = (
+	modules: webpack.Module
+): babelLoaderModuleRules => {
+	return [...findWpackIoBabelOnJs(modules), ...findWpackIoBabelOnTs(modules)];
+};
 
 function getConfigFromProjectAndServer(
 	pCfg: ProjectConfig,
@@ -41,7 +76,7 @@ function getConfigFromProjectAndServer(
 // Create separate configuration for easy use within every test
 let projectConfig: ProjectConfig;
 let serverConfig: ServerConfig;
-beforeEach(() => {
+const initConfig = (): void => {
 	projectConfig = {
 		...projectConfigDefault,
 		files: [
@@ -52,7 +87,8 @@ beforeEach(() => {
 		],
 	};
 	serverConfig = { ...serverConfigDefault };
-});
+};
+beforeEach(initConfig);
 
 describe('CreateWebPackConfig', () => {
 	// Now do the testing
@@ -174,35 +210,143 @@ describe('CreateWebPackConfig', () => {
 
 	// getModule()
 	describe('getModule', () => {
-		test('has babel-loader for both typescript and javascript', () => {
-			const cwc = new WebpackConfigHelper(
-				projectConfig.files[0],
-				getConfigFromProjectAndServer(projectConfig, serverConfig),
-				'/foo/bar',
-				true
-			);
-			const modules = cwc.getModule();
-			if (Array.isArray(modules.rules)) {
-				const jsTsRules = modules.rules.filter(rule => {
-					const { test } = rule;
-
-					return (
-						test !== undefined &&
-						(test.toString() === '/\\.m?jsx?$/' ||
-							test.toString() === '/\\.tsx?$/')
-					);
-				}) as { use: { loader: string }[] }[];
-				expect(jsTsRules).toHaveLength(2);
-				jsTsRules.forEach(rule => {
-					if (rule && rule.use) {
-						expect(rule.use[0].loader).toBe('babel-loader');
+		describe('babel-loader for typescript and javascript', () => {
+			test('has babel-loader', () => {
+				const cwc = new WebpackConfigHelper(
+					projectConfig.files[0],
+					getConfigFromProjectAndServer(projectConfig, serverConfig),
+					'/foo/bar',
+					true
+				);
+				const modules = cwc.getModule();
+				if (Array.isArray(modules.rules)) {
+					const jsTsRules = findWpackIoBabelOnTJs(modules);
+					expect(jsTsRules).toHaveLength(2);
+					jsTsRules.forEach(rule => {
+						if (rule && rule.use) {
+							expect(rule.use[0].loader).toBe('babel-loader');
+						} else {
+							throw new Error('JavaScript rule is undefined');
+						}
+					});
+				} else {
+					throw new Error('Module is not an array');
+				}
+			});
+			test('obeys hasFlow & hasRect', () => {
+				const cwc = new WebpackConfigHelper(
+					projectConfig.files[0],
+					{
+						...getConfigFromProjectAndServer(
+							projectConfig,
+							serverConfig
+						),
+						hasFlow: true,
+						hasReact: true,
+					},
+					'/foo/bar',
+					true
+				);
+				const modules = cwc.getModule();
+				if (Array.isArray(modules.rules)) {
+					const jsRule = findWpackIoBabelOnJs(modules);
+					const tsRule = findWpackIoBabelOnTs(modules);
+					expect(jsRule).toHaveLength(1);
+					expect(tsRule).toHaveLength(1);
+					[...jsRule, ...tsRule].forEach(rule => {
+						if (rule && rule.use && rule.use[0].options) {
+							expect(
+								rule.use[0].options.presets[0][1]
+							).toMatchObject({ hasReact: true });
+						} else {
+							throw new Error('babel rule is undefined');
+						}
+					});
+					if (jsRule[0].use[0].options) {
+						expect(jsRule[0].use[0].options.presets[1]).toEqual([
+							'@babel/preset-flow',
+						]);
 					} else {
-						throw new Error('JavaScript rule is undefined');
+						throw new Error(
+							'JavaScript babel-loader options not present'
+						);
 					}
-				});
-			} else {
-				throw new Error('Module is not an array');
-			}
+				} else {
+					throw new Error('Module is not an array');
+				}
+			});
+
+			test('overrides @wpackio/babel-preset-base from config', () => {
+				const override: PresetOptions = {
+					noImportMeta: true,
+					presetEnv: { modules: 'umd' },
+					presetReact: { pragma: 'wp.createElement' },
+				};
+				const cwc = new WebpackConfigHelper(
+					projectConfig.files[0],
+					{
+						...getConfigFromProjectAndServer(
+							projectConfig,
+							serverConfig
+						),
+						jsBabelPresetOptions: override,
+						tsBabelPresetOptions: override,
+					},
+					'/foo/bar',
+					true
+				);
+
+				const modules = cwc.getModule();
+				if (Array.isArray(modules.rules)) {
+					const jsTsRules = findWpackIoBabelOnTJs(modules);
+					expect(jsTsRules).toHaveLength(2);
+					jsTsRules.forEach(rule => {
+						if (rule && rule.use && rule.use[0].options) {
+							expect(
+								rule.use[0].options.presets[0][1]
+							).toMatchObject(override);
+						} else {
+							throw new Error('JavaScript rule is undefined');
+						}
+					});
+				} else {
+					throw new Error('Module is not an array');
+				}
+			});
+
+			test('overrides all babel-loader options from config', () => {
+				const override: webpack.RuleSetLoader['options'] = {
+					presets: 'foo',
+					plugins: ['bar', 'baz'],
+				};
+				const cwc = new WebpackConfigHelper(
+					projectConfig.files[0],
+					{
+						...getConfigFromProjectAndServer(
+							projectConfig,
+							serverConfig
+						),
+						jsBabelOverride: override,
+						tsBabelOverride: override,
+					},
+					'/foo/bar',
+					true
+				);
+				const modules = cwc.getModule();
+				if (Array.isArray(modules.rules)) {
+					const jsTsRules = findWpackIoBabelOnTJs(modules);
+					expect(jsTsRules).toHaveLength(2);
+					jsTsRules.forEach(rule => {
+						if (rule && rule.use && rule.use[0].options) {
+							expect(rule.use[0].options).toMatchObject(override);
+						} else {
+							throw new Error('JavaScript rule is undefined');
+						}
+					});
+				} else {
+					throw new Error('Module is not an array');
+				}
+			});
 		});
 
 		test('uses style loader when in dev mode', () => {

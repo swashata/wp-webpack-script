@@ -275,7 +275,7 @@ ${bannerConfig.copyrightText}${bannerConfig.credit ? creditNote : ''}`,
 			[
 				'@wpackio/base',
 				this.getBabelPresetOptions(
-					{ hasReact, hasFlow },
+					{ hasReact },
 					this.config.jsBabelPresetOptions
 				),
 			],
