@@ -1,4 +1,3 @@
-import '../publicPathIndex';
 import './index.css';
 import imgURL from './image.png';
 import logger from './modules/logger';
@@ -12,6 +11,8 @@ console.log('But my imports can be😉!@');
 logger();
 
 // Dynamic import
+/* globals __webpack_public_path__ */
+console.log({ publicPath: __webpack_public_path__ });
 import('./modules/dynamic.js').then(({ default: _ }) => {
 	console.log('I am dynamically imported!');
 	_();

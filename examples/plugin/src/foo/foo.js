@@ -1,4 +1,3 @@
-import '../publicPathIndex';
 import bar from './bar';
 
 bar();

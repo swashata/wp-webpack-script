@@ -68,7 +68,7 @@ export function build(options: ProgramOptions | undefined): void {
 					spinner.warn(`${wpackLogoSmall} build warnings.`);
 				}
 				console.log(log);
-				endBuildInfo();
+				endBuildInfo(serverConfig.proxy);
 				process.exit(0);
 			})
 			.catch(err => {

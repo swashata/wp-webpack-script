@@ -163,6 +163,16 @@ export class WebpackConfigHelper {
 					webpackHotClient,
 				];
 			});
+		} else {
+			// Put the publicPath entry point
+			Object.keys(normalizedEntry).forEach((key: string) => {
+				normalizedEntry[key] = [
+					// We need it before any other entrypoint, otherwise it won't
+					// work, if ES Modules are used.
+					`@wpackio/scripts/lib/entrypoint`,
+					...normalizedEntry[key],
+				];
+			});
 		}
 
 		return normalizedEntry;
@@ -209,6 +219,12 @@ export class WebpackConfigHelper {
 			new webpack.DefinePlugin({
 				'process.env.NODE_ENV': JSON.stringify(this.env),
 				'process.env.BABEL_ENV': JSON.stringify(this.env),
+				// Our own access to project config from the modules
+				// mainly needed for the publicPath entrypoint
+				__WPACKIO__: {
+					appName: JSON.stringify(this.config.appName),
+					outputPath: JSON.stringify(this.config.outputPath),
+				},
 			}),
 			// Clean dist directory
 			new cleanWebpackPlugin(

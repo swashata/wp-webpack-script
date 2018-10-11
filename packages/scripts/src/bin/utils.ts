@@ -133,15 +133,18 @@ To spread the ${chalk.red(figures.heart)} please tweet.`;
 	);
 }
 
-export function endBuildInfo(): void {
+export function endBuildInfo(localUrl: string): void {
 	console.log('\n');
 	const msg = `${wpackLogoSmall} production build was ${chalk.green(
 		'successful'
 	)}.
 
+All files were written to disk and you can visit your local server.
+
 If your filesize is too large, remember you can use advanced
 dynamic import and multiple entry-points easily with ${wpackLogoSmall}.
 
+    ${bulletSymbol} Local Server: ${chalk.blue.underline(localUrl)}.
     ${bulletSymbol} For more info, visit: ${wpackLink}.
 
 To spread the ${chalk.red(figures.heart)} please tweet.`;

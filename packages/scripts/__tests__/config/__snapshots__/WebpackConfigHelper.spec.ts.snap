@@ -114,6 +114,10 @@ exports[`CreateWebPackConfig getPlugins has proper plugins for build mode 1`] = 
 Array [
   DefinePlugin {
     "definitions": Object {
+      "__WPACKIO__": Object {
+        "appName": "\\"wpackio\\"",
+        "outputPath": "\\"dist\\"",
+      },
       "process.env.BABEL_ENV": "\\"production\\"",
       "process.env.NODE_ENV": "\\"production\\"",
     },
@@ -166,6 +170,10 @@ exports[`CreateWebPackConfig getPlugins has proper plugins for dev mode 1`] = `
 Array [
   DefinePlugin {
     "definitions": Object {
+      "__WPACKIO__": Object {
+        "appName": "\\"wpackio\\"",
+        "outputPath": "\\"dist\\"",
+      },
       "process.env.BABEL_ENV": "\\"development\\"",
       "process.env.NODE_ENV": "\\"development\\"",
     },

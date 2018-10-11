@@ -121,7 +121,7 @@ describe('CreateWebPackConfig', () => {
 				expect(hotClient).toMatch(/name\=config1/);
 			});
 		});
-		test('does not have webpack hot client when isDev != true', () => {
+		test('does not have webpack hot client but publicPath wntrypoint when isDev != true', () => {
 			const cwc = new WebpackConfigHelper(
 				projectConfig.files[0],
 				getConfigFromProjectAndServer(projectConfig, serverConfig),
@@ -134,6 +134,7 @@ describe('CreateWebPackConfig', () => {
 				expect(entry[key].pop()).not.toMatch(
 					/^webpack\-hot\-middleware/
 				);
+				expect(entry[key][0]).toBe(`@wpackio/scripts/lib/entrypoint`);
 			});
 		});
 	});
