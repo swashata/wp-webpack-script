@@ -1,5 +1,7 @@
 import webpack from 'webpack';
 
+import { PresetOptions } from '@wpackio/babel-preset-base/lib/preset';
+
 // Export common interfaces
 
 /**
@@ -53,6 +55,17 @@ export interface ProjectConfig {
 	outputPath: string;
 	hasReact: boolean;
 	hasSass: boolean;
+	hasFlow: boolean;
+	// If provided it is spread over whatever wpackio/scripts generates
+	jsBabelPresetOptions?: PresetOptions;
+	// If provided it is spread over whatever wpackio/scripts generates
+	tsBabelPresetOptions?: PresetOptions;
+	// Completely overrides `babel-loader` options for javascript files
+	// tslint:disable-next-line:no-any
+	jsBabelOverride?: string | { [x: string]: any };
+	// Completely overrides `babel-loader` options for typescript files
+	// tslint:disable-next-line:no-any
+	tsBabelOverride?: string | { [x: string]: any };
 	externals?: webpack.Configuration['externals'];
 	alias?: webpack.Resolve['alias'];
 	errorOverlay?: boolean;
@@ -102,6 +115,8 @@ export const projectConfigDefault: ProjectConfig = {
 	hasReact: true,
 	// Needs sass?
 	hasSass: true,
+	// Needs flow?
+	hasFlow: false,
 	// Externals
 	externals: {
 		jquery: 'jQuery',

@@ -25,6 +25,7 @@ function getConfigFromProjectAndServer(
 		outputPath: pCfg.outputPath,
 		hasReact: pCfg.hasReact,
 		hasSass: pCfg.hasSass,
+		hasFlow: pCfg.hasFlow,
 		bannerConfig: pCfg.bannerConfig,
 		alias: pCfg.alias,
 		optimizeSplitChunks: pCfg.optimizeSplitChunks,

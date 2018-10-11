@@ -13,7 +13,7 @@ logger();
 
 // Dynamic import
 import('./modules/dynamic.js').then(({ default: _ }) => {
-	console.log('I am dynamically imported');
+	console.log('I am dynamically imported!');
 	_();
 });
 

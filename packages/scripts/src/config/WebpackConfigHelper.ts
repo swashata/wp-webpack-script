@@ -1,4 +1,7 @@
-import { babelPreset } from '@wpackio/babel-preset-base/lib/preset';
+import {
+	babelPreset,
+	PresetOptions,
+} from '@wpackio/babel-preset-base/lib/preset';
 import cleanWebpackPlugin from 'clean-webpack-plugin';
 import miniCssExtractPlugin from 'mini-css-extract-plugin';
 import path from 'path';
@@ -25,10 +28,15 @@ export interface WebpackConfigHelperConfig {
 	outputPath: ProjectConfig['outputPath'];
 	hasReact: ProjectConfig['hasReact'];
 	hasSass: ProjectConfig['hasSass'];
+	hasFlow: ProjectConfig['hasFlow'];
+	jsBabelPresetOptions?: ProjectConfig['jsBabelPresetOptions'];
+	tsBabelPresetOptions?: ProjectConfig['tsBabelPresetOptions'];
+	jsBabelOverride?: ProjectConfig['jsBabelOverride'];
+	tsBabelOverride?: ProjectConfig['tsBabelOverride'];
 	bannerConfig: BannerConfig;
 	alias?: ProjectConfig['alias'];
 	optimizeSplitChunks: ProjectConfig['optimizeSplitChunks'];
-	publicPath: string;
+	publicPath: string; // Not used right now, but maybe we will need it in future?
 	publicPathUrl: string;
 }
 
@@ -62,8 +70,6 @@ export class WebpackConfigHelper {
 	 */
 	private env: 'development' | 'production';
 
-	private publicPath: string;
-
 	/**
 	 * Create an instance of GetEntryAndOutput class.
 	 */
@@ -94,7 +100,6 @@ export class WebpackConfigHelper {
 		const { name } = this.file;
 		this.outputInnerDir = slugify(name, { lower: true });
 		this.outputPath = path.join(this.cwd, outputPath);
-		this.publicPath = config.publicPath;
 	}
 
 	/**
@@ -264,17 +269,32 @@ ${bannerConfig.copyrightText}${bannerConfig.credit ? creditNote : ''}`,
 	 * Get module object for webpack, depending on environment.
 	 */
 	public getModule(): webpack.Module {
-		const { hasReact, hasSass } = this.config;
+		const { hasReact, hasSass, hasFlow } = this.config;
 		// create the babel rules for es6+ code
-		const jsPresets: babelPreset[] = [['@wpackio/base', { hasReact }]];
+		const jsPresets: babelPreset[] = [
+			[
+				'@wpackio/base',
+				this.getBabelPresetOptions(
+					{ hasReact, hasFlow },
+					this.config.jsBabelPresetOptions
+				),
+			],
+		];
+		// Add flow if needed
+		if (this.config.hasFlow) {
+			jsPresets.push(['@babel/preset-flow']);
+		}
 		const jsRules: webpack.RuleSetRule = {
 			test: /\.m?jsx?$/,
 			use: [
 				{
 					loader: 'babel-loader',
-					options: {
-						presets: jsPresets,
-					},
+					options: this.getOverrideWebpackRuleOptions(
+						{
+							presets: jsPresets,
+						},
+						this.config.jsBabelOverride
+					),
 				},
 			],
 			exclude: /(node_modules|bower_components)/,
@@ -282,7 +302,13 @@ ${bannerConfig.copyrightText}${bannerConfig.credit ? creditNote : ''}`,
 
 		// create the babel rules for typescript code
 		const tsPresets: babelPreset[] = [
-			['@wpackio/base', { hasReact }],
+			[
+				'@wpackio/base',
+				this.getBabelPresetOptions(
+					{ hasReact },
+					this.config.tsBabelPresetOptions
+				),
+			],
 			['@babel/preset-typescript'],
 		];
 		const tsRules: webpack.RuleSetRule = {
@@ -290,15 +316,18 @@ ${bannerConfig.copyrightText}${bannerConfig.credit ? creditNote : ''}`,
 			use: [
 				{
 					loader: 'babel-loader',
-					options: {
-						presets: tsPresets,
-						// We don't need plugin-proposal-class-properties
-						// because taken care of by @wpackio/base
-						// '@babel/proposal-class-properties',
-						// We don't need object-rest-spread because it is
-						// already in stage-4 and taken care of by preset-env
-						// '@babel/proposal-object-rest-spread',
-					},
+					options: this.getOverrideWebpackRuleOptions(
+						{
+							presets: tsPresets,
+							// We don't need plugin-proposal-class-properties
+							// because taken care of by @wpackio/base
+							// '@babel/proposal-class-properties',
+							// We don't need object-rest-spread because it is
+							// already in stage-4 and taken care of by preset-env
+							// '@babel/proposal-object-rest-spread',
+						},
+						this.config.tsBabelOverride
+					),
 				},
 			],
 			exclude: /(node_modules)/,
@@ -398,5 +427,41 @@ ${bannerConfig.copyrightText}${bannerConfig.credit ? creditNote : ''}`,
 			mode: this.env,
 			name: this.file.name,
 		};
+	}
+
+	/**
+	 * Get final options for @wpackio/babel-preset-base, combining both
+	 * system default and user defined value.
+	 *
+	 * @param defaults Default options for @wpackio/babel-preset-base.
+	 * @param options User defined options for @wpackio/babel-preset-base.
+	 */
+	private getBabelPresetOptions(
+		defaults: PresetOptions,
+		options: PresetOptions | undefined
+	): PresetOptions {
+		// If options is not undefined or null, then spread over it
+		if (options != null) {
+			return { ...defaults, ...options };
+		}
+		return defaults;
+	}
+
+	/**
+	 * Get final loader option based on user and system.
+	 *
+	 * @param defaults Default options as calculated by system.
+	 * @param override User defined option.
+	 */
+	private getOverrideWebpackRuleOptions(
+		defaults: webpack.RuleSetLoader['options'],
+		override: webpack.RuleSetLoader['options'] | undefined
+	): webpack.RuleSetLoader['options'] {
+		// If override is not undefined or null, then return it
+		if (override != null) {
+			return override;
+		}
+		// Otherwise just return default
+		return defaults;
 	}
 }

@@ -20,6 +20,7 @@
   "private": false,
   "dependencies": {
     "@babel/core": "^7.1.0",
+    "@babel/preset-flow": "^7.0.0",
     "@babel/preset-typescript": "^7.1.0",
     "@types/browser-sync": "^0.0.42",
     "@types/figlet": "^1.2.0",
