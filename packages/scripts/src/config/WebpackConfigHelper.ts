@@ -2,6 +2,8 @@ import {
 	babelPreset,
 	PresetOptions,
 } from '@wpackio/babel-preset-base/lib/preset';
+import WatchMissingNodeModulesPlugin from 'react-dev-utils/WatchMissingNodeModulesPlugin';
+
 import cleanWebpackPlugin from 'clean-webpack-plugin';
 import miniCssExtractPlugin from 'mini-css-extract-plugin';
 import path from 'path';
@@ -248,9 +250,16 @@ export class WebpackConfigHelper {
 		];
 		// Add development specific plugins
 		if (this.isDev) {
+			// Hot Module Replacement
+			plugins.push(new webpack.HotModuleReplacementPlugin());
+			// If you require a missing module and then `npm install` it, you still have
+			// to restart the development server for Webpack to discover it. This plugin
+			// makes the discovery automatic so you don't have to restart.
+			// See https://github.com/facebook/create-react-app/issues/186
 			plugins.push(
-				// Hot Module Replacement
-				new webpack.HotModuleReplacementPlugin()
+				new WatchMissingNodeModulesPlugin(
+					path.resolve(this.cwd, './node_modules')
+				)
 			);
 		} else {
 			// Add Production specific plugins

@@ -202,5 +202,8 @@ Array [
     "options": Object {},
     "requestTimeout": 10000,
   },
+  WatchMissingNodeModulesPlugin {
+    "nodeModulesPath": "/foo/bar/node_modules",
+  },
 ]
 `;
