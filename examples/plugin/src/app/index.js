@@ -11,8 +11,8 @@ console.log('But my imports can be😉!@');
 logger();
 
 // Dynamic import
-/* globals __webpack_public_path__ */
-console.log({ publicPath: __webpack_public_path__ });
+/* globals __webpack_public_path__ __WPACKIO__ */
+console.log({ publicPath: __webpack_public_path__, wpackio: __WPACKIO__ });
 import('./modules/dynamic.js').then(({ default: _ }) => {
 	console.log('I am dynamically imported!');
 	_();
