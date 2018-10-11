@@ -142,7 +142,7 @@ So consult the documentation to find out how to use it.
 ##### Note on `presetReact.development`
 
 `@babel/preset-react` has an option [`development`](https://babeljs.io/docs/en/babel-preset-react#development) which,
-if enabled, includes two development friendly plugins. `@wpackio/react` automatically
+if enabled, includes two development friendly plugins. `@wpackio/babel-preset-base` automatically
 sets its value, depending on `BABEL_ENV` environment variable. This environment
 variable is taken care of automatically, when you are using `@wpackio/scripts`.
 
@@ -155,7 +155,7 @@ be used instead.
 {
 	"extends": [
 		[
-			"@wpackio/react",
+			"@wpackio/babel-preset-base",
 			{
 				"presetReact": {
 					"development": false
