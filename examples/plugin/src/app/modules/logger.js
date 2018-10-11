@@ -1,3 +1,4 @@
 export default function logger() {
-	console.log('Load me 🤟🎉💥😜');
+	// Automatic Hot Module Replacement
+	console.log('Load me 🤟🎉💥😜😺');
 }

@@ -35,6 +35,13 @@ module.exports = {
 			// Extra webpack config to be passed directly
 			webpackConfig: undefined,
 		},
+		// Another app just for showing react
+		{
+			name: 'reactapp',
+			entry: {
+				main: ['./src/reactapp/index.jsx'],
+			},
+		},
 	],
 	// Output path relative to the context directory
 	// We need relative path here, else, we can not map to publicPath
@@ -59,4 +66,9 @@ module.exports = {
 	optimizeSplitChunks: true,
 	// Usually PHP and other files to watch and reload when changed
 	watch: 'inc/**/*.php',
+	// Hook into babeloverride so that we can add react-hot-loader plugin
+	jsBabelOverride: defaults => ({
+		...defaults,
+		plugins: ['react-hot-loader/babel'],
+	}),
 };

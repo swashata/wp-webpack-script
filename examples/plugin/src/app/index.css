@@ -2,7 +2,8 @@ body {
 	background-color: black !important;
 }
 
+/* CSS HMR */
 .site-title a {
-	color: slategray !important;
+	color: azure !important;
 	background-color: aqua !important;
 }

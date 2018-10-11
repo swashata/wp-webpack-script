@@ -33,6 +33,19 @@ export interface FileConfig {
 	webpackConfig?: webpack.Configuration;
 }
 
+export type webpackOptionsOverrideFunction = (
+	// tslint:disable-next-line:no-any
+	defaults: string | { [x: string]: any }
+) => // tslint:disable-next-line:no-any
+string | { [x: string]: any };
+
+export type webpackLoaderOptionsOverride =
+	| webpackOptionsOverrideFunction
+	// tslint:disable-next-line:no-any
+	| { [x: string]: any }
+	| string
+	| undefined;
+
 /**
  * Main Project Config shape under `wpackio.project.js` file.
  */
@@ -61,11 +74,9 @@ export interface ProjectConfig {
 	// If provided it is spread over whatever wpackio/scripts generates
 	tsBabelPresetOptions?: PresetOptions;
 	// Completely overrides `babel-loader` options for javascript files
-	// tslint:disable-next-line:no-any
-	jsBabelOverride?: string | { [x: string]: any };
+	jsBabelOverride?: webpackLoaderOptionsOverride;
 	// Completely overrides `babel-loader` options for typescript files
-	// tslint:disable-next-line:no-any
-	tsBabelOverride?: string | { [x: string]: any };
+	tsBabelOverride?: webpackLoaderOptionsOverride;
 	externals?: webpack.Configuration['externals'];
 	alias?: webpack.Resolve['alias'];
 	errorOverlay?: boolean;

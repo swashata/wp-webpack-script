@@ -4,6 +4,7 @@ import webpack from 'webpack';
 import {
 	ProjectConfig,
 	projectConfigDefault,
+	webpackOptionsOverrideFunction,
 } from '../../src/config/project.config.default';
 import {
 	ServerConfig,
@@ -314,7 +315,7 @@ describe('CreateWebPackConfig', () => {
 				}
 			});
 
-			test('overrides all babel-loader options from config', () => {
+			test('overrides all babel-loader options from config object', () => {
 				const override: webpack.RuleSetLoader['options'] = {
 					presets: 'foo',
 					plugins: ['bar', 'baz'],
@@ -339,6 +340,47 @@ describe('CreateWebPackConfig', () => {
 					jsTsRules.forEach(rule => {
 						if (rule && rule.use && rule.use[0].options) {
 							expect(rule.use[0].options).toMatchObject(override);
+						} else {
+							throw new Error('JavaScript rule is undefined');
+						}
+					});
+				} else {
+					throw new Error('Module is not an array');
+				}
+			});
+
+			test('overrides all babel-loader options from config function', () => {
+				const override: webpackOptionsOverrideFunction = defaults => {
+					if (typeof defaults === 'string') {
+						return defaults;
+					}
+					return {
+						...defaults,
+						plugins: ['react-hot-loader/babel'],
+					};
+				};
+				const cwc = new WebpackConfigHelper(
+					projectConfig.files[0],
+					{
+						...getConfigFromProjectAndServer(
+							projectConfig,
+							serverConfig
+						),
+						jsBabelOverride: override,
+						tsBabelOverride: override,
+					},
+					'/foo/bar',
+					true
+				);
+				const modules = cwc.getModule();
+				if (Array.isArray(modules.rules)) {
+					const jsTsRules = findWpackIoBabelOnTJs(modules);
+					expect(jsTsRules).toHaveLength(2);
+					jsTsRules.forEach(rule => {
+						if (rule && rule.use && rule.use[0].options) {
+							expect(rule.use[0].options).toMatchObject({
+								plugins: ['react-hot-loader/babel'],
+							});
 						} else {
 							throw new Error('JavaScript rule is undefined');
 						}

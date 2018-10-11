@@ -12,6 +12,8 @@ import {
 	BannerConfig,
 	FileConfig,
 	ProjectConfig,
+	webpackLoaderOptionsOverride,
+	webpackOptionsOverrideFunction,
 } from './project.config.default';
 import { ServerConfig } from './server.config.default';
 
@@ -455,11 +457,18 @@ ${bannerConfig.copyrightText}${bannerConfig.credit ? creditNote : ''}`,
 	 */
 	private getOverrideWebpackRuleOptions(
 		defaults: webpack.RuleSetLoader['options'],
-		override: webpack.RuleSetLoader['options'] | undefined
+		override: webpackLoaderOptionsOverride
 	): webpack.RuleSetLoader['options'] {
 		// If override is not undefined or null, then return it
 		if (override != null) {
-			return override;
+			// If it is a function
+			if (typeof override === 'function') {
+				return (override as webpackOptionsOverrideFunction)(
+					defaults || {}
+				) as webpack.RuleSetLoader['options'];
+			} else {
+				return override;
+			}
 		}
 		// Otherwise just return default
 		return defaults;
