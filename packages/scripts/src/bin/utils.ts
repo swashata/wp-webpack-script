@@ -193,7 +193,10 @@ create the ${chalk.bold.yellow('wpackio.server.js')} file.
     ${bulletSymbol} Create local server config: ${chalk.yellow(
 		isYarn() ? 'yarn bootstrap' : 'npm run bootstrap'
 	)}.
-    ${bulletSymbol} For more info, visit: ${wpackLink}.
+	${bulletSymbol} For more info, visit: ${wpackLink}.
+
+To enqueue the assets within your plugin or theme, make sure you have
+the ${chalk.yellow('wpackio\\enqueue')} from packagist.org/composer.
 
 To spread the ${chalk.red(figures.heart)} please tweet.`;
 
