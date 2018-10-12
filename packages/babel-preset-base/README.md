@@ -61,7 +61,7 @@ and you are good to go.
 You can also put it under `browserslist` directive under `package.json` file.
 
 We recommend `.browserslistrc` because it is shared across many tools. If you bootstrap
-your project using `npx @wpackio/scripts init`, then it will be created automatically.
+your project using `npx @wpackio/scripts bootstrap`, then it will be created automatically.
 
 ### Options
 

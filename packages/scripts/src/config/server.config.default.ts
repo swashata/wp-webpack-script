@@ -31,9 +31,6 @@ export const serverConfigDefault: ServerConfig = {
 	// UI passed directly to browsersync
 	ui: {
 		port: 3001,
-		weinre: {
-			port: 8080,
-		},
 	},
 	// Whether to show the "BrowserSync Connected"
 	notify: false,

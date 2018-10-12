@@ -91,15 +91,15 @@ You can now view it in your browser.
 			? chalk.blue.underline(uiUrl)
 			: chalk.red('N/A')
 	}.
-    ${bulletSymbol} ${chalk.bold('Force Compile:')} press ${chalk.cyan('r')}.
-    ${bulletSymbol} ${chalk.bold('Stop Server:')} press ${chalk.cyan(
+    ${bulletSymbol} ${chalk.bold('Force Compile:')} press ${chalk.yellow('r')}.
+    ${bulletSymbol} ${chalk.bold('Stop Server:')} press ${chalk.yellow(
 		'Ctrl'
-	)} + ${chalk.cyan('c')}.
+	)} + ${chalk.yellow('c')}.
     ${bulletSymbol} ${chalk.bold('Enqueue Assets:')} visit ${wpackLink}.
 
 No files are written on disk during ${chalk.cyan('development')} mode.
 
-To create production build, run ${chalk.cyan(
+To create production build, run ${chalk.yellow(
 		isYarn() ? 'yarn build' : 'npm run build'
 	)}.`;
 	console.log(
@@ -119,7 +119,7 @@ export function endServeInfo(): void {
 		'stopped'
 	)}.
 
-    ${bulletSymbol} To create production build, run ${chalk.cyan(
+    ${bulletSymbol} To create production build, run ${chalk.yellow(
 		isYarn() ? 'yarn build' : 'npm run build'
 	)}.
     ${bulletSymbol} For more info, visit: ${wpackLink}.
@@ -171,32 +171,29 @@ export function endBootstrapInfo(): void {
 		'successfully'
 	)} integrated within your project.
 
-If this is your first run edit your ${chalk.bold.magenta(
-		'wpackio.project.js'
-	)} file and put entrypoints.
-You will find examples within the file itself.
+If this is your first run edit your ${chalk.bold.magenta('wpackio.project.js')}
+file and put entrypoints. You will find examples within the file itself.
 
-You should keep ${chalk.bold.yellow(
-		'wpackio.server.js'
-	)} outside your VCS tracking
-as it will most likely differ for different users.
+You should keep ${chalk.bold.yellow('wpackio.server.js')} outside your VCS
+tracking as it will most likely differ for different users.
 
 You can run ${chalk.dim('bootstrap')} command again and it will just
-create the ${chalk.bold.yellow('wpackio.server.js')} file.
+create the ${chalk.bold.yellow('wpackio.server.js')} file if not present.
 
     ${bulletSymbol} Start Development: ${chalk.yellow(
 		isYarn() ? 'yarn start' : 'npm start'
 	)}.
-    ${bulletSymbol} Start Development: ${chalk.yellow(
+    ${bulletSymbol} Production Build: ${chalk.yellow(
 		isYarn() ? 'yarn build' : 'npm run build'
 	)}.
     ${bulletSymbol} Create local server config: ${chalk.yellow(
 		isYarn() ? 'yarn bootstrap' : 'npm run bootstrap'
 	)}.
-	${bulletSymbol} For more info, visit: ${wpackLink}.
+    ${bulletSymbol} For more info, visit: ${wpackLink}.
 
 To enqueue the assets within your plugin or theme, make sure you have
-the ${chalk.yellow('wpackio\\enqueue')} from packagist.org/composer.
+the ${chalk.yellow('wpackio/enqueue')} from packagist.org/composer
+and follow the intructions from documentation.
 
 To spread the ${chalk.red(figures.heart)} please tweet.`;
 

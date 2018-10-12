@@ -1,12 +1,20 @@
 import chalk from 'chalk';
 import execa from 'execa';
 import logSymbols from 'log-symbols';
+import ora from 'ora';
 import path from 'path';
 import PrettyError from 'pretty-error';
 
 import { ProgramOptions } from '.';
 import { Bootstrap } from '../scripts/Bootstrap';
-import { bulletSymbol, endBootstrapInfo, isYarn, resolveCWD } from './utils';
+import {
+	bulletSymbol,
+	endBootstrapInfo,
+	isYarn,
+	resolveCWD,
+	watchEllipsis,
+	wpackLogoSmall,
+} from './utils';
 
 export async function bootstrap(
 	options: ProgramOptions | undefined,
@@ -15,12 +23,7 @@ export async function bootstrap(
 	// For error handling
 	const pe = new PrettyError();
 	const cwd = resolveCWD(options);
-	const relCwd = path.relative(process.cwd(), cwd);
-	console.log(
-		`${logSymbols.success} startup: ${chalk.cyan(
-			relCwd === '' ? '.' : relCwd
-		)}`
-	);
+	console.log(`📦 bootstraping ${wpackLogoSmall} into your project`);
 	try {
 		const initiator = new Bootstrap(cwd, version);
 
@@ -29,7 +32,14 @@ export async function bootstrap(
 
 			if (done.configured === 'project') {
 				console.log(
-					`${logSymbols.success} project bootstrap complete!`
+					`${
+						logSymbols.success
+					} ${wpackLogoSmall} bootstrap complete!`
+				);
+				console.log(
+					`📝 project config created at ${chalk.yellow(
+						'./wpackio.project.js'
+					)}`
 				);
 			} else {
 				console.log(
@@ -37,50 +47,63 @@ export async function bootstrap(
 				);
 			}
 
+			console.log(
+				`📡 server config created at ${chalk.yellow(
+					'./wpackio.server.js'
+				)}`
+			);
+
 			// Install all dependencies from `done` if any
 			const command = isYarn() ? 'yarn' : 'npm';
 			const add = isYarn() ? 'add' : 'i';
 			const devParam = isYarn() ? '--dev' : '-D';
+			const spinner = ora({ spinner: 'dots3' });
 
 			if (done.deps && done.deps.dependencies.length) {
-				console.log(`🗳️ installing project dependencies\n`);
 				console.log(
-					`    ${bulletSymbol} ${chalk.green(
+					`${logSymbols.info} need to install following dependencies`
+				);
+				console.log(
+					`    ${bulletSymbol} ${chalk.yellow(
 						done.deps.dependencies.join(', ')
-					)}`
+					)}\n`
 				);
-				console.log(`⏲️ this may take a while!\n`);
-				const dep = execa(command, [add, ...done.deps.dependencies]);
-				dep.stdout.pipe(process.stdout);
-				await dep;
-				console.log(
-					`${logSymbols.success} done installing project dependencies`
+				spinner.start(
+					`installing dependencies${watchEllipsis} may take a while`
 				);
+				await execa(command, [add, ...done.deps.dependencies]);
+				spinner.succeed('done installing dependencies');
 			}
 			if (done.deps && done.deps.devDependencies.length) {
-				console.log(`🗳️ installing project dev dependencies\n`);
+				console.log(
+					`️${
+						logSymbols.info
+					} need to install following dev dependencies\n`
+				);
 				console.log(
 					`    ${bulletSymbol} ${chalk.green(
 						done.deps.devDependencies.join(', ')
-					)}`
+					)}\n`
 				);
-				console.log(`⏲️ this may take a while!\n`);
-				const dep = execa(command, [
+				spinner.start(
+					`installing dev dependencies${watchEllipsis} may take a while`
+				);
+				await execa(command, [
 					add,
 					...done.deps.devDependencies,
 					devParam,
 				]);
-				dep.stdout.pipe(process.stdout);
-				await dep;
-				console.log(
-					`${
-						logSymbols.success
-					} done installing project dev dependencies`
-				);
+
+				spinner.succeed('done installing dependencies');
 			}
 		} catch (e) {
 			console.log(
 				`${logSymbols.error} configuration files are already present.`
+			);
+			console.log(
+				`${
+					logSymbols.info
+				} change the file code if you wish to modify the tooling.`
 			);
 		}
 

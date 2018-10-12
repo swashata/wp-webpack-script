@@ -99,7 +99,7 @@ program
 
 // Init the project
 program
-	.command('init')
+	.command('bootstrap')
 	.description('create project and/or server configuration files.')
 	.option('-c, --context', contextHelp)
 	.action((options: ProgramOptions | undefined) => {

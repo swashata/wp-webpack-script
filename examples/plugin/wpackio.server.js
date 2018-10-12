@@ -15,9 +15,6 @@ module.exports = {
 	// UI passed directly to browsersync
 	ui: {
 		port: 3001,
-		weinre: {
-			port: 8888,
-		},
 	},
 	// Whether to show the "BrowserSync Connected"
 	notify: false,

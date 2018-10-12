@@ -105,6 +105,7 @@ export class Bootstrap {
 			const projectContext = await this.initProjectConfig();
 			const serverContext = await this.initServerConfig();
 			const deps = this.configureScripts(projectContext);
+			this.initBrowserList();
 			return Promise.resolve(
 				new InitResolve('project', serverContext, projectContext, deps)
 			);
@@ -243,6 +244,17 @@ export class Bootstrap {
 			fs.writeFileSync(this.serverConfigPath, compiler(context));
 			return context;
 		});
+	}
+
+	/**
+	 * Create a default production ready (90%+ global coverage)
+	 * browserlistrc file for your project.
+	 */
+	private initBrowserList(): void {
+		fs.writeFileSync(
+			path.resolve(this.cwd, '.browserslistrc'),
+			'> 0.25%, not dead'
+		);
 	}
 
 	/**
