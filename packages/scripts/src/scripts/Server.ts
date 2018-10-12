@@ -179,6 +179,17 @@ export class Server {
 	}
 
 	/**
+	 * Get URL to browserSync UI.
+	 */
+	public getBsUiUrl(): string | boolean {
+		const { host, ui } = this.serverConfig;
+		if (!ui) {
+			return false;
+		}
+		return `http://${host || 'localhost'}:${ui.port || '8080'}`;
+	}
+
+	/**
 	 * Open browser if not already opened and config says so.
 	 */
 	public openBrowser = (): void => {

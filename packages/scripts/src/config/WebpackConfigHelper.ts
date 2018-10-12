@@ -42,6 +42,7 @@ export interface WebpackConfigHelperConfig {
 	optimizeSplitChunks: ProjectConfig['optimizeSplitChunks'];
 	publicPath: string; // Not used right now, but maybe we will need it in future?
 	publicPathUrl: string;
+	errorOverlay: ProjectConfig['errorOverlay'];
 }
 
 interface CommonWebpackConfig {
@@ -152,7 +153,9 @@ export class WebpackConfigHelper {
 			// 2. overlay and overlayStypes - To enable overlay on errors, we don't need warnings here
 			// 3. path - The output path, We need to make sure both server and client has the same value.
 			// 4. name - Because it could be multicompiler
-			const webpackHotClient: string = `webpack-hot-middleware/client?path=__wpackio&name=${name}&dynamicPublicPath=true&overlay=true&reload=true&overlayStyles=${encodeURIComponent(
+			const webpackHotClient: string = `webpack-hot-middleware/client?path=__wpackio&name=${name}&dynamicPublicPath=true${
+				this.config.errorOverlay ? '&overlay=true' : ''
+			}&reload=true&overlayStyles=${encodeURIComponent(
 				JSON.stringify(overlayStyles)
 			)}`;
 			// Now add to each of the entries

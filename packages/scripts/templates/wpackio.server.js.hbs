@@ -1,16 +1,4 @@
-import browserSync from 'browser-sync';
-
-export interface ServerConfig {
-	host?: string;
-	proxy: string;
-	port: number;
-	ui: browserSync.UIOptions;
-	notify: boolean;
-	open: boolean;
-	ghostMode: browserSync.Options['ghostMode'];
-}
-
-export const serverConfigDefault: ServerConfig = {
+module.exports = {
 	// Your LAN IP or host where you would want the live server
 	// Override this if you know your correct external IP (LAN)
 	// Otherwise, the system will always use localhost and will not
@@ -21,18 +9,18 @@ export const serverConfigDefault: ServerConfig = {
 	// So it is recommended to change this to your LAN IP.
 	// If you intend to access it from your LAN (probably do?)
 	// If you keep null, then wpackio-scripts will try to determine your LAN IP
-	// on it's own, which might not always be satisfying.
+	// on it's own, which might not always be satisfying. But it is in most cases.
 	host: undefined,
 	// Your WordPress development server address
 	// This is super important
-	proxy: 'http://localhost',
+	proxy: '{{proxy}}',
 	// PORT on your localhost where you would want live server to hook
 	port: 3000,
 	// UI passed directly to browsersync
 	ui: {
 		port: 3001,
 		weinre: {
-			port: 8080,
+			port: 8787,
 		},
 	},
 	// Whether to show the "BrowserSync Connected"

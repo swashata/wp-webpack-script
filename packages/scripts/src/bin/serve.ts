@@ -70,14 +70,14 @@ export function serve(options: ProgramOptions | undefined): void {
 			invalid: () => {
 				spinner.stop();
 				clearConsole();
-				serverInfo(server.getServerUrl());
+				serverInfo(server.getServerUrl(), server.getBsUiUrl());
 				// Show message that we are compiling
 				spinner.start(`compiling changes${watchEllipsis}`);
 			},
 			done: stats => {
 				spinner.stop();
 				clearConsole();
-				serverInfo(server.getServerUrl());
+				serverInfo(server.getServerUrl(), server.getBsUiUrl());
 				// Show message that we have compiled
 				spinner.start('compiling...');
 				spinner.stopAndPersist({
@@ -115,7 +115,7 @@ export function serve(options: ProgramOptions | undefined): void {
 			firstCompile: () => {
 				spinner.stop();
 				clearConsole();
-				serverInfo(server.getServerUrl());
+				serverInfo(server.getServerUrl(), server.getBsUiUrl());
 				console.log(
 					`${logSymbols.success} ${chalk.dim('server started!')}`
 				);

@@ -5,8 +5,9 @@ import path from 'path';
 import clearConsole from 'react-dev-utils/clearConsole';
 import updateNotifier from 'update-notifier';
 import { build } from './build';
+import { init } from './init';
 import { serve } from './serve';
-import { contextHelp, printIntro } from './utils';
+import { bulletSymbol, contextHelp, printIntro } from './utils';
 
 export interface ProgramOptions {
 	context?: string;
@@ -17,10 +18,7 @@ export interface ProgramOptions {
 let isValidCommand = false;
 
 /* tslint:disable:no-require-imports no-var-requires non-literal-require */
-const pkg = require(path.resolve(
-	__dirname,
-	'../../package.json'
-)) as updateNotifier.Package;
+const pkg = require('../../package.json') as updateNotifier.Package;
 
 // Notify for updates
 updateNotifier({ pkg }).notify();
@@ -43,6 +41,22 @@ program.on('--help', () => {
 		'  %s build -c /path/to/project/root',
 		path.basename(process.argv[1])
 	);
+	console.log('');
+	console.log(chalk.cyan.bold('Bootstrap/Onboarding:'));
+	console.log(`If you are just starting out with wpackio-scripts, then run
+
+    ${bulletSymbol} ${chalk.yellow('npx @wpack/scripts wpackio-scripts init')}
+
+If you already have the project config file and would like to configure
+local server for this machine, then run
+
+    ${bulletSymbol} ${chalk.yellow('npm run bootstrap')}
+            OR
+    ${bulletSymbol} ${chalk.yellow('yarn bootstrap')}
+
+Remember to always keep local server config out of VCS,
+because it would differ for team members.
+	`);
 });
 
 // Commands
@@ -81,6 +95,16 @@ program
 	.action((options: ProgramOptions | undefined) => {
 		isValidCommand = true;
 		build(options);
+	});
+
+// Init the project
+program
+	.command('init')
+	.description('create project and/or server configuration files.')
+	.option('-c, --context', contextHelp)
+	.action((options: ProgramOptions | undefined) => {
+		isValidCommand = true;
+		init(options, pkg.version);
 	});
 
 // Output our fancy stuff first

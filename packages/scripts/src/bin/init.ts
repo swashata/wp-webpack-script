@@ -1,19 +1,93 @@
-// This is used to initialize a project
-/*
-// If wpackio.project.js is present, then don't init the project stuff.
-// If wpackio.server.js is present, then don't init the server stuff.
-// If both are present, then bail
+import chalk from 'chalk';
+import execa from 'execa';
+import logSymbols from 'log-symbols';
+import path from 'path';
+import PrettyError from 'pretty-error';
 
-//// For wpackio.project.js
-1. Ask appName (auto-generate from package.json)
-2. Ask type (if style.css present, then theme)
-3. Ask slug (default, directory name)
-4. Generate Author Name, version, link, license, etc (for banner) from package.json
-5. Ask outputPath (relative), defaults 'dist'
-6. Ask if react, sass, flow needed.
-7. If sass needed, then install node-sass.
-8. Ask glob pattern for .php files.
+import { ProgramOptions } from '.';
+import { Init } from '../scripts/Init';
+import { bulletSymbol, endBootstrapInfo, isYarn, resolveCWD } from './utils';
 
-//// For wpackio.server.js
-1. Ask proxy URL.
-*/
+export async function init(
+	options: ProgramOptions | undefined,
+	version: string
+): Promise<void> {
+	// For error handling
+	const pe = new PrettyError();
+	const cwd = resolveCWD(options);
+	const relCwd = path.relative(process.cwd(), cwd);
+	console.log(
+		`${logSymbols.success} startup: ${chalk.cyan(
+			relCwd === '' ? '.' : relCwd
+		)}`
+	);
+	try {
+		const initiator = new Init(cwd, version);
+
+		try {
+			const done = await initiator.bootstrap();
+
+			if (done.configured === 'project') {
+				console.log(
+					`${logSymbols.success} project bootstrap complete!`
+				);
+			} else {
+				console.log(
+					`${logSymbols.success} server configuration complete!`
+				);
+			}
+
+			// Install all dependencies from `done` if any
+			const command = isYarn() ? 'yarn' : 'npm';
+			const add = isYarn() ? 'add' : 'i';
+			const devParam = isYarn() ? '--dev' : '-D';
+
+			if (done.deps && done.deps.dependencies.length) {
+				console.log(`🗳️ installing project dependencies\n`);
+				console.log(
+					`    ${bulletSymbol} ${chalk.green(
+						done.deps.dependencies.join(', ')
+					)}`
+				);
+				console.log(`⏲️ this may take a while!\n`);
+				const dep = execa(command, [add, ...done.deps.dependencies]);
+				dep.stdout.pipe(process.stdout);
+				await dep;
+				console.log(
+					`${logSymbols.success} done installing project dependencies`
+				);
+			}
+			if (done.deps && done.deps.devDependencies.length) {
+				console.log(`🗳️ installing project dev dependencies\n`);
+				console.log(
+					`    ${bulletSymbol} ${chalk.green(
+						done.deps.devDependencies.join(', ')
+					)}`
+				);
+				console.log(`⏲️ this may take a while!\n`);
+				const dep = execa(command, [
+					add,
+					...done.deps.devDependencies,
+					devParam,
+				]);
+				dep.stdout.pipe(process.stdout);
+				await dep;
+				console.log(
+					`${
+						logSymbols.success
+					} done installing project dev dependencies`
+				);
+			}
+		} catch (e) {
+			console.log(pe.render(e));
+			console.log(
+				`${logSymbols.error} configuration files are already present.`
+			);
+		}
+
+		// Log how to access and start, develop, build etc.
+		endBootstrapInfo();
+	} catch (e) {
+		console.log(pe.render(e));
+	}
+}

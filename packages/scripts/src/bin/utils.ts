@@ -79,13 +79,18 @@ export function resolveCWD(
 	return cwd;
 }
 
-export function serverInfo(url: string): void {
+export function serverInfo(url: string, uiUrl: string | boolean): void {
 	const msg = `${wpackLogoSmall} server is running ${chalk.redBright('hot')}.
 You can now view it in your browser.
 
     ${bulletSymbol} ${chalk.bold(
 		'Network address:'
 	)} visit ${chalk.blue.underline(url)}.
+    ${bulletSymbol} ${chalk.bold('BrowserSync UI:')} ${
+		typeof uiUrl === 'string'
+			? chalk.blue.underline(uiUrl)
+			: chalk.red('N/A')
+	}.
     ${bulletSymbol} ${chalk.bold('Force Compile:')} press ${chalk.cyan('r')}.
     ${bulletSymbol} ${chalk.bold('Stop Server:')} press ${chalk.cyan(
 		'Ctrl'
@@ -145,6 +150,49 @@ If your filesize is too large, remember you can use advanced
 dynamic import and multiple entry-points easily with ${wpackLogoSmall}.
 
     ${bulletSymbol} Local Server: ${chalk.blue.underline(localUrl)}.
+    ${bulletSymbol} For more info, visit: ${wpackLink}.
+
+To spread the ${chalk.red(figures.heart)} please tweet.`;
+
+	console.log(
+		boxen(msg, {
+			padding: 1,
+			borderColor: 'cyan',
+			align: 'left',
+			float: 'left',
+			borderStyle: 'round',
+		})
+	);
+}
+
+export function endBootstrapInfo(): void {
+	console.log('\n');
+	const msg = `${wpackLogoSmall} was ${chalk.green(
+		'successfully'
+	)} integrated within your project.
+
+If this is your first run edit your ${chalk.bold.magenta(
+		'wpackio.project.js'
+	)} file and put entrypoints.
+You will find examples within the file itself.
+
+You should keep ${chalk.bold.yellow(
+		'wpackio.server.js'
+	)} outside your VCS tracking
+as it will most likely differ for different users.
+
+You can run ${chalk.dim('bootstrap')} command again and it will just
+create the ${chalk.bold.yellow('wpackio.server.js')} file.
+
+    ${bulletSymbol} Start Development: ${chalk.yellow(
+		isYarn() ? 'yarn start' : 'npm start'
+	)}.
+    ${bulletSymbol} Start Development: ${chalk.yellow(
+		isYarn() ? 'yarn build' : 'npm run build'
+	)}.
+    ${bulletSymbol} Create local server config: ${chalk.yellow(
+		isYarn() ? 'yarn bootstrap' : 'npm run bootstrap'
+	)}.
     ${bulletSymbol} For more info, visit: ${wpackLink}.
 
 To spread the ${chalk.red(figures.heart)} please tweet.`;

@@ -141,6 +141,7 @@ export class CreateWebpackConfig {
 			optimizeSplitChunks,
 			outputPath,
 			appName,
+			errorOverlay,
 		} = this.projectConfig;
 		const { host, port } = this.serverConfig;
 		const helper: WebpackConfigHelper = new WebpackConfigHelper(
@@ -160,6 +161,7 @@ export class CreateWebpackConfig {
 				outputPath,
 				publicPath: this.getPublicPath(),
 				publicPathUrl: this.getPublicPathUrl(),
+				errorOverlay,
 			},
 			this.cwd,
 			this.isDev
