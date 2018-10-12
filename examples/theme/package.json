@@ -1,6 +1,6 @@
 {
   "name": "wpacktheme",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A sample execution of wpackio scripts for WordPress Theme Development",
   "main": "index.js",
   "author": "Swashata Ghosh (https://swas.io)",
@@ -17,6 +17,6 @@
     "start": "wpackio-scripts start"
   },
   "dependencies": {
-    "@wpackio/scripts": "^0.0.2"
+    "@wpackio/scripts": "^0.0.3"
   }
 }
