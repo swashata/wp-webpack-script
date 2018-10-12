@@ -11,10 +11,8 @@
   },
   "scripts": {
     "bootstrap": "wpackio-scripts init",
-    "build": "wpackio-scripts build",
-    "start": "wpackio-scripts start",
-    "build-backup": "echo $PATH",
-    "start-backup": "echo $PATH"
+    "exbuild": "wpackio-scripts build",
+    "exstart": "wpackio-scripts start"
   },
   "dependencies": {
     "@wpackio/scripts": "^0.0.1"
