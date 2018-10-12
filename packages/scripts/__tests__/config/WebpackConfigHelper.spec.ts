@@ -71,6 +71,7 @@ function getConfigFromProjectAndServer(
 		publicPathUrl: `//localhost/wp-content/${pCfg.type}s/${pCfg.slug}/${
 			pCfg.outputPath
 		}/`,
+		errorOverlay: true,
 	};
 }
 
