@@ -56,7 +56,7 @@ class InitResolve {
 	}
 }
 
-export class Init {
+export class Bootstrap {
 	private cwd: string;
 	private projectConfigPath: string;
 	private serverConfigPath: string;
@@ -89,7 +89,9 @@ export class Init {
 			// If project config is present, then just configure the server
 			if (this.isConfigPresent('server')) {
 				// Server is also present, so just bail
-				return Promise.reject();
+				return Promise.reject(
+					new Error('project is already bootstrapped.')
+				);
 			} else {
 				// Configure the server
 				const serverContext = await this.initServerConfig();
@@ -259,7 +261,7 @@ export class Init {
 		const scripts: { [x: string]: string } = {
 			build: 'wpackio-scripts build',
 			start: 'wpackio-scripts start',
-			bootstrap: 'wpackio-scripts init',
+			bootstrap: 'wpackio-scripts bootstrap',
 		};
 		if (!packageFileData.scripts) {
 			packageFileData.scripts = {};

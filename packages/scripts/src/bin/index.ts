@@ -4,8 +4,8 @@ import program from 'commander';
 import path from 'path';
 import clearConsole from 'react-dev-utils/clearConsole';
 import updateNotifier from 'update-notifier';
+import { bootstrap } from './bootstrap';
 import { build } from './build';
-import { init } from './init';
 import { serve } from './serve';
 import { bulletSymbol, contextHelp, printIntro } from './utils';
 
@@ -45,7 +45,7 @@ program.on('--help', () => {
 	console.log(chalk.cyan.bold('Bootstrap/Onboarding:'));
 	console.log(`If you are just starting out with wpackio-scripts, then run
 
-    ${bulletSymbol} ${chalk.yellow('npx @wpack/scripts wpackio-scripts init')}
+    ${bulletSymbol} ${chalk.yellow('npx @wpackio/scripts bootstrap')}
 
 If you already have the project config file and would like to configure
 local server for this machine, then run
@@ -104,7 +104,7 @@ program
 	.option('-c, --context', contextHelp)
 	.action((options: ProgramOptions | undefined) => {
 		isValidCommand = true;
-		init(options, pkg.version);
+		bootstrap(options, pkg.version);
 	});
 
 // Output our fancy stuff first

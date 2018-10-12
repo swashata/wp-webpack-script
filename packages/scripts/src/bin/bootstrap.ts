@@ -5,10 +5,10 @@ import path from 'path';
 import PrettyError from 'pretty-error';
 
 import { ProgramOptions } from '.';
-import { Init } from '../scripts/Init';
+import { Bootstrap } from '../scripts/Bootstrap';
 import { bulletSymbol, endBootstrapInfo, isYarn, resolveCWD } from './utils';
 
-export async function init(
+export async function bootstrap(
 	options: ProgramOptions | undefined,
 	version: string
 ): Promise<void> {
@@ -22,7 +22,7 @@ export async function init(
 		)}`
 	);
 	try {
-		const initiator = new Init(cwd, version);
+		const initiator = new Bootstrap(cwd, version);
 
 		try {
 			const done = await initiator.bootstrap();
@@ -79,7 +79,6 @@ export async function init(
 				);
 			}
 		} catch (e) {
-			console.log(pe.render(e));
 			console.log(
 				`${logSymbols.error} configuration files are already present.`
 			);
