@@ -10,7 +10,7 @@
     "publish": {
       "allowBranch": "master",
       "conventionalCommits": true,
-      "gitRemote": "upstream",
+      "gitRemote": "origin",
       "message": "chore(release): publish %s"
     }
   }
