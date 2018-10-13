@@ -16,5 +16,32 @@
 		"Packio",
 		"uglifyjs",
 		"wpack"
+	],
+	"cSpell.enabledLanguageIds": [
+		"asciidoc",
+		"c",
+		"cpp",
+		"csharp",
+		"css",
+		"go",
+		"handlebars",
+		"html",
+		"jade",
+		"javascriptreact",
+		"json",
+		"latex",
+		"less",
+		"markdown",
+		"php",
+		"plaintext",
+		"pub",
+		"python",
+		"restructuredtext",
+		"rust",
+		"scss",
+		"text",
+		"typescript",
+		"typescriptreact",
+		"yml"
 	]
 }
