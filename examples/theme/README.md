@@ -46,6 +46,40 @@ the following features.
 > required for this example. You can very well spin up any local server you
 > are comfortable with.
 
+## How are we enqueuing?
+
+For simplicity, we are creating a global variable.
+
+```php
+<?php
+$wpackio_sample_theme_enqueue = new \WPackio\Enqueue( 'wpackiotheme', 'dist', '1.0.0', 'theme' );
+```
+
+Now we hook into `wp_enqueue_scripts`.
+
+```php
+<?php
+/**
+ * Enqueue scripts and styles.
+ */
+function wpackio_theme_scripts() {
+	// We may not need to do it if using through wpackio/enqueue
+	// wp_enqueue_style( 'wpackio-theme-style', get_stylesheet_uri() );
+	// Enqueue assets through wpackio/enqueue
+	/**
+	 * @var \WPackio\Enqueue
+	 */
+	global $wpackio_sample_theme_enqueue;
+	$wpackio_sample_theme_enqueue->enqueue( 'theme', 'main', [] );
+}
+add_action( 'wp_enqueue_scripts', 'wpackio_theme_scripts' );
+```
+
+And that takes care of our enqueue.
+
+Note that it is important to instantiate the enqueue variable during theme entry-point.
+Hence we have the code in our `functions.php` file.
+
 ## Checking some HMR
 
 Now go ahead and edit the content in main.js and main.scss.
