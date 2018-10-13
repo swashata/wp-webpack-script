@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.0.5"></a>
+## [0.0.5](https://github.com/swashata/wp-webpack-script/compare/v0.0.4...v0.0.5) (2018-10-13)
+
+
+### Features
+
+* add postcss.config.js in project template ([04f63ba](https://github.com/swashata/wp-webpack-script/commit/04f63ba))
+* add themes example ([0df4b05](https://github.com/swashata/wp-webpack-script/commit/0df4b05))
+
+
+
+
+
 <a name="0.0.4"></a>
 ## [0.0.4](https://github.com/swashata/wp-webpack-script/compare/v0.0.3...v0.0.4) (2018-10-13)
 
