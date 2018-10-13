@@ -267,7 +267,7 @@ export class Bootstrap {
 			? // tslint:disable-next-line:non-literal-require
 			  require(this.packageJsonPath)
 			: {
-					name: '',
+					name: projectContext.appName,
 			  };
 		// Check if script is already present
 		const scripts: { [x: string]: string } = {

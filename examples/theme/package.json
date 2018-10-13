@@ -12,9 +12,7 @@
   "scripts": {
     "bootstrap": "wpackio-scripts bootstrap",
     "exbuild": "wpackio-scripts build",
-    "exstart": "wpackio-scripts start",
-    "build": "wpackio-scripts build",
-    "start": "wpackio-scripts start"
+    "exstart": "wpackio-scripts start"
   },
   "dependencies": {
     "@wpackio/scripts": "^0.0.3"
