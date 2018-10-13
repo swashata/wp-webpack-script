@@ -1,10 +1,10 @@
-# wpack.io - Modern JavaScript tooling for WordPress
-
-[![Build Status](https://travis-ci.com/swashata/wp-webpack-script.svg?branch=master)](https://travis-ci.com/swashata/wp-webpack-script) [![npm version](https://badge.fury.io/js/%40wpackio%2Fscripts.svg)](https://badge.fury.io/js/%40wpackio%2Fscripts)
-
 <p align="center">
   <img width="600" height="130" src="https://raw.githubusercontent.com/swashata/wp-webpack-script/master/assets/wpackio-logo.png">
 </p>
+
+# wpack.io - Modern JavaScript tooling for WordPress
+
+[![Build Status](https://travis-ci.com/swashata/wp-webpack-script.svg?branch=master)](https://travis-ci.com/swashata/wp-webpack-script) [![npm version](https://badge.fury.io/js/%40wpackio%2Fscripts.svg)](https://badge.fury.io/js/%40wpackio%2Fscripts)
 
 ## What is wpack.io?
 
@@ -25,7 +25,7 @@ like react is imminent. The goal of this tooling is to:
 
 Everything is documented in our [website](https://wpack.io).
 
-In short
+#### TL;DR
 
 -   Add `@wpackio/scripts` to a project by running this.
     ```bash
@@ -92,7 +92,7 @@ Bootstrap wpack.io into any existing or new project. This command has to be run
 from within the project.
 
 <p align="center">
-  <img width="600" height="130" src="https://raw.githubusercontent.com/swashata/wp-webpack-script/master/assets/bootstrap.gif">
+  <img src="https://raw.githubusercontent.com/swashata/wp-webpack-script/master/assets/bootstrap.gif">
 </p>
 
 ### `npm start`
@@ -101,13 +101,13 @@ After configuring all entrypoints and using the PHP library for consuming, we
 start the development server.
 
 <p align="center">
-  <img width="600" height="130" src="https://raw.githubusercontent.com/swashata/wp-webpack-script/master/assets/start.gif">
+  <img src="https://raw.githubusercontent.com/swashata/wp-webpack-script/master/assets/start.gif">
 </p>
 
 Once done, we press <kbd>Ctrl</kbd> + <kbd>c</kbd> to stop it.
 
 <p align="center">
-  <img width="600" height="130" src="https://raw.githubusercontent.com/swashata/wp-webpack-script/master/assets/stop.gif">
+  <img src="https://raw.githubusercontent.com/swashata/wp-webpack-script/master/assets/stop.gif">
 </p>
 
 ### `npm run build`
@@ -115,7 +115,7 @@ Once done, we press <kbd>Ctrl</kbd> + <kbd>c</kbd> to stop it.
 Now we create production build.
 
 <p align="center">
-  <img width="600" height="130" src="https://raw.githubusercontent.com/swashata/wp-webpack-script/master/assets/build.gif">
+  <img src="https://raw.githubusercontent.com/swashata/wp-webpack-script/master/assets/build.gif">
 </p>
 
 ## Learn more
