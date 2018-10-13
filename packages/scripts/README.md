@@ -1,5 +1,9 @@
 # `@wpackio/scripts`
 
+<p align="center">
+  <a href="https://wpack.io"><img width="600" height="130" src="https://raw.githubusercontent.com/swashata/wp-webpack-script/master/assets/wpackio-logo.png"></a>
+</p>
+
 This is the main scripts package of [wpack.io](https://wpack.io) tool.
 
 > Please refer to the readme of this repo for usage instruction.
