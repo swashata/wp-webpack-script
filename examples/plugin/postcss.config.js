@@ -1,7 +1,4 @@
+/* eslint-disable global-require, import/no-extraneous-dependencies */
 module.exports = {
-	plugins: {
-		autoprefixer: {
-			browsers: '> 0.25%, not dead',
-		},
-	},
+	plugins: [require('autoprefixer')],
 };
