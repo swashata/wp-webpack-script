@@ -1,10 +1,10 @@
 # `@wpackio/scripts`
 
-Stub README
+This is the main scripts package of [wpack.io](https://wpack.io) tool.
 
-// TODO
+> Please refer to the readme of this repo for usage instruction.
 
-> Intro
+It produces an executable named `wpackio-scripts`.
 
 ## Installation
 
@@ -22,15 +22,28 @@ npm i @wpackio/scripts
 
 ## Usage
 
-// TODO
+The `wpackio-scripts` executable requires `wpackio.project.js` and `wpackio.server.js`
+within your project root.
 
-> Usage instruction
+Please check [our documentation](https://wpack.io) for full documentation.
 
-## Configuration
+```bash
+`npm bin`/wpackio-scripts bootstrap
+```
 
-// TODO
+Create configuration in a project.
 
-> Configuration instruction
+```bash
+`npm bin`/wpackio-scripts start
+```
+
+Start the development server.
+
+```bash
+`npm bin`/wpackio-scripts build
+```
+
+Build production files.
 
 ## Development
 
