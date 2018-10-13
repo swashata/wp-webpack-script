@@ -2,12 +2,12 @@ import {
 	babelPreset,
 	PresetOptions,
 } from '@wpackio/babel-preset-base/lib/preset';
-import WatchMissingNodeModulesPlugin from 'react-dev-utils/WatchMissingNodeModulesPlugin';
-
 import cleanWebpackPlugin from 'clean-webpack-plugin';
 import miniCssExtractPlugin from 'mini-css-extract-plugin';
 import path from 'path';
+import WatchMissingNodeModulesPlugin from 'react-dev-utils/WatchMissingNodeModulesPlugin';
 import slugify from 'slugify';
+import TimeFixPlugin from 'time-fix-plugin';
 import webpack from 'webpack';
 import WebpackAssetsManifest from 'webpack-assets-manifest';
 import {
@@ -264,6 +264,9 @@ export class WebpackConfigHelper {
 					path.resolve(this.cwd, './node_modules')
 				)
 			);
+			// Add timewatch plugin to avoid multiple successive build
+			// https://github.com/webpack/watchpack/issues/25
+			plugins.push(new TimeFixPlugin());
 		} else {
 			// Add Production specific plugins
 			const { bannerConfig } = this.config;

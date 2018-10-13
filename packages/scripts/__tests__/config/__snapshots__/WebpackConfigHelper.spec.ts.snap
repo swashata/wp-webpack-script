@@ -205,5 +205,8 @@ Array [
   WatchMissingNodeModulesPlugin {
     "nodeModulesPath": "/foo/bar/node_modules",
   },
+  TimeFixPlugin {
+    "watchOffset": 11000,
+  },
 ]
 `;
