@@ -1,4 +1,9 @@
 <?php
+// Get composer stuff
+require_once __DIR__ . '/vendor/autoload.php';
+
+$wpackio_sample_theme_enqueue = new \WPackio\Enqueue( 'wpackiotheme', 'dist', '1.0.0', 'theme' );
+
 /**
  * wpackio-theme functions and definitions
  *
@@ -120,7 +125,8 @@ add_action( 'widgets_init', 'wpackio_theme_widgets_init' );
  * Enqueue scripts and styles.
  */
 function wpackio_theme_scripts() {
-	wp_enqueue_style( 'wpackio-theme-style', get_stylesheet_uri() );
+	// We may not need to do it if using through wpackio/enqueue
+	// wp_enqueue_style( 'wpackio-theme-style', get_stylesheet_uri() );
 
 	wp_enqueue_script( 'wpackio-theme-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
 
@@ -129,6 +135,13 @@ function wpackio_theme_scripts() {
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
+
+	// Enqueue assets through wpackio/enqueue
+	/**
+	 * @var \WPackio\Enqueue
+	 */
+	global $wpackio_sample_theme_enqueue;
+	$wpackio_sample_theme_enqueue->enqueue( 'theme', 'main', [] );
 }
 add_action( 'wp_enqueue_scripts', 'wpackio_theme_scripts' );
 

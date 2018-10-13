@@ -1,0 +1,5 @@
+{
+    "require": {
+        "wpackio/enqueue": "^1.0"
+    }
+}

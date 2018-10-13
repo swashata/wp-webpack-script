@@ -1,1 +1,3 @@
-console.log('Hello Theme');
+import './main.scss';
+
+console.log('Hello Theme!');
