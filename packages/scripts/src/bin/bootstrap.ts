@@ -60,7 +60,11 @@ export async function bootstrap(
 			const spinner = ora({ spinner: 'dots3' });
 
 			if (done.deps && done.deps.dependencies.length) {
-				console.log(`🍪 need to install following dependencies\n`);
+				console.log(
+					`🍪 need to install following ${chalk.yellow(
+						'dependencies'
+					)}\n`
+				);
 				console.log(
 					`    ${bulletSymbol} ${chalk.yellow(
 						done.deps.dependencies.join(', ')
@@ -73,7 +77,11 @@ export async function bootstrap(
 				spinner.succeed('done installing dependencies\n');
 			}
 			if (done.deps && done.deps.devDependencies.length) {
-				console.log(`⚙️ need to install following dev dependencies\n`);
+				console.log(
+					`🍪 need to install following ${chalk.yellow(
+						'dev dependencies'
+					)}\n`
+				);
 				console.log(
 					`    ${bulletSymbol} ${chalk.green(
 						done.deps.devDependencies.join(', ')
