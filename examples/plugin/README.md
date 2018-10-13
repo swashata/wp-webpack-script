@@ -3,8 +3,9 @@ the following features.
 
 1. Using [React](https://reactjs.org) and [React Hot Loader](https://github.com/gaearon/react-hot-loader)
    for best in kind DX.
-2. Multiple entry points along with webpack multi-compiler.
-3. Custom implementation of Hot Module Replacement.
+2. Using [Sass](https://sass-lang.com/) on react components.
+3. Multiple entry points along with webpack multi-compiler.
+4. Custom implementation of Hot Module Replacement.
 
 ## Getting Started
 
@@ -60,6 +61,8 @@ With the help of browsersync, we also watch for files inside `inc/**/*.php`. So
 go ahead and edit them. The page will reload.
 
 ## Doing some react stuff
+
+![react-stuff](./reactapp.gif)
 
 We have created a simple shortcode `[wpackio-reactapp]`. Publish it in any page
 and this will create a todo app.

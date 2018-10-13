@@ -28,5 +28,15 @@
     "scripts": {
       "test": "phpunit --colors=auto",
       "lint": "phpcs -v inc/*"
+    },
+    "archive": {
+      "exclude": [
+        "./tests",
+        "./.vscode",
+        ".editorconfig",
+        ".travis.yml",
+        "phpcs.xml",
+        "phpunit.xml"
+      ]
     }
 }

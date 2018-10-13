@@ -1,0 +1,18 @@
+.List {
+	list-style: none;
+	li {
+		box-shadow: 0 0 1px rgba(0, 0, 0, 0.12);
+		padding: 0.5em 1em;
+		margin: 0.5em 0;
+		cursor: pointer;
+
+		.symbol {
+			&--green {
+				color: #43a047;
+			}
+			&--yellow {
+				color: #fbc02d;
+			}
+		}
+	}
+}

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import uuid from 'uuid/v4';
 import List from './List';
+import './App.scss';
 
 export default class Todo extends Component {
 	constructor(props) {
@@ -18,8 +20,27 @@ export default class Todo extends Component {
 		event.preventDefault();
 		this.setState(state => ({
 			term: '',
-			items: [...state.items, state.term],
+			items: [
+				...state.items,
+				{ text: state.term, done: false, id: uuid() },
+			],
 		}));
+	};
+
+	toggleDone = id => {
+		this.setState(state => {
+			const items = state.items.map(item => {
+				// Find the one with Id and toggle it's done
+				if (item.id === id) {
+					return {
+						...item,
+						done: !item.done,
+					};
+				}
+				return item;
+			});
+			return { items };
+		});
 	};
 
 	render() {
@@ -30,7 +51,7 @@ export default class Todo extends Component {
 					<input value={term} onChange={this.onChange} />
 					<button type="submit">Add Todo</button>
 				</form>
-				<List items={items} />
+				<List items={items} toggleDone={this.toggleDone} />
 			</div>
 		);
 	}
