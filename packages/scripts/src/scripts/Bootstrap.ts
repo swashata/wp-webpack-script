@@ -105,7 +105,7 @@ export class Bootstrap {
 			const projectContext = await this.initProjectConfig();
 			const serverContext = await this.initServerConfig();
 			const deps = this.configureScripts(projectContext);
-			this.initBrowserList();
+			this.initSharedConfigFiles();
 			return Promise.resolve(
 				new InitResolve('project', serverContext, projectContext, deps)
 			);
@@ -248,12 +248,25 @@ export class Bootstrap {
 
 	/**
 	 * Create a default production ready (90%+ global coverage)
-	 * browserlistrc file for your project.
+	 * browserlistrc file for your project and a postcss.config.js
+	 * file.
 	 */
-	private initBrowserList(): void {
+	private initSharedConfigFiles(): void {
 		fs.writeFileSync(
 			path.resolve(this.cwd, '.browserslistrc'),
 			'> 0.25%, not dead'
+		);
+		fs.writeFileSync(
+			path.resolve(this.cwd, 'postcss.config.js'),
+			`/* eslint-disable global-require, import/no-extraneous-dependencies */
+module.exports = {
+	// You can add more plugins and other postcss config
+	// For more info see
+	// <https://github.com/postcss/postcss-loader#configuration>
+	// There is no need to use cssnano, webpack takes care of it!
+	plugins: [require('autoprefixer')],
+};
+`
 		);
 	}
 
