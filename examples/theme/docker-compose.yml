@@ -1,0 +1,27 @@
+version: '3'
+services:
+  wordpress:
+    cap_add:
+      - SYS_ADMIN
+    devices:
+      - /dev/fuse
+    image: visiblevc/wordpress:latest
+    ports:
+      - 8080:80
+      - 443:443
+    volumes:
+      - ./:/app/wp-content/themes/wpackio-theme # Theme development
+    environment:
+      DB_HOST: db # must match db service name below
+      DB_NAME: wordpress
+      DB_PASS: root # must match below
+      URL_REPLACE: localhost:8080
+      WP_DEBUG: 'true'
+  db:
+    image: mysql:5.7 # or mariadb:10
+    volumes:
+      - data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+volumes:
+  data: {}

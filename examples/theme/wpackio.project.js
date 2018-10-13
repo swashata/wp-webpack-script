@@ -2,9 +2,9 @@ const pkg = require('./package.json');
 
 module.exports = {
 	// Project Identity
-	appName: 'wpacktheme', // Unique name of your project
+	appName: 'wpackiotheme', // Unique name of your project
 	type: 'theme', // Plugin or theme
-	slug: 'theme', // Plugin or Theme slug, basically the directory name under `wp-content/<themes|plugins>`
+	slug: 'wpackio-theme', // Plugin or Theme slug, basically the directory name under `wp-content/<themes|plugins>`
 	// Used to generate banners on top of compiled stuff
 	bannerConfig: {
 		name: 'wpacktheme',
@@ -19,23 +19,22 @@ module.exports = {
 	// Files we need to compile, and where to put
 	files: [
 		// If this has length === 1, then single compiler
-		// {
-		// 	name: 'mobile',
-		// 	entry: {
-		// 		// mention each non-interdependent files as entry points
-		//      // The keys of the object will be used to generate filenames
-		//      // The values can be string or Array of strings (string|string[])
-		//      // But unlike webpack itself, it can not be anything else
-		//      // <https://webpack.js.org/concepts/#entry>
-		//      // You do not need to worry about file-size, because we would do
-		//      // code splitting automatically. When using ES6 modules, forget
-		//      // global namespace pollutions 😉
-		// 		vendor: 'vendor.js',
-		// 		main: ['src/mobile.js'],
-		// 	},
-		// 	// Extra webpack config to be passed directly
-		// 	webpackConfig: undefined,
-		// },
+		{
+			name: 'theme',
+			entry: {
+				// mention each non-interdependent files as entry points
+				// The keys of the object will be used to generate filenames
+				// The values can be string or Array of strings (string|string[])
+				// But unlike webpack itself, it can not be anything else
+				// <https://webpack.js.org/concepts/#entry>
+				// You do not need to worry about file-size, because we would do
+				// code splitting automatically. When using ES6 modules, forget
+				// global namespace pollutions 😉
+				main: ['./src/theme/main.js'],
+			},
+			// Extra webpack config to be passed directly
+			webpackConfig: undefined,
+		},
 		// If has more length, then multi-compiler
 	],
 	// Output path relative to the context directory
