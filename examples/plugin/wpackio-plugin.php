@@ -19,41 +19,15 @@
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
  */
 
-// Get our dependency
-require_once dirname( __FILE__ ) . '/inc/Enqueue.php';
+// Define plugin path
+define( 'WPACKIO_SAMPLE_PLUGIN', __FILE__ );
+
+// Get our autoloader from composer
+require_once __DIR__ . '/vendor/autoload.php';
+
+// Get our own plugin classes, we could (and **SHOULD**) use autoload here too, but let's skip it
+require_once __DIR__ . '/inc/class-wpackio-plugin-init.php';
 
 // Do stuff through this plugin
-class WPackioPluginInit {
-	/**
-	 * @var \WPackio\Enqueue
-	 */
-	public $enqueue;
-
-	public function __construct() {
-		// It is important that we init the Enqueue class right at the plugin/theme load time
-		$this->enqueue = new \WPackio\Enqueue( 'wpackplugin', 'dist', '1.0.0', 'plugin', __FILE__ );
-		// Enqueue a few of our entry points
-		add_action( 'wp_enqueue_scripts', [ $this, 'plugin_enqueue' ] );
-		// And heres a react app with shortcode
-		add_shortcode( 'wpackio-reactapp', [ $this, 'reactapp' ] );
-	}
-
-
-	function plugin_enqueue() {
-		$this->enqueue->enqueue( 'app', 'main', [] );
-		$this->enqueue->enqueue( 'app', 'mobile', [] );
-		$this->enqueue->enqueue( 'foo', 'main', [] );
-	}
-
-	function reactapp( $atts, $content = null ) {
-		// Enqueue our react app scripts
-		$this->enqueue->enqueue( 'reactapp', 'main', [] );
-
-		// Print the entry point
-		return '<div id="wpackio-reactapp"></div>';
-	}
-}
-
-
 // Init
-new WPackioPluginInit();
+new Wpackio_Plugin_Init();

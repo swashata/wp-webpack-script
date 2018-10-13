@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/7.2/phpunit.xsd"
+	bootstrap="tests/bootstrap.php"
+	backupGlobals="true" colors="true"
+	convertErrorsToExceptions="true"
+	convertNoticesToExceptions="true"
+	convertWarningsToExceptions="true"
+	verbose="true"
+	printerClass="PHPUnit\TextUI\ResultPrinter"
+>
+	<testsuites>
+		<testsuite name="WPackIO Enqueue Test Suit">
+			<directory suffix="Test.php">
+				./tests
+			</directory>
+		</testsuite>
+	</testsuites>
+	<filter>
+		<whitelist processUncoveredFilesFromWhitelist="false">
+			<directory suffix=".php">
+				./inc
+			</directory>
+		</whitelist>
+	</filter>
+	<logging>
+		<log
+			type="coverage-text"
+			target="php://stdout"
+			showUncoveredFiles="true"
+		/>
+		<log
+			type="coverage-clover"
+			target="coverage/phpunit/clover.xml"
+			showUncoveredFiles="true"
+		/>
+	</logging>
+</phpunit>

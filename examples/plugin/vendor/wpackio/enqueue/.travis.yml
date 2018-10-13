@@ -1,0 +1,10 @@
+language: php
+php:
+  - '7.2'
+before_script:
+  - npm i -g codecov
+  - composer install
+script:
+  - composer run-script lint
+  - composer run-script test
+  - codecov

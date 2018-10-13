@@ -28,7 +28,7 @@ export default class Todo extends Component {
 			<div>
 				<form className="App" onSubmit={this.onSubmit}>
 					<input value={term} onChange={this.onChange} />
-					<button type="submit">Add Todo +</button>
+					<button type="submit">Add Todo</button>
 				</form>
 				<List items={items} />
 			</div>

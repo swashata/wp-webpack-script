@@ -9,8 +9,14 @@ the following features.
 ## Getting Started
 
 1. Clone this repository.
-2. Make sure you have [docker](https://www.docker.com/) installed on your machine.
-3. Run the following command.
+2. Make sure you have [docker](https://www.docker.com/) and [composer](https://getcomposer.org/) installed on your machine.
+3. Install all composer dependency (just `wpackio/enqueue` in our case).
+
+    ```bash
+    composer install
+    ```
+
+4. Run the following command from this directory `examples/plugin`.
 
     ```bash
     docker-compose up -d && docker-compose logs -f wordpress
@@ -32,11 +38,11 @@ the following features.
 
     This will open up the development server within your network LAN Ip address.
 
-4. Now log into your WordPress dashboard with:
+5. Now log into your WordPress dashboard with:
    a. Username: `root`
    b. Password: `root`
-5. Activate `WPack.io Sample Plugin Development` plugin.
-6. Check the homepage and check your browser's console.
+6. Activate `WPack.io Sample Plugin Development` plugin.
+7. Check the homepage and check your browser's console.
 
 > It is not a requirement to use docker for `@wpackio/scripts`. It is just
 > required for this example. You can very well spin up any local server you
