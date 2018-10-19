@@ -47,7 +47,7 @@ Here are a few more bonus you get for using wpackio.
     > your system to completely fail? No more!.
 -   😎 Zero configuration for a sane default of all the toolings involved (babel, sass, webpack).
 -   😎 Your CSS/SCSS changes will reflect instantly.
--   😎 [Typescript](https://www.typescriptlang.org/) and [Flowtype](https://flow.org/) to take your js carrier to the next level.
+-   😎 [Typescript](https://www.typescriptlang.org/) and [Flowtype](https://flow.org/) to take your js carrier to the next level. This tooling itself is written in typescript 😉.
 -   😎 All the stuff you need to start developing using [react](https://reactjs.org/). Hello Gutenberg!
 
 ## Getting Started
