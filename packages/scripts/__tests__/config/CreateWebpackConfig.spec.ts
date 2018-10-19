@@ -1,19 +1,12 @@
 import webpackMerge from 'webpack-merge';
+import { CreateWebpackConfig } from '../../src/config/CreateWebpackConfig';
+import { ProjectConfig } from '../../src/config/project.config.default';
 import { initConfig, projectConfig, serverConfig } from '../helpers/testConfig';
+
 jest.mock('webpack-merge');
 ((webpackMerge as unknown) as jest.Mock).mockImplementation(() => ({
 	foo: 'bar',
 }));
-
-import {
-	findWpackIoBabelOnJs,
-	findWpackIoBabelOnTJs,
-	findWpackIoBabelOnTs,
-	getConfigFromProjectAndServer,
-} from '../helpers/testUtils';
-
-import { CreateWebpackConfig } from '../../src/config/CreateWebpackConfig';
-import { ProjectConfig } from '../../src/config/project.config.default';
 
 beforeEach(initConfig);
 

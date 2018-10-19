@@ -4,7 +4,7 @@ import { ServerConfig } from './server.config.default';
 // tslint:disable: non-literal-require
 export function getProjectAndServerConfig(
 	cwd: string,
-	options:
+	options?:
 		| {
 				projectConfig?: string;
 				serverConfig?: string;
