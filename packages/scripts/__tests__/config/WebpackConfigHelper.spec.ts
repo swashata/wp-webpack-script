@@ -1,95 +1,16 @@
 import { PresetOptions } from '@wpackio/babel-preset-base/lib/preset';
 import miniCssExtractPlugin from 'mini-css-extract-plugin';
 import webpack from 'webpack';
+import { webpackOptionsOverrideFunction } from '../../src/config/project.config.default';
+import { WebpackConfigHelper } from '../../src/config/WebpackConfigHelper';
+import { initConfig, projectConfig, serverConfig } from '../helpers/testConfig';
 import {
-	ProjectConfig,
-	projectConfigDefault,
-	webpackOptionsOverrideFunction,
-} from '../../src/config/project.config.default';
-import {
-	ServerConfig,
-	serverConfigDefault,
-} from '../../src/config/server.config.default';
-import {
-	WebpackConfigHelper,
-	WebpackConfigHelperConfig,
-} from '../../src/config/WebpackConfigHelper';
+	findWpackIoBabelOnJs,
+	findWpackIoBabelOnTJs,
+	findWpackIoBabelOnTs,
+	getConfigFromProjectAndServer,
+} from '../helpers/testUtils';
 
-type babelLoaderModuleRules = {
-	use: {
-		loader: string;
-		// tslint:disable-next-line:no-any
-		options?: { [x: string]: any };
-	}[];
-}[];
-
-const findWpackIoBabelOnJs = (
-	modules: webpack.Module
-): babelLoaderModuleRules => {
-	return modules.rules.filter(rule => {
-		const { test } = rule;
-
-		return test !== undefined && test.toString() === '/\\.m?jsx?$/';
-	}) as babelLoaderModuleRules;
-};
-const findWpackIoBabelOnTs = (
-	modules: webpack.Module
-): babelLoaderModuleRules => {
-	return modules.rules.filter(rule => {
-		const { test } = rule;
-
-		return test !== undefined && test.toString() === '/\\.tsx?$/';
-	}) as babelLoaderModuleRules;
-};
-
-const findWpackIoBabelOnTJs = (
-	modules: webpack.Module
-): babelLoaderModuleRules => {
-	return [...findWpackIoBabelOnJs(modules), ...findWpackIoBabelOnTs(modules)];
-};
-
-function getConfigFromProjectAndServer(
-	pCfg: ProjectConfig,
-	sCfg: ServerConfig
-): WebpackConfigHelperConfig {
-	return {
-		appName: pCfg.appName,
-		type: pCfg.type,
-		slug: pCfg.slug,
-		host: sCfg.host,
-		port: sCfg.port,
-		outputPath: pCfg.outputPath,
-		hasReact: pCfg.hasReact,
-		hasSass: pCfg.hasSass,
-		hasFlow: pCfg.hasFlow,
-		bannerConfig: pCfg.bannerConfig,
-		alias: pCfg.alias,
-		optimizeSplitChunks: pCfg.optimizeSplitChunks,
-		publicPath: `/wp-content/${pCfg.type}s/${pCfg.slug}/${
-			pCfg.outputPath
-		}/`,
-		publicPathUrl: `//localhost/wp-content/${pCfg.type}s/${pCfg.slug}/${
-			pCfg.outputPath
-		}/`,
-		errorOverlay: true,
-	};
-}
-
-// Create separate configuration for easy use within every test
-let projectConfig: ProjectConfig;
-let serverConfig: ServerConfig;
-const initConfig = (): void => {
-	projectConfig = {
-		...projectConfigDefault,
-		files: [
-			{
-				name: 'config1',
-				entry: { foo: 'bar.js', biz: ['baz.js'] },
-			},
-		],
-	};
-	serverConfig = { ...serverConfigDefault };
-};
 beforeEach(initConfig);
 
 describe('CreateWebPackConfig', () => {

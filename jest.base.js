@@ -11,4 +11,5 @@ module.exports = {
 		'!**/lib/**',
 		'!**/babel.config.js',
 	],
+	testMatch: ['**/?(*.)+(spec|test).(j|t)s?(x)'],
 };
