@@ -1,0 +1,15 @@
+# Level up your JavaScript (Front-End) Skills
+
+I created this tool in the hope that it will bring more WordPress developers to
+this crazy moving front-end world (crazy in all good way). With the tooling
+out of the way, you can actually focus on what matters, writing code.
+
+Here's a list of tutorials and websites (some free and some paid, but I don't get paid if
+you subscribe 😜) I have found extremely useful.
+
+1. Courses by Wesbos - https://wesbos.com/courses/
+2. Courses by Dylan C. Israel - https://scrimba.com/@PizzaPokerGuy
+3. Journal by my friend Saikat - https://github.com/saikatdas0790/tech-learning-journal/blob/master/2018/2018.md Might help you get started 😃.
+
+So thank you for reading and all the best with your journey of becoming a great
+front-end (full stack, given we already know WordPress & PHP 😉) developer.

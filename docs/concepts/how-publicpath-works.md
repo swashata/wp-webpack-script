@@ -67,9 +67,9 @@ With the PHP script, we generate the publicPath URL and put it in website
 head within a `<script>` tag.
 
 ```html
-		<script type="text/javascript">
-			window.__wpackIoAppNameOutputPath = 'https://example.com/wp-content/plugins/my-plug/dist';
-		</script>
+<script type="text/javascript">
+	window.__wpackIoAppNameOutputPath = 'https://example.com/wp-content/plugins/my-plug/dist';
+</script>
 ```
 
 Where `__wpackIoAppNameOutputPath` is a unique variable generated through a
