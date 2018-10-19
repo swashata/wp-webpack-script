@@ -17,4 +17,15 @@ module.exports = {
 			__wpackIofoobar: '/biz/baz',
 		},
 	},
+	collectCoverageFrom: [
+		'src/**/*.ts',
+		'!src/@types/**',
+		// For e2e
+		'!src/bin/**',
+		// End e2e
+		'!**/node_modules/**',
+		'!**/*.{spec|test}.ts',
+		'!**/lib/**',
+		'!**/babel.config.js',
+	],
 };
