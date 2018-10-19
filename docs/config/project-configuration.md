@@ -1,0 +1,383 @@
+The `wpackio.project.js` file at the root of your workspace tells wpackio
+how your project is to be compiled. When you bootstrap this file is created
+for you.
+
+> You should commit `wpackio.project.js` with your VCS.
+
+A typical project file looks like this.
+
+```js
+module.exports = {
+	// Project Identity
+	appName: 'wpackplugin', // Unique name of your project
+	type: 'plugin', // Plugin or theme
+	slug: 'wpackio-plugin', // Plugin or Theme slug, basically the directory name under `wp-content/<themes|plugins>`
+	// Used to generate banners on top of compiled stuff
+	bannerConfig: {
+		name: 'WordPress WebPack Bundler',
+		author: 'Swashata Ghosh',
+		license: 'GPL-3.0',
+		link: 'https://wpack.io',
+		version: '1.0.0',
+		copyrightText:
+			'This software is released under the GPL-3.0 License\nhttps://opensource.org/licenses/GPL-3.0',
+		credit: true,
+	},
+	// Files we need to compile, and where to put
+	files: [
+		// If this has length === 1, then single compiler
+		{
+			name: 'app',
+			entry: {
+				main: ['./src/app/index.js'],
+				mobile: ['./src/app/mobile.js'],
+			},
+			// Extra webpack config to be passed directly
+			webpackConfig: undefined,
+		},
+		// If has more length, then multi-compiler
+		{
+			name: 'foo',
+			entry: {
+				main: ['./src/foo/foo.js'],
+			},
+			// Extra webpack config to be passed directly
+			webpackConfig: undefined,
+		},
+		// Another app just for showing react
+		{
+			name: 'reactapp',
+			entry: {
+				main: ['./src/reactapp/index.jsx'],
+			},
+		},
+	],
+	// Output path relative to the context directory
+	// We need relative path here, else, we can not map to publicPath
+	outputPath: 'dist',
+	// Project specific config
+	// Needs react?
+	hasReact: true,
+	// Needs sass?
+	hasSass: true,
+	// Externals
+	externals: {
+		jquery: 'jQuery',
+	},
+	// Webpack Aliases
+	alias: undefined,
+	// Show overlay on development
+	errorOverlay: true,
+	// Auto optimization by webpack
+	// Split all common chunks with default config
+	// <https://webpack.js.org/plugins/split-chunks-plugin/#optimization-splitchunks>
+	// Won't hurt because we use PHP to automate loading
+	optimizeSplitChunks: true,
+	// Usually PHP and other files to watch and reload when changed
+	watch: 'inc/**/*.php',
+	// Hook into babeloverride so that we can add react-hot-loader plugin
+	jsBabelOverride: defaults => ({
+		...defaults,
+		plugins: ['react-hot-loader/babel'],
+	}),
+};
+```
+
+Let's dive in deep with different options.
+
+## `appName` (`string`)
+
+The name of your application. It should be unique and you have to use the same
+value with the PHP consumer library.
+
+## `type` (`string`)
+
+Either `plugin` or `theme`, depending on your WordPress project.
+
+## `slug` (`string`)
+
+The slug of your plugin or theme. This is the name of the directory put under
+`wp-content/{themes,plugins}`. This is used only for development purpose and has
+no significance on production build.
+
+## `bannerConfig` (`Object`)
+
+A configuration object for banner put above all minified code.
+
+It has the following properties:
+
+-   `name` (`string`): Name of application.
+-   `author` (`string`): Author of application.
+-   `version` (`string`): Version of application.
+-   `link` (`string`): Homepage link of application.
+-   `license` (`string`): License of application.
+-   `copyrightText` (`string`): Additional copyright text.
+-   `credit` (`boolean`): Whether to give wpackio a little credit ❤️.
+
+## `files` (`Array`)
+
+An array of file object. It defines which files to compile and supports code-splitting
+with different entrypoints.
+
+Unlike [webpack entrypoint](https://webpack.js.org/configuration/entry-context/#entry)
+it has to be an array of object of a certain shape. First let us see an example.
+
+```js
+module.exports = {
+	// ...
+	// Files we need to compile, and where to put
+	files: [
+		// If this has length === 1, then single compiler
+		{
+			name: 'app',
+			entry: {
+				main: ['./src/app/index.js'],
+				mobile: ['./src/app/mobile.js'],
+			},
+			// Extra webpack config to be passed directly
+			webpackConfig: undefined,
+		},
+	],
+	// ...
+};
+```
+
+Here we have passed only one file object to the `files` entry. In most of the cases
+this is what we'd need. Our main `entry` will split codes depending on different
+entrypoints and the tooling will handle chunk-splitting, optimization, prevent
+duplicates etc. More information is found [here](https://webpack.js.org/guides/code-splitting/).
+
+Once again, do note that you do not really need to do anything apart from defining
+`entry.property = string[]` logically. Just think about which single JS file
+you will need to run a particular application. Even if you have only one property
+under `entry`, then also (if needed) chunk-splitting will be applied.
+
+If we were to pass multiple file object, then webpack would run in [multi-compiler](https://webpack.js.org/api/node/#multicompiler)
+mode, separating dependency tree from each of the file object.
+
+Each file object has three properties:
+
+#### `name` (`string`):
+
+A unique name of this file entry. If you are using more than one file entry,
+then make sure to give different names, otherwise the compiler might not work
+in development mode.
+
+#### `entry` (`object`):
+
+This is the path (relative to project root) of files you would like to compile.
+
+```js
+const entry = {
+	foo: ['./src/app/foo.js'],
+	bar: './src/app/bar.js',
+};
+```
+
+As you can see, we only support [Object Syntax of webpack entry](https://webpack.js.org/concepts/entry-points/#object-syntax).
+
+The reason is, we do our own little magic (covered in the concepts section) to
+define dynamic `publicPath` from WordPress API itself.
+
+#### `webpackConfig` (`Function` | `Object` | `undefined`)
+
+If you'd like to extend webpack configuration, then this is where you'd put your
+code.
+
+We have two options:
+
+##### Extend with Object
+
+Put overriding webpack configuration object and it will be merged with
+[webpack merge](https://github.com/survivejs/webpack-merge).
+
+```js
+module.exports = {
+	// ...
+	files: [
+		{
+			name: 'app',
+			entry: {
+				main: ['./src/app/index.js'],
+				mobile: ['./src/app/mobile.js'],
+			},
+			// Extra webpack config to be passed directly
+			webpackConfig: {
+				module: {
+					rules: [
+						{
+							test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+							use: [
+								{
+									loader: 'svg-inline-loader?classPrefix',
+								},
+							],
+						},
+					],
+				},
+			},
+		},
+	],
+	// ...
+};
+```
+
+##### Extend with function
+
+Even more flexibility can be obtained by using a callback function. It has the
+following signature.
+
+```ts
+(webpackConfig: webpack.Configuration, webpackMergeApi: webpackMerge) =>
+	webpack.Configuration;
+```
+
+So it will take two parameters:
+
+-   `webpackConfig` (`Object`) : What the system has generated as your webpack
+    config.
+-   `webpackMergeApi` (`Function`): The [webpack merge](https://github.com/survivejs/webpack-merge)
+    instance for direct usage.
+
+And it should return a valid webpack configuration object.
+
+> **NOTE**: Try not to fiddle with `entry`, `output` and `publicPath`, otherwise
+> the dev server and consumer script may not work.
+
+An example could be
+
+```js
+module.exports = {
+	// ...
+	files: [
+		{
+			name: 'app',
+			entry: {
+				main: ['./src/app/index.js'],
+				mobile: ['./src/app/mobile.js'],
+			},
+			// Extra webpack config to be dynamically created
+			webpackConfig: (config, api) => {
+				// Create a new config
+				const newConfig = { ...config };
+				// Extend the rules for some great svg experience
+				newConfig.module.rules = [
+					...newConfig.module.rules,
+					// Use svgr for loading svg in react
+					// https://github.com/smooth-code/svgr/tree/master/packages/webpack#handle-svg-in-css-sass-or-less
+					{
+						test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+						issuer: {
+							test: /\.(j|t)sx?$/,
+						},
+						use: ['babel-loader', '@svgr/webpack', 'url-loader'],
+					},
+					// Use url-loader for everything else
+					{
+						test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+						use: [
+							{
+								loader: 'url-loader',
+							},
+						],
+					},
+				];
+				// Return it
+				return newConfig;
+			},
+		},
+	],
+	// ...
+};
+```
+
+## `outputPath` (`string`):
+
+Name of the directory (relative) where we would put the bundled and manifest
+files. Defaults to `dist` and you should not commit this directory in your VCS.
+
+## `hasReact` (`boolean`):
+
+Where you need support for react specific presets, like `jsx`.
+
+## `hasSass` (`boolean`):
+
+Where you need support for sass/scss files. You need to install `node-sass` or
+`dart-sass` and your project's devDependency yourself.
+
+## `hasFlow` (`boolean`):
+
+Whether you need support for [flowtype](https://flow.org/).
+
+## `jsBabelPresetOptions` (`object`) | `tsBabelPresetOptions` (`object`)
+
+wpackio script uses its own [preset](https://github.com/swashata/wp-webpack-script/tree/master/packages/babel-preset-base)
+for javascript and typescript files. Using this option you can pass in additional
+config and it will be spread over the default one.
+
+> `jsBabelPresetOptions` is applied for `js,jsx` files and `tsBabelPresetOptions`
+> is applied for `ts.tsx` files.
+
+## `jsBabelOverride` (`Function`) | `tsBabelOverride` (`Function`)
+
+Pass in a callback function to completely override options for [`babel-loader`](https://github.com/babel/babel-loader#options)
+
+The signature is
+
+```ts
+(
+	defaults: string | { [x: string]: any }
+) =>
+string | { [x: string]: any }
+```
+
+Where `defaults` is the config created by tooling. Here's an example we used to
+incorporate [react hot loader](https://github.com/gaearon/react-hot-loader).
+
+```js
+module.exports = {
+	// ...
+	// Hook into babeloverride so that we can add react-hot-loader plugin
+	jsBabelOverride: defaults => ({
+		...defaults,
+		plugins: ['react-hot-loader/babel'],
+	}),
+	// ...
+};
+```
+
+> `jsBabelOverride` is applied for `js,jsx` files and `tsBabelOverride`
+> is applied for `ts.tsx` files.
+
+## `externals` (`Object`)
+
+Configure [webpack external runtime dependency](https://webpack.js.org/configuration/externals/#externals).
+
+## `alias` (`Object`)
+
+Configure [webpack `resolve.alias`](https://webpack.js.org/configuration/resolve/#resolve-alias).
+
+## `errorOverlay` (`boolean`)
+
+Whether to show overlay during development mode when some error has occured.
+
+## `optimizeSplitChunks` (`boolean`)
+
+Whether or not to apply built-in optimization presets. Turn it off if you would
+like to do things manually.
+
+We have the default config from [webpack optimization splitchunks plugin](https://webpack.js.org/plugins/split-chunks-plugin/#optimization-splitchunks)
+with only exception of setting `chunks` to `'all'`. We can do it safely because
+our PHP consumer library handles the enqueue.
+
+## `watch` (`string`)
+
+[Glob pattern](https://github.com/micromatch/micromatch) to watch additional
+files and reload browser on change. Useful for watching `.php` files.
+
+```js
+module.exports = {
+	// ...
+	watch: './(inc|includes)/**/*.php',
+};
+```

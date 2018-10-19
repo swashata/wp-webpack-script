@@ -21,7 +21,7 @@ cd awesome-plugin
 Now run
 
 ```bash
-npx @wpackio/script bootstrap
+npx @wpackio/scripts bootstrap
 ```
 
 This will create the following files:
