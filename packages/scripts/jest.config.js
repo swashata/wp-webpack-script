@@ -22,6 +22,7 @@ module.exports = {
 		'!src/@types/**',
 		// For e2e
 		'!src/bin/**',
+		'!src/scripts/**',
 		// End e2e
 		'!**/node_modules/**',
 		'!**/*.{spec|test}.ts',
