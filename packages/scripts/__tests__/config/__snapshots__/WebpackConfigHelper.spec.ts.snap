@@ -87,7 +87,7 @@ Object {
       ],
     },
     Object {
-      "test": /\\\\\\.\\(woff\\|woff2\\|eot\\|ttf\\|otf\\|svg\\|png\\|jpg\\|gif\\)\\(\\\\\\?v=\\\\d\\+\\\\\\.\\\\d\\+\\\\\\.\\\\d\\+\\)\\?\\$/,
+      "test": /\\\\\\.\\(woff\\|woff2\\|eot\\|ttf\\|otf\\|png\\|jpg\\|gif\\)\\(\\\\\\?v=\\\\d\\+\\\\\\.\\\\d\\+\\\\\\.\\\\d\\+\\)\\?\\$/,
       "use": Array [
         Object {
           "loader": "file-loader",

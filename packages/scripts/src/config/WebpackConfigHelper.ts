@@ -403,7 +403,7 @@ ${bannerConfig.copyrightText}${bannerConfig.credit ? creditNote : ''}`,
 		}
 		// create file rules
 		const fileRules: webpack.RuleSetRule = {
-			test: /\.(woff|woff2|eot|ttf|otf|svg|png|jpg|gif)(\?v=\d+\.\d+\.\d+)?$/,
+			test: /\.(woff|woff2|eot|ttf|otf|png|jpg|gif)(\?v=\d+\.\d+\.\d+)?$/,
 			use: [
 				{
 					loader: 'file-loader',
