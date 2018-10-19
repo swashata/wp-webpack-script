@@ -1,6 +1,6 @@
 {
   "name": "@wpackio/scripts",
-  "version": "0.0.6",
+  "version": "1.0.0",
   "description": "Main single dependency of @wpackio build tool.",
   "keywords": [
     "wordpress",
@@ -38,7 +38,7 @@
     "@types/webpack-assets-manifest": "^3.0.0",
     "@types/webpack-dev-middleware": "^2.0.2",
     "@types/webpack-hot-middleware": "^2.16.4",
-    "@wpackio/babel-preset-base": "^0.0.6",
+    "@wpackio/babel-preset-base": "^1.0.0",
     "autoprefixer": "^9.1.5",
     "babel-loader": "^8.0.2",
     "boxen": "^2.0.0",

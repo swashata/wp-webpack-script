@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.0.0"></a>
+# [1.0.0](https://github.com/swashata/wp-webpack-script/compare/v0.0.6...v1.0.0) (2018-10-19)
+
+
+### Features
+
+* accept function for webpackConfig ([3466fe7](https://github.com/swashata/wp-webpack-script/commit/3466fe7)), closes [#7](https://github.com/swashata/wp-webpack-script/issues/7)
+* remove svg from bare file loader ([b95af1e](https://github.com/swashata/wp-webpack-script/commit/b95af1e)), closes [#10](https://github.com/swashata/wp-webpack-script/issues/10)
+
+
+
+
+
 <a name="0.0.6"></a>
 ## [0.0.6](https://github.com/swashata/wp-webpack-script/compare/v0.0.5...v0.0.6) (2018-10-13)
 
