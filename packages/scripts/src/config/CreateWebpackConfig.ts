@@ -182,7 +182,12 @@ export class CreateWebpackConfig {
 		// Merge options if needed
 		// Loose comparison because it could very well be undefined
 		if (file.webpackConfig != null) {
-			config = webpackMerge(config, file.webpackConfig);
+			// If it is a function
+			if (typeof file.webpackConfig === 'function') {
+				config = file.webpackConfig(config, webpackMerge);
+			} else {
+				config = webpackMerge(config, file.webpackConfig);
+			}
 		}
 
 		return config;

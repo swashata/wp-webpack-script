@@ -1,4 +1,5 @@
 import webpack from 'webpack';
+import merge from 'webpack-merge';
 
 import { PresetOptions } from '@wpackio/babel-preset-base/lib/preset';
 
@@ -30,7 +31,12 @@ export interface EntryConfig {
 export interface FileConfig {
 	name: string;
 	entry: EntryConfig;
-	webpackConfig?: webpack.Configuration;
+	webpackConfig?:
+		| webpack.Configuration
+		| ((
+				config: webpack.Configuration,
+				api: merge
+		  ) => webpack.Configuration);
 }
 
 export type webpackOptionsOverrideFunction = (
