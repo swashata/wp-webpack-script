@@ -1,3 +1,3 @@
 import './main.scss';
 
-console.log('Hello Theme!');
+console.log('Hello Theme!!');
