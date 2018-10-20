@@ -325,6 +325,11 @@ ${bannerConfig.copyrightText}${bannerConfig.credit ? creditNote : ''}`,
 					options: this.getOverrideWebpackRuleOptions(
 						{
 							presets: jsPresets,
+							// disable babelrc and babel.config.js
+							// as it could potentially break stuff
+							// rather use the jsBabelOverride
+							configFile: false,
+							babelrc: false,
 						},
 						this.config.jsBabelOverride
 					),
@@ -352,6 +357,11 @@ ${bannerConfig.copyrightText}${bannerConfig.credit ? creditNote : ''}`,
 					options: this.getOverrideWebpackRuleOptions(
 						{
 							presets: tsPresets,
+							// disable babelrc and babel.config.js
+							// as it could potentially break stuff
+							// rather use the jsBabelOverride
+							configFile: false,
+							babelrc: false,
 							// We don't need plugin-proposal-class-properties
 							// because taken care of by @wpackio/base
 							// '@babel/proposal-class-properties',
