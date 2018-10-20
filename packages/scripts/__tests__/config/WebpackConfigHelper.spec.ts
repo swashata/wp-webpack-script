@@ -414,7 +414,7 @@ describe('CreateWebPackConfig', () => {
 
 	// getOptimization()
 	describe('getOptimization', () => {
-		test('returns undefined when not in use', () => {
+		test('returns just runtimeChunk when not in use', () => {
 			const cwc = new WebpackConfigHelper(
 				projectConfig.files[0],
 				{
@@ -427,7 +427,7 @@ describe('CreateWebPackConfig', () => {
 				'/foo/bar',
 				false
 			);
-			expect(cwc.getOptimization()).toBeUndefined();
+			expect(cwc.getOptimization()).toEqual({ runtimeChunk: 'single' });
 		});
 
 		test('returns object when in use', () => {
@@ -444,6 +444,10 @@ describe('CreateWebPackConfig', () => {
 				false
 			);
 			expect(cwc.getOptimization()).not.toBeUndefined();
+			expect(
+				(cwc.getOptimization() as webpack.Options.Optimization)
+					.runtimeChunk
+			).toBe('single');
 			expect(cwc.getOptimization()).toMatchSnapshot();
 		});
 	});

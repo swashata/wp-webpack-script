@@ -201,6 +201,15 @@ export class WebpackConfigHelper {
 			// leave blank because we would handle with free variable
 			// __webpack_public_path__ in runtime.
 			publicPath: '',
+			// we need different jsonpFunction, it has to
+			// be unique for every webpack config, otherwise
+			// the later will override the previous
+			// having combination of appName and file.name
+			// kind of ensures that billions of devs, don't
+			// override each other!!!!
+			jsonpFunction: `wpackio${this.config.appName}${
+				this.file.name
+			}Jsonp`,
 		};
 		// Add the publicPath if it is in devMode
 		if (this.isDev) {
@@ -219,7 +228,7 @@ export class WebpackConfigHelper {
 	 */
 	public getPlugins(): webpack.Plugin[] {
 		// Add common plugins
-		const plugins: webpack.Plugin[] = [
+		let plugins: webpack.Plugin[] = [
 			// Define env
 			new webpack.DefinePlugin({
 				'process.env.NODE_ENV': JSON.stringify(this.env),
@@ -266,7 +275,7 @@ export class WebpackConfigHelper {
 			);
 			// Add timewatch plugin to avoid multiple successive build
 			// https://github.com/webpack/watchpack/issues/25
-			plugins.push(new TimeFixPlugin());
+			plugins = [new TimeFixPlugin(), ...plugins];
 		} else {
 			// Add Production specific plugins
 			const { bannerConfig } = this.config;
@@ -462,15 +471,35 @@ ${bannerConfig.copyrightText}${bannerConfig.credit ? creditNote : ''}`,
 	 */
 	public getOptimization(): webpack.Options.Optimization | undefined {
 		const { optimizeSplitChunks } = this.config;
+		const optimization: webpack.Options.Optimization = {
+			// We set runtimeChunk to be single
+			// because user can (and probably should)
+			// have multiple entry-point on the same page
+			runtimeChunk: 'single',
+		};
 		if (optimizeSplitChunks) {
-			return {
-				splitChunks: {
-					chunks: 'all',
+			optimization.splitChunks = {
+				chunks: 'all',
+				minSize: 30000,
+				minChunks: 1,
+				maxAsyncRequests: 5,
+				maxInitialRequests: 3,
+				name: true,
+				cacheGroups: {
+					vendors: {
+						test: /[\\/]node_modules[\\/]/,
+						priority: -10,
+					},
+					default: {
+						minChunks: 2,
+						priority: -20,
+						reuseExistingChunk: true,
+					},
 				},
 			};
 		}
 
-		return undefined;
+		return optimization;
 	}
 
 	/**
