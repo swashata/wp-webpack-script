@@ -217,9 +217,8 @@ class MyPluginInit {
 
 
 	public function plugin_enqueue() {
-		$this->enqueue->enqueue( 'app', 'main', [] );
-		$this->enqueue->enqueue( 'app', 'mobile', [] );
-		$this->enqueue->enqueue( 'foo', 'main', [] );
+		// Enqueue the `main` entry from `reactapp` file entry.
+		$this->enqueue->enqueue( 'reactapp', 'main', [] );
 	}
 }
 
@@ -246,6 +245,10 @@ page refresh. It is called, **Hot Module Replacement (_HMR_)**.
   <img src="https://raw.githubusercontent.com/swashata/wp-webpack-script/master/assets/react-hmr.gif">
 </p>
 
+In the above image we see, we are changing the label of the button from `Add`, to
+`Add Todo`, to `+ Add Todo`. The changes are reflected live on the page, without
+any page-reload.
+
 ##### Stop Dev Server
 
 Once done, we press <kbd>Ctrl</kbd> + <kbd>c</kbd> to stop it.
@@ -261,6 +264,8 @@ Now we create production build.
 <p align="center">
   <img src="https://raw.githubusercontent.com/swashata/wp-webpack-script/master/assets/build.gif">
 </p>
+
+Our plugin/theme is now ready to go live.
 
 ## Learn more
 
