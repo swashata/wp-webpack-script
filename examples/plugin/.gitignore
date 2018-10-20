@@ -1,5 +1,5 @@
 dist
-/vendor/
+vendor
 
 # Logs
 logs
