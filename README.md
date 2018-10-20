@@ -8,8 +8,12 @@
 
 ## What is wpack.io?
 
-Put simply, wpack.io is a nodejs based built tool to ease up using modern javascript
-in WordPress Themes and Plugins.
+Put simply, wpack.io is a nodejs based build tool to ease up using modern javascript
+in WordPress Themes and Plugins. It gives a fine _Developer Experience_ (DX) and
+a single dependency for all your bundling requirement.
+
+> It is a fine-tuned webpack/browser-sync configuration made specifically for
+> WordPress Theme and Plugin Development.
 
 With the rise of Gutenberg editor, the usage of modern JavaScript and libraries
 like react is imminent. The goal of this tooling is to:
