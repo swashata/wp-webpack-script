@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.1.0"></a>
+# [1.1.0](https://github.com/swashata/wp-webpack-script/compare/v1.0.0...v1.1.0) (2018-10-20)
+
+
+### Bug Fixes
+
+* issue with multiple webpackJsonp & runtime ([846c2c0](https://github.com/swashata/wp-webpack-script/commit/846c2c0)), closes [#13](https://github.com/swashata/wp-webpack-script/issues/13)
+
+
+
+
+
 <a name="1.0.0"></a>
 # [1.0.0](https://github.com/swashata/wp-webpack-script/compare/v0.0.6...v1.0.0) (2018-10-19)
 

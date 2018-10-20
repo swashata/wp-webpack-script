@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.1.0"></a>
+# [1.1.0](https://github.com/swashata/wp-webpack-script/compare/v1.0.0...v1.1.0) (2018-10-20)
+
+
+### Bug Fixes
+
+* issue with multiple webpackJsonp & runtime ([846c2c0](https://github.com/swashata/wp-webpack-script/commit/846c2c0)), closes [#13](https://github.com/swashata/wp-webpack-script/issues/13)
+
+
+### Features
+
+* remove babelrc and babel.config from babel-loader ([31d8635](https://github.com/swashata/wp-webpack-script/commit/31d8635)), closes [#11](https://github.com/swashata/wp-webpack-script/issues/11)
+* use modern browser target during dev ([ed5edb1](https://github.com/swashata/wp-webpack-script/commit/ed5edb1)), closes [#12](https://github.com/swashata/wp-webpack-script/issues/12)
+
+
+
+
+
 <a name="1.0.0"></a>
 # [1.0.0](https://github.com/swashata/wp-webpack-script/compare/v0.0.6...v1.0.0) (2018-10-19)
 
