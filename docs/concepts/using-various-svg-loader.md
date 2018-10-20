@@ -1,5 +1,5 @@
 SVGs are all the rage in today's web. There are may ways, especially with webpack,
-to consume SVGs, that I felt, it is best to leave it to the userland to decide
+to consume SVGs, that I felt, it is best to leave it to the user-land to decide
 which method to pick.
 
 Each of them has their purpose and depending on your project, you should decide
@@ -7,7 +7,7 @@ which method (or combination of methods) to use.
 
 ## [Webpack Inline SVG Loader](https://webpack.js.org/loaders/svg-inline-loader/#configuration)
 
-This one is from [official webpack contrib](https://webpack.js.org/loaders/svg-inline-loader/).
+This one is from [official webpack contrib.](https://webpack.js.org/loaders/svg-inline-loader/).
 It simply inlines the SVG within your code and gives you a string representing
 the SVG (XML) code.
 

@@ -9,7 +9,7 @@ extend option is actually accepted through the `files` property of `project conf
 ## Extending through `files` property
 
 As written in the `project-configuration` section, `files` is what defines different
-entrypoint of your project and decides whether webpack should be run in single
+entry-point of your project and decides whether webpack should be run in single
 compiler mode or multi-compiler mode (without any compromise).
 
 A typical `files` entry may look like this:

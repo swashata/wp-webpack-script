@@ -1,8 +1,9 @@
 # How code-splitting and dynamic Import works
 
 Glad you asked. The documentation at [webpack `output.publicPath`](https://webpack.js.org/configuration/output/#output-publicpath)
-says this is one `free` variable which can be used to define the `publicPath`
-where webpack would look to lazy-load (or on-demand load) chunks.
+says this is one `free` variable `__webpack_public_path__` which can be used to
+define the `publicPath` where webpack would look to lazy-load
+(or on-demand load) chunks.
 
 ## Concept of `publicPath`
 

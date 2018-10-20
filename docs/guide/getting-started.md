@@ -26,7 +26,7 @@ npx @wpackio/scripts bootstrap
 
 This will create the following files:
 
--   `wpackio.project.js` - Information and entrypoints for your project (plugin or theme).
+-   `wpackio.project.js` - Information and entry-points for your project (plugin or theme).
 -   `wpackio.server.js` - Information about your local development server. Make sure
     to add it to `.gitignore` file because it may differ for team members.
 -   `.browserslistrc` - For targeting your environment. More info [here](https://github.com/browserslist/browserslist).
@@ -45,7 +45,7 @@ npm i @wpackio/scripts
 ```
 
 **NOTE**: It needs to go into your project's `dependencies`, not in `devDepencencies`.
-The reason is, it provides an entrypoint (automatically inserted for you) which
+The reason is, it provides an entry-point (automatically inserted for you) which
 handles the dynamic `publicPath` for webpack.
 
 Now add `devDepencencies`.

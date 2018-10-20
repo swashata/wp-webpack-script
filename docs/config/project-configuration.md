@@ -117,9 +117,9 @@ It has the following properties:
 ## `files` (`Array`)
 
 An array of file object. It defines which files to compile and supports code-splitting
-with different entrypoints.
+with different entry-points.
 
-Unlike [webpack entrypoint](https://webpack.js.org/configuration/entry-context/#entry)
+Unlike [webpack entry-point](https://webpack.js.org/configuration/entry-context/#entry)
 it has to be an array of object of a certain shape. First let us see an example.
 
 ```js
@@ -144,7 +144,7 @@ module.exports = {
 
 Here we have passed only one file object to the `files` entry. In most of the cases
 this is what we'd need. Our main `entry` will split codes depending on different
-entrypoints and the tooling will handle chunk-splitting, optimization, prevent
+entry-points and the tooling will handle chunk-splitting, optimization, prevent
 duplicates etc. More information is found [here](https://webpack.js.org/guides/code-splitting/).
 
 Once again, do note that you do not really need to do anything apart from defining
@@ -255,14 +255,14 @@ Configure [webpack `resolve.alias`](https://webpack.js.org/configuration/resolve
 
 ## `errorOverlay` (`boolean`)
 
-Whether to show overlay during development mode when some error has occured.
+Whether to show overlay during development mode when some error has occurred.
 
 ## `optimizeSplitChunks` (`boolean`)
 
 Whether or not to apply built-in optimization presets. Turn it off if you would
 like to do things manually.
 
-We have the default config from [webpack optimization splitchunks plugin](https://webpack.js.org/plugins/split-chunks-plugin/#optimization-splitchunks)
+We have the default config from [webpack optimization split-chunks plugin](https://webpack.js.org/plugins/split-chunks-plugin/#optimization-splitchunks)
 with only exception of setting `chunks` to `'all'`. We can do it safely because
 our PHP consumer library handles the enqueue.
 

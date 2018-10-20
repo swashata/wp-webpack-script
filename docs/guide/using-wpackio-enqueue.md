@@ -62,7 +62,7 @@ This is single-handedly responsible for making webpack [dynamic publicPath](http
 
 ## Creating Instance
 
-While creating a class instance, you can pass in upto 5 parameters.
+While creating a class instance, you can pass in up-to 5 parameters.
 
 ```php
 new \WPackio\Enqueue( $appName, $outputPath, $version, $type = 'plugin', $pluginPath = false );
@@ -91,7 +91,7 @@ pass it, or just use `false`.
 
 ## Instance API: `getAssets`
 
-Get handle and Url of all assets from the entrypoint.
+Get handle and Url of all assets from the entry-point.
 It doesn't enqueue anything for you, rather returns an associative array
 with handles and urls. You should use it to enqueue it on your own.
 
@@ -217,7 +217,7 @@ $config = [
 
 ## Instance API: `enqueue`
 
-Enqueue all the assets for an entrypoint inside a source.
+Enqueue all the assets for an entry-point inside a source.
 
 Usage and parameters are same as `getAssets`. It doesn't return anything.
 

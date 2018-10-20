@@ -109,6 +109,125 @@ from within the project.
   <img src="https://raw.githubusercontent.com/swashata/wp-webpack-script/master/assets/bootstrap.gif">
 </p>
 
+### Setup JS entry-points
+
+Talking about example in [plugins](./examples/plugin), we setup the entry-points
+in **`wpackio.project.js`** file.
+
+```js
+module.exports = {
+	// Project Identity
+	appName: 'wpackplugin', // Unique name of your project
+	type: 'plugin', // Plugin or theme
+	slug: 'wpackio-plugin', // Plugin or Theme slug, basically the directory name under `wp-content/<themes|plugins>`
+	// Used to generate banners on top of compiled stuff
+	bannerConfig: {
+		name: 'WordPress WebPack Bundler',
+		author: 'Swashata Ghosh',
+		license: 'GPL-3.0',
+		link: 'https://wpack.io',
+		version: '1.0.0',
+		copyrightText:
+			'This software is released under the GPL-3.0 License\nhttps://opensource.org/licenses/GPL-3.0',
+		credit: true,
+	},
+	// Files we need to compile, and where to put
+	files: [
+		// App just for showing react
+		{
+			name: 'reactapp',
+			entry: {
+				main: ['./src/reactapp/index.jsx'],
+			},
+		},
+	],
+	// Output path relative to the context directory
+	// We need relative path here, else, we can not map to publicPath
+	outputPath: 'dist',
+	// Project specific config
+	// Needs react?
+	hasReact: true,
+	// Needs sass?
+	hasSass: true,
+	// Externals
+	externals: {
+		jquery: 'jQuery',
+	},
+	// Webpack Aliases
+	alias: undefined,
+	// Show overlay on development
+	errorOverlay: true,
+	// Auto optimization by webpack
+	// Split all common chunks with default config
+	// <https://webpack.js.org/plugins/split-chunks-plugin/#optimization-splitchunks>
+	// Won't hurt because we use PHP to automate loading
+	optimizeSplitChunks: true,
+	// Usually PHP and other files to watch and reload when changed
+	watch: 'inc/**/*.php',
+	// Hook into babeloverride so that we can add react-hot-loader plugin
+	jsBabelOverride: defaults => ({
+		...defaults,
+		plugins: ['react-hot-loader/babel'],
+	}),
+};
+```
+
+### Setup PHP Library to consume build files
+
+Now we do
+
+```bash
+composer require wpackio/enqueue
+```
+
+to install [PHP Consumer Library](https://github.com/swashata/wpackio-enqueue).
+We instruct it to load files the right way (using WordPress APIs like
+`wp_enqueue_script` and `wp_enqueue_style`).
+
+```php
+<?php
+/*
+Plugin Name: WPackIo Sample
+Plugin URI: https://wpack.io
+Description: A sample to demonstrate wpackio
+Version: 0.1.0
+Author: Swashata Ghosh
+Author URI: https://swas.io
+Text Domain: wpack-io
+Domain Path: /languages
+*/
+// Assuming this is the main plugin file.
+
+// Require the composer autoload for getting conflict-free access to enqueue
+require_once __DIR__ . '/vendor/autoload.php';
+
+// Do stuff through this plugin
+class MyPluginInit {
+	/**
+	 * @var \WPackio\Enqueue
+	 */
+	public $enqueue;
+
+	public function __construct() {
+		// It is important that we init the Enqueue class right at the plugin/theme load time
+		$this->enqueue = new \WPackio\Enqueue( 'wpackplugin', 'dist', '1.0.0', 'plugin', __FILE__ );
+		// Enqueue a few of our entry points
+		add_action( 'wp_enqueue_scripts', [ $this, 'plugin_enqueue' ] );
+	}
+
+
+	public function plugin_enqueue() {
+		$this->enqueue->enqueue( 'app', 'main', [] );
+		$this->enqueue->enqueue( 'app', 'mobile', [] );
+		$this->enqueue->enqueue( 'foo', 'main', [] );
+	}
+}
+
+
+// Init
+new MyPluginInit();
+```
+
 ### `npm start`
 
 After configuring all entry-points and using the PHP library for consuming, we
@@ -117,6 +236,17 @@ start the development server.
 <p align="center">
   <img src="https://raw.githubusercontent.com/swashata/wp-webpack-script/master/assets/start.gif">
 </p>
+
+##### HMR
+
+We edit the files and with proper setup, we can see things load live, without
+page refresh. It is called, **Hot Module Replacement (_HMR_)**.
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/swashata/wp-webpack-script/master/assets/react-hmr.gif">
+</p>
+
+##### Stop Dev Server
 
 Once done, we press <kbd>Ctrl</kbd> + <kbd>c</kbd> to stop it.
 
