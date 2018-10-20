@@ -49,7 +49,7 @@ Here are a few more bonus you get for using wpackio.
 -   😎 Using [ES6 Modules](https://scrimba.com/p/p4Mrt9/c9kMkhM) you will never run into namespace collision.
     > Remember when that third-party plugin was using that old version of `foo` library which caused
     > your system to completely fail? No more!.
--   😎 Zero configuration for a sane default of all the toolings involved (babel, sass, webpack).
+-   😎 Zero configuration for a sane default of all the tooling involved (babel, sass, webpack).
 -   😎 Your CSS/SCSS changes will reflect instantly.
 -   😎 [Typescript](https://www.typescriptlang.org/) and [Flowtype](https://flow.org/) to take your js carrier to the next level. This tooling itself is written in typescript 😉.
 -   😎 All the stuff you need to start developing using [react](https://reactjs.org/). Hello Gutenberg!
@@ -64,7 +64,7 @@ Everything is documented in our [website](https://wpack.io).
     ```bash
     npx @wpackio/scripts bootstrap
     ```
--   Edit the `wpackio.project.js` file to write your javascript entrypoints.
+-   Edit the `wpackio.project.js` file to write your javascript entry-points.
 -   Use `wpackio/enqueue` from [composer](https://packagist.org/packages/wpackio/enqueue) to consume the assets.
 -   Start the server using `npm start`.
 -   Create production file using `npm run build`.
@@ -98,7 +98,7 @@ to the first.
 ## See it in action
 
 We have examples inside [examples](./examples) directory of this repo. Each of
-them has intructions in the readme file, so be sure to check out.
+them has instructions in the readme file, so be sure to check out.
 
 ### `npx @wpackio/scripts bootstrap`
 
@@ -111,7 +111,7 @@ from within the project.
 
 ### `npm start`
 
-After configuring all entrypoints and using the PHP library for consuming, we
+After configuring all entry-points and using the PHP library for consuming, we
 start the development server.
 
 <p align="center">

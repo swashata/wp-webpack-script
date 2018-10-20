@@ -10,39 +10,12 @@
 	"[css]": {
 		"editor.formatOnSave": true
   },
-	"flow.useLSP": true,
-	"typescript.tsdk": "node_modules/typescript/lib",
-	"cSpell.words": [
-		"Packio",
-		"entrypoints",
-		"uglifyjs",
-		"wpack"
-	],
-	"cSpell.enabledLanguageIds": [
-		"asciidoc",
-		"c",
-		"cpp",
-		"csharp",
-		"css",
-		"go",
-		"handlebars",
-		"html",
-		"jade",
-		"javascriptreact",
-		"json",
-		"latex",
-		"less",
-		"markdown",
-		"php",
-		"plaintext",
-		"pub",
-		"python",
-		"restructuredtext",
-		"rust",
-		"scss",
-		"text",
-		"typescript",
-		"typescriptreact",
-		"yml"
-	]
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "spellright.language": [
+    "en"
+  ],
+  "spellright.documentTypes": [
+    "latex",
+    "markdown"
+  ]
 }
