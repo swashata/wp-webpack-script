@@ -39,6 +39,13 @@ Object {
                 "@wpackio/base",
                 Object {
                   "hasReact": true,
+                  "presetEnv": Object {
+                    "targets": Object {
+                      "chrome": "69",
+                      "edge": "17",
+                      "firefox": "62",
+                    },
+                  },
                 },
               ],
             ],
@@ -60,6 +67,13 @@ Object {
                 "@wpackio/base",
                 Object {
                   "hasReact": true,
+                  "presetEnv": Object {
+                    "targets": Object {
+                      "chrome": "69",
+                      "edge": "17",
+                      "firefox": "62",
+                    },
+                  },
                 },
               ],
               Array [

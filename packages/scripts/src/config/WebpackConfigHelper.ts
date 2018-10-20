@@ -303,12 +303,27 @@ ${bannerConfig.copyrightText}${bannerConfig.credit ? creditNote : ''}`,
 	 */
 	public getModule(): webpack.Module {
 		const { hasReact, hasSass, hasFlow } = this.config;
+		const wpackioBabelOptions: PresetOptions = {
+			hasReact,
+		};
+		// Push targets to babel-preset-env if this is dev
+		// We target only the latest chrome and firefox for
+		// greater speed
+		if (this.isDev) {
+			wpackioBabelOptions.presetEnv = {
+				targets: {
+					chrome: '69',
+					firefox: '62',
+					edge: '17',
+				},
+			};
+		}
 		// create the babel rules for es6+ code
 		const jsPresets: babelPreset[] = [
 			[
 				'@wpackio/base',
 				this.getBabelPresetOptions(
-					{ hasReact },
+					wpackioBabelOptions,
 					this.config.jsBabelPresetOptions
 				),
 			],
@@ -343,7 +358,7 @@ ${bannerConfig.copyrightText}${bannerConfig.credit ? creditNote : ''}`,
 			[
 				'@wpackio/base',
 				this.getBabelPresetOptions(
-					{ hasReact },
+					wpackioBabelOptions,
 					this.config.tsBabelPresetOptions
 				),
 			],
