@@ -4,7 +4,8 @@ import Helmet from 'react-helmet';
 import { StaticQuery, graphql } from 'gatsby';
 
 import Header from './header';
-import './layout.css';
+// import './layout.css';
+import './dank-mono.css';
 
 const Layout = ({ children }) => (
 	<StaticQuery

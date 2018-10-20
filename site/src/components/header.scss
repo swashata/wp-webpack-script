@@ -1,0 +1,13 @@
+.site-header {
+	display: flex;
+	flex-flow: row nowrap;
+	background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+
+	& &__logo {
+		a {
+			text-decoration: none;
+			text-shadow: none;
+			background: transparent none;
+		}
+	}
+}
