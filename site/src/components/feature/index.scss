@@ -1,0 +1,16 @@
+.wpackio-feature {
+	& &__icon {
+		text-align: center;
+		svg {
+			max-width: 100%;
+			height: auto;
+		}
+		margin-bottom: 1rem;
+	}
+
+	& &__title {
+		font-family: 'Dank Mono';
+		text-align: center;
+		font-style: italic;
+	}
+}

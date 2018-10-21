@@ -1,63 +1,107 @@
 import React from 'react';
 import { Link, StaticQuery, graphql } from 'gatsby';
-import { css } from 'emotion';
-import styled from 'react-emotion';
-import { gradientDark, navbarLight } from '../utils/background';
-
+import classNames from 'classnames';
 import './header.scss';
 
-const Header = ({ siteTitle }) => (
-	<StaticQuery
-		query={graphql`
-			query {
-				logoText: file(relativePath: { eq: "wpackio-text.svg" }) {
-					publicURL
-				}
-				logoSymbol: file(relativePath: { eq: "wpackio-symbol.svg" }) {
-					publicURL
-				}
-			}
-		`}
-		render={data => (
-			<header className="site-header">
-				<h1 className="site-header__logo">
-					<Link to="/">
-						<img
-							className={css`
-								height: 1em;
-								width: auto;
-								margin: 0 0.5rem 0 0;
-							`}
-							src={data.logoSymbol.publicURL}
-							alt={siteTitle}
-						/>
-						<img
-							className={css`
-								height: 1em;
-								width: auto;
-								margin: 0 0.5rem 0 0;
-							`}
-							src={data.logoText.publicURL}
-							alt={siteTitle}
-						/>
-					</Link>
-				</h1>
-				<nav className="site-header__nav">
-					<ul>
-						<li>
-							<Link to="/">Getting Started</Link>
-						</li>
-						<li>
-							<Link to="/">Config</Link>
-						</li>
-						<li>
-							<Link to="/">Concepts</Link>
-						</li>
-					</ul>
-				</nav>
-			</header>
-		)}
-	/>
-);
+import { ReactComponent as LogoSymbol } from './svgs/wpackio-symbol.svg';
+import { ReactComponent as LogoText } from './svgs/wpackio-text.svg';
+
+class Header extends React.Component {
+	state = {
+		isOpen: false,
+	};
+
+	handleToggle = e => {
+		e.preventDefault();
+		this.setState(state => ({ isOpen: !state.isOpen }));
+	};
+
+	render() {
+		const { siteTitle } = this.props;
+
+		return (
+			<StaticQuery
+				query={graphql`
+					query {
+						logoText: file(
+							relativePath: { eq: "wpackio-text.svg" }
+						) {
+							publicURL
+						}
+						logoSymbol: file(
+							relativePath: { eq: "wpackio-symbol.svg" }
+						) {
+							publicURL
+						}
+					}
+				`}
+				render={data => (
+					<nav
+						role="navigation"
+						aria-label="main navigation"
+						className="navbar site-header"
+					>
+						<div className="container">
+							<div className="navbar-brand">
+								<Link to="/" className="navbar-item">
+									<h1 className="site-header__logo">
+										<LogoSymbol
+											height="1.75em"
+											width="1.75em"
+										/>
+										<img
+											src={data.logoText.publicURL}
+											alt={siteTitle}
+										/>
+									</h1>
+								</Link>
+								<a
+									role="button"
+									className={classNames(
+										'burger',
+										'navbar-burger',
+										{
+											'is-active': this.state.isOpen,
+										}
+									)}
+									aria-label="menu"
+									aria-expanded="false"
+									data-target="navbarBasicExample"
+									href="#"
+									onClick={this.handleToggle}
+								>
+									<span aria-hidden="true" />
+									<span aria-hidden="true" />
+									<span aria-hidden="true" />
+								</a>
+							</div>
+							<div
+								className={classNames(
+									'site-header__nav',
+									'navbar-menu',
+									{
+										'is-active': this.state.isOpen,
+									}
+								)}
+							>
+								<div className="navbar-end site-header__main-nav">
+									<Link className="navbar-item" to="/">
+										Getting Started
+									</Link>
+									<Link className="navbar-item" to="/">
+										Config
+									</Link>
+									<Link className="navbar-item" to="/">
+										Concepts
+									</Link>
+								</div>
+							</div>
+						</div>
+					</nav>
+				)}
+			/>
+		);
+	}
+}
 
 export default Header;

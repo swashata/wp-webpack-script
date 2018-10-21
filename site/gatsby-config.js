@@ -24,21 +24,23 @@ module.exports = {
 				path: `${__dirname}/src/images/`,
 			},
 		},
+		{
+			resolve: 'gatsby-source-filesystem',
+			options: {
+				name: 'fp-mission',
+				path: `${__dirname}/frontpage/mission/`,
+			},
+		},
+		'gatsby-transformer-remark',
 		'gatsby-plugin-sharp',
 		'gatsby-transformer-sharp',
 		'gatsby-plugin-offline',
 		{
-			resolve: `gatsby-plugin-emotion`,
+			resolve: 'gatsby-plugin-svgr',
 			options: {
-				hoist: true,
-				sourceMap: true,
-				autoLabel: true,
-			},
-		},
-		{
-			resolve: `gatsby-plugin-typography`,
-			options: {
-				pathToConfigModule: `src/utils/typography`,
+				icon: true,
+				viewBox: true,
+				// see https://github.com/smooth-code/svgr for a list of all options
 			},
 		},
 	],

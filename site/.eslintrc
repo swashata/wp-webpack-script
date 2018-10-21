@@ -3,6 +3,9 @@
 	"rules": {
 		"react/jsx-filename-extension": "off",
 		"react/prop-types": "off",
-		"import/prefer-default-export": "off"
+		"import/prefer-default-export": "off",
+		"jsx-a11y/anchor-is-valid": "off",
+		"react/destructuring-assignment": "off",
+		"jsx-a11y/accessible-emoji": "off"
 	}
 }
