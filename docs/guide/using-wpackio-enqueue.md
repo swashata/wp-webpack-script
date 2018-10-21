@@ -99,13 +99,12 @@ with handles and urls. You should use it to enqueue it on your own.
 
 ```php
 <?php
-$enqueue = new \WPackio\Enqueue( 'foo', 'dist', '1.0.0', 'plugin', PLUGIN_PATH );
+$enqueue = new \WPackio\Enqueue( 'appName', 'dist', '1.0.0', 'plugin', PLUGIN_PATH );
 $assets = $enqueue->getAssets( 'app', 'main', [
 	'js' => true,
 	'css' => true,
 	'js_dep' => [],
 	'css_dep' => [],
-	'identifier' => false,
 	'in_footer' => true,
 	'media' => 'all',
 ] );
@@ -196,7 +195,6 @@ Here are the supported keys:
 -   `css` (`boolean`) True if we are to include stylesheet files.
 -   `js_dep` (`array`) Additional dependencies for the javascript assets.
 -   `css_dep` (`array`) Additional dependencies for the stylesheet assets.
--   `identifier` (`string`|`false`) A custom prefix to generate the handle of assets.
 -   `in_footer` (`boolean`) Whether to print the assets in footer (for js only).
 -   `media` (`string`) Media attribute for stylesheets (defaults `'all'`).
 
@@ -209,11 +207,14 @@ $config = [
 	'css' => true,
 	'js_dep' => [],
 	'css_dep' => [],
-	'identifier' => false,
 	'in_footer' => true,
 	'media' => 'all',
 ];
 ```
+
+> **NOTE**: The `identifier` property was removed from `$config`. We need complete
+> control of the script `handle` to make sure common chunks, such as, `runtime`
+> is enqueued only once.
 
 ## Instance API: `enqueue`
 
@@ -225,14 +226,78 @@ Usage and parameters are same as `getAssets`. It doesn't return anything.
 
 ```php
 <?php
-$enqueue = new \WPackio\Enqueue( 'foo', 'dist', '1.0.0', 'plugin', PLUGIN_PATH );
+$enqueue = new \WPackio\Enqueue( 'appName', 'dist', '1.0.0', 'plugin', PLUGIN_PATH );
 $assets = $enqueue->enqueue( 'app', 'main', [
 	'js' => true,
 	'css' => true,
 	'js_dep' => [],
 	'css_dep' => [],
-	'identifier' => false,
 	'in_footer' => true,
 	'media' => 'all',
 ] );
 ```
+
+## Instance API: `getManifest`
+
+Get an associative `array` representing the content of `manifest.json` of a file
+entry.
+
+### Usage
+
+For the same `**wpackio.project.js**` as in `getAssets`, we can use this method
+to retrieve the manifest file directly.
+
+```php
+<?php
+$enqueue = new \WPackio\Enqueue( 'appName', 'dist', '1.0.0', 'plugin', PLUGIN_PATH );
+$assets = $enqueue->getManifest( 'app' );
+
+// Get the entry-points
+var_dump( $assets['wpackioEp']['main'] );
+var_dump( $assets['wpackioEp']['mobile'] );
+```
+
+### Parameters
+
+It accepts only one parameter.
+
+```php
+$enqueue->getManifest( $name );
+```
+
+#### `$name` (`string`)
+
+The name of the file entry as defined in `**wpackio.project.js**`. The `wpackio-scripts`
+internally creates a directory of the same name inside `outputPath`.
+
+`wpackio/enqueue` uses the same concept and looks for a file `manifest.json` inside
+the same directory and returns the content as an associative array (using `json_decode`).
+
+## Instance API: `getUrl`
+
+Get public URL of an asset (script or style). It doesn't check whether the asset
+actually exists or not. It just calculates the plugin/theme URL from `$outputPath`.
+
+This is meant to be used to get URL from `manifest.json` files directly.
+
+### Usage
+
+```php
+<?php
+$enqueue = new \WPackio\Enqueue( 'appName', 'dist', '1.0.0', 'plugin', PLUGIN_PATH );
+$script = $enqueue->getUrl( 'app/main.js' );
+$style = $enqueue->getUrl( 'app/main.css' );
+```
+
+### Parameters
+
+It accepts only one parameter.
+
+```php
+$enqueue->getManifest( $asset );
+```
+
+#### `$asset` (`string`)
+
+The relative path of the asset (with forward `/` as director separator) for which
+URL is to be calculated.
