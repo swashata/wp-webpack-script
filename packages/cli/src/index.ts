@@ -94,8 +94,8 @@ program
 		// create add depepdency command
 		const depCommand =
 			client === 'yarn'
-				? 'yarn add @wpackio/scripts'
-				: 'npm i @wpackio/scripts';
+				? 'yarn add --dev @wpackio/scripts'
+				: 'npm i -D @wpackio/scripts';
 		const bootCommand =
 			client === 'yarn' ? 'yarn bootstrap' : 'npm run bootstrap';
 		// Get path of packagejson
