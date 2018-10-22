@@ -265,9 +265,6 @@ export class WebpackConfigHelper {
 		// Add ts checker plugin if project has tsconfig.json
 		const tsconfigPath = path.resolve(this.cwd, './tsconfig.json');
 		if (this.fileExists(tsconfigPath)) {
-			const tsConfig: { tsconfig: string; tslint?: string | boolean } = {
-				tsconfig: tsconfigPath,
-			};
 			plugins.push(
 				new ForkTsCheckerWebpackPlugin({
 					tsconfig: tsconfigPath,
