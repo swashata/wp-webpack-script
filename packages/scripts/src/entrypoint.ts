@@ -1,5 +1,5 @@
+///<reference types="webpack-env" />
 // We expect __webpack_public_path__ to be present, thanks to webpack
-declare let __webpack_public_path__: string | undefined;
 declare const __WPACKIO__: { appName: string; outputPath: string } | undefined;
 
 // We are not using DOM in the typescript library, so let's just hack our way

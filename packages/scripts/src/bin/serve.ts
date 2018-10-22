@@ -91,10 +91,13 @@ export function serve(options: ProgramOptions | undefined): void {
 			onError: msg => {
 				spinner.stop();
 				clearConsole();
+				console.log(`${chalk.bgRed.black(' ERROR ')} please review`);
+				console.log('');
+				msg.errors.forEach(e => console.log(e));
+				console.log('');
 				console.error(
 					`${logSymbols.error} ${chalk.dim('failed to compile')}\n`
 				);
-				msg.errors.forEach(e => console.log(e));
 				console.log(
 					`${watchSymbol} watching for changes${watchEllipsis}`
 				);

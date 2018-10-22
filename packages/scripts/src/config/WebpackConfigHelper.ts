@@ -274,6 +274,10 @@ export class WebpackConfigHelper {
 					tslint: undefined,
 					async: false,
 					silent: true,
+					formatter: 'codeframe',
+					formatterOptions: {
+						highlightCode: true,
+					},
 				})
 			);
 		}
