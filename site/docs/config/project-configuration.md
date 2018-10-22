@@ -95,6 +95,8 @@ Let's dive in deep with different options.
 The name of your application. It should be unique and you have to use the same
 value with the PHP consumer library.
 
+**NOTE**: This must be `camelCase`.
+
 ## `type` (`string`)
 
 Either `plugin` or `theme`, depending on your WordPress project.
@@ -196,6 +198,9 @@ control. Kindly read the _Extending Webpack Config_ under _concepts_.
 
 Name of the directory (relative) where we would put the bundled and manifest
 files. Defaults to `dist` and you should not commit this directory in your VCS.
+
+**NOTE**: This must be a single directory name with `alphanumeric` `camelCase`.
+You can not pass `rel/path/to/dist` here.
 
 ## `hasReact` (`boolean`):
 
