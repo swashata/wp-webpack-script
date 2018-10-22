@@ -58,7 +58,7 @@ describe('CreateWebPackConfig', () => {
 				expect(entry[key].pop()).not.toMatch(
 					/^webpack\-hot\-middleware/
 				);
-				expect(entry[key][0]).toBe(`@wpackio/scripts/lib/entrypoint`);
+				expect(entry[key][0]).toBe(`@wpackio/entrypoint/lib/index`);
 			});
 		});
 	});

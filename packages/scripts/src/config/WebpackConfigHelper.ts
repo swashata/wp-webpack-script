@@ -176,7 +176,7 @@ export class WebpackConfigHelper {
 				normalizedEntry[key] = [
 					// We need it before any other entrypoint, otherwise it won't
 					// work, if ES Modules are used.
-					`@wpackio/scripts/lib/entrypoint`,
+					`@wpackio/entrypoint/lib/index`,
 					...normalizedEntry[key],
 				];
 			});
