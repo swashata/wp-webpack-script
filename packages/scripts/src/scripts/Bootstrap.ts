@@ -14,6 +14,9 @@ interface Pkg {
 	dependencies?: {
 		[x: string]: string;
 	};
+	devDependencies?: {
+		[x: string]: string;
+	};
 }
 
 interface ProjectConfigContext {
@@ -309,15 +312,19 @@ module.exports = {
 		});
 
 		// Add dependencies of @wpackio/entrypoint and @wpackio/scripts if needed
-		const dependencies: string[] = [];
-		const devDependencies: string[] = ['@wpackio/scripts'];
+		const dependencies: string[] = ['@wpackio/entrypoint'];
+		const devDependencies: string[] = [];
+
+		// If @wpackio/scripts is not already present in devDependencies
+		// Then push it. We do this check, because @wpackio/cli might already
+		// have installed it during scaffolding.
 		if (
-			!packageFileData.dependencies ||
-			!packageFileData.dependencies['@wpackio/entrypoint']
+			!packageFileData.devDependencies ||
+			!packageFileData.devDependencies['@wpackio/scripts']
 		) {
-			dependencies.push('@wpackio/entrypoint');
+			devDependencies.push('@wpackio/scripts');
 		}
-		// If has Sass
+		// If has Sass, then push node-sass
 		if (projectContext.hasSass === 'true') {
 			devDependencies.push('node-sass');
 		}

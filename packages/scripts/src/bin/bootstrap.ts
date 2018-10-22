@@ -73,8 +73,14 @@ export async function bootstrap(
 				spinner.start(
 					`installing dependencies${watchEllipsis} may take a while`
 				);
-				await execa(command, [add, ...done.deps.dependencies]);
-				spinner.succeed('done installing dependencies\n');
+
+				try {
+					await execa(command, [add, ...done.deps.dependencies]);
+					spinner.succeed('done installing dependencies\n');
+				} catch (e) {
+					spinner.fail('could not install all dependencies');
+					console.log(pe.render(e));
+				}
 			}
 			if (done.deps && done.deps.devDependencies.length) {
 				console.log(
@@ -90,13 +96,18 @@ export async function bootstrap(
 				spinner.start(
 					`installing dev dependencies${watchEllipsis} may take a while`
 				);
-				await execa(command, [
-					add,
-					...done.deps.devDependencies,
-					devParam,
-				]);
 
-				spinner.succeed('done installing dependencies\n');
+				try {
+					await execa(command, [
+						add,
+						...done.deps.devDependencies,
+						devParam,
+					]);
+					spinner.succeed('done installing devDependencies\n');
+				} catch (e) {
+					spinner.fail('could not install all devDependencies');
+					console.log(pe.render(e));
+				}
 			}
 		} catch (e) {
 			console.log(
