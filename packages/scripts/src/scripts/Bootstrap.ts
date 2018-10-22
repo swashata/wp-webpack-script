@@ -308,14 +308,14 @@ module.exports = {
 			}
 		});
 
-		// Add dependencies of @wpackio/scripts if needed
+		// Add dependencies of @wpackio/entrypoint and @wpackio/scripts if needed
 		const dependencies: string[] = [];
-		const devDependencies: string[] = [];
+		const devDependencies: string[] = ['@wpackio/scripts'];
 		if (
 			!packageFileData.dependencies ||
-			!packageFileData.dependencies['@wpackio/scripts']
+			!packageFileData.dependencies['@wpackio/entrypoint']
 		) {
-			dependencies.push('@wpackio/scripts');
+			dependencies.push('@wpackio/entrypoint');
 		}
 		// If has Sass
 		if (projectContext.hasSass === 'true') {

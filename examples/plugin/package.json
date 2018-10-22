@@ -9,6 +9,7 @@
   "devDependencies": {
     "autoprefixer": "^9.1.5",
     "node-sass": "^4.9.3",
+    "@wpackio/scripts": "^1.2.1",
     "typescript": "^3.1.3"
   },
   "scripts": {
@@ -18,7 +19,7 @@
   },
   "dependencies": {
     "@types/webpack-env": "^1.13.6",
-    "@wpackio/scripts": "^1.2.1",
+    "@wpackio/entrypoint": "^1.2.1",
     "react": "^16.5.2",
     "react-bootstrap": "^1.0.0-beta.1",
     "react-dom": "^16.5.2",

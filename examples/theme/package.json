@@ -7,7 +7,8 @@
   "license": "MIT",
   "private": true,
   "devDependencies": {
-    "node-sass": "^4.9.3"
+    "node-sass": "^4.9.3",
+    "@wpackio/scripts": "^1.2.1"
   },
   "scripts": {
     "bootstrap": "wpackio-scripts bootstrap",
@@ -15,6 +16,6 @@
     "exstart": "wpackio-scripts start"
   },
   "dependencies": {
-    "@wpackio/scripts": "^1.2.1"
+    "@wpackio/entrypoint": "^1.2.1"
   }
 }
