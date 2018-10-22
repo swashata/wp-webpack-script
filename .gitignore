@@ -6,6 +6,9 @@ packages/*/lib
 # Lerna
 lerna-debug.log*
 
+# Tryouts
+.tryouts
+
 ## Standard gitignore ##
 # Logs
 logs
