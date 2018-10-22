@@ -49,6 +49,21 @@ This will create the following files:
     files work as expected.
 -   `postcss.config.js` - Additional configuration for your css files. Read [more](https://github.com/postcss/postcss#webpack). We have `autoprefixer` setup by default.
 
+**NOTE** You must use `camelCase` format when defining `appName`. Otherwise it
+will not work.
+
+```js
+// Good
+module.exports = {
+	appName: 'myAwesomeApp',
+};
+
+// BAD
+module.exports = {
+	appName: 'my-awesome-app',
+};
+```
+
 Now you are ready to go.
 
 ### Bootstrap the files manually.

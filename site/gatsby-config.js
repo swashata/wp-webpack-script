@@ -38,6 +38,13 @@ module.exports = {
 				path: `${__dirname}/frontpage/steps/`,
 			},
 		},
+		{
+			resolve: 'gatsby-source-filesystem',
+			options: {
+				name: 'docs',
+				path: `${__dirname}/docs/`,
+			},
+		},
 		'gatsby-transformer-remark',
 		'gatsby-plugin-sharp',
 		'gatsby-transformer-sharp',

@@ -33,6 +33,7 @@ const IndexPage = ({ data: { mission, steps } }) => (
 			}
 			terminalTitle="🔥wpackio-scripts start (node)"
 		>
+			<p className="comment"># navigate to your project directory</p>
 			<p>
 				<span className="command">cd</span> ~/my-awesome-plugin-or-theme
 			</p>
