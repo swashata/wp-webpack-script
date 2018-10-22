@@ -1,6 +1,6 @@
 ---
 title: Use PHP API to consume assets
-category: Guide
+category: Guides
 ---
 
 [`wpackio/enqueue`](https://github.com/swashata/wpackio-enqueue) is the PHP
