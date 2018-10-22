@@ -53,7 +53,7 @@ Now you are ready to go.
 First add the dependencies.
 
 ```bash
-npm i @wpackio/scripts
+npm i @wpackio/entrypoint
 ```
 
 **NOTE**: It needs to go into your project's `dependencies`, not in `devDepencencies`.
@@ -63,7 +63,7 @@ handles the dynamic `publicPath` for webpack.
 Now add `devDepencencies`.
 
 ```bash
-npm i node-sass -D
+npm i node-sass @wpackio/scripts -D
 ```
 
 You will need it only if you are using Sass.
