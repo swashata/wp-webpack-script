@@ -2,9 +2,15 @@
 	background-image: linear-gradient(120deg, #ecebeb 0%, #ebedee 100%);
 
 	& &__logo {
+		display: flex;
+		align-items: center;
 		img,
 		svg {
 			margin-right: 8px;
+		}
+		span {
+			font-size: 1.75em;
+			// line-height: 1;
 		}
 	}
 

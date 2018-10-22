@@ -6,12 +6,13 @@ import './index.scss';
 import Layout from '../components/layout';
 import Hero from '../components/hero';
 import Feature from '../components/feature';
+import Steps from '../components/steps';
 
 import { ReactComponent as Development } from '../components/svgs/development.svg';
 import { ReactComponent as Cloud } from '../components/svgs/cloud.svg';
 import { ReactComponent as Dependendable } from '../components/svgs/dependable.svg';
 
-const IndexPage = ({ data: { mission } }) => (
+const IndexPage = ({ data: { mission, steps } }) => (
 	<Layout>
 		<Hero
 			title={
@@ -100,19 +101,54 @@ const IndexPage = ({ data: { mission } }) => (
 				</div>
 			</div>
 		</section>
+		<section className="section homepage-section">
+			<div className="container">
+				<h2 className="title homepage-section__title">
+					How do I use{' '}
+					<span className="wpackio-logo-text">
+						wpack.
+						<em>io</em>
+					</span>
+				</h2>
+			</div>
+		</section>
+		{steps.edges.map(({ node }, index) => (
+			<Steps
+				key={node.id}
+				html={node.html}
+				title={node.frontmatter.title}
+				image={node.frontmatter.image.publicURL}
+				order={index}
+			/>
+		))}
+
 		<section className="section">
 			<div className="container">
-				{console.log(mission)}
 				{mission.edges.map(({ node }) => {
 					const { html, id, frontmatter } = node;
 					return (
-						<div key={id}>
-							<h3 className="title">{frontmatter.title}</h3>
-							<div
-								className="content"
-								dangerouslySetInnerHTML={{ __html: html }}
-							/>
-						</div>
+						<React.Fragment key={id}>
+							<section className="section homepage-section">
+								<div className="container">
+									<h2
+										className="title homepage-section__title"
+										dangerouslySetInnerHTML={{
+											__html: frontmatter.title,
+										}}
+									/>
+								</div>
+							</section>
+							<section className="section homepage-section">
+								<div className="container">
+									<div
+										className="content"
+										dangerouslySetInnerHTML={{
+											__html: html,
+										}}
+									/>
+								</div>
+							</section>
+						</React.Fragment>
 					);
 				})}
 			</div>
@@ -125,8 +161,8 @@ export default IndexPage;
 export const query = graphql`
 	query {
 		mission: allMarkdownRemark(
-			filter: { fileAbsolutePath: { regex: "/mission/" } }
-			sort: { order: DESC, fields: frontmatter___order }
+			filter: { fileAbsolutePath: { regex: "/missions/" } }
+			sort: { order: ASC, fields: frontmatter___order }
 		) {
 			edges {
 				node {
@@ -135,6 +171,24 @@ export const query = graphql`
 					frontmatter {
 						title
 						order
+					}
+				}
+			}
+		}
+		steps: allMarkdownRemark(
+			filter: { fileAbsolutePath: { regex: "/steps/" } }
+			sort: { order: ASC, fields: frontmatter___order }
+		) {
+			edges {
+				node {
+					html
+					id
+					frontmatter {
+						title
+						order
+						image {
+							publicURL
+						}
 					}
 				}
 			}

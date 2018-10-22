@@ -8,7 +8,7 @@ const Hero = props => {
 		<div className="wpackio-hero hero">
 			<div className="hero-body">
 				<div className="container">
-					<h1 className="wpackio-hero__title title">{title}</h1>
+					<h2 className="wpackio-hero__title title">{title}</h2>
 					<Window
 						className="wpackio-hero__terminal"
 						title={terminalTitle}
@@ -16,9 +16,9 @@ const Hero = props => {
 					>
 						{children}
 					</Window>
-					<h2 className="wpackio-hero__subtitle subtitle">
+					<h3 className="wpackio-hero__subtitle subtitle">
 						{subtitle}
-					</h2>
+					</h3>
 					{React.cloneElement(cta, {
 						className: 'wpackio-hero__cta button is-large is-white',
 					})}

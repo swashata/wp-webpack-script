@@ -3,10 +3,33 @@ pre {
 	font-family: 'Dank Mono', monospace;
 }
 
-em {
+em,
+strong {
 	font-family: 'Dank Mono', cursive;
 }
 
 .site-footer {
 	padding-bottom: 2rem;
+}
+
+// Main logo
+.wpackio-logo-text {
+	font-family: 'Dank Mono';
+	font-weight: normal;
+	background: linear-gradient(
+		45deg,
+		#f09433 0%,
+		#e6683c 25%,
+		#dc2743 50%,
+		#cc2366 75%,
+		#bc1888 100%
+	);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+.title,
+.subtitle {
+	.wpackio-logo-text {
+		font-weight: normal;
+	}
 }

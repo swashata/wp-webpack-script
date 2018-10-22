@@ -28,7 +28,14 @@ module.exports = {
 			resolve: 'gatsby-source-filesystem',
 			options: {
 				name: 'fp-mission',
-				path: `${__dirname}/frontpage/mission/`,
+				path: `${__dirname}/frontpage/missions/`,
+			},
+		},
+		{
+			resolve: 'gatsby-source-filesystem',
+			options: {
+				name: 'fp-steps',
+				path: `${__dirname}/frontpage/steps/`,
 			},
 		},
 		'gatsby-transformer-remark',

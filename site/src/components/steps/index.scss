@@ -1,0 +1,21 @@
+.wpackio-steps {
+	& &__desc,
+	& &__image {
+		display: flex;
+		align-items: center;
+	}
+	& &__image {
+		padding: 40px;
+		img {
+			display: block;
+			border-radius: 6px;
+			box-shadow: 0 20px 68px rgba(0, 0, 0, 0.55);
+		}
+	}
+
+	& &__subtitle {
+		font-family: 'Dank Mono';
+		font-weight: bold;
+		margin-bottom: 3rem;
+	}
+}

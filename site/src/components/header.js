@@ -49,10 +49,10 @@ class Header extends React.Component {
 											height="1.75em"
 											width="1.75em"
 										/>
-										<img
-											src={data.logoText.publicURL}
-											alt={siteTitle}
-										/>
+										<span className="wpackio-logo-text">
+											wpack.
+											<em>io</em>
+										</span>
 									</h1>
 								</Link>
 								<a

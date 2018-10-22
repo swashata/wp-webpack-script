@@ -1,3 +1,31 @@
-.wpackio-home-features {
-	// padding: 4rem 0;
+.homepage-section {
+	.container {
+		max-width: 720px;
+	}
+	& &__title {
+		font-family: 'Dank Mono';
+		text-align: center;
+		padding: 1rem 0;
+		position: relative;
+		&::after {
+			content: '';
+			display: block;
+			width: 250px;
+			position: absolute;
+			bottom: 0;
+			height: 3px;
+			border-radius: 8px;
+			background: #f09433;
+			background: linear-gradient(
+				45deg,
+				#f09433 0%,
+				#e6683c 25%,
+				#dc2743 50%,
+				#cc2366 75%,
+				#bc1888 100%
+			);
+			left: 50%;
+			transform: translateX(-50%);
+		}
+	}
 }
