@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="2.0.0"></a>
+# [2.0.0](https://github.com/swashata/wp-webpack-script/compare/v1.2.1...v2.0.0) (2018-10-22)
+
+
+### Features
+
+* add ts checker webpack plugin ([4faf10e](https://github.com/swashata/wp-webpack-script/commit/4faf10e)), closes [#15](https://github.com/swashata/wp-webpack-script/issues/15)
+* beautify error reporting. ([c068758](https://github.com/swashata/wp-webpack-script/commit/c068758))
+* normalize dependencies & devDependencies in bootstrap ([be44080](https://github.com/swashata/wp-webpack-script/commit/be44080))
+* update bootstrap to include entrypoint dep ([297b54d](https://github.com/swashata/wp-webpack-script/commit/297b54d))
+
+
+
+
+
 <a name="1.2.1"></a>
 ## [1.2.1](https://github.com/swashata/wp-webpack-script/compare/v1.2.0...v1.2.1) (2018-10-22)
 

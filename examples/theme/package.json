@@ -1,14 +1,14 @@
 {
   "name": "wpacktheme",
-  "version": "1.2.1",
+  "version": "2.0.0",
   "description": "A sample execution of wpackio scripts for WordPress Theme Development",
   "main": "index.js",
   "author": "Swashata Ghosh (https://swas.io)",
   "license": "MIT",
   "private": true,
   "devDependencies": {
-    "node-sass": "^4.9.3",
-    "@wpackio/scripts": "^1.2.1"
+    "@wpackio/scripts": "^2.0.0",
+    "node-sass": "^4.9.3"
   },
   "scripts": {
     "bootstrap": "wpackio-scripts bootstrap",
@@ -16,6 +16,6 @@
     "exstart": "wpackio-scripts start"
   },
   "dependencies": {
-    "@wpackio/entrypoint": "^1.2.1"
+    "@wpackio/entrypoint": "^2.0.0"
   }
 }
