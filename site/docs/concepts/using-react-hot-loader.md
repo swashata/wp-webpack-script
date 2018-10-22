@@ -1,3 +1,8 @@
+---
+title: Using React Hot Loader with wpack.io
+category: Tutorials
+---
+
 Let's focus on an example where we use the great [react hot loader](https://github.com/gaearon/react-hot-loader)
 to have the best in class DX when developing react app. It can be found in action
 under [`examples/plugin`](https://github.com/swashata/wp-webpack-script/tree/master/examples/plugin)

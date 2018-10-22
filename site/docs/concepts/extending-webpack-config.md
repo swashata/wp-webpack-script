@@ -1,3 +1,8 @@
+---
+title: Extending webpack configuration
+category: Tutorials
+---
+
 wpackio depends on [webpack](https://webpack.js.org) to create the dev server
 and production build. It does provide a way to extend and override webpack
 configuration it creates.

@@ -1,4 +1,7 @@
-# How code-splitting and dynamic Import works
+---
+title: How code-splitting and dynamic Import works
+category: Tutorials
+---
 
 Glad you asked. The documentation at [webpack `output.publicPath`](https://webpack.js.org/configuration/output/#output-publicpath)
 says this is one `free` variable `__webpack_public_path__` which can be used to

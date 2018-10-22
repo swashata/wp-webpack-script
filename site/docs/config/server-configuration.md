@@ -1,3 +1,8 @@
+---
+title: Server Configuration with wpackio.server.js
+category: Configuration
+---
+
 The `wpackio.server.js` file at the root of your workspace tells wpackio
 how your development server is handled.
 

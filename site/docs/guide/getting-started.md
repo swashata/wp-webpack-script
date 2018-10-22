@@ -1,4 +1,7 @@
-# Getting Started
+---
+title: Getting Started with wpack.io
+category: Guide
+---
 
 This guide covers in-depth how to get started or incorporate wpack.io tooling
 into your WordPress project.

@@ -1,16 +1,65 @@
-# Use `wpackio/enqueue` API to consume assets
+---
+title: Use PHP API to consume assets
+category: Guide
+---
 
-This is the PHP companion of @wpackio/scripts.
+[`wpackio/enqueue`](https://github.com/swashata/wpackio-enqueue) is the PHP
+companion of @wpackio/scripts.
 
-It gives you all the APIs you will need to properly consume assets generated from @wpackio/scripts from your WordPress plugins or themes.
+It gives you all the APIs you will need to properly consume assets generated from `@wpackio/scripts` from your WordPress plugins or themes.
 
 ## Installation
+
+### Using Composer
+
+We recommend using [composer](https://getcomposer.org/) for using this [library](https://packagist.org/packages/wpackio/enqueue).
 
 ```bash
 composer require wpackio/enqueue
 ```
 
-Now instantiate it **early** and call the API.
+Then in your plugin main file or `functions.php` file of your theme, load
+composer auto-loader.
+
+```php
+<?php
+
+// Require the composer autoload for getting conflict-free access to enqueue
+require_once __DIR__ . '/vendor/autoload.php';
+
+// Instantiate
+$enqueue = new \WPackio\Enqueue( 'appName', 'outputPath', '1.0.0', 'plugin', __FILE__ );
+```
+
+### Manual
+
+If you do not wish to use composer, then download the file [`Enqueue.php`](inc/Enqueue.php).
+
+Remove the namespace line `namespace WPackio;` and rename the classname from
+`Enqueue` to something less generic, like `MyPluginEnqueue`. This ensures
+conflict-free loading.
+
+Then require the file in your plugin entry-point or `functions.php` file of your theme.
+
+```php
+<?php
+
+// Require the file yourself
+require_once __DIR__ . '/inc/MyPluginEnqueue.php';
+
+// Instantiate
+$enqueue = new MyPluginEnqueue( 'appName', 'outputPath', '1.0.0', 'plugin', __FILE__ );
+```
+
+## Getting Started
+
+Which ever way, you choose to install, you have to make sure to
+**instantiate the class early** during the entry-point of your plugin or theme.
+
+This ensures that we have necessary javascript in our website frontend and admin-end
+to make webpack code-splitting and dynamic import work.
+
+A common pattern may look like this.
 
 ```php
 <?php
@@ -54,7 +103,7 @@ early to print a small javascript like this:
 
 ```html
 <script type="text/javascript">
-window.__wpackIoappNameoutputPath = 'https://example.com/wp-content/plugins/plugin-slug/dist/'
+window.__wpackIoappNameoutputPath = 'https://example.com/wp-content/plugins/plugin-slug/dist/';
 </script>
 ```
 

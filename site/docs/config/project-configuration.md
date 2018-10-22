@@ -1,3 +1,8 @@
+---
+title: Project Configuration with wpackio.project.js
+category: Configuration
+---
+
 The `wpackio.project.js` file at the root of your workspace tells wpackio
 how your project is to be compiled. When you bootstrap this file is created
 for you.

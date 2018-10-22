@@ -1,4 +1,7 @@
-# Level up your JavaScript (Front-End) Skills
+---
+title: Level up your JavaScript (Front-End) Skills
+category: Tutorials
+---
 
 I created this tool in the hope that it will bring more WordPress developers to
 this crazy moving front-end world (crazy in all good way). With the tooling
