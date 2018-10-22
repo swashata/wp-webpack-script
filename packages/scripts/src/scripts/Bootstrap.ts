@@ -1,7 +1,9 @@
+import camelCase from 'camelcase';
 import fs from 'fs';
 import handlebars from 'handlebars';
 import inquirer from 'inquirer';
 import path from 'path';
+import slugify from 'slugify';
 
 interface Pkg {
 	name: string;
@@ -132,18 +134,23 @@ export class Bootstrap {
 			},
 			// Ask appName (auto-generate from package.json)
 			{
-				message: answers => `Name of WordPress ${answers.type}`,
+				message: answers =>
+					`Name of WordPress ${answers.type} (camelCase)`,
 				name: 'appName',
 				type: 'input',
-				default: this.pkg.name || '',
+				default: camelCase(this.pkg.name) || '',
+				filter: camelCase,
 			},
 			// Ask slug (default, directory name)
 			{
 				message: answers =>
-					`Slug (directory name) of your ${answers.type}`,
+					`Slug (directory name) of your ${
+						answers.type
+					} (alphanumeric & dash)`,
 				name: 'slug',
 				type: 'input',
-				default: path.basename(this.cwd),
+				default: slugify(path.basename(this.cwd)),
+				filter: slugify,
 			},
 			// Ask outputPath (relative), defaults 'dist'
 			{

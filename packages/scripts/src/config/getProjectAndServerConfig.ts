@@ -1,3 +1,5 @@
+import camelCase from 'camelcase';
+import chalk from 'chalk';
 import path from 'path';
 import { ProjectConfig } from './project.config.default';
 import { ServerConfig } from './server.config.default';
@@ -59,6 +61,14 @@ export function getProjectAndServerConfig(
 	if (typeof serverConfig !== 'object') {
 		throw new Error(
 			`Server configuration must export an object literal. Right now it is ${typeof serverConfig}`
+		);
+	}
+	// Check if the appName is okay
+	if (!/^[A-Za-z]+$/.test(projectConfig.appName)) {
+		throw new Error(
+			`appName must be in camelCase. Currently ${
+				projectConfig.appName
+			}, try ${camelCase(projectConfig.appName)}`
 		);
 	}
 	// @todo

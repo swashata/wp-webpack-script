@@ -163,7 +163,7 @@ export function serve(options: ProgramOptions | undefined): void {
 	} catch (e) {
 		spinner.stop();
 		console.log(`${logSymbols.error} could not start server.`);
-		console.log(pe.render(e));
+		console.error(pe.render(e));
 		process.exit(1);
 	}
 }
