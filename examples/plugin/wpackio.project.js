@@ -42,6 +42,12 @@ module.exports = {
 				main: ['./src/reactapp/index.jsx'],
 			},
 		},
+		{
+			name: 'tsapp',
+			entry: {
+				main: ['./src/ts/main.ts'],
+			},
+		},
 	],
 	// Output path relative to the context directory
 	// We need relative path here, else, we can not map to publicPath

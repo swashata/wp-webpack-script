@@ -53,6 +53,7 @@
     "figures": "^2.0.0",
     "file-loader": "^2.0.0",
     "find-up": "^3.0.0",
+    "fork-ts-checker-webpack-plugin": "^0.4.10",
     "gradient-string": "^1.2.0",
     "handlebars": "^4.0.12",
     "inquirer": "^6.2.0",

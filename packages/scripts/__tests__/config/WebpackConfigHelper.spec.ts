@@ -1,5 +1,7 @@
 import { PresetOptions } from '@wpackio/babel-preset-base/lib/preset';
+import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import miniCssExtractPlugin from 'mini-css-extract-plugin';
+import path from 'path';
 import webpack from 'webpack';
 import { webpackOptionsOverrideFunction } from '../../src/config/project.config.default';
 import { WebpackConfigHelper } from '../../src/config/WebpackConfigHelper';
@@ -129,6 +131,22 @@ describe('CreateWebPackConfig', () => {
 			);
 			const plugins = cwc.getPlugins();
 			expect(plugins).toMatchSnapshot();
+		});
+		test('has fork ts checker when tsconfig.json is present', () => {
+			const cwc = new WebpackConfigHelper(
+				projectConfig.files[0],
+				getConfigFromProjectAndServer(projectConfig, serverConfig),
+				path.resolve(__dirname, '../../'), // it's a hack cause the project has tsconfig.json
+				true
+			);
+			const plugins = cwc.getPlugins();
+			let hasTsChecker = false;
+			plugins.forEach(plug => {
+				if (plug instanceof ForkTsCheckerWebpackPlugin) {
+					hasTsChecker = true;
+				}
+			});
+			expect(hasTsChecker).toBeTruthy();
 		});
 	});
 

@@ -20,6 +20,7 @@ class Wpackio_Plugin_Init {
 		$this->enqueue->enqueue( 'app', 'main', [] );
 		$this->enqueue->enqueue( 'app', 'mobile', [] );
 		$this->enqueue->enqueue( 'foo', 'main', [] );
+		$this->enqueue->enqueue( 'tsapp', 'main', [] );
 	}
 
 	function reactapp( $atts, $content = null ) {

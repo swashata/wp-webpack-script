@@ -39,7 +39,11 @@ const IndexPage = ({ data: { mission } }) => (
 				# initiate the tooling to your existing project
 			</p>
 			<p>
-				<span className="command">npx</span> @wpackio/scripts bootstrap
+				<span className="command">npx</span> @wpackio/cli
+			</p>
+			<p className="comment"># bootstrap project</p>
+			<p>
+				<span className="command">npm</span> run bootstrap
 			</p>
 			<p className="comment"># start development server</p>
 			<p>

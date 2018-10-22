@@ -3,6 +3,8 @@ import {
 	PresetOptions,
 } from '@wpackio/babel-preset-base/lib/preset';
 import cleanWebpackPlugin from 'clean-webpack-plugin';
+import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
+import fs from 'fs';
 import miniCssExtractPlugin from 'mini-css-extract-plugin';
 import path from 'path';
 import WatchMissingNodeModulesPlugin from 'react-dev-utils/WatchMissingNodeModulesPlugin';
@@ -260,6 +262,21 @@ export class WebpackConfigHelper {
 				entrypointsKey: 'wpackioEp',
 			}),
 		];
+		// Add ts checker plugin if project has tsconfig.json
+		const tsconfigPath = path.resolve(this.cwd, './tsconfig.json');
+		if (this.fileExists(tsconfigPath)) {
+			const tsConfig: { tsconfig: string; tslint?: string | boolean } = {
+				tsconfig: tsconfigPath,
+			};
+			plugins.push(
+				new ForkTsCheckerWebpackPlugin({
+					tsconfig: tsconfigPath,
+					tslint: undefined,
+					async: false,
+					silent: true,
+				})
+			);
+		}
 		// Add development specific plugins
 		if (this.isDev) {
 			// Hot Module Replacement
@@ -557,5 +574,16 @@ ${bannerConfig.copyrightText}${bannerConfig.credit ? creditNote : ''}`,
 		}
 		// Otherwise just return default
 		return defaults;
+	}
+
+	/**
+	 * Check if file exists or not using fs API.
+	 */
+	private fileExists(filepath: string): boolean {
+		try {
+			return fs.statSync(filepath).isFile();
+		} catch (_) {
+			return false;
+		}
 	}
 }
