@@ -7,7 +7,7 @@ packages/*/lib
 lerna-debug.log*
 
 # Tryouts
-.tryouts
+# .tryouts
 
 ## Standard gitignore ##
 # Logs

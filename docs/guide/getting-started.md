@@ -5,7 +5,7 @@ into your WordPress project.
 
 ## Install the build tool
 
-We have to way to get started with `@wpackio/scripts`.
+We have two way to get started with `@wpackio/scripts`.
 
 ### Bootstrap the files automatically
 
@@ -21,7 +21,19 @@ cd awesome-plugin
 Now run
 
 ```bash
-npx @wpackio/scripts bootstrap
+npx @wpackio/cli
+```
+
+Once done, run
+
+```bash
+npm run bootstrap
+```
+
+OR if using `yarn` (the cli tool will auto-detect)
+
+```bash
+yarn bootstrap
 ```
 
 This will create the following files:
