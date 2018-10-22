@@ -1,6 +1,6 @@
 {
   "name": "wpackplugin",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "A sample execution of wpackio scripts for WordPress Plugin Development",
   "main": "index.js",
   "author": "Swashata Ghosh (https://swas.io)",
@@ -16,7 +16,7 @@
     "exbuild": "wpackio-scripts build"
   },
   "dependencies": {
-    "@wpackio/scripts": "^1.1.0",
+    "@wpackio/scripts": "^1.2.0",
     "react": "^16.5.2",
     "react-bootstrap": "^1.0.0-beta.1",
     "react-dom": "^16.5.2",
