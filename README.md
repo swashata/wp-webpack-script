@@ -114,7 +114,7 @@ from within the project.
   <img src="https://raw.githubusercontent.com/swashata/wp-webpack-script/master/assets/01-cli.gif">
 </p>
 
-### `npm run bootstrap`
+### `npm run bootstrap` / `yarn bootstrap`
 
 Bootstrap needed dependencies, dev dependencies according to the type of your
 project. This command is enabled by `npx @wpackio/cli`.
@@ -241,7 +241,7 @@ class MyPluginInit {
 new MyPluginInit();
 ```
 
-### `npm start`
+### `npm start` / `yarn start`
 
 After configuring all entry-points and using the PHP library for consuming, we
 start the development server.
@@ -262,7 +262,7 @@ In the above image we see, we are changing the label of from `Todo App` to
 
 Once done, we press <kbd>Ctrl</kbd> + <kbd>c</kbd> to stop it.
 
-### `npm run build`
+### `npm run build` / `yarn build`
 
 Now we create production build.
 
