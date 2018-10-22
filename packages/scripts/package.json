@@ -1,6 +1,6 @@
 {
   "name": "@wpackio/scripts",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Main single dependency of @wpackio build tool.",
   "keywords": [
     "wordpress",
