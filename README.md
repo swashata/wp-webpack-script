@@ -62,7 +62,11 @@ Everything is documented in our [website](https://wpack.io).
 
 -   Add `@wpackio/scripts` to a project by running this.
     ```bash
-    npx @wpackio/scripts bootstrap
+    npx @wpackio/cli
+    ```
+    and after that
+    ```bash
+    npm run bootstrap
     ```
 -   Edit the `wpackio.project.js` file to write your javascript entry-points.
 -   Use `wpackio/enqueue` from [composer](https://packagist.org/packages/wpackio/enqueue) to consume the assets.
@@ -82,8 +86,9 @@ make it work within your WordPress theme or plugin.
 
 Keeping that in mind, wpack.io provides two dependencies for your projects:
 
-1. `@wpackio/scripts` - As main dependency of your `package.json`.
-2. `wpackio/enqueue` - As main dependency of your `composer.json`.
+1. `@wpackio/entrypoint` - As main dependency of your `package.json`.
+1. `@wpackio/scripts` - As main dev dependency of your `package.json`.
+1. `wpackio/enqueue` - As main dependency of your `composer.json`.
 
 The first handles all the tasks for building the assets and providing a damn
 good DX.
@@ -100,13 +105,22 @@ to the first.
 We have examples inside [examples](./examples) directory of this repo. Each of
 them has instructions in the readme file, so be sure to check out.
 
-### `npx @wpackio/scripts bootstrap`
+### `npx @wpackio/cli`
 
-Bootstrap wpack.io into any existing or new project. This command has to be run
+Add wpack.io into any existing or new project. This command has to be run
 from within the project.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/swashata/wp-webpack-script/master/assets/bootstrap.gif">
+  <img src="https://raw.githubusercontent.com/swashata/wp-webpack-script/master/assets/01-cli.gif">
+</p>
+
+### `npm run bootstrap`
+
+Bootstrap needed dependencies, dev dependencies according to the type of your
+project. This command is enabled by `npx @wpackio/cli`.
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/swashata/wp-webpack-script/master/assets/02-bootstrap.gif">
 </p>
 
 ### Setup JS entry-points
@@ -233,7 +247,7 @@ After configuring all entry-points and using the PHP library for consuming, we
 start the development server.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/swashata/wp-webpack-script/master/assets/start.gif">
+  <img src="https://raw.githubusercontent.com/swashata/wp-webpack-script/master/assets/03-start.gif">
 </p>
 
 ##### HMR
@@ -241,28 +255,19 @@ start the development server.
 We edit the files and with proper setup, we can see things load live, without
 page refresh. It is called, **Hot Module Replacement (_HMR_)**.
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/swashata/wp-webpack-script/master/assets/react-hmr.gif">
-</p>
-
-In the above image we see, we are changing the label of the button from `Add`, to
-`Add Todo`, to `+ Add Todo`. The changes are reflected live on the page, without
-any page-reload.
+In the above image we see, we are changing the label of from `Todo App` to
+`Awesome todo`. The changes are reflected live on the page, without any page-reload.
 
 ##### Stop Dev Server
 
 Once done, we press <kbd>Ctrl</kbd> + <kbd>c</kbd> to stop it.
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/swashata/wp-webpack-script/master/assets/stop.gif">
-</p>
 
 ### `npm run build`
 
 Now we create production build.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/swashata/wp-webpack-script/master/assets/build.gif">
+  <img src="https://raw.githubusercontent.com/swashata/wp-webpack-script/master/assets/04-build.gif">
 </p>
 
 Our plugin/theme is now ready to go live.
