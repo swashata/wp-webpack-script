@@ -37,7 +37,6 @@
     "build:types": "tsc --emitDeclarationOnly",
     "build": "yarn clean && yarn build:types && yarn build:js",
     "lint": "tslint --project './tsconfig.json'",
-    "test": "jest --color",
     "prepare": "cross-env NODE_ENV=production yarn build"
   },
   "publishConfig": {
