@@ -84,7 +84,7 @@ want is a simple to configure, yet hackable to the core tooling for bundling
 all your frontend assets (js, css, images, svgs) in the most optimized way and
 make it work within your WordPress theme or plugin.
 
-Keeping that in mind, wpack.io provides two dependencies for your projects:
+Keeping that in mind, wpack.io provides three dependencies for your projects:
 
 1. `@wpackio/entrypoint` - As main dependency of your `package.json`.
 1. `@wpackio/scripts` - As main dev dependency of your `package.json`.

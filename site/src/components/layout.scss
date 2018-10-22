@@ -8,6 +8,27 @@ strong {
 	font-family: 'Dank Mono', cursive;
 }
 
+code {
+	background: transparent;
+}
+
+a code,
+code a {
+	text-decoration: underline;
+	&:hover {
+		text-decoration: none;
+	}
+}
+
+pre {
+	background: #29323c;
+	color: #fff;
+}
+
+body {
+	font-size: 16px;
+}
+
 .site-footer {
 	padding-bottom: 2rem;
 }

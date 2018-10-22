@@ -27,8 +27,8 @@ const IndexPage = ({ data: { mission, steps } }) => (
 					wpackio is a fine-tuned <em>webpack/browser-sync</em>{' '}
 					configuration made specifically for{' '}
 					<em>WordPress Theme and Plugin Development</em>. It gives a
-					fine Developer Experience (DX) and a single dependency for
-					all your bundling requirement.
+					fine Developer Experience (DX) and a single dev dependency
+					for all your bundling requirement.
 				</>
 			}
 			terminalTitle="🔥wpackio-scripts start (node)"
@@ -109,6 +109,7 @@ const IndexPage = ({ data: { mission, steps } }) => (
 						wpack.
 						<em>io</em>
 					</span>
+					?
 				</h2>
 			</div>
 		</section>

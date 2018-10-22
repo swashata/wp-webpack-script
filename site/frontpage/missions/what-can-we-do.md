@@ -1,6 +1,6 @@
 ---
 order: 1
-title: What can I do with <span class="wpackio-logo-text">wpack.<em>io</em></span>
+title: What can I do with <span class="wpackio-logo-text">wpack.<em>io</em></span>?
 ---
 
 Do you always wanted to get into modern front-end development
