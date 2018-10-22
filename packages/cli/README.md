@@ -1,33 +1,53 @@
 # `@wpackio/cli`
 
-Stub README
+A cli tooling intended to be used with `npx` to quickly add needed dependencies
+to your WordPress theme/plugin project.
 
-// TODO
-> Intro
+For more information, check our website [wpack.io](https://wpack.io).
 
 ## Installation
 
 If using `yarn`
 
 ```bash
-yarn add @wpackio/cli
+yarn global add @wpackio/cli
 ```
 
 or with `npm`
 
 ```bash
-npm i @wpackio/cli
+npm i -g @wpackio/cli
 ```
+
+It creates a `wpackio-cli` binary to your system. Run it with
+
+```bash
+wpackio-cli --client yarn
+```
+
+> **NOTE**: This is not intended to be used locally, rather globally or with
+> `npx`. See usage instruction below.
 
 ## Usage
 
-// TODO
-> Usage instruction
+To add `@wpackio/scripts` dependency to your project, run this tool.
 
-## Configuration
+```bash
+npx @wpackio/cli
+```
 
-// TODO
-> Configuration instruction
+## Options
+
+##### `-c, --client [npm|yarn]
+
+Specify which npm client you want to use, `yarn` or `npm`.
+
+It tries to detect automatically, if `yarn.lock` file is present in the directory.
+But it can be overridden with `-c`.
+
+```bash
+npx @wpackio/cli --client yarn
+```
 
 ## Development
 
