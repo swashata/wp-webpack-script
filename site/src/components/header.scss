@@ -23,4 +23,13 @@
 			font-weight: bold;
 		}
 	}
+	& &__social-nav {
+		display: flex;
+		margin-left: 2rem;
+		a.navbar-item {
+			font-size: 20px;
+			padding-left: 1rem;
+			padding-right: 1rem;
+		}
+	}
 }

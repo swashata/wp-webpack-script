@@ -1,6 +1,6 @@
 ---
 title: Project Configuration with wpackio.project.js
-category: Configuration
+order: 1
 ---
 
 The `wpackio.project.js` file at the root of your workspace tells wpackio

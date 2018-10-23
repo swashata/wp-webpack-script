@@ -1,6 +1,6 @@
 ---
 title: Using various SVG Loaders
-category: Tutorials
+order: 3
 ---
 
 SVGs are all the rage in today's web. There are may ways, especially with webpack,

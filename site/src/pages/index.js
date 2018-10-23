@@ -21,7 +21,7 @@ const IndexPage = ({ data: { mission, steps } }) => (
 					plugins
 				</>
 			}
-			cta={<Link to="/docs/">Get Started</Link>}
+			cta={<Link to="/guides/">Get Started</Link>}
 			subtitle={
 				<>
 					wpackio is a fine-tuned <em>webpack/browser-sync</em>{' '}

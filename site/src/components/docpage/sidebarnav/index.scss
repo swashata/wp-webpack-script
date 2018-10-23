@@ -1,4 +1,19 @@
 .wpackio-docsidebarnav {
 	position: relative;
 	width: 100%;
+	.menu-label {
+		a {
+			color: #7a7a7a;
+			&.is-active {
+				color: #cc2366;
+			}
+		}
+	}
+	& &__toc {
+		font-size: 12px;
+		font-family: 'Dank Mono';
+		a {
+			padding: 6px;
+		}
+	}
 }

@@ -4,6 +4,7 @@ import Helmet from 'react-helmet';
 import { StaticQuery, graphql } from 'gatsby';
 
 import Header from './header';
+import Footer from './footer';
 import './bulma.scss';
 import './layout.scss';
 import './dank-mono.css';
@@ -15,6 +16,21 @@ const Layout = ({ children, decorate = true }) => (
 				site {
 					siteMetadata {
 						title
+						docTypeOrder {
+							docType
+							label
+						}
+						social {
+							twitter
+							github
+						}
+					}
+				}
+				image: file(name: { eq: "feature" }) {
+					childImageSharp {
+						resize(width: 1500) {
+							src
+						}
 					}
 				}
 			}
@@ -24,43 +40,41 @@ const Layout = ({ children, decorate = true }) => (
 				<Helmet
 					title={data.site.siteMetadata.title}
 					meta={[
-						{ name: 'description', content: 'Sample' },
-						{ name: 'keywords', content: 'sample, something' },
+						{
+							name: 'description',
+							content:
+								'wpackio is a fine-tuned webpack/browser-sync configuration made specifically for WordPress Theme and Plugin Development.',
+						},
+						{
+							name: 'keywords',
+							content: 'wordpress, webpack, build, javascript',
+						},
+						{
+							property: 'og:image',
+							content: data.image.childImageSharp.resize.src,
+						},
+						{
+							property: 'twitter:image',
+							content: data.image.childImageSharp.resize.src,
+						},
+						{
+							property: 'og:type',
+							content: 'website',
+						},
 					]}
 				>
 					<html lang="en" />
 				</Helmet>
-				<Header siteTitle={data.site.siteMetadata.title} />
+				<Header
+					siteTitle={data.site.siteMetadata.title}
+					docTypes={data.site.siteMetadata.docTypeOrder}
+					twitter={data.site.siteMetadata.social.twitter}
+					github={data.site.siteMetadata.social.github}
+				/>
 				{decorate ? (
 					<>
 						<div className="site-main">{children}</div>
-						<footer className="footer site-footer">
-							<div className="content has-text-centered">
-								&copy; <em>wpack.io</em> by{' '}
-								<a href="https://swas.io">Swashata Ghosh</a>.
-								The source code is licensed{' '}
-								<a href="http://opensource.org/licenses/mit-license.php">
-									MIT
-								</a>
-								. The website content is licensed{' '}
-								<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
-									CC BY NC SA 4.0
-								</a>
-								. Icons used from{' '}
-								<a
-									href="https://www.flaticon.com"
-									rel="nofollow"
-								>
-									flaticon
-								</a>
-								. Font <a href="https://dank.sh">Dank Mono</a>.
-								Powered by{' '}
-								<a href="https://www.gatsbyjs.org/">
-									Gatsby - Build blazing fast apps and
-									websites with React!
-								</a>
-							</div>
-						</footer>
+						<Footer />
 					</>
 				) : (
 					children

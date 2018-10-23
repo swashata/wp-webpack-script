@@ -1,6 +1,6 @@
 ---
 title: Extending webpack configuration
-category: Tutorials
+order: 1
 ---
 
 wpackio depends on [webpack](https://webpack.js.org) to create the dev server

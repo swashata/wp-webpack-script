@@ -12,12 +12,13 @@
 	& &__sidebar {
 		position: fixed;
 		top: 3.625rem;
-		width: 250px;
+		width: 280px;
+		padding: 2rem;
 		border-right: 1px solid #ebedee;
-		background: rgba(188, 24, 136, 0.02);
+		background: #fff;
 		height: calc(100vh - 3.625rem);
 		overflow-y: auto;
-		left: -250px;
+		left: -280px;
 		z-index: 1;
 		transition: left 200ms ease-out;
 	}
@@ -32,8 +33,10 @@
 
 	& &__main {
 		width: 100%;
-		.container {
+		.section .container {
+			min-height: calc(100vh - 3.625rem - 300px);
 			max-width: 720px;
+			margin-left: 4rem;
 		}
 	}
 
@@ -88,7 +91,7 @@
 
 	// Now override when there's enough screen width
 	@media screen and (min-width: $desktop) {
-		padding-left: 250px;
+		padding-left: 280px;
 		& &__sidebar {
 			left: 0;
 		}

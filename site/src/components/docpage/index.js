@@ -1,6 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import Sidebarnav from './sidebarnav';
+import Footer from '../footer';
 
 import { ReactComponent as Chevron } from '../svgs/chevron.svg';
 
@@ -55,9 +56,9 @@ class Docpage extends React.Component {
 		const {
 			html,
 			tableOfContents,
-			frontmatter,
+			title,
 			currentSlug,
-			allDocs,
+			children,
 		} = this.props;
 		const { isSidebarOpen } = this.state;
 		return (
@@ -78,7 +79,6 @@ class Docpage extends React.Component {
 				</div>
 				<div className="wpackio-docpage__sidebar" ref={this.sidebarRef}>
 					<Sidebarnav
-						allDocs={allDocs}
 						currentSlug={currentSlug}
 						toc={tableOfContents}
 					/>
@@ -86,15 +86,24 @@ class Docpage extends React.Component {
 				<div className="wpackio-docpage__main">
 					<section className="section">
 						<div className="container">
-							<h1 className="title wpackio-docpage__title">
-								{frontmatter.title}
-							</h1>
-							<div
-								className="content wpackio-docpage__conent"
-								dangerouslySetInnerHTML={{ __html: html }}
-							/>
+							{html ? (
+								<>
+									<h1 className="title wpackio-docpage__title">
+										{title}
+									</h1>
+									<div
+										className="content wpackio-docpage__content"
+										dangerouslySetInnerHTML={{
+											__html: html,
+										}}
+									/>
+								</>
+							) : (
+								children
+							)}
 						</div>
 					</section>
+					<Footer />
 				</div>
 			</div>
 		);

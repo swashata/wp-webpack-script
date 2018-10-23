@@ -1,5 +1,6 @@
 import React from 'react';
 import { graphql } from 'gatsby';
+import Helmet from 'react-helmet';
 import Layout from '../components/layout';
 import Docpage from '../components/docpage';
 
@@ -7,16 +8,28 @@ export default function DocTemplate({
 	data, // this prop will be injected by the GraphQL query below.
 	pageResources, // available from gatsby
 }) {
-	const { markdownRemark } = data; // data.markdownRemark holds our post data
+	const { markdownRemark, site } = data; // data.markdownRemark holds our post data
 	const { frontmatter, html, tableOfContents } = markdownRemark;
 	return (
 		<Layout decorate={false}>
+			<Helmet
+				title={`${frontmatter.title} - ${site.siteMetadata.title}`}
+				meta={[
+					{
+						property: 'og:type',
+						content: 'article',
+					},
+					{
+						name: 'description',
+						content: markdownRemark.excerpt,
+					},
+				]}
+			/>
 			<Docpage
 				html={html}
-				frontmatter={frontmatter}
+				title={frontmatter.title}
 				tableOfContents={tableOfContents}
 				currentSlug={pageResources.page.path}
-				allDocs={data.allMarkdownRemark.edges}
 			/>
 		</Layout>
 	);
@@ -24,30 +37,18 @@ export default function DocTemplate({
 
 export const pageQuery = graphql`
 	query($path: String!) {
-		allMarkdownRemark(
-			filter: { fileAbsolutePath: { glob: "**/docs/**/*.md" } }
-			sort: { order: DESC, fields: frontmatter___category }
-		) {
-			edges {
-				node {
-					id
-					fields {
-						slug
-					}
-					frontmatter {
-						category
-						title
-					}
-				}
-			}
-		}
 		markdownRemark(fields: { slug: { eq: $path } }) {
 			html
 			frontmatter {
-				category
 				title
 			}
 			tableOfContents(pathToSlugField: "fields.slug")
+			excerpt(pruneLength: 158)
+		}
+		site {
+			siteMetadata {
+				title
+			}
 		}
 	}
 `;

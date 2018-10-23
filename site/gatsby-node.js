@@ -58,7 +58,7 @@ exports.createPages = ({ actions, graphql }) => {
 						filter: {
 							fileAbsolutePath: { glob: "**/docs/**/*.md" }
 						}
-						sort: { order: DESC, fields: frontmatter___category }
+						sort: { order: DESC, fields: frontmatter___order }
 					) {
 						edges {
 							node {
@@ -90,18 +90,18 @@ exports.createPages = ({ actions, graphql }) => {
 		// First get all directories inside docs
 		const docTypes = dirs(path.resolve(__dirname, './docs'));
 		if (docTypes && docTypes.length) {
-			console.log('='.repeat(30));
 			docTypes.forEach(docType => {
 				createPage({
 					path: `/${docType}/`,
 					component: docRootTemplate,
+					context: {
+						docType,
+					},
 				});
 			});
-			setTimeout(() => {
-				resolve();
-			}, 3000);
+			resolve();
 		} else {
-			reject(new Error(`No directories found`));
+			reject(new Error(`No directories found for document roots.`));
 		}
 	});
 

@@ -1,44 +1,102 @@
 import React from 'react';
-import { Link } from 'gatsby';
+import { Link, StaticQuery, graphql } from 'gatsby';
+import classNames from 'classnames';
 
 import './index.scss';
 
-const getDocByCategory = (cat, allDocs) =>
-	allDocs.filter(doc => doc.node.frontmatter.category === cat);
+const getDocByCategory = (docType, allDocs) =>
+	allDocs.filter(doc => doc.node.fields.docType === docType);
 
-const Sidebarnav = props => {
-	const { allDocs, currentSlug, toc } = props;
-	const categories = ['Guides', 'Configuration', 'Tutorials'];
-	// Get all categorized docs
-	return (
-		<div className="wpackio-docsidebarnav">
-			{categories.map(cat => {
-				const docs = getDocByCategory(cat, allDocs);
-				return (
-					<div className="wpackio-docsidebarnav__list" key={cat}>
-						{docs.map(({ node: doc }) => (
-							<div
-								className="wpackio-docsidebarnav__doc"
-								key={doc.id}
-							>
-								<Link to={doc.fields.slug}>
-									{doc.frontmatter.title}
-								</Link>
-								{currentSlug === doc.fields.slug ? (
-									<div
-										className="wpackio-docsidebarnav__toc"
-										dangerouslySetInnerHTML={{
-											__html: toc,
-										}}
-									/>
-								) : null}
-							</div>
-						))}
-					</div>
-				);
-			})}
-		</div>
-	);
-};
+const Sidebarnav = props => (
+	<StaticQuery
+		query={graphql`
+			query allDocs {
+				allMarkdownRemark(
+					filter: { fileAbsolutePath: { glob: "**/docs/**/*.md" } }
+					sort: { order: ASC, fields: frontmatter___order }
+				) {
+					edges {
+						node {
+							id
+							fields {
+								slug
+								docType
+							}
+							frontmatter {
+								order
+								title
+							}
+						}
+					}
+				}
+				site {
+					siteMetadata {
+						docTypeOrder {
+							docType
+							label
+						}
+					}
+				}
+			}
+		`}
+		render={data => {
+			const { currentSlug, toc } = props;
+			const {
+				site: {
+					siteMetadata: { docTypeOrder },
+				},
+				allMarkdownRemark: { edges },
+			} = data;
+			// Get all categorized docs
+			return (
+				<aside className="wpackio-docsidebarnav menu">
+					{docTypeOrder.map(({ docType, label }) => {
+						const docs = getDocByCategory(docType, edges);
+						return (
+							<React.Fragment key={docType}>
+								<p className="menu-label">
+									<Link
+										className={classNames({
+											'is-active':
+												currentSlug === `/${docType}/`,
+										})}
+										to={`/${docType}/`}
+									>
+										{label}
+									</Link>
+								</p>
+								<ul className="menu-list">
+									{docs.map(({ node: doc }) => (
+										<li key={doc.id}>
+											<Link
+												to={doc.fields.slug}
+												className={classNames({
+													'is-active':
+														currentSlug ===
+														doc.fields.slug,
+												})}
+											>
+												{doc.frontmatter.title}
+											</Link>
+											{currentSlug === doc.fields.slug &&
+											toc ? (
+												<div
+													dangerouslySetInnerHTML={{
+														__html: toc,
+													}}
+													className="wpackio-docsidebarnav__toc"
+												/>
+											) : null}
+										</li>
+									))}
+								</ul>
+							</React.Fragment>
+						);
+					})}
+				</aside>
+			);
+		}}
+	/>
+);
 
 export default Sidebarnav;

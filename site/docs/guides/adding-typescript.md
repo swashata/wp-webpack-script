@@ -1,6 +1,6 @@
 ---
 title: Adding Typescript to your project
-category: Guides
+order: 3
 ---
 
 `@wpackio/scripts` has first-class support for both [typescript](https://www.typescriptlang.org/)

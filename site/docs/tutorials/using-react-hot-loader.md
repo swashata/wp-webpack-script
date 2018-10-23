@@ -1,6 +1,6 @@
 ---
 title: Using React Hot Loader with wpack.io
-category: Tutorials
+order: 2
 ---
 
 Let's focus on an example where we use the great [react hot loader](https://github.com/gaearon/react-hot-loader)

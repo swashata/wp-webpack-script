@@ -1,6 +1,6 @@
 ---
 title: How code-splitting and dynamic Import works
-category: Tutorials
+order: 1
 ---
 
 Glad you asked. The documentation at [webpack `output.publicPath`](https://webpack.js.org/configuration/output/#output-publicpath)
@@ -106,12 +106,12 @@ It gets converted into
 
 ```diff
 -				main: ['./src/app/index.js'],
-+				main: ['@wpackio/scripts/lib/entrypoint', './src/app/index.js'],
++				main: ['@wpackio/entrypoint/lib/index.js', './src/app/index.js'],
 -				mobile: ['./src/app/mobile.js'],
-+				mobile: ['@wpackio/scripts/lib/entrypoint', './src/app/mobile.js'],
++				mobile: ['@wpackio/entrypoint/lib/index.js', './src/app/mobile.js'],
 ```
 
-Notice the extra `'@wpackio/scripts/lib/entrypoint'`.
+Notice the extra `'@wpackio/entrypoint/lib/index.js'`.
 
 This is a special module which has the following code
 
