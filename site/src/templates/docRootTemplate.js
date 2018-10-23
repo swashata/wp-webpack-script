@@ -5,10 +5,10 @@ import Layout from '../components/layout';
 import Docpage from '../components/docpage';
 
 const DocRootTemplate = props => {
-	const { data, pageResources } = props;
+	const { data, location } = props;
 	return (
 		<Layout decorate={false}>
-			<Docpage currentSlug={pageResources.page.path}>
+			<Docpage currentSlug={location.pathname}>
 				{data.docTypes.edges.map(docType => {
 					const {
 						node: {

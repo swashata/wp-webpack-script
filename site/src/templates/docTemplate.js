@@ -6,7 +6,7 @@ import Docpage from '../components/docpage';
 
 export default function DocTemplate({
 	data, // this prop will be injected by the GraphQL query below.
-	pageResources, // available from gatsby
+	location, // available from gatsby
 }) {
 	const { markdownRemark, site } = data; // data.markdownRemark holds our post data
 	const { frontmatter, html, tableOfContents } = markdownRemark;
@@ -29,7 +29,7 @@ export default function DocTemplate({
 				html={html}
 				title={frontmatter.title}
 				tableOfContents={tableOfContents}
-				currentSlug={pageResources.page.path}
+				currentSlug={location.pathname}
 			/>
 		</Layout>
 	);

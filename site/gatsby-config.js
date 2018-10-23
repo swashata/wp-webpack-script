@@ -117,5 +117,9 @@ module.exports = {
 				// see https://github.com/smooth-code/svgr for a list of all options
 			},
 		},
+		// make sure to put last in the array
+		{
+			resolve: `gatsby-plugin-netlify`,
+		},
 	],
 };
