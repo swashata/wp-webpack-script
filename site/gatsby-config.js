@@ -31,7 +31,7 @@ module.exports = {
 			resolve: 'gatsby-plugin-manifest',
 			options: {
 				name: 'gatsby-starter-default',
-				short_name: 'starter',
+				short_name: 'WPACK.IO',
 				start_url: '/',
 				background_color: '#ffffff',
 				theme_color: '#ffffff',
