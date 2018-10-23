@@ -1,1 +1,1 @@
-Please [check here](../site/docs) for now (until the site is complete.)
+Check our [website](https://wpack.io).
