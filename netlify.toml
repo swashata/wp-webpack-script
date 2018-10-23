@@ -7,5 +7,5 @@
 
 [build]
   base    = "site"
-  publish = "public"
+  publish = "site/public"
   command = "yarn build"
