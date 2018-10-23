@@ -1,7 +1,22 @@
+@import '~bulma/sass/utilities/all';
+
 .site-header {
 	background: #fff;
 	height: 3.625rem;
 	border-bottom: 1px solid #ebedee;
+
+	.navbar-burger {
+		height: 3.625rem;
+	}
+
+	.navbar-brand {
+		.navbar-item {
+			padding: 0 1rem;
+			h1 {
+				line-height: 3.625rem;
+			}
+		}
+	}
 
 	& &__logo {
 		display: flex;
@@ -25,11 +40,29 @@
 	}
 	& &__social-nav {
 		display: flex;
-		margin-left: 2rem;
+		position: absolute;
+		top: 0;
+		right: 4rem;
 		a.navbar-item {
 			font-size: 20px;
-			padding-left: 1rem;
-			padding-right: 1rem;
+			padding: 0 1rem;
+			height: 3.625rem;
+			align-items: center;
+			justify-content: center;
+			display: none;
+		}
+
+		@media screen and (min-width: 340px) {
+			a.navbar-item {
+				display: flex;
+			}
+		}
+
+		@media screen and (min-width: $desktop) {
+			margin-left: 2rem;
+			position: static;
+			top: auto;
+			right: auto;
 		}
 	}
 }

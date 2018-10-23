@@ -19,6 +19,8 @@
 		top: 0;
 		left: 0;
 		width: 100%;
+		overflow: hidden;
+		text-overflow: ellipsis;
 		z-index: 1;
 		border-top-left-radius: 0.5rem;
 		border-top-right-radius: 0.5rem;
@@ -33,6 +35,7 @@
 		font-weight: bold;
 		text-align: center;
 		&:after {
+			display: none;
 			top: calc(1rem - 3px);
 			left: calc(1rem - 3px);
 			content: '';
@@ -44,6 +47,11 @@
 			background: #f85955;
 			box-shadow: 0 0 0 0.2rem #f85955, 1.3rem 0 0 0.2rem #fbbe3f,
 				2.6rem 0 0 0.2rem #45cc4b;
+		}
+		@media screen and (min-width: 475px) {
+			&:after {
+				display: block;
+			}
 		}
 	}
 
