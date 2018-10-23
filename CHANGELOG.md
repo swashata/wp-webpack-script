@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="2.1.0"></a>
+# [2.1.0](https://github.com/swashata/wp-webpack-script/compare/v2.0.1...v2.1.0) (2018-10-23)
+
+
+### Features
+
+* add check against camelCase appName ([1869b5b](https://github.com/swashata/wp-webpack-script/commit/1869b5b))
+
+
+
+
+
 <a name="2.0.1"></a>
 ## [2.0.1](https://github.com/swashata/wp-webpack-script/compare/v2.0.0...v2.0.1) (2018-10-22)
 
