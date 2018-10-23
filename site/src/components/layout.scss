@@ -2,7 +2,7 @@ code,
 pre,
 code[class*='language-'],
 pre[class*='language-'] {
-	font-family: 'Dank Mono', monospace;
+	font-family: 'dm', monospace;
 
 	// Some niceness
 	.token.keyword {
@@ -15,7 +15,7 @@ pre[class*='language-'] {
 
 em,
 strong {
-	font-family: 'Dank Mono', cursive;
+	font-family: 'dm', monospace;
 }
 
 code {
@@ -57,7 +57,7 @@ body {
 
 // Main logo
 .wpackio-logo-text {
-	font-family: 'Dank Mono';
+	font-family: 'dm', monospace;
 	font-weight: normal;
 	background: linear-gradient(
 		45deg,
@@ -72,7 +72,7 @@ body {
 }
 .title,
 .subtitle {
-	font-family: 'Dank Mono';
+	font-family: 'dm', monospace;
 	.wpackio-logo-text {
 		font-weight: normal;
 	}
@@ -85,6 +85,6 @@ body {
 	h4,
 	h5,
 	h6 {
-		font-family: 'Dank Mono';
+		font-family: 'dm', monospace;
 	}
 }
