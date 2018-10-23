@@ -1,0 +1,99 @@
+@import '~bulma/sass/utilities/all';
+
+.wpackio-docpage {
+	display: flex;
+	flex-flow: row nowrap;
+	padding-top: 3.625rem;
+
+	> * {
+		flex: 0 0 auto;
+	}
+
+	& &__sidebar {
+		position: fixed;
+		top: 3.625rem;
+		width: 250px;
+		border-right: 1px solid #ebedee;
+		background: rgba(188, 24, 136, 0.02);
+		height: calc(100vh - 3.625rem);
+		overflow-y: auto;
+		left: -250px;
+		z-index: 1;
+		transition: left 200ms ease-out;
+	}
+
+	& &__toggler {
+		position: fixed;
+		right: 1rem;
+		bottom: 1rem;
+		z-index: 1;
+		transition: left 200ms ease-out;
+	}
+
+	& &__main {
+		width: 100%;
+		.container {
+			max-width: 720px;
+		}
+	}
+
+	& &__button {
+		border: 0 none;
+		height: 4rem;
+		width: 4rem;
+		border-radius: 4rem;
+		background: #cc2366;
+		&:hover {
+			background: #bc1888;
+		}
+		color: #fff;
+		position: relative;
+
+		svg {
+			position: absolute;
+			transition: left 100ms ease-in;
+
+			&.wpackio-docpage__button__left {
+				left: 1em;
+			}
+
+			&.wpackio-docpage__button__right {
+				left: 2em;
+				transform: rotate(180deg);
+			}
+
+			path {
+				fill: currentColor;
+			}
+		}
+	}
+
+	// When sidebar is open
+	&.wpackio-docpage--sidebar-open {
+		.wpackio-docpage__sidebar {
+			left: 0;
+		}
+
+		.wpackio-docpage__button {
+			svg {
+				&.wpackio-docpage__button__left {
+					left: 1.7em;
+				}
+				&.wpackio-docpage__button__right {
+					left: 1.3em;
+				}
+			}
+		}
+	}
+
+	// Now override when there's enough screen width
+	@media screen and (min-width: $desktop) {
+		padding-left: 250px;
+		& &__sidebar {
+			left: 0;
+		}
+		& &__toggler {
+			display: none;
+		}
+	}
+}

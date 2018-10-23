@@ -45,7 +45,45 @@ module.exports = {
 				path: `${__dirname}/docs/`,
 			},
 		},
-		'gatsby-transformer-remark',
+		'gatsby-plugin-catch-links',
+		{
+			resolve: 'gatsby-transformer-remark',
+			options: {
+				gfm: true,
+				commonmark: true,
+				footnotes: true,
+				pedantic: true,
+				// blocks: ["h2"], Blocks option value can be provided here as an array.
+				excerpt_separator: `<!-- end -->`,
+				plugins: [
+					{
+						resolve: `gatsby-remark-images`,
+						options: {
+							maxWidth: 740,
+						},
+					},
+					`gatsby-remark-copy-linked-files`,
+					{
+						resolve: `gatsby-remark-smartypants`,
+						options: {
+							dashes: `oldschool`,
+						},
+					},
+					{
+						resolve: `gatsby-remark-autolink-headers`,
+						options: {
+							offsetY: 58,
+						},
+					},
+					{
+						resolve: `gatsby-remark-prismjs`,
+						options: {
+							noInlineHighlight: true,
+						},
+					},
+				],
+			},
+		},
 		'gatsby-plugin-sharp',
 		'gatsby-transformer-sharp',
 		'gatsby-plugin-offline',

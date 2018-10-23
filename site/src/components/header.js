@@ -39,7 +39,7 @@ class Header extends React.Component {
 					<nav
 						role="navigation"
 						aria-label="main navigation"
-						className="navbar site-header"
+						className="navbar site-header is-fixed-top"
 					>
 						<div className="container">
 							<div className="navbar-brand">

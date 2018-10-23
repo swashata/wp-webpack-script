@@ -1,6 +1,16 @@
 code,
-pre {
+pre,
+code[class*='language-'],
+pre[class*='language-'] {
 	font-family: 'Dank Mono', monospace;
+
+	// Some niceness
+	.token.keyword {
+		font-style: italic;
+	}
+	.token.constant {
+		font-weight: bold;
+	}
 }
 
 em,
@@ -10,6 +20,18 @@ strong {
 
 code {
 	background: transparent;
+	padding: 0;
+	font-size: 1em;
+}
+
+strong code,
+code strong {
+	font-weight: bold;
+}
+
+em code,
+code em {
+	font-style: italic;
 }
 
 a code,
@@ -27,6 +49,10 @@ pre {
 
 body {
 	font-size: 16px;
+}
+
+.site-main {
+	padding-top: 3.625rem;
 }
 
 .site-footer {
@@ -50,7 +76,19 @@ body {
 }
 .title,
 .subtitle {
+	font-family: 'Dank Mono';
 	.wpackio-logo-text {
 		font-weight: normal;
+	}
+}
+
+.content {
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		font-family: 'Dank Mono';
 	}
 }

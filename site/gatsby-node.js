@@ -3,8 +3,17 @@
  *
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
+/* eslint-disable import/no-extraneous-dependencies */
 const { createFilePath } = require('gatsby-source-filesystem');
 const path = require('path');
+const mm = require('micromatch');
+const fs = require('fs');
+
+/**
+ * List all subdirectories of a directory
+ */
+const dirs = p =>
+	fs.readdirSync(p).filter(f => fs.statSync(path.join(p, f)).isDirectory());
 
 // Create slugs
 exports.onCreateNode = ({ node, actions, getNode }) => {
@@ -17,6 +26,20 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 			node,
 			value,
 		});
+		// Create additional fields if it is a part of docs
+		if (mm.isMatch(node.fileAbsolutePath, '**/docs/*/*.md')) {
+			const type = mm.capture(
+				`${__dirname}/docs/*/*.md`,
+				node.fileAbsolutePath
+			);
+			if (type && type[0]) {
+				createNodeField({
+					name: 'docType',
+					node,
+					value: type[0],
+				});
+			}
+		}
 	}
 };
 
@@ -24,8 +47,9 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 exports.createPages = ({ actions, graphql }) => {
 	const { createPage } = actions;
 	const docTemplate = path.resolve('src/templates/docTemplate.js');
+	const docRootTemplate = path.resolve('src/templates/docRootTemplate.js');
 
-	// Main doc page
+	// Individual doc pages
 	const docs = new Promise((resolve, reject) => {
 		resolve(
 			graphql(`
@@ -61,5 +85,25 @@ exports.createPages = ({ actions, graphql }) => {
 		);
 	});
 
-	return Promise.all([docs]);
+	// Doc root pages
+	const docRoots = new Promise((resolve, reject) => {
+		// First get all directories inside docs
+		const docTypes = dirs(path.resolve(__dirname, './docs'));
+		if (docTypes && docTypes.length) {
+			console.log('='.repeat(30));
+			docTypes.forEach(docType => {
+				createPage({
+					path: `/${docType}/`,
+					component: docRootTemplate,
+				});
+			});
+			setTimeout(() => {
+				resolve();
+			}, 3000);
+		} else {
+			reject(new Error(`No directories found`));
+		}
+	});
+
+	return Promise.all([docs, docRoots]);
 };

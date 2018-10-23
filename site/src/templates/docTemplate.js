@@ -1,24 +1,23 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import Layout from '../components/layout'
+import Layout from '../components/layout';
+import Docpage from '../components/docpage';
 
-export default function Template({
+export default function DocTemplate({
 	data, // this prop will be injected by the GraphQL query below.
+	pageResources, // available from gatsby
 }) {
 	const { markdownRemark } = data; // data.markdownRemark holds our post data
-	const { frontmatter, html } = markdownRemark;
+	const { frontmatter, html, tableOfContents } = markdownRemark;
 	return (
-		<Layout>
-			<div className="blog-post-container">
-				<div className="blog-post">
-					<h1>{frontmatter.title}</h1>
-					<h2>{frontmatter.category}</h2>
-					<div
-						className="blog-post-content"
-						dangerouslySetInnerHTML={{ __html: html }}
-					/>
-				</div>
-			</div>
+		<Layout decorate={false}>
+			<Docpage
+				html={html}
+				frontmatter={frontmatter}
+				tableOfContents={tableOfContents}
+				currentSlug={pageResources.page.path}
+				allDocs={data.allMarkdownRemark.edges}
+			/>
 		</Layout>
 	);
 }

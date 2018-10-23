@@ -1,5 +1,7 @@
 .site-header {
-	background-image: linear-gradient(120deg, #ecebeb 0%, #ebedee 100%);
+	background: #fff;
+	height: 3.625rem;
+	border-bottom: 1px solid #ebedee;
 
 	& &__logo {
 		display: flex;
