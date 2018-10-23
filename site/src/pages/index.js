@@ -28,7 +28,8 @@ const IndexPage = ({ data: { mission, steps } }) => (
 					configuration made specifically for{' '}
 					<em>WordPress Theme and Plugin Development</em>. It gives a
 					fine Developer Experience (DX) and a single dev dependency
-					for all your bundling requirement.
+					for all your <em>javascript</em> and <em>css/sass/scss</em>{' '}
+					bundling requirements.
 				</>
 			}
 			terminalTitle="🔥wpackio-scripts start (node)"
