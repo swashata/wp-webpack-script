@@ -30,7 +30,7 @@ module.exports = {
 		{
 			resolve: 'gatsby-plugin-manifest',
 			options: {
-				name: 'gatsby-starter-default',
+				name: 'WPACK.IO - WordPress Bundling',
 				short_name: 'WPACK.IO',
 				start_url: '/',
 				background_color: '#ffffff',
