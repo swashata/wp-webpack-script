@@ -11,6 +11,7 @@
     "gatsby-plugin-catch-links": "^2.0.5",
     "gatsby-plugin-manifest": "^2.0.5",
     "gatsby-plugin-netlify": "^2.0.2",
+    "gatsby-plugin-netlify-cache": "^1.0.0",
     "gatsby-plugin-offline": "^2.0.5",
     "gatsby-plugin-react-helmet": "^3.0.0",
     "gatsby-plugin-sass": "^2.0.1",
