@@ -33,10 +33,10 @@
 
 	& &__main {
 		width: 100%;
+		flex-basis: 100%;
 		.section .container {
 			min-height: calc(100vh - 3.625rem - 300px);
 			max-width: 720px;
-			margin-left: 4rem;
 		}
 	}
 
@@ -97,6 +97,18 @@
 		}
 		& &__toggler {
 			display: none;
+		}
+		& &__main {
+			.section .container {
+				margin-left: 4rem;
+			}
+		}
+	}
+
+	@media screen and (min-width: $fullhd) {
+		padding-left: 380px;
+		& &__sidebar {
+			width: 380px;
 		}
 	}
 }
