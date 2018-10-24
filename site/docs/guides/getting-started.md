@@ -302,4 +302,4 @@ class MyPluginInit {
 new MyPluginInit();
 ```
 
-For more information do read the corresponding doc.
+For more information do read the [corresponding doc](/guides/using-wpackio-enqueue/).

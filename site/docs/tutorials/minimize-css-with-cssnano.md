@@ -27,7 +27,7 @@ yarn add --dev cssnano
 
 ## Edit `postcss.config.js` file
 
-When you [install](../guides/getting-started.md) wpackio a `postcss.config.js`
+When you [install](/guides/getting-started/) wpackio a `postcss.config.js`
 file is created for you. Edit it and replace it's content with
 
 ```js

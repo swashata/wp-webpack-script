@@ -183,7 +183,7 @@ const entry = {
 
 As you can see, we only support [Object Syntax of webpack entry](https://webpack.js.org/concepts/entry-points/#object-syntax).
 
-The reason is, we do our own little magic (covered in the concepts section) to
+The reason is, we do our own little magic ([covered in the concepts section](/concepts/)) to
 define dynamic `publicPath` from WordPress API itself.
 
 #### `webpackConfig` (`Function` | `Object` | `undefined`)
@@ -192,7 +192,7 @@ If you'd like to extend webpack configuration, then this is where you'd put your
 code.
 
 It can support both webpack configuration objects or function to get further
-control. Kindly read the _Extending Webpack Config_ under _concepts_.
+control. Kindly read the [_Extending Webpack Config_](/tutorials/extending-webpack-config/) under [tutorials](/tutorials/).
 
 ## `outputPath` (`string`):
 
