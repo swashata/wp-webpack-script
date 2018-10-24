@@ -51,38 +51,34 @@ exports.createPages = ({ actions, graphql }) => {
 
 	// Individual doc pages
 	const docs = new Promise((resolve, reject) => {
-		resolve(
-			graphql(`
-				{
-					allMarkdownRemark(
-						filter: {
-							fileAbsolutePath: { glob: "**/docs/**/*.md" }
-						}
-						sort: { order: DESC, fields: frontmatter___order }
-					) {
-						edges {
-							node {
-								fields {
-									slug
-								}
+		graphql(`
+			{
+				allMarkdownRemark(
+					filter: { fileAbsolutePath: { glob: "**/docs/**/*.md" } }
+					sort: { order: DESC, fields: frontmatter___order }
+				) {
+					edges {
+						node {
+							fields {
+								slug
 							}
 						}
 					}
 				}
-			`).then(result => {
-				if (result.errors) {
-					reject(result.errors);
-				}
+			}
+		`).then(result => {
+			if (result.errors) {
+				reject(result.errors);
+			}
 
-				result.data.allMarkdownRemark.edges.forEach(({ node }) => {
-					createPage({
-						path: node.fields.slug,
-						component: docTemplate,
-					});
+			result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+				createPage({
+					path: node.fields.slug,
+					component: docTemplate,
 				});
-				resolve();
-			})
-		);
+			});
+			resolve();
+		});
 	});
 
 	// Doc root pages
