@@ -103,6 +103,13 @@
 				margin-left: 4rem;
 			}
 		}
+
+		// Optimize footer
+		footer.footer {
+			.container {
+				width: 100%;
+			}
+		}
 	}
 
 	@media screen and (min-width: $fullhd) {

@@ -1,6 +1,6 @@
 ---
 title: Using React Hot Loader with wpack.io
-order: 2
+order: 3
 ---
 
 Let's focus on an example where we use the great [react hot loader](https://github.com/gaearon/react-hot-loader)
