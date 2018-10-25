@@ -1,14 +1,11 @@
 <p align="center">
-  <a href="https://wpack.io"><img width="600" src="https://raw.githubusercontent.com/swashata/wp-webpack-script/master/assets/wpackio-logo.png"></a>
+  <a href="https://wpack.io"><img width="600" src="https://raw.githubusercontent.com/swashata/wp-webpack-script/master/assets/wpackio-logo.png"></a><br>
+  visit our website for documentation and usage
 </p>
 
 # wpack.io - Modern JavaScript tooling for WordPress
 
 [![Build Status](https://travis-ci.com/swashata/wp-webpack-script.svg?branch=master)](https://travis-ci.com/swashata/wp-webpack-script) [![codecov](https://codecov.io/gh/swashata/wp-webpack-script/branch/master/graph/badge.svg)](https://codecov.io/gh/swashata/wp-webpack-script) [![npm version](https://badge.fury.io/js/%40wpackio%2Fscripts.svg)](https://badge.fury.io/js/%40wpackio%2Fscripts)
-
-<p align="center">
-	<h2><a href="https://wpack.io">Please check our website for documentation and usage</a></h2>
-</p>
 
 ## What is wpack.io?
 
