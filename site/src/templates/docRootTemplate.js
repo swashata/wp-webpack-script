@@ -7,7 +7,7 @@ import Docpage from '../components/docpage';
 const DocRootTemplate = props => {
 	const { data, location } = props;
 	return (
-		<Layout decorate={false}>
+		<Layout decorate={false} path={location.pathname}>
 			<Docpage currentSlug={location.pathname}>
 				{data.docTypes.edges.map(docType => {
 					const {

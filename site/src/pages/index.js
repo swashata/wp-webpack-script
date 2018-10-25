@@ -12,8 +12,8 @@ import { ReactComponent as Development } from '../components/svgs/development.sv
 import { ReactComponent as Cloud } from '../components/svgs/cloud.svg';
 import { ReactComponent as Dependendable } from '../components/svgs/dependable.svg';
 
-const IndexPage = ({ data: { mission, steps } }) => (
-	<Layout>
+const IndexPage = ({ data: { mission, steps }, location }) => (
+	<Layout path={location.pathname}>
 		<Hero
 			title={
 				<>

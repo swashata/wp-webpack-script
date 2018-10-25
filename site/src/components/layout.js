@@ -9,7 +9,7 @@ import './bulma.scss';
 import './layout.scss';
 import './dank-mono.css';
 
-const Layout = ({ children, decorate = true }) => (
+const Layout = ({ children, decorate = true, path = undefined }) => (
 	<StaticQuery
 		query={graphql`
 			query SiteTitleQuery {
@@ -72,6 +72,7 @@ const Layout = ({ children, decorate = true }) => (
 					docTypes={data.site.siteMetadata.docTypeOrder}
 					twitter={data.site.siteMetadata.social.twitter}
 					github={data.site.siteMetadata.social.github}
+					path={path}
 				/>
 				{decorate ? (
 					<>

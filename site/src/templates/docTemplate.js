@@ -11,7 +11,7 @@ export default function DocTemplate({
 	const { markdownRemark, site } = data; // data.markdownRemark holds our post data
 	const { frontmatter, html, tableOfContents } = markdownRemark;
 	return (
-		<Layout decorate={false}>
+		<Layout decorate={false} path={location.pathname}>
 			<Helmet
 				title={`${frontmatter.title} - ${site.siteMetadata.title}`}
 				meta={[

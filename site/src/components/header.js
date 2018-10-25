@@ -18,7 +18,7 @@ class Header extends React.Component {
 	};
 
 	render() {
-		const { siteTitle, docTypes, github, twitter } = this.props;
+		const { siteTitle, docTypes, github, twitter, path } = this.props;
 
 		return (
 			<nav
@@ -28,7 +28,12 @@ class Header extends React.Component {
 			>
 				<div className="container">
 					<div className="navbar-brand">
-						<Link to="/" className="navbar-item">
+						<Link
+							to="/"
+							className={classNames('navbar-item', {
+								'is-active': path === '/',
+							})}
+						>
 							<h1 className="site-header__logo" title={siteTitle}>
 								<LogoSymbol height="1.75em" width="1.75em" />
 								<span className="wpackio-logo-text">
@@ -65,7 +70,10 @@ class Header extends React.Component {
 						<div className="navbar-end site-header__main-nav">
 							{docTypes.map(docType => (
 								<Link
-									className="navbar-item"
+									className={classNames('navbar-item', {
+										'is-active':
+											path === `/${docType.docType}/`,
+									})}
 									key={docType.docType}
 									to={`/${docType.docType}/`}
 								>
