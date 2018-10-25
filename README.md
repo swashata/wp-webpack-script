@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://wpack.io"><img width="600" src="https://raw.githubusercontent.com/swashata/wp-webpack-script/master/assets/wpackio-logo.png"></a><br>
-  visit our website for documentation and usage
+  visit our website <a href="https://wpack.io">wpack.io</a> for documentation and usage
 </p>
 
 # wpack.io - Modern JavaScript tooling for WordPress
