@@ -101,6 +101,6 @@
     "access": "public"
   },
   "devDependencies": {
-    "dts-gen": "^0.5.7"
+    "dts-gen": "0.5.7"
   }
 }

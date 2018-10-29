@@ -19,9 +19,9 @@
   "license": "MIT",
   "private": false,
   "dependencies": {
-    "chalk": "^2.4.1",
-    "commander": "^2.19.0",
-    "shelljs": "^0.8.2"
+    "chalk": "2.4.1",
+    "commander": "2.19.0",
+    "shelljs": "0.8.2"
   },
   "engines": {
     "node": ">=8.9.0"
@@ -43,9 +43,9 @@
     "access": "public"
   },
   "devDependencies": {
-    "@types/chalk": "^2.2.0",
-    "@types/find-up": "^2.1.1",
-    "@types/node": "^10.12.0",
-    "@types/shelljs": "^0.8.0"
+    "@types/chalk": "2.2.0",
+    "@types/find-up": "2.1.1",
+    "@types/node": "10.12.0",
+    "@types/shelljs": "0.8.0"
   }
 }
