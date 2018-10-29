@@ -7,6 +7,7 @@ import Layout from '../components/layout';
 import Hero from '../components/hero';
 import Feature from '../components/feature';
 import Steps from '../components/steps';
+import Wpackio from '../components/wpackio';
 
 import { ReactComponent as Development } from '../components/svgs/development.svg';
 import { ReactComponent as Cloud } from '../components/svgs/cloud.svg';
@@ -24,8 +25,9 @@ const IndexPage = ({ data: { mission, steps }, location }) => (
 			cta={<Link to="/guides/">Get Started</Link>}
 			subtitle={
 				<>
-					wpackio is a fine-tuned <em>webpack/browser-sync</em>{' '}
-					configuration made specifically for{' '}
+					<Wpackio isFlat /> is a fine-tuned{' '}
+					<em>webpack/browser-sync</em> configuration made
+					specifically for{' '}
 					<em>WordPress Theme and Plugin Development</em>. It gives a
 					fine Developer Experience (DX) and a single dev dependency
 					for all your <em>javascript</em> and <em>css/sass/scss</em>{' '}
@@ -106,12 +108,7 @@ const IndexPage = ({ data: { mission, steps }, location }) => (
 		<section className="section homepage-section">
 			<div className="container">
 				<h2 className="title homepage-section__title">
-					How do I use{' '}
-					<span className="wpackio-logo-text">
-						wpack.
-						<em>io</em>
-					</span>
-					?
+					How do I use <Wpackio />?
 				</h2>
 			</div>
 		</section>

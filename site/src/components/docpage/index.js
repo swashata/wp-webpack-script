@@ -59,6 +59,7 @@ class Docpage extends React.Component {
 			title,
 			currentSlug,
 			children,
+			gitPath,
 		} = this.props;
 		const { isSidebarOpen } = this.state;
 		return (
@@ -101,6 +102,19 @@ class Docpage extends React.Component {
 							) : (
 								children
 							)}
+							{gitPath ? (
+								<>
+									<hr />
+									<p>
+										<a
+											href={`https://github.com/swashata/wp-webpack-script/tree/master/site/docs/${gitPath}`}
+											className="button is-white"
+										>
+											Edit this page
+										</a>
+									</p>
+								</>
+							) : null}
 						</div>
 					</section>
 					<Footer />

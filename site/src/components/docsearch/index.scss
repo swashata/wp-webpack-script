@@ -1,0 +1,96 @@
+@import '~bulma/sass/utilities/all';
+
+$color: #cc2366;
+$color-normal: fade-out($color, 0.2);
+$color-background: fade-out($color, 0.96);
+
+.wpackio-docsearch {
+	display: flex;
+	width: 12rem;
+	justify-content: flex-end;
+
+	.control {
+		transition: width 150ms ease-in-out;
+	}
+
+	& &__icon {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	// All goodies when in desktop view
+	@media screen and (min-width: $desktop) {
+		// color: $color;
+
+		& &__input {
+			border: 0 none;
+			box-shadow: none;
+			color: $color;
+			transition: color 150ms ease-in-out;
+			&::placeholder {
+				color: $color-normal;
+			}
+		}
+		& &__svg {
+			color: $color-normal;
+			transition: color 150ms ease-in-out;
+		}
+
+		.control {
+			width: 7rem;
+			&:hover {
+				.wpackio-docsearch__input {
+					&::placeholder {
+						color: $color;
+					}
+				}
+				.wpackio-docsearch__svg {
+					color: $color;
+				}
+			}
+		}
+
+		&--focused {
+			.control {
+				width: 10rem;
+				.wpackio-docsearch__input {
+					background: $color-background;
+					box-shadow: none;
+				}
+			}
+		}
+	}
+}
+
+/*# Algolia UI #*/
+.algolia-autocomplete {
+	/* Main dropdown wrapper */
+	.ds-dropdown-menu {
+	}
+
+	.algolia-docsearch-suggestion {
+		/* Main category (eg. Getting Started) */
+		&--category-header {
+			font-family: dm;
+			text-transform: uppercase;
+		}
+
+		/* Category (eg. Downloads) */
+		&--subcategory-column {
+		}
+
+		/* Title (eg. Bootstrap CDN) */
+		&--title {
+		}
+
+		/* Description description (eg. Bootstrap currently works...) */
+		&--text {
+		}
+
+		/* Highlighted text */
+		&--highlight {
+			color: $color;
+		}
+	}
+}

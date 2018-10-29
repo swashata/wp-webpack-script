@@ -67,9 +67,18 @@ body {
 		#cc2366 75%,
 		#bc1888 100%
 	);
+	em {
+		text-decoration: none !important;
+	}
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
+	&--flat {
+		-webkit-background-clip: initial;
+		-webkit-text-fill-color: initial;
+		background: transparent;
+	}
 }
+
 .title,
 .subtitle {
 	font-family: 'dm', monospace;

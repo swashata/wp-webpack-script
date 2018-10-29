@@ -6,6 +6,8 @@ import './header.scss';
 import { ReactComponent as LogoSymbol } from './svgs/wpackio-symbol.svg';
 import { ReactComponent as GithubIcon } from './svgs/github.svg';
 import { ReactComponent as TwitterIcon } from './svgs/twitter.svg';
+import DocSearch from './docsearch';
+import Wpackio from './wpackio';
 
 class Header extends React.Component {
 	state = {
@@ -26,20 +28,12 @@ class Header extends React.Component {
 				aria-label="main navigation"
 				className="navbar site-header is-fixed-top"
 			>
-				<div className="container">
+				<div className="container is-fluid">
 					<div className="navbar-brand">
-						<Link
-							to="/"
-							className={classNames('navbar-item', {
-								'is-active': path === '/',
-							})}
-						>
+						<Link to="/" className="navbar-item">
 							<h1 className="site-header__logo" title={siteTitle}>
 								<LogoSymbol height="1.75em" width="1.75em" />
-								<span className="wpackio-logo-text">
-									wpack.
-									<em>io</em>
-								</span>
+								<Wpackio />
 							</h1>
 						</Link>
 						<a
@@ -67,7 +61,7 @@ class Header extends React.Component {
 							}
 						)}
 					>
-						<div className="navbar-end site-header__main-nav">
+						<div className="navbar-start site-header__main-nav">
 							{docTypes.map(docType => (
 								<Link
 									className={classNames('navbar-item', {
@@ -80,6 +74,11 @@ class Header extends React.Component {
 									{docType.label}
 								</Link>
 							))}
+						</div>
+						<div className="navbar-end site-header__search">
+							<div className="navbar-item">
+								<DocSearch />
+							</div>
 						</div>
 					</div>
 					<div className="site-header__social-nav">

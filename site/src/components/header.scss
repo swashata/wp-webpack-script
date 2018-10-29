@@ -14,6 +14,10 @@
 			padding: 0 1rem;
 			h1 {
 				line-height: 3.625rem;
+				.wpackio-logo-text {
+					position: relative;
+					top: -2px;
+				}
 			}
 		}
 	}
@@ -38,6 +42,13 @@
 			font-weight: bold;
 		}
 	}
+	& &__search {
+		@media screen and (min-width: $desktop) {
+			.navbar-item {
+				padding-right: 1rem;
+			}
+		}
+	}
 	& &__social-nav {
 		display: flex;
 		position: absolute;
@@ -55,11 +66,16 @@
 		@media screen and (min-width: 340px) {
 			a.navbar-item {
 				display: flex;
+				color: fade-out(#cc2366, 0.2);
+				transition: color 150ms ease-in-out;
+				&:hover {
+					color: #cc2366;
+				}
 			}
 		}
 
 		@media screen and (min-width: $desktop) {
-			margin-left: 2rem;
+			margin-left: 0.5rem;
 			position: static;
 			top: auto;
 			right: auto;

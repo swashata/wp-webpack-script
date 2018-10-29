@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Wpackio from '../wpackio';
+
 import './index.scss';
 
 const Footer = props => (
@@ -8,11 +10,7 @@ const Footer = props => (
 			<div className="columns">
 				<div className="column is-one-third">
 					<h4 className="subtitle">
-						ABOUT{' '}
-						<span className="wpackio-logo-text">
-							wpack.
-							<em>io</em>
-						</span>
+						ABOUT <Wpackio />
 					</h4>
 					<ul>
 						<li>
@@ -83,9 +81,24 @@ const Footer = props => (
 								with React!
 							</a>
 						</li>
+						<li>
+							Search powered by{' '}
+							<a href="https://community.algolia.com/docsearch/">
+								DOCSEARCH
+							</a>
+							.
+						</li>
 					</ul>
 				</div>
 			</div>
+			<p className="has-text-centered">
+				if you like <Wpackio />, consider starring it at{' '}
+				<a href="https://github.com/swashata/wp-webpack-script">
+					github
+				</a>{' '}
+				&amp; say <em>hi</em> at{' '}
+				<a href="https://twitter.com/swashata">twitter</a>.
+			</p>
 		</div>
 	</footer>
 );
