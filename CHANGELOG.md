@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="2.2.0"></a>
+# [2.2.0](https://github.com/swashata/wp-webpack-script/compare/v2.1.0...v2.2.0) (2018-10-29)
+
+
+### Bug Fixes
+
+* have docsearch.js dynamically imported ([74136ab](https://github.com/swashata/wp-webpack-script/commit/74136ab))
+* **deps:** pin dependency docsearch.js to 2.5.2 ([e6a7934](https://github.com/swashata/wp-webpack-script/commit/e6a7934))
+* require fork-ts-checker-webpack-plugin at runtime ([4c00180](https://github.com/swashata/wp-webpack-script/commit/4c00180))
+
+
+### Features
+
+* add cssnano to example plugin ([9a8a44c](https://github.com/swashata/wp-webpack-script/commit/9a8a44c))
+
+
+
+
+
 <a name="2.1.0"></a>
 # [2.1.0](https://github.com/swashata/wp-webpack-script/compare/v2.0.1...v2.1.0) (2018-10-23)
 

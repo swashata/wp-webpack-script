@@ -1,6 +1,6 @@
 {
   "name": "@wpackio/cli",
-  "version": "2.0.1",
+  "version": "2.2.0",
   "description": "Commandline tool to quickly bootstrap wpackio-scripts to your project.",
   "keywords": [
     "wordpress",

@@ -1,13 +1,13 @@
 {
   "name": "wpackplugin",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "A sample execution of wpackio scripts for WordPress Plugin Development",
   "main": "index.js",
   "author": "Swashata Ghosh (https://swas.io)",
   "license": "MIT",
   "private": true,
   "devDependencies": {
-    "@wpackio/scripts": "^2.1.0",
+    "@wpackio/scripts": "^2.2.0",
     "autoprefixer": "^9.1.5",
     "cssnano": "^4.1.7",
     "node-sass": "^4.9.3",
