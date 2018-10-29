@@ -3,7 +3,7 @@ import Window from '../window';
 import './index.scss';
 
 const Hero = props => {
-	const { title, children, subtitle, cta, terminalTitle } = props;
+	const { title, children, subtitle, cta, terminalTitle, minHeight } = props;
 	return (
 		<div className="wpackio-hero hero">
 			<div className="hero-body">
@@ -13,6 +13,7 @@ const Hero = props => {
 						className="wpackio-hero__terminal"
 						title={terminalTitle}
 						type="terminal"
+						minHeight={minHeight}
 					>
 						{children}
 					</Window>

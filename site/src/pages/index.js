@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, graphql } from 'gatsby';
+import Typing, { Cursor } from 'react-typing-animation';
 
 import './index.scss';
 
@@ -36,28 +37,49 @@ const IndexPage = ({ data: { mission, steps }, location }) => (
 			}
 			terminalTitle="🔥wpackio-scripts start (node)"
 		>
-			<p className="comment"># navigate to your project directory</p>
-			<p>
-				<span className="command">cd</span> ~/my-awesome-plugin-or-theme
-			</p>
-			<p className="comment">
-				# initiate the tooling to your existing project
-			</p>
-			<p>
-				<span className="command">npx</span> @wpackio/cli
-			</p>
-			<p className="comment"># bootstrap project</p>
-			<p>
-				<span className="command">npm</span> run bootstrap
-			</p>
-			<p className="comment"># start development server</p>
-			<p>
-				<span className="command">npm</span> start
-			</p>
-			<p className="comment"># create production build</p>
-			<p>
-				<span className="command">npm</span> run build
-			</p>
+			<Typing
+				cursor={
+					<span
+						style={{
+							color: '#fff',
+							fontSize: '1em',
+							paddingLeft: '2px',
+							fontStyle: 'normal',
+							animation: 'heroCursor 1s step-end infinite',
+						}}
+					>
+						|
+					</span>
+				}
+			>
+				<p className="comment"># navigate to your project directory</p>
+				<p>
+					<span className="command">cd</span>{' '}
+					~/my-awesome-plugin-or-theme
+				</p>
+				<Typing.Delay ms={1000} />
+				<p className="comment">
+					# initiate the tooling to your existing project
+				</p>
+				<p>
+					<span className="command">npx</span> @wpackio/cli
+				</p>
+				<Typing.Delay ms={1000} />
+				<p className="comment"># bootstrap project</p>
+				<p>
+					<span className="command">npm</span> run bootstrap
+				</p>
+				<Typing.Delay ms={1000} />
+				<p className="comment"># start development server</p>
+				<p>
+					<span className="command">npm</span> start
+				</p>
+				<Typing.Delay ms={1000} />
+				<p className="comment"># create production build</p>
+				<p>
+					<span className="command">npm</span> run build
+				</p>
+			</Typing>
 		</Hero>
 		<section className="wpackio-home-features section">
 			<div className="container">
