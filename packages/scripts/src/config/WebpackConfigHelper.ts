@@ -3,7 +3,6 @@ import {
 	PresetOptions,
 } from '@wpackio/babel-preset-base/lib/preset';
 import cleanWebpackPlugin from 'clean-webpack-plugin';
-import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import fs from 'fs';
 import miniCssExtractPlugin from 'mini-css-extract-plugin';
 import path from 'path';
@@ -265,6 +264,9 @@ export class WebpackConfigHelper {
 		// Add ts checker plugin if project has tsconfig.json
 		const tsconfigPath = path.resolve(this.cwd, './tsconfig.json');
 		if (this.fileExists(tsconfigPath)) {
+			// dynamic require forktschecker otherwise it will throw error
+			// tslint:disable-next-line:variable-name
+			const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 			plugins.push(
 				new ForkTsCheckerWebpackPlugin({
 					tsconfig: tsconfigPath,
