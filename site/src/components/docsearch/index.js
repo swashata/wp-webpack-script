@@ -1,5 +1,4 @@
 import React from 'react';
-import docsearch from 'docsearch.js';
 import classNames from 'classnames';
 
 import { ReactComponent as SearchIcon } from '../svgs/magnifier.svg';
@@ -10,16 +9,27 @@ class DocSearch extends React.Component {
 		focused: false,
 	};
 
-	componentDidMount() {
-		// Initialize Algolia search.
-		docsearch({
-			apiKey: '2ed553faf01ab789d57bd2882ddd2b2d',
-			indexName: 'wpack_io',
-			inputSelector: '#algolia-doc-search',
-		});
-	}
+	hasSearchInited = false;
 
-	handleFocus = () => this.setState({ focused: true });
+	initSearch = () => {
+		if (this.hasSearchInited) {
+			return;
+		}
+		// Initialize Algolia search.
+		this.hasSearchInited = true;
+		import('docsearch.js').then(({ default: docsearch }) => {
+			docsearch({
+				apiKey: '2ed553faf01ab789d57bd2882ddd2b2d',
+				indexName: 'wpack_io',
+				inputSelector: '#algolia-doc-search',
+			});
+		});
+	};
+
+	handleFocus = () => {
+		this.initSearch();
+		this.setState({ focused: true });
+	};
 
 	handleBlur = () => this.setState({ focused: false });
 
@@ -31,6 +41,8 @@ class DocSearch extends React.Component {
 				className={classNames('wpackio-docsearch', {
 					'wpackio-docsearch--focused': focused,
 				})}
+				onMouseEnter={this.initSearch}
+				onTouchStart={this.initSearch}
 			>
 				<div className="control has-icons-left">
 					<input
