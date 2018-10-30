@@ -9,8 +9,8 @@ there are some configuration needed for typescript.
 
 ## Provided tooling
 
-`@wpackio/scripts` comes with the build tooling for typescript, not typescript
-itself. Also note that, we use [babel 7](https://babeljs.io/docs/en/babel-preset-typescript)
+`@wpackio/scripts` comes with the build tooling for typescript, not typescript and
+webpack plugins. Also note that, we use [babel 7](https://babeljs.io/docs/en/babel-preset-typescript)
 to compile typescript and [Fork TS Checked Webpack Plugin](https://github.com/Realytics/fork-ts-checker-webpack-plugin)
 to show type-errors during build/development time. So there are some gotchas.
 
@@ -31,7 +31,7 @@ So keep these in mind.
 First we need to install `typescript` itself.
 
 ```bash
-npm i -D typescript
+npm i -D typescript fork-ts-checker-webpack-plugin
 ```
 
 Now create `tsconfig.json` at the root according to your need. Here's a sample.
@@ -78,3 +78,7 @@ module.exports = {
 ```
 
 Now you are good to go. The compiler will also show any `ts` error you might have.
+
+> **NOTE** - Internally wpack.io depends on [`fork-ts-checker-webpack-plugin`]()
+> to show type errors during build time. So make sure you install it, otherwise
+> it will not work.

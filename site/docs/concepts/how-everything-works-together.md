@@ -9,11 +9,15 @@ we had to consider to make sure it works nicely with WordPress.
 
 ## Choice of tooling
 
--   We use [webpack](https://webpack.js.org/) as the primary compiler.
+-   We use [webpack](https://webpack.js.org/) as the primary bundler.
 -   [Browser Sync](https://browsersync.io/), along with `webpack-dev-middleware`
     acts as the development server.
 -   `webpack-hot-middleware` is used to provide all the **HOT MODULE REPLACEMENT**
     (_HMR_) goodness.
+-   `babel-loader` as the webpack module loader which uses babel under the hood
+    to compile modern JavaScript/Typescript code.
+-   `sass-loader`, `postcss-loader`, `autoprefixer` along with `mini-css-extract-plugin`
+    to handle CSS/SASS/SCSS source.
 
 Everything fits in together when we pass the middlewares to browsersync.
 
