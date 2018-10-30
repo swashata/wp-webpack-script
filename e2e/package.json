@@ -7,7 +7,7 @@
 	"license": "MIT",
 	"private": true,
 	"devDependencies": {
-		"@wpackio/scripts": "^2.2.0",
+		"@wpackio/scripts": "../packages/scripts",
 		"autoprefixer": "^9.1.5",
 		"cssnano": "^4.1.7",
 		"cypress": "^3.1.0",
@@ -19,8 +19,6 @@
 	},
 	"scripts": {
 		"bootstrap": "wpackio-scripts bootstrap",
-		"exstart": "wpackio-scripts start",
-		"exbuild": "wpackio-scripts build",
 		"build": "wpackio-scripts build",
 		"start": "wpackio-scripts start",
 		"serve": "serve",
@@ -31,7 +29,7 @@
 	},
 	"dependencies": {
 		"@types/webpack-env": "^1.13.6",
-		"@wpackio/entrypoint": "^2.0.0",
+		"@wpackio/entrypoint": "../packages/entrypoint",
 		"react": "^16.5.2",
 		"react-bootstrap": "^1.0.0-beta.1",
 		"react-dom": "^16.5.2",

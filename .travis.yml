@@ -4,13 +4,16 @@ node_js:
 before_script:
   # We don't need to do lerna bootstrap, because it doesn't metter while using yarn workspaces
   - npm install -g codecov
-  - yarn build
   - yarn
+  - yarn build
 script:
   - yarn test
-  - cd examples/e2e
+  - cd e2e
+  - yarn
   - yarn serve &>/dev/null &
   - yarn wait-for-test-server
-  - yarn exstart &>/dev/null &
+  - yarn start &>/dev/null &
   - yarn cypress:run
+  - yarn build
+  - cd ../
   - codecov
