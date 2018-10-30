@@ -83,7 +83,7 @@ program
 program
 	.command('build')
 	.description('Build production files.')
-	.option('-c, --context', contextHelp)
+	.option('-c, --context [path]', contextHelp)
 	.option(
 		'-p, --project-config [path]',
 		'Path to project config. If it differs from ./wpackio.project.js'
@@ -101,7 +101,7 @@ program
 program
 	.command('bootstrap')
 	.description('create project and/or server configuration files.')
-	.option('-c, --context', contextHelp)
+	.option('-c, --context [path]', contextHelp)
 	.action((options: ProgramOptions | undefined) => {
 		isValidCommand = true;
 		bootstrap(options, pkg.version);

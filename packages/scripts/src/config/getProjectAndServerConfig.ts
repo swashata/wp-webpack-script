@@ -1,6 +1,8 @@
 import camelCase from 'camelcase';
 import chalk from 'chalk';
 import path from 'path';
+import { isYarn } from '../bin/utils';
+import { WpackioError } from '../errors/WpackioError';
 import { ProjectConfig } from './project.config.default';
 import { ServerConfig } from './server.config.default';
 // tslint:disable: non-literal-require
@@ -41,38 +43,108 @@ export function getProjectAndServerConfig(
 	try {
 		projectConfig = require(projectConfigPath) as ProjectConfig;
 	} catch (e) {
-		throw new Error(
-			`Could not find project configuration at:\n${projectConfigPath}\nPlease make sure the file exists or adjust your --context or --project-config parameters.`
+		throw new WpackioError(
+			`Could not find project configuration at:\n${chalk.dim(
+				projectConfigPath
+			)}\nPlease make sure the file exists\nor adjust your ${chalk.yellow(
+				'--context'
+			)} or ${chalk.yellow(
+				'--project-config'
+			)} parameters.\nIf this is your first time, try running\n${chalk.magenta(
+				`${isYarn() ? 'yarn' : 'npm run'} bootstrap`
+			)}`
 		);
 	}
 	try {
 		serverConfig = require(serverConfigPath) as ServerConfig;
 	} catch (e) {
-		throw new Error(
-			`Could not find server configuration at:\n${serverConfigPath}\nPlease make sure the file exists or adjust your --context or --server-config parameters.`
+		throw new WpackioError(
+			`Could not find server configuration at:\n${chalk.dim(
+				serverConfigPath
+			)}\nPlease make sure the file exists\nor adjust your ${chalk.yellow(
+				'--context'
+			)} or ${chalk.yellow(
+				'--server-config'
+			)} parameters.\nIf this is your first time, try running\n${chalk.magenta(
+				`${isYarn() ? 'yarn' : 'npm run'} bootstrap`
+			)}`
 		);
 	}
 	// Now validate them
 	if (typeof projectConfig !== 'object') {
-		throw new Error(
-			`Project configuration must export an object literal. Right now it is ${typeof projectConfig}`
+		throw new WpackioError(
+			`Project configuration must export an object literal.\nRight now it is ${chalk.yellow(
+				typeof projectConfig
+			)}`
 		);
 	}
 	if (typeof serverConfig !== 'object') {
-		throw new Error(
-			`Server configuration must export an object literal. Right now it is ${typeof serverConfig}`
+		throw new WpackioError(
+			`Server configuration must export an object literal.\nRight now it is ${chalk.yellow(
+				typeof serverConfig
+			)}`
 		);
 	}
 	// Check if the appName is okay
-	if (!/^[A-Za-z]+$/.test(projectConfig.appName)) {
-		throw new Error(
-			`appName must be in camelCase. Currently ${
-				projectConfig.appName
-			}, try ${camelCase(projectConfig.appName)}`
+	if (!projectConfig.appName) {
+		throw new WpackioError(
+			`${chalk.yellow('appName')} must be present in project config.`
 		);
 	}
-	// @todo
-	// Also validate the config, but let's leave it for now
-	// Make sure to do it in future
+	if (!/^[A-Za-z]+$/.test(projectConfig.appName)) {
+		throw new WpackioError(
+			`${chalk.yellow(
+				'appName'
+			)} must be in camelCase in project config.\nCurrently ${chalk.red(
+				projectConfig.appName
+			)}, try ${chalk.green(camelCase(projectConfig.appName))}`
+		);
+	}
+	// validate runtime config
+	// 1. if files is invalid
+	if (!projectConfig.files || !Array.isArray(projectConfig.files)) {
+		throw new WpackioError(
+			`${chalk.yellow(
+				'files'
+			)} under project configuration must be an array.\nCurrently it is ${chalk.red(
+				typeof projectConfig.files
+			)}`
+		);
+	}
+	// 2. if files is empty
+	if (projectConfig.files.length === 0) {
+		throw new WpackioError(
+			`${chalk.yellow(
+				'files'
+			)} under project configuration must have at-least one object.`
+		);
+	}
+	// 3. validate files array
+	if (
+		!projectConfig.files.every(
+			file =>
+				typeof file === 'object' &&
+				file.name != null &&
+				file.entry != null
+		)
+	) {
+		throw new WpackioError(
+			`${chalk.yellow(
+				'files'
+			)} under project configuration must have objects with\n${chalk.magenta(
+				'name'
+			)} and ${chalk.magenta(
+				'entry'
+			)}.\nAt-least one of the objects does not satisfy the condition.`
+		);
+	}
+	// Check if server config has proxy
+	if (!serverConfig.proxy || serverConfig.proxy === '') {
+		throw new WpackioError(
+			`${chalk.yellow(
+				'proxy'
+			)} under server configuration must be an URL to your development server.`
+		);
+	}
 	return { projectConfig, serverConfig, projectConfigPath, serverConfigPath };
 }

@@ -11,6 +11,7 @@ import slugify from 'slugify';
 import TimeFixPlugin from 'time-fix-plugin';
 import webpack from 'webpack';
 import WebpackAssetsManifest from 'webpack-assets-manifest';
+import { WpackioError } from '../errors/WpackioError';
 import {
 	BannerConfig,
 	FileConfig,
@@ -265,20 +266,26 @@ export class WebpackConfigHelper {
 		const tsconfigPath = path.resolve(this.cwd, './tsconfig.json');
 		if (this.fileExists(tsconfigPath)) {
 			// dynamic require forktschecker otherwise it will throw error
-			// tslint:disable-next-line:variable-name
-			const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
-			plugins.push(
-				new ForkTsCheckerWebpackPlugin({
-					tsconfig: tsconfigPath,
-					tslint: undefined,
-					async: false,
-					silent: true,
-					formatter: 'codeframe',
-					formatterOptions: {
-						highlightCode: true,
-					},
-				})
-			);
+			try {
+				// tslint:disable-next-line:variable-name no-implicit-dependencies
+				const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+				plugins.push(
+					new ForkTsCheckerWebpackPlugin({
+						tsconfig: tsconfigPath,
+						tslint: undefined,
+						async: false,
+						silent: true,
+						formatter: 'codeframe',
+						formatterOptions: {
+							highlightCode: true,
+						},
+					})
+				);
+			} catch (e) {
+				throw new WpackioError(
+					'please install fork-ts-checker-webpack-plugin package'
+				);
+			}
 		}
 		// Add development specific plugins
 		if (this.isDev) {

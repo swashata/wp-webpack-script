@@ -4,7 +4,10 @@ import figlet from 'figlet';
 import figures from 'figures';
 import findUp from 'find-up';
 import gradient from 'gradient-string';
+import logSymbols from 'log-symbols';
 import path from 'path';
+import PrettyError from 'pretty-error';
+import { WpackioError } from '../errors/WpackioError';
 
 let isYarnCache: boolean | null = null;
 
@@ -206,4 +209,28 @@ To spread the ${chalk.red(figures.heart)} please tweet.`;
 			borderStyle: 'round',
 		})
 	);
+}
+
+export function prettyPrintError(
+	e: Error | WpackioError,
+	errorMsg: string
+): void {
+	const errorPrefix = `  ${chalk.dim.red(figures.pointer)}  `;
+	console.log(chalk.dim('='.repeat(errorMsg.length + 2)));
+	console.log(`${logSymbols.error} ${errorMsg}`);
+	console.log(chalk.dim('='.repeat(errorMsg.length + 2)));
+	console.log('');
+	if (e instanceof WpackioError) {
+		console.log(chalk.bgRed.black(' please review the following errors '));
+		console.log('');
+		console.error(
+			errorPrefix +
+				e.message
+					.split('\n')
+					.reduce((acc, line) => `${acc}\n${errorPrefix}${line}`)
+		);
+	} else {
+		const pe = new PrettyError();
+		console.error(pe.render(e));
+	}
 }

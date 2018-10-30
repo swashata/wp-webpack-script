@@ -9,6 +9,22 @@ const pathToDummyWrong = path.resolve(
 	__dirname,
 	'../helpers/dummyConfigWrong.js'
 );
+const pathToDummyPCRight = path.resolve(
+	__dirname,
+	'../helpers/dummyPCRight.js'
+);
+const pathToDummyPCWrong = path.resolve(
+	__dirname,
+	'../helpers/dummyPCWrong.js'
+);
+const pathToDummySCRight = path.resolve(
+	__dirname,
+	'../helpers/dummySCRight.js'
+);
+const pathToDummySCWrong = path.resolve(
+	__dirname,
+	'../helpers/dummySCWrong.js'
+);
 const validCwd = path.resolve(__dirname, '../helpers');
 
 describe('getProjectAndServerConfig', () => {
@@ -29,8 +45,8 @@ describe('getProjectAndServerConfig', () => {
 		test('works properly if module.exports is an object', () => {
 			expect(() => {
 				getProjectAndServerConfig(__dirname, {
-					projectConfig: pathToDummyRight,
-					serverConfig: pathToDummyRight,
+					projectConfig: pathToDummyPCRight,
+					serverConfig: pathToDummySCRight,
 				});
 			}).not.toThrow();
 		});
@@ -39,14 +55,14 @@ describe('getProjectAndServerConfig', () => {
 		test('throws error if file not found', () => {
 			expect(() => {
 				getProjectAndServerConfig(__dirname, {
-					projectConfig: pathToDummyRight,
+					projectConfig: pathToDummyPCRight,
 				});
 			}).toThrowError('not find server configuration');
 		});
 		test('throws error if module.exports not an object', () => {
 			expect(() => {
 				getProjectAndServerConfig(__dirname, {
-					projectConfig: pathToDummyRight,
+					projectConfig: pathToDummyPCRight,
 					serverConfig: pathToDummyWrong,
 				});
 			}).toThrow('Server configuration must export an object literal.');
@@ -54,8 +70,8 @@ describe('getProjectAndServerConfig', () => {
 		test('works properly if module.exports is an object', () => {
 			expect(() => {
 				getProjectAndServerConfig(__dirname, {
-					projectConfig: pathToDummyRight,
-					serverConfig: pathToDummyRight,
+					projectConfig: pathToDummyPCRight,
+					serverConfig: pathToDummySCRight,
 				});
 			}).not.toThrow();
 		});

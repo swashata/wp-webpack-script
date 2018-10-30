@@ -8,6 +8,7 @@ import { Build } from '../scripts/Build';
 import { ProgramOptions } from './index';
 import {
 	endBuildInfo,
+	prettyPrintError,
 	resolveCWD,
 	watchEllipsis,
 	wpackLogoSmall,
@@ -77,8 +78,8 @@ export function build(options: ProgramOptions | undefined): void {
 				process.exit(1);
 			});
 	} catch (e) {
-		spinner.fail(`${wpackLogoSmall} could not start webpack compiler.`);
-		console.error(pe.render(e));
+		spinner.stop();
+		prettyPrintError(e, 'could not start webpack compiler.');
 		process.exit(1);
 	}
 }

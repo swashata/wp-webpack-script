@@ -1,14 +1,17 @@
 import chalk from 'chalk';
+import figures from 'figures';
 import logSymbols from 'log-symbols';
 import ora from 'ora';
 import path from 'path';
 import PrettyError from 'pretty-error';
 import clearConsole from 'react-dev-utils/clearConsole';
 import { getProjectAndServerConfig } from '../config/getProjectAndServerConfig';
+import { WpackioError } from '../errors/WpackioError';
 import { Server } from '../scripts/Server';
 import { ProgramOptions } from './index';
 import {
 	endServeInfo,
+	prettyPrintError,
 	resolveCWD,
 	serverInfo,
 	watchEllipsis,
@@ -29,8 +32,6 @@ export function serve(options: ProgramOptions | undefined): void {
 	// Get project and server config JSONs.
 	const cwd = resolveCWD(options);
 	const relCwd = path.relative(process.cwd(), cwd);
-	// For pretty logging
-	const pe = new PrettyError();
 
 	// For spinner
 	const spinner = ora({
@@ -162,8 +163,7 @@ export function serve(options: ProgramOptions | undefined): void {
 		}
 	} catch (e) {
 		spinner.stop();
-		console.log(`${logSymbols.error} could not start server.`);
-		console.error(pe.render(e));
+		prettyPrintError(e, 'could not start server.');
 		process.exit(1);
 	}
 }
