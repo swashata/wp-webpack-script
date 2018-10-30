@@ -23,7 +23,7 @@
 		"start": "wpackio-scripts start",
 		"serve": "serve",
 		"cypress:open": "cypress open",
-		"cypress:run": "cypress run",
+		"cypress:run": "cypress run --record",
 		"wait-for-test-server": "wait-on http://localhost:5000 --timeout 30000",
 		"wait-for-wpackio-server": "wait-on http://127.0.0.1:3000 --timeout 30000"
 	},
