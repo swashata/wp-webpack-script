@@ -1,0 +1,41 @@
+{
+	"name": "wpackio-e2e",
+	"version": "1.0.0",
+	"description": "For e2e testing of wpackio",
+	"main": "index.html",
+	"author": "Swashata Ghosh (https://swas.io)",
+	"license": "MIT",
+	"private": true,
+	"devDependencies": {
+		"@wpackio/scripts": "^2.2.0",
+		"autoprefixer": "^9.1.5",
+		"cssnano": "^4.1.7",
+		"cypress": "^3.1.0",
+		"fork-ts-checker-webpack-plugin": "^0.4.14",
+		"node-sass": "^4.9.4",
+		"serve": "^10.0.2",
+		"typescript": "^3.1.3",
+		"wait-for": "^2.1.1"
+	},
+	"scripts": {
+		"bootstrap": "wpackio-scripts bootstrap",
+		"exstart": "wpackio-scripts start",
+		"exbuild": "wpackio-scripts build",
+		"build": "wpackio-scripts build",
+		"start": "wpackio-scripts start",
+		"serve": "serve",
+		"cypress:open": "cypress open",
+		"cypress:run": "cypress run",
+		"wait-for-test-server": "wait-on http://localhost:5000 --timeout 300000",
+		"wait-for-wpackio-server": "wait-on http://127.0.0.1:3000 --timeout 300000"
+	},
+	"dependencies": {
+		"@types/webpack-env": "^1.13.6",
+		"@wpackio/entrypoint": "^2.0.0",
+		"react": "^16.5.2",
+		"react-bootstrap": "^1.0.0-beta.1",
+		"react-dom": "^16.5.2",
+		"react-hot-loader": "^4.3.11",
+		"uuid": "^3.3.2"
+	}
+}

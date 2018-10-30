@@ -8,4 +8,9 @@ before_script:
   - yarn
 script:
   - yarn test
+  - cd examples/e2e
+  - yarn serve &>/dev/null &
+  - yarn wait-for-test-server
+  - yarn exstart &>/dev/null &
+  - yarn cypress:run
   - codecov

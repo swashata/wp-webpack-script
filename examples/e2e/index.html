@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<script type="text/javascript">
+		/* Needed for dynamic publicPath */
+		window.__wpackIowpackioEToEdist = 'http://localhost:5000/wp-content/plugins/e2e-plug/dist/';
+	</script>
+</head>
+
+<body>
+	<h1>This is for e2e testing</h1>
+	<!-- App entry Nodes -->
+	<div id="main-app"></div>
+	<div id="dyn-app"></div>
+	<div id="ts-app"></div>
+	<div id="ts-dyn-app"></div>
+	<!-- Scripts enqueue -->
+	<script type='text/javascript' src='http://localhost:5000/wp-content/plugins/e2e-plug/dist/app/runtime.js'></script>
+	<script type='text/javascript' src='http://localhost:5000/wp-content/plugins/e2e-plug/dist/app/vendors~main.js'></script>
+	<script type='text/javascript' src='http://localhost:5000/wp-content/plugins/e2e-plug/dist/app/main.js'></script>
+	<script type='text/javascript' src='http://localhost:5000/wp-content/plugins/e2e-plug/dist/tsapp/runtime.js'></script>
+	<script type='text/javascript' src='http://localhost:5000/wp-content/plugins/e2e-plug/dist/tsapp/vendors~main.js'></script>
+	<script type='text/javascript' src='http://localhost:5000/wp-content/plugins/e2e-plug/dist/tsapp/main.js'></script>
+</body>
+
+</html>
