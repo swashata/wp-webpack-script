@@ -12,6 +12,7 @@
 // the project's config changing)
 const path = require('path');
 const fs = require('fs');
+const execa = require('execa');
 
 module.exports = (on, config) => {
 	const jsFilePath = path.resolve(__dirname, '../../src/app/dynamic.js');
@@ -22,6 +23,7 @@ module.exports = (on, config) => {
 	on('task', {
 		hmrJs: () => {
 			fs.writeFileSync(jsFilePath, `${jsFileContent}\n// HMR`);
+			execa.shellSync(`touch ${jsFilePath}`);
 			return null;
 		},
 		hmrJsRestore: () => {
@@ -30,6 +32,7 @@ module.exports = (on, config) => {
 		},
 		hmrTs: () => {
 			fs.writeFileSync(tsFilePath, `${tsFileContent}\n// HMR`);
+			execa.shellSync(`touch ${tsFilePath}`);
 			return null;
 		},
 		hmrTsRestore: () => {
