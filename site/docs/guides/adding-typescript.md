@@ -79,6 +79,6 @@ module.exports = {
 
 Now you are good to go. The compiler will also show any `ts` error you might have.
 
-> **NOTE** - Internally wpack.io depends on [`fork-ts-checker-webpack-plugin`]()
+> **NOTE** - Internally wpack.io depends on [`fork-ts-checker-webpack-plugin`](https://github.com/Realytics/fork-ts-checker-webpack-plugin)
 > to show type errors during build time. So make sure you install it, otherwise
 > it will not work.
