@@ -17,5 +17,6 @@ script:
   - yarn wait-for-wpackio-server
   - yarn cypress:run
   - yarn build
+  - yarn test
   - cd ../
   - codecov
