@@ -13,6 +13,7 @@ script:
   - yarn serve &>/dev/null &
   - yarn wait-for-test-server
   - yarn start &>/dev/null &
+  - yarn wait-for-wpackio-server
   - yarn cypress:run
   - yarn build
   - cd ../
