@@ -1,6 +1,7 @@
 ---
 title: Extending webpack configuration
 order: 1
+shortTitle: Extend webpack
 ---
 
 wpackio depends on [webpack](https://webpack.js.org) to create the dev server

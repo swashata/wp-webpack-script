@@ -1,6 +1,7 @@
 ---
 title: Use PHP API to consume assets
 order: 2
+shortTitle: PHP Library for WordPress
 ---
 
 [`wpackio/enqueue`](https://github.com/swashata/wpackio-enqueue) is the PHP

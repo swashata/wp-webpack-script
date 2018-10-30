@@ -1,6 +1,7 @@
 ---
 title: Level up your JavaScript (Front-End) Skills
 order: 100
+shortTitle: Level up JS
 ---
 
 I created this tool in the hope that it will bring more WordPress developers to

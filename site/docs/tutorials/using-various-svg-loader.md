@@ -1,6 +1,7 @@
 ---
 title: Using various SVG Loaders
 order: 3
+shortTitle: Use SVG Loaders
 ---
 
 SVGs are all the rage in today's web. There are may ways, especially with webpack,
