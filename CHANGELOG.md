@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="2.3.0"></a>
+# [2.3.0](https://github.com/swashata/wp-webpack-script/compare/v2.2.0...v2.3.0) (2018-10-30)
+
+
+### Bug Fixes
+
+* **deps:** update gatsby monorepo ([854f1f2](https://github.com/swashata/wp-webpack-script/commit/854f1f2))
+
+
+### Features
+
+* remove fork-ts-checker-webpack-plugin from dependency ([b1d3c07](https://github.com/swashata/wp-webpack-script/commit/b1d3c07)), closes [#29](https://github.com/swashata/wp-webpack-script/issues/29)
+* show proper error message on init ([ea4c3a9](https://github.com/swashata/wp-webpack-script/commit/ea4c3a9)), closes [#28](https://github.com/swashata/wp-webpack-script/issues/28)
+
+
+
+
+
 <a name="2.2.0"></a>
 # [2.2.0](https://github.com/swashata/wp-webpack-script/compare/v2.1.0...v2.2.0) (2018-10-29)
 
