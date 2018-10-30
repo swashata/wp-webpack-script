@@ -25,6 +25,7 @@ const Sidebarnav = props => (
 							frontmatter {
 								order
 								title
+								shortTitle
 							}
 						}
 					}
@@ -75,8 +76,9 @@ const Sidebarnav = props => (
 														currentSlug ===
 														doc.fields.slug,
 												})}
+												title={doc.frontmatter.title}
 											>
-												{doc.frontmatter.title}
+												{doc.frontmatter.shortTitle}
 											</Link>
 											{currentSlug === doc.fields.slug &&
 											toc ? (

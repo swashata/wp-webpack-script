@@ -1,6 +1,7 @@
 ---
 title: Server Configuration with wpackio.server.js
 order: 2
+shortTitle: Server Configuration
 ---
 
 The `wpackio.server.js` file at the root of your workspace tells wpackio

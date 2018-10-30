@@ -1,6 +1,7 @@
 ---
 title: Minimize CSS files with cssnano
 order: 2
+shortTitle: Minimize CSS assets
 ---
 
 wpack.io uses [`postcss-loader`](https://github.com/postcss/postcss-loader) and thereby [PostCSS](https://postcss.org/). So

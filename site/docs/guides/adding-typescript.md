@@ -1,6 +1,7 @@
 ---
 title: Adding Typescript to your project
 order: 3
+shortTitle: Adding Typescript
 ---
 
 `@wpackio/scripts` has first-class support for both [typescript](https://www.typescriptlang.org/)

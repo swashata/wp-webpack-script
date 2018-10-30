@@ -1,6 +1,7 @@
 ---
 title: Getting Started with wpack.io
 order: 1
+shortTitle: Getting Started
 ---
 
 This guide covers in-depth how to get started or incorporate wpack.io tooling

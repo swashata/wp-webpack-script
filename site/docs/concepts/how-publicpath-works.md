@@ -1,6 +1,7 @@
 ---
 title: How code-splitting and dynamic Import works
 order: 1
+shortTitle: Dynamic Imports & publicPath
 ---
 
 Glad you asked. The documentation at [webpack `output.publicPath`](https://webpack.js.org/configuration/output/#output-publicpath)

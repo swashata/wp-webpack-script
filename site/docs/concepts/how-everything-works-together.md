@@ -1,6 +1,7 @@
 ---
 title: How everything works together
 order: 2
+shortTitle: How it works
 ---
 
 This is an attempt to cover the working of this tooling. While this is really
