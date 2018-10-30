@@ -15,7 +15,7 @@
 		"node-sass": "^4.9.4",
 		"serve": "^10.0.2",
 		"typescript": "^3.1.3",
-		"wait-for": "^2.1.1"
+		"wait-on": "^3.1.0"
 	},
 	"scripts": {
 		"bootstrap": "wpackio-scripts bootstrap",
@@ -24,8 +24,8 @@
 		"serve": "serve",
 		"cypress:open": "cypress open",
 		"cypress:run": "cypress run",
-		"wait-for-test-server": "wait-for http://localhost:5000 --timeout 300000",
-		"wait-for-wpackio-server": "wait-for http://127.0.0.1:3000 --timeout 300000"
+		"wait-for-test-server": "wait-on http://localhost:5000 --timeout 30000",
+		"wait-for-wpackio-server": "wait-on http://127.0.0.1:3000 --timeout 30000"
 	},
 	"dependencies": {
 		"@types/webpack-env": "^1.13.6",
