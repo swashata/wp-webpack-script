@@ -30,7 +30,7 @@
     "react": "16.6.0",
     "react-dom": "16.6.0",
     "react-helmet": "5.2.0",
-    "react-typing-animation": "^1.4.0"
+    "react-typing-animation": "1.4.0"
   },
   "keywords": [
     "gatsby"
