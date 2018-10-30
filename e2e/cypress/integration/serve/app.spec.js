@@ -39,6 +39,20 @@ context('wpackio-scripts serve', () => {
 		it('dynamic import should work', () => {
 			cy.get('#dyn-app').should('have.text', 'I am dynamically imported');
 		});
+		it('HMR should work', () => {
+			cy.get('#dyn-app').should('have.text', 'I am dynamically imported');
+			cy.task('hmrJs').then(() => {
+				cy.get('#dyn-app').should('have.text', 'I am HMRed');
+				cy.task('hmrJsRestore').then(() => {
+					cy.get('#dyn-app').should('have.text', 'I am HMRed');
+				});
+			});
+		});
+		it('SASS should work', () => {
+			cy.get('#blue').then(el => {
+				expect(el).to.have.css('color', 'rgb(0, 0, 255)');
+			});
+		});
 	});
 
 	describe('For TypeScript App', () => {
@@ -50,6 +64,20 @@ context('wpackio-scripts serve', () => {
 				'have.text',
 				'I am dynamically imported from ts module'
 			);
+		});
+		it('HMR should work', () => {
+			cy.get('#ts-app').should('have.text', 'I am ts app');
+			cy.task('hmrTs').then(() => {
+				cy.get('#ts-app').should('have.text', 'I am HMRed');
+				cy.task('hmrTsRestore').then(() => {
+					cy.get('#ts-app').should('have.text', 'I am HMRed');
+				});
+			});
+		});
+		it('SASS should work', () => {
+			cy.get('#red').then(el => {
+				expect(el).to.have.css('color', 'rgb(255, 0, 0)');
+			});
 		});
 	});
 });

@@ -1,4 +1,6 @@
 import { updateText } from './module';
+// tslint:disable-next-line:no-import-side-effect
+import './style.scss';
 
 const mainNode = document.querySelector('#ts-app');
 if (mainNode) {
@@ -11,3 +13,10 @@ import('./dynamic').then(({ updateNode }) => {
 		updateNode(dynNode, 'I am dynamically imported from ts module');
 	}
 });
+
+if (module.hot) {
+	module.hot.accept('./module', () => {
+		const { updateText } = require('./module');
+		updateText(mainNode, 'I am HMRed');
+	});
+}
