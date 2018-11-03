@@ -16,7 +16,7 @@ import { ServerConfig } from '../config/server.config.default';
 interface Callbacks {
 	invalid(): void;
 	done(stats: webpack.Stats): void;
-	firstCompile(): void;
+	firstCompile(stats: webpack.Stats): void;
 	onError(err: { errors: string[]; warnings: string[] }): void;
 	onWarn(warn: { errors: string[]; warnings: string[] }): void;
 }
@@ -141,9 +141,9 @@ export class Server {
 		});
 
 		// Open browser on first build
-		devMiddleware.waitUntilValid(() => {
+		devMiddleware.waitUntilValid(stats => {
 			if (!this.firstCompileCompleted) {
-				this.callbacks.firstCompile();
+				this.callbacks.firstCompile(stats);
 				this.firstCompileCompleted = true;
 			}
 			this.openBrowser();

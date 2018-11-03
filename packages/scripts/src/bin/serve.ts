@@ -5,6 +5,8 @@ import ora from 'ora';
 import path from 'path';
 import PrettyError from 'pretty-error';
 import clearConsole from 'react-dev-utils/clearConsole';
+import formatWebpackMessages from 'react-dev-utils/formatWebpackMessages';
+import webpack from 'webpack';
 import { getProjectAndServerConfig } from '../config/getProjectAndServerConfig';
 import { WpackioError } from '../errors/WpackioError';
 import { Server } from '../scripts/Server';
@@ -116,13 +118,42 @@ export function serve(options: ProgramOptions | undefined): void {
 					`${watchSymbol} watching for changes${watchEllipsis}`
 				);
 			},
-			firstCompile: () => {
+			firstCompile: (stats: webpack.Stats) => {
 				spinner.stop();
+				const raw = stats.toJson('verbose');
+				const messages = formatWebpackMessages(raw);
 				clearConsole();
 				serverInfo(server.getServerUrl(), server.getBsUiUrl());
 				console.log(
 					`${logSymbols.success} ${chalk.dim('server started!')}`
 				);
+				if (stats.hasErrors()) {
+					console.log(
+						`${chalk.bgRed.black(' ERROR ')} please review`
+					);
+					messages.errors.forEach(e => console.log(e));
+					console.log('');
+					console.error(
+						`${logSymbols.error} ${chalk.dim(
+							'failed to compile'
+						)}\n`
+					);
+				} else {
+					if (stats.hasWarnings()) {
+						console.log(
+							`${logSymbols.warning} ${chalk.dim(
+								'compiled with warnings...'
+							)}\n`
+						);
+						messages.warnings.forEach(e => console.log(e));
+					} else {
+						console.log(
+							`${logSymbols.success} ${chalk.dim(
+								'compiled successfully'
+							)}\n`
+						);
+					}
+				}
 				console.log(
 					`${watchSymbol} watching for changes${watchEllipsis}`
 				);
