@@ -177,7 +177,9 @@ export function serve(options: ProgramOptions | undefined): void {
 			stdin.setEncoding('utf8');
 			stdin.on('data', (key: string) => {
 				// ctrl-c ( end of text )
-				if (key === '\u0003') {
+				// or if pressing q, then stop
+				// then stop server
+				if (key === '\u0003' || key === 'q') {
 					stopServer();
 				}
 

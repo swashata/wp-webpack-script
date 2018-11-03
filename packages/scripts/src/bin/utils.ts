@@ -97,7 +97,7 @@ You can now view it in your browser.
     ${bulletSymbol} ${chalk.bold('Force Compile:')} press ${chalk.yellow('r')}.
     ${bulletSymbol} ${chalk.bold('Stop Server:')} press ${chalk.yellow(
 		'Ctrl'
-	)} + ${chalk.yellow('c')}.
+	)} + ${chalk.yellow('c')} OR ${chalk.yellow('q')}.
     ${bulletSymbol} ${chalk.bold('Enqueue Assets:')} visit ${wpackLink}.
 
 No files are written on disk during ${chalk.cyan('development')} mode.
