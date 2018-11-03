@@ -7,15 +7,15 @@
   "license": "MIT",
   "private": true,
   "devDependencies": {
-    "@wpackio/scripts": "^2.3.0",
+    "@wpackio/scripts": "file:../../packages/scripts",
     "node-sass": "^4.9.3"
   },
   "scripts": {
     "bootstrap": "wpackio-scripts bootstrap",
-    "exbuild": "wpackio-scripts build",
-    "exstart": "wpackio-scripts start"
+    "build": "wpackio-scripts build",
+    "start": "wpackio-scripts start"
   },
   "dependencies": {
-    "@wpackio/entrypoint": "^2.0.0"
+    "@wpackio/entrypoint": "file:../../packages/entrypoint"
   }
 }

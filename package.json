@@ -5,8 +5,7 @@
   "homepage": "https://wpack.io",
   "author": "Swashata Ghosh <swashata4u@gmail.com> (https://swas.io)",
   "workspaces": [
-    "packages/*",
-    "examples/*"
+    "packages/*"
   ],
   "engines": {
     "yarn": "^1.2.1",
@@ -20,6 +19,7 @@
     "@babel/preset-env": "7.1.0",
     "@babel/preset-typescript": "7.1.0",
     "@types/jest": "23.3.9",
+    "@types/node": "^10.12.2",
     "@wpquark/eslint-config": "3.0.0",
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "23.6.0",
@@ -38,6 +38,7 @@
     "typescript": "3.1.6"
   },
   "scripts": {
+    "clean": "lerna clean",
     "test": "lerna run test",
     "build": "lerna run build",
     "plop": "plop",

@@ -8,7 +8,7 @@
 	"private": true,
 	"devDependencies": {
 		"@types/jest": "23.3.9",
-		"@wpackio/scripts": "../packages/scripts",
+		"@wpackio/scripts": "file:../packages/scripts",
 		"autoprefixer": "9.3.1",
 		"cssnano": "4.1.7",
 		"cypress": "3.1.1",
@@ -33,7 +33,7 @@
 	"dependencies": {
 		"@types/execa": "0.9.0",
 		"@types/webpack-env": "1.13.6",
-		"@wpackio/entrypoint": "../packages/entrypoint",
+		"@wpackio/entrypoint": "file:../packages/entrypoint",
 		"execa": "1.0.0",
 		"react": "16.6.0",
 		"react-bootstrap": "1.0.0-beta.1",

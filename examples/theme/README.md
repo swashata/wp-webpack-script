@@ -25,16 +25,23 @@ the following features.
     Now run
 
     ```bash
+    yarn
     yarn start
     ```
 
     Or if you are using npm
 
     ```bash
+    npm i
     npm start
     ```
 
     This will open up the development server within your network LAN Ip address.
+
+    Note that due to how `file:` dependency works with `npm`, it might throw some
+    error. We recommend using `yarn`, until the issue is resolved. This is just
+    for checking out this demo. In your own project, both `npm` and `yarn` will
+    work fine.
 
 5. Now log into your WordPress dashboard with:
    a. Username: `root`

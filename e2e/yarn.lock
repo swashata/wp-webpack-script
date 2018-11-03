@@ -1157,12 +1157,12 @@
     "@babel/preset-env" "^7.1.0"
     "@babel/preset-react" "^7.0.0"
 
-"@wpackio/entrypoint@../packages/entrypoint":
+"@wpackio/entrypoint@file:../packages/entrypoint":
   version "2.0.0"
   dependencies:
     "@types/webpack-env" "^1.13.6"
 
-"@wpackio/scripts@../packages/scripts":
+"@wpackio/scripts@file:../packages/scripts":
   version "2.3.0"
   dependencies:
     "@babel/core" "^7.1.0"

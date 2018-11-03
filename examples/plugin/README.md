@@ -39,6 +39,11 @@ the following features.
 
     This will open up the development server within your network LAN Ip address.
 
+    Note that due to how `file:` dependency works with `npm`, it might throw some
+    error. We recommend using `yarn`, until the issue is resolved. This is just
+    for checking out this demo. In your own project, both `npm` and `yarn` will
+    work fine.
+
 5. Now log into your WordPress dashboard with:
    a. Username: `root`
    b. Password: `root`
@@ -70,3 +75,11 @@ and this will create a todo app.
 Edit files under `src/reactapp/` and see them refresh live (without page reload).
 
 This is done with the help of [react-hot-loader](https://github.com/gaearon/react-hot-loader).
+
+## Building Files
+
+Run
+
+```bash
+yarn build
+```
