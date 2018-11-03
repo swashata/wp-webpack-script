@@ -45,6 +45,7 @@ export interface WebpackConfigHelperConfig {
 	publicPath: string; // Not used right now, but maybe we will need it in future?
 	publicPathUrl: string;
 	errorOverlay: ProjectConfig['errorOverlay'];
+	externals: ProjectConfig['externals'];
 }
 
 interface CommonWebpackConfig {
@@ -54,6 +55,7 @@ interface CommonWebpackConfig {
 	watch: webpack.Configuration['watch'];
 	mode: webpack.Configuration['mode'];
 	name: webpack.Configuration['name'];
+	externals: webpack.Configuration['externals'];
 }
 
 /**
@@ -540,6 +542,7 @@ ${bannerConfig.copyrightText}${bannerConfig.credit ? creditNote : ''}`,
 			watch: this.isDev,
 			mode: this.env,
 			name: this.file.name,
+			externals: this.config.externals,
 		};
 	}
 

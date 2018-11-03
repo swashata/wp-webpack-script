@@ -56,5 +56,6 @@ export function getConfigFromProjectAndServer(
 			pCfg.outputPath
 		}/`,
 		errorOverlay: true,
+		externals: pCfg.externals,
 	};
 }

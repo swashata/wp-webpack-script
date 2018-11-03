@@ -4,6 +4,9 @@ exports[`CreateWebPackConfig getCommon sends proper stuff depending on isDev 1`]
 Object {
   "context": "/foo/bar",
   "devtool": "source-map",
+  "externals": Object {
+    "jquery": "jQuery",
+  },
   "mode": "production",
   "name": "config1",
   "target": "web",
@@ -15,6 +18,9 @@ exports[`CreateWebPackConfig getCommon sends proper stuff depending on isDev 2`]
 Object {
   "context": "/foo/bar",
   "devtool": "inline-source-map",
+  "externals": Object {
+    "jquery": "jQuery",
+  },
   "mode": "development",
   "name": "config1",
   "target": "web",

@@ -1,4 +1,5 @@
 import { PresetOptions } from '@wpackio/babel-preset-base/lib/preset';
+// tslint:disable-next-line:no-implicit-dependencies
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import miniCssExtractPlugin from 'mini-css-extract-plugin';
 import path from 'path';
@@ -472,6 +473,20 @@ describe('CreateWebPackConfig', () => {
 
 	// getCommmon
 	describe('getCommon', () => {
+		test('has externals', () => {
+			const cwc = new WebpackConfigHelper(
+				projectConfig.files[0],
+				{
+					...getConfigFromProjectAndServer(
+						projectConfig,
+						serverConfig
+					),
+				},
+				'/foo/bar',
+				true
+			);
+			expect(cwc.getCommon().externals).toBe(projectConfig.externals);
+		});
 		test('sends proper stuff depending on isDev', () => {
 			const cwc = new WebpackConfigHelper(
 				projectConfig.files[0],
