@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.4.0](https://github.com/swashata/wp-webpack-script/compare/v2.3.0...v2.4.0) (2018-11-03)
+
+
+### Bug Fixes
+
+* **deps:** pin dependencies ([b3e9444](https://github.com/swashata/wp-webpack-script/commit/b3e9444))
+* **deps:** update dependency react-hot-loader to v4.3.12 ([3f4cfbb](https://github.com/swashata/wp-webpack-script/commit/3f4cfbb))
+* **deps:** update gatsby monorepo ([f2271dc](https://github.com/swashata/wp-webpack-script/commit/f2271dc))
+* pass externals to webpack config ([ae32d63](https://github.com/swashata/wp-webpack-script/commit/ae32d63)), closes [#42](https://github.com/swashata/wp-webpack-script/issues/42)
+
+
+### Features
+
+* quit server on `q` keypress ([e0da13e](https://github.com/swashata/wp-webpack-script/commit/e0da13e))
+* show first-time build errors (if any) ([a22b6d5](https://github.com/swashata/wp-webpack-script/commit/a22b6d5)), closes [#41](https://github.com/swashata/wp-webpack-script/issues/41)
+
+
+
+
+
 <a name="2.3.0"></a>
 # [2.3.0](https://github.com/swashata/wp-webpack-script/compare/v2.2.0...v2.3.0) (2018-10-30)
 
