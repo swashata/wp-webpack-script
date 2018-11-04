@@ -24,7 +24,7 @@
     "gatsby-remark-smartypants": "2.0.6",
     "gatsby-source-filesystem": "2.0.7",
     "gatsby-transformer-remark": "2.1.11",
-    "node-sass": "4.9.4",
+    "node-sass": "4.10.0",
     "prismjs": "1.15.0",
     "prop-types": "15.6.2",
     "react": "16.6.0",
