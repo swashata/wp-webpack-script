@@ -13,7 +13,7 @@
     "gatsby-plugin-manifest": "2.0.7",
     "gatsby-plugin-netlify": "2.0.3",
     "gatsby-plugin-netlify-cache": "1.0.0",
-    "gatsby-plugin-offline": "2.0.11",
+    "gatsby-plugin-offline": "2.0.12",
     "gatsby-plugin-react-helmet": "3.0.1",
     "gatsby-plugin-sass": "2.0.3",
     "gatsby-plugin-svgr": "2.0.0-alpha",
