@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.5.0](https://github.com/swashata/wp-webpack-script/compare/v2.4.0...v2.5.0) (2018-11-06)
+
+
+### Bug Fixes
+
+* **deps:** update dependency gatsby to v2.0.39 ([a3b5a42](https://github.com/swashata/wp-webpack-script/commit/a3b5a42))
+* **deps:** update dependency gatsby-plugin-offline to v2.0.12 ([3dd23d7](https://github.com/swashata/wp-webpack-script/commit/3dd23d7))
+* **deps:** update dependency node-sass to v4.10.0 ([a20b279](https://github.com/swashata/wp-webpack-script/commit/a20b279))
+* **deps:** update gatsby monorepo ([2be6ee5](https://github.com/swashata/wp-webpack-script/commit/2be6ee5))
+
+
+### Features
+
+* add option in server config to override bs ([1889f7c](https://github.com/swashata/wp-webpack-script/commit/1889f7c))
+
+
+
+
+
 # [2.4.0](https://github.com/swashata/wp-webpack-script/compare/v2.3.0...v2.4.0) (2018-11-03)
 
 
