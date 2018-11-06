@@ -7,7 +7,7 @@
     "bulma": "0.7.2",
     "classnames": "2.2.6",
     "docsearch.js": "2.5.2",
-    "gatsby": "2.0.39",
+    "gatsby": "2.0.40",
     "gatsby-image": "2.0.19",
     "gatsby-plugin-catch-links": "2.0.6",
     "gatsby-plugin-manifest": "2.0.7",
@@ -19,7 +19,7 @@
     "gatsby-plugin-svgr": "2.0.0-alpha",
     "gatsby-remark-autolink-headers": "2.0.10",
     "gatsby-remark-copy-linked-files": "2.0.6",
-    "gatsby-remark-images": "2.0.5",
+    "gatsby-remark-images": "2.0.6",
     "gatsby-remark-prismjs": "3.0.3",
     "gatsby-remark-smartypants": "2.0.6",
     "gatsby-source-filesystem": "2.0.7",
@@ -45,8 +45,8 @@
   "devDependencies": {
     "@wpquark/eslint-config": "3.0.0",
     "eslint": "5.8.0",
-    "gatsby-plugin-sharp": "2.0.11",
-    "gatsby-transformer-sharp": "2.1.7",
+    "gatsby-plugin-sharp": "2.0.12",
+    "gatsby-transformer-sharp": "2.1.8",
     "prettier": "1.14.3"
   },
   "repository": {
