@@ -8,6 +8,8 @@ export interface ServerConfig {
 	notify: boolean;
 	open: boolean;
 	ghostMode: browserSync.Options['ghostMode'];
+	// tslint:disable-next-line:no-any
+	bsOverride?: { [x: string]: any };
 }
 
 export const serverConfigDefault: ServerConfig = {

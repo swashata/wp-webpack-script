@@ -126,7 +126,8 @@ export class Server {
 		middlewares.push(hotMiddleware);
 
 		// Init browsersync
-		bs.init({
+		// BS options
+		let bsOptions: browserSync.Options = {
 			logLevel: 'silent',
 			port: this.serverConfig.port,
 			ui: this.serverConfig.ui,
@@ -138,7 +139,14 @@ export class Server {
 			host: this.serverConfig.host,
 			open: false, // We don't want to open right away
 			notify: this.serverConfig.notify,
-		});
+		};
+		if (this.serverConfig.bsOverride) {
+			bsOptions = {
+				...bsOptions,
+				...this.serverConfig.bsOverride,
+			};
+		}
+		bs.init(bsOptions);
 
 		// Open browser on first build
 		devMiddleware.waitUntilValid(stats => {
