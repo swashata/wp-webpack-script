@@ -6878,9 +6878,9 @@ rc@^1.0.1, rc@^1.1.6, rc@^1.2.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-bootstrap@1.0.0-beta.1:
-  version "1.0.0-beta.1"
-  resolved "https://registry.yarnpkg.com/react-bootstrap/-/react-bootstrap-1.0.0-beta.1.tgz#976cd1f94d86785f374b00d7674e03ae72d37c0c"
+react-bootstrap@1.0.0-beta.2:
+  version "1.0.0-beta.2"
+  resolved "https://registry.yarnpkg.com/react-bootstrap/-/react-bootstrap-1.0.0-beta.2.tgz#8f4483ed39d534fcc3bc3ab03e2c26f98f1cb5a0"
   dependencies:
     "@babel/runtime" "^7.0.0"
     "@react-bootstrap/react-popper" "1.2.1"
@@ -6891,7 +6891,7 @@ react-bootstrap@1.0.0-beta.1:
     popper.js "^1.14.3"
     prop-types "^15.6.2"
     prop-types-extra "^1.1.0"
-    react-context-toolbox "^1.2.1"
+    react-context-toolbox "^1.2.3"
     react-overlays "^1.0.0-beta.17"
     react-prop-types "^0.4.0"
     react-transition-group "^2.4.0"
@@ -6901,6 +6901,10 @@ react-bootstrap@1.0.0-beta.1:
 react-context-toolbox@^1.2.1:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/react-context-toolbox/-/react-context-toolbox-1.2.2.tgz#3fd9a07b0618ae398d232098a04c2b9f0abdbb86"
+
+react-context-toolbox@^1.2.3:
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/react-context-toolbox/-/react-context-toolbox-1.2.3.tgz#381238f60422f6034ca706b56994da147ff87b6d"
 
 react-dev-utils@^6.0.4:
   version "6.1.0"
