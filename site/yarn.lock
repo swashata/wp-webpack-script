@@ -1344,9 +1344,9 @@ atob@^2.1.1:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/atob/-/atob-2.1.2.tgz#6d9517eb9e030d2436666651e86bd9f6f13533c9"
 
-autocomplete.js@^0.29.0:
-  version "0.29.0"
-  resolved "https://registry.yarnpkg.com/autocomplete.js/-/autocomplete.js-0.29.0.tgz#0185f7375ee9daf068f7d52d794bc90dcd739fd7"
+autocomplete.js@0.32.0:
+  version "0.32.0"
+  resolved "https://registry.yarnpkg.com/autocomplete.js/-/autocomplete.js-0.32.0.tgz#a00eab44dcb9e573ebd8bb3178e7fe67466cd4f1"
   dependencies:
     immediate "^3.2.3"
 
@@ -3593,14 +3593,17 @@ dns-txt@^2.0.2:
   dependencies:
     buffer-indexof "^1.0.0"
 
-docsearch.js@2.5.2:
-  version "2.5.2"
-  resolved "https://registry.yarnpkg.com/docsearch.js/-/docsearch.js-2.5.2.tgz#1a3521c92e5f252cc522c57357ef1c47b945b381"
+docsearch.js@2.6.1:
+  version "2.6.1"
+  resolved "https://registry.yarnpkg.com/docsearch.js/-/docsearch.js-2.6.1.tgz#57d5b2441e4671f801f6ede42039ceb67edc2251"
   dependencies:
     algoliasearch "^3.24.5"
-    autocomplete.js "^0.29.0"
+    autocomplete.js "0.32.0"
     hogan.js "^3.0.2"
+    request "^2.87.0"
+    stack-utils "^1.0.1"
     to-factory "^1.0.0"
+    zepto "^1.2.0"
 
 doctrine@1.5.0:
   version "1.5.0"
@@ -10583,6 +10586,10 @@ stack-trace@^0.0.10:
   version "0.0.10"
   resolved "https://registry.yarnpkg.com/stack-trace/-/stack-trace-0.0.10.tgz#547c70b347e8d32b4e108ea1a2a159e5fdde19c0"
 
+stack-utils@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/stack-utils/-/stack-utils-1.0.1.tgz#d4f33ab54e8e38778b0ca5cfd3b3afb12db68620"
+
 stackframe@^1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/stackframe/-/stackframe-1.0.4.tgz#357b24a992f9427cba6b545d96a14ed2cbca187b"
@@ -12277,6 +12284,10 @@ zen-observable-ts@^0.8.10:
 zen-observable@^0.8.0:
   version "0.8.10"
   resolved "https://registry.yarnpkg.com/zen-observable/-/zen-observable-0.8.10.tgz#85ad75d41fed82e5b4651bd64ca117b2af960182"
+
+zepto@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/zepto/-/zepto-1.2.0.tgz#e127bd9e66fd846be5eab48c1394882f7c0e4f98"
 
 zwitch@^1.0.0:
   version "1.0.3"
