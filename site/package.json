@@ -9,7 +9,7 @@
     "docsearch.js": "2.6.1",
     "gatsby": "2.0.43",
     "gatsby-image": "2.0.20",
-    "gatsby-plugin-catch-links": "2.0.7",
+    "gatsby-plugin-catch-links": "2.0.8",
     "gatsby-plugin-manifest": "2.0.8",
     "gatsby-plugin-netlify": "2.0.4",
     "gatsby-plugin-netlify-cache": "1.0.0",
