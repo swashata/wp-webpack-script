@@ -44,7 +44,7 @@
   },
   "devDependencies": {
     "@wpquark/eslint-config": "3.0.0",
-    "eslint": "5.8.0",
+    "eslint": "5.9.0",
     "gatsby-plugin-sharp": "2.0.12",
     "gatsby-transformer-sharp": "2.1.8",
     "prettier": "1.15.1"
