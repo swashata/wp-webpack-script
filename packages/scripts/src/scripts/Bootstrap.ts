@@ -297,6 +297,7 @@ module.exports = {
 			build: 'wpackio-scripts build',
 			start: 'wpackio-scripts start',
 			bootstrap: 'wpackio-scripts bootstrap',
+			archive: 'wpackio-scripts pack',
 		};
 		if (!packageFileData.scripts) {
 			packageFileData.scripts = {};
