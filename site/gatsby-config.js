@@ -11,6 +11,10 @@ module.exports = {
 				label: 'Config API',
 			},
 			{
+				docType: 'commands',
+				label: 'Commands',
+			},
+			{
 				docType: 'tutorials',
 				label: 'Tutorials',
 			},

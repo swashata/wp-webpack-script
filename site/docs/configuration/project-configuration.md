@@ -86,6 +86,23 @@ module.exports = {
 		...defaults,
 		plugins: ['react-hot-loader/babel'],
 	}),
+	// Files that you want to copy to your ultimate theme/plugin package
+	// Supports glob matching from minimatch
+	// @link <https://github.com/isaacs/minimatch#usage>
+	packageFiles: [
+		'inc/**',
+		'vendor/**',
+		'dist/**',
+		'*.php',
+		'*.md',
+		'readme.txt',
+		'languages/**',
+		'layouts/**',
+		'LICENSE',
+		'*.css',
+	],
+	// Path to package directory, relative to the root
+	packageDirPath: 'package',
 };
 ```
 
@@ -288,3 +305,20 @@ module.exports = {
 	watch: './(inc|includes)/**/*.php',
 };
 ```
+
+## `packageFiles` (`string[]`)
+
+Array of [glob patterns](https://github.com/sindresorhus/cpy#usage) to copy
+files to the `packageDirPath` directory. This is used to create the
+distributable zip file.
+
+WordPress allows uploading `.zip` files to install both theme and plugins.
+This option provides you a way to create such `.zip` file with `wpackio-scripts pack` command.
+
+## packageDirPath (`string`)
+
+Relative path of directory where we would put the package files. You should
+add it to your `.gitignore` file. A subdirectory with name same as [`slug`](#slug-string)
+will always be created inside it.
+
+The generated package file will also have name like `<slug>.zip`.

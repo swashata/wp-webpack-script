@@ -79,6 +79,11 @@ const IndexPage = ({ data: { mission, steps }, location }) => (
 				<p>
 					<span className="command">npm</span> run build
 				</p>
+				<Typing.Delay ms={1000} />
+				<p className="comment"># create distributable zip file</p>
+				<p>
+					<span className="command">npm</span> run archive
+				</p>
 			</Typing>
 		</Hero>
 		<section className="wpackio-home-features section">

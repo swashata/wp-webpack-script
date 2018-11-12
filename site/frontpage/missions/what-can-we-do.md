@@ -23,3 +23,4 @@ the pain points from setting up proper tooling to make webpack work with WordPre
 -   👉 [Typescript](https://www.typescriptlang.org/) and [Flowtype](https://flow.org/) to take your js carrier to the next level. This tooling itself is written in typescript.
 -   👉 All the stuff you need to start developing using [react](https://reactjs.org/). Hello Gutenberg!
 -   👉 _HOT MODULE REPLACEMENT(**HMR**)_ for CSS/SASS and supported javascript modules.
+-   👉 Create directly installable `.zip` file.

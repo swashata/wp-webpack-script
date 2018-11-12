@@ -5,7 +5,8 @@ html pre[class*='language-'] {
 	font-family: 'dm', monospace;
 
 	// Some niceness
-	.token.keyword {
+	.token.keyword,
+	.token.comment {
 		font-style: italic;
 	}
 	.token.constant {

@@ -9,7 +9,7 @@ const Window = props => {
 		type = 'terminal',
 		children,
 		className = '',
-		minHeight = '27rem',
+		minHeight = '26rem',
 	} = props;
 	return (
 		<section
