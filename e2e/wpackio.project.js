@@ -62,4 +62,22 @@ module.exports = {
 	optimizeSplitChunks: true,
 	// Usually PHP and other files to watch and reload when changed
 	watch: './inc|includes/**/*.php',
+	// Files that you want to copy to your ultimate theme/plugin package
+	// Supports glob matching from minimatch
+	// @link <https://github.com/isaacs/minimatch#usage>
+	packageFiles: [
+		'inc/**',
+		'vendor/**',
+		'dist/**',
+		'index.html',
+		'*.php',
+		'*.md',
+		'readme.txt',
+		'languages/**',
+		'layouts/**',
+		'LICENSE',
+		'*.css',
+	],
+	// Path to package directory, relative to the root
+	packageDirPath: 'package',
 };

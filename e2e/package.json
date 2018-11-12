@@ -22,7 +22,8 @@
 	"scripts": {
 		"bootstrap": "wpackio-scripts bootstrap",
 		"build": "wpackio-scripts build",
-		"start": "wpackio-scripts start",
+    "start": "wpackio-scripts start",
+    "archive": "wpackio-scripts pack",
 		"serve": "serve",
 		"cypress:open": "cypress open",
 		"cypress:run": "cypress run --record",

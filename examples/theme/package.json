@@ -13,7 +13,8 @@
   "scripts": {
     "bootstrap": "wpackio-scripts bootstrap",
     "build": "wpackio-scripts build",
-    "start": "wpackio-scripts start"
+    "start": "wpackio-scripts start",
+    "archive": "wpackio-scripts pack"
   },
   "dependencies": {
     "@wpackio/entrypoint": "file:../../packages/entrypoint"

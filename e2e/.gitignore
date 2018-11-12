@@ -1,5 +1,6 @@
 dist
 vendor
+package
 cypress/videos/
 
 # Logs
