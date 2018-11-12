@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.6.0](https://github.com/swashata/wp-webpack-script/compare/v2.5.0...v2.6.0) (2018-11-12)
+
+
+### Features
+
+* add pack command for creating zip files ([80d0376](https://github.com/swashata/wp-webpack-script/commit/80d0376))
+* add pack script during bootstrap ([42d9136](https://github.com/swashata/wp-webpack-script/commit/42d9136))
+* finalize pack command ([2e329dc](https://github.com/swashata/wp-webpack-script/commit/2e329dc))
+* merge default config to obtained config ([fae5a99](https://github.com/swashata/wp-webpack-script/commit/fae5a99))
+
+
+
+
+
 # [2.5.0](https://github.com/swashata/wp-webpack-script/compare/v2.4.0...v2.5.0) (2018-11-06)
 
 

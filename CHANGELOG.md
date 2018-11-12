@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.6.0](https://github.com/swashata/wp-webpack-script/compare/v2.5.0...v2.6.0) (2018-11-12)
+
+
+### Bug Fixes
+
+* **deps:** update dependency docsearch.js to v2.6.1 ([3ecd782](https://github.com/swashata/wp-webpack-script/commit/3ecd782))
+* **deps:** update dependency gatsby to v2.0.42 ([d2e7c79](https://github.com/swashata/wp-webpack-script/commit/d2e7c79))
+* **deps:** update dependency gatsby to v2.0.43 ([ec25b83](https://github.com/swashata/wp-webpack-script/commit/ec25b83))
+* **deps:** update dependency gatsby to v2.0.44 ([94d6af4](https://github.com/swashata/wp-webpack-script/commit/94d6af4))
+* **deps:** update dependency gatsby to v2.0.45 ([82d02d4](https://github.com/swashata/wp-webpack-script/commit/82d02d4))
+* **deps:** update dependency gatsby-plugin-catch-links to v2.0.8 ([5284892](https://github.com/swashata/wp-webpack-script/commit/5284892))
+* **deps:** update dependency react-bootstrap to v1.0.0-beta.2 ([0ac7a38](https://github.com/swashata/wp-webpack-script/commit/0ac7a38))
+* **deps:** update gatsby monorepo ([256116b](https://github.com/swashata/wp-webpack-script/commit/256116b))
+* **deps:** update react monorepo to v16.6.1 ([a28de74](https://github.com/swashata/wp-webpack-script/commit/a28de74))
+
+
+### Features
+
+* add pack command for creating zip files ([80d0376](https://github.com/swashata/wp-webpack-script/commit/80d0376))
+* add pack script during bootstrap ([42d9136](https://github.com/swashata/wp-webpack-script/commit/42d9136))
+* finalize pack command ([2e329dc](https://github.com/swashata/wp-webpack-script/commit/2e329dc))
+* merge default config to obtained config ([fae5a99](https://github.com/swashata/wp-webpack-script/commit/fae5a99))
+
+
+
+
+
 # [2.5.0](https://github.com/swashata/wp-webpack-script/compare/v2.4.0...v2.5.0) (2018-11-06)
 
 
