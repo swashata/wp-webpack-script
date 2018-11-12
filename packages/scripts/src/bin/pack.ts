@@ -94,6 +94,7 @@ export function pack(options: ProgramOptions | undefined): void {
 			},
 			cwd
 		);
+		packer.pack();
 	} catch (e) {
 		spinner.stop();
 		prettyPrintError(e, 'could not start webpack compiler.');

@@ -86,10 +86,11 @@ export class Pack {
 	}
 
 	private async copy(): Promise<void> {
-		return cpy(this.projectConfig.packageFiles, this.packageSlugPath).on(
-			'progress',
-			this.callbacks.onCopyProgress
-		);
+		return cpy(this.projectConfig.packageFiles, this.packageSlugPath, {
+			parents: true,
+			cwd: this.cwd,
+			root: this.packageSlugPath,
+		}).on('progress', this.callbacks.onCopyProgress);
 	}
 
 	private async zip(): Promise<ArchiveResolve> {
