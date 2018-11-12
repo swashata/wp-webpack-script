@@ -2,7 +2,10 @@ os: osx
 language: node_js
 node_js:
   - "8.12.0"
-cache: yarn
+cache:
+  yarn: true
+  directories:
+    - ~/.cache
 before_script:
   # We don't need to do lerna bootstrap, because it doesn't metter while using yarn workspaces
   - npm install -g codecov
