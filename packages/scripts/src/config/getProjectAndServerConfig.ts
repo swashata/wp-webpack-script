@@ -3,9 +3,10 @@ import chalk from 'chalk';
 import path from 'path';
 import { isYarn } from '../bin/utils';
 import { WpackioError } from '../errors/WpackioError';
-import { ProjectConfig } from './project.config.default';
-import { ServerConfig } from './server.config.default';
+import { ProjectConfig, projectConfigDefault } from './project.config.default';
+import { ServerConfig, serverConfigDefault } from './server.config.default';
 // tslint:disable: non-literal-require
+// tslint:disable-next-line:cyclomatic-complexity
 export function getProjectAndServerConfig(
 	cwd: string,
 	options?:
@@ -85,6 +86,20 @@ export function getProjectAndServerConfig(
 			)}`
 		);
 	}
+
+	// Validate them
+	validateProjectConfig(projectConfig);
+	validateServerConfig(serverConfig);
+
+	return {
+		projectConfig: { ...projectConfigDefault, ...projectConfig },
+		serverConfig: { ...serverConfigDefault, ...serverConfig },
+		projectConfigPath,
+		serverConfigPath,
+	};
+}
+
+export function validateProjectConfig(projectConfig: ProjectConfig): boolean {
 	// Check if the appName is okay
 	if (!projectConfig.appName) {
 		throw new WpackioError(
@@ -138,6 +153,30 @@ export function getProjectAndServerConfig(
 			)}.\nAt-least one of the objects does not satisfy the condition.`
 		);
 	}
+	// 4. Validate package configs
+	if (!projectConfig.packageDirPath || projectConfig.packageDirPath === '') {
+		throw new WpackioError(
+			`${chalk.yellow(
+				'packageDirPath'
+			)} under project configuration must be valid.\nIt defines the path to package output directory.`
+		);
+	}
+	if (
+		!projectConfig.packageFiles ||
+		!Array.isArray(projectConfig.packageFiles) ||
+		!projectConfig.packageFiles.length ||
+		!projectConfig.packageFiles.every(f => typeof f === 'string')
+	) {
+		throw new WpackioError(
+			`${chalk.yellow(
+				'packageFiles'
+			)} under project configuration must be valid glob patterns.`
+		);
+	}
+	return true;
+}
+
+export function validateServerConfig(serverConfig: ServerConfig): boolean {
 	// Check if server config has proxy
 	if (!serverConfig.proxy || serverConfig.proxy === '') {
 		throw new WpackioError(
@@ -146,5 +185,5 @@ export function getProjectAndServerConfig(
 			)} under server configuration must be an URL to your development server.`
 		);
 	}
-	return { projectConfig, serverConfig, projectConfigPath, serverConfigPath };
+	return true;
 }
