@@ -3,10 +3,11 @@ import logSymbols from 'log-symbols';
 import ora from 'ora';
 import path from 'path';
 import { getProjectAndServerConfig } from '../config/getProjectAndServerConfig';
-import { Build } from '../scripts/Build';
+import { Callbacks, Pack } from '../scripts/Pack';
 import { ProgramOptions } from './index';
 import {
-	endBuildInfo,
+	endPackInfo,
+	getFileCopyProgress,
 	prettyPrintError,
 	resolveCWD,
 	watchEllipsis,
@@ -18,17 +19,14 @@ import {
  *
  * @param options Option as received from CLI.
  */
-export function build(options: ProgramOptions | undefined): void {
+export function pack(options: ProgramOptions | undefined): void {
 	// For spinner
+	const spinText = `${wpackLogoSmall}: creating distributable zip file${watchEllipsis}`;
 	const spinner = ora({
-		text: `${wpackLogoSmall}: creating production builds${watchEllipsis}`,
+		text: spinText,
 		spinner: 'dots',
 		color: 'yellow',
 	});
-	// Set process.env.NODE_ENV to production
-	process.env.NODE_ENV = 'production';
-	// Set process.env.BABEL_ENV to production
-	process.env.BABEL_ENV = 'production';
 	// Get project and server config JSONs.
 	const cwd = resolveCWD(options);
 	const relCwd = path.relative(process.cwd(), cwd);
@@ -56,24 +54,46 @@ export function build(options: ProgramOptions | undefined): void {
 		);
 		// Start the webpack/browserSync server
 		spinner.start();
-		const builder: Build = new Build(projectConfig, serverConfig, cwd);
-		builder
-			.build()
-			.then(({ status, log }) => {
-				if (status === 'success') {
-					spinner.succeed(`${wpackLogoSmall} build successful.`);
-				} else {
-					spinner.warn(`${wpackLogoSmall} build warnings.`);
-				}
-				console.log(log);
-				endBuildInfo(serverConfig.proxy);
-				process.exit(0);
-			})
-			.catch(err => {
-				spinner.fail(`${wpackLogoSmall} build failed.`);
-				console.error(err);
-				process.exit(1);
-			});
+		const packer = new Pack(
+			projectConfig,
+			{
+				onMkDirPackage: p => {
+					spinner.succeed(
+						`created directory ${path.relative(cwd, p)}`
+					);
+					spinner.start(spinText);
+				},
+				onClean: paths => {
+					let sucText = `package directory is already clean`;
+					if (paths.length) {
+						sucText = `deleted ${paths.length} old files`;
+					}
+					spinner.succeed(sucText);
+					spinner.start(spinText);
+				},
+				onMkDirSlug: p => {
+					spinner.succeed(
+						`created package directory ${path.relative(cwd, p)}`
+					);
+					spinner.start(spinText);
+				},
+				onBeforeCopy: () => {
+					spinner.text = getFileCopyProgress();
+				},
+				onCopyProgress: progress => {
+					spinner.text = getFileCopyProgress(progress);
+				},
+				onCopy: () => {
+					spinner.succeed();
+					spinner.start(`creating zip archive of the package`);
+				},
+				onZip: result => {
+					spinner.succeed(`done creating zip archive of the package`);
+					endPackInfo(result);
+				},
+			},
+			cwd
+		);
 	} catch (e) {
 		spinner.stop();
 		prettyPrintError(e, 'could not start webpack compiler.');

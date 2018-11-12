@@ -77,4 +77,21 @@ module.exports = {
 		...defaults,
 		plugins: ['react-hot-loader/babel'],
 	}),
+	// Files that you want to copy to your ultimate theme/plugin package
+	// Supports glob matching from minimatch
+	// @link <https://github.com/isaacs/minimatch#usage>
+	packageFiles: [
+		'inc/**',
+		'vendor/**',
+		'dist/**',
+		'*.php',
+		'*.md',
+		'readme.txt',
+		'languages/**',
+		'layouts/**',
+		'LICENSE',
+		'*.css',
+	],
+	// Path to package directory, relative to the root
+	packageDirPath: 'package',
 };

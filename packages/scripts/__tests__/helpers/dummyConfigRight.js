@@ -9,4 +9,6 @@ module.exports = {
 		},
 	],
 	foo: 'bar',
+	packageDirPath: 'package',
+	packageFiles: ['**/*.js'],
 };

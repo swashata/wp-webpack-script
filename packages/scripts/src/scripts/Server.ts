@@ -164,7 +164,10 @@ export class Server {
 		// Watch for user defined files, when it changes, reload
 		// When that change, reload
 		if (this.projectConfig.watch) {
-			bs.watch(this.projectConfig.watch).on('change', bs.reload);
+			bs.watch(this.projectConfig.watch as string).on(
+				'change',
+				bs.reload
+			);
 		}
 		// We don't need to watch for manifest, because if user is changing
 		// Config, then she does need to restart. It won't be picked up

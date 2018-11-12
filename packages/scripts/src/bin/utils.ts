@@ -1,5 +1,6 @@
 import boxen from 'boxen';
 import chalk from 'chalk';
+import { ProgressData } from 'cpy';
 import figlet from 'figlet';
 import figures from 'figures';
 import findUp from 'find-up';
@@ -8,6 +9,7 @@ import logSymbols from 'log-symbols';
 import path from 'path';
 import PrettyError from 'pretty-error';
 import { WpackioError } from '../errors/WpackioError';
+import { ArchiveResolve } from '../scripts/Pack';
 
 let isYarnCache: boolean | null = null;
 
@@ -233,4 +235,58 @@ export function prettyPrintError(
 		const pe = new PrettyError();
 		console.error(pe.render(e));
 	}
+	console.log('\n\n\n');
+}
+
+export function getFileCopyProgress(progress?: ProgressData): string {
+	let done = 0;
+	let totalFiles = 0;
+	let filesDone = 0;
+	let size = 0;
+	if (progress) {
+		done = Math.round(
+			(progress.completedFiles / progress.totalFiles) * 100
+		);
+		totalFiles = progress.totalFiles;
+		filesDone = progress.completedFiles;
+		size = progress.completedSize;
+	}
+	const pbDoneLength = Math.floor((done / 100) * 20);
+
+	const pbDone = chalk.green('='.repeat(pbDoneLength));
+	const pbDoing = chalk.dim('-'.repeat(20 - pbDoneLength));
+
+	return `copying files to packages [${pbDone}${pbDoing}] ${chalk.yellow(
+		done.toString()
+	)}% ${chalk.magenta(filesDone.toString())}${chalk.dim('/')}${chalk.cyan(
+		totalFiles.toString()
+	)} File ${chalk.blue((size / 1024).toFixed(2))}KB`;
+}
+
+export function endPackInfo(results: ArchiveResolve): void {
+	console.log('\n');
+	const msg = `${wpackLogoSmall} package and archive was ${chalk.green(
+		'successful'
+	)}.
+
+We have created ${chalk.magenta('.zip')} archive file for you
+to distribute directly or work through CI/CD server.
+
+    ${bulletSymbol} Zip Location: ${chalk.blue(results.relPath)}.
+    ${bulletSymbol} File Size: ${chalk.blue(
+		(results.size / 1024).toFixed(2)
+	)} KB.
+    ${bulletSymbol} For more info, visit: ${wpackLink}.
+
+To spread the ${chalk.red(figures.heart)} please tweet.`;
+
+	console.log(
+		boxen(msg, {
+			padding: 1,
+			borderColor: 'cyan',
+			align: 'left',
+			float: 'left',
+			borderStyle: 'round',
+		})
+	);
 }

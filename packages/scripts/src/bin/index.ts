@@ -6,6 +6,7 @@ import clearConsole from 'react-dev-utils/clearConsole';
 import updateNotifier from 'update-notifier';
 import { bootstrap } from './bootstrap';
 import { build } from './build';
+import { pack } from './pack';
 import { serve } from './serve';
 import { bulletSymbol, contextHelp, printIntro } from './utils';
 
@@ -95,6 +96,24 @@ program
 	.action((options: ProgramOptions | undefined) => {
 		isValidCommand = true;
 		build(options);
+	});
+
+// Pack the script
+program
+	.command('pack')
+	.description('Create distributable archive (.zip) file.')
+	.option('-c, --context [path]', contextHelp)
+	.option(
+		'-p, --project-config [path]',
+		'Path to project config. If it differs from ./wpackio.project.js'
+	)
+	.option(
+		'-s, --server-config [path]',
+		'Path to server config. If it differs from ./wpackio.server.js'
+	)
+	.action((options: ProgramOptions | undefined) => {
+		isValidCommand = true;
+		pack(options);
 	});
 
 // Init the project

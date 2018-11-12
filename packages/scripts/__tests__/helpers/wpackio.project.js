@@ -8,4 +8,6 @@ module.exports = {
 			name: 'app',
 		},
 	],
+	packageDirPath: 'package',
+	packageFiles: ['**/*.js'],
 };
