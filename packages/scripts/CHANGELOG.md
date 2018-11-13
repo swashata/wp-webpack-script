@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.7.0](https://github.com/swashata/wp-webpack-script/compare/v2.6.0...v2.7.0) (2018-11-13)
+
+
+### Bug Fixes
+
+* **deps:** update dependency clean-webpack-plugin to v1 ([72681e1](https://github.com/swashata/wp-webpack-script/commit/72681e1))
+* issue with NaN or Infinity in progress bar ([1b460a1](https://github.com/swashata/wp-webpack-script/commit/1b460a1))
+
+
+### Features
+
+* improve progress bar of copy and archive ([e8ecddd](https://github.com/swashata/wp-webpack-script/commit/e8ecddd))
+
+
+
+
+
 # [2.6.0](https://github.com/swashata/wp-webpack-script/compare/v2.5.0...v2.6.0) (2018-11-12)
 
 

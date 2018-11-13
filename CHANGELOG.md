@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.7.0](https://github.com/swashata/wp-webpack-script/compare/v2.6.0...v2.7.0) (2018-11-13)
+
+
+### Bug Fixes
+
+* **deps:** pin dependency [@svgr](https://github.com/svgr)/webpack to 4.0.2 ([90cc25f](https://github.com/swashata/wp-webpack-script/commit/90cc25f))
+* **deps:** update dependency clean-webpack-plugin to v1 ([72681e1](https://github.com/swashata/wp-webpack-script/commit/72681e1))
+* **deps:** update dependency shelljs to v0.8.3 ([fd98103](https://github.com/swashata/wp-webpack-script/commit/fd98103))
+* issue with NaN or Infinity in progress bar ([1b460a1](https://github.com/swashata/wp-webpack-script/commit/1b460a1))
+* **deps:** update gatsby monorepo ([bd8532d](https://github.com/swashata/wp-webpack-script/commit/bd8532d))
+* **deps:** update gatsby monorepo ([9db2ee4](https://github.com/swashata/wp-webpack-script/commit/9db2ee4))
+* **deps:** update react monorepo to v16.6.3 ([a57a885](https://github.com/swashata/wp-webpack-script/commit/a57a885))
+
+
+### Features
+
+* improve progress bar of copy and archive ([e8ecddd](https://github.com/swashata/wp-webpack-script/commit/e8ecddd))
+
+
+
+
+
 # [2.6.0](https://github.com/swashata/wp-webpack-script/compare/v2.5.0...v2.6.0) (2018-11-12)
 
 

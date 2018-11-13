@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.7.0](https://github.com/swashata/wp-webpack-script/compare/v2.6.0...v2.7.0) (2018-11-13)
+
+
+### Bug Fixes
+
+* **deps:** update dependency shelljs to v0.8.3 ([fd98103](https://github.com/swashata/wp-webpack-script/commit/fd98103))
+
+
+
+
+
 # [2.6.0](https://github.com/swashata/wp-webpack-script/compare/v2.5.0...v2.6.0) (2018-11-12)
 
 **Note:** Version bump only for package @wpackio/cli
