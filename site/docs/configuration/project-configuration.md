@@ -103,6 +103,8 @@ module.exports = {
 	],
 	// Path to package directory, relative to the root
 	packageDirPath: 'package',
+	// Level of zlib compression, when creating archive
+	zlibLevel: 4,
 };
 ```
 
@@ -322,3 +324,7 @@ add it to your `.gitignore` file. A subdirectory with name same as [`slug`](#slu
 will always be created inside it.
 
 The generated package file will also have name like `<slug>.zip`.
+
+## zlibLevel (`number`)
+
+The level of zlib compression to use when creating the zip.
