@@ -243,6 +243,10 @@ export function prettyPrintError(
 }
 
 export function getProgressBar(done: number): string {
+	if (isNaN(done) || done === Infinity || done === -Infinity) {
+		// tslint:disable-next-line:no-parameter-reassignment
+		done = 0;
+	}
 	const pbDoneLength = Math.floor((done / 100) * 20);
 
 	let gFunc = gradient('red', 'red');
