@@ -8,6 +8,7 @@ import { ProgramOptions } from './index';
 import {
 	endPackInfo,
 	getFileCopyProgress,
+	getZipProgress,
 	prettyPrintError,
 	resolveCWD,
 	watchEllipsis,
@@ -61,7 +62,7 @@ export function pack(options: ProgramOptions | undefined): void {
 					spinner.succeed(
 						`created directory ${path.relative(cwd, p)}`
 					);
-					spinner.start(spinText);
+					spinner.start(`cleaning up package directory`);
 				},
 				onClean: paths => {
 					let sucText = `package directory is already clean`;
@@ -69,13 +70,15 @@ export function pack(options: ProgramOptions | undefined): void {
 						sucText = `deleted ${paths.length} old files`;
 					}
 					spinner.succeed(sucText);
-					spinner.start(spinText);
+					spinner.start(`creating installable package directory`);
 				},
 				onMkDirSlug: p => {
 					spinner.succeed(
 						`created package directory ${path.relative(cwd, p)}`
 					);
-					spinner.start(spinText);
+					spinner.start(
+						`copying files to installable package directory`
+					);
 				},
 				onBeforeCopy: () => {
 					spinner.text = getFileCopyProgress();
@@ -85,10 +88,15 @@ export function pack(options: ProgramOptions | undefined): void {
 				},
 				onCopy: () => {
 					spinner.succeed();
-					spinner.start(`creating zip archive of the package`);
+				},
+				onBeforeZip: () => {
+					spinner.start(getZipProgress());
+				},
+				onZipProgress: data => {
+					spinner.text = getZipProgress(data);
 				},
 				onZip: result => {
-					spinner.succeed(`done creating zip archive of the package`);
+					spinner.succeed();
 					endPackInfo(result);
 				},
 			},

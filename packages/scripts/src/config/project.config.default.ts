@@ -90,6 +90,7 @@ export interface ProjectConfig {
 	watch?: string | string[];
 	packageFiles: string[];
 	packageDirPath: string;
+	zlibLevel?: number;
 }
 
 /**
@@ -168,4 +169,6 @@ export const projectConfigDefault: ProjectConfig = {
 	],
 	// Path to package directory, relative to the root
 	packageDirPath: 'package',
+	// Level of zlib compression, when creating archive
+	zlibLevel: 4,
 };

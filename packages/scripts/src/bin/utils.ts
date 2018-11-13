@@ -1,3 +1,4 @@
+import archiver from 'archiver';
 import boxen from 'boxen';
 import chalk from 'chalk';
 import { ProgressData } from 'cpy';
@@ -194,6 +195,9 @@ create the ${chalk.bold.yellow('wpackio.server.js')} file if not present.
     ${bulletSymbol} Create local server config: ${chalk.yellow(
 		isYarn() ? 'yarn bootstrap' : 'npm run bootstrap'
 	)}.
+    ${bulletSymbol} Create distributable zip: ${chalk.yellow(
+		isYarn() ? 'yarn archive' : 'npm run archive'
+	)}.
     ${bulletSymbol} For more info, visit: ${wpackLink}.
 
 To enqueue the assets within your plugin or theme, make sure you have
@@ -238,6 +242,25 @@ export function prettyPrintError(
 	console.log('\n\n\n');
 }
 
+export function getProgressBar(done: number): string {
+	const pbDoneLength = Math.floor((done / 100) * 20);
+
+	let gFunc = gradient('red', 'red');
+	if (pbDoneLength >= 5) {
+		gFunc = gradient('red', 'red', 'yellow');
+	}
+	if (pbDoneLength >= 10) {
+		gFunc = gradient('red', 'red', 'yellow', 'yellow');
+	}
+	if (pbDoneLength >= 15) {
+		gFunc = gradient('red', 'red', 'yellow', 'yellow', 'green');
+	}
+
+	const pbDone = gFunc('='.repeat(pbDoneLength));
+	const pbDoing = chalk.gray('-'.repeat(20 - pbDoneLength));
+	return `[${pbDone}${pbDoing}] ${chalk.yellow(done.toString())}%`;
+}
+
 export function getFileCopyProgress(progress?: ProgressData): string {
 	let done = 0;
 	let totalFiles = 0;
@@ -251,16 +274,33 @@ export function getFileCopyProgress(progress?: ProgressData): string {
 		filesDone = progress.completedFiles;
 		size = progress.completedSize;
 	}
-	const pbDoneLength = Math.floor((done / 100) * 20);
 
-	const pbDone = chalk.green('='.repeat(pbDoneLength));
-	const pbDoing = chalk.dim('-'.repeat(20 - pbDoneLength));
+	return `copying files ${getProgressBar(done)} ${chalk.magenta(
+		filesDone.toString()
+	)}${chalk.dim('/')}${chalk.cyan(totalFiles.toString())} Files ${chalk.blue(
+		(size / 1024).toFixed(2)
+	)} KB`;
+}
 
-	return `copying files to packages [${pbDone}${pbDoing}] ${chalk.yellow(
-		done.toString()
-	)}% ${chalk.magenta(filesDone.toString())}${chalk.dim('/')}${chalk.cyan(
-		totalFiles.toString()
-	)} File ${chalk.blue((size / 1024).toFixed(2))}KB`;
+export function getZipProgress(data?: archiver.ProgressData): string {
+	let entriesTotal = 0;
+	let entriesProcessed = 0;
+	let bytesTotal = 0;
+	let bytesProcessed = 0;
+	if (data) {
+		entriesTotal = data.entries.total;
+		entriesProcessed = data.entries.processed;
+		bytesTotal = data.fs.totalBytes;
+		bytesProcessed = data.fs.processedBytes;
+	}
+	const done = Math.round((entriesProcessed / entriesTotal) * 100);
+	return `creating zip ${getProgressBar(done)} ${chalk.magenta(
+		entriesProcessed.toString()
+	)}${chalk.dim('/')}${chalk.cyan(
+		entriesTotal.toString()
+	)} Files ${chalk.blue((bytesProcessed / 1024).toFixed(2))}${chalk.dim(
+		'/'
+	)}${chalk.cyan((bytesTotal / 1024).toFixed(2))} KB`;
 }
 
 export function endPackInfo(results: ArchiveResolve): void {

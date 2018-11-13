@@ -13,6 +13,8 @@ export interface Callbacks {
 	onCopy(): void;
 	onBeforeCopy(): void;
 	onCopyProgress(progress: cpy.ProgressData): void;
+	onBeforeZip(): void;
+	onZipProgress(progress: archiver.ProgressData): void;
 	onZip(result: ArchiveResolve): void;
 }
 
@@ -69,6 +71,7 @@ export class Pack {
 		await this.copy();
 		this.callbacks.onCopy();
 		// Zip
+		this.callbacks.onBeforeZip();
 		const result = await this.zip();
 		this.callbacks.onZip(result);
 	}
@@ -99,7 +102,7 @@ export class Pack {
 			const output = fs.createWriteStream(this.packageZipPath);
 			// Create archiver object
 			const archive = archiver('zip', {
-				zlib: { level: 9 },
+				zlib: { level: this.projectConfig.zlibLevel },
 			});
 
 			// Resolve when output is closed
@@ -115,6 +118,9 @@ export class Pack {
 			archive.on('error', err => {
 				reject(err);
 			});
+
+			// On Progress
+			archive.on('progress', this.callbacks.onZipProgress);
 
 			// Pipe archive to the file
 			archive.pipe(output);
