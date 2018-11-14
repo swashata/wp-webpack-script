@@ -26,4 +26,8 @@ module.exports = {
 		scroll: true,
 		forms: true,
 	},
+	// We know the path of the plugin because how it is mounted
+	// with docker. wpackio-scripts itself would have generated
+	// this value, but it is here for demo purpose.
+	distPublicPath: '/wp-content/plugins/wpackio-plugin/dist/',
 };
