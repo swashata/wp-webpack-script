@@ -16,6 +16,7 @@ import('./dynamic').then(({ updateNode }) => {
 
 if (module.hot) {
 	module.hot.accept('./module', () => {
+		// tslint:disable-next-line:no-shadowed-variable
 		const { updateText } = require('./module');
 		updateText(mainNode, 'I am HMRed');
 	});
