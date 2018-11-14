@@ -5884,10 +5884,10 @@ gatsby-plugin-netlify@2.0.4:
     lodash "^4.17.10"
     webpack-assets-manifest "^3.0.2"
 
-gatsby-plugin-offline@2.0.14:
-  version "2.0.14"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-offline/-/gatsby-plugin-offline-2.0.14.tgz#3558246c3e69350b3477eb68d5915f9aaff507ed"
-  integrity sha512-qOG/zqvEJfxCxG1SJVVAYPFnWjQ0M0jXN+tm+fe7t8TfbFlbokw7aVYIm7RdK44lT4e2NNfV7sY8L08Ns8BLog==
+gatsby-plugin-offline@2.0.15:
+  version "2.0.15"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-offline/-/gatsby-plugin-offline-2.0.15.tgz#bfebfc28aafcab29cb57732abc5d211137d2ed6c"
+  integrity sha512-21+eGMZ0s+r8o6G5UoFnr2r9ZUHM1VVLf+l1tXqPXTL9KeLOHCgSi+JUklv/gyFLjh/49AiEjaxmk2WL8VYfVg==
   dependencies:
     "@babel/runtime" "^7.0.0"
     cheerio "^1.0.0-rc.2"
@@ -6073,10 +6073,10 @@ gatsby-transformer-sharp@2.1.8:
     probe-image-size "^4.0.0"
     sharp "^0.21.0"
 
-gatsby@2.0.48:
-  version "2.0.48"
-  resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.0.48.tgz#083173a4f5dd319cbd68f3036eedcdfbc07812f6"
-  integrity sha512-X7/BC/4II+D2sH0Wggys2CMRzcEKOYEvjeFkPC/cpHDFPs5h2Q7JrXJnvi2ZkWX7tBur7XsVGSnXlAgi29xtIg==
+gatsby@2.0.49:
+  version "2.0.49"
+  resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.0.49.tgz#c21fb0c2a22b3ba19a29ae28cac374d339ad2344"
+  integrity sha512-tWrRJJ4sq7Vz9GHxSKDZU6LlI5rhYQ7/Cjspvq/MDGbbFUZZ0CFM68nm46HwNOc6yJx4LmFCAhAetDRt17NgBg==
   dependencies:
     "@babel/code-frame" "^7.0.0"
     "@babel/core" "^7.0.0"
