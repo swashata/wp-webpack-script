@@ -7,8 +7,8 @@ module.exports = {
 				label: 'Quick Start',
 			},
 			{
-				docType: 'configuration',
-				label: 'Config API',
+				docType: 'apis',
+				label: 'APIs',
 			},
 			{
 				docType: 'commands',

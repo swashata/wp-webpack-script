@@ -45,6 +45,9 @@ module.exports = {
 		scroll: true,
 		forms: true,
 	},
+	// Override system calculated public path of the `dist` directory
+	// This must have forward slash, otherwise it will not work.
+	distPublicPath: undefined,
 };
 ```
 
@@ -89,3 +92,31 @@ Whether to automatically open the local server on your browser.
 ## `ghostMode` (`boolean`|`Object`)
 
 Passed directly to [browser-sync](https://browsersync.io/docs/options#option-ghostMode).
+
+## `distPublicPath` (`string`)
+
+Absolute URL path (without protocol and host) of the `outputPath` defined in
+your project configuration. It is used for development server only and has no
+effect on the production build.
+
+By default `wpackio-scripts` calculates the URL of the `outputPath` in this way
+
+```
+/wp-content/{{plugins|themes}}/{{slug}}/{{outputPath}}/
+```
+
+So this assumes that
+
+-   WordPress proxy server is installed in root and not in sub-directory.
+-   The directory structures of plugins, themes are set as default.
+-   You have entered the correct `slug` in your project configuration
+    and it matches with the directory structure of your development server.
+
+In case, your development server doesn't work like this, you can specify
+your `distPublicPath` manually.
+
+```
+/wp-custom-content/secret-plug-directory/overriden-slug/dist/
+```
+
+**Remember you have to put a forward slash at the end of the value**.

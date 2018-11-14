@@ -138,55 +138,7 @@ only ask the user for the URL of the `development` server. It is usually the
 URL provided by wamp, mamp, vvv etc. Just enter that and the `wpackio.server.js`
 will be automatically created for you.
 
-## Install consumer tool
+---
 
-While `@wpackio/scripts` will generate the assets for you, you still need a
-way to actually `wp_enqueue_script` the assets and define dynamic `publicPath`
-to make them actually work.
-
-This is where [`wpackio/enqueue`](https://packagist.org/packages/wpackio/enqueue)
-comes in.
-
-Install it through composer as your project dependency.
-
-```bash
-composer require wpackio/enqueue
-```
-
-Now instantiate it **early** and call the API.
-
-```php
-<?php
-// Assuming this is the main plugin file.
-
-// Require the composer autoload for getting conflict-free access to enqueue
-require_once __DIR__ . '/vendor/autoload.php';
-
-// Do stuff through this plugin
-class MyPluginInit {
-	/**
-	 * @var \WPackio\Enqueue
-	 */
-	public $enqueue;
-
-	public function __construct() {
-		// It is important that we init the Enqueue class right at the plugin/theme load time
-		$this->enqueue = new \WPackio\Enqueue( 'wpackplugin', 'dist', '1.0.0', 'plugin', __FILE__ );
-		// Enqueue a few of our entry points
-		add_action( 'wp_enqueue_scripts', [ $this, 'plugin_enqueue' ] );
-	}
-
-
-	public function plugin_enqueue() {
-		$this->enqueue->enqueue( 'app', 'main', [] );
-		$this->enqueue->enqueue( 'app', 'mobile', [] );
-		$this->enqueue->enqueue( 'foo', 'main', [] );
-	}
-}
-
-
-// Init
-new MyPluginInit();
-```
-
-For more information do read the [corresponding doc](/guides/using-wpackio-enqueue/).
+Now we have the node dependencies set. It is time to use PHP dependency to
+actually enqueue the files. Keep on reading [the next part of quick start guide](/guides/using-wpackio-enqueue/).

@@ -14,6 +14,11 @@ html pre[class*='language-'] {
 	}
 }
 
+html code[class*='language-'],
+html pre[class*='language-'] {
+	margin-bottom: 1em;
+}
+
 em,
 strong {
 	font-family: 'dm', monospace;
