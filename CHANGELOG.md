@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.8.0](https://github.com/swashata/wp-webpack-script/compare/v2.7.0...v2.8.0) (2018-11-14)
+
+
+### Bug Fixes
+
+* **deps:** update dependency [@svgr](https://github.com/svgr)/webpack to v4.0.3 ([caa3e6c](https://github.com/swashata/wp-webpack-script/commit/caa3e6c))
+* **deps:** update gatsby monorepo ([9b8a060](https://github.com/swashata/wp-webpack-script/commit/9b8a060))
+
+
+### Features
+
+* **docs:** update doc for latest changes ([50e83fa](https://github.com/swashata/wp-webpack-script/commit/50e83fa))
+* add distPublicPath option to server config ([6f7773d](https://github.com/swashata/wp-webpack-script/commit/6f7773d))
+* **docs:** add development and build documentation ([1154fc7](https://github.com/swashata/wp-webpack-script/commit/1154fc7))
+
+
+
+
+
 # [2.7.0](https://github.com/swashata/wp-webpack-script/compare/v2.6.0...v2.7.0) (2018-11-13)
 
 
