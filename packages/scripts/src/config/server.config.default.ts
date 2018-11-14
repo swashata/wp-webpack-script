@@ -10,6 +10,7 @@ export interface ServerConfig {
 	ghostMode: browserSync.Options['ghostMode'];
 	// tslint:disable-next-line:no-any
 	bsOverride?: { [x: string]: any };
+	distPublicPath?: string;
 }
 
 export const serverConfigDefault: ServerConfig = {
@@ -44,4 +45,7 @@ export const serverConfigDefault: ServerConfig = {
 		scroll: true,
 		forms: true,
 	},
+	// Override system calculated public path of the `dist` directory
+	// This must have forward slash, otherwise it will not work.
+	distPublicPath: undefined,
 };

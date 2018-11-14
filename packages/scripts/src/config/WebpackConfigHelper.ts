@@ -217,10 +217,13 @@ export class WebpackConfigHelper {
 		};
 		// Add the publicPath if it is in devMode
 		if (this.isDev) {
-			// We are proxying stuff here. So I guess, we can safely assume
-			// That URL of the proxied server starts from root?
-			// Maybe we can have a `prefix` in Config, but let's not do that
-			// right now.
+			// This is calculated by CreateWebpackConfig
+			// taking into consideration user's own value.
+			// So, if WordPress defaults are changed, then
+			// depending on wpackio.server.js, it will still
+			// point to the right location. It only makes
+			// dynamic import and some on-demand split-chunk
+			// work.
 			output.publicPath = this.config.publicPathUrl;
 		}
 

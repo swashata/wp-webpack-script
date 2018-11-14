@@ -52,7 +52,13 @@ export class CreateWebpackConfig {
 
 		// Also figure out the publicPath beforehand, because we do need it
 		const { slug, outputPath, type } = this.projectConfig;
-		this.publicPath = `/wp-content/${type}s/${slug}/${outputPath}/`;
+		// The public is generated automatically considering
+		// the dev server is installed at root, and wp-content, themes, plugins
+		// directories are all default.
+		// But one can pass distPublicPath from serverConfig to override it.
+		this.publicPath =
+			this.serverConfig.distPublicPath ||
+			`/wp-content/${type}s/${slug}/${outputPath}/`;
 	}
 
 	/**
