@@ -45,7 +45,7 @@
   "devDependencies": {
     "@types/chalk": "2.2.0",
     "@types/find-up": "2.1.1",
-    "@types/node": "10.12.8",
+    "@types/node": "10.12.9",
     "@types/shelljs": "0.8.0"
   }
 }
