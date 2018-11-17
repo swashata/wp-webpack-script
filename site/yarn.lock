@@ -5946,10 +5946,10 @@ gatsby-plugin-sharp@2.0.12:
     sharp "^0.21.0"
     svgo "^0.7.2"
 
-gatsby-plugin-svgr@2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-svgr/-/gatsby-plugin-svgr-2.0.0.tgz#a0d04bcd2e272ffed94e33c7112c8505ab7f735c"
-  integrity sha512-mtCkZ4zBuGKeqpQFtVXHhXCsw+Lf8yqGb87/RLekQ/7GryuODsQV507Mr0AlTg4R+VXtcxV/Q0VeDthu/rXzow==
+gatsby-plugin-svgr@2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-svgr/-/gatsby-plugin-svgr-2.0.1.tgz#4ff2d4247b7ce5bdad3a3e81ea993968f993d42e"
+  integrity sha512-iNhS3e8TrWkrPY5EgrWpKoxh13DEcP3f8DrVGQ0mz8qafCHxcxjLUKaCUO6WZlgxsANIhm3dMXiABvqAebApzw==
 
 gatsby-react-router-scroll@^2.0.1:
   version "2.0.1"
