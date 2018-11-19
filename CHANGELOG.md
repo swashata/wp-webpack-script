@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.8.1](https://github.com/swashata/wp-webpack-script/compare/v2.8.0...v2.8.1) (2018-11-19)
+
+
+### Bug Fixes
+
+* **deps:** update dependency gatsby to v2.0.50 ([97cb614](https://github.com/swashata/wp-webpack-script/commit/97cb614))
+* **deps:** update dependency gatsby-plugin-netlify to v2.0.5 ([3ca07ca](https://github.com/swashata/wp-webpack-script/commit/3ca07ca))
+* **deps:** update dependency gatsby-plugin-svgr to v2.0.1 ([80da325](https://github.com/swashata/wp-webpack-script/commit/80da325))
+* **deps:** update dependency react-bootstrap to v1.0.0-beta.3 ([d3383d8](https://github.com/swashata/wp-webpack-script/commit/d3383d8))
+* **deps:** update gatsby monorepo ([1762264](https://github.com/swashata/wp-webpack-script/commit/1762264))
+* **site:** svg size on front-page ([9c8a657](https://github.com/swashata/wp-webpack-script/commit/9c8a657))
+
+
+
+
+
 # [2.8.0](https://github.com/swashata/wp-webpack-script/compare/v2.7.0...v2.8.0) (2018-11-14)
 
 
