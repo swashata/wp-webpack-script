@@ -32,6 +32,26 @@ module.exports = {
 };
 ```
 
+If your local WordPress development server is going to produce and URL to
+the [`outputPath`](/apis/project-configuration/#outputpath-string)
+which is not of the type `/wp-content/plugins/<slug>/<outputPath>/` then
+you can override it with the [`distPublicPath`](/apis/server-configuration/#distpublicpath-string) settings.
+
+Say you have local WordPress hosted under `http://localhost/wp-one`. Then
+put `distPublicPath` like
+
+```js
+module.exports = {
+	host: undefined,
+	// We still proxy the whole localhost
+	proxy: 'http://localhost',
+	// But we expect files to be served from this URL
+	// of course change <slug> and <outputPath>
+	// as defined in wpackio.project.js
+	distPublicPath: '/wp-one/wp-content/plugins/<slug>/<outputPath>/',
+};
+```
+
 This is the only thing you need to start the server. Under the hood, we use
 browser-sync to proxy the WordPress directory.
 

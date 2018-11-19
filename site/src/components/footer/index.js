@@ -12,20 +12,20 @@ const Footer = props => (
 					<h4 className="subtitle">
 						ABOUT <Wpackio />
 					</h4>
+					<p>
+						Created with ❤️ by{' '}
+						<a href="https://swas.io">Swashata Ghosh</a> and the
+						awesome community.
+					</p>
 					<ul>
 						<li>
-							&copy; {new Date().getFullYear()} -{' '}
-							<a href="https://swas.io">Swashata Ghosh.</a>{' '}
+							&copy; {new Date().getFullYear()} - Swashata Ghosh
+							{' - '}
 							<a href="http://opensource.org/licenses/mit-license.php">
 								MIT
 							</a>
-							.
-						</li>
-						<li>
-							website content{' '}
-							<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
-								CC BY NC SA 4.0
-							</a>
+							, both the source code and the content of this
+							website.
 						</li>
 					</ul>
 					<p>

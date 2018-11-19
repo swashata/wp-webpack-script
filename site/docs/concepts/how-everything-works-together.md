@@ -44,6 +44,13 @@ In development server, we shouldn't set `publicPath` dynamically, rather have
 it set to the `plugin` or `theme` output directory, considering WordPress is
 installed at root. This is needed to make `webpack-hot-middleware` work.
 
+In case if the URL to the [`outputPath`](/apis/project-configuration/#outputpath-string) directory is not something like
+`http://host.tld/wp-content/plugins/<slug>/<outputPath>/`, then we
+have an option [`distPublicPath`](/apis/server-configuration/#distpublicpath-string)
+which we can mention under `wpackio.server.js` file to define the URL path.
+For example, if your WordPress dev server is serving from `http://localhost/wp-one`, then you can pass
+`/wp-one/wp-content/plugins/<slug>/<outputPath>/`.
+
 There could be multiple webpack compiler (depending on `wpackio.project.js`),
 but to keep things fast, we are passing only one instance of `webpack-dev` and
 `webpack-hot` middleware. So we need to make sure:

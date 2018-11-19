@@ -73,7 +73,8 @@ head within a `<script>` tag.
 
 ```html
 <script type="text/javascript">
-	window.__wpackIoAppNameOutputPath = 'https://example.com/wp-content/plugins/my-plug/dist';
+	window.__wpackIoAppNameOutputPath =
+		'https://example.com/wp-content/plugins/my-plug/dist';
 </script>
 ```
 
@@ -175,3 +176,10 @@ have settled with the compromise.
 
 Do note that the limitation is valid only for development server. In production
 build, the publicPath is generated dynamically which will always work.
+
+Even so, if you are using `@wpackio/scripts` v2.8.0 or greater, you have
+another option [`distPublicPath`](/apis/server-configuration/#distpublicpath-string)
+which you can mention in your server configuration. This is useful if your
+WordPress development server gives an URL to the [`outputPath`](/apis/project-configuration/#outputpath-string) directory which
+is not the standard output or if your WordPress isn't installed at the root
+domain (like `http://localhost`), rather a directory (like `http://localhost/proj1`).
