@@ -6073,10 +6073,10 @@ gatsby-transformer-sharp@2.1.8:
     probe-image-size "^4.0.0"
     sharp "^0.21.0"
 
-gatsby@2.0.50:
-  version "2.0.50"
-  resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.0.50.tgz#ea68745c455f9f6c9d36b552ab4722e6a5e817f3"
-  integrity sha512-rf2GTYiCALqTKNIMn6/8KsQDrJvYuFTsgmFOWJsPhybYwrUv5EjZT71KccZdLZ4sAV5aBbq8JJC3hrvqCuciMQ==
+gatsby@2.0.52:
+  version "2.0.52"
+  resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.0.52.tgz#c433515fc70a291425014719df3d0fc62f16cdbf"
+  integrity sha512-0MjIgl5eZDJscbRLRADFB5fTQhEh21upS4+njVSGcgDhAxcqBJpVi8SAX1sa2MdKXhn4QZ8K9ZWlkPhA6nSR5Q==
   dependencies:
     "@babel/code-frame" "^7.0.0"
     "@babel/core" "^7.0.0"
