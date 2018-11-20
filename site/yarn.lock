@@ -5884,13 +5884,14 @@ gatsby-plugin-netlify@2.0.5:
     lodash "^4.17.10"
     webpack-assets-manifest "^3.0.2"
 
-gatsby-plugin-offline@2.0.15:
-  version "2.0.15"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-offline/-/gatsby-plugin-offline-2.0.15.tgz#bfebfc28aafcab29cb57732abc5d211137d2ed6c"
-  integrity sha512-21+eGMZ0s+r8o6G5UoFnr2r9ZUHM1VVLf+l1tXqPXTL9KeLOHCgSi+JUklv/gyFLjh/49AiEjaxmk2WL8VYfVg==
+gatsby-plugin-offline@2.0.16:
+  version "2.0.16"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-offline/-/gatsby-plugin-offline-2.0.16.tgz#9280f39c97cda8580a1f3da31f3f1d72397bfba0"
+  integrity sha512-kKZ8Jmn+OMuV3UoapRRz+v/DjdtsKT8DHgyHwAYaHLpAt0ZeJcI/+dUMVaS9wHaBmTz/rnPlFBLhG3RQFSOHPw==
   dependencies:
     "@babel/runtime" "^7.0.0"
     cheerio "^1.0.0-rc.2"
+    idb-keyval "^3.1.0"
     lodash "^4.17.10"
     workbox-build "^3.6.3"
 
@@ -6073,10 +6074,10 @@ gatsby-transformer-sharp@2.1.8:
     probe-image-size "^4.0.0"
     sharp "^0.21.0"
 
-gatsby@2.0.52:
-  version "2.0.52"
-  resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.0.52.tgz#c433515fc70a291425014719df3d0fc62f16cdbf"
-  integrity sha512-0MjIgl5eZDJscbRLRADFB5fTQhEh21upS4+njVSGcgDhAxcqBJpVi8SAX1sa2MdKXhn4QZ8K9ZWlkPhA6nSR5Q==
+gatsby@2.0.53:
+  version "2.0.53"
+  resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.0.53.tgz#de7782eead16a9b9066b1b21e085a7a48d5bfdd8"
+  integrity sha512-rYMRUq/TR4lTFGspa4hvAVEEGUkqCeWDdNfaAsK/UWZNOuoL2jLBITOvMgenVADSdO9Oj6Czuk4X6Do2c1P9+Q==
   dependencies:
     "@babel/code-frame" "^7.0.0"
     "@babel/core" "^7.0.0"
@@ -7083,6 +7084,11 @@ icss-utils@^2.1.0:
   integrity sha1-g/Cg7DeL8yRheLbCrZE28TWxyWI=
   dependencies:
     postcss "^6.0.1"
+
+idb-keyval@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/idb-keyval/-/idb-keyval-3.1.0.tgz#cce9ed320734446784d52ed398c4b075a4273f51"
+  integrity sha512-iFwFN5n00KNNnVxlOOK280SJJfXWY7pbMUOQXdIXehvvc/mGCV/6T2Ae+Pk2KwAkkATDTwfMavOiDH5lrJKWXQ==
 
 ieee754@^1.1.4:
   version "1.1.12"
