@@ -1024,10 +1024,10 @@
     merge-deep "^3.0.2"
     svgo "^1.1.1"
 
-"@svgr/webpack@4.0.3":
-  version "4.0.3"
-  resolved "https://registry.yarnpkg.com/@svgr/webpack/-/webpack-4.0.3.tgz#318907269dd93d4f911541236948e885df7f058d"
-  integrity sha512-UziJTvIYp/pznM6bjkeruXr2VgSZt6VuXQvSM2xCBXKu5Roh6+jVU/Ughnl3xO8RM6ZTNoNDthO2y/9+4OrIBQ==
+"@svgr/webpack@4.0.4":
+  version "4.0.4"
+  resolved "https://registry.yarnpkg.com/@svgr/webpack/-/webpack-4.0.4.tgz#d77b04841b6e73277aec3b0cc7e0e4e95111fed9"
+  integrity sha512-Olez7r/PrW2VQtsnq+Xe1Ykm+mb2oqSne8HvIVgXB9sfR6jlk4DP0C3Y6HZe4JiF5qGcsJmPPH4AHNaxIoi76g==
   dependencies:
     "@babel/core" "^7.1.5"
     "@babel/plugin-transform-react-constant-elements" "^7.0.0"
