@@ -6043,10 +6043,10 @@ gatsby-remark-images@3.0.1:
     unist-util-select "^1.5.0"
     unist-util-visit-parents "^2.0.1"
 
-gatsby-remark-prismjs@3.1.1:
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/gatsby-remark-prismjs/-/gatsby-remark-prismjs-3.1.1.tgz#bf9b4f44903a05031718eac10a9f89699982236d"
-  integrity sha512-oATJZ/AuUfWD58QG6a/24v+fhQOZbEsSGXL+UUs8shkkK1R3ssZIzM7Pu3KH9GbAvGLZMR87Le7+pTfsl5OjOg==
+gatsby-remark-prismjs@3.1.2:
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/gatsby-remark-prismjs/-/gatsby-remark-prismjs-3.1.2.tgz#5f50e7d3712ce42b1a537c755362a73ec832cd85"
+  integrity sha512-wCJmVyV+CYpp/Zurj8ecsSwmqoor/fbEYdK7mbDNFK4WzPbfAfbtiFSwD67iZX6WA2c6dBBSKjJGsczw/EzezA==
   dependencies:
     "@babel/runtime" "^7.0.0"
     parse-numeric-range "^0.0.2"
@@ -6082,10 +6082,10 @@ gatsby-source-filesystem@2.0.10:
     valid-url "^1.0.9"
     xstate "^3.1.0"
 
-gatsby-transformer-remark@2.1.14:
-  version "2.1.14"
-  resolved "https://registry.yarnpkg.com/gatsby-transformer-remark/-/gatsby-transformer-remark-2.1.14.tgz#3add90827ff069a66c7dd8810f90f3e5c93ecfcc"
-  integrity sha512-65c4598E7rgH3axPL3PSVN/N7pFblOEaPwmPFrtOWlTq7uJbUKMNtxLo1wgYSR4hpHhzchydfBElzvy7Sb5cXw==
+gatsby-transformer-remark@2.1.15:
+  version "2.1.15"
+  resolved "https://registry.yarnpkg.com/gatsby-transformer-remark/-/gatsby-transformer-remark-2.1.15.tgz#c744bebdcb94017409826011a3f78af8c1e0ff1c"
+  integrity sha512-4epqs8BNyQBHMISQM3fvBulwWoOECCGrGkbO2+LVb9NEBlEEw9NBGiT6nvXrDUag47XgAM/5+l4dRu+Xl9urAA==
   dependencies:
     "@babel/runtime" "^7.0.0"
     bluebird "^3.5.0"
