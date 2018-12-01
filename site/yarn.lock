@@ -2257,10 +2257,10 @@ babel-preset-fbjs@^2.1.4:
     babel-plugin-transform-react-display-name "^6.8.0"
     babel-plugin-transform-react-jsx "^6.8.0"
 
-babel-preset-gatsby@^0.1.5:
-  version "0.1.5"
-  resolved "https://registry.yarnpkg.com/babel-preset-gatsby/-/babel-preset-gatsby-0.1.5.tgz#093ed1512209f43c1849a6d2c37fccdd605642ab"
-  integrity sha512-foZjvWP0zV1WHBMOx6TUve26ZdYvX+Zsd7U8A2UCo5pkLiIp6KzmRLIh1bMj6oZVRtJ9ifXFlS4DeaW6v1Q5EQ==
+babel-preset-gatsby@^0.1.6:
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/babel-preset-gatsby/-/babel-preset-gatsby-0.1.6.tgz#df9e6a813ef860ffb23dcf48a2f4c13f3f3d050c"
+  integrity sha512-DHRBQI9QDdZ51A/bKfkr+nvREttRFST0AmD0zBcKOrERlPbwlOBP+IgUOo76kSJx5z9EDhRCwkvraT6ZGzeQ6Q==
   dependencies:
     "@babel/plugin-proposal-class-properties" "^7.0.0"
     "@babel/plugin-syntax-dynamic-import" "^7.0.0"
@@ -5955,10 +5955,10 @@ gatsby-plugin-page-creator@^2.0.5:
     parse-filepath "^1.0.1"
     slash "^1.0.0"
 
-gatsby-plugin-react-helmet@3.0.3:
-  version "3.0.3"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-react-helmet/-/gatsby-plugin-react-helmet-3.0.3.tgz#491d324c1750a8c169023c35877aaa490012c88c"
-  integrity sha512-tayh/P3umm4oZrzqHJNeAfXPSRePc+e8QQYG+thQovqoXSjh6MJhY47jT7xlj910sUJK9KdB9sYHYij7KPL6aA==
+gatsby-plugin-react-helmet@3.0.4:
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-react-helmet/-/gatsby-plugin-react-helmet-3.0.4.tgz#07811c8ccc626ecfea40554ccc5f946db705409d"
+  integrity sha512-v/7PGY3AKNebvnz0CPVqVbpZhyREqQWGmz75Y0Ru+SbgaeZ8jA1s8wa/hPpYa+ZutvWPeZVE5IlkgrK9vqoNwg==
   dependencies:
     "@babel/runtime" "^7.0.0"
 
@@ -6119,10 +6119,10 @@ gatsby-transformer-sharp@2.1.9:
     probe-image-size "^4.0.0"
     sharp "^0.21.0"
 
-gatsby@2.0.59:
-  version "2.0.59"
-  resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.0.59.tgz#e57a4dc8c026407433bbc853ea64f1b330ae6644"
-  integrity sha512-t4IFSN8rRrlaxNPDdFr0DDWnwyWtNBseJEyHZUL5cWDAkpUyxjyuDfOptcboJvoRuR+YAUlJYKlarRpfTAWG3w==
+gatsby@2.0.60:
+  version "2.0.60"
+  resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.0.60.tgz#746a2c5343479e4f2b915b0cfff501014f4c1cb5"
+  integrity sha512-o8PHO3mqKHAY/WtIpUhXAKDanX9QjVbpSV69YEL30D9GCiAd8we1VomYrp5Ga639zLNucO979MJXjFy+WGu2RA==
   dependencies:
     "@babel/code-frame" "^7.0.0"
     "@babel/core" "^7.0.0"
@@ -6139,7 +6139,7 @@ gatsby@2.0.59:
     babel-plugin-add-module-exports "^0.2.1"
     babel-plugin-dynamic-import-node "^1.2.0"
     babel-plugin-remove-graphql-queries "^2.5.2"
-    babel-preset-gatsby "^0.1.5"
+    babel-preset-gatsby "^0.1.6"
     better-queue "^3.8.6"
     bluebird "^3.5.0"
     cache-manager "^2.9.0"
