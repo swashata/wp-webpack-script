@@ -391,6 +391,29 @@ describe('CreateWebPackConfig', () => {
 			}
 		});
 
+		test('has css specific file-loader option in prod mode', () => {
+			const cwc = new WebpackConfigHelper(
+				projectConfig.files[0],
+				getConfigFromProjectAndServer(projectConfig, serverConfig),
+				'/foo/bar',
+				false
+			);
+			const modules = cwc.getModule();
+			if (Array.isArray(modules.rules)) {
+				const fileRule = modules.rules.find(rule => {
+					const use = rule.use as { [_: string]: any }[];
+					return (
+						use !== undefined &&
+						use[0].loader === 'file-loader' &&
+						use[0].options.publicPath === 'assets/'
+					);
+				});
+				expect(fileRule).not.toBeUndefined();
+			} else {
+				throw new Error('Module.rules is not an array');
+			}
+		});
+
 		test('matches snapshot', () => {
 			const cwc = new WebpackConfigHelper(
 				projectConfig.files[0],
