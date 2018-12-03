@@ -191,8 +191,8 @@ Array [
   },
   MiniCssExtractPlugin {
     "options": Object {
-      "chunkFilename": "config1/[name].css",
-      "filename": "config1/[name].css",
+      "chunkFilename": "config1/[name]-[contenthash:8].css",
+      "filename": "config1/[name]-[contenthash:8].css",
     },
   },
   Object {},

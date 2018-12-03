@@ -75,7 +75,7 @@ describe('CreateWebPackConfig', () => {
 			);
 			const output = cwc.getOutput();
 			expect(output.path).toMatch(/\/dist$/);
-			expect(output.filename).toBe('config1/[name].js');
+			expect(output.filename).toBe('config1/[name]-[contenthash:8].js');
 		});
 		test('has empty publicPath on production build', () => {
 			const cwc = new WebpackConfigHelper(
