@@ -3,6 +3,8 @@
 
 const fs = require('fs');
 const path = require('path');
+const jsManifest = require('../dist/app/manifest.json');
+const tsManifest = require('../dist/tsapp/manifest.json');
 
 function fileExists(filepath) {
 	try {
@@ -15,10 +17,8 @@ function fileExists(filepath) {
 describe('after build', () => {
 	test('all javascript app got compiled', () => {
 		const jsApps = [
-			'app/runtime.js',
-			'app/main.js',
-			'app/main.css',
-			'app/manifest.json',
+			...jsManifest.wpackioEp.main.js,
+			...jsManifest.wpackioEp.main.css,
 		];
 		jsApps.forEach(file => {
 			expect(
@@ -28,10 +28,8 @@ describe('after build', () => {
 	});
 	test('all typescript app got compiled', () => {
 		const tsApps = [
-			'tsapp/runtime.js',
-			'tsapp/main.js',
-			'tsapp/main.css',
-			'tsapp/manifest.json',
+			...tsManifest.wpackioEp.main.js,
+			...tsManifest.wpackioEp.main.css,
 		];
 		tsApps.forEach(file => {
 			expect(
@@ -46,13 +44,9 @@ describe('after pack', () => {
 		const zipFiles = [
 			'index.html',
 			'README.md',
-			'dist/app/runtime.js',
-			'dist/app/main.js',
-			'dist/app/main.css',
+			...jsManifest.wpackioEp.main.js.map(item => `dist/${item}`),
+			...tsManifest.wpackioEp.main.js.map(item => `dist/${item}`),
 			'dist/app/manifest.json',
-			'dist/tsapp/runtime.js',
-			'dist/tsapp/main.js',
-			'dist/tsapp/main.css',
 			'dist/tsapp/manifest.json',
 		];
 		zipFiles.forEach(file => {
