@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.9.0](https://github.com/swashata/wp-webpack-script/compare/v2.8.1...v2.9.0) (2018-12-03)
+
+
+### Bug Fixes
+
+* issue with css image through webpack ([7807e60](https://github.com/swashata/wp-webpack-script/commit/7807e60)), closes [#117](https://github.com/swashata/wp-webpack-script/issues/117)
+
+
+### Features
+
+* add contenthash during prod build ([1cbb309](https://github.com/swashata/wp-webpack-script/commit/1cbb309))
+
+
+
+
+
 # [2.8.0](https://github.com/swashata/wp-webpack-script/compare/v2.7.0...v2.8.0) (2018-11-14)
 
 

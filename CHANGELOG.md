@@ -3,6 +3,37 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.9.0](https://github.com/swashata/wp-webpack-script/compare/v2.8.1...v2.9.0) (2018-12-03)
+
+
+### Bug Fixes
+
+* issue with css image through webpack ([7807e60](https://github.com/swashata/wp-webpack-script/commit/7807e60)), closes [#117](https://github.com/swashata/wp-webpack-script/issues/117)
+* **deps:** update dependency [@svgr](https://github.com/svgr)/webpack to v4.0.4 ([0da2cb7](https://github.com/swashata/wp-webpack-script/commit/0da2cb7))
+* **deps:** update dependency [@svgr](https://github.com/svgr)/webpack to v4.1.0 ([4df38a8](https://github.com/swashata/wp-webpack-script/commit/4df38a8))
+* **deps:** update dependency docsearch.js to v2.6.2 ([e5ee09a](https://github.com/swashata/wp-webpack-script/commit/e5ee09a))
+* **deps:** update dependency gatsby to v2.0.52 ([ff72491](https://github.com/swashata/wp-webpack-script/commit/ff72491))
+* **deps:** update dependency gatsby to v2.0.54 ([d65854f](https://github.com/swashata/wp-webpack-script/commit/d65854f))
+* **deps:** update dependency gatsby to v2.0.55 ([7848aac](https://github.com/swashata/wp-webpack-script/commit/7848aac))
+* **deps:** update dependency gatsby to v2.0.57 ([95750da](https://github.com/swashata/wp-webpack-script/commit/95750da))
+* **deps:** update dependency gatsby-remark-images to v3 ([fec9099](https://github.com/swashata/wp-webpack-script/commit/fec9099))
+* **deps:** update gatsby monorepo ([46b5217](https://github.com/swashata/wp-webpack-script/commit/46b5217))
+* **deps:** update gatsby monorepo ([860f3aa](https://github.com/swashata/wp-webpack-script/commit/860f3aa))
+* **deps:** update gatsby monorepo ([c9d21a3](https://github.com/swashata/wp-webpack-script/commit/c9d21a3))
+* **deps:** update gatsby monorepo ([8e5c662](https://github.com/swashata/wp-webpack-script/commit/8e5c662))
+* **deps:** update gatsby monorepo ([0888eef](https://github.com/swashata/wp-webpack-script/commit/0888eef))
+* **deps:** update gatsby monorepo ([c4da633](https://github.com/swashata/wp-webpack-script/commit/c4da633))
+* **deps:** update gatsby monorepo ([8ce6cd2](https://github.com/swashata/wp-webpack-script/commit/8ce6cd2))
+
+
+### Features
+
+* add contenthash during prod build ([1cbb309](https://github.com/swashata/wp-webpack-script/commit/1cbb309))
+
+
+
+
+
 ## [2.8.1](https://github.com/swashata/wp-webpack-script/compare/v2.8.0...v2.8.1) (2018-11-19)
 
 
