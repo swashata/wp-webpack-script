@@ -111,13 +111,28 @@ Object {
       ],
     },
     Object {
+      "issuer": [Function],
       "test": /\\\\\\.\\(woff\\|woff2\\|eot\\|ttf\\|otf\\|png\\|jpg\\|gif\\)\\(\\\\\\?v=\\\\d\\+\\\\\\.\\\\d\\+\\\\\\.\\\\d\\+\\)\\?\\$/,
       "use": Array [
         Object {
           "loader": "file-loader",
           "options": Object {
-            "name": "asset-[hash].[ext]",
+            "name": "[name]-[hash:8].[ext]",
             "outputPath": "config1/assets/",
+          },
+        },
+      ],
+    },
+    Object {
+      "issuer": [Function],
+      "test": /\\\\\\.\\(woff\\|woff2\\|eot\\|ttf\\|otf\\|png\\|jpg\\|gif\\)\\(\\\\\\?v=\\\\d\\+\\\\\\.\\\\d\\+\\\\\\.\\\\d\\+\\)\\?\\$/,
+      "use": Array [
+        Object {
+          "loader": "file-loader",
+          "options": Object {
+            "name": "[name]-[hash:8].[ext]",
+            "outputPath": "config1/assets/",
+            "publicPath": undefined,
           },
         },
       ],
