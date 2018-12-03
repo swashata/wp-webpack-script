@@ -1106,10 +1106,10 @@
     "@webassemblyjs/wast-parser" "1.7.11"
     "@xtuc/long" "4.2.1"
 
-"@wpackio/babel-preset-base@^2.6.0":
-  version "2.6.0"
-  resolved "https://registry.yarnpkg.com/@wpackio/babel-preset-base/-/babel-preset-base-2.6.0.tgz#7933a263ea4680158b82af763031648f3f30c0ba"
-  integrity sha512-LFfn4sZs1rnbD/3vIgjiJnX1vcvl/ioonF1XhdTjRORLhzxXF04WM5/zyZ7N/2d34OuPQWyNKVlR2jrAhZMSfA==
+"@wpackio/babel-preset-base@^2.8.0":
+  version "2.8.0"
+  resolved "https://registry.yarnpkg.com/@wpackio/babel-preset-base/-/babel-preset-base-2.8.0.tgz#f661d8ea2cec14ab348d8c493e42a443deba7583"
+  integrity sha512-qAUG+/6cBEq9KYqNJLdHqYBuy0fAOSjrq28tnVAsKVgcBia7Hdwlm0VTz8xlNQPhFaHcswK0BP9Lw53Vk1m7IA==
   dependencies:
     "@babel/helper-plugin-utils" "^7.0.0"
     "@babel/plugin-proposal-class-properties" "^7.1.0"
@@ -1125,7 +1125,7 @@
     "@types/webpack-env" "^1.13.6"
 
 "@wpackio/scripts@file:../../packages/scripts":
-  version "2.6.0"
+  version "2.8.0"
   dependencies:
     "@babel/core" "^7.1.0"
     "@babel/preset-flow" "^7.0.0"
@@ -1152,7 +1152,7 @@
     "@types/webpack-dev-middleware" "^2.0.2"
     "@types/webpack-env" "^1.13.6"
     "@types/webpack-hot-middleware" "^2.16.4"
-    "@wpackio/babel-preset-base" "^2.6.0"
+    "@wpackio/babel-preset-base" "^2.8.0"
     archiver "^3.0.0"
     autoprefixer "^9.1.5"
     babel-loader "^8.0.2"

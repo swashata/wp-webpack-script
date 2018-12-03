@@ -6,4 +6,9 @@ body {
 .site-title a {
 	color: azure !important;
 	background-color: aqua !important;
+	background-image: url('./bg.jpg');
+}
+.site-content {
+	background: url('./image.png') no-repeat top left;
+	background-size: 100px 70px;
 }

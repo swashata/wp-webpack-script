@@ -18,7 +18,9 @@
     "bootstrap": "wpackio-scripts bootstrap",
     "start": "wpackio-scripts start",
     "build": "wpackio-scripts build",
-    "archive": "wpackio-scripts pack"
+    "archive": "wpackio-scripts pack",
+    "start:dev": "../../packages/scripts/lib/bin/index.js start",
+    "build:dev": "../../packages/scripts/lib/bin/index.js build"
   },
   "dependencies": {
     "@types/webpack-env": "^1.13.6",

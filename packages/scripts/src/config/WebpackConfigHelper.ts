@@ -63,7 +63,7 @@ interface CommonWebpackConfig {
  */
 export class WebpackConfigHelper {
 	// This is where all the filename will be prefixed, so we create a directory
-	public readonly outputInnerDir: string;
+	public readonly appDir: string;
 	// Actual outputPath as provided by user
 	public readonly outputPath: string;
 	private file: FileConfig;
@@ -107,7 +107,7 @@ export class WebpackConfigHelper {
 		// all middlewares would actually use the `name` from webpack config
 		// to separate updates.
 		const { name } = this.file;
-		this.outputInnerDir = slugify(name, { lower: true });
+		this.appDir = slugify(name, { lower: true });
 		this.outputPath = path.join(this.cwd, outputPath);
 	}
 
@@ -201,7 +201,7 @@ export class WebpackConfigHelper {
 			// We do not use path.resolve, because we expect outputPath to be
 			// relative. @todo: create a test here
 			path: this.outputPath,
-			filename: `${this.outputInnerDir}/[name].js`,
+			filename: `${this.appDir}/[name].js`,
 			// leave blank because we would handle with free variable
 			// __webpack_public_path__ in runtime.
 			publicPath: '',
@@ -248,20 +248,18 @@ export class WebpackConfigHelper {
 				},
 			}),
 			// Clean dist directory
-			new cleanWebpackPlugin(
-				[`${this.outputPath}/${this.outputInnerDir}`],
-				{ root: this.cwd, verbose: false }
-			),
+			new cleanWebpackPlugin([`${this.outputPath}/${this.appDir}`], {
+				root: this.cwd,
+				verbose: false,
+			}),
 			// Initiate mini css extract
 			new miniCssExtractPlugin({
-				filename: `${this.outputInnerDir}/[name].css`,
+				filename: `${this.appDir}/[name].css`,
 			}),
 			// Create Manifest for PHP Consumption
 			new WebpackAssetsManifest({
 				writeToDisk: true,
-				output: `${this.outputPath}/${
-					this.outputInnerDir
-				}/manifest.json`,
+				output: `${this.outputPath}/${this.appDir}/manifest.json`,
 				publicPath: ``, // We dont put ${this.config.outputPath}/ here because, PHP will pick it up anyway.
 				entrypoints: true,
 				entrypointsKey: 'wpackioEp',
@@ -468,21 +466,51 @@ ${bannerConfig.copyrightText}${bannerConfig.credit ? creditNote : ''}`,
 			});
 		}
 		// create file rules
-		const fileRules: webpack.RuleSetRule = {
-			test: /\.(woff|woff2|eot|ttf|otf|png|jpg|gif)(\?v=\d+\.\d+\.\d+)?$/,
+		// But use relativePath for style type resources like sass, scss or css
+		// This is needed because we can't know the absolute publicPath
+		// of CSS imported assets.
+		const fileLoaderTest = /\.(woff|woff2|eot|ttf|otf|png|jpg|gif)(\?v=\d+\.\d+\.\d+)?$/;
+		const fileLoaderOptions = {
+			name: `[name]-[hash:8].[ext]`,
+			outputPath: `${this.appDir}/assets/`,
+		};
+		const fileRulesNonStyle: webpack.RuleSetRule = {
+			test: fileLoaderTest,
 			use: [
 				{
 					loader: 'file-loader',
 					options: {
-						name: 'asset-[hash].[ext]',
-						outputPath: `${this.outputInnerDir}/assets/`,
+						...fileLoaderOptions,
 					},
 				},
 			],
+			issuer: location => !/\.(sa|sc|c)ss$/.test(location),
+		};
+		const fileRulesStyle: webpack.RuleSetRule = {
+			test: fileLoaderTest,
+			use: [
+				{
+					loader: 'file-loader',
+					options: {
+						...fileLoaderOptions,
+						// Here mention the public path relative to the css
+						// file directory, but only during production mode
+						// for development mode, it is still undefined
+						publicPath: this.isDev ? undefined : `assets/`,
+					},
+				},
+			],
+			issuer: location => /\.(sa|sc|c)ss$/.test(location),
 		};
 
 		return {
-			rules: [jsRules, tsRules, styleRules, fileRules],
+			rules: [
+				jsRules,
+				tsRules,
+				styleRules,
+				fileRulesNonStyle,
+				fileRulesStyle,
+			],
 		};
 	}
 
