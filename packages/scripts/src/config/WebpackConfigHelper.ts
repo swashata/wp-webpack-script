@@ -201,7 +201,9 @@ export class WebpackConfigHelper {
 			// We do not use path.resolve, because we expect outputPath to be
 			// relative. @todo: create a test here
 			path: this.outputPath,
-			filename: `${this.appDir}/[name].js`,
+			filename: `${this.appDir}/${
+				this.isDev ? '[name]' : '[name]-[contenthash:8]'
+			}.js`,
 			// leave blank because we would handle with free variable
 			// __webpack_public_path__ in runtime.
 			publicPath: '',
@@ -254,7 +256,9 @@ export class WebpackConfigHelper {
 			}),
 			// Initiate mini css extract
 			new miniCssExtractPlugin({
-				filename: `${this.appDir}/[name].css`,
+				filename: `${this.appDir}/${
+					this.isDev ? '[name]' : '[name]-[contenthash:8]'
+				}.css`,
 			}),
 			// Create Manifest for PHP Consumption
 			new WebpackAssetsManifest({
