@@ -5878,10 +5878,10 @@ gatsby-cli@^2.4.6:
     yargs "^11.1.0"
     yurnalist "^0.2.1"
 
-gatsby-image@2.0.22:
-  version "2.0.22"
-  resolved "https://registry.yarnpkg.com/gatsby-image/-/gatsby-image-2.0.22.tgz#67b82f0bc9adcbc49134847cfc85355b540fea96"
-  integrity sha512-o8ILGBXl9W8aIIwy9EL7HE2bOMQePMQztXly3FI10AMWXJyQLlQHhHzZceF1DMjCUbbCGIKRdVOymQdjm6+pcA==
+gatsby-image@2.0.23:
+  version "2.0.23"
+  resolved "https://registry.yarnpkg.com/gatsby-image/-/gatsby-image-2.0.23.tgz#64e6b01a02234ef71e7e93500207fd9e7f77df86"
+  integrity sha512-Ab1wQI9nJQxF4TTgdYqENs5tFJg6voBp1YCRUl7ppjSJadKvmaoneVQFCSGm29WSK/DgsRE0MVQ1Fe3L+ke9mg==
   dependencies:
     "@babel/runtime" "^7.0.0"
     prop-types "^15.6.1"
@@ -6065,10 +6065,10 @@ gatsby-remark-smartypants@2.0.7:
     retext-smartypants "^3.0.0"
     unist-util-visit "^1.3.0"
 
-gatsby-source-filesystem@2.0.11:
-  version "2.0.11"
-  resolved "https://registry.yarnpkg.com/gatsby-source-filesystem/-/gatsby-source-filesystem-2.0.11.tgz#6b2a8ece41a5f3cf8bf797589487096af6301961"
-  integrity sha512-TROb/xslj42McdchlTdVVFhETvzI1UC990c91pBjZBSgNuZkyIXWfR86pAjt0ybtO2P76pBWU7l+bSsybFT7Qw==
+gatsby-source-filesystem@2.0.12:
+  version "2.0.12"
+  resolved "https://registry.yarnpkg.com/gatsby-source-filesystem/-/gatsby-source-filesystem-2.0.12.tgz#2d447f547a575fd6b867bce4381b2d1abbee61d1"
+  integrity sha512-IRqGdOXZMkpQASR653WgdCyfOnRutS+3/VXm35ULyG+6p/AZDHR79K2beHH3wHeQkypnsjwMHTi3cnxyaij+ug==
   dependencies:
     "@babel/runtime" "^7.0.0"
     better-queue "^3.8.7"
@@ -6122,10 +6122,10 @@ gatsby-transformer-sharp@2.1.9:
     probe-image-size "^4.0.0"
     sharp "^0.21.0"
 
-gatsby@2.0.64:
-  version "2.0.64"
-  resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.0.64.tgz#ad106fdbfc3c7413641da6f79d63c367e9ecd771"
-  integrity sha512-OHEK/4SaTkjqN/65fv5V6xPPqMF1thvB/WpBso0rE2IbDYNnNAJIPZXRFy1pep161PQnBDSoO4ft2H8du05HOg==
+gatsby@2.0.65:
+  version "2.0.65"
+  resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.0.65.tgz#d0887557e9b42f503510c1fa765cb5a0cb1f3799"
+  integrity sha512-VhmVCs/Or3gtSAnvO36CiGWoqZH8xpkbvVdyPNRRhECi9l/uYlb6i3j6UQGeHlVrNc2jtErQnyHy5ocpSDiZEQ==
   dependencies:
     "@babel/code-frame" "^7.0.0"
     "@babel/core" "^7.0.0"
