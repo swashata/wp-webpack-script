@@ -109,6 +109,6 @@
 	},
 	"devDependencies": {
 		"dts-gen": "0.5.7",
-		"fork-ts-checker-webpack-plugin": "0.5.0"
+		"fork-ts-checker-webpack-plugin": "0.5.1"
 	}
 }
