@@ -3879,11 +3879,6 @@ color@^3.0.0:
     color-convert "^1.9.1"
     color-string "^1.5.2"
 
-colors@^1.1.2:
-  version "1.3.2"
-  resolved "https://registry.yarnpkg.com/colors/-/colors-1.3.2.tgz#2df8ff573dfbf255af562f8ce7181d6b971a359b"
-  integrity sha512-rhP0JSBGYvpcNQj4s5AdShMeE5ahMop96cTeDl/v9qQQm2fYClE2QXZRi8wLzc+GmXSxdIqqbOIAhyObEXDbfQ==
-
 colors@~1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/colors/-/colors-1.1.2.tgz#168a4701756b6a7f51a12ce0c97bfa28c084ed63"
@@ -8729,14 +8724,13 @@ node-notifier@^5.2.1:
     shellwords "^0.1.1"
     which "^1.3.0"
 
-node-plop@=0.16.0:
-  version "0.16.0"
-  resolved "https://registry.yarnpkg.com/node-plop/-/node-plop-0.16.0.tgz#27141cc0b7de3a32e2e2471866d6968cc23efc24"
-  integrity sha512-rnii6U1LJWBeSr2e1iuZpl6LtnmT8f19PO36S0D4XUsJrBMxnCLeQwhSe8i5ZgyT6oZYdapfJCMT0qi3v3MS9Q==
+node-plop@=0.17.3:
+  version "0.17.3"
+  resolved "https://registry.yarnpkg.com/node-plop/-/node-plop-0.17.3.tgz#2e56543a159d6a378982cbebff81fcf08e9587f1"
+  integrity sha512-oITDOxms/0tW0FQIorc/WcK8QxXxW78I6hRSxn7jTSO08KTsfWHsh8J4fGmT4V3GDextl9gyX3juqFl4j1A02A==
   dependencies:
     change-case "^3.0.1"
     co "^4.6.0"
-    colors "^1.1.2"
     core-js "^2.4.1"
     del "^3.0.0"
     globby "^8.0.0"
@@ -8745,7 +8739,7 @@ node-plop@=0.16.0:
     isbinaryfile "^3.0.2"
     lodash.get "^4.4.2"
     mkdirp "^0.5.1"
-    pify "^3.0.0"
+    pify "^4.0.0"
     resolve "^1.2.0"
 
 node-pre-gyp@^0.10.0:
@@ -9558,6 +9552,11 @@ pify@^3.0.0:
   resolved "https://registry.yarnpkg.com/pify/-/pify-3.0.0.tgz#e5a4acd2c101fdf3d9a4d07f0dbc4db49dd28176"
   integrity sha1-5aSs0sEB/fPZpNB/DbxNtJ3SgXY=
 
+pify@^4.0.0:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/pify/-/pify-4.0.1.tgz#4b2cd25c50d598735c50292224fd8c6df41e3231"
+  integrity sha512-uB80kBFb/tfd68bVleG9T5GGsGPjJrLAUpR5PZIrhBnIaRTQRjqdJSsIKkOP6OAIFbj7GOrcudc5pNjZ+geV2g==
+
 pinkie-promise@^2.0.0:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/pinkie-promise/-/pinkie-promise-2.0.1.tgz#2135d6dfa7a358c069ac9b178776288228450ffa"
@@ -9598,16 +9597,17 @@ pkg-up@2.0.0:
   dependencies:
     find-up "^2.1.0"
 
-plop@2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/plop/-/plop-2.1.0.tgz#260c26c8801e7835e199adfc6b0e2f07fe3085f7"
-  integrity sha512-GOYRO1JuSHk5nJBWNct6hZgEmgL/Z4D4Qa2NC+Sovi99HIaXZ92eDLSOb6KjcnWYb6zHACKA6V/hwbMsVIA2Wg==
+plop@2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/plop/-/plop-2.2.0.tgz#1ee64b37ca6d615dbe332115ec58bb66ab5cab59"
+  integrity sha512-qt4pCQPL76AzEYX+OPoWsvT+WUbyU15Zkwb3DQa9n5QQcd6np6l6Rh+7oufmxo93olMVScKBaZ1JDy3zyIsaQg==
   dependencies:
     chalk "^1.1.3"
     interpret "^1.0.0"
     liftoff "^2.2.0"
     minimist "^1.2.0"
-    node-plop "=0.16.0"
+    node-plop "=0.17.3"
+    ora "^3.0.0"
     v8flags "^2.0.10"
 
 pluralize@^7.0.0:
