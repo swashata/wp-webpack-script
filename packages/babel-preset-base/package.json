@@ -48,7 +48,7 @@
     "access": "public"
   },
   "devDependencies": {
-    "@babel/core": "7.2.0",
+    "@babel/core": "7.2.2",
     "dts-gen": "0.5.7"
   }
 }
