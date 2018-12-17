@@ -6085,10 +6085,10 @@ gatsby-source-filesystem@2.0.12:
     valid-url "^1.0.9"
     xstate "^3.1.0"
 
-gatsby-transformer-remark@2.1.15:
-  version "2.1.15"
-  resolved "https://registry.yarnpkg.com/gatsby-transformer-remark/-/gatsby-transformer-remark-2.1.15.tgz#c744bebdcb94017409826011a3f78af8c1e0ff1c"
-  integrity sha512-4epqs8BNyQBHMISQM3fvBulwWoOECCGrGkbO2+LVb9NEBlEEw9NBGiT6nvXrDUag47XgAM/5+l4dRu+Xl9urAA==
+gatsby-transformer-remark@2.1.17:
+  version "2.1.17"
+  resolved "https://registry.yarnpkg.com/gatsby-transformer-remark/-/gatsby-transformer-remark-2.1.17.tgz#9cba3a0f6ecde105e53e476b279a63064251b21c"
+  integrity sha512-3AhjcJ8cPlhjl/DxZBENHOtn9QhdekKzAhUToNXQzIljhxbGU2KdqBoX9vZZ2zwKwrNJIbh5XNmKb590ueUrYA==
   dependencies:
     "@babel/runtime" "^7.0.0"
     bluebird "^3.5.0"
@@ -6122,10 +6122,10 @@ gatsby-transformer-sharp@2.1.9:
     probe-image-size "^4.0.0"
     sharp "^0.21.0"
 
-gatsby@2.0.68:
-  version "2.0.68"
-  resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.0.68.tgz#39cd65000dda9f25ae709c7f2cd0bc6fabb927a2"
-  integrity sha512-eUA0l9gsd3QU3EaFC/uONYEB4m6kMGlBBrv6bxPJFT3ZbQSSuHwOOHdn91cIMoK2x4/gk4kOwOmpzBsyybBQpA==
+gatsby@2.0.70:
+  version "2.0.70"
+  resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.0.70.tgz#d8115bb9c127653b38a94a309f6c7283d8c02f7f"
+  integrity sha512-Nx7Sbp2vuz6LrbgQN6LeZJmYn1oXJHnkGAhBS93vONBRBizVTzEPJPcaBAZrfJLyQvPez4y68oSpmUMlwEpBjg==
   dependencies:
     "@babel/code-frame" "^7.0.0"
     "@babel/core" "^7.0.0"
@@ -6219,7 +6219,7 @@ gatsby@2.0.68:
     raw-loader "^0.5.1"
     react-dev-utils "^4.2.1"
     react-error-overlay "^3.0.0"
-    react-hot-loader "^4.5.1"
+    react-hot-loader "^4.6.0"
     redux "^4.0.0"
     relay-compiler "1.5.0"
     request "^2.85.0"
@@ -10984,10 +10984,10 @@ react-helmet@5.2.0:
     prop-types "^15.5.4"
     react-side-effect "^1.1.0"
 
-react-hot-loader@^4.5.1:
-  version "4.5.1"
-  resolved "https://registry.yarnpkg.com/react-hot-loader/-/react-hot-loader-4.5.1.tgz#4a9cf136542b1db4f948ac74b31fa16a411ceebb"
-  integrity sha512-aqw8F0ZTCakfTXTj1n3F9vXfEKWWHEpQ3Mq9YmYvrNdHvey5RfkSGv7rz4r9TXjqVLt2mpItqydJQdhboZ/acQ==
+react-hot-loader@^4.6.0:
+  version "4.6.1"
+  resolved "https://registry.yarnpkg.com/react-hot-loader/-/react-hot-loader-4.6.1.tgz#7b4ebbbf931d864e78b31c25eee813fcf1ecfa99"
+  integrity sha512-BrMa/zyVq7aeHa2TDG6cVFgMiUut6OHZ/RkPqVHovsFbo0VI8VX7qCz2dYTDHFc9HtVrSUbJGd9LpFPIWtExBg==
   dependencies:
     fast-levenshtein "^2.0.6"
     global "^4.3.0"
