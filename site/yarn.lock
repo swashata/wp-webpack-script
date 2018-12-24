@@ -11283,10 +11283,10 @@ react-side-effect@^1.1.0:
     exenv "^1.2.1"
     shallowequal "^1.0.1"
 
-react-typing-animation@1.5.1:
-  version "1.5.1"
-  resolved "https://registry.yarnpkg.com/react-typing-animation/-/react-typing-animation-1.5.1.tgz#5e63cdad722ae11da60b7e07f3c35fcd148486f2"
-  integrity sha512-FWh8HFOkAefMEp3teEobPMpFEEPAIh4W95toLrigzLBaP2S3hzFh0IWtDw9GpJgWUuzEodQ+7NswU2cG29Zv5A==
+react-typing-animation@1.6.1:
+  version "1.6.1"
+  resolved "https://registry.yarnpkg.com/react-typing-animation/-/react-typing-animation-1.6.1.tgz#651816d76298a343f678942134819626d392498d"
+  integrity sha512-DF85PKTUT2SJAC1Q50n/Vgm8q60xrsD4PCx+J3HLJHEv2Gd9KTV6E0p1JzyDmDwCDpCcspDiBFb0WMrsWgyBTg==
   dependencies:
     raf "^3.4.0"
     shortid "^2.2.8"
