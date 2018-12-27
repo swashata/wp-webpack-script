@@ -8,7 +8,7 @@
     "bulma": "0.7.2",
     "classnames": "2.2.6",
     "docsearch.js": "2.6.2",
-    "gatsby": "2.0.76",
+    "gatsby": "2.0.77",
     "gatsby-image": "2.0.25",
     "gatsby-plugin-catch-links": "2.0.9",
     "gatsby-plugin-manifest": "2.0.12",
@@ -46,7 +46,7 @@
   "devDependencies": {
     "@wpquark/eslint-config": "3.0.0",
     "eslint": "5.11.1",
-    "gatsby-plugin-sharp": "2.0.16",
+    "gatsby-plugin-sharp": "2.0.17",
     "gatsby-transformer-sharp": "2.1.9",
     "prettier": "1.15.3"
   },
