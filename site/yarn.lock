@@ -6028,10 +6028,10 @@ gatsby-plugin-catch-links@2.0.9:
     "@babel/runtime" "^7.0.0"
     escape-string-regexp "^1.0.5"
 
-gatsby-plugin-manifest@2.0.12:
-  version "2.0.12"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-manifest/-/gatsby-plugin-manifest-2.0.12.tgz#7e25f8997ea690969eeaa010a2d111209282f2ce"
-  integrity sha512-9gLSQDD7XF7EsnnDtGS0jAoHSC+R/zL0eHMo0tbpV9BiHPinZwdeOHGYSVzdzn9zwqkgoETbw1dY1sd+7o8+3g==
+gatsby-plugin-manifest@2.0.13:
+  version "2.0.13"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-manifest/-/gatsby-plugin-manifest-2.0.13.tgz#8ae0a394d65c85516e324bec1c69eaef03fdc5c3"
+  integrity sha512-A61/MOUfcCh1c6+bgGKASBngbO5jX5ktIvjsQwjVX0iJJlZfZNPD90T2B4iABQz7A1Kr475FY6TqqYuouHV7Gw==
   dependencies:
     "@babel/runtime" "^7.0.0"
     bluebird "^3.5.0"
@@ -6246,10 +6246,10 @@ gatsby-transformer-sharp@2.1.9:
     probe-image-size "^4.0.0"
     sharp "^0.21.0"
 
-gatsby@2.0.77:
-  version "2.0.77"
-  resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.0.77.tgz#5bfb447fcba2087182c96bd1650f87303c3c274a"
-  integrity sha512-Ge4rOTTwjXYwsEErx3U7AOfRALa3cwBOZg1SyZu1bNmLS6cgImcu3Mht27eD08DawRNmEtRg2GMFSKB/KuPAcg==
+gatsby@2.0.78:
+  version "2.0.78"
+  resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.0.78.tgz#d59ac4becddf8d13b70bb4fc00f5f1e0f37ef77c"
+  integrity sha512-rUR1cEQfCrE/HoQc/zPcrp3/gpmvTfYIwDtUS6gTjxcd3F3BRqqOE+d+eNgN229ttL2VF81gurNw6tCNHdWdnA==
   dependencies:
     "@babel/code-frame" "^7.0.0"
     "@babel/core" "^7.0.0"
