@@ -2,7 +2,7 @@ import chalk from 'chalk';
 import logSymbols from 'log-symbols';
 import ora from 'ora';
 import path from 'path';
-import { getProjectAndServerConfig } from '../config/getProjectAndServerConfig';
+import { getProjectConfig } from '../config/getProjectAndServerConfig';
 import { Callbacks, Pack } from '../scripts/Pack';
 import { ProgramOptions } from './index';
 import {
@@ -37,20 +37,13 @@ export function pack(options: ProgramOptions | undefined): void {
 		)}`
 	);
 	try {
-		const {
-			projectConfig,
-			serverConfig,
-			projectConfigPath,
-			serverConfigPath,
-		} = getProjectAndServerConfig(cwd, options);
+		const { projectConfig, projectConfigPath } = getProjectConfig(
+			cwd,
+			options
+		);
 		console.log(
 			`${logSymbols.success} project config: ${chalk.cyan(
 				path.relative(cwd, projectConfigPath)
-			)}`
-		);
-		console.log(
-			`${logSymbols.success} server config: ${chalk.cyan(
-				path.relative(cwd, serverConfigPath)
 			)}`
 		);
 		// Start the webpack/browserSync server
