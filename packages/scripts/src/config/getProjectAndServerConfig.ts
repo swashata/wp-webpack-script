@@ -7,39 +7,27 @@ import { ProjectConfig, projectConfigDefault } from './project.config.default';
 import { ServerConfig, serverConfigDefault } from './server.config.default';
 // tslint:disable: non-literal-require
 // tslint:disable-next-line:cyclomatic-complexity
-export function getProjectAndServerConfig(
+
+export function getProjectConfig(
 	cwd: string,
 	options?:
 		| {
 				projectConfig?: string;
-				serverConfig?: string;
 		  }
 		| undefined
 ): {
 	projectConfig: ProjectConfig;
-	serverConfig: ServerConfig;
 	projectConfigPath: string;
-	serverConfigPath: string;
 } {
-	// Get the config file paths from options
-	// If user is passing relative path, then it will be used along with cwd
-	// If it is absolute path, then the absolute would be used instead
-	// This is how path.resolve works.
 	const projectConfigPath = path.resolve(
 		cwd,
 		options && options.projectConfig
 			? options.projectConfig
 			: 'wpackio.project.js'
 	);
-	const serverConfigPath = path.resolve(
-		cwd,
-		options && options.serverConfig
-			? options.serverConfig
-			: 'wpackio.server.js'
-	);
-	// Now create the configuration objects
+
 	let projectConfig: ProjectConfig;
-	let serverConfig: ServerConfig;
+
 	// First check to see if the files are present
 	try {
 		projectConfig = require(projectConfigPath) as ProjectConfig;
@@ -56,6 +44,40 @@ export function getProjectAndServerConfig(
 			)}`
 		);
 	}
+
+	// Now validate them
+	validateProjectConfig(projectConfig);
+
+	return {
+		projectConfig: { ...projectConfigDefault, ...projectConfig },
+		projectConfigPath,
+	};
+}
+
+export function getServerConfig(
+	cwd: string,
+	options?:
+		| {
+				serverConfig?: string;
+		  }
+		| undefined
+): {
+	serverConfig: ServerConfig;
+	serverConfigPath: string;
+} {
+	// Get the config file paths from options
+	// If user is passing relative path, then it will be used along with cwd
+	// If it is absolute path, then the absolute would be used instead
+	// This is how path.resolve works.
+	const serverConfigPath = path.resolve(
+		cwd,
+		options && options.serverConfig
+			? options.serverConfig
+			: 'wpackio.server.js'
+	);
+	// Now create the configuration objects
+	let serverConfig: ServerConfig;
+
 	try {
 		serverConfig = require(serverConfigPath) as ServerConfig;
 	} catch (e) {
@@ -71,7 +93,37 @@ export function getProjectAndServerConfig(
 			)}`
 		);
 	}
-	// Now validate them
+
+	// Validate them
+	validateServerConfig(serverConfig);
+
+	return {
+		serverConfig: { ...serverConfigDefault, ...serverConfig },
+		serverConfigPath,
+	};
+}
+
+export function getProjectAndServerConfig(
+	cwd: string,
+	options?:
+		| {
+				projectConfig?: string;
+				serverConfig?: string;
+		  }
+		| undefined
+): {
+	projectConfig: ProjectConfig;
+	serverConfig: ServerConfig;
+	projectConfigPath: string;
+	serverConfigPath: string;
+} {
+	return {
+		...getProjectConfig(cwd, options),
+		...getServerConfig(cwd, options),
+	};
+}
+
+export function validateProjectConfig(projectConfig: ProjectConfig): boolean {
 	if (typeof projectConfig !== 'object') {
 		throw new WpackioError(
 			`Project configuration must export an object literal.\nRight now it is ${chalk.yellow(
@@ -79,27 +131,7 @@ export function getProjectAndServerConfig(
 			)}`
 		);
 	}
-	if (typeof serverConfig !== 'object') {
-		throw new WpackioError(
-			`Server configuration must export an object literal.\nRight now it is ${chalk.yellow(
-				typeof serverConfig
-			)}`
-		);
-	}
 
-	// Validate them
-	validateProjectConfig(projectConfig);
-	validateServerConfig(serverConfig);
-
-	return {
-		projectConfig: { ...projectConfigDefault, ...projectConfig },
-		serverConfig: { ...serverConfigDefault, ...serverConfig },
-		projectConfigPath,
-		serverConfigPath,
-	};
-}
-
-export function validateProjectConfig(projectConfig: ProjectConfig): boolean {
 	// Check if the appName is okay
 	if (!projectConfig.appName) {
 		throw new WpackioError(
@@ -177,6 +209,13 @@ export function validateProjectConfig(projectConfig: ProjectConfig): boolean {
 }
 
 export function validateServerConfig(serverConfig: ServerConfig): boolean {
+	if (typeof serverConfig !== 'object') {
+		throw new WpackioError(
+			`Server configuration must export an object literal.\nRight now it is ${chalk.yellow(
+				typeof serverConfig
+			)}`
+		);
+	}
 	// Check if server config has proxy
 	if (!serverConfig.proxy || serverConfig.proxy === '') {
 		throw new WpackioError(

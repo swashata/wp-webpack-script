@@ -2,7 +2,7 @@ import chalk from 'chalk';
 import logSymbols from 'log-symbols';
 import ora from 'ora';
 import path from 'path';
-import { getProjectAndServerConfig } from '../config/getProjectAndServerConfig';
+import { getProjectConfig } from '../config/getProjectAndServerConfig';
 import { Build } from '../scripts/Build';
 import { ProgramOptions } from './index';
 import {
@@ -38,25 +38,18 @@ export function build(options: ProgramOptions | undefined): void {
 		)}`
 	);
 	try {
-		const {
-			projectConfig,
-			serverConfig,
-			projectConfigPath,
-			serverConfigPath,
-		} = getProjectAndServerConfig(cwd, options);
+		const { projectConfig, projectConfigPath } = getProjectConfig(
+			cwd,
+			options
+		);
 		console.log(
 			`${logSymbols.success} project config: ${chalk.cyan(
 				path.relative(cwd, projectConfigPath)
 			)}`
 		);
-		console.log(
-			`${logSymbols.success} server config: ${chalk.cyan(
-				path.relative(cwd, serverConfigPath)
-			)}`
-		);
 		// Start the webpack/browserSync server
 		spinner.start();
-		const builder: Build = new Build(projectConfig, serverConfig, cwd);
+		const builder: Build = new Build(projectConfig, cwd);
 		builder
 			.build()
 			.then(({ status, log }) => {
@@ -66,7 +59,7 @@ export function build(options: ProgramOptions | undefined): void {
 					spinner.warn(`${wpackLogoSmall} build warnings.`);
 				}
 				console.log(log);
-				endBuildInfo(serverConfig.proxy);
+				endBuildInfo();
 				process.exit(0);
 			})
 			.catch(err => {
