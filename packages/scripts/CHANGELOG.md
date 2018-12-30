@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.10.0](https://github.com/swashata/wp-webpack-script/compare/v2.9.0...v2.10.0) (2018-12-30)
+
+
+### Bug Fixes
+
+* **deps:** update dependency mini-css-extract-plugin to ^0.5.0 ([12b1705](https://github.com/swashata/wp-webpack-script/commit/12b1705))
+
+
+### Features
+
+* remove serverConfig from build command ([c9a0754](https://github.com/swashata/wp-webpack-script/commit/c9a0754))
+
+
+
+
+
 # [2.9.0](https://github.com/swashata/wp-webpack-script/compare/v2.8.1...v2.9.0) (2018-12-03)
 
 

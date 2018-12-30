@@ -3,6 +3,51 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.10.0](https://github.com/swashata/wp-webpack-script/compare/v2.9.0...v2.10.0) (2018-12-30)
+
+
+### Bug Fixes
+
+* **deps:** update dependency gatsby to v2.0.62 ([2712812](https://github.com/swashata/wp-webpack-script/commit/2712812))
+* **deps:** update dependency gatsby to v2.0.63 ([98c3a17](https://github.com/swashata/wp-webpack-script/commit/98c3a17))
+* **deps:** update dependency gatsby to v2.0.71 ([78fe67d](https://github.com/swashata/wp-webpack-script/commit/78fe67d))
+* **deps:** update dependency gatsby to v2.0.72 ([a649676](https://github.com/swashata/wp-webpack-script/commit/a649676))
+* **deps:** update dependency gatsby to v2.0.73 ([6c962ab](https://github.com/swashata/wp-webpack-script/commit/6c962ab))
+* **deps:** update dependency gatsby to v2.0.76 ([a826a1d](https://github.com/swashata/wp-webpack-script/commit/a826a1d))
+* **deps:** update dependency gatsby-image to v2.0.24 ([b02a526](https://github.com/swashata/wp-webpack-script/commit/b02a526))
+* **deps:** update dependency gatsby-plugin-sass to v2.0.6 ([5e2cfa6](https://github.com/swashata/wp-webpack-script/commit/5e2cfa6))
+* **deps:** update dependency mini-css-extract-plugin to ^0.5.0 ([12b1705](https://github.com/swashata/wp-webpack-script/commit/12b1705))
+* **deps:** update dependency node-sass to v4.11.0 ([0bd3a73](https://github.com/swashata/wp-webpack-script/commit/0bd3a73))
+* **deps:** update dependency react-hot-loader to v4.6.0 ([cf0c121](https://github.com/swashata/wp-webpack-script/commit/cf0c121))
+* **deps:** update dependency react-hot-loader to v4.6.1 ([32d9a27](https://github.com/swashata/wp-webpack-script/commit/32d9a27))
+* **deps:** update dependency react-hot-loader to v4.6.2 ([c75cb6b](https://github.com/swashata/wp-webpack-script/commit/c75cb6b))
+* **deps:** update dependency react-hot-loader to v4.6.3 ([060189e](https://github.com/swashata/wp-webpack-script/commit/060189e))
+* **deps:** update dependency react-typing-animation to v1.5.0 ([cb4b33e](https://github.com/swashata/wp-webpack-script/commit/cb4b33e))
+* **deps:** update dependency react-typing-animation to v1.5.1 ([f89dff4](https://github.com/swashata/wp-webpack-script/commit/f89dff4))
+* **deps:** update dependency react-typing-animation to v1.6.1 ([3f124d8](https://github.com/swashata/wp-webpack-script/commit/3f124d8))
+* **deps:** update dependency react-typing-animation to v1.6.2 ([b62a699](https://github.com/swashata/wp-webpack-script/commit/b62a699))
+* **deps:** update gatsby monorepo ([af46a35](https://github.com/swashata/wp-webpack-script/commit/af46a35))
+* **deps:** update gatsby monorepo ([96bb276](https://github.com/swashata/wp-webpack-script/commit/96bb276))
+* **deps:** update gatsby monorepo ([e40c506](https://github.com/swashata/wp-webpack-script/commit/e40c506))
+* **deps:** update gatsby monorepo ([2b504a4](https://github.com/swashata/wp-webpack-script/commit/2b504a4))
+* **deps:** update gatsby monorepo ([7e07816](https://github.com/swashata/wp-webpack-script/commit/7e07816))
+* **deps:** update gatsby monorepo ([8c6860e](https://github.com/swashata/wp-webpack-script/commit/8c6860e))
+* **deps:** update gatsby monorepo ([87ad781](https://github.com/swashata/wp-webpack-script/commit/87ad781))
+* **deps:** update gatsby monorepo ([a341c68](https://github.com/swashata/wp-webpack-script/commit/a341c68))
+* **deps:** update gatsby monorepo ([4fb98c2](https://github.com/swashata/wp-webpack-script/commit/4fb98c2))
+* **deps:** update gatsby monorepo ([287372d](https://github.com/swashata/wp-webpack-script/commit/287372d))
+* **deps:** update gatsby monorepo ([a801dfe](https://github.com/swashata/wp-webpack-script/commit/a801dfe))
+* **deps:** update react monorepo to v16.7.0 ([ebe5a8d](https://github.com/swashata/wp-webpack-script/commit/ebe5a8d))
+
+
+### Features
+
+* remove serverConfig from build command ([c9a0754](https://github.com/swashata/wp-webpack-script/commit/c9a0754))
+
+
+
+
+
 # [2.9.0](https://github.com/swashata/wp-webpack-script/compare/v2.8.1...v2.9.0) (2018-12-03)
 
 
