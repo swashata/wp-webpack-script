@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.11.0](https://github.com/swashata/wp-webpack-script/compare/v2.10.0...v2.11.0) (2018-12-30)
+
+
+### Features
+
+* remove serverConfig from pack ([fc277e6](https://github.com/swashata/wp-webpack-script/commit/fc277e6))
+
+
+
+
+
 # [2.10.0](https://github.com/swashata/wp-webpack-script/compare/v2.9.0...v2.10.0) (2018-12-30)
 
 
