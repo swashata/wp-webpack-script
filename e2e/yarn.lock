@@ -920,10 +920,10 @@
     "@types/rx" "*"
     "@types/through" "*"
 
-"@types/jest@23.3.10":
-  version "23.3.10"
-  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-23.3.10.tgz#4897974cc317bf99d4fe6af1efa15957fa9c94de"
-  integrity sha512-DC8xTuW/6TYgvEg3HEXS7cu9OijFqprVDXXiOcdOKZCU/5PJNLZU37VVvmZHdtMiGOa8wAA/We+JzbdxFzQTRQ==
+"@types/jest@23.3.11":
+  version "23.3.11"
+  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-23.3.11.tgz#d3a936ae753d9e484965f5cbd19027c2b8af2551"
+  integrity sha512-eroF85PoG87XjCwzxey7yBsQNkIY/TV5myKKSG/022A0FW25afdu/uub6JDMS5eT68zBBt82S+w/MFOTjeLM3Q==
 
 "@types/jquery@*":
   version "3.3.22"
@@ -1355,10 +1355,10 @@
     "@webassemblyjs/wast-parser" "1.7.10"
     "@xtuc/long" "4.2.1"
 
-"@wpackio/babel-preset-base@^2.8.0":
-  version "2.8.0"
-  resolved "https://registry.yarnpkg.com/@wpackio/babel-preset-base/-/babel-preset-base-2.8.0.tgz#f661d8ea2cec14ab348d8c493e42a443deba7583"
-  integrity sha512-qAUG+/6cBEq9KYqNJLdHqYBuy0fAOSjrq28tnVAsKVgcBia7Hdwlm0VTz8xlNQPhFaHcswK0BP9Lw53Vk1m7IA==
+"@wpackio/babel-preset-base@^2.10.0":
+  version "2.10.0"
+  resolved "https://registry.yarnpkg.com/@wpackio/babel-preset-base/-/babel-preset-base-2.10.0.tgz#1f2bf982846c9e2c006a36621df2890ab8e01b63"
+  integrity sha512-PYVJRP31pQCMoYMr4He9bAbm7tmDkY3MombmoK96cm2vZ/+9L6qqZu8MjY7ThSkqRjaqf+Yqf2YdAiI2A1kjEA==
   dependencies:
     "@babel/helper-plugin-utils" "^7.0.0"
     "@babel/plugin-proposal-class-properties" "^7.1.0"
@@ -1374,7 +1374,7 @@
     "@types/webpack-env" "^1.13.6"
 
 "@wpackio/scripts@file:../packages/scripts":
-  version "2.9.0"
+  version "2.11.0"
   dependencies:
     "@babel/core" "^7.1.0"
     "@babel/preset-flow" "^7.0.0"
@@ -1401,7 +1401,7 @@
     "@types/webpack-dev-middleware" "^2.0.2"
     "@types/webpack-env" "^1.13.6"
     "@types/webpack-hot-middleware" "^2.16.4"
-    "@wpackio/babel-preset-base" "^2.8.0"
+    "@wpackio/babel-preset-base" "^2.10.0"
     archiver "^3.0.0"
     autoprefixer "^9.1.5"
     babel-loader "^8.0.2"
