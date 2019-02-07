@@ -37,7 +37,7 @@
 		"@types/log-symbols": "^2.0.0",
 		"@types/make-dir": "^1.0.3",
 		"@types/node": "^10.11.3",
-		"@types/ora": "^1.3.4",
+		"@types/ora": "^3.0.0",
 		"@types/update-notifier": "^2.2.0",
 		"@types/webpack": "^4.4.13",
 		"@types/webpack-assets-manifest": "^3.0.0",
