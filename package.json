@@ -29,7 +29,7 @@
     "lerna": "3.10.8",
     "plop": "2.2.0",
     "prettier": "1.16.4",
-    "rimraf": "2.6.2",
+    "rimraf": "2.6.3",
     "ts-jest": "23.10.5",
     "tslint": "5.12.0",
     "tslint-config-prettier": "1.18.0",
