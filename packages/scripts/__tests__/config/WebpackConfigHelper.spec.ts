@@ -14,6 +14,20 @@ import {
 	getConfigFromProjectAndServer,
 } from '../helpers/testUtils';
 
+const currentDate: Date = new Date('2018-01-01T12:00:00');
+const realDate = Date;
+
+beforeAll(() => {
+	// @ts-ignore
+	global.Date = jest.fn(() => new realDate(currentDate.toISOString()));
+	Object.assign(Date, realDate);
+});
+
+afterAll(() => {
+	// restore global date
+	global.Date = realDate;
+});
+
 beforeEach(initConfig);
 
 describe('CreateWebPackConfig', () => {
