@@ -261,13 +261,13 @@ export class WebpackConfigHelper {
 				}.css`,
 			}),
 			// Create Manifest for PHP Consumption
-			(new WebpackAssetsManifest({
+			new WebpackAssetsManifest({
 				writeToDisk: true,
 				output: `${this.outputPath}/${this.appDir}/manifest.json`,
 				publicPath: ``, // We dont put ${this.config.outputPath}/ here because, PHP will pick it up anyway.
 				entrypoints: true,
 				entrypointsKey: 'wpackioEp',
-			}) as unknown) as webpack.Plugin,
+			}),
 		];
 		// Add ts checker plugin if project has tsconfig.json
 		const tsconfigPath = path.resolve(this.cwd, './tsconfig.json');
