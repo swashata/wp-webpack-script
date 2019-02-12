@@ -100,7 +100,7 @@
 		"build:js": "babel ./src --out-dir lib --extensions '.ts,.tsx'",
 		"build:types": "tsc --emitDeclarationOnly",
 		"build": "yarn clean && yarn build:types && yarn build:js",
-		"lint": "tslint --project './tsconfig.json'",
+		"lint": "tslint --project './tsconfig.json' --format verbose",
 		"test": "jest --color",
 		"prepare": "cross-env NODE_ENV=production yarn build"
 	},

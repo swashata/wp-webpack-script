@@ -30,7 +30,15 @@
     "no-require-imports": false,
     "no-suspicious-comment": false,
     "max-func-body-length": false,
-    "newline-before-return": false
+    "newline-before-return": false,
+    "promise-must-complete": false,
+    "no-unsafe-any": false,
+    "no-floating-promises": false,
+    "no-void-expression": false,
+    "no-null-keyword": false,
+    "prefer-readonly": false,
+    "completed-docs": false,
+    "non-literal-fs-path": false
 	},
 	"linterOptions": {
 		"exclude": ["lib/**/*", "**/node_modules/**"]
