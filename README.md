@@ -5,7 +5,7 @@
 
 # wpack.io - Modern JavaScript tooling for WordPress
 
-[![Build Status](https://travis-ci.com/swashata/wp-webpack-script.svg?branch=master)](https://travis-ci.com/swashata/wp-webpack-script) [![codecov](https://codecov.io/gh/swashata/wp-webpack-script/branch/master/graph/badge.svg)](https://codecov.io/gh/swashata/wp-webpack-script) [![npm version](https://badge.fury.io/js/%40wpackio%2Fscripts.svg)](https://badge.fury.io/js/%40wpackio%2Fscripts) [![cypress dashboard](https://img.shields.io/badge/cypress-dashboard-brightgreen.svg)](https://dashboard.cypress.io/#/projects/r3p1vm/runs)
+[![Build Status](https://travis-ci.com/swashata/wp-webpack-script.svg?branch=master)](https://travis-ci.com/swashata/wp-webpack-script) [![codecov](https://codecov.io/gh/swashata/wp-webpack-script/branch/master/graph/badge.svg)](https://codecov.io/gh/swashata/wp-webpack-script) [![npm version](https://badge.fury.io/js/%40wpackio%2Fscripts.svg)](https://badge.fury.io/js/%40wpackio%2Fscripts) [![npm download](https://img.shields.io/npm/dt/@wpackio/scripts.svg?style=flat-square&label=downloads)](https://www.npmjs.com/package/@wpackio/scripts) [![cypress dashboard](https://img.shields.io/badge/cypress-dashboard-brightgreen.svg)](https://dashboard.cypress.io/#/projects/r3p1vm/runs)
 
 ## What is wpack.io?
 
