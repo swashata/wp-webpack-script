@@ -139,6 +139,14 @@ export class Server {
 			host: this.serverConfig.host,
 			open: false, // We don't want to open right away
 			notify: this.serverConfig.notify,
+			snippetOptions: {
+				whitelist: [
+					// Add WP REST API
+					'/wp-json/**',
+					// Add AJAX calls
+					'/wp-admin/admin-ajax.php',
+				],
+			},
 		};
 		if (this.serverConfig.bsOverride) {
 			bsOptions = {
