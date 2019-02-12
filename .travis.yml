@@ -13,6 +13,7 @@ before_script:
   - yarn build
 script:
   - yarn type-check
+  - yarn lint
   - yarn test
   - cd e2e
   - yarn

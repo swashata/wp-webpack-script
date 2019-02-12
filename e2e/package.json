@@ -7,8 +7,8 @@
 	"license": "MIT",
 	"private": true,
 	"devDependencies": {
-    "@types/jest": "24.0.1",
-    "@wpackio/scripts": "file:../packages/scripts",
+		"@types/jest": "24.0.1",
+		"@wpackio/scripts": "file:../packages/scripts",
 		"autoprefixer": "9.4.7",
 		"cssnano": "4.1.8",
 		"cypress": "3.1.5",

@@ -261,13 +261,13 @@ export class WebpackConfigHelper {
 				}.css`,
 			}),
 			// Create Manifest for PHP Consumption
-			new WebpackAssetsManifest({
+			(new WebpackAssetsManifest({
 				writeToDisk: true,
 				output: `${this.outputPath}/${this.appDir}/manifest.json`,
 				publicPath: ``, // We dont put ${this.config.outputPath}/ here because, PHP will pick it up anyway.
 				entrypoints: true,
 				entrypointsKey: 'wpackioEp',
-			}),
+			}) as unknown) as webpack.Plugin,
 		];
 		// Add ts checker plugin if project has tsconfig.json
 		const tsconfigPath = path.resolve(this.cwd, './tsconfig.json');
@@ -458,7 +458,7 @@ ${bannerConfig.copyrightText}${bannerConfig.credit ? creditNote : ''}`,
 		// If we have sass, then add the stuff
 		if (
 			hasSass &&
-			styleRules.use != null &&
+			styleRules.use !== undefined &&
 			Array.isArray(styleRules.use)
 		) {
 			styleRules.test = /\.(sa|sc|c)ss$/;
@@ -524,7 +524,8 @@ ${bannerConfig.copyrightText}${bannerConfig.credit ? creditNote : ''}`,
 	public getResolve(): webpack.Resolve {
 		return {
 			extensions: ['.js', '.jsx', '.ts', '.tsx'],
-			alias: this.config.alias != null ? { ...this.config.alias } : {},
+			alias:
+				this.config.alias !== undefined ? { ...this.config.alias } : {},
 		};
 	}
 
@@ -593,7 +594,7 @@ ${bannerConfig.copyrightText}${bannerConfig.credit ? creditNote : ''}`,
 		options: PresetOptions | undefined
 	): PresetOptions {
 		// If options is not undefined or null, then spread over it
-		if (options != null) {
+		if (options !== undefined) {
 			return { ...defaults, ...options };
 		}
 		return defaults;
@@ -610,7 +611,7 @@ ${bannerConfig.copyrightText}${bannerConfig.credit ? creditNote : ''}`,
 		override: webpackLoaderOptionsOverride
 	): webpack.RuleSetLoader['options'] {
 		// If override is not undefined or null, then return it
-		if (override != null) {
+		if (override !== undefined) {
 			// If it is a function
 			if (typeof override === 'function') {
 				return (override as webpackOptionsOverrideFunction)(
@@ -629,6 +630,7 @@ ${bannerConfig.copyrightText}${bannerConfig.credit ? creditNote : ''}`,
 	 */
 	private fileExists(filepath: string): boolean {
 		try {
+			// tslint:disable-next-line:non-literal-fs-path
 			return fs.statSync(filepath).isFile();
 		} catch (_) {
 			return false;

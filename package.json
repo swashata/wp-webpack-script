@@ -19,7 +19,7 @@
     "@babel/preset-env": "7.3.1",
     "@babel/preset-typescript": "7.1.0",
     "@types/jest": "24.0.1",
-    "@types/node": "10.12.25",
+    "@types/node": "11.9.0",
     "@wpquark/eslint-config": "3.2.0",
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "24.1.0",
@@ -32,16 +32,20 @@
     "rimraf": "2.6.3",
     "tslint": "5.12.1",
     "tslint-config-prettier": "1.18.0",
-    "tslint-microsoft-contrib": "5.2.1",
+    "tslint-microsoft-contrib": "6.0.0",
     "tslint-plugin-prettier": "2.0.1",
     "typescript": "3.3.3"
   },
   "scripts": {
     "clean": "lerna clean",
     "type-check": "lerna run type-check",
+    "lint": "lerna run lint",
     "test": "lerna run test",
     "build": "lerna run build",
     "plop": "plop",
     "lerna": "lerna"
+  },
+  "resolutions": {
+    "@types/webpack": "^4.4.24"
   }
 }

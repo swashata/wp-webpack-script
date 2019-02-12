@@ -92,7 +92,7 @@ export class Server {
 
 		// We can have multi-compiler or single compiler, depending on the config
 		// we get. And both of them works for dev and hot middleware.
-		let compiler: webpack.Compiler | webpack.MultiCompiler;
+		let compiler: webpack.ICompiler;
 		if (this.webpackConfig.isMultiCompiler()) {
 			compiler = webpack(
 				this.webpackConfig.getWebpackConfig() as webpack.Configuration[]

@@ -10,6 +10,8 @@
  * devDependency
  */
 
+// tslint:disable:non-literal-fs-path
+
 import chalk from 'chalk';
 import program from 'commander';
 import fs from 'fs';
@@ -113,7 +115,10 @@ program
 					'package.json'
 				)} not found, creating one`
 			);
-			fs.writeFileSync(pkgJsonPath, JSON.stringify(packageJson, null, 2));
+			fs.writeFileSync(
+				pkgJsonPath,
+				JSON.stringify(packageJson, undefined, 2)
+			);
 			console.log(`${symSucc} created package.json file`);
 		}
 		console.log(`${symInfo} adding dependencies`);
@@ -141,7 +146,7 @@ program
 		} else {
 			pkgJson.scripts = { bootstrap: 'wpackio-scripts bootstrap' };
 		}
-		fs.writeFileSync(pkgJsonPath, JSON.stringify(pkgJson, null, 2));
+		fs.writeFileSync(pkgJsonPath, JSON.stringify(pkgJson, undefined, 2));
 		console.log(`${symSucc} all operations done.`);
 		console.log('\n\n');
 		console.log(`Please run the following command to get started`);

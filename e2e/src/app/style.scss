@@ -20,9 +20,28 @@
 }
 
 #img-tag {
+	position: relative;
+
 	img {
 		width: 90%;
 		margin: 20px auto;
 		display: block;
+	}
+	&::after {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		content: 'I am an img tag';
+		font-size: 32px;
+		position: absolute;
+		font-size: 32px;
+		font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+			Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+		text-shadow: 1px 1px 4px black;
+		color: #fff;
+		top: 0;
+		left: 0;
+		height: 100%;
+		width: 100%;
 	}
 }
