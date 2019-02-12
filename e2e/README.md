@@ -29,6 +29,8 @@ all e2e tests on browsers.
 yarn cypress:open
 ```
 
+Run only the `serve/app.spec.js` when the server is running.
+
 Once it is complete, we would check for build (production) files.
 
 ```bash
@@ -38,6 +40,14 @@ yarn test
 
 This will build production files and will use jest to check for files which were
 created during the process.
+
+```bash
+yarn cypress:runprod
+```
+
+OR
+
+Run `build/prod.spec.js` to run e2e tests against the production build.
 
 ## In CI
 
