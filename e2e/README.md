@@ -50,8 +50,9 @@ script:
     - yarn wait-for-test-server
     - yarn start &>/dev/null &
     - yarn wait-for-wpackio-server
-    - yarn cypress:run
+    - yarn cypress:runapp
     - yarn build
+    - yarn cypress:runprod
     - yarn test
 ```
 

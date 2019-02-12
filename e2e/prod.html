@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<script type="text/javascript">
+		/* Needed for dynamic publicPath */
+		window.__wpackIowpackioEToEdist = '/dist/';
+	</script>
+
+</head>
+
+<body>
+	<h1>This is for e2e testing</h1>
+	<!-- App entry Nodes -->
+	<div id="main-app"></div>
+	<div id="dyn-app"></div>
+	<div id="ts-app"></div>
+	<div id="ts-dyn-app"></div>
+	<!-- Styling -->
+	<div id="blue">I should have color #0000ff</div>
+	<div id="red">I should have color #ff0000</div>
+	<!-- Assets -->
+	<div id="bg-image"><span>I should have a background image!</span></div>
+	<div id="img-tag"></div>
+	<!-- Scripts enqueue -->
+	<script type="text/javascript">
+		function mountApp(path) {
+			fetch(`/dist/${path}/manifest.json`).then(d => d.json()).then(manifest => {
+				const head = document.head;
+				manifest.wpackioEp.main.js.forEach(js => {
+					const script = document.createElement('script');
+					script.setAttribute('src', `/dist/${js}`);
+					script.setAttribute('type', 'text/javascript');
+					head.appendChild(script);
+				});
+				manifest.wpackioEp.main.css.forEach(css => {
+					const link = document.createElement('link');
+					link.setAttribute('rel', 'stylesheet');
+					link.setAttribute('href', `/dist/${css}`);
+					head.appendChild(link);
+				});
+			});
+		}
+		mountApp('app');
+		mountApp('tsapp');
+	</script>
+</body>
+
+</html>

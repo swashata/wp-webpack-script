@@ -53,6 +53,24 @@ context('wpackio-scripts serve', () => {
 				expect(el).to.have.css('color', 'rgb(0, 0, 255)');
 			});
 		});
+		it('Asset from CSS should work', () => {
+			cy.get('#bg-image').then(el => {
+				const bg = el.css('background-image');
+				const bgUrl = bg
+					.replace('url(', '')
+					.replace(')', '')
+					.replace(/"/gi, '');
+				cy.request(bgUrl);
+			});
+		});
+		it('Asset from JS should work', () => {
+			cy.get('#img-tag')
+				.find('img')
+				.then(el => {
+					const imgUrl = el.attr('src');
+					cy.request(`http:${imgUrl}`);
+				});
+		});
 	});
 
 	describe('For TypeScript App', () => {
