@@ -38,6 +38,7 @@
   },
   "scripts": {
     "clean": "lerna clean",
+    "type-check": "lerna run type-check",
     "test": "lerna run test",
     "build": "lerna run build",
     "plop": "plop",
