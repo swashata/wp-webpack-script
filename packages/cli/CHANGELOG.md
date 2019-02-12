@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.12.0](https://github.com/swashata/wp-webpack-script/compare/v2.11.0...v2.12.0) (2019-02-12)
+
+
+### Bug Fixes
+
+* **deps:** update dependency chalk to v2.4.2 ([c12bb6b](https://github.com/swashata/wp-webpack-script/commit/c12bb6b))
+* **deps:** update lint and types and fix related errors ([f78148f](https://github.com/swashata/wp-webpack-script/commit/f78148f))
+* remove [@types](https://github.com/types)/chalk ([7ebb77d](https://github.com/swashata/wp-webpack-script/commit/7ebb77d)), closes [#143](https://github.com/swashata/wp-webpack-script/issues/143)
+
+
+
+
+
 # [2.10.0](https://github.com/swashata/wp-webpack-script/compare/v2.9.0...v2.10.0) (2018-12-30)
 
 **Note:** Version bump only for package @wpackio/cli

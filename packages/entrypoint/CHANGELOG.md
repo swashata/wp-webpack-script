@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.12.0](https://github.com/swashata/wp-webpack-script/compare/v2.11.0...v2.12.0) (2019-02-12)
+
+
+### Bug Fixes
+
+* **deps:** update non-conflicting dependencies ([8f7f101](https://github.com/swashata/wp-webpack-script/commit/8f7f101))
+
+
+
+
+
 <a name="2.0.0"></a>
 # [2.0.0](https://github.com/swashata/wp-webpack-script/compare/v1.2.1...v2.0.0) (2018-10-22)
 

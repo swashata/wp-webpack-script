@@ -1,6 +1,6 @@
 {
   "name": "@wpackio/entrypoint",
-  "version": "2.0.0",
+  "version": "2.12.0",
   "description": "An entrypoint for webpack which is added automatically for safe publicPath.",
   "keywords": [
     "wordpress",

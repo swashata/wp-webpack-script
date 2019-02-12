@@ -3,6 +3,44 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.12.0](https://github.com/swashata/wp-webpack-script/compare/v2.11.0...v2.12.0) (2019-02-12)
+
+
+### Bug Fixes
+
+* **deps:** remove beta babel/core dep from preset ([02649f3](https://github.com/swashata/wp-webpack-script/commit/02649f3))
+* **deps:** update dependency [@types](https://github.com/types)/webpack-env to v1.13.7 ([4899f2b](https://github.com/swashata/wp-webpack-script/commit/4899f2b))
+* **deps:** update dependency bulma to v0.7.3 ([05f3609](https://github.com/swashata/wp-webpack-script/commit/05f3609))
+* **deps:** update dependency bulma to v0.7.4 ([9c3aa00](https://github.com/swashata/wp-webpack-script/commit/9c3aa00))
+* **deps:** update dependency chalk to v2.4.2 ([c12bb6b](https://github.com/swashata/wp-webpack-script/commit/c12bb6b))
+* **deps:** update dependency gatsby to v2.0.119 ([c5fd878](https://github.com/swashata/wp-webpack-script/commit/c5fd878))
+* **deps:** update dependency gatsby to v2.0.79 ([954b532](https://github.com/swashata/wp-webpack-script/commit/954b532))
+* **deps:** update dependency gatsby-remark-prismjs to v3.2.0 ([60e13c3](https://github.com/swashata/wp-webpack-script/commit/60e13c3))
+* **deps:** update dependency make-dir to v2 ([7c1a876](https://github.com/swashata/wp-webpack-script/commit/7c1a876))
+* **deps:** update dependency prop-types to v15.7.0 ([2dd23cd](https://github.com/swashata/wp-webpack-script/commit/2dd23cd))
+* **deps:** update dependency prop-types to v15.7.1 ([aa9ab2e](https://github.com/swashata/wp-webpack-script/commit/aa9ab2e))
+* **deps:** update dependency react-bootstrap to v1.0.0-beta.5 ([21d299f](https://github.com/swashata/wp-webpack-script/commit/21d299f))
+* **deps:** update dependency react-hot-loader to v4.6.5 ([fad006f](https://github.com/swashata/wp-webpack-script/commit/fad006f))
+* **deps:** update gatsby monorepo ([7ec3472](https://github.com/swashata/wp-webpack-script/commit/7ec3472))
+* **deps:** update gatsby monorepo ([7dcb27c](https://github.com/swashata/wp-webpack-script/commit/7dcb27c))
+* **deps:** update gatsby monorepo ([aa9f0e4](https://github.com/swashata/wp-webpack-script/commit/aa9f0e4))
+* **deps:** update gatsby monorepo ([968b8d1](https://github.com/swashata/wp-webpack-script/commit/968b8d1))
+* **deps:** update lint and types and fix related errors ([f78148f](https://github.com/swashata/wp-webpack-script/commit/f78148f))
+* **deps:** update non-conflicting dependencies ([8f7f101](https://github.com/swashata/wp-webpack-script/commit/8f7f101))
+* **deps:** update react monorepo to v16.8.1 ([ecd3469](https://github.com/swashata/wp-webpack-script/commit/ecd3469))
+* **lint:** update tslint rules for changes in preset ([6261073](https://github.com/swashata/wp-webpack-script/commit/6261073))
+* failing snapshot due to change in year ([6065719](https://github.com/swashata/wp-webpack-script/commit/6065719))
+* remove [@types](https://github.com/types)/chalk ([7ebb77d](https://github.com/swashata/wp-webpack-script/commit/7ebb77d)), closes [#143](https://github.com/swashata/wp-webpack-script/issues/143)
+
+
+### Features
+
+* **server:** add snippet options to browser-sync ([b518511](https://github.com/swashata/wp-webpack-script/commit/b518511)), closes [#155](https://github.com/swashata/wp-webpack-script/issues/155)
+
+
+
+
+
 # [2.11.0](https://github.com/swashata/wp-webpack-script/compare/v2.10.0...v2.11.0) (2018-12-30)
 
 
