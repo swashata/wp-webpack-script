@@ -19,7 +19,7 @@
     "@babel/preset-env": "7.3.1",
     "@babel/preset-typescript": "7.1.0",
     "@types/jest": "24.0.3",
-    "@types/node": "11.9.2",
+    "@types/node": "11.9.3",
     "@wpquark/eslint-config": "3.2.0",
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "24.1.0",
