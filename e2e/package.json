@@ -7,7 +7,7 @@
 	"license": "MIT",
 	"private": true,
 	"devDependencies": {
-		"@types/jest": "24.0.4",
+		"@types/jest": "24.0.5",
 		"@wpackio/scripts": "file:../packages/scripts",
 		"autoprefixer": "9.4.7",
 		"cssnano": "4.1.10",
