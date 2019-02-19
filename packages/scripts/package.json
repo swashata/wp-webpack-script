@@ -48,7 +48,7 @@
 		"archiver": "^3.0.0",
 		"autoprefixer": "^9.4.7",
 		"babel-loader": "^8.0.5",
-		"boxen": "^2.1.0",
+		"boxen": "^3.0.0",
 		"browser-sync": "^2.26.3",
 		"camelcase": "^5.0.0",
 		"chalk": "^2.4.2",
