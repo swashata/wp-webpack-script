@@ -8645,10 +8645,10 @@ react-error-overlay@^5.1.0:
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-5.1.3.tgz#16fcbde75ed4dc6161dc6dc959b48e92c6ffa9ad"
   integrity sha512-GoqeM3Xadie7XUApXOjkY3Qhs8RkwB/Za4WMedBGrOKH1eTuKGyoAECff7jiVonJchOx6KZ9i8ILO5XIoHB+Tg==
 
-react-hot-loader@4.7.0:
-  version "4.7.0"
-  resolved "https://registry.yarnpkg.com/react-hot-loader/-/react-hot-loader-4.7.0.tgz#0ffccb931ce8435cf4a3744d2a3fd32eab1671be"
-  integrity sha512-VVS7nvhUw+kFx+qsEiSVgStOVw4peKnEmrmzEmJ18uUPskQvUT25ugNRkygyQ9W1ua+zviRn8hIzTOuQtrrJeQ==
+react-hot-loader@4.7.1:
+  version "4.7.1"
+  resolved "https://registry.yarnpkg.com/react-hot-loader/-/react-hot-loader-4.7.1.tgz#1260b939297859cff35aff61412887a92c9b4275"
+  integrity sha512-OVq9tBndJ+KJWyWbj6kAkJbRVFx3Ykx+XOlndT3zyxAQMBFFygV+AS9RQi6Z2axkPIcEkuE5K6nkpcjlzR8I9w==
   dependencies:
     fast-levenshtein "^2.0.6"
     global "^4.3.0"
