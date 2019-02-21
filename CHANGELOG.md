@@ -3,6 +3,38 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.13.0](https://github.com/swashata/wp-webpack-script/compare/v2.12.0...v2.13.0) (2019-02-21)
+
+
+### Bug Fixes
+
+* **deps:** update dependency gatsby to v2.1.0 ([238d4c0](https://github.com/swashata/wp-webpack-script/commit/238d4c0))
+* **deps:** update dependency gatsby to v2.1.10 ([5f355ce](https://github.com/swashata/wp-webpack-script/commit/5f355ce))
+* **deps:** update dependency gatsby to v2.1.12 ([3d1a6bd](https://github.com/swashata/wp-webpack-script/commit/3d1a6bd))
+* **deps:** update dependency gatsby to v2.1.13 ([9bfe3f7](https://github.com/swashata/wp-webpack-script/commit/9bfe3f7))
+* **deps:** update dependency gatsby to v2.1.2 ([c6d1dca](https://github.com/swashata/wp-webpack-script/commit/c6d1dca))
+* **deps:** update dependency gatsby to v2.1.9 ([09ca546](https://github.com/swashata/wp-webpack-script/commit/09ca546))
+* **deps:** update dependency prop-types to v15.7.2 ([a3a3f02](https://github.com/swashata/wp-webpack-script/commit/a3a3f02))
+* **deps:** update dependency react-hot-loader to v4.7.0 ([126230a](https://github.com/swashata/wp-webpack-script/commit/126230a))
+* **deps:** update dependency react-hot-loader to v4.7.1 ([e3f9fae](https://github.com/swashata/wp-webpack-script/commit/e3f9fae))
+* **deps:** update gatsby monorepo ([4812aae](https://github.com/swashata/wp-webpack-script/commit/4812aae))
+* **deps:** update gatsby monorepo ([61efe6b](https://github.com/swashata/wp-webpack-script/commit/61efe6b))
+* **deps:** update gatsby monorepo ([af34eb8](https://github.com/swashata/wp-webpack-script/commit/af34eb8))
+* **deps:** update gatsby monorepo ([97ed8c8](https://github.com/swashata/wp-webpack-script/commit/97ed8c8))
+* **deps:** update gatsby monorepo ([f193583](https://github.com/swashata/wp-webpack-script/commit/f193583))
+* **deps:** update gatsby monorepo ([87bd99e](https://github.com/swashata/wp-webpack-script/commit/87bd99e))
+* **deps:** update react monorepo to v16.8.2 ([0a32411](https://github.com/swashata/wp-webpack-script/commit/0a32411))
+
+
+### Features
+
+* extract babel config function as modules ([d16f162](https://github.com/swashata/wp-webpack-script/commit/d16f162))
+* properly add barrel for nodejs API ([d3e8abd](https://github.com/swashata/wp-webpack-script/commit/d3e8abd))
+
+
+
+
+
 # [2.12.0](https://github.com/swashata/wp-webpack-script/compare/v2.11.0...v2.12.0) (2019-02-12)
 
 

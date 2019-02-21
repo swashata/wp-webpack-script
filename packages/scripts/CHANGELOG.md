@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.13.0](https://github.com/swashata/wp-webpack-script/compare/v2.12.0...v2.13.0) (2019-02-21)
+
+
+### Features
+
+* extract babel config function as modules ([d16f162](https://github.com/swashata/wp-webpack-script/commit/d16f162))
+* properly add barrel for nodejs API ([d3e8abd](https://github.com/swashata/wp-webpack-script/commit/d3e8abd))
+
+
+
+
+
 # [2.12.0](https://github.com/swashata/wp-webpack-script/compare/v2.11.0...v2.12.0) (2019-02-12)
 
 
