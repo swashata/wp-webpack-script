@@ -12,6 +12,7 @@ import TimeFixPlugin from 'time-fix-plugin';
 import webpack from 'webpack';
 import WebpackAssetsManifest from 'webpack-assets-manifest';
 import { WpackioError } from '../errors/WpackioError';
+import { getBabelConfig } from './babelConfig';
 import {
 	BannerConfig,
 	FileConfig,
@@ -362,19 +363,12 @@ ${bannerConfig.copyrightText}${bannerConfig.credit ? creditNote : ''}`,
 			};
 		}
 		// create the babel rules for es6+ code
-		const jsPresets: babelPreset[] = [
-			[
-				'@wpackio/base',
-				this.getBabelPresetOptions(
-					wpackioBabelOptions,
-					this.config.jsBabelPresetOptions
-				),
-			],
-		];
-		// Add flow if needed
-		if (this.config.hasFlow) {
-			jsPresets.push(['@babel/preset-flow']);
-		}
+		const jsPresets: babelPreset[] = getBabelConfig(
+			wpackioBabelOptions,
+			this.config.jsBabelPresetOptions,
+			hasFlow ? 'flow' : undefined
+		);
+
 		const jsRules: webpack.RuleSetRule = {
 			test: /\.m?jsx?$/,
 			use: [
@@ -397,16 +391,12 @@ ${bannerConfig.copyrightText}${bannerConfig.credit ? creditNote : ''}`,
 		};
 
 		// create the babel rules for typescript code
-		const tsPresets: babelPreset[] = [
-			[
-				'@wpackio/base',
-				this.getBabelPresetOptions(
-					wpackioBabelOptions,
-					this.config.tsBabelPresetOptions
-				),
-			],
-			['@babel/preset-typescript'],
-		];
+		const tsPresets: babelPreset[] = getBabelConfig(
+			wpackioBabelOptions,
+			this.config.tsBabelPresetOptions,
+			'typescript'
+		);
+
 		const tsRules: webpack.RuleSetRule = {
 			test: /\.tsx?$/,
 			use: [
@@ -580,24 +570,6 @@ ${bannerConfig.copyrightText}${bannerConfig.credit ? creditNote : ''}`,
 			name: this.file.name,
 			externals: this.config.externals,
 		};
-	}
-
-	/**
-	 * Get final options for @wpackio/babel-preset-base, combining both
-	 * system default and user defined value.
-	 *
-	 * @param defaults Default options for @wpackio/babel-preset-base.
-	 * @param options User defined options for @wpackio/babel-preset-base.
-	 */
-	private getBabelPresetOptions(
-		defaults: PresetOptions,
-		options: PresetOptions | undefined
-	): PresetOptions {
-		// If options is not undefined or null, then spread over it
-		if (options !== undefined) {
-			return { ...defaults, ...options };
-		}
-		return defaults;
 	}
 
 	/**
