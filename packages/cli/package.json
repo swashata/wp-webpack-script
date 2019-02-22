@@ -44,7 +44,7 @@
   },
   "devDependencies": {
     "@types/find-up": "2.1.1",
-    "@types/node": "11.9.4",
+    "@types/node": "11.9.5",
     "@types/shelljs": "0.8.3"
   }
 }
