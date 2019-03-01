@@ -30,7 +30,7 @@
     "plop": "2.3.0",
     "prettier": "1.16.4",
     "rimraf": "2.6.3",
-    "tslint": "5.13.0",
+    "tslint": "5.13.1",
     "tslint-config-prettier": "1.18.0",
     "tslint-microsoft-contrib": "6.0.0",
     "tslint-plugin-prettier": "2.0.1",
