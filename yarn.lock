@@ -2007,10 +2007,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-10.11.3.tgz#c055536ac8a5e871701aa01914be5731539d01ee"
   integrity sha512-3AvcEJAh9EMatxs+OxAlvAEs7OTy6AG94mcH1iqyVDwVVndekLxzwkWQ/Z4SDbY6GO2oyUXyWW8tQ4rENSSQVQ==
 
-"@types/node@11.10.0":
-  version "11.10.0"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-11.10.0.tgz#08eeb736ae678ccf9ca0922063f3a08795894ede"
-  integrity sha512-6Mb9+PPq9UzRpQrlPzZAbhEvodWDTnsIakddUAtSDpKYF6eu5zAdW31n8x7UZStvqGnDC7dCJnvU188ylv/Ytw==
+"@types/node@11.10.4":
+  version "11.10.4"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-11.10.4.tgz#3f5fc4f0f322805f009e00ab35a2ff3d6b778e42"
+  integrity sha512-wa09itaLE8L705aXd8F80jnFpxz3Y1/KRHfKsYL2bPc0XF+wEWu8sR9n5bmeu8Ba1N9z2GRNzm/YdHcghLkLKg==
 
 "@types/node@^11.9.0":
   version "11.9.0"
