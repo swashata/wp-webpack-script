@@ -6098,10 +6098,10 @@ gatsby-remark-copy-linked-files@2.0.9:
     probe-image-size "^4.0.0"
     unist-util-visit "^1.3.0"
 
-gatsby-remark-images@3.0.5:
-  version "3.0.5"
-  resolved "https://registry.yarnpkg.com/gatsby-remark-images/-/gatsby-remark-images-3.0.5.tgz#da839b37be6ef40cf4a7cfd32df57c266f41dac8"
-  integrity sha512-FTxBq4UZvdbeK6EoedXXH/iP7sF5DZnwrCU7sFBWzO1BYGSsAUxpo/e5tdnh6rMcLHv1jDQWC5ajQXy79EQ/UA==
+gatsby-remark-images@3.0.6:
+  version "3.0.6"
+  resolved "https://registry.yarnpkg.com/gatsby-remark-images/-/gatsby-remark-images-3.0.6.tgz#82fd2cdddd0290f03b40da20b0445b0577d8324b"
+  integrity sha512-y6ulmOnlzVVG5ti6LNv4nZia/+2Kkmz/k00oxDKBprlhd5TiN8KmQKphF2h4p4ccdoeyIy7cQTy3RBuNKFovBQ==
   dependencies:
     "@babel/runtime" "^7.0.0"
     cheerio "^1.0.0-rc.2"
@@ -6192,10 +6192,10 @@ gatsby-transformer-sharp@2.1.15:
     probe-image-size "^4.0.0"
     sharp "^0.21.3"
 
-gatsby@2.1.20:
-  version "2.1.20"
-  resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.1.20.tgz#176e1d6845098d17f21a6d21790414e1d7e0b20c"
-  integrity sha512-YX08omItcGcvezjZ5DJKwwMkSQ4I+ULSxdXI+rmYNrnv6v+jHmRsXPA0zJBERRhexMdvVutSD3J/IwsvWnwuWw==
+gatsby@2.1.21:
+  version "2.1.21"
+  resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.1.21.tgz#8d2d0767f76985c6facd8e2c596533ebcca70379"
+  integrity sha512-LPdQcXP48cowlCf6ky+ZvawAvtfVi0/D9SEDuLBRiMXJZyb/6aZVkHCWlRGJB1fOHGqfm9zh8WslAJMJY7G1VQ==
   dependencies:
     "@babel/code-frame" "^7.0.0"
     "@babel/core" "^7.0.0"
