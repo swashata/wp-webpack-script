@@ -5968,10 +5968,10 @@ gatsby-plugin-catch-links@2.0.12:
     "@babel/runtime" "^7.0.0"
     escape-string-regexp "^1.0.5"
 
-gatsby-plugin-manifest@2.0.21:
-  version "2.0.21"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-manifest/-/gatsby-plugin-manifest-2.0.21.tgz#58f037ae1a279735704debf05612827356ec10a5"
-  integrity sha512-4O6AW+5WP1Qc6EeLwg9FFPo/P3lprOxEn6bfTue/Yt11/FQDkPfEhXjR6i0CLQCE2prddMFbTNojDdKW2+9qrQ==
+gatsby-plugin-manifest@2.0.22:
+  version "2.0.22"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-manifest/-/gatsby-plugin-manifest-2.0.22.tgz#b3eb252435d9991013e3b43de9df744148082611"
+  integrity sha512-3Odjlj2jrDuF2ivAm/Q3J5/qmjjYZHzguUWuN9qBW89jLuqkEpBk2BxMUx07EsztWEIrRRf01z4djsnQsfAW+g==
   dependencies:
     "@babel/runtime" "^7.0.0"
     bluebird "^3.5.0"
@@ -6037,10 +6037,10 @@ gatsby-plugin-sass@2.0.10:
     "@babel/runtime" "^7.0.0"
     sass-loader "^7.0.1"
 
-gatsby-plugin-sharp@2.0.24:
-  version "2.0.24"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-sharp/-/gatsby-plugin-sharp-2.0.24.tgz#88c6b1adc66690f675c589283b8da68243c32e98"
-  integrity sha512-E8iyvE39FAgCanCXywcxgPlng/ompsoGLicijz4icfsy4I//8agVqpILZ32zbZ6bb1v+D/Pgh5QRjlUzaPIorg==
+gatsby-plugin-sharp@2.0.25:
+  version "2.0.25"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-sharp/-/gatsby-plugin-sharp-2.0.25.tgz#04ddfa639a9c8c31d2e4865578d9e344dde4b290"
+  integrity sha512-pPr1bVapHnytEr75HwuF3q4ZltfLzz9+5GXHYOWt3PqxieFUz9bggqaDBnP4ZSG6gnMBRNnuM7oIgF41MXetKw==
   dependencies:
     "@babel/runtime" "^7.0.0"
     async "^2.1.2"
