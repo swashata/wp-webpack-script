@@ -23,7 +23,7 @@
 		"@babel/preset-flow": "^7.0.0",
 		"@babel/preset-typescript": "^7.1.0",
 		"@types/archiver": "^2.1.2",
-		"@types/browser-sync": "^0.0.42",
+		"@types/browser-sync": "^0.0.43",
 		"@types/camelcase": "^4.1.0",
 		"@types/cpy": "^5.1.0",
 		"@types/del": "^3.0.1",
