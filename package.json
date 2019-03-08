@@ -18,7 +18,7 @@
     "@babel/plugin-proposal-object-rest-spread": "7.3.4",
     "@babel/preset-env": "7.3.4",
     "@babel/preset-typescript": "7.3.3",
-    "@types/jest": "24.0.9",
+    "@types/jest": "24.0.10",
     "@types/node": "11.10.5",
     "@wpquark/eslint-config": "3.2.0",
     "babel-core": "7.0.0-bridge.0",
