@@ -6099,10 +6099,10 @@ gatsby-remark-copy-linked-files@2.0.10:
     probe-image-size "^4.0.0"
     unist-util-visit "^1.3.0"
 
-gatsby-remark-images@3.0.8:
-  version "3.0.8"
-  resolved "https://registry.yarnpkg.com/gatsby-remark-images/-/gatsby-remark-images-3.0.8.tgz#424d4835131a5619132db1667efb33a90d1d1322"
-  integrity sha512-vBmaycO/AX+gAoRdulUe3NMm5QZK7mPLf7zsXMXWPBzhkTBbz0/wK3NuaxBONViYJalb0HVjfM8rzYgWn7VdzQ==
+gatsby-remark-images@3.0.9:
+  version "3.0.9"
+  resolved "https://registry.yarnpkg.com/gatsby-remark-images/-/gatsby-remark-images-3.0.9.tgz#7116f07b42362a45fcc6a16343ec4d7b622ac33d"
+  integrity sha512-B8QFWBX7e4cfbBS3GZ+QUHWEPX+9CszulKqxPAH0nn7Uiy7KWC4a312DrtP9irD0GtFq9oQtg1kFx1O14LyZ2w==
   dependencies:
     "@babel/runtime" "^7.0.0"
     cheerio "^1.0.0-rc.2"
