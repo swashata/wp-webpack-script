@@ -6065,10 +6065,10 @@ gatsby-plugin-svgr@2.0.2:
   resolved "https://registry.yarnpkg.com/gatsby-plugin-svgr/-/gatsby-plugin-svgr-2.0.2.tgz#22e08fb67ec63b68aca6ac3e89962af20214e2a5"
   integrity sha512-54REIMe79qFBAwpcnWHBkvEE9CKoEVkefF9rDXai0k642r91SZ4UeWFuAmsegPG+sPVub7tHfHu/2LVXK1I9kg==
 
-gatsby-react-router-scroll@^2.0.5:
-  version "2.0.5"
-  resolved "https://registry.yarnpkg.com/gatsby-react-router-scroll/-/gatsby-react-router-scroll-2.0.5.tgz#a6956796f430d539de658c90bdeb0d1423587cd3"
-  integrity sha512-NxyxjphvEOEj+NpYbjvqx4v96RuP+p2wJsER6utkCwKC6A90tr80CTNo4mxHPPeNeC56dxh1ilO1PVebfrvHyA==
+gatsby-react-router-scroll@^2.0.6:
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/gatsby-react-router-scroll/-/gatsby-react-router-scroll-2.0.6.tgz#b04a8fe6ee77db5ca8f804b7ef476fd205dc4a40"
+  integrity sha512-Cn9Jlf3ikBQL4xRyxP/7Kl4WMNwqIO/kN8aHuvZd9wGYwI7AHylukkw3p7WJPNSqYWy3b76QggEvA7qzpJrglA==
   dependencies:
     "@babel/runtime" "^7.0.0"
     scroll-behavior "^0.9.9"
@@ -6192,10 +6192,10 @@ gatsby-transformer-sharp@2.1.17:
     probe-image-size "^4.0.0"
     sharp "^0.21.3"
 
-gatsby@2.1.35:
-  version "2.1.35"
-  resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.1.35.tgz#cdff857886f1c84cd4b34fc2bbc630c8ba8ad65e"
-  integrity sha512-xXoQhkEjuoyX8OR5M3FQgHz5QaYV4rHEGMw+1uDkOsdS4vJqEfNk2QPeH7cYVOXEl5M3U+b2w5K4dMOHbcghkA==
+gatsby@2.1.36:
+  version "2.1.36"
+  resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.1.36.tgz#9e638deb457f1964591832c02987041b0825df7b"
+  integrity sha512-LYa9owhIwyEMPsxgx3pBiG99aNEJVBLR/PrApUAnZpX514ICHuYNyfH38yw6e+z8gR5y4Lr0XslA3AcQemoDpg==
   dependencies:
     "@babel/code-frame" "^7.0.0"
     "@babel/core" "^7.0.0"
@@ -6254,7 +6254,7 @@ gatsby@2.1.35:
     gatsby-cli "^2.4.16"
     gatsby-link "^2.0.16"
     gatsby-plugin-page-creator "^2.0.10"
-    gatsby-react-router-scroll "^2.0.5"
+    gatsby-react-router-scroll "^2.0.6"
     glob "^7.1.1"
     graphql "^14.1.1"
     graphql-playground-middleware-express "^1.7.10"
