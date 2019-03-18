@@ -6115,10 +6115,10 @@ gatsby-remark-images@3.0.10:
     unist-util-select "^1.5.0"
     unist-util-visit-parents "^2.0.1"
 
-gatsby-remark-prismjs@3.2.5:
-  version "3.2.5"
-  resolved "https://registry.yarnpkg.com/gatsby-remark-prismjs/-/gatsby-remark-prismjs-3.2.5.tgz#c5b3bee63b36a9b153dfaa21552fa1c313022882"
-  integrity sha512-emVOio6Tcg4c3bywn2zMEm3HqFIAOkKYITv0dT0dSXsO3+A4c1URKA1ib8McMfuSPsydpovgWu8kKxwlpKCm+Q==
+gatsby-remark-prismjs@3.2.6:
+  version "3.2.6"
+  resolved "https://registry.yarnpkg.com/gatsby-remark-prismjs/-/gatsby-remark-prismjs-3.2.6.tgz#30f0ad27c910e4f5df49b8235dffd86d60709fc2"
+  integrity sha512-XpNVBf46I2lPX5SotgkGzPymR6UV49h8YXOAHHq+A9p5WecNBsmkqUDy24yGgMrakKfiBEsdSm/gxucaUhr3kw==
   dependencies:
     "@babel/runtime" "^7.0.0"
     parse-numeric-range "^0.0.2"
@@ -6193,10 +6193,10 @@ gatsby-transformer-sharp@2.1.17:
     probe-image-size "^4.0.0"
     sharp "^0.21.3"
 
-gatsby@2.1.37:
-  version "2.1.37"
-  resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.1.37.tgz#bbb16aef7d4cd65a0757688b8fd2550299a123bb"
-  integrity sha512-TpzLmnA6bGWfA5OFcdSbQG3/jESdDUz8MsRTn+RpmkgkKmhtOrI0MGHwxx9L9gUxIlh1iajNyIpKnNQM7DK27w==
+gatsby@2.1.38:
+  version "2.1.38"
+  resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.1.38.tgz#621697928422ff4aaef1aefe98dacb37a9bb00d3"
+  integrity sha512-xOvhvTqSQe2N/xiisjYgV3ZYrxuylmSgYetYVxhs+JhcIHnsnJL/DO9XvBOiwkVBzrROSp1MfIlMd4hUjLx/Lg==
   dependencies:
     "@babel/code-frame" "^7.0.0"
     "@babel/core" "^7.0.0"
