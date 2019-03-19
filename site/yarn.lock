@@ -6193,10 +6193,10 @@ gatsby-transformer-sharp@2.1.17:
     probe-image-size "^4.0.0"
     sharp "^0.21.3"
 
-gatsby@2.1.38:
-  version "2.1.38"
-  resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.1.38.tgz#621697928422ff4aaef1aefe98dacb37a9bb00d3"
-  integrity sha512-xOvhvTqSQe2N/xiisjYgV3ZYrxuylmSgYetYVxhs+JhcIHnsnJL/DO9XvBOiwkVBzrROSp1MfIlMd4hUjLx/Lg==
+gatsby@2.1.39:
+  version "2.1.39"
+  resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.1.39.tgz#87018927b9d2eb68732266332d301a57e4a882df"
+  integrity sha512-DrivCcPjjLmIm3B7I+tvc+M6ztqDxP41pzEtcWDLiTd6kgpoIbVJwDGtD+JOYjtS/UcVXrB8DWGQQ7KduGL+RQ==
   dependencies:
     "@babel/code-frame" "^7.0.0"
     "@babel/core" "^7.0.0"
@@ -6267,6 +6267,7 @@ gatsby@2.1.38:
     invariant "^2.2.4"
     is-relative "^1.0.0"
     is-relative-url "^2.0.0"
+    is-wsl "^1.1.0"
     jest-worker "^23.2.0"
     joi "12.x.x"
     json-loader "^0.5.7"
