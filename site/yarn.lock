@@ -6155,10 +6155,10 @@ gatsby-source-filesystem@2.0.27:
     valid-url "^1.0.9"
     xstate "^3.1.0"
 
-gatsby-transformer-remark@2.3.6:
-  version "2.3.6"
-  resolved "https://registry.yarnpkg.com/gatsby-transformer-remark/-/gatsby-transformer-remark-2.3.6.tgz#f3d64e9bf5335c58de8bc3307fecee18a3834d87"
-  integrity sha512-FxDSy87Ir2DiU4Dwj1S8gnA+J0y1faWoy7tfXBFRxES4yB5m3K2a9Tqdpl1DH52y1NaLezpnwf+tkUvamdbxnA==
+gatsby-transformer-remark@2.3.7:
+  version "2.3.7"
+  resolved "https://registry.yarnpkg.com/gatsby-transformer-remark/-/gatsby-transformer-remark-2.3.7.tgz#de0fea8e25e3fbc1bb5d03ac8f32f4fea19ee66d"
+  integrity sha512-JZufwSS/DObJpXFM6s8ng+MUzdytGU8UmYqis7qSPZvRYxc/ky0jQNy/4TXTl/l/xYA5TXtDwUyCveS/Ug3WJQ==
   dependencies:
     "@babel/runtime" "^7.0.0"
     bluebird "^3.5.0"
@@ -6193,10 +6193,10 @@ gatsby-transformer-sharp@2.1.17:
     probe-image-size "^4.0.0"
     sharp "^0.21.3"
 
-gatsby@2.2.0:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.2.0.tgz#46973febe3fb2ea5f09d9eccd50a3529ac9d2f2e"
-  integrity sha512-+ljmxEKlBRikLOh1lpYVyP5rd5qcD/mTTz7R70FpqNM4uEcdcAmNlSYuLEhh3NgIXqjr99HgvjcsqGRkbDGVGg==
+gatsby@2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.2.1.tgz#e5b8b0e46aabd7d9afc64a7486696d75e174de70"
+  integrity sha512-Z4LQ1h7U2pG+XkMoYaFGD3Ah43uROt/7LmXUoCWOGtDeYqDvISrgZbf7eTcki9xCh0IhO2T79NRCLXsPoQ2+DA==
   dependencies:
     "@babel/code-frame" "^7.0.0"
     "@babel/core" "^7.0.0"
