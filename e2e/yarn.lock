@@ -701,12 +701,19 @@
     "@babel/helper-plugin-utils" "^7.0.0"
     "@babel/plugin-transform-typescript" "^7.1.0"
 
-"@babel/runtime@^7.1.2", "@babel/runtime@^7.2.0":
+"@babel/runtime@^7.1.2":
   version "7.3.1"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.3.1.tgz#574b03e8e8a9898eaf4a872a92ea20b7846f6f2a"
   integrity sha512-7jGW8ppV0ant637pIqAcFfQDDH1orEPGJb8aXfUozuCU3QqX7rX4DA8iwrbPrR1hcH0FTTHz47yQnk+bl5xHQA==
   dependencies:
     regenerator-runtime "^0.12.0"
+
+"@babel/runtime@^7.3.4":
+  version "7.4.2"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.4.2.tgz#f5ab6897320f16decd855eed70b705908a313fe8"
+  integrity sha512-7Bl2rALb7HpvXFL7TETNzKSAeBVCPHELzc0C//9FCxN8nsiueWSJBqaF+2oIJScyILStASR/Cx5WMkXGYTiJFA==
+  dependencies:
+    regenerator-runtime "^0.13.2"
 
 "@babel/template@^7.0.0", "@babel/template@^7.1.0", "@babel/template@^7.1.2", "@babel/template@^7.2.2":
   version "7.2.2"
@@ -928,6 +935,16 @@
     prop-types "^15.6.1"
     typed-styles "^0.0.5"
     warning "^3.0.0"
+
+"@restart/context@^2.1.2":
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/@restart/context/-/context-2.1.2.tgz#0755a296f0d17779766f69afd47dbd9b4e2d7d5c"
+  integrity sha512-9WHP6/Qgz4VwABro7q9+0N3cSlf9XGYdYwMkQhWHkhKyog04JM0w8o6ZsxKC49cmntQKis/FZCouVTlSrb3foA==
+
+"@restart/hooks@^0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@restart/hooks/-/hooks-0.1.1.tgz#6b955b4e36a6d44bd596caf1233abc3ecfb138c7"
+  integrity sha512-vG1aw5274RKfDX6LiUsiIrnKSKJ42xQq8TDXUFHFZeV4T6jGBxlCATOrfYKyMvmAyd2YkHfxXo59ZYVjW9aqzA==
 
 "@types/anymatch@*":
   version "1.3.0"
@@ -7961,7 +7978,7 @@ popper.js@^1.14.4:
   resolved "https://registry.yarnpkg.com/popper.js/-/popper.js-1.14.4.tgz#8eec1d8ff02a5a3a152dd43414a15c7b79fd69b6"
   integrity sha1-juwdj/AqWjoVLdQ0FKFce3n9abY=
 
-popper.js@^1.14.6:
+popper.js@^1.14.7:
   version "1.14.7"
   resolved "https://registry.yarnpkg.com/popper.js/-/popper.js-1.14.7.tgz#e31ec06cfac6a97a53280c3e55e4e0c860e7738e"
   integrity sha512-4q1hNvoUre/8srWsH7hnoSJ5xVmIL4qgz+s4qf2TnJIMyZFUFMGH+9vE7mXynAlHSZ/NdTmmow86muD0myUkVQ==
@@ -8573,6 +8590,15 @@ prop-types@^15.6.1, prop-types@^15.6.2:
     loose-envify "^1.3.1"
     object-assign "^4.1.1"
 
+prop-types@^15.7.2:
+  version "15.7.2"
+  resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
+  integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
+  dependencies:
+    loose-envify "^1.4.0"
+    object-assign "^4.1.1"
+    react-is "^16.8.1"
+
 prr@~1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/prr/-/prr-1.0.1.tgz#d3fc114ba06995a45ec6893f484ceb1d78f5f476"
@@ -8724,26 +8750,26 @@ rc@^1.0.1, rc@^1.1.6, rc@^1.2.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-bootstrap@1.0.0-beta.5:
-  version "1.0.0-beta.5"
-  resolved "https://registry.yarnpkg.com/react-bootstrap/-/react-bootstrap-1.0.0-beta.5.tgz#cf2c45a78bb0603c086d3fee3b454e21c3b5de6e"
-  integrity sha512-Osm0OtTbYwfsT1rpu88ESWuAHZxfaHFNKFiW8w3w+6YY9/bLEPHbGRZA6W21fg5yvcuKN9hJKT857TTHgY7SoQ==
+react-bootstrap@1.0.0-beta.6:
+  version "1.0.0-beta.6"
+  resolved "https://registry.yarnpkg.com/react-bootstrap/-/react-bootstrap-1.0.0-beta.6.tgz#b9b8b01a0fee668ebc2b6148b30fc57e3aa140dc"
+  integrity sha512-4RwXBCm45dHar1mMq7Wz8X9dI3b84R+Un696S+amgjePcxb6DqqqcxYla1FR7FJ+IIODr12HTjxu4LRVtIEsSQ==
   dependencies:
-    "@babel/runtime" "^7.2.0"
+    "@babel/runtime" "^7.3.4"
     "@react-bootstrap/react-popper" "1.2.1"
+    "@restart/context" "^2.1.2"
+    "@restart/hooks" "^0.1.1"
     classnames "^2.2.6"
     dom-helpers "^3.4.0"
     invariant "^2.2.3"
     keycode "^2.1.2"
-    popper.js "^1.14.6"
-    prop-types "^15.6.2"
+    popper.js "^1.14.7"
+    prop-types "^15.7.2"
     prop-types-extra "^1.1.0"
-    react-context-toolbox "^2.0.2"
-    react-overlays "^1.0.0"
-    react-prop-types "^0.4.0"
-    react-transition-group "^2.5.1"
-    uncontrollable "^6.0.0"
-    warning "^4.0.1"
+    react-overlays "^1.2.0"
+    react-transition-group "^2.6.0"
+    uncontrollable "^6.1.0"
+    warning "^4.0.3"
 
 react-context-toolbox@^2.0.2:
   version "2.0.2"
@@ -8820,7 +8846,7 @@ react-is@^16.7.0:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.8.3.tgz#4ad8b029c2a718fc0cfc746c8d4e1b7221e5387d"
   integrity sha512-Y4rC1ZJmsxxkkPuMLwvKvlL1Zfpbcu+Bf4ZigkHup3v9EfdYhAlWAaVyA19olXq2o2mGn0w+dFKvk3pVVlYcIA==
 
-react-is@^16.8.4:
+react-is@^16.8.1, react-is@^16.8.4:
   version "16.8.4"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.8.4.tgz#90f336a68c3a29a096a3d648ab80e87ec61482a2"
   integrity sha512-PVadd+WaUDOAciICm/J1waJaSvgq+4rHE/K70j0PFqKhkTBsPv/82UGQJNXAngz1fOQLLxI6z1sEDmJDQhCTAA==
@@ -8830,10 +8856,10 @@ react-lifecycles-compat@^3.0.4:
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
 
-react-overlays@^1.0.0:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/react-overlays/-/react-overlays-1.1.1.tgz#81f8dddce11f8402cf86ece0f8c9780941495b64"
-  integrity sha512-acL+HwhD1I/AY1Hz7qWQvnBaXEZt5K+huZ2AySdBtJORKNSxnLrd6j2FL3KOEM3rQQWuzAubCYiinlrm2XxXFA==
+react-overlays@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/react-overlays/-/react-overlays-1.2.0.tgz#205368eeb0a5fb0b7f9b717fa7a12d518500abdb"
+  integrity sha512-i/FCV8wR6aRaI+Kz/dpJhOdyx+ah2tN1RhT9InPrexyC4uzf3N4bNayFTGtUeQVacj57j1Mqh1CwV60/5153Iw==
   dependencies:
     classnames "^2.2.6"
     dom-helpers "^3.4.0"
@@ -8856,17 +8882,10 @@ react-popper@^1.3.2:
     typed-styles "^0.0.7"
     warning "^4.0.2"
 
-react-prop-types@^0.4.0:
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/react-prop-types/-/react-prop-types-0.4.0.tgz#f99b0bfb4006929c9af2051e7c1414a5c75b93d0"
-  integrity sha1-+ZsL+0AGkpya8gUefBQUpcdbk9A=
-  dependencies:
-    warning "^3.0.0"
-
-react-transition-group@^2.5.1:
-  version "2.5.3"
-  resolved "https://registry.yarnpkg.com/react-transition-group/-/react-transition-group-2.5.3.tgz#26de363cab19e5c88ae5dbae105c706cf953bb92"
-  integrity sha512-2DGFck6h99kLNr8pOFk+z4Soq3iISydwOFeeEVPjTN6+Y01CmvbWmnN02VuTWyFdnRtIDPe+wy2q6Ui8snBPZg==
+react-transition-group@^2.6.0:
+  version "2.6.1"
+  resolved "https://registry.yarnpkg.com/react-transition-group/-/react-transition-group-2.6.1.tgz#abf4a95e2f13fb9ba83a970a896fedbc5c4856a2"
+  integrity sha512-9DHwCy0aOYEe35frlEN68N9ut/THDQBLnVoQuKTvzF4/s3tk7lqkefCqxK2Nv96fOh6JXk6tQtliygk6tl3bQA==
   dependencies:
     dom-helpers "^3.3.1"
     loose-envify "^1.4.0"
@@ -8992,6 +9011,11 @@ regenerator-runtime@^0.12.0:
   version "0.12.1"
   resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.12.1.tgz#fa1a71544764c036f8c49b13a08b2594c9f8a0de"
   integrity sha512-odxIc1/vDlo4iZcfXqRYFj0vpXFNoGdKMAUieAlFYO6m/nl5e9KR/beGf41z4a1FI+aQgtjhuaSlDxQ0hmkrHg==
+
+regenerator-runtime@^0.13.2:
+  version "0.13.2"
+  resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.13.2.tgz#32e59c9a6fb9b1a4aff09b4930ca2d4477343447"
+  integrity sha512-S/TQAZJO+D3m9xeN1WTI8dLKBBiRgXBlTJvbWjCThHWZj9EvHK70Ff50/tYj2J/fvBY6JtFVwRuazHN2E7M9BA==
 
 regenerator-transform@^0.13.3:
   version "0.13.3"
@@ -10466,6 +10490,13 @@ uncontrollable@^6.0.0:
   dependencies:
     invariant "^2.2.4"
 
+uncontrollable@^6.1.0:
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/uncontrollable/-/uncontrollable-6.1.0.tgz#45dcf54b76bf07e0ddf7c1a669caf935d2e101d5"
+  integrity sha512-2TzEm0pLKauMBZfAZXsgQvLpZHEp95891frCZdGDrSG7dWYaIQhedwLAzi0X8pR8KHNqlmuYEb2cEgbQzr050A==
+  dependencies:
+    invariant "^2.2.4"
+
 unicode-canonical-property-names-ecmascript@^1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/unicode-canonical-property-names-ecmascript/-/unicode-canonical-property-names-ecmascript-1.0.4.tgz#2619800c4c825800efdd8343af7dd9933cbe2818"
@@ -10735,10 +10766,17 @@ warning@^3.0.0:
   dependencies:
     loose-envify "^1.0.0"
 
-warning@^4.0.1, warning@^4.0.2:
+warning@^4.0.2:
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/warning/-/warning-4.0.2.tgz#aa6876480872116fa3e11d434b0d0d8d91e44607"
   integrity sha512-wbTp09q/9C+jJn4KKJfJfoS6VleK/Dti0yqWSm6KMvJ4MRCXFQNapHuJXutJIrWV0Cf4AhTdeIe4qdKHR1+Hug==
+  dependencies:
+    loose-envify "^1.0.0"
+
+warning@^4.0.3:
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/warning/-/warning-4.0.3.tgz#16e9e077eb8a86d6af7d64aa1e05fd85b4678ca3"
+  integrity sha512-rpJyN222KWIvHJ/F53XSZv0Zl/accqHR8et1kpaMTD/fLCRxtV8iX8czMzY7sVZupTI3zcUTg8eycS2kNF9l6w==
   dependencies:
     loose-envify "^1.0.0"
 
