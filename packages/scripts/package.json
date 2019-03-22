@@ -33,7 +33,7 @@
 		"@types/find-up": "^2.1.1",
 		"@types/gradient-string": "^1.1.0",
 		"@types/handlebars": "^4.0.40",
-		"@types/inquirer": "^0.0.44",
+		"@types/inquirer": "^6.0.0",
 		"@types/log-symbols": "^2.0.0",
 		"@types/make-dir": "^1.0.3",
 		"@types/node": "^11.9.0",
