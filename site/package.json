@@ -48,7 +48,7 @@
     "eslint": "5.16.0",
     "gatsby-plugin-sharp": "2.0.34",
     "gatsby-transformer-sharp": "2.1.18",
-    "prettier": "1.16.4"
+    "prettier": "1.17.0"
   },
   "repository": {
     "type": "git",
