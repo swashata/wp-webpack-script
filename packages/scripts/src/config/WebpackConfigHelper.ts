@@ -350,6 +350,10 @@ ${bannerConfig.copyrightText}${bannerConfig.credit ? creditNote : ''}`,
 		return plugins;
 	}
 
+	public isBabelConfigPresent(): boolean {
+		return this.fileExists(path.resolve(this.cwd, 'babel.config.js'));
+	}
+
 	/**
 	 * Get module object for webpack, depending on environment.
 	 */
@@ -450,7 +454,12 @@ ${bannerConfig.copyrightText}${bannerConfig.credit ? creditNote : ''}`,
 						sourceMap: true,
 					},
 				},
-				'postcss-loader',
+				{
+					loader: 'postcss-loader',
+					options: {
+						sourceMap: true,
+					},
+				},
 			],
 		};
 		// If we have sass, then add the stuff
