@@ -16,7 +16,7 @@
   "license": "MIT",
   "private": false,
   "dependencies": {
-    "@types/webpack-env": "^1.13.7"
+    "@types/webpack-env": "^1.13.9"
   },
   "engines": {
     "node": ">=8.9.0"
