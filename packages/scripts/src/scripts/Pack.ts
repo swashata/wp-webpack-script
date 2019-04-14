@@ -92,7 +92,6 @@ export class Pack {
 		return cpy(this.projectConfig.packageFiles, this.packageSlugPath, {
 			parents: true,
 			cwd: this.cwd,
-			root: this.packageSlugPath,
 		}).on('progress', this.callbacks.onCopyProgress);
 	}
 
