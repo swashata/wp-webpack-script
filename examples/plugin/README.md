@@ -49,6 +49,8 @@ the following features.
    b. Password: `root`
 6. Activate `WPack.io Sample Plugin Development` plugin.
 7. Check the homepage and check your browser's console.
+8. Publish a page with a shortcode `[wpackio-reactapp]`.
+9. Check the page content.
 
 > It is not a requirement to use docker for `@wpackio/scripts`. It is just
 > required for this example. You can very well spin up any local server you

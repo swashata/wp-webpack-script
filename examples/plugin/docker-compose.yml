@@ -15,12 +15,8 @@ services:
       DB_HOST: db # must match db service name below
       DB_NAME: wordpress
       DB_PASS: root # must match below
-      PLUGINS: >-
-        academic-bloggers-toolkit,
-        co-authors-plus,
-        [WP-API]https://github.com/WP-API/WP-API/archive/master.zip,
       URL_REPLACE: localhost:8080
-      WP_DEBUG: 'true'
+      WP_DEBUG: 'false'
   db:
     image: mysql:5.7 # or mariadb:10
     volumes:

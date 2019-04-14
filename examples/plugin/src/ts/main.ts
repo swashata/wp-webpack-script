@@ -1,7 +1,9 @@
+/* eslint-disable spaced-comment */
 ///<reference types="webpack-env" />
 
 import { strRepeat } from './module';
 
+console.log('Hello from typescript, I am gonna say foo 30 times');
 console.log(strRepeat('foo', 10));
 console.log(strRepeat('foo', 10));
 console.log(strRepeat('foo', 10));
