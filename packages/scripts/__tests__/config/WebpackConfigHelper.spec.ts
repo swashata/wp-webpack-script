@@ -233,6 +233,37 @@ describe('CreateWebPackConfig', () => {
 				}
 			});
 
+			test('does not set babel-loader option for js and ts files if useBabelConfig is true', () => {
+				const cwc = new WebpackConfigHelper(
+					projectConfig.files[0],
+					{
+						...getConfigFromProjectAndServer(
+							projectConfig,
+							serverConfig
+						),
+						useBabelConfig: true,
+					},
+					'/foo/bar',
+					true
+				);
+				const modules = cwc.getModule();
+				if (Array.isArray(modules.rules)) {
+					const jsTsRules = findWpackIoBabelOnTJs(modules);
+					expect(jsTsRules).toHaveLength(2);
+					jsTsRules.forEach(rule => {
+						if (rule && rule.use && rule.use[0].options) {
+							expect(JSON.stringify(rule.use[0].options)).toBe(
+								JSON.stringify({})
+							);
+						} else {
+							throw new Error('JavaScript rule is undefined');
+						}
+					});
+				} else {
+					throw new Error('Module is not an array');
+				}
+			});
+
 			test('overrides @wpackio/babel-preset-base from config', () => {
 				const override: PresetOptions = {
 					noImportMeta: true,
@@ -454,7 +485,7 @@ describe('CreateWebPackConfig', () => {
 						projectConfig,
 						serverConfig
 					),
-					alias: alias,
+					alias,
 				},
 				'/foo/bar',
 				false

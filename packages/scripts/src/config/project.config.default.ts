@@ -75,6 +75,8 @@ export interface ProjectConfig {
 	hasReact: boolean;
 	hasSass: boolean;
 	hasFlow: boolean;
+	// Use babel.config.js instead of built-in options
+	useBabelConfig?: boolean;
 	// If provided it is spread over whatever wpackio/scripts generates
 	jsBabelPresetOptions?: PresetOptions;
 	// If provided it is spread over whatever wpackio/scripts generates
@@ -131,6 +133,7 @@ export const projectConfigDefault: ProjectConfig = {
 	// We need relative path here, else, we can not map to publicPath
 	outputPath: 'dist',
 	// Project specific config
+	useBabelConfig: false,
 	// Needs react?
 	hasReact: true,
 	// Needs sass?

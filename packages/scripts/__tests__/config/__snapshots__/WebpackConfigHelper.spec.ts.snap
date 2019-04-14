@@ -101,7 +101,12 @@ Object {
             "sourceMap": true,
           },
         },
-        "postcss-loader",
+        Object {
+          "loader": "postcss-loader",
+          "options": Object {
+            "sourceMap": true,
+          },
+        },
         Object {
           "loader": "sass-loader",
           "options": Object {

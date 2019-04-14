@@ -33,6 +33,7 @@ export interface WebpackConfigHelperConfig {
 	host: ServerConfig['host'];
 	port: ServerConfig['port'];
 	outputPath: ProjectConfig['outputPath'];
+	useBabelConfig: ProjectConfig['useBabelConfig'];
 	hasReact: ProjectConfig['hasReact'];
 	hasSass: ProjectConfig['hasSass'];
 	hasFlow: ProjectConfig['hasFlow'];
@@ -350,10 +351,6 @@ ${bannerConfig.copyrightText}${bannerConfig.credit ? creditNote : ''}`,
 		return plugins;
 	}
 
-	public isBabelConfigPresent(): boolean {
-		return this.fileExists(path.resolve(this.cwd, 'babel.config.js'));
-	}
-
 	/**
 	 * Get module object for webpack, depending on environment.
 	 */
@@ -362,6 +359,10 @@ ${bannerConfig.copyrightText}${bannerConfig.credit ? creditNote : ''}`,
 		const wpackioBabelOptions: PresetOptions = {
 			hasReact,
 		};
+
+		// check if babel.config.js is present
+		const isBabelConfigPresent = this.config.useBabelConfig;
+
 		// Push targets to babel-preset-env if this is dev
 		// We target only the latest chrome and firefox for
 		// greater speed
@@ -386,17 +387,19 @@ ${bannerConfig.copyrightText}${bannerConfig.credit ? creditNote : ''}`,
 			use: [
 				{
 					loader: 'babel-loader',
-					options: this.getOverrideWebpackRuleOptions(
-						{
-							presets: jsPresets,
-							// disable babelrc and babel.config.js
-							// as it could potentially break stuff
-							// rather use the jsBabelOverride
-							configFile: false,
-							babelrc: false,
-						},
-						this.config.jsBabelOverride
-					),
+					options: isBabelConfigPresent
+						? {}
+						: this.getOverrideWebpackRuleOptions(
+								{
+									presets: jsPresets,
+									// disable babelrc and babel.config.js
+									// as it could potentially break stuff
+									// rather use the jsBabelOverride
+									configFile: false,
+									babelrc: false,
+								},
+								this.config.jsBabelOverride
+						  ),
 				},
 			],
 			exclude: /(node_modules|bower_components)/,
@@ -414,23 +417,25 @@ ${bannerConfig.copyrightText}${bannerConfig.credit ? creditNote : ''}`,
 			use: [
 				{
 					loader: 'babel-loader',
-					options: this.getOverrideWebpackRuleOptions(
-						{
-							presets: tsPresets,
-							// disable babelrc and babel.config.js
-							// as it could potentially break stuff
-							// rather use the jsBabelOverride
-							configFile: false,
-							babelrc: false,
-							// We don't need plugin-proposal-class-properties
-							// because taken care of by @wpackio/base
-							// '@babel/proposal-class-properties',
-							// We don't need object-rest-spread because it is
-							// already in stage-4 and taken care of by preset-env
-							// '@babel/proposal-object-rest-spread',
-						},
-						this.config.tsBabelOverride
-					),
+					options: isBabelConfigPresent
+						? {}
+						: this.getOverrideWebpackRuleOptions(
+								{
+									presets: tsPresets,
+									// disable babelrc and babel.config.js
+									// as it could potentially break stuff
+									// rather use the jsBabelOverride
+									configFile: false,
+									babelrc: false,
+									// We don't need plugin-proposal-class-properties
+									// because taken care of by @wpackio/base
+									// '@babel/proposal-class-properties',
+									// We don't need object-rest-spread because it is
+									// already in stage-4 and taken care of by preset-env
+									// '@babel/proposal-object-rest-spread',
+								},
+								this.config.tsBabelOverride
+						  ),
 				},
 			],
 			exclude: /(node_modules)/,
