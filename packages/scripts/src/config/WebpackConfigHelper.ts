@@ -2,9 +2,9 @@ import {
 	babelPreset,
 	PresetOptions,
 } from '@wpackio/babel-preset-base/lib/preset';
-import cleanWebpackPlugin from 'clean-webpack-plugin';
+import CleanWebpackPlugin from 'clean-webpack-plugin';
 import fs from 'fs';
-import miniCssExtractPlugin from 'mini-css-extract-plugin';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import path from 'path';
 import WatchMissingNodeModulesPlugin from 'react-dev-utils/WatchMissingNodeModulesPlugin';
 import slugify from 'slugify';
@@ -65,15 +65,21 @@ interface CommonWebpackConfig {
 export class WebpackConfigHelper {
 	// This is where all the filename will be prefixed, so we create a directory
 	public readonly appDir: string;
+
 	// Actual outputPath as provided by user
 	public readonly outputPath: string;
+
 	private file: FileConfig;
+
 	private isDev: boolean;
+
 	private config: WebpackConfigHelperConfig;
+
 	/**
 	 * Context directory, from where we read the stuff and put stuff.
 	 */
 	private cwd: string;
+
 	/**
 	 * Simulated NODE_ENV string, used internally and defined
 	 * in webpack with webpack.DefinePlugin.
@@ -251,12 +257,12 @@ export class WebpackConfigHelper {
 				},
 			}),
 			// Clean dist directory
-			new cleanWebpackPlugin([`${this.outputPath}/${this.appDir}`], {
+			new CleanWebpackPlugin([`${this.outputPath}/${this.appDir}`], {
 				root: this.cwd,
 				verbose: false,
 			}),
 			// Initiate mini css extract
-			new miniCssExtractPlugin({
+			new MiniCssExtractPlugin({
 				filename: `${this.appDir}/${
 					this.isDev ? '[name]' : '[name]-[contenthash:8]'
 				}.css`,
@@ -275,7 +281,7 @@ export class WebpackConfigHelper {
 		if (this.fileExists(tsconfigPath)) {
 			// dynamic require forktschecker otherwise it will throw error
 			try {
-				// tslint:disable-next-line:variable-name no-implicit-dependencies
+				// eslint-disable-next-line import/no-extraneous-dependencies, global-require, @typescript-eslint/no-var-requires
 				const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 				plugins.push(
 					new ForkTsCheckerWebpackPlugin({
@@ -314,7 +320,7 @@ export class WebpackConfigHelper {
 		} else {
 			// Add Production specific plugins
 			const { bannerConfig } = this.config;
-			const creditNote: string =
+			const creditNote =
 				'\n\nCompiled with the help of https://wpack.io\nA zero setup Webpack Bundler Script for WordPress';
 			plugins.push(
 				// Banner plugin
@@ -430,7 +436,7 @@ ${bannerConfig.copyrightText}${bannerConfig.credit ? creditNote : ''}`,
 				this.isDev
 					? 'style-loader'
 					: {
-							loader: miniCssExtractPlugin.loader,
+							loader: MiniCssExtractPlugin.loader,
 							options: {
 								sourceMap: true,
 							},
@@ -589,9 +595,8 @@ ${bannerConfig.copyrightText}${bannerConfig.credit ? creditNote : ''}`,
 				return (override as webpackOptionsOverrideFunction)(
 					defaults || {}
 				) as webpack.RuleSetLoader['options'];
-			} else {
-				return override;
 			}
+			return override;
 		}
 		// Otherwise just return default
 		return defaults;

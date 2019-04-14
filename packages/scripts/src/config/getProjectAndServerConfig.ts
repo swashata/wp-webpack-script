@@ -5,123 +5,6 @@ import { isYarn } from '../bin/utils';
 import { WpackioError } from '../errors/WpackioError';
 import { ProjectConfig, projectConfigDefault } from './project.config.default';
 import { ServerConfig, serverConfigDefault } from './server.config.default';
-// tslint:disable: non-literal-require
-// tslint:disable-next-line:cyclomatic-complexity
-
-export function getProjectConfig(
-	cwd: string,
-	options?:
-		| {
-				projectConfig?: string;
-		  }
-		| undefined
-): {
-	projectConfig: ProjectConfig;
-	projectConfigPath: string;
-} {
-	const projectConfigPath = path.resolve(
-		cwd,
-		options && options.projectConfig
-			? options.projectConfig
-			: 'wpackio.project.js'
-	);
-
-	let projectConfig: ProjectConfig;
-
-	// First check to see if the files are present
-	try {
-		projectConfig = require(projectConfigPath) as ProjectConfig;
-	} catch (e) {
-		throw new WpackioError(
-			`Could not find project configuration at:\n${chalk.dim(
-				projectConfigPath
-			)}\nPlease make sure the file exists\nor adjust your ${chalk.yellow(
-				'--context'
-			)} or ${chalk.yellow(
-				'--project-config'
-			)} parameters.\nIf this is your first time, try running\n${chalk.magenta(
-				`${isYarn() ? 'yarn' : 'npm run'} bootstrap`
-			)}`
-		);
-	}
-
-	// Now validate them
-	validateProjectConfig(projectConfig);
-
-	return {
-		projectConfig: { ...projectConfigDefault, ...projectConfig },
-		projectConfigPath,
-	};
-}
-
-export function getServerConfig(
-	cwd: string,
-	options?:
-		| {
-				serverConfig?: string;
-		  }
-		| undefined
-): {
-	serverConfig: ServerConfig;
-	serverConfigPath: string;
-} {
-	// Get the config file paths from options
-	// If user is passing relative path, then it will be used along with cwd
-	// If it is absolute path, then the absolute would be used instead
-	// This is how path.resolve works.
-	const serverConfigPath = path.resolve(
-		cwd,
-		options && options.serverConfig
-			? options.serverConfig
-			: 'wpackio.server.js'
-	);
-	// Now create the configuration objects
-	let serverConfig: ServerConfig;
-
-	try {
-		serverConfig = require(serverConfigPath) as ServerConfig;
-	} catch (e) {
-		throw new WpackioError(
-			`Could not find server configuration at:\n${chalk.dim(
-				serverConfigPath
-			)}\nPlease make sure the file exists\nor adjust your ${chalk.yellow(
-				'--context'
-			)} or ${chalk.yellow(
-				'--server-config'
-			)} parameters.\nIf this is your first time, try running\n${chalk.magenta(
-				`${isYarn() ? 'yarn' : 'npm run'} bootstrap`
-			)}`
-		);
-	}
-
-	// Validate them
-	validateServerConfig(serverConfig);
-
-	return {
-		serverConfig: { ...serverConfigDefault, ...serverConfig },
-		serverConfigPath,
-	};
-}
-
-export function getProjectAndServerConfig(
-	cwd: string,
-	options?:
-		| {
-				projectConfig?: string;
-				serverConfig?: string;
-		  }
-		| undefined
-): {
-	projectConfig: ProjectConfig;
-	serverConfig: ServerConfig;
-	projectConfigPath: string;
-	serverConfigPath: string;
-} {
-	return {
-		...getProjectConfig(cwd, options),
-		...getServerConfig(cwd, options),
-	};
-}
 
 export function validateProjectConfig(projectConfig: ProjectConfig): boolean {
 	if (typeof projectConfig !== 'object') {
@@ -225,4 +108,121 @@ export function validateServerConfig(serverConfig: ServerConfig): boolean {
 		);
 	}
 	return true;
+}
+
+export function getProjectConfig(
+	cwd: string,
+	options?:
+		| {
+				projectConfig?: string;
+		  }
+		| undefined
+): {
+	projectConfig: ProjectConfig;
+	projectConfigPath: string;
+} {
+	const projectConfigPath = path.resolve(
+		cwd,
+		options && options.projectConfig
+			? options.projectConfig
+			: 'wpackio.project.js'
+	);
+
+	let projectConfig: ProjectConfig;
+
+	// First check to see if the files are present
+	try {
+		// eslint-disable-next-line global-require
+		projectConfig = require(projectConfigPath) as ProjectConfig;
+	} catch (e) {
+		throw new WpackioError(
+			`Could not find project configuration at:\n${chalk.dim(
+				projectConfigPath
+			)}\nPlease make sure the file exists\nor adjust your ${chalk.yellow(
+				'--context'
+			)} or ${chalk.yellow(
+				'--project-config'
+			)} parameters.\nIf this is your first time, try running\n${chalk.magenta(
+				`${isYarn() ? 'yarn' : 'npm run'} bootstrap`
+			)}`
+		);
+	}
+
+	// Now validate them
+	validateProjectConfig(projectConfig);
+
+	return {
+		projectConfig: { ...projectConfigDefault, ...projectConfig },
+		projectConfigPath,
+	};
+}
+
+export function getServerConfig(
+	cwd: string,
+	options?:
+		| {
+				serverConfig?: string;
+		  }
+		| undefined
+): {
+	serverConfig: ServerConfig;
+	serverConfigPath: string;
+} {
+	// Get the config file paths from options
+	// If user is passing relative path, then it will be used along with cwd
+	// If it is absolute path, then the absolute would be used instead
+	// This is how path.resolve works.
+	const serverConfigPath = path.resolve(
+		cwd,
+		options && options.serverConfig
+			? options.serverConfig
+			: 'wpackio.server.js'
+	);
+	// Now create the configuration objects
+	let serverConfig: ServerConfig;
+
+	try {
+		// eslint-disable-next-line global-require
+		serverConfig = require(serverConfigPath) as ServerConfig;
+	} catch (e) {
+		throw new WpackioError(
+			`Could not find server configuration at:\n${chalk.dim(
+				serverConfigPath
+			)}\nPlease make sure the file exists\nor adjust your ${chalk.yellow(
+				'--context'
+			)} or ${chalk.yellow(
+				'--server-config'
+			)} parameters.\nIf this is your first time, try running\n${chalk.magenta(
+				`${isYarn() ? 'yarn' : 'npm run'} bootstrap`
+			)}`
+		);
+	}
+
+	// Validate them
+	validateServerConfig(serverConfig);
+
+	return {
+		serverConfig: { ...serverConfigDefault, ...serverConfig },
+		serverConfigPath,
+	};
+}
+
+export function getProjectAndServerConfig(
+	cwd: string,
+	options?:
+		| {
+				projectConfig?: string;
+				serverConfig?: string;
+		  }
+		| undefined
+): {
+	projectConfig: ProjectConfig;
+	serverConfig: ServerConfig;
+	projectConfigPath: string;
+	serverConfigPath: string;
+} {
+	return {
+		...getProjectConfig(cwd, options),
+		...getServerConfig(cwd, options),
+	};
 }

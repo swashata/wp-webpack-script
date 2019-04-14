@@ -26,10 +26,15 @@ export interface ArchiveResolve {
 
 export class Pack {
 	private projectConfig: ProjectConfig;
+
 	private packageSlugPath: string;
+
 	private packageDirPath: string;
+
 	private packageZipPath: string;
+
 	private cwd: string;
+
 	private callbacks: Callbacks;
 
 	constructor(

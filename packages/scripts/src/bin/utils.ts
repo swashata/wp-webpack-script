@@ -242,8 +242,8 @@ export function prettyPrintError(
 }
 
 export function getProgressBar(done: number): string {
-	if (isNaN(done) || done === Infinity || done === -Infinity) {
-		// tslint:disable-next-line:no-parameter-reassignment
+	if (Number.isNaN(done) || done === Infinity || done === -Infinity) {
+		// eslint-disable-next-line no-param-reassign
 		done = 0;
 	}
 	const pbDoneLength = Math.floor((done / 100) * 20);
@@ -273,6 +273,7 @@ export function getFileCopyProgress(progress?: ProgressData): string {
 		done = Math.round(
 			(progress.completedFiles / progress.totalFiles) * 100
 		);
+		// eslint-disable-next-line prefer-destructuring
 		totalFiles = progress.totalFiles;
 		filesDone = progress.completedFiles;
 		size = progress.completedSize;

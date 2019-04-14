@@ -18,7 +18,7 @@ export interface ProgramOptions {
 
 let isValidCommand = false;
 
-/* tslint:disable:no-require-imports no-var-requires non-literal-require */
+// eslint-disable-next-line global-require
 const pkg = require('../../package.json') as updateNotifier.Package;
 
 // Notify for updates

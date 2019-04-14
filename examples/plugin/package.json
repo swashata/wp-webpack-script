@@ -19,6 +19,7 @@
     "start": "wpackio-scripts start",
     "build": "wpackio-scripts build",
     "archive": "wpackio-scripts pack",
+    "bootstrap:dev": "../../packages/scripts/lib/bin/index.js bootstrap",
     "start:dev": "../../packages/scripts/lib/bin/index.js start",
     "build:dev": "../../packages/scripts/lib/bin/index.js build"
   },

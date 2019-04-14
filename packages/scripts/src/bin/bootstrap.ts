@@ -2,7 +2,6 @@ import chalk from 'chalk';
 import execa from 'execa';
 import logSymbols from 'log-symbols';
 import ora from 'ora';
-import path from 'path';
 import PrettyError from 'pretty-error';
 
 import { ProgramOptions } from '.';

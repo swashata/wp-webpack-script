@@ -6,10 +6,7 @@ import webpack from 'webpack';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 
-import {
-	CreateWebpackConfig,
-	WpackConfig,
-} from '../config/CreateWebpackConfig';
+import { CreateWebpackConfig } from '../config/CreateWebpackConfig';
 import { ProjectConfig } from '../config/project.config.default';
 import { ServerConfig } from '../config/server.config.default';
 
@@ -27,16 +24,21 @@ interface Callbacks {
  */
 export class Server {
 	private projectConfig: ProjectConfig;
+
 	private serverConfig: ServerConfig;
+
 	private cwd: string;
 
 	private isServing: boolean = false;
 
 	private bs?: browserSync.BrowserSyncInstance;
+
 	private devMiddlewares?: webpackDevMiddleware.WebpackDevMiddleware[];
 
 	private webpackConfig: CreateWebpackConfig;
+
 	private isBrowserOpened: boolean = false;
+
 	private firstCompileCompleted: boolean = false;
 
 	private callbacks: Callbacks;
@@ -61,6 +63,7 @@ export class Server {
 		if (!this.serverConfig.host) {
 			const possibleHost = devIp();
 			if (possibleHost) {
+				// eslint-disable-next-line prefer-destructuring
 				this.serverConfig.host = possibleHost[0];
 			}
 		}
@@ -103,7 +106,7 @@ export class Server {
 			);
 		}
 
-		// tslint:disable:no-object-literal-type-assertion
+		// eslint-disable-next-line @typescript-eslint/no-object-literal-type-assertion
 		const devMiddleware = webpackDevMiddleware(compiler, {
 			stats: false,
 			publicPath: this.webpackConfig.getPublicPath(),
@@ -246,10 +249,11 @@ export class Server {
 		});
 
 		// On compile start
-		invalid.tap('wpackio-hot-server', com => {
+		invalid.tap('wpackio-hot-server', () => {
 			this.callbacks.invalid();
 		});
 	};
+
 	/**
 	 * Stop the server and clean up all processes.
 	 */

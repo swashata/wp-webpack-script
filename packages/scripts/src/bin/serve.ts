@@ -1,14 +1,11 @@
 import chalk from 'chalk';
-import figures from 'figures';
 import logSymbols from 'log-symbols';
 import ora from 'ora';
 import path from 'path';
-import PrettyError from 'pretty-error';
 import clearConsole from 'react-dev-utils/clearConsole';
 import formatWebpackMessages from 'react-dev-utils/formatWebpackMessages';
 import webpack from 'webpack';
 import { getProjectAndServerConfig } from '../config/getProjectAndServerConfig';
-import { WpackioError } from '../errors/WpackioError';
 import { Server } from '../scripts/Server';
 import { ProgramOptions } from './index';
 import {
@@ -77,7 +74,7 @@ export function serve(options: ProgramOptions | undefined): void {
 				// Show message that we are compiling
 				spinner.start(`compiling changes${watchEllipsis}`);
 			},
-			done: stats => {
+			done: () => {
 				spinner.stop();
 				clearConsole();
 				serverInfo(server.getServerUrl(), server.getBsUiUrl());
@@ -138,21 +135,19 @@ export function serve(options: ProgramOptions | undefined): void {
 							'failed to compile'
 						)}\n`
 					);
+				} else if (stats.hasWarnings()) {
+					console.log(
+						`${logSymbols.warning} ${chalk.dim(
+							'compiled with warnings...'
+						)}\n`
+					);
+					messages.warnings.forEach(e => console.log(e));
 				} else {
-					if (stats.hasWarnings()) {
-						console.log(
-							`${logSymbols.warning} ${chalk.dim(
-								'compiled with warnings...'
-							)}\n`
-						);
-						messages.warnings.forEach(e => console.log(e));
-					} else {
-						console.log(
-							`${logSymbols.success} ${chalk.dim(
-								'compiled successfully'
-							)}\n`
-						);
-					}
+					console.log(
+						`${logSymbols.success} ${chalk.dim(
+							'compiled successfully'
+						)}\n`
+					);
 				}
 				console.log(
 					`${watchSymbol} watching for changes${watchEllipsis}`

@@ -19,9 +19,13 @@ export interface WpackConfig {
  */
 export class CreateWebpackConfig {
 	private projectConfig: ProjectConfig;
+
 	private serverConfig: ServerConfig;
+
 	private cwd: string;
+
 	private isDev: boolean;
+
 	private publicPath: string;
 
 	/**

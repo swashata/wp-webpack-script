@@ -3,7 +3,7 @@ import logSymbols from 'log-symbols';
 import ora from 'ora';
 import path from 'path';
 import { getProjectConfig } from '../config/getProjectAndServerConfig';
-import { Callbacks, Pack } from '../scripts/Pack';
+import { Pack } from '../scripts/Pack';
 import { ProgramOptions } from './index';
 import {
 	endPackInfo,

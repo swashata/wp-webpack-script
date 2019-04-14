@@ -45,9 +45,13 @@ export interface ProjectDependencies {
 
 class InitResolve {
 	public configured: 'project' | 'server';
+
 	public projectConfigContext?: ProjectConfigContext;
+
 	public serverConfigContext?: ServerConfigContext;
+
 	public deps?: ProjectDependencies;
+
 	constructor(
 		configured: 'project' | 'server',
 		serverConfigContext?: ServerConfigContext,
@@ -63,10 +67,15 @@ class InitResolve {
 
 export class Bootstrap {
 	private cwd: string;
+
 	private projectConfigPath: string;
+
 	private serverConfigPath: string;
+
 	private packageJsonPath: string;
+
 	private pkg: Pkg;
+
 	private version: string;
 
 	constructor(cwd: string, version: string) {
@@ -76,7 +85,7 @@ export class Bootstrap {
 		this.serverConfigPath = path.resolve(this.cwd, 'wpackio.server.js');
 		this.packageJsonPath = path.resolve(this.cwd, './package.json');
 		try {
-			// tslint:disable-next-line:non-literal-require
+			// eslint-disable-next-line global-require
 			const pkg = require(this.packageJsonPath) as Pkg;
 			this.pkg = pkg;
 		} catch (e) {
@@ -97,30 +106,23 @@ export class Bootstrap {
 				return Promise.reject(
 					new Error('project is already bootstrapped.')
 				);
-			} else {
-				// Configure the server
-				const serverContext = await this.initServerConfig();
-				return Promise.resolve(
-					new InitResolve('server', serverContext)
-				);
 			}
-		} else {
-			// When project config is not present, we don't care about other stuff
-			// We will override them. So call everything
-			const projectContext = await this.initProjectConfig();
+			// Configure the server
 			const serverContext = await this.initServerConfig();
-			const deps = this.configureScripts(projectContext);
-			this.initSharedConfigFiles();
-			return Promise.resolve(
-				new InitResolve('project', serverContext, projectContext, deps)
-			);
+			return Promise.resolve(new InitResolve('server', serverContext));
 		}
+		// When project config is not present, we don't care about other stuff
+		// We will override them. So call everything
+		const projectContext = await this.initProjectConfig();
+		const serverContext = await this.initServerConfig();
+		const deps = this.configureScripts(projectContext);
+		this.initSharedConfigFiles();
+		return Promise.resolve(
+			new InitResolve('project', serverContext, projectContext, deps)
+		);
 	}
 
-	/**
-	 * Create project config file and return user provided context.
-	 */
-	private async initProjectConfig(): Promise<ProjectConfigContext> {
+	public async getUserInput(): Promise<inquirer.Answers> {
 		const questions: inquirer.Question[] = [
 			// Ask type (if style.css present, then theme)
 			{
@@ -180,10 +182,18 @@ export class Bootstrap {
 			},
 		];
 
+		return inquirer.prompt(questions);
+	}
+
+	/**
+	 * Create project config file and return user provided context.
+	 */
+	private async initProjectConfig(): Promise<ProjectConfigContext> {
 		// Return the resolved inquirer for further processing
-		return inquirer.prompt(questions).then(answers => {
+		return this.getUserInput().then(answers => {
 			let author = '';
 			if (typeof this.pkg.author === 'string') {
+				// eslint-disable-next-line prefer-destructuring
 				author = this.pkg.author;
 			} else if (typeof this.pkg.author === 'object') {
 				author = `${this.pkg.author.name} (${this.pkg.author.email}) <${
@@ -287,7 +297,7 @@ module.exports = {
 		projectContext: ProjectConfigContext
 	): ProjectDependencies {
 		const packageFileData: Pkg = this.fileExists(this.packageJsonPath)
-			? // tslint:disable-next-line:non-literal-require
+			? // eslint-disable-next-line global-require
 			  require(this.packageJsonPath)
 			: {
 					name: projectContext.appName,
@@ -359,9 +369,8 @@ module.exports = {
 		} catch (e) {
 			if (e.code === 'ENOENT') {
 				return false;
-			} else {
-				throw e;
 			}
+			throw e;
 		}
 	}
 }

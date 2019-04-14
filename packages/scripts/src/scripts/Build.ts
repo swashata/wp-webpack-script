@@ -2,16 +2,14 @@ import formatWebpackMessages from 'react-dev-utils/formatWebpackMessages';
 import webpack from 'webpack';
 import { CreateWebpackConfig } from '../config/CreateWebpackConfig';
 import { ProjectConfig } from '../config/project.config.default';
-import {
-	ServerConfig,
-	serverConfigDefault,
-} from '../config/server.config.default';
+import { serverConfigDefault } from '../config/server.config.default';
 
 /**
  * Create production ready files.
  */
 export class Build {
 	private projectConfig: ProjectConfig;
+
 	private cwd: string;
 
 	constructor(projectConfig: ProjectConfig, cwd: string) {
