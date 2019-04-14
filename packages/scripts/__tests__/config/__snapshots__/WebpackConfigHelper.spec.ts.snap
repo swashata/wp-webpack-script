@@ -179,15 +179,22 @@ Array [
     },
   },
   CleanWebpackPlugin {
-    "options": Object {
-      "allowExternal": false,
-      "dry": false,
-      "root": "/foo/bar",
-      "verbose": false,
-    },
-    "paths": Array [
-      "/foo/bar/dist/config1",
+    "apply": [Function],
+    "cleanAfterEveryBuildPatterns": Array [],
+    "cleanOnceBeforeBuildPatterns": Array [
+      "**/*",
     ],
+    "cleanStaleWebpackAssets": true,
+    "currentAssets": Array [],
+    "dangerouslyAllowCleanPatternsOutsideProject": false,
+    "dry": false,
+    "handleDone": [Function],
+    "handleInitial": [Function],
+    "initialClean": false,
+    "outputPath": "",
+    "protectWebpackAssets": true,
+    "removeFiles": [Function],
+    "verbose": false,
   },
   MiniCssExtractPlugin {
     "options": Object {
@@ -238,15 +245,22 @@ Array [
     },
   },
   CleanWebpackPlugin {
-    "options": Object {
-      "allowExternal": false,
-      "dry": false,
-      "root": "/foo/bar",
-      "verbose": false,
-    },
-    "paths": Array [
-      "/foo/bar/dist/config1",
+    "apply": [Function],
+    "cleanAfterEveryBuildPatterns": Array [],
+    "cleanOnceBeforeBuildPatterns": Array [
+      "**/*",
     ],
+    "cleanStaleWebpackAssets": true,
+    "currentAssets": Array [],
+    "dangerouslyAllowCleanPatternsOutsideProject": false,
+    "dry": false,
+    "handleDone": [Function],
+    "handleInitial": [Function],
+    "initialClean": false,
+    "outputPath": "",
+    "protectWebpackAssets": true,
+    "removeFiles": [Function],
+    "verbose": false,
   },
   MiniCssExtractPlugin {
     "options": Object {

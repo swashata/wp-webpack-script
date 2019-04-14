@@ -257,9 +257,11 @@ export class WebpackConfigHelper {
 				},
 			}),
 			// Clean dist directory
-			new CleanWebpackPlugin([`${this.outputPath}/${this.appDir}`], {
-				root: this.cwd,
+			new CleanWebpackPlugin({
 				verbose: false,
+				cleanAfterEveryBuildPatterns: `${this.outputPath}/${
+					this.appDir
+				}`,
 			}),
 			// Initiate mini css extract
 			new MiniCssExtractPlugin({

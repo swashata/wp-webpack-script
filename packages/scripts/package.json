@@ -52,7 +52,6 @@
 		"css-loader": "^2.1.1",
 		"del": "^4.1.0",
 		"dev-ip": "^1.0.1",
-		"enquirer": "^2.3.0",
 		"execa": "^1.0.0",
 		"figlet": "^1.2.1",
 		"figures": "^2.0.0",
@@ -94,7 +93,8 @@
 		"type-check:watch": "yarn type-check --watch",
 		"build:js": "babel ./src --out-dir lib --extensions '.ts,.tsx'",
 		"build:types": "tsc --emitDeclarationOnly",
-		"build": "yarn clean && yarn build:types && yarn build:js",
+    "build": "yarn clean && yarn build:types && yarn build:js",
+    "build:watch": "yarn clean && yarn build:js --watch",
 		"lint": "eslint src --ext='.ts,.js'",
 		"test": "jest --color",
 		"prepare": "cross-env NODE_ENV=production yarn build"
