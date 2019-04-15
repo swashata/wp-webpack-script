@@ -34,7 +34,7 @@ export function getDefaultBabelPresetOptions(
  * @param defaults Default options for @wpackio/babel-preset-base.
  * @param options User defined options for @wpackio/babel-preset-base.
  */
-export function getBabelPresetOptions(
+export function overrideBabelPresetOptions(
 	defaults: PresetOptions,
 	options: PresetOptions | undefined
 ): PresetOptions {
@@ -50,20 +50,16 @@ export function getBabelPresetOptions(
 export type typelang = 'flow' | 'typescript';
 
 /**
- * Get Babel configuration for compiling JavaScript or TypeScript files.
+ * Get Babel Presets for compiling JavaScript or TypeScript files.
  *
- * @param babelOptions Default babel options.
- * @param userOptions User defined babel options as read from wpackio.config.js file.
+ * @param presetOptions Options for `@wpackio/base`.
  * @param typeChecker Whether to include preset for 'flow' or 'typescript'. Leave `undefined` to ignore both.
  */
-export function getBabelConfig(
-	babelOptions: PresetOptions,
-	userOptions: PresetOptions | undefined,
+export function getBabelPresets(
+	presetOptions: PresetOptions,
 	typeChecker?: typelang
 ): babelPreset[] {
-	const babelConfig: babelPreset[] = [
-		['@wpackio/base', getBabelPresetOptions(babelOptions, userOptions)],
-	];
+	const babelConfig: babelPreset[] = [['@wpackio/base', presetOptions]];
 
 	// If we have flow then push the preset
 	if (typeChecker === 'flow') {

@@ -4,8 +4,8 @@
 // Expose all needed config functions, classes and interfaces
 export {
 	typelang,
-	getBabelConfig,
-	getBabelPresetOptions,
+	getBabelPresets,
+	overrideBabelPresetOptions,
 	getDefaultBabelPresetOptions,
 } from './config/babelConfig';
 

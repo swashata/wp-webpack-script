@@ -12,7 +12,7 @@ import TimeFixPlugin from 'time-fix-plugin';
 import webpack from 'webpack';
 import WebpackAssetsManifest from 'webpack-assets-manifest';
 import { WpackioError } from '../errors/WpackioError';
-import { getBabelConfig } from './babelConfig';
+import { getBabelPresets, overrideBabelPresetOptions } from './babelConfig';
 import {
 	BannerConfig,
 	FileConfig,
@@ -375,10 +375,13 @@ ${bannerConfig.copyrightText}${bannerConfig.credit ? creditNote : ''}`,
 				},
 			};
 		}
+
 		// create the babel rules for es6+ code
-		const jsPresets: babelPreset[] = getBabelConfig(
-			wpackioBabelOptions,
-			this.config.jsBabelPresetOptions,
+		const jsPresets: babelPreset[] = getBabelPresets(
+			overrideBabelPresetOptions(
+				wpackioBabelOptions,
+				this.config.jsBabelPresetOptions
+			),
 			hasFlow ? 'flow' : undefined
 		);
 
@@ -406,9 +409,11 @@ ${bannerConfig.copyrightText}${bannerConfig.credit ? creditNote : ''}`,
 		};
 
 		// create the babel rules for typescript code
-		const tsPresets: babelPreset[] = getBabelConfig(
-			wpackioBabelOptions,
-			this.config.tsBabelPresetOptions,
+		const tsPresets: babelPreset[] = getBabelPresets(
+			overrideBabelPresetOptions(
+				wpackioBabelOptions,
+				this.config.tsBabelPresetOptions
+			),
 			'typescript'
 		);
 
