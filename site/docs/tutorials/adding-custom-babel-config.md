@@ -41,7 +41,7 @@ Note that when doing this, you will lose the built-in abilities for react, types
 etc. Because internally `@wpackio/scripts` passes the needed babel options to
 `babel-loader` to parse and compile those files.
 
-However you can easily achieve the same with the `getBabelPresets` [node.js API](../apis/node-api.md).
+However you can easily achieve the same with the `getBabelPresets` [node.js API](/apis/node-api/).
 Your `babel.config.js` file may look like this.
 
 ```js

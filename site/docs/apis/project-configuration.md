@@ -243,7 +243,7 @@ wpackio-scripts knowingly avoids any `babel.config.js` and `.babelrc` file from
 `babel-loader`. If you wish to avoid this behavior and want to be in control
 of babel configuration, set this option to true.
 
-More information about it can be [read here](../tutorials/adding-custom-babel-config.md).
+More information about it can be [read here](/tutorials/adding-custom-babel-config/).
 
 ## `jsBabelPresetOptions` (`object`) | `tsBabelPresetOptions` (`object`)
 
