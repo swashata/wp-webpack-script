@@ -72,6 +72,7 @@ interface Package {
 interface ProgramOption {
 	client?: string;
 }
+// eslint-disable-next-line global-require
 const pkg = require('../package.json') as Package;
 
 program
@@ -138,7 +139,7 @@ program
 			console.log(`${symSucc} added dependencies`);
 		}
 		console.log(`${symInfo} adding scripts`);
-		// tslint:disable-next-line:non-literal-require
+		// eslint-disable-next-line global-require
 		const pkgJson = require(pkgJsonPath) as Package;
 		pkgJson.scripts = pkgJson.scripts || {};
 		if (pkgJson.scripts) {

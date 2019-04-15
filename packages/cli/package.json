@@ -21,7 +21,8 @@
   "dependencies": {
     "chalk": "2.4.2",
     "commander": "2.20.0",
-    "shelljs": "0.8.3"
+    "shelljs": "0.8.3",
+    "@types/shelljs": "0.8.4"
   },
   "engines": {
     "node": ">=8.9.0"
@@ -36,15 +37,13 @@
     "build:js": "babel ./src --out-dir lib --extensions '.ts,.tsx'",
     "build:types": "tsc --emitDeclarationOnly",
     "build": "yarn clean && yarn build:types && yarn build:js",
-    "lint": "tslint --project './tsconfig.json'",
+    "lint": "eslint src --ext='.ts,.js'",
     "prepare": "cross-env NODE_ENV=production yarn build"
   },
   "publishConfig": {
     "access": "public"
   },
   "devDependencies": {
-    "@types/find-up": "2.1.1",
-    "@types/node": "11.13.4",
-    "@types/shelljs": "0.8.4"
+    "@wpackio/eslint-config": "0.0.1"
   }
 }
