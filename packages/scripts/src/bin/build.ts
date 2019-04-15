@@ -2,6 +2,7 @@ import chalk from 'chalk';
 import logSymbols from 'log-symbols';
 import ora from 'ora';
 import path from 'path';
+import clearConsole from 'react-dev-utils/clearConsole';
 import { getProjectConfig } from '../config/getProjectAndServerConfig';
 import { Build } from '../scripts/Build';
 import { ProgramOptions } from './index';
@@ -58,6 +59,7 @@ export function build(options: ProgramOptions | undefined): void {
 				} else {
 					spinner.warn(`${wpackLogoSmall} build warnings.`);
 				}
+				clearConsole();
 				console.log(log);
 				endBuildInfo();
 				process.exit(0);

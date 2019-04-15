@@ -2,7 +2,6 @@ import archiver from 'archiver';
 import boxen from 'boxen';
 import chalk from 'chalk';
 import { ProgressData } from 'cpy';
-import figlet from 'figlet';
 import figures from 'figures';
 import findUp from 'find-up';
 import gradient from 'gradient-string';
@@ -12,15 +11,20 @@ import PrettyError from 'pretty-error';
 import { WpackioError } from '../errors/WpackioError';
 import { ArchiveResolve } from '../scripts/Pack';
 
+const pkgPath = path.resolve(__dirname, '../../package.json');
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const pkg = require(pkgPath);
+
 let isYarnCache: boolean | null = null;
 
-export const wpackLogo = gradient.instagram.multiline(
-	figlet.textSync('wpack.io', {
-		font: 'Big',
-		horizontalLayout: 'full',
-		verticalLayout: 'full',
-	})
-);
+export const wpackLogo = `${gradient.instagram(`__      __`)}
+${gradient.instagram(`\\ \\ /\\ / /`)} ${chalk.bold(
+	gradient.instagram('PACK.IO')
+)}
+${gradient.instagram(` \\ V  V /`)}  ${chalk.yellowBright(
+	'JavaScript'
+)} tool for ${chalk.blueBright('WordPress')}
+${gradient.instagram(`  \\_/\\_/`)}   ${chalk.bold.magenta(`v${pkg.version}`)}`;
 
 export const watchSymbol = '👀';
 export const watchEllipsis = chalk.dim(figures.ellipsis);
@@ -31,14 +35,7 @@ export const wpackLogoSmall = gradient.instagram('wpack.io');
 
 export const wpackLink = `${chalk.blue.underline('https://wpack.io')}`;
 
-export const wpackIntro = `\n${boxen(wpackLogo, {
-	borderStyle: 'round',
-	borderColor: 'magenta',
-	float: 'center',
-	align: 'center',
-	padding: 1,
-	dimBorder: true,
-})}\n`;
+export const wpackIntro = `${wpackLogo}\n`;
 
 export function isYarn(): boolean {
 	const cwd = process.cwd();
@@ -87,11 +84,10 @@ export function resolveCWD(
 
 export function serverInfo(url: string, uiUrl: string | boolean): void {
 	const msg = `${wpackLogoSmall} server is running ${chalk.redBright('hot')}.
-You can now view it in your browser.
 
-    ${bulletSymbol} ${chalk.bold(
-		'Network address:'
-	)} visit ${chalk.blue.underline(url)}.
+    ${bulletSymbol} ${chalk.bold('Network address:')} ${chalk.blue.underline(
+		url
+	)}.
     ${bulletSymbol} ${chalk.bold('BrowserSync UI:')} ${
 		typeof uiUrl === 'string'
 			? chalk.blue.underline(uiUrl)
@@ -104,7 +100,6 @@ You can now view it in your browser.
     ${bulletSymbol} ${chalk.bold('Enqueue Assets:')} visit ${wpackLink}.
 
 No files are written on disk during ${chalk.cyan('development')} mode.
-
 To create production build, run ${chalk.yellow(
 		isYarn() ? 'yarn build' : 'npm run build'
 	)}.`;
@@ -120,7 +115,6 @@ To create production build, run ${chalk.yellow(
 }
 
 export function endServeInfo(): void {
-	console.log('\n');
 	const msg = `${wpackLogoSmall} server has been ${chalk.redBright(
 		'stopped'
 	)}.
@@ -133,19 +127,19 @@ export function endServeInfo(): void {
 Thank you for using ${wpackLink}.
 To spread the ${chalk.red(figures.heart)} please tweet.`;
 
-	console.log(
-		boxen(msg, {
-			padding: 1,
-			borderColor: 'cyan',
-			align: 'left',
-			float: 'left',
-			borderStyle: 'round',
-		})
-	);
+	console.log(msg);
+	// console.log(
+	// 	boxen(msg, {
+	// 		padding: 1,
+	// 		borderColor: 'cyan',
+	// 		align: 'left',
+	// 		float: 'left',
+	// 		borderStyle: 'round',
+	// 	})
+	// );
 }
 
 export function endBuildInfo(): void {
-	console.log('\n');
 	const msg = `${wpackLogoSmall} production build was ${chalk.green(
 		'successful'
 	)}.
@@ -171,7 +165,6 @@ To spread the ${chalk.red(figures.heart)} please tweet.`;
 }
 
 export function endBootstrapInfo(): void {
-	console.log('\n');
 	const msg = `${wpackLogoSmall} was ${chalk.green(
 		'successfully'
 	)} integrated within your project.

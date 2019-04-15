@@ -16,6 +16,7 @@ import {
 	watchEllipsis,
 	watchSymbol,
 	wpackLogoSmall,
+	printIntro,
 } from './utils';
 
 /**
@@ -161,6 +162,8 @@ export function serve(options: ProgramOptions | undefined): void {
 			console.log('');
 			console.log(`${logSymbols.error} shutting down development server`);
 			server.stop();
+			clearConsole();
+			printIntro();
 			endServeInfo();
 			process.exit(0);
 		};

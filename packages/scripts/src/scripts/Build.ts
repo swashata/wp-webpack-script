@@ -45,7 +45,7 @@ export class Build {
 							colors: true,
 							assets: true,
 							chunks: false,
-							entrypoints: true,
+							entrypoints: false,
 							hash: false,
 							version: false,
 							modules: false,

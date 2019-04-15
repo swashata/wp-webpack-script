@@ -9,6 +9,7 @@
 import program from 'commander';
 import process from 'process';
 import { Bootstrap } from '../scripts/Bootstrap';
+import { printIntro } from './utils';
 
 program
 	.command('bootstrap')
@@ -17,6 +18,13 @@ program
 		const bs = new Bootstrap(process.cwd(), '0.0.0-dev');
 		const answer = await bs.getUserInput();
 		console.log(JSON.stringify(answer, null, 4));
+	});
+
+program
+	.command('intro')
+	.description('Check CLI intro')
+	.action(() => {
+		printIntro();
 	});
 
 program.parse(process.argv);
