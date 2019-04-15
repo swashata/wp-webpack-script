@@ -93,8 +93,8 @@
 		"type-check:watch": "yarn type-check --watch",
 		"build:js": "babel ./src --out-dir lib --extensions '.ts,.tsx'",
 		"build:types": "tsc --emitDeclarationOnly",
-    "build": "yarn clean && yarn build:types && yarn build:js",
-    "build:watch": "yarn clean && yarn build:js --watch",
+		"build": "yarn clean && yarn build:types && yarn build:js",
+		"build:watch": "yarn clean && yarn build:js --watch",
 		"lint": "eslint src --ext='.ts,.js'",
 		"test": "jest --color",
 		"prepare": "cross-env NODE_ENV=production yarn build"
@@ -103,6 +103,7 @@
 		"access": "public"
 	},
 	"devDependencies": {
+		"@wpackio/eslint-config": "0.0.1",
 		"dts-gen": "0.5.7",
 		"fork-ts-checker-webpack-plugin": "1.0.2"
 	}

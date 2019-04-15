@@ -4,6 +4,7 @@
 // <https://github.com/amwmedia/plop>
 // Get the defaults from package.json
 const pkg = require('./package.json');
+const eslintPkg = require('./packages/eslint-config/package.json');
 
 module.exports = plop => {
 	// Add new package
@@ -34,6 +35,9 @@ module.exports = plop => {
 				type: 'add',
 				path: 'packages/{{kebabCase name}}/package.json',
 				templateFile: 'plop-templates/package/package.json.hbs',
+				data: {
+					eslintVersion: eslintPkg.version,
+				}
 			},
 			// Add src
 			{
@@ -70,11 +74,17 @@ module.exports = plop => {
 				path: 'packages/{{kebabCase name}}/tsconfig.json',
 				templateFile: 'plop-templates/package/tsconfig.json.hbs',
 			},
-			// Add tslint.json
+			// Add .eslintrc.js
 			{
 				type: 'add',
-				path: 'packages/{{kebabCase name}}/tslint.json',
-				templateFile: 'plop-templates/package/tslint.json.hbs',
+				path: 'packages/{{kebabCase name}}/.eslintrc.js',
+				templateFile: 'plop-templates/package/.eslintrc.js.hbs',
+			},
+			// Add .eslintignore
+			{
+				type: 'add',
+				path: 'packages/{{kebabCase name}}/.eslintignore',
+				templateFile: 'plop-templates/package/.eslintignore.hbs',
 			},
 		],
 	});
