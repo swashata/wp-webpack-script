@@ -12,6 +12,8 @@
     "cssnano": "^4.1.10",
     "fork-ts-checker-webpack-plugin": "^1.0.2",
     "node-sass": "^4.11.0",
+    "svgo": "^1.2.1",
+    "svgo-loader": "^2.2.0",
     "typescript": "^3.4.3"
   },
   "scripts": {

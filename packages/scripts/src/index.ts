@@ -39,6 +39,13 @@ export {
 	serverConfigDefault,
 } from './config/server.config.default';
 
+export {
+	getFileLoaderForJsAndStyleAssets,
+	getFileLoaderOptions,
+	issuerForNonStyleFiles,
+	issuerForStyleFiles,
+} from './config/fileLoader';
+
 // Expose all needed script classes
 export { Build } from './scripts/Build';
 

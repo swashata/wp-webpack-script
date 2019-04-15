@@ -12,3 +12,7 @@ body {
 	background: url('./image.png') no-repeat top left;
 	background-size: 100px 70px;
 }
+.hentry {
+	background: url('./svg.svg') no-repeat top left;
+	background-size: 100px 70px;
+}

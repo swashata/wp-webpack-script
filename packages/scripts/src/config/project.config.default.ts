@@ -35,7 +35,9 @@ export interface FileConfig {
 		| webpack.Configuration
 		| ((
 				config: webpack.Configuration,
-				api: merge
+				api: merge,
+				appDir: string,
+				isDev: boolean
 		  ) => webpack.Configuration);
 }
 

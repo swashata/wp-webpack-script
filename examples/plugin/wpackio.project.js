@@ -1,3 +1,6 @@
+// include a few node-js APIs
+const { getFileLoaderOptions, issuerForNonStyleFiles, issuerForStyleFiles } = require('@wpackio/scripts');
+
 module.exports = {
 	// Project Identity
 	appName: 'wpackplugin', // Unique name of your project
@@ -24,7 +27,53 @@ module.exports = {
 				mobile: ['./src/app/mobile.js'],
 			},
 			// Extra webpack config to be passed directly
-			webpackConfig: undefined,
+			webpackConfig: (config, api, appDir, isDev) => {
+				const svgoLoader = {
+					loader: 'svgo-loader',
+					options: {
+						plugins: [
+							{ removeTitle: true },
+							{ convertColors: { shorthex: false } },
+							{ convertPathData: false },
+						],
+					},
+				};
+				// create module rules
+				const configWithSvg = {
+					module: {
+						rules: [
+							// SVGO Loader
+							// https://github.com/rpominov/svgo-loader
+							// This rule handles SVG for javascript files
+							{
+								test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+								use: [
+									{
+										loader: 'file-loader',
+										options: getFileLoaderOptions(appDir, isDev, false),
+									},
+									svgoLoader,
+								],
+								issuer: issuerForNonStyleFiles,
+							},
+							// This rule handles SVG for style files
+							{
+								test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+								use: [
+									{
+										loader: 'file-loader',
+										options: getFileLoaderOptions(appDir, isDev, true),
+									},
+									svgoLoader,
+								],
+								issuer: issuerForStyleFiles,
+							},
+						]
+					}
+				};
+				// merge the new module.rules with webpack-merge api
+				return api(config, configWithSvg);
+			},
 		},
 		// If has more length, then multi-compiler
 		{

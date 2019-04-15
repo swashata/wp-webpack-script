@@ -1,9 +1,11 @@
 import './index.css';
 import imgURL from './image.png';
 import logger from './modules/logger';
+import svgURL from './svg.svg';
 
 console.log('Heres an URL of dynamically imported asset.');
 console.log(imgURL);
+console.log(svgURL);
 
 console.log('I can not be hot-reloaded!');
 console.log('But my imports can be😉!@');

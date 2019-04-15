@@ -198,7 +198,12 @@ export class CreateWebpackConfig {
 		if (file.webpackConfig != null) {
 			// If it is a function
 			if (typeof file.webpackConfig === 'function') {
-				config = file.webpackConfig(config, webpackMerge);
+				config = file.webpackConfig(
+					config,
+					webpackMerge,
+					helper.getAppDir(),
+					this.isDev
+				);
 			} else {
 				config = webpackMerge(config, file.webpackConfig);
 			}

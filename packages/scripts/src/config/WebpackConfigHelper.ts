@@ -21,6 +21,7 @@ import {
 	webpackOptionsOverrideFunction,
 } from './project.config.default';
 import { ServerConfig } from './server.config.default';
+import { getFileLoaderForJsAndStyleAssets } from './fileLoader';
 
 interface NormalizedEntry {
 	[x: string]: string[];
@@ -487,42 +488,10 @@ ${bannerConfig.copyrightText}${bannerConfig.credit ? creditNote : ''}`,
 			});
 		}
 		// create file rules
-		// But use relativePath for style type resources like sass, scss or css
-		// This is needed because we can't know the absolute publicPath
-		// of CSS imported assets.
-		const fileLoaderTest = /\.(woff|woff2|eot|ttf|otf|png|jpg|gif)(\?v=\d+\.\d+\.\d+)?$/;
-		const fileLoaderOptions = {
-			name: `[name]-[hash:8].[ext]`,
-			outputPath: `${this.appDir}/assets/`,
-		};
-		const fileRulesNonStyle: webpack.RuleSetRule = {
-			test: fileLoaderTest,
-			use: [
-				{
-					loader: 'file-loader',
-					options: {
-						...fileLoaderOptions,
-					},
-				},
-			],
-			issuer: location => !/\.(sa|sc|c)ss$/.test(location),
-		};
-		const fileRulesStyle: webpack.RuleSetRule = {
-			test: fileLoaderTest,
-			use: [
-				{
-					loader: 'file-loader',
-					options: {
-						...fileLoaderOptions,
-						// Here mention the public path relative to the css
-						// file directory, but only during production mode
-						// for development mode, it is still undefined
-						publicPath: this.isDev ? undefined : `assets/`,
-					},
-				},
-			],
-			issuer: location => /\.(sa|sc|c)ss$/.test(location),
-		};
+		const {
+			fileRulesNonStyle,
+			fileRulesStyle,
+		} = getFileLoaderForJsAndStyleAssets(this.appDir, this.isDev);
 
 		return {
 			rules: [
@@ -633,5 +602,12 @@ ${bannerConfig.copyrightText}${bannerConfig.credit ? creditNote : ''}`,
 		} catch (_) {
 			return false;
 		}
+	}
+
+	/**
+	 * Get calculated app directory
+	 */
+	public getAppDir(): string {
+		return this.appDir;
 	}
 }
