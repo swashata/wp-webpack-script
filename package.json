@@ -30,10 +30,6 @@
     "plop": "2.3.0",
     "prettier": "1.17.0",
     "rimraf": "2.6.3",
-    "tslint": "5.15.0",
-    "tslint-config-prettier": "1.18.0",
-    "tslint-microsoft-contrib": "6.1.1",
-    "tslint-plugin-prettier": "2.0.1",
     "typescript": "3.4.3"
   },
   "scripts": {
