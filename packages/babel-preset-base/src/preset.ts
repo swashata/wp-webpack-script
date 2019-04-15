@@ -21,6 +21,7 @@ export interface PossiblePlugins {
 	[x: string]: singleBabelPlugin;
 }
 
+// eslint-disable-next-line @typescript-eslint/prefer-interface
 export type babelPresetConfiguration = {
 	[x: string]: boolean | string | babelPresetConfiguration;
 };
