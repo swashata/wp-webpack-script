@@ -18,6 +18,9 @@
   "dependencies": {
     "@types/webpack-env": "^1.13.9"
   },
+  "devDependencies": {
+    "@wpackio/eslint-config": "0.0.1"
+  },
   "engines": {
     "node": ">=8.9.0"
   },
@@ -31,7 +34,7 @@
     "build:js": "babel ./src --out-dir lib --extensions '.ts,.tsx'",
     "build:types": "tsc --emitDeclarationOnly",
     "build": "yarn clean && yarn build:types && yarn build:js",
-    "lint": "tslint --project './tsconfig.json'",
+    "lint": "eslint src --ext='.ts,.js'",
     "test": "jest --color",
     "prepare": "cross-env NODE_ENV=production yarn build"
   },
