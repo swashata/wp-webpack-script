@@ -81,6 +81,8 @@ module.exports = {
 	optimizeSplitChunks: true,
 	// Usually PHP and other files to watch and reload when changed
 	watch: 'inc/**/*.php',
+	// Use babel.config.js instead of built-in options
+	useBabelConfig: false;
 	// Hook into babeloverride so that we can add react-hot-loader plugin
 	jsBabelOverride: defaults => ({
 		...defaults,
@@ -234,6 +236,14 @@ Where you need support for sass/scss files. You need to install `node-sass` or
 ## `hasFlow` (`boolean`):
 
 Whether you need support for [flowtype](https://flow.org/).
+
+## `useBabelConfig` (`boolean`)
+
+wpackio-scripts knowingly avoids any `babel.config.js` and `.babelrc` file from
+`babel-loader`. If you wish to avoid this behavior and want to be in control
+of babel configuration, set this option to true.
+
+More information about it can be [read here](../tutorials/adding-custom-babel-config.md).
 
 ## `jsBabelPresetOptions` (`object`) | `tsBabelPresetOptions` (`object`)
 
