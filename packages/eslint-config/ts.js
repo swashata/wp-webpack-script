@@ -12,15 +12,22 @@ const ex = require('./config/extends');
 module.exports = {
 	env,
 	extends: [
-		'plugin:@typescript-eslint/recommended',
-		'plugin:@typescript-eslint/recommended',
 		...ex,
+		'plugin:prettier/recommended',
+		'plugin:@typescript-eslint/recommended',
+		'prettier',
+		'prettier/react',
 		'prettier/@typescript-eslint',
 	],
 	parser: '@typescript-eslint/parser',
 	plugins: ['babel'],
 	rules: {
 		...rules,
+		// turn off react prop-types because we will be using typescript
+		'react/prop-types': 'off',
+		'react/require-default-props': 'off',
+		'react/default-props-match-prop-types': 'off',
+		'react/no-unused-prop-types': 'off',
 		// typescript specific rules
 		'import/prefer-default-export': 'off',
 		'@typescript-eslint/explicit-function-return-type': 'off',
