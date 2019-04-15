@@ -20,5 +20,3 @@ if (__WPACKIO__) {
 		`__wpackIo${__WPACKIO__.appName}${__WPACKIO__.outputPath}`
 	] as string;
 }
-
-const someFoo = 'foo';

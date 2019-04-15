@@ -1,4 +1,10 @@
-/* eslint-disable import/no-extraneous-dependencies */
-const config = require('@wpquark/eslint-config/prettier.config.js');
-
-module.exports = config;
+module.exports = {
+	useTabs: true,
+	tabWidth: 4,
+	semi: true,
+	singleQuote: true,
+	trailingComma: 'es5',
+	bracketSpacing: true,
+	jsxBracketSameLine: false,
+	arrowParens: 'avoid',
+};
