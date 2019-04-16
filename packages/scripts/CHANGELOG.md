@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.0.0](https://github.com/swashata/wp-webpack-script/compare/v2.13.0...v3.0.0) (2019-04-16)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @types/browser-sync to ^0.0.43 ([1c83c8c](https://github.com/swashata/wp-webpack-script/commit/1c83c8c))
+* **deps:** update dependency @types/inquirer to ^0.0.44 ([e3f26ff](https://github.com/swashata/wp-webpack-script/commit/e3f26ff))
+* **deps:** update dependency del to v4 ([2389279](https://github.com/swashata/wp-webpack-script/commit/2389279))
+* **deps:** update dependency mini-css-extract-plugin to ^0.6.0 ([2e23e1b](https://github.com/swashata/wp-webpack-script/commit/2e23e1b))
+* **plugins:** issue with new version of clean webpack plugin ([b98c1b3](https://github.com/swashata/wp-webpack-script/commit/b98c1b3))
+* **postcss:** add sourcemap to postcss-loader ([afa8e39](https://github.com/swashata/wp-webpack-script/commit/afa8e39))
+* **scripts:** remove unneeded object property ([3deaa1d](https://github.com/swashata/wp-webpack-script/commit/3deaa1d))
+
+
+### Features
+
+* **cli:** improve cli output ([fc7502c](https://github.com/swashata/wp-webpack-script/commit/fc7502c)), closes [#429](https://github.com/swashata/wp-webpack-script/issues/429)
+* add helpers for file-loader ([49bd29c](https://github.com/swashata/wp-webpack-script/commit/49bd29c)), closes [#284](https://github.com/swashata/wp-webpack-script/issues/284)
+* **cli:** improve cli output and logo ([e012ab6](https://github.com/swashata/wp-webpack-script/commit/e012ab6)), closes [#429](https://github.com/swashata/wp-webpack-script/issues/429)
+* add sharable eslint config ([9eb1e2c](https://github.com/swashata/wp-webpack-script/commit/9eb1e2c)), closes [#434](https://github.com/swashata/wp-webpack-script/issues/434)
+* **babel-loader:** option to use babel config from project ([9eac648](https://github.com/swashata/wp-webpack-script/commit/9eac648))
+
+
+
+
+
 # [2.13.0](https://github.com/swashata/wp-webpack-script/compare/v2.12.0...v2.13.0) (2019-02-21)
 
 

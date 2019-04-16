@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.0.0](https://github.com/swashata/wp-webpack-script/compare/v2.13.0...v3.0.0) (2019-04-16)
+
+**Note:** Version bump only for package @wpackio/babel-preset-base
+
+
+
+
+
 # [2.13.0](https://github.com/swashata/wp-webpack-script/compare/v2.12.0...v2.13.0) (2019-02-21)
 
 **Note:** Version bump only for package @wpackio/babel-preset-base
