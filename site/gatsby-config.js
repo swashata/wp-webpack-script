@@ -121,6 +121,19 @@ module.exports = {
 				// see https://github.com/smooth-code/svgr for a list of all options
 			},
 		},
+		// google analytics
+		{
+			resolve: `gatsby-plugin-google-analytics`,
+			options: {
+				trackingId: 'UA-81510319-9',
+				// Puts tracking script in the head instead of the body
+				head: false,
+				// Setting this parameter is optional
+				anonymize: true,
+				// Setting this parameter is also optional
+				respectDNT: true,
+			},
+		},
 		'gatsby-plugin-netlify-cache',
 		// make sure to put last in the array
 		{
