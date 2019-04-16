@@ -26,8 +26,8 @@
 		"archive": "wpackio-scripts pack",
 		"serve": "serve",
 		"cypress:open": "cypress open",
-		"cypress:runapp": "cypress run --record --spec 'cypress/integration/serve/app.spec.js'",
-		"cypress:runprod": "cypress run --record --spec 'cypress/integration/build/prod.spec.js'",
+		"cypress:runapp": "cypress run --spec 'cypress/integration/serve/app.spec.js'",
+		"cypress:runprod": "cypress run --spec 'cypress/integration/build/prod.spec.js'",
 		"wait-for-test-server": "wait-on http://localhost:5000 --timeout 30000",
 		"wait-for-wpackio-server": "wait-on http://127.0.0.1:3000 --timeout 30000",
 		"test": "jest --color"
