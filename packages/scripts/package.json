@@ -9,8 +9,8 @@
 		"browser-sync",
 		"wordpress-bundler"
 	],
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
+	"main": "lib/index.js",
+	"types": "lib/index.d.ts",
 	"bin": {
 		"wpackio-scripts": "lib/bin/index.js"
 	},
@@ -58,7 +58,7 @@
 		"find-up": "^3.0.0",
 		"gradient-string": "^1.2.0",
 		"handlebars": "^4.1.2",
-		"inquirer": "^6.2.2",
+		"inquirer": "^6.3.1",
 		"log-symbols": "^2.2.0",
 		"make-dir": "^3.0.0",
 		"mini-css-extract-plugin": "^0.6.0",

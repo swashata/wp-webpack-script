@@ -19,10 +19,10 @@
   "license": "MIT",
   "private": false,
   "dependencies": {
+    "@types/shelljs": "0.8.5",
     "chalk": "2.4.2",
     "commander": "2.20.0",
-    "shelljs": "0.8.3",
-    "@types/shelljs": "0.8.4"
+    "shelljs": "0.8.3"
   },
   "engines": {
     "node": ">=8.9.0"

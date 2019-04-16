@@ -48,6 +48,9 @@ Your `babel.config.js` file may look like this.
 import { getBabelPresets } from '@wpackio/scripts';
 
 module.exports = api => {
+	// create cache based on NODE_ENV
+	api.cache.using(() => process.env.NODE_ENV);
+
 	const presetOptions = {
 		noDynamicImport: false,
 		noImportMeta: false,
