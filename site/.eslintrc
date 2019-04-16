@@ -1,5 +1,5 @@
 {
-	"extends": "@wpquark",
+	"extends": "@wpackio/eslint-config",
 	"rules": {
 		"react/jsx-filename-extension": "off",
 		"react/prop-types": "off",

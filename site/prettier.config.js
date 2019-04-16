@@ -1,3 +1,2 @@
-const config = require('@wpquark/eslint-config/prettier.config.js');
-
-module.exports = config;
+// eslint-disable-next-line import/no-extraneous-dependencies
+module.exports = require('@wpackio/eslint-config/prettier.config.js');

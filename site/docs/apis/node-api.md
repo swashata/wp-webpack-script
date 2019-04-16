@@ -119,15 +119,21 @@ module.exports = {
 							{
 								test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
 								use: [
-									loader: 'file-loader',
-									options: getFileLoaderOptions(appDir, isDev, false),
+									{
+										loader: 'file-loader',
+										options: getFileLoaderOptions(
+											appDir,
+											isDev,
+											false
+										),
+									},
 								],
 							},
 						],
 					},
 				};
 				return api(config, newRules);
-			}
+			},
 		},
 	],
 };

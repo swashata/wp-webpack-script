@@ -216,6 +216,35 @@ code.
 It can support both webpack configuration objects or function to get further
 control. Kindly read the [_Extending Webpack Config_](/tutorials/extending-webpack-config/) under [tutorials](/tutorials/).
 
+##### Callback Function
+
+The most powerful form is the function. It has the following signature
+
+```ts
+type webpackConfigCallback = (
+	config: webpack.Configuration,
+	api: merge,
+	appDir: string,
+	isDev: boolean
+) => webpack.Configuration;
+```
+
+###### `config` (`webpack.Configuration`)
+
+The configuration calculated by `@wpackio/scripts` is passed as the first parameter.
+
+###### `api` (`merge`)
+
+The [`webpack-merge`](https://github.com/survivejs/webpack-merge) passed as-is.
+
+###### `appDir` (`string`)
+
+Directory inside `outputPath` where all the assets are to be emitted.
+
+###### `isDev` (`boolean`)
+
+Whether the operation is going for development mode or production build.
+
 ## `outputPath` (`string`):
 
 Name of the directory (relative) where we would put the bundled and manifest
