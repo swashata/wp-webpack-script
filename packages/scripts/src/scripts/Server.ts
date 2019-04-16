@@ -106,6 +106,10 @@ export class Server {
 			);
 		}
 
+		// Apply only the done hook for the single/multi compiler
+		// we pass as webpack.Compiler, because ts don't like it otherwise
+		this.addHooks(compiler as webpack.Compiler);
+
 		// eslint-disable-next-line @typescript-eslint/no-object-literal-type-assertion
 		const devMiddleware = webpackDevMiddleware(compiler, {
 			stats: false,
@@ -157,21 +161,17 @@ export class Server {
 				...this.serverConfig.bsOverride,
 			};
 		}
-		bs.init(bsOptions);
 
 		// Open browser on first build
 		devMiddleware.waitUntilValid(stats => {
 			if (!this.firstCompileCompleted) {
-				this.callbacks.firstCompile(stats);
 				this.firstCompileCompleted = true;
+				this.callbacks.firstCompile(stats);
 			}
 			this.openBrowser();
 		});
 
-		// Apply only the done hook for the single/multi compiler
-		// we pass as webpack.Compiler, because ts don't like it otherwise
-		this.addHooks(compiler as webpack.Compiler);
-
+		bs.init(bsOptions);
 		// Watch for user defined files, when it changes, reload
 		// When that change, reload
 		if (this.projectConfig.watch) {
@@ -196,7 +196,6 @@ export class Server {
 	 * Get URL to network IP where the server is alive.
 	 */
 	public getServerUrl(): string {
-		// tslint:disable:no-http-string
 		return `http:${this.webpackConfig.getServerUrl()}`;
 	}
 
@@ -232,6 +231,11 @@ export class Server {
 
 		// Run callbacks on events (taps)
 		done.tap('wpackio-hot-server', stats => {
+			// don't do anything if firstCompile hasn't run
+			if (!this.firstCompileCompleted) {
+				return;
+			}
+
 			const raw = stats.toJson('verbose');
 			const messages = formatWebpackMessages(raw);
 			if (!messages.errors.length && !messages.warnings.length) {

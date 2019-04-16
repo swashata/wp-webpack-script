@@ -1,5 +1,4 @@
 import archiver from 'archiver';
-import boxen from 'boxen';
 import chalk from 'chalk';
 import { ProgressData } from 'cpy';
 import figures from 'figures';
@@ -17,17 +16,62 @@ const pkg = require(pkgPath);
 
 let isYarnCache: boolean | null = null;
 
-export const wpackLogo = `${gradient.instagram(`__      __`)}
-${gradient.instagram(`\\ \\ /\\ / /`)} ${chalk.bold(
+export const wpackLogo = `${chalk.bold(gradient.instagram(`__      __`))}
+${chalk.bold(gradient.instagram(`\\ \\ /\\ / /`))} ${chalk.bold(
 	gradient.instagram('PACK.IO')
 )}
-${gradient.instagram(` \\ V  V /`)}  ${chalk.yellowBright(
+${chalk.bold(gradient.instagram(` \\ V  V /`))}  ${chalk.bold.yellowBright(
 	'JavaScript'
-)} tool for ${chalk.blueBright('WordPress')}
-${gradient.instagram(`  \\_/\\_/`)}   ${chalk.bold.magenta(`v${pkg.version}`)}`;
+)} tooling for ${chalk.bold.blueBright('WordPress')}
+${chalk.bold(gradient.instagram(`  \\_/\\_/`))}   ${chalk.magenta(
+	'v'
+)}${chalk.bold.magenta(`${pkg.version}`)}`;
 
-export const watchSymbol = '👀';
+export function addTimeStampToLog(log: string): string {
+	const date = new Date();
+	return `${chalk.dim(
+		`｢wpack.io ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}｣`
+	)} ${log}`;
+}
+
+export const watchSymbol = `${logSymbols.info}`;
 export const watchEllipsis = chalk.dim(figures.ellipsis);
+
+export function printWatchingMessage() {
+	console.log(
+		addTimeStampToLog(`${watchSymbol} watching for changes${watchEllipsis}`)
+	);
+}
+
+export function printCompilingMessage() {
+	console.log(
+		addTimeStampToLog(
+			`${logSymbols.info} compiling changes${watchEllipsis}`
+		)
+	);
+}
+
+export function printSuccessfullyCompiledMessage() {
+	console.log(
+		addTimeStampToLog(`${logSymbols.success} compiled successfully`)
+	);
+}
+
+export function printCompiledWithWarnMessage() {
+	console.log(
+		addTimeStampToLog(
+			`${logSymbols.warning} ${chalk.dim('compiled with warnings...')}`
+		)
+	);
+}
+
+export function printFailedCompileMEssage() {
+	console.error(
+		addTimeStampToLog(
+			`${logSymbols.error} ${chalk.dim('failed to compile')}`
+		)
+	);
+}
 
 export const bulletSymbol = chalk.magenta(figures.pointer);
 
@@ -83,60 +127,42 @@ export function resolveCWD(
 }
 
 export function serverInfo(url: string, uiUrl: string | boolean): void {
-	const msg = `${wpackLogoSmall} server is running ${chalk.redBright('hot')}.
+	const msg = `${logSymbols.success} ${wpackLogoSmall} server is running at.
 
-    ${bulletSymbol} ${chalk.bold('Network address:')} ${chalk.blue.underline(
-		url
-	)}.
-    ${bulletSymbol} ${chalk.bold('BrowserSync UI:')} ${
+    ${bulletSymbol} ${chalk.blue.underline(url)}
+
+and BrowserSync UI running at
+
+    ${bulletSymbol} ${
 		typeof uiUrl === 'string'
 			? chalk.blue.underline(uiUrl)
 			: chalk.red('N/A')
-	}.
-    ${bulletSymbol} ${chalk.bold('Force Compile:')} press ${chalk.yellow('r')}.
-    ${bulletSymbol} ${chalk.bold('Stop Server:')} press ${chalk.yellow(
-		'Ctrl'
-	)} + ${chalk.yellow('c')} OR ${chalk.yellow('q')}.
-    ${bulletSymbol} ${chalk.bold('Enqueue Assets:')} visit ${wpackLink}.
+	}
 
-No files are written on disk during ${chalk.cyan('development')} mode.
-To create production build, run ${chalk.yellow(
-		isYarn() ? 'yarn build' : 'npm run build'
-	)}.`;
-	console.log(
-		boxen(msg, {
-			padding: 1,
-			borderColor: 'cyan',
-			align: 'left',
-			float: 'left',
-			borderStyle: 'round',
-		})
-	);
+Press ${chalk.yellow('r')} to recompile and ${chalk.yellow('q')} to force quit.
+To create production build, run
+
+    ${bulletSymbol} ${chalk.yellow(isYarn() ? 'yarn build' : 'npm run build')}
+
+${chalk.dim('No files are written on disk during development mode.')}`;
+
+	console.log(msg);
 }
 
 export function endServeInfo(): void {
-	const msg = `${wpackLogoSmall} server has been ${chalk.redBright(
-		'stopped'
-	)}.
+	const msg = `${
+		logSymbols.success
+	} ${wpackLogoSmall} server has been ${chalk.redBright('stopped')}.
+To create production build, run
 
-    ${bulletSymbol} To create production build, run ${chalk.yellow(
-		isYarn() ? 'yarn build' : 'npm run build'
-	)}.
-    ${bulletSymbol} For more info, visit: ${wpackLink}.
+    ${bulletSymbol} ${chalk.yellow(isYarn() ? 'yarn build' : 'npm run build')}.
 
 Thank you for using ${wpackLink}.
-To spread the ${chalk.red(figures.heart)} please tweet.`;
+To spread the ${chalk.red(figures.heart)} please ${chalk.yellowBright(
+		figures.star
+	)} our repo and tweet.`;
 
 	console.log(msg);
-	// console.log(
-	// 	boxen(msg, {
-	// 		padding: 1,
-	// 		borderColor: 'cyan',
-	// 		align: 'left',
-	// 		float: 'left',
-	// 		borderStyle: 'round',
-	// 	})
-	// );
 }
 
 export function endBuildInfo(): void {
@@ -151,17 +177,11 @@ dynamic import and multiple entry-points easily with ${wpackLogoSmall}.
 
     ${bulletSymbol} For more info, visit: ${wpackLink}.
 
-To spread the ${chalk.red(figures.heart)} please tweet.`;
+To spread the ${chalk.red(figures.heart)} please ${chalk.yellowBright(
+		figures.star
+	)} our repo and tweet.`;
 
-	console.log(
-		boxen(msg, {
-			padding: 1,
-			borderColor: 'cyan',
-			align: 'left',
-			float: 'left',
-			borderStyle: 'round',
-		})
-	);
+	console.log(msg);
 }
 
 export function endBootstrapInfo(): void {
@@ -169,14 +189,18 @@ export function endBootstrapInfo(): void {
 		'successfully'
 	)} integrated within your project.
 
-If this is your first run edit your ${chalk.bold.magenta('wpackio.project.js')}
-file and put entrypoints. You will find examples within the file itself.
+If this is your first run edit your ${chalk.bold.magenta(
+		'wpackio.project.js'
+	)} file and put
+entrypoints. You will find examples within the file itself.
 
-You should keep ${chalk.bold.yellow('wpackio.server.js')} outside your VCS
-tracking as it will most likely differ for different users.
+You should keep ${chalk.bold.yellow(
+		'wpackio.server.js'
+	)} outside your VCS tracking
+as it will most likely differ for different users.
 
-You can run ${chalk.dim('bootstrap')} command again and it will just
-create the ${chalk.bold.yellow('wpackio.server.js')} file if not present.
+You can run ${chalk.dim('bootstrap')} command again and it will create the
+${chalk.bold.yellow('wpackio.server.js')} file if not present.
 
     ${bulletSymbol} Start Development: ${chalk.yellow(
 		isYarn() ? 'yarn start' : 'npm start'
@@ -192,21 +216,17 @@ create the ${chalk.bold.yellow('wpackio.server.js')} file if not present.
 	)}.
     ${bulletSymbol} For more info, visit: ${wpackLink}.
 
-To enqueue the assets within your plugin or theme, make sure you have
-the ${chalk.yellow('wpackio/enqueue')} from packagist.org/composer
-and follow the intructions from documentation.
+To enqueue the assets within your plugin or theme, make sure you
+have ${chalk.yellow('wpackio/enqueue')} package from packagist.org/composer
+and follow the intructions from documentation. To install now, run
 
-To spread the ${chalk.red(figures.heart)} please tweet.`;
+    ${bulletSymbol} ${chalk.yellow('composer require wpackio/enqueue')}.
 
-	console.log(
-		boxen(msg, {
-			padding: 1,
-			borderColor: 'cyan',
-			align: 'left',
-			float: 'left',
-			borderStyle: 'round',
-		})
-	);
+To spread the ${chalk.red(figures.heart)} please ${chalk.yellowBright(
+		figures.star
+	)} our repo and tweet.`;
+
+	console.log(msg);
 }
 
 export function prettyPrintError(
@@ -301,29 +321,19 @@ export function getZipProgress(data?: archiver.ProgressData): string {
 }
 
 export function endPackInfo(results: ArchiveResolve): void {
-	console.log('\n');
-	const msg = `${wpackLogoSmall} package and archive was ${chalk.green(
-		'successful'
-	)}.
-
-We have created ${chalk.magenta('.zip')} archive file for you
-to distribute directly or work through CI/CD server.
+	const msg = `${chalk.bgGreenBright(chalk.bold.hex('#000000')(' OUTPUT '))}
 
     ${bulletSymbol} Zip Location: ${chalk.blue(results.relPath)}.
     ${bulletSymbol} File Size: ${chalk.blue(
 		(results.size / 1024).toFixed(2)
 	)} KB.
-    ${bulletSymbol} For more info, visit: ${wpackLink}.
 
-To spread the ${chalk.red(figures.heart)} please tweet.`;
+${wpackLogoSmall} package and archive was ${chalk.green('successful')}.
 
-	console.log(
-		boxen(msg, {
-			padding: 1,
-			borderColor: 'cyan',
-			align: 'left',
-			float: 'left',
-			borderStyle: 'round',
-		})
-	);
+Thank you for using ${wpackLink}.
+To spread the ${chalk.red(figures.heart)} please ${chalk.yellowBright(
+		figures.star
+	)} our repo and tweet.`;
+
+	console.log(msg);
 }

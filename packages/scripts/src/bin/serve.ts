@@ -13,10 +13,13 @@ import {
 	prettyPrintError,
 	resolveCWD,
 	serverInfo,
-	watchEllipsis,
-	watchSymbol,
 	wpackLogoSmall,
-	printIntro,
+	printWatchingMessage,
+	addTimeStampToLog,
+	printCompilingMessage,
+	printSuccessfullyCompiledMessage,
+	printCompiledWithWarnMessage,
+	printFailedCompileMEssage,
 } from './utils';
 
 /**
@@ -41,7 +44,7 @@ export function serve(options: ProgramOptions | undefined): void {
 	});
 
 	console.log(
-		`${logSymbols.success} startup: ${chalk.cyan(
+		`${logSymbols.success} ${chalk.bold('startup')}: ${chalk.cyan(
 			relCwd === '' ? '.' : relCwd
 		)}`
 	);
@@ -53,12 +56,12 @@ export function serve(options: ProgramOptions | undefined): void {
 			serverConfigPath,
 		} = getProjectAndServerConfig(cwd, options);
 		console.log(
-			`${logSymbols.success} project config: ${chalk.cyan(
-				path.relative(cwd, projectConfigPath)
-			)}`
+			`${logSymbols.success} ${chalk.bold(
+				'project config'
+			)}: ${chalk.cyan(path.relative(cwd, projectConfigPath))}`
 		);
 		console.log(
-			`${logSymbols.success} server config: ${chalk.cyan(
+			`${logSymbols.success} ${chalk.bold('server config')}: ${chalk.cyan(
 				path.relative(cwd, serverConfigPath)
 			)}`
 		);
@@ -69,102 +72,61 @@ export function serve(options: ProgramOptions | undefined): void {
 		const server: Server = new Server(projectConfig, serverConfig, cwd, {
 			// tslint:disable:no-empty
 			invalid: () => {
-				spinner.stop();
-				clearConsole();
-				serverInfo(server.getServerUrl(), server.getBsUiUrl());
-				// Show message that we are compiling
-				spinner.start(`compiling changes${watchEllipsis}`);
+				printCompilingMessage();
 			},
 			done: () => {
-				spinner.stop();
-				clearConsole();
-				serverInfo(server.getServerUrl(), server.getBsUiUrl());
-				// Show message that we have compiled
-				spinner.start('compiling...');
-				spinner.stopAndPersist({
-					symbol: logSymbols.success,
-					text: chalk.dim('compiled successfully'),
-				});
-				console.log(
-					`${watchSymbol} watching for changes${watchEllipsis}`
-				);
+				printSuccessfullyCompiledMessage();
+				printWatchingMessage();
 			},
 			onError: msg => {
-				spinner.stop();
-				clearConsole();
 				console.log(`${chalk.bgRed.black(' ERROR ')} please review`);
 				console.log('');
 				msg.errors.forEach(e => console.log(e));
 				console.log('');
-				console.error(
-					`${logSymbols.error} ${chalk.dim('failed to compile')}\n`
-				);
-				console.log(
-					`${watchSymbol} watching for changes${watchEllipsis}`
-				);
+				printFailedCompileMEssage();
+				printWatchingMessage();
 			},
 			onWarn: msg => {
-				spinner.stop();
-				clearConsole();
-				console.log(
-					`${logSymbols.warning} ${chalk.dim(
-						'compiled with warnings...'
-					)}\n`
-				);
+				printCompiledWithWarnMessage();
 				msg.warnings.forEach(e => console.log(e));
-				console.log(
-					`${watchSymbol} watching for changes${watchEllipsis}`
-				);
+				printWatchingMessage();
 			},
 			firstCompile: (stats: webpack.Stats) => {
 				spinner.stop();
 				const raw = stats.toJson('verbose');
 				const messages = formatWebpackMessages(raw);
-				clearConsole();
+				console.log('');
 				serverInfo(server.getServerUrl(), server.getBsUiUrl());
-				console.log(
-					`${logSymbols.success} ${chalk.dim('server started!')}`
-				);
+				console.log('');
+
 				if (stats.hasErrors()) {
 					console.log(
 						`${chalk.bgRed.black(' ERROR ')} please review`
 					);
 					messages.errors.forEach(e => console.log(e));
 					console.log('');
-					console.error(
-						`${logSymbols.error} ${chalk.dim(
-							'failed to compile'
-						)}\n`
-					);
+					printFailedCompileMEssage();
 				} else if (stats.hasWarnings()) {
-					console.log(
-						`${logSymbols.warning} ${chalk.dim(
-							'compiled with warnings...'
-						)}\n`
-					);
+					printCompiledWithWarnMessage();
 					messages.warnings.forEach(e => console.log(e));
 				} else {
-					console.log(
-						`${logSymbols.success} ${chalk.dim(
-							'compiled successfully'
-						)}\n`
-					);
+					printSuccessfullyCompiledMessage();
 				}
-				console.log(
-					`${watchSymbol} watching for changes${watchEllipsis}`
-				);
+				printWatchingMessage();
 			},
 		});
 		server.serve();
 
 		const stopServer = () => {
-			spinner.stop();
-			console.log('');
-			console.log(`${logSymbols.error} shutting down development server`);
+			console.log(
+				addTimeStampToLog(
+					`${logSymbols.warning} shutting down development server`
+				)
+			);
 			server.stop();
-			clearConsole();
-			printIntro();
+			console.log('');
 			endServeInfo();
+			console.log('');
 			process.exit(0);
 		};
 
@@ -183,6 +145,7 @@ export function serve(options: ProgramOptions | undefined): void {
 
 				// If pressing r, then just refresh
 				if (key.indexOf('r') === 0) {
+					printCompilingMessage();
 					server.refresh();
 				}
 			});

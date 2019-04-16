@@ -90,7 +90,9 @@ export function pack(options: ProgramOptions | undefined): void {
 				},
 				onZip: result => {
 					spinner.succeed();
+					console.log('');
 					endPackInfo(result);
+					console.log('');
 				},
 			},
 			cwd

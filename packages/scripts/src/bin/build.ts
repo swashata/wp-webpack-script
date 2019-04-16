@@ -59,9 +59,17 @@ export function build(options: ProgramOptions | undefined): void {
 				} else {
 					spinner.warn(`${wpackLogoSmall} build warnings.`);
 				}
-				clearConsole();
+				console.log('');
+				console.log(
+					`${chalk.bgGreenBright(
+						chalk.bold.hex('#000000')(' OUTPUT ')
+					)}`
+				);
+				console.log('');
 				console.log(log);
+				console.log('');
 				endBuildInfo();
+				console.log('');
 				process.exit(0);
 			})
 			.catch(err => {

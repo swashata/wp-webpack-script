@@ -36,7 +36,9 @@ export async function bootstrap(
 					} ${wpackLogoSmall} bootstrap complete!`
 				);
 				console.log(
-					`📝 project config created at ${chalk.yellow(
+					`${
+						logSymbols.success
+					} project config created at ${chalk.yellow(
 						'./wpackio.project.js'
 					)}`
 				);
@@ -47,7 +49,7 @@ export async function bootstrap(
 			}
 
 			console.log(
-				`📡 server config created at ${chalk.yellow(
+				`${logSymbols.success} server config created at ${chalk.yellow(
 					'./wpackio.server.js'
 				)}`
 			);
@@ -60,7 +62,9 @@ export async function bootstrap(
 
 			if (done.deps && done.deps.dependencies.length) {
 				console.log(
-					`🍪 need to install following ${chalk.yellow(
+					`${
+						logSymbols.info
+					} need to install following ${chalk.yellow(
 						'dependencies'
 					)}\n`
 				);
@@ -83,7 +87,9 @@ export async function bootstrap(
 			}
 			if (done.deps && done.deps.devDependencies.length) {
 				console.log(
-					`🍪 need to install following ${chalk.yellow(
+					`${
+						logSymbols.info
+					} need to install following ${chalk.yellow(
 						'dev dependencies'
 					)}\n`
 				);
@@ -120,7 +126,9 @@ export async function bootstrap(
 		}
 
 		// Log how to access and start, develop, build etc.
+		console.log('');
 		endBootstrapInfo();
+		console.log('');
 	} catch (e) {
 		console.log(pe.render(e));
 	}
