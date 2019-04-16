@@ -10,6 +10,7 @@
     "wordpress-bundler"
   ],
   "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "repository": "https://github.com/swashata/wp-webpack-script",
   "homepage": "https://wpack.io",
   "author": "Swashata Ghosh &lt;swashata4u@gmail.com&gt; (https://swas.io)",
@@ -28,7 +29,7 @@
     "lib"
   ],
   "scripts": {
-    "clean": "rimraf './lib'",
+    "clean": "rimraf './lib' && rm ./tsconfig.tsbuildinfo",
     "type-check": "tsc --noEmit",
     "type-check:watch": "yarn type-check --watch",
     "build:js": "babel ./src --out-dir lib --extensions '.ts,.tsx'",
