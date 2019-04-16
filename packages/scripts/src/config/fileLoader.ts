@@ -49,6 +49,22 @@ export function issuerForNonStyleFiles(location: string): boolean {
 }
 
 /**
+ * Webpack module.rules[].issuer function to check if the issuer is NOT a
+ * JavaScript (js,jsx) or TypeScript(ts,tsx) file.
+ */
+export function issuerForJsTsFiles(location: string): boolean {
+	return /\.(j|t)sx?$/.test(location);
+}
+
+/**
+ * Webpack module.rules[].issuer function to check if the issuer is a JavaScript
+ * (js,jsx) or TypeScript(ts,tsx) file.
+ */
+export function issuerForNonJsTsFiles(location: string): boolean {
+	return !/\.(j|t)sx?$/.test(location);
+}
+
+/**
  * Get file-loader with proper options set for javascript and style files.
  *
  * It makes sure that assets are put into proper directory and relativePath

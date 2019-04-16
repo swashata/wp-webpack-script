@@ -86,6 +86,65 @@ Whether to include preset for `'flow'` or `'typescript'`. Leave `undefined` to i
 
 Possible values are `'flow'`, `'typescript'` or `undefined`.
 
+## `getDefaultBabelPresetOptions`
+
+Get default options for [@wpackio/babel-preset-base](https://github.com/swashata/wp-webpack-script/tree/master/packages/babel-preset-base) considering whether project
+has react and whether it is in development mode.
+
+### Usage
+
+```js
+// include a few node-js APIs
+const {
+	getBabelPresets,
+	getDefaultBabelPresetOptions,
+	// eslint-disable-next-line import/no-extraneous-dependencies
+} = require('@wpackio/scripts');
+
+module.exports = {
+	// stuff...
+	// Files we need to compile, and where to put
+	files: [
+		// some entrypoint
+		{
+			name: 'reactapp',
+			entry: {
+				main: ['./src/reactapp/index.jsx'],
+			},
+			webpackConfig: (config, merge, appDir, isDev) => {
+				const customRules = {
+					module: {
+						rules: [
+							// Config for custom .mjs file extension
+							{
+								test: /\.mjs$/,
+								use: [
+									{
+										loader: 'babel-loader',
+										options: {
+											presets: getBabelPresets(
+												getDefaultBabelPresetOptions(
+													true,
+													isDev
+												),
+												undefined
+											),
+										},
+									},
+								],
+							},
+						],
+					},
+				};
+
+				// merge and return
+				return merge(config, customRules);
+			},
+		},
+	],
+};
+```
+
 ## `getFileLoaderOptions`
 
 Get options for file-loader. This takes into account the application directory,
@@ -96,6 +155,8 @@ do use this API for dynamically setting the option. This ensures a few things, l
 
 1. All assets are put inside `assets` directory.
 2. Assets works for CSS files where relative path is necessary.
+
+More information can be found in [`file-loader` tutorial](/tutorials/using-file-loader/).
 
 ### Usage
 
@@ -112,7 +173,7 @@ module.exports = {
 			entry: {
 				main: ['./src/app/main.js'],
 			},
-			webpackConfig: (config, api, appDir, isDev) => {
+			webpackConfig: (config, merge, appDir, isDev) => {
 				const newRules = {
 					module: {
 						rules: [
@@ -132,7 +193,7 @@ module.exports = {
 						],
 					},
 				};
-				return api(config, newRules);
+				return merge(config, newRules);
 			},
 		},
 	],
@@ -152,3 +213,60 @@ Whether for development or production build.
 #### `publicPath` (`boolean`)
 
 Whether or not to set publicPath for `file-loader`, depending on `isDev`.
+
+## `issuer`
+
+The API consists a family of [`webpack issuer`](https://webpack.js.org/configuration/module/#ruleissuer) utilities. Use them in conjunction with [`file-loader`](/tutorials/using-file-loader/) or
+`url-loader`.
+
+-   `issuerForNonStyleFiles`: Tests if files are not, `css`, `sass` and `scss`.
+-   `issuerForStyleFiles`: Tests if files are one of `css`, `sass` or `scss`.
+-   `issuerForNonJsTsFiles`: Tests if files are not, `js`, `jsx`, `ts` and `tsx`.
+-   `issuerForJsTsFiles`: Tests if files are one of `js`, `jsx`, `ts` and `tsx`.
+
+### Usage
+
+**wpackio.project.js**
+
+```js
+const {
+	getFileLoaderOptions,
+	issuerForNonStyleFiles,
+	issuerForStyleFiles,
+	issuerForJsTsFiles,
+	issuerForNonJsTsFiles,
+	// eslint-disable-next-line import/no-extraneous-dependencies
+} = require('@wpackio/scripts');
+
+module.exports = {
+	// ...
+	files: [
+		{
+			// ...
+			webpackConfig: (config, merge, appDir, isDev) => {
+				const customRule = {
+					module: {
+						rules: [
+							{
+								test: /\.pdf$/,
+								issuer: issuerForJsTsFiles,
+								use: [
+									{
+										loader: 'file-loader',
+										options: getFileLoaderOptions(
+											appDir,
+											isDev,
+											false
+										),
+									},
+								],
+							},
+						],
+					},
+				};
+				return merge(config, customRule);
+			},
+		},
+	],
+};
+```

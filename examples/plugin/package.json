@@ -7,11 +7,15 @@
   "license": "MIT",
   "private": true,
   "devDependencies": {
+    "@svgr/webpack": "^4.2.0",
+    "@wpackio/eslint-config": "file:../../packages/eslint-config",
     "@wpackio/scripts": "file:../../packages/scripts",
     "autoprefixer": "^9.5.1",
     "cssnano": "^4.1.10",
+    "eslint": "^5.16.0",
     "fork-ts-checker-webpack-plugin": "^1.0.2",
     "node-sass": "^4.11.0",
+    "prettier": "^1.17.0",
     "svgo": "^1.2.1",
     "svgo-loader": "^2.2.0",
     "typescript": "^3.4.3"

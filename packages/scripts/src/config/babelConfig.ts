@@ -3,6 +3,13 @@ import {
 	PresetOptions,
 } from '@wpackio/babel-preset-base/lib/preset';
 
+/**
+ * Get default options for @wpackio/babel-preset-base considering whether
+ * project has react and whether it is in development mode.
+ *
+ * @param hasReact Whether to include react jsx transform.
+ * @param isDev Whether in development mode or production mode.
+ */
 export function getDefaultBabelPresetOptions(
 	hasReact: boolean,
 	isDev: boolean = false

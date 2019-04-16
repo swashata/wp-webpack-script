@@ -223,7 +223,7 @@ The most powerful form is the function. It has the following signature
 ```ts
 type webpackConfigCallback = (
 	config: webpack.Configuration,
-	api: merge,
+	merge: webpackMerge,
 	appDir: string,
 	isDev: boolean
 ) => webpack.Configuration;
@@ -233,7 +233,7 @@ type webpackConfigCallback = (
 
 The configuration calculated by `@wpackio/scripts` is passed as the first parameter.
 
-###### `api` (`merge`)
+###### `merge` (`webpackMerge`)
 
 The [`webpack-merge`](https://github.com/survivejs/webpack-merge) passed as-is.
 

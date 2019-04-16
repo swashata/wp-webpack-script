@@ -9,7 +9,8 @@
 		"browser-sync",
 		"wordpress-bundler"
 	],
-	"main": "lib/index.js",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
 	"bin": {
 		"wpackio-scripts": "lib/bin/index.js"
 	},
@@ -86,7 +87,7 @@
 		"templates"
 	],
 	"scripts": {
-		"clean": "rimraf './lib'",
+		"clean": "rimraf './lib' && rm ./tsconfig.tsbuildinfo",
 		"type-check": "tsc --noEmit",
 		"type-check:watch": "yarn type-check --watch",
 		"build:js": "babel ./src --out-dir lib --extensions '.ts,.tsx'",

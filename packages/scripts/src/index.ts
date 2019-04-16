@@ -44,6 +44,8 @@ export {
 	getFileLoaderOptions,
 	issuerForNonStyleFiles,
 	issuerForStyleFiles,
+	issuerForJsTsFiles,
+	issuerForNonJsTsFiles,
 } from './config/fileLoader';
 
 // Expose all needed script classes

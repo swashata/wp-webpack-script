@@ -41,21 +41,22 @@ module.exports = {
 				// stuff
 			},
 			// Extra webpack config to be dynamically created
-			webpackConfig: (config, api) => {
-				// Create a new config
-				const newConfig = { ...config };
-				// Extend the rules for some great svg experience
-				newConfig.module.rules = [
-					...newConfig.module.rules,
-					// Inline svg loader
-					// https://webpack.js.org/loaders/svg-inline-loader/#configuration
-					{
-						test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-						use: ['svg-inline-loader'],
+			webpackConfig: (config, merge, appDir, isDev) => {
+				// create a new module.rules for svg-inline-loader
+				const customRules = {
+					module: {
+						rules: [
+							// Inline svg loader
+							// https://webpack.js.org/loaders/svg-inline-loader/#configuration
+							{
+								test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+								use: ['svg-inline-loader'],
+							},
+						],
 					},
-				];
-				// Return it
-				return newConfig;
+				};
+				// merge and return
+				return merge(config, customRules);
 			},
 		},
 	],
@@ -82,6 +83,12 @@ array.
 **`wpackio.project.js`**
 
 ```js
+const {
+	getFileLoaderOptions,
+	issuerForNonStyleFiles,
+	issuerForStyleFiles,
+} = require('@wpackio/scripts');
+
 module.exports = {
 	// ...
 	files: [
@@ -92,33 +99,60 @@ module.exports = {
 				// stuff
 			},
 			// Extra webpack config to be dynamically created
-			webpackConfig: (config, api) => {
-				// Create a new config
-				const newConfig = { ...config };
-				// Extend the rules for some great svg experience
-				newConfig.module.rules = [
-					...newConfig.module.rules,
-					// SVGO Loader
-					// https://github.com/rpominov/svgo-loader
-					{
-						test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-						use: [
-							{ loader: 'file-loader' },
+			webpackConfig: (config, merge, appDir, isDev) => {
+				const svgoLoader = {
+					loader: 'svgo-loader',
+					options: {
+						plugins: [
+							{ removeTitle: true },
+							{ convertColors: { shorthex: false } },
+							{ convertPathData: false },
+						],
+					},
+				};
+				// create module rules
+				const configWithSvg = {
+					module: {
+						rules: [
+							// SVGO Loader
+							// https://github.com/rpominov/svgo-loader
+							// This rule handles SVG for javascript files
 							{
-								loader: 'svgo-loader',
-								options: {
-									plugins: [
-										{ removeTitle: true },
-										{ convertColors: { shorthex: false } },
-										{ convertPathData: false },
-									],
-								},
+								test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+								use: [
+									{
+										loader: 'file-loader',
+										options: getFileLoaderOptions(
+											appDir,
+											isDev,
+											false
+										),
+									},
+									svgoLoader,
+								],
+								issuer: issuerForNonStyleFiles,
+							},
+							// This rule handles SVG for style files
+							{
+								test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+								use: [
+									{
+										loader: 'file-loader',
+										options: getFileLoaderOptions(
+											appDir,
+											isDev,
+											true
+										),
+									},
+									svgoLoader,
+								],
+								issuer: issuerForStyleFiles,
 							},
 						],
 					},
-				];
-				// Return it
-				return newConfig;
+				};
+				// merge the new module.rules with webpack-merge api
+				return merge(config, configWithSvg);
 			},
 		},
 	],
@@ -145,6 +179,15 @@ array.
 **`wpackio.project.js`**
 
 ```js
+const {
+	getFileLoaderOptions,
+	getBabelPresets,
+	getDefaultBabelPresetOptions,
+	issuerForJsTsFiles,
+	issuerForNonJsTsFiles,
+	// eslint-disable-next-line import/no-extraneous-dependencies
+} = require('@wpackio/scripts');
+
 module.exports = {
 	// ...
 	files: [
@@ -155,33 +198,62 @@ module.exports = {
 				mobile: ['./src/app/mobile.js'],
 			},
 			// Extra webpack config to be dynamically created
-			webpackConfig: (config, api) => {
-				// Create a new config
-				const newConfig = { ...config };
-				// Extend the rules for some great svg experience
-				newConfig.module.rules = [
-					...newConfig.module.rules,
-					// Use svgr for loading svg in react
-					// https://github.com/smooth-code/svgr/tree/master/packages/webpack#handle-svg-in-css-sass-or-less
-					{
-						test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-						issuer: {
-							test: /\.(j|t)sx?$/,
-						},
-						use: ['babel-loader', '@svgr/webpack', 'url-loader'],
-					},
-					// Use url-loader for everything else
-					{
-						test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-						use: [
+			webpackConfig: (config, merge, appDir, isDev) => {
+				const customRules = {
+					module: {
+						rules: [
+							// Config for SVGR in javascript/typescript files
 							{
-								loader: 'url-loader',
+								test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+								issuer: issuerForJsTsFiles,
+								use: [
+									{
+										loader: 'babel-loader',
+										options: {
+											presets: getBabelPresets(
+												getDefaultBabelPresetOptions(
+													true,
+													isDev
+												),
+												undefined
+											),
+										},
+									},
+									{
+										loader: '@svgr/webpack',
+										options: { babel: false },
+									},
+									{
+										loader: 'file-loader',
+										options: getFileLoaderOptions(
+											appDir,
+											isDev,
+											false
+										),
+									},
+								],
+							},
+							// For everything else, we use file-loader only
+							{
+								test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+								issuer: issuerForNonJsTsFiles,
+								use: [
+									{
+										loader: 'file-loader',
+										options: getFileLoaderOptions(
+											appDir,
+											isDev,
+											true
+										),
+									},
+								],
 							},
 						],
 					},
-				];
-				// Return it
-				return newConfig;
+				};
+
+				// merge and return
+				return merge(config, customRules);
 			},
 		},
 	],
@@ -190,3 +262,10 @@ module.exports = {
 ```
 
 There are may other ways to configure svgr. Be sure to check their [documentation](https://github.com/smooth-code/svgr).
+
+The things to watch here are
+
+1. We disable `babel-loader` from `@svgr/webpack` and use `babel-loader` manually
+   with `@wpackio/scripts` API.
+2. We use `@svgr/webpack` only for JS/TS files using the `issuer` option along
+   with `issuerForNonJsTsFiles` and `issuerForJsTsFiles` APIs.

@@ -116,7 +116,7 @@ module.exports = {
 				mobile: ['./src/app/mobile.js'],
 			},
 			// Extra webpack config to be dynamically created
-			webpackConfig: (config, api, appDir, isDev) => {
+			webpackConfig: (config, merge, appDir, isDev) => {
 				// Create a new config
 				const newConfig = { ...config };
 				// Extend the rules for some great svg experience
@@ -149,85 +149,6 @@ module.exports = {
 	// ...
 };
 ```
-
-## File Loader
-
-If you want to use `file-loader` for your custom assets, then there are some
-options you need to pass to make things work properly. To help you with that
-we have exposed a few [nodejs APIs](/api/node-api/).
-
-The apis we need to use for `file-loader` are `getFileLoaderOptions`, `issuerForNonStyleFiles`, `issuerForStyleFiles`.
-
-Say we want to load svg files with `file-loader`, for both JS/TS and CSS modules.
-
-Here's what the `wpackio.project.js` would look like.
-
-```js
-const {
-	getFileLoaderOptions,
-	issuerForNonStyleFiles,
-	issuerForStyleFiles,
-} = require('@wpackio/scripts');
-
-const webpackOverrideCallback = (config, api, appDir, isDev) => {
-	// just part of webpack config concerning our SVG
-	const configWithSvg = {
-		module: {
-			rules: [
-				// This rule handles SVG for JS/TS files
-				{
-					test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-					use: [
-						{
-							loader: 'file-loader',
-							options: getFileLoaderOptions(appDir, isDev, false),
-						},
-					],
-					issuer: issuerForNonStyleFiles,
-				},
-				// This rule handles SVG for style files
-				{
-					test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-					use: [
-						{
-							loader: 'file-loader',
-							options: getFileLoaderOptions(appDir, isDev, true),
-						},
-					],
-					issuer: issuerForStyleFiles,
-				},
-			],
-		},
-	};
-
-	// merge our custom rule with webpack-merge
-	return api(config, configWithSvg);
-};
-
-module.exports = {
-	// ... config
-	files: [
-		{
-			name: 'app',
-			entry: {
-				main: ['./src/app/index.js'],
-			},
-			webpackConfig: webpackOverrideCallback,
-		},
-		{
-			name: 'mobile',
-			entry: {
-				main: ['./src/mobile/index.js'],
-			},
-			webpackConfig: webpackOverrideCallback,
-		},
-	],
-};
-```
-
-Notice the use of `getFileLoaderOptions` inside the callback function. For style
-type files, where the asset URL will come relative, it is necessary to pass the
-third parameter as `true`.
 
 ## Word of caution
 

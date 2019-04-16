@@ -140,11 +140,10 @@ module.exports = {
 		entry: {
 			main: './src/main.js',
 		},
-		webpackConfig: (config, mergeApi) => {
-			return {
-				...config,
-				// Additional config
-			};
+		webpackConfig: (config, merge, appDir, isDev) => {
+			return merge(config, {
+				// additional config
+			});
 		},
 	},
 };
