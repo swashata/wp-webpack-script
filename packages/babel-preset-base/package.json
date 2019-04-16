@@ -35,7 +35,7 @@
     "lib"
   ],
   "scripts": {
-    "clean": "rimraf './lib' && rm ./tsconfig.tsbuildinfo",
+    "clean": "rimraf './lib' && rm -f ./tsconfig.tsbuildinfo",
     "type-check": "tsc --noEmit",
     "type-check:watch": "yarn type-check --watch",
     "build:js": "babel ./src --out-dir lib --extensions '.ts,.tsx'",
