@@ -112,7 +112,7 @@ Add wpack.io into any existing or new project. This command has to be run
 from within the project.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/swashata/wp-webpack-script/master/assets/01-cli.gif">
+  <img src="https://raw.githubusercontent.com/swashata/wp-webpack-script/master/site/frontpage/steps/01-cli.gif">
 </p>
 
 ### `npm run bootstrap` / `yarn bootstrap`
@@ -121,7 +121,7 @@ Bootstrap needed dependencies, dev dependencies according to the type of your
 project. This command is enabled by `npx @wpackio/cli`.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/swashata/wp-webpack-script/master/assets/02-bootstrap.gif">
+  <img src="https://raw.githubusercontent.com/swashata/wp-webpack-script/master/site/frontpage/steps/02-bootstrap.gif">
 </p>
 
 ### Setup JS entry-points
@@ -248,7 +248,7 @@ After configuring all entry-points and using the PHP library for consuming, we
 start the development server.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/swashata/wp-webpack-script/master/assets/03-start.gif">
+  <img src="https://raw.githubusercontent.com/swashata/wp-webpack-script/master/site/frontpage/steps/05-start.gif">
 </p>
 
 ##### HMR
@@ -268,7 +268,7 @@ Once done, we press <kbd>Ctrl</kbd> + <kbd>c</kbd> to stop it.
 Now we create production build.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/swashata/wp-webpack-script/master/assets/04-build.gif">
+  <img src="https://raw.githubusercontent.com/swashata/wp-webpack-script/master/site/frontpage/steps/06-build.gif">
 </p>
 
 Our plugin/theme is now ready to go live.
