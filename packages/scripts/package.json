@@ -58,7 +58,7 @@
 		"gradient-string": "^1.2.0",
 		"handlebars": "^4.1.2",
 		"inquirer": "^6.3.1",
-		"log-symbols": "^2.2.0",
+		"log-symbols": "^3.0.0",
 		"make-dir": "^3.0.0",
 		"mini-css-extract-plugin": "^0.6.0",
 		"optimize-css-assets-webpack-plugin": "^5.0.1",
