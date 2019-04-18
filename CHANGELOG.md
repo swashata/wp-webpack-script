@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.1.0](https://github.com/swashata/wp-webpack-script/compare/v3.0.0...v3.1.0) (2019-04-18)
+
+
+### Bug Fixes
+
+* **scripts:** missing name in single compiler mode ([2677b9c](https://github.com/swashata/wp-webpack-script/commit/2677b9c))
+* remove unused module ([4bb0d3a](https://github.com/swashata/wp-webpack-script/commit/4bb0d3a))
+* remove unused parameter ([c2e1956](https://github.com/swashata/wp-webpack-script/commit/c2e1956))
+* **deps:** pin dependency gatsby-plugin-google-analytics to 2.0.18 ([03be604](https://github.com/swashata/wp-webpack-script/commit/03be604))
+* **deps:** update gatsby monorepo ([5bbf437](https://github.com/swashata/wp-webpack-script/commit/5bbf437))
+* **scripts:** time output in log ([ee82d38](https://github.com/swashata/wp-webpack-script/commit/ee82d38)), closes [#444](https://github.com/swashata/wp-webpack-script/issues/444)
+
+
+### Features
+
+* **scripts:** add compile time message to output ([63136c7](https://github.com/swashata/wp-webpack-script/commit/63136c7)), closes [#444](https://github.com/swashata/wp-webpack-script/issues/444)
+* **scripts:** improve typechecking performance ([e63aa9b](https://github.com/swashata/wp-webpack-script/commit/e63aa9b)), closes [#447](https://github.com/swashata/wp-webpack-script/issues/447)
+* **scripts:** show cli output on browser-sync reload ([c1885e2](https://github.com/swashata/wp-webpack-script/commit/c1885e2)), closes [#444](https://github.com/swashata/wp-webpack-script/issues/444)
+
+
+
+
+
 # [3.0.0](https://github.com/swashata/wp-webpack-script/compare/v2.13.0...v3.0.0) (2019-04-16)
 
 
