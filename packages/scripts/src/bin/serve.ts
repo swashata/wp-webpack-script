@@ -79,7 +79,7 @@ export function serve(options: ProgramOptions | undefined): void {
 			invalid: () => {
 				printCompilingMessage();
 			},
-			done: stat => {
+			done: () => {
 				printSuccessfullyCompiledMessage();
 			},
 			onError: msg => {
