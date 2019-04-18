@@ -71,6 +71,10 @@ export function printFailedCompileMEssage() {
 	);
 }
 
+export function printGeneralInfoMessage(msg: string) {
+	console.info(addTimeStampToLog(`${logSymbols.info} ${msg}`));
+}
+
 export const bulletSymbol = chalk.magenta(figures.pointer);
 
 export const wpackLogoSmall = gradient.instagram('wpack.io');

@@ -22,6 +22,7 @@ import {
 } from './project.config.default';
 import { ServerConfig } from './server.config.default';
 import { getFileLoaderForJsAndStyleAssets } from './fileLoader';
+import { printGeneralInfoMessage } from '../bin/utils';
 
 interface NormalizedEntry {
 	[x: string]: string[];
@@ -282,7 +283,10 @@ export class WebpackConfigHelper {
 		];
 		// Add ts checker plugin if project has tsconfig.json
 		const tsconfigPath = path.resolve(this.cwd, './tsconfig.json');
-		if (this.fileExists(tsconfigPath)) {
+		if (
+			this.fileExists(tsconfigPath) &&
+			this.file.hasTypeScript !== false
+		) {
 			// dynamic require forktschecker otherwise it will throw error
 			try {
 				// eslint-disable-next-line import/no-extraneous-dependencies, global-require, @typescript-eslint/no-var-requires
@@ -297,6 +301,10 @@ export class WebpackConfigHelper {
 						formatterOptions: {
 							highlightCode: true,
 						},
+						useTypescriptIncrementalApi: false,
+						reportFiles: this.file.typeWatchFiles
+							? this.file.typeWatchFiles
+							: [],
 					})
 				);
 			} catch (e) {

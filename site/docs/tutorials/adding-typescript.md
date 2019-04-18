@@ -83,3 +83,55 @@ Now you are good to go. The compiler will also show any `ts` error you might hav
 > **NOTE** - Internally wpack.io depends on [`fork-ts-checker-webpack-plugin`](https://github.com/Realytics/fork-ts-checker-webpack-plugin)
 > to show type errors during build time. So make sure you install it, otherwise
 > it will not work.
+
+## Optimization
+
+By default `@wpackio/scripts` will create an instance of `fork-ts-checker-webpack-plugin`
+if a `tsconfig.json` is found in the current project root.
+
+The same plugin would go into all multi-entry compiler instances and would enable
+typechecking for all entries.
+
+Sometimes, this could not be the desired feature. For instance, you might have
+a plain JS app, alongside a TS app and you don't want the typechecker for the JS
+app. Luckily it is not possible to explicitly disable typechecking for individual
+file entry using `hasTypeScript`.
+
+Furthermore, due to the nature of TypeScript, you might notice duplicate error
+reports across multiple files entry. This can also be remedied using `typeWatchFiles`
+config variable.
+
+Under your [`FileConfig`](/apis/project-configuration/#files-array) add the
+`hasTypeScript` option. Below is an example of two apps, one explicitly disabling
+the typecheck.
+
+**wpackio.project.js**
+
+```js
+module.exports = {
+	// ...
+	files: [
+		// Only JavaScript App
+		{
+			name: 'jsapp',
+			entry: {
+				main: './src/jsapp/index.js',
+			},
+			// disable typechecking for this
+			hasTypeScript: false,
+		},
+		// TypeScript App
+		{
+			name: 'tsapp',
+			entry: {
+				main: './src/tsapp/index.ts',
+			},
+			// (optional) enable typechecking for this
+			hasTypeScript: true,
+			// (optional but recommended) mention files to report
+			// through glob pattern
+			typeWatchFiles: ['src/tsapp/*.{ts,tsx}', 'src/tsapp/**/*.{ts,tsx}'],
+		},
+	],
+};
+```

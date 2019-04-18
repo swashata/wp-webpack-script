@@ -31,6 +31,8 @@ export interface EntryConfig {
 export interface FileConfig {
 	name: string;
 	entry: EntryConfig;
+	typeWatchFiles?: string[];
+	hasTypeScript?: boolean;
 	webpackConfig?:
 		| webpack.Configuration
 		| ((

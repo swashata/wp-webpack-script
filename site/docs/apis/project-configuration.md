@@ -184,15 +184,37 @@ under `entry`, then also (if needed) chunk-splitting will be applied.
 If we were to pass multiple file object, then webpack would run in [multi-compiler](https://webpack.js.org/api/node/#multicompiler)
 mode, separating dependency tree from each of the file object.
 
-Each file object has three properties:
+Each file object has two required and three optional properties. Here's the
+interface.
 
-#### `name` (`string`):
+```ts
+interface EntryConfig {
+	[x: string]: string[] | string;
+}
+
+interface FileConfig {
+	name: string;
+	entry: EntryConfig;
+	typeWatchFiles?: string[];
+	hasTypeScript?: boolean;
+	webpackConfig?:
+		| webpack.Configuration
+		| ((
+				config: webpack.Configuration,
+				api: merge,
+				appDir: string,
+				isDev: boolean
+		  ) => webpack.Configuration);
+}
+```
+
+#### `name` (`string`) **required**:
 
 A unique name of this file entry. If you are using more than one file entry,
 then make sure to give different names, otherwise the compiler might not work
 in development mode.
 
-#### `entry` (`object`):
+#### `entry` (`object`) **required**:
 
 This is the path (relative to project root) of files you would like to compile.
 
@@ -244,6 +266,16 @@ Directory inside `outputPath` where all the assets are to be emitted.
 ###### `isDev` (`boolean`)
 
 Whether the operation is going for development mode or production build.
+
+#### `typeWatchFiles` (`string[]`)
+
+Array of glob pattern for which typescript reports are to be notified.
+
+#### `hasTypeScript` (`boolean` | `undefined`)
+
+Explicitly disable typescript type assertions.
+
+> More information about typescript related options can be found [here](/tutorials/adding-typescript/).
 
 ## `outputPath` (`string`):
 
