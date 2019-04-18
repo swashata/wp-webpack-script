@@ -17,15 +17,15 @@ class Wpackio_Plugin_Init {
 
 
 	function plugin_enqueue() {
-		$this->enqueue->enqueue( 'app', 'main', [] );
-		$this->enqueue->enqueue( 'app', 'mobile', [] );
-		$this->enqueue->enqueue( 'foo', 'main', [] );
+		// $this->enqueue->enqueue( 'app', 'main', [] );
+		// $this->enqueue->enqueue( 'app', 'mobile', [] );
+		// $this->enqueue->enqueue( 'foo', 'main', [] );
 		$this->enqueue->enqueue( 'tsapp', 'main', [] );
 	}
 
 	function reactapp( $atts, $content = null ) {
 		// Enqueue our react app scripts
-		$this->enqueue->enqueue( 'reactapp', 'main', [] );
+		// $this->enqueue->enqueue( 'reactapp', 'main', [] );
 
 		// Print the entry point
 		return '<div id="wpackio-reactapp"></div>';

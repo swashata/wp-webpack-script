@@ -64,19 +64,38 @@ export function printCompileTimeMessage(stat: any, lastStat: any | null) {
 		!lastStat.builtAt ||
 		stat.builtAt !== lastStat.builtAt
 	) {
-		const entryName = chalk.bold(stat.name);
-		let name = chalk.green(entryName);
+		// get bundle name
+		let name = '';
+		if (stat.name) {
+			const entryName = stat.name;
+			name = chalk.green(entryName);
+			if (stat.errors.length) {
+				name = chalk.red(entryName);
+			} else if (stat.warnings.length) {
+				name = chalk.yellow(entryName);
+			}
+			name = `${name} `;
+		}
+
+		// get log symbol
 		let symbol = logSymbols.success;
 		if (stat.errors.length) {
-			name = chalk.red(entryName);
 			symbol = logSymbols.error;
 		} else if (stat.warnings.length) {
-			name = chalk.yellow(entryName);
 			symbol = logSymbols.warning;
 		}
+
+		// get log message
+		let msg = 'was rebuilt in';
+		if (lastStat === null) {
+			msg = 'was built in';
+		}
+
 		console.log(
 			addTimeStampToLog(
-				`${symbol} entry ${name} in ${chalk.magenta(`${stat.time}ms`)}.`
+				`${symbol} bundle ${name}${msg} ${chalk.magenta(
+					`${stat.time}ms`
+				)}.`
 			)
 		);
 	}
@@ -97,6 +116,8 @@ export const webpackStatToJsonOptions: webpack.Stats.ToJsonOptions = {
 	errors: true,
 	warnings: true,
 	modules: false,
+	publicPath: false,
+	depth: false,
 };
 
 export function printCompileTimeMessages(
@@ -126,7 +147,7 @@ export function printCompileTimeMessages(
 				printCompileTimeMessage(sj, lastStatsJson.children[index]);
 			}
 		});
-	} else if (statsJson.time && statsJson.name) {
+	} else if (statsJson.time) {
 		// if it is single compiler
 		if (lastStatsJson === null) {
 			printCompileTimeMessage(statsJson, null);
