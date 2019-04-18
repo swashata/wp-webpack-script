@@ -17,6 +17,7 @@ interface Callbacks {
 	onError(err: { errors: string[]; warnings: string[] }): void;
 	onWarn(warn: { errors: string[]; warnings: string[] }): void;
 	onBsChange(file: string): void;
+	onEmit(stats: webpack.Stats): void;
 }
 
 /**
@@ -248,12 +249,11 @@ export class Server {
 			}
 			if (messages.errors.length) {
 				this.callbacks.onError(messages);
-
-				return;
-			}
-			if (messages.warnings.length) {
+			} else if (messages.warnings.length) {
 				this.callbacks.onWarn(messages);
 			}
+
+			this.callbacks.onEmit(stats);
 		});
 
 		// On compile start

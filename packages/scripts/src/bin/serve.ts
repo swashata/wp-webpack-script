@@ -21,6 +21,8 @@ import {
 	printCompiledWithWarnMessage,
 	printFailedCompileMEssage,
 	printGeneralInfoMessage,
+	printCompileTimeMessages,
+	webpackStatToJsonOptions,
 } from './utils';
 
 /**
@@ -69,15 +71,16 @@ export function serve(options: ProgramOptions | undefined): void {
 
 		spinner.start();
 
+		let lastWebpackStat: any | null = null;
+
 		// Start the webpack/browserSync server
 		const server: Server = new Server(projectConfig, serverConfig, cwd, {
 			// tslint:disable:no-empty
 			invalid: () => {
 				printCompilingMessage();
 			},
-			done: () => {
+			done: stat => {
 				printSuccessfullyCompiledMessage();
-				printWatchingMessage();
 			},
 			onError: msg => {
 				console.log(`${chalk.bgRed.black(' ERROR ')} please review`);
@@ -85,11 +88,14 @@ export function serve(options: ProgramOptions | undefined): void {
 				msg.errors.forEach(e => console.log(e));
 				console.log('');
 				printFailedCompileMEssage();
-				printWatchingMessage();
 			},
 			onWarn: msg => {
 				printCompiledWithWarnMessage();
 				msg.warnings.forEach(e => console.log(e));
+			},
+			onEmit: stats => {
+				printCompileTimeMessages(stats, lastWebpackStat);
+				lastWebpackStat = stats.toJson(webpackStatToJsonOptions);
 				printWatchingMessage();
 			},
 			firstCompile: (stats: webpack.Stats) => {
@@ -113,7 +119,9 @@ export function serve(options: ProgramOptions | undefined): void {
 				} else {
 					printSuccessfullyCompiledMessage();
 				}
+				printCompileTimeMessages(stats, lastWebpackStat);
 				printWatchingMessage();
+				lastWebpackStat = stats.toJson(webpackStatToJsonOptions);
 			},
 			onBsChange(file) {
 				printGeneralInfoMessage(`changed: ${chalk.bold(file)}`);

@@ -8,7 +8,7 @@ console.log(strRepeat('foo', 10));
 console.log(strRepeat('foo', 10));
 console.log(strRepeat('foo', 10));
 console.log(strRepeat('10', 20));
-console.log(strRepeat('[]', 20));
+console.log(strRepeat('10', 20));
 
 if (module.hot) {
 	module.hot.accept('./module.ts', () => {

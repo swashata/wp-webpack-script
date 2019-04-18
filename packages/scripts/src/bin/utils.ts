@@ -7,6 +7,7 @@ import gradient from 'gradient-string';
 import logSymbols from 'log-symbols';
 import path from 'path';
 import PrettyError from 'pretty-error';
+import webpack from 'webpack';
 import { WpackioError } from '../errors/WpackioError';
 import { ArchiveResolve } from '../scripts/Pack';
 
@@ -49,6 +50,90 @@ export function printCompilingMessage() {
 			`${logSymbols.info} compiling changes${watchEllipsis}`
 		)
 	);
+}
+
+export function printCompileTimeMessage(stat: any, lastStat: any | null) {
+	// safety
+	if (!stat || typeof stat !== 'object' || !stat.builtAt) {
+		return;
+	}
+
+	if (
+		lastStat === null ||
+		typeof lastStat !== 'object' ||
+		!lastStat.builtAt ||
+		stat.builtAt !== lastStat.builtAt
+	) {
+		const entryName = chalk.bold(stat.name);
+		let name = chalk.green(entryName);
+		let symbol = logSymbols.success;
+		if (stat.errors.length) {
+			name = chalk.red(entryName);
+			symbol = logSymbols.error;
+		} else if (stat.warnings.length) {
+			name = chalk.yellow(entryName);
+			symbol = logSymbols.warning;
+		}
+		console.log(
+			addTimeStampToLog(
+				`${symbol} entry ${name} in ${chalk.magenta(`${stat.time}ms`)}.`
+			)
+		);
+	}
+}
+
+export const webpackStatToJsonOptions: webpack.Stats.ToJsonOptions = {
+	timings: true,
+	assets: false,
+	builtAt: true,
+	cached: false,
+	cachedAssets: false,
+	children: true,
+	chunkModules: false,
+	chunkOrigins: false,
+	chunks: false,
+	entrypoints: false,
+	env: false,
+	errors: true,
+	warnings: true,
+	modules: false,
+};
+
+export function printCompileTimeMessages(
+	stats: webpack.Stats,
+	lastStatsJson: any | null
+) {
+	let statsJson: any | null = null;
+	if (stats) {
+		statsJson = stats.toJson(webpackStatToJsonOptions);
+	}
+
+	if (
+		statsJson !== null &&
+		!statsJson.time &&
+		statsJson.children &&
+		Array.isArray(statsJson.children)
+	) {
+		// if it is multicompiler
+		statsJson.children.forEach((sj: any, index: number) => {
+			if (lastStatsJson === null) {
+				printCompileTimeMessage(sj, null);
+			} else if (
+				lastStatsJson !== null &&
+				lastStatsJson.children &&
+				Array.isArray(lastStatsJson.children)
+			) {
+				printCompileTimeMessage(sj, lastStatsJson.children[index]);
+			}
+		});
+	} else if (statsJson.time && statsJson.name) {
+		// if it is single compiler
+		if (lastStatsJson === null) {
+			printCompileTimeMessage(statsJson, null);
+		} else {
+			printCompileTimeMessage(statsJson, lastStatsJson);
+		}
+	}
 }
 
 export function printSuccessfullyCompiledMessage() {
