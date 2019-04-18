@@ -27,9 +27,11 @@ ${chalk.bold(gradient.instagram(`  \\_/\\_/`))}   ${chalk.magenta(
 	'v'
 )}${chalk.bold.magenta(`${pkg.version}`)}`;
 
+export const wpackLogoSmall = gradient.instagram('wpack.io');
+
 export function addTimeStampToLog(log: string): string {
 	const time = new Date().toTimeString().split(' ')[0];
-	return `${chalk.dim(`｢wpack.io ${time}｣`)} ${log}`;
+	return `${chalk.dim(`｢${wpackLogoSmall} ${time}｣`)} ${log}`;
 }
 
 export const watchSymbol = `${logSymbols.info}`;
@@ -76,8 +78,6 @@ export function printGeneralInfoMessage(msg: string) {
 }
 
 export const bulletSymbol = chalk.magenta(figures.pointer);
-
-export const wpackLogoSmall = gradient.instagram('wpack.io');
 
 export const wpackLink = `${chalk.blue.underline('https://wpack.io')}`;
 

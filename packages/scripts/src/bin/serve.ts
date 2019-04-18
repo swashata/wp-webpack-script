@@ -20,6 +20,7 @@ import {
 	printSuccessfullyCompiledMessage,
 	printCompiledWithWarnMessage,
 	printFailedCompileMEssage,
+	printGeneralInfoMessage,
 } from './utils';
 
 /**
@@ -113,6 +114,10 @@ export function serve(options: ProgramOptions | undefined): void {
 					printSuccessfullyCompiledMessage();
 				}
 				printWatchingMessage();
+			},
+			onBsChange(file) {
+				printGeneralInfoMessage(`changed: ${chalk.bold(file)}`);
+				printGeneralInfoMessage('reloading browser');
 			},
 		});
 		server.serve();

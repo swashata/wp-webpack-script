@@ -16,6 +16,7 @@ interface Callbacks {
 	firstCompile(stats: webpack.Stats): void;
 	onError(err: { errors: string[]; warnings: string[] }): void;
 	onWarn(warn: { errors: string[]; warnings: string[] }): void;
+	onBsChange(file: string): void;
 }
 
 /**
@@ -177,7 +178,10 @@ export class Server {
 		if (this.projectConfig.watch) {
 			bs.watch(this.projectConfig.watch as string).on(
 				'change',
-				bs.reload
+				(file: string) => {
+					this.callbacks.onBsChange(file);
+					bs.reload();
+				}
 			);
 		}
 		// We don't need to watch for manifest, because if user is changing
