@@ -28,10 +28,8 @@ ${chalk.bold(gradient.instagram(`  \\_/\\_/`))}   ${chalk.magenta(
 )}${chalk.bold.magenta(`${pkg.version}`)}`;
 
 export function addTimeStampToLog(log: string): string {
-	const date = new Date();
-	return `${chalk.dim(
-		`｢wpack.io ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}｣`
-	)} ${log}`;
+	const time = new Date().toTimeString().split(' ')[0];
+	return `${chalk.dim(`｢wpack.io ${time}｣`)} ${log}`;
 }
 
 export const watchSymbol = `${logSymbols.info}`;
