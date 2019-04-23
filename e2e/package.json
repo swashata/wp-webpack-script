@@ -16,7 +16,7 @@
 		"jest": "24.7.1",
 		"node-sass": "4.11.0",
 		"serve": "11.0.0",
-		"typescript": "3.4.4",
+		"typescript": "3.4.5",
 		"wait-on": "3.2.0"
 	},
 	"scripts": {
