@@ -6303,14 +6303,15 @@ functional-red-black-tree@^1.0.1:
   resolved "https://registry.yarnpkg.com/functional-red-black-tree/-/functional-red-black-tree-1.0.1.tgz#1b0ab3bd553b2a0d6399d29c0e3ea0b252078327"
   integrity sha1-GwqzvVU7Kg1jmdKcDj6gslIHgyc=
 
-gatsby-cli@^2.5.11:
-  version "2.5.11"
-  resolved "https://registry.yarnpkg.com/gatsby-cli/-/gatsby-cli-2.5.11.tgz#8a00104cce88128d3f5a28967445230a6d49fc34"
-  integrity sha512-jwTXsjBzZZMYIOsLJa/gSnt+qECrVpOJOrIOLqbhfpAIUOrlKgowwf4ks7GfBnEtdlZ/dtt0bN6HifbWdf1xag==
+gatsby-cli@^2.5.12:
+  version "2.5.12"
+  resolved "https://registry.yarnpkg.com/gatsby-cli/-/gatsby-cli-2.5.12.tgz#c1c92af0dd12ffbad76da05c136d926d3c66854d"
+  integrity sha512-MhcHfYoiBcccX17KnaivaDZQb7j9ZhrAb90PO0ULrln7BsV93pmzz/t9iT1+0Sill0ST6vf/GbtD2kaiOWbNSg==
   dependencies:
     "@babel/code-frame" "^7.0.0"
     "@babel/runtime" "^7.0.0"
     bluebird "^3.5.0"
+    chalk "^2.4.2"
     ci-info "^2.0.0"
     clipboardy "^1.2.3"
     common-tags "^1.4.0"
@@ -6576,10 +6577,10 @@ gatsby-telemetry@^1.0.9:
     stack-utils "1.0.2"
     uuid "3.3.2"
 
-gatsby-transformer-remark@2.3.11:
-  version "2.3.11"
-  resolved "https://registry.yarnpkg.com/gatsby-transformer-remark/-/gatsby-transformer-remark-2.3.11.tgz#b8fe065f9066d61b3e05cb0320575252ec4231f4"
-  integrity sha512-Omh+atSoS+QR0kWIoxxrkeCK0ENtDuhhkG087pFx60qp/gQ+QsdGGplFBoEvfBpnA21wbvUFg3Sp2zaY5Yiq3A==
+gatsby-transformer-remark@2.3.12:
+  version "2.3.12"
+  resolved "https://registry.yarnpkg.com/gatsby-transformer-remark/-/gatsby-transformer-remark-2.3.12.tgz#04ba4497a0f779582b19ad7c55d373609beaefeb"
+  integrity sha512-ejalbB9Q3W4UsKAyJktWbyKXjZxJr2Gc9U2skVpwOP4U4G9nL10PB/50VaVbGS1qyTSfgsmJdm3eKheqeSt/nA==
   dependencies:
     "@babel/runtime" "^7.0.0"
     bluebird "^3.5.0"
@@ -6614,10 +6615,10 @@ gatsby-transformer-sharp@2.1.18:
     probe-image-size "^4.0.0"
     sharp "^0.21.3"
 
-gatsby@2.3.29:
-  version "2.3.29"
-  resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.3.29.tgz#65162804ecc1bf33ae1ff3b2d5a66deec5798e63"
-  integrity sha512-Eb3YdZcuCDOgPg8A4VCCbxPMH2n8hDmylgUrqNL7MqDfs2w52J4mFpxU8OrX44BtGmZggBr8hEsURfq6ErTa6g==
+gatsby@2.3.30:
+  version "2.3.30"
+  resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.3.30.tgz#758d13a10f396eb75d480250cb911e75fd40fe5a"
+  integrity sha512-66ZPcbyFhrPa1pJVfG3Xz6z+lJ8IjMxajoFA6yb8aEBKIjw1IN10D25bnUB79XppydNp+3C4EadGMXVWcFFUhg==
   dependencies:
     "@babel/code-frame" "^7.0.0"
     "@babel/core" "^7.0.0"
@@ -6674,7 +6675,7 @@ gatsby@2.3.29:
     flat "^4.0.0"
     fs-exists-cached "1.0.0"
     fs-extra "^5.0.0"
-    gatsby-cli "^2.5.11"
+    gatsby-cli "^2.5.12"
     gatsby-link "^2.0.16"
     gatsby-plugin-page-creator "^2.0.12"
     gatsby-react-router-scroll "^2.0.7"
