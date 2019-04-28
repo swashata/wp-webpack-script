@@ -17,7 +17,7 @@ Object {
 exports[`CreateWebPackConfig getCommon sends proper stuff depending on isDev 2`] = `
 Object {
   "context": "/foo/bar",
-  "devtool": "inline-source-map",
+  "devtool": "cheap-module-eval-source-map",
   "externals": Object {
     "jquery": "jQuery",
   },
@@ -142,7 +142,26 @@ Object {
       ],
     },
     Object {
-      "test": /\\\\\\.\\(sa\\|sc\\|c\\)ss\\$/,
+      "test": /\\\\\\.css\\$/,
+      "use": Array [
+        "style-loader",
+        Object {
+          "loader": "css-loader",
+          "options": Object {
+            "importLoaders": 1,
+            "sourceMap": true,
+          },
+        },
+        Object {
+          "loader": "postcss-loader",
+          "options": Object {
+            "sourceMap": true,
+          },
+        },
+      ],
+    },
+    Object {
+      "test": /\\\\\\.s\\(a\\|c\\)ss\\$/,
       "use": Array [
         "style-loader",
         Object {

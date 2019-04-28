@@ -621,7 +621,9 @@ describe('CreateWebPackConfig', () => {
 				'/foo/bar',
 				true
 			);
-			expect(cwcDev.getCommon().devtool).toBe('inline-source-map');
+			expect(cwcDev.getCommon().devtool).toBe(
+				'cheap-module-eval-source-map'
+			);
 			expect(cwcDev.getCommon()).toMatchSnapshot();
 		});
 	});
