@@ -82,6 +82,7 @@ export function serve(options: ProgramOptions | undefined): void {
 				printSuccessfullyCompiledMessage();
 			},
 			onError: msg => {
+				console.log('');
 				console.log(`${chalk.bgRed.black(' ERROR ')} please review`);
 				console.log('');
 				msg.errors.forEach(e => console.log(e));
@@ -106,6 +107,7 @@ export function serve(options: ProgramOptions | undefined): void {
 				console.log('');
 
 				if (stats.hasErrors()) {
+					console.log('');
 					console.log(
 						`${chalk.bgRed.black(' ERROR ')} please review`
 					);

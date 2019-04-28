@@ -302,7 +302,6 @@ export class WebpackConfigHelper {
 						formatterOptions: {
 							highlightCode: true,
 						},
-						useTypescriptIncrementalApi: false,
 						reportFiles: this.file.typeWatchFiles
 							? this.file.typeWatchFiles
 							: [],
@@ -631,7 +630,7 @@ ${bannerConfig.copyrightText}${bannerConfig.credit ? creditNote : ''}`,
 	public getCommon(): CommonWebpackConfig {
 		return {
 			context: this.cwd,
-			devtool: this.isDev ? 'inline-source-map' : 'source-map',
+			devtool: this.isDev ? 'cheap-module-eval-source-map' : 'source-map',
 			target: 'web',
 			watch: this.isDev,
 			mode: this.env,
