@@ -28,6 +28,25 @@ Object {
 }
 `;
 
+exports[`CreateWebPackConfig getModule babel-loader for typescript and javascript has babel-loader for node_modules with caching 1`] = `
+Object {
+  "babelrc": false,
+  "cacheCompression": false,
+  "cacheDirectory": true,
+  "compact": false,
+  "configFile": false,
+  "presets": Array [
+    Array [
+      "@wpackio/base",
+      Object {
+        "hasReact": false,
+      },
+    ],
+  ],
+  "sourceMaps": false,
+}
+`;
+
 exports[`CreateWebPackConfig getModule matches snapshot 1`] = `
 Object {
   "rules": Array [
@@ -92,6 +111,32 @@ Object {
                 "@babel/preset-typescript",
               ],
             ],
+          },
+        },
+      ],
+    },
+    Object {
+      "exclude": /\\(@babel\\(\\?:\\\\/\\|\\\\\\\\\\{1,2\\}\\)runtime\\)\\|\\(core-js\\)/,
+      "include": /node_modules/,
+      "test": /\\\\\\.\\(js\\|mjs\\)\\$/,
+      "use": Array [
+        Object {
+          "loader": "babel-loader",
+          "options": Object {
+            "babelrc": false,
+            "cacheCompression": false,
+            "cacheDirectory": true,
+            "compact": false,
+            "configFile": false,
+            "presets": Array [
+              Array [
+                "@wpackio/base",
+                Object {
+                  "hasReact": false,
+                },
+              ],
+            ],
+            "sourceMaps": false,
           },
         },
       ],

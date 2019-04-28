@@ -12,6 +12,7 @@ import {
 	findWpackIoBabelOnTJs,
 	findWpackIoBabelOnTs,
 	getConfigFromProjectAndServer,
+	findWpackIoBabelOnNm,
 } from '../helpers/testUtils';
 
 const currentDate: Date = new Date('2018-01-01T12:00:00');
@@ -195,6 +196,39 @@ describe('CreateWebPackConfig', () => {
 					throw new Error('Module is not an array');
 				}
 			});
+
+			test('has babel-loader for node_modules with caching', () => {
+				const cwc = new WebpackConfigHelper(
+					projectConfig.files[0],
+					getConfigFromProjectAndServer(projectConfig, serverConfig),
+					'/foo/bar',
+					true
+				);
+				const modules = cwc.getModule();
+				if (Array.isArray(modules.rules)) {
+					const nmJsRules = findWpackIoBabelOnNm(modules);
+					expect(nmJsRules).toHaveLength(1);
+					nmJsRules.forEach(rule => {
+						if (rule && rule.use) {
+							expect(rule.use[0].loader).toBe('babel-loader');
+							expect(rule.use[0].options).toMatchObject({
+								cacheDirectory: true,
+								cacheCompression: !true,
+								compact: !true,
+								sourceMaps: false,
+								configFile: false,
+								babelrc: false,
+							});
+							expect(rule.use[0].options).toMatchSnapshot();
+						} else {
+							throw new Error('JavaScript rule is undefined');
+						}
+					});
+				} else {
+					throw new Error('Module is not an array');
+				}
+			});
+
 			test('obeys hasFlow & hasRect', () => {
 				const cwc = new WebpackConfigHelper(
 					projectConfig.files[0],

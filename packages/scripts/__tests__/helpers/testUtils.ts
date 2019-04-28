@@ -2,6 +2,7 @@ import webpack from 'webpack';
 import { ProjectConfig } from '../../src/config/project.config.default';
 import { ServerConfig } from '../../src/config/server.config.default';
 import { WebpackConfigHelperConfig } from '../../src/config/WebpackConfigHelper';
+
 type babelLoaderModuleRules = {
 	use: {
 		loader: string;
@@ -25,6 +26,14 @@ export const findWpackIoBabelOnTs = (
 	return modules.rules.filter(rule => {
 		const { test } = rule;
 		return test !== undefined && test.toString() === '/\\.tsx?$/';
+	}) as babelLoaderModuleRules;
+};
+export const findWpackIoBabelOnNm = (
+	modules: webpack.Module
+): babelLoaderModuleRules => {
+	return modules.rules.filter(rule => {
+		const { include } = rule;
+		return include !== undefined && include.toString() === '/node_modules/';
 	}) as babelLoaderModuleRules;
 };
 export const findWpackIoBabelOnTJs = (
@@ -57,5 +66,6 @@ export function getConfigFromProjectAndServer(
 		}/`,
 		errorOverlay: true,
 		externals: pCfg.externals,
+		useBabelConfig: false,
 	};
 }
