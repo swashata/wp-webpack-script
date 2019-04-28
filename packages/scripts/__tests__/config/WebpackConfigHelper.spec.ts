@@ -168,7 +168,7 @@ describe('CreateWebPackConfig', () => {
 	// getModule()
 	describe('getModule', () => {
 		describe('babel-loader for typescript and javascript', () => {
-			test('has babel-loader', () => {
+			test('has babel-loader with caching', () => {
 				const cwc = new WebpackConfigHelper(
 					projectConfig.files[0],
 					getConfigFromProjectAndServer(projectConfig, serverConfig),
@@ -182,6 +182,11 @@ describe('CreateWebPackConfig', () => {
 					jsTsRules.forEach(rule => {
 						if (rule && rule.use) {
 							expect(rule.use[0].loader).toBe('babel-loader');
+							expect(rule.use[0].options).toMatchObject({
+								cacheDirectory: true,
+								cacheCompression: !true,
+								compact: !true,
+							});
 						} else {
 							throw new Error('JavaScript rule is undefined');
 						}
@@ -233,7 +238,7 @@ describe('CreateWebPackConfig', () => {
 				}
 			});
 
-			test('does not set babel-loader option for js and ts files if useBabelConfig is true', () => {
+			test('does not set babel-loader options except cache for js and ts files if useBabelConfig is true', () => {
 				const cwc = new WebpackConfigHelper(
 					projectConfig.files[0],
 					{
@@ -252,9 +257,11 @@ describe('CreateWebPackConfig', () => {
 					expect(jsTsRules).toHaveLength(2);
 					jsTsRules.forEach(rule => {
 						if (rule && rule.use && rule.use[0].options) {
-							expect(JSON.stringify(rule.use[0].options)).toBe(
-								JSON.stringify({})
-							);
+							expect(rule.use[0].options).toEqual({
+								cacheDirectory: true,
+								cacheCompression: !true,
+								compact: !true,
+							});
 						} else {
 							throw new Error('JavaScript rule is undefined');
 						}

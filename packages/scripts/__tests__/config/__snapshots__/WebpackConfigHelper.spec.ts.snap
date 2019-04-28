@@ -39,6 +39,9 @@ Object {
           "loader": "babel-loader",
           "options": Object {
             "babelrc": false,
+            "cacheCompression": false,
+            "cacheDirectory": true,
+            "compact": false,
             "configFile": false,
             "presets": Array [
               Array [
@@ -67,6 +70,9 @@ Object {
           "loader": "babel-loader",
           "options": Object {
             "babelrc": false,
+            "cacheCompression": false,
+            "cacheDirectory": true,
+            "compact": false,
             "configFile": false,
             "presets": Array [
               Array [
