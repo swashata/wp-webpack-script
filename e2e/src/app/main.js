@@ -1,4 +1,5 @@
 import './style.scss';
+import './style.less';
 import img from './assets/img.jpg';
 
 const mainNode = document.querySelector('#main-app');

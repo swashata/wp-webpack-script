@@ -53,6 +53,11 @@ context('wpackio-scripts serve', () => {
 				expect(el).to.have.css('color', 'rgb(0, 0, 255)');
 			});
 		});
+		it('LESS should work', () => {
+			cy.get('#green').then(el => {
+				expect(el).to.have.css('color', 'rgb(0, 255, 0)');
+			});
+		});
 		it('Asset from CSS should work', () => {
 			cy.get('#bg-image').then(el => {
 				const bg = el.css('background-image');
@@ -95,6 +100,11 @@ context('wpackio-scripts serve', () => {
 		it('SASS should work', () => {
 			cy.get('#red').then(el => {
 				expect(el).to.have.css('color', 'rgb(255, 0, 0)');
+			});
+		});
+		it('LESS should work', () => {
+			cy.get('#yellow').then(el => {
+				expect(el).to.have.css('color', 'rgb(255, 255, 0)');
 			});
 		});
 	});

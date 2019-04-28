@@ -17,6 +17,9 @@ context('wpackio-scripts serve', () => {
 		it('SASS should work', () => {
 			cy.get('#blue').should('have.css', 'color', 'rgb(0, 0, 255)');
 		});
+		it('LESS should work', () => {
+			cy.get('#green').should('have.css', 'color', 'rgb(0, 255, 0)');
+		});
 		it('Asset from CSS should work', () => {
 			cy.wait(5000);
 			cy.get('#bg-image').then(el => {
@@ -50,6 +53,9 @@ context('wpackio-scripts serve', () => {
 		});
 		it('SASS should work', () => {
 			cy.get('#red').should('have.css', 'color', 'rgb(255, 0, 0)');
+		});
+		it('LESS should work', () => {
+			cy.get('#yellow').should('have.css', 'color', 'rgb(255, 255, 0)');
 		});
 	});
 });

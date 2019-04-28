@@ -1,6 +1,7 @@
 import { updateText } from './module';
 // tslint:disable-next-line:no-import-side-effect
 import './style.scss';
+import './style.less';
 
 const mainNode = document.querySelector('#ts-app');
 if (mainNode) {

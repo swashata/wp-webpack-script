@@ -43,6 +43,8 @@ module.exports = {
 	hasReact: true,
 	// Needs sass?
 	hasSass: true,
+	// Needs less
+	hasLess: true,
 	// Needs flowtype?
 	hasFlow: false,
 	// Externals
