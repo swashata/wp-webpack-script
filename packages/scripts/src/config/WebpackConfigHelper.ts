@@ -369,6 +369,15 @@ ${bannerConfig.copyrightText}${bannerConfig.credit ? creditNote : ''}`,
 			hasReact,
 		};
 
+		const babelLoaderCacheOptions = {
+			// This is a feature of `babel-loader` for webpack (not Babel itself).
+			// It enables caching results in ./node_modules/.cache/babel-loader/
+			// directory for faster rebuilds.
+			cacheDirectory: true,
+			cacheCompression: !this.isDev,
+			compact: !this.isDev,
+		};
+
 		// check if babel.config.js is present
 		const isBabelConfigPresent = this.config.useBabelConfig;
 
@@ -400,7 +409,7 @@ ${bannerConfig.copyrightText}${bannerConfig.credit ? creditNote : ''}`,
 				{
 					loader: 'babel-loader',
 					options: isBabelConfigPresent
-						? {}
+						? { ...babelLoaderCacheOptions }
 						: this.getOverrideWebpackRuleOptions(
 								{
 									presets: jsPresets,
@@ -409,6 +418,7 @@ ${bannerConfig.copyrightText}${bannerConfig.credit ? creditNote : ''}`,
 									// rather use the jsBabelOverride
 									configFile: false,
 									babelrc: false,
+									...babelLoaderCacheOptions,
 								},
 								this.config.jsBabelOverride
 						  ),
@@ -432,7 +442,7 @@ ${bannerConfig.copyrightText}${bannerConfig.credit ? creditNote : ''}`,
 				{
 					loader: 'babel-loader',
 					options: isBabelConfigPresent
-						? {}
+						? { ...babelLoaderCacheOptions }
 						: this.getOverrideWebpackRuleOptions(
 								{
 									presets: tsPresets,
@@ -441,6 +451,7 @@ ${bannerConfig.copyrightText}${bannerConfig.credit ? creditNote : ''}`,
 									// rather use the jsBabelOverride
 									configFile: false,
 									babelrc: false,
+									...babelLoaderCacheOptions,
 									// We don't need plugin-proposal-class-properties
 									// because taken care of by @wpackio/base
 									// '@babel/proposal-class-properties',
