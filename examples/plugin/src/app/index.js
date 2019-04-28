@@ -1,8 +1,10 @@
 /* eslint-disable no-console */
-import './index.css';
 import imgURL from './image.png';
 import logger from './modules/logger';
 import svgURL from './svg.svg';
+
+import './index.css';
+import './style.less';
 
 console.log('Heres an URL of dynamically imported asset.');
 console.log(imgURL);

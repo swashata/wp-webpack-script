@@ -78,6 +78,7 @@ export interface ProjectConfig {
 	outputPath: string;
 	hasReact: boolean;
 	hasSass: boolean;
+	hasLess?: boolean;
 	hasFlow: boolean;
 	// Use babel.config.js instead of built-in options
 	useBabelConfig?: boolean;

@@ -30,7 +30,9 @@ interface ProjectConfigContext {
 	outputPath: string;
 	hasReact: 'true' | 'false';
 	hasFlow: 'true' | 'false';
+	hasTS: 'true' | 'false';
 	hasSass: 'true' | 'false';
+	hasLess: 'true' | 'false';
 	watch: string;
 }
 
@@ -169,7 +171,9 @@ export class Bootstrap {
 				choices: [
 					{ name: 'React', value: 'hasReact' },
 					{ name: 'Flowtype', value: 'hasFlow' },
+					{ name: 'Typescript', value: 'hasTS' },
 					{ name: 'Sass/Scss', value: 'hasSass' },
+					{ name: 'Less', value: 'hasLess' },
 				],
 				default: ['hasReact', 'hasSass'],
 			},
@@ -215,8 +219,14 @@ export class Bootstrap {
 					answers.features.indexOf('hasFlow') !== -1
 						? 'true'
 						: 'false',
+				hasTS:
+					answers.features.indexOf('hasTS') !== -1 ? 'true' : 'false',
 				hasSass:
 					answers.features.indexOf('hasSass') !== -1
+						? 'true'
+						: 'false',
+				hasLess:
+					answers.features.indexOf('hasLess') !== -1
 						? 'true'
 						: 'false',
 				watch: answers.watch,
@@ -345,6 +355,14 @@ module.exports = {
 		// If has Sass, then push node-sass
 		if (projectContext.hasSass === 'true') {
 			devDependencies.push('node-sass');
+		}
+		// if has Less, then push less
+		if (projectContext.hasLess === 'true') {
+			devDependencies.push('less');
+		}
+		// if has ts, then push fork-ts-checker-webpack-plugin
+		if (projectContext.hasTS === 'true') {
+			devDependencies.push('fork-ts-checker-webpack-plugin');
 		}
 
 		// Write it

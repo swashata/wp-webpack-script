@@ -1,0 +1,17 @@
+.entry-content {
+	background: #fff !important;
+	position: relative;
+	&::before {
+		content: "Style set by less";
+		display: block;
+		font-style: italic;
+		font-family: cursive;
+		font-weight: bold;
+		color: purple;
+		font-size: 12px;
+		position: absolute;
+		top: 44px;
+		left: -5px;
+		transform: rotate(-90deg);
+	}
+}

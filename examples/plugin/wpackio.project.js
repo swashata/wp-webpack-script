@@ -186,6 +186,8 @@ module.exports = {
 	hasReact: true,
 	// Needs sass?
 	hasSass: true,
+	// Needs less?
+	hasLess: true,
 	// Externals
 	externals: {
 		jquery: 'jQuery',

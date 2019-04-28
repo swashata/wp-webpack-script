@@ -1,4 +1,5 @@
 ## Project specifics ##
+examples/tryouts
 
 # Compiled libraries
 packages/*/lib

@@ -39,6 +39,7 @@ export interface WebpackConfigHelperConfig {
 	hasReact: ProjectConfig['hasReact'];
 	hasSass: ProjectConfig['hasSass'];
 	hasFlow: ProjectConfig['hasFlow'];
+	hasLess: ProjectConfig['hasLess'];
 	jsBabelPresetOptions?: ProjectConfig['jsBabelPresetOptions'];
 	tsBabelPresetOptions?: ProjectConfig['tsBabelPresetOptions'];
 	jsBabelOverride?: ProjectConfig['jsBabelOverride'];
@@ -364,7 +365,7 @@ ${bannerConfig.copyrightText}${bannerConfig.credit ? creditNote : ''}`,
 	 * Get module object for webpack, depending on environment.
 	 */
 	public getModule(): webpack.Module {
-		const { hasReact, hasSass, hasFlow } = this.config;
+		const { hasReact, hasSass, hasFlow, hasLess } = this.config;
 		const wpackioBabelOptions: PresetOptions = {
 			hasReact,
 		};
@@ -494,46 +495,69 @@ ${bannerConfig.copyrightText}${bannerConfig.credit ? creditNote : ''}`,
 		};
 
 		// Create style rules
-		const styleRules: webpack.RuleSetRule = {
-			test: /\.css$/,
-			use: [
-				this.isDev
-					? 'style-loader'
-					: {
-							loader: MiniCssExtractPlugin.loader,
-							options: {
-								sourceMap: true,
-							},
-					  },
-				{
-					loader: 'css-loader',
-					options: {
-						importLoaders: 1,
-						sourceMap: true,
-					},
+		const styleRulesUse: webpack.RuleSetRule['use'] = [
+			this.isDev
+				? 'style-loader'
+				: {
+						loader: MiniCssExtractPlugin.loader,
+						options: {
+							sourceMap: true,
+						},
+				  },
+			{
+				loader: 'css-loader',
+				options: {
+					importLoaders: 1,
+					sourceMap: true,
 				},
-				{
-					loader: 'postcss-loader',
-					options: {
-						sourceMap: true,
-					},
-				},
-			],
-		};
-		// If we have sass, then add the stuff
-		if (
-			hasSass &&
-			styleRules.use !== undefined &&
-			Array.isArray(styleRules.use)
-		) {
-			styleRules.test = /\.(sa|sc|c)ss$/;
-			styleRules.use.push({
-				loader: 'sass-loader',
+			},
+			{
+				loader: 'postcss-loader',
 				options: {
 					sourceMap: true,
 				},
+			},
+		];
+
+		// Create style rules
+		const styleRules: webpack.RuleSetRule[] = [
+			{
+				test: /\.css$/,
+				use: [...styleRulesUse],
+			},
+		];
+		// If we have sass, then add the stuff
+		if (hasSass) {
+			styleRules.push({
+				test: /\.s(a|c)ss$/,
+				use: [
+					...styleRulesUse,
+					{
+						loader: 'sass-loader',
+						options: {
+							sourceMap: true,
+						},
+					},
+				],
 			});
 		}
+		// If we have less, then add the stuff
+		if (hasLess) {
+			styleRules.push({
+				test: /\.less$/,
+				use: [
+					...styleRulesUse,
+					{
+						loader: 'less-loader',
+						options: {
+							sourceMap: true,
+							javascriptEnabled: true,
+						},
+					},
+				],
+			});
+		}
+
 		// create file rules
 		const {
 			fileRulesNonStyle,
@@ -545,7 +569,7 @@ ${bannerConfig.copyrightText}${bannerConfig.credit ? creditNote : ''}`,
 				jsRules,
 				tsRules,
 				nmJsRules,
-				styleRules,
+				...styleRules,
 				fileRulesNonStyle,
 				fileRulesStyle,
 			],
