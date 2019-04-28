@@ -465,6 +465,34 @@ ${bannerConfig.copyrightText}${bannerConfig.credit ? creditNote : ''}`,
 			],
 			exclude: /(node_modules)/,
 		};
+
+		// Compile node_modules
+		const nmJsRules: webpack.RuleSetRule = {
+			test: /\.(js|mjs)$/,
+			// we exclude @babel/runtime and core-js
+			exclude: /(@babel(?:\/|\\{1,2})runtime)|(core-js)/,
+			include: /node_modules/,
+			use: [
+				{
+					loader: 'babel-loader',
+					options: {
+						// cache
+						...babelLoaderCacheOptions,
+						// preset from our own package
+						presets: getBabelPresets({ hasReact: false }),
+						// If an error happens in a package, it's possible to be
+						// because it was compiled. Thus, we don't want the browser
+						// debugger to show the original code. Instead, the code
+						// being evaluated would be much more helpful.
+						sourceMaps: false,
+						// disable babelrc and babel.config.js for node_modules
+						configFile: false,
+						babelrc: false,
+					},
+				},
+			],
+		};
+
 		// Create style rules
 		const styleRules: webpack.RuleSetRule = {
 			test: /\.css$/,
@@ -516,6 +544,7 @@ ${bannerConfig.copyrightText}${bannerConfig.credit ? creditNote : ''}`,
 			rules: [
 				jsRules,
 				tsRules,
+				nmJsRules,
 				styleRules,
 				fileRulesNonStyle,
 				fileRulesStyle,
