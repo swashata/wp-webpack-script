@@ -37,27 +37,32 @@ export class Build {
 			compiler.run((err, stats) => {
 				const raw = stats.toJson('verbose');
 				const messages = formatWebpackMessages(raw);
+				const outputLog = stats.toString({
+					colors: true,
+					assets: true,
+					chunks: false,
+					entrypoints: false,
+					hash: false,
+					version: false,
+					modules: false,
+					builtAt: false,
+					timings: false,
+				});
+
 				if (!messages.errors.length && !messages.warnings.length) {
 					// All good
 					resolve({
 						status: 'success',
-						log: stats.toString({
-							colors: true,
-							assets: true,
-							chunks: false,
-							entrypoints: false,
-							hash: false,
-							version: false,
-							modules: false,
-							builtAt: false,
-							timings: false,
-						}),
+						log: outputLog,
 					});
 				}
 				if (messages.errors.length) {
 					reject(messages.errors.join('\n'));
 				}
-				resolve({ status: 'warn', log: messages.warnings.join('\n') });
+				resolve({
+					status: 'warn',
+					log: `${outputLog}\n\n${messages.warnings.join('\n')}`,
+				});
 			});
 		});
 	}

@@ -57,7 +57,7 @@ export function build(options: ProgramOptions | undefined): void {
 				if (status === 'success') {
 					spinner.succeed(`${wpackLogoSmall} build successful.`);
 				} else {
-					spinner.warn(`${wpackLogoSmall} build warnings.`);
+					spinner.warn(`${wpackLogoSmall} built with warnings.`);
 				}
 				console.log('');
 				console.log(
