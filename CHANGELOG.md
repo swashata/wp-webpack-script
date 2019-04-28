@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.2.0](https://github.com/swashata/wp-webpack-script/compare/v3.1.0...v3.2.0) (2019-04-28)
+
+
+### Bug Fixes
+
+* **deps:** update dependencies ([1146e63](https://github.com/swashata/wp-webpack-script/commit/1146e63))
+* **deps:** update dependency gatsby to v2.3.31 ([e894e3f](https://github.com/swashata/wp-webpack-script/commit/e894e3f))
+* **deps:** update dependency gatsby to v2.3.32 ([16f5a3f](https://github.com/swashata/wp-webpack-script/commit/16f5a3f))
+* **deps:** update gatsby monorepo ([616b9b6](https://github.com/swashata/wp-webpack-script/commit/616b9b6))
+* **deps:** update gatsby monorepo ([8499ab8](https://github.com/swashata/wp-webpack-script/commit/8499ab8))
+* **deps:** update gatsby monorepo ([7bdc16e](https://github.com/swashata/wp-webpack-script/commit/7bdc16e))
+* **deps:** update gatsby monorepo ([7cbc872](https://github.com/swashata/wp-webpack-script/commit/7cbc872))
+* **deps:** update gatsby monorepo ([b4dd53c](https://github.com/swashata/wp-webpack-script/commit/b4dd53c))
+* **deps:** update typescript-eslint monorepo to v1.7.0 ([56967d9](https://github.com/swashata/wp-webpack-script/commit/56967d9))
+
+
+### Features
+
+* **scripts:** add cache to babel loader for js and ts ([e87abd6](https://github.com/swashata/wp-webpack-script/commit/e87abd6)), closes [#472](https://github.com/swashata/wp-webpack-script/issues/472)
+* **scripts:** add less support ([751c4d6](https://github.com/swashata/wp-webpack-script/commit/751c4d6)), closes [#469](https://github.com/swashata/wp-webpack-script/issues/469)
+* **scripts:** compile node-modules with babel-loader ([9ac03a4](https://github.com/swashata/wp-webpack-script/commit/9ac03a4)), closes [#471](https://github.com/swashata/wp-webpack-script/issues/471)
+* **scripts:** improve performance of build time ([0ddd9a3](https://github.com/swashata/wp-webpack-script/commit/0ddd9a3)), closes [#473](https://github.com/swashata/wp-webpack-script/issues/473)
+
+
+
+
+
 # [3.1.0](https://github.com/swashata/wp-webpack-script/compare/v3.0.0...v3.1.0) (2019-04-18)
 
 

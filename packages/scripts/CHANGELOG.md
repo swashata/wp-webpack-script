@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.2.0](https://github.com/swashata/wp-webpack-script/compare/v3.1.0...v3.2.0) (2019-04-28)
+
+
+### Bug Fixes
+
+* **deps:** update dependencies ([1146e63](https://github.com/swashata/wp-webpack-script/commit/1146e63))
+
+
+### Features
+
+* **scripts:** add cache to babel loader for js and ts ([e87abd6](https://github.com/swashata/wp-webpack-script/commit/e87abd6)), closes [#472](https://github.com/swashata/wp-webpack-script/issues/472)
+* **scripts:** add less support ([751c4d6](https://github.com/swashata/wp-webpack-script/commit/751c4d6)), closes [#469](https://github.com/swashata/wp-webpack-script/issues/469)
+* **scripts:** compile node-modules with babel-loader ([9ac03a4](https://github.com/swashata/wp-webpack-script/commit/9ac03a4)), closes [#471](https://github.com/swashata/wp-webpack-script/issues/471)
+* **scripts:** improve performance of build time ([0ddd9a3](https://github.com/swashata/wp-webpack-script/commit/0ddd9a3)), closes [#473](https://github.com/swashata/wp-webpack-script/issues/473)
+
+
+
+
+
 # [3.1.0](https://github.com/swashata/wp-webpack-script/compare/v3.0.0...v3.1.0) (2019-04-18)
 
 
