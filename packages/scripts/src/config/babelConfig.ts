@@ -16,6 +16,8 @@ export function getDefaultBabelPresetOptions(
 ): PresetOptions {
 	const defaultBabelOptions: PresetOptions = {
 		hasReact,
+		presetEnv: {},
+		presetReact: {},
 	};
 
 	// Push targets to babel-preset-env if this is dev
