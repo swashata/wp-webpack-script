@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.3.0](https://github.com/swashata/wp-webpack-script/compare/v3.2.0...v3.3.0) (2019-04-29)
+
+
+### Bug Fixes
+
+* **scripts:** add missing properties to default babel preset options ([68544b3](https://github.com/swashata/wp-webpack-script/commit/68544b3))
+
+
+### Features
+
+* **scripts:** add async typecheck report ([3bf18dd](https://github.com/swashata/wp-webpack-script/commit/3bf18dd))
+* **scripts:** make build output style consistent ([b355d9d](https://github.com/swashata/wp-webpack-script/commit/b355d9d))
+* modify build warning message ([3f3face](https://github.com/swashata/wp-webpack-script/commit/3f3face))
+
+
+
+
+
 # [3.2.0](https://github.com/swashata/wp-webpack-script/compare/v3.1.0...v3.2.0) (2019-04-28)
 
 
