@@ -12,6 +12,9 @@ import {
 	resolveCWD,
 	watchEllipsis,
 	wpackLogoSmall,
+	printErrorHeading,
+	printSuccessHeading,
+	printWarningHeading,
 } from './utils';
 
 /**
@@ -53,28 +56,31 @@ export function build(options: ProgramOptions | undefined): void {
 		const builder: Build = new Build(projectConfig, cwd);
 		builder
 			.build()
-			.then(({ status, log }) => {
+			.then(({ status, log, warnings }) => {
 				if (status === 'success') {
 					spinner.succeed(`${wpackLogoSmall} build successful.`);
 				} else {
 					spinner.warn(`${wpackLogoSmall} built with warnings.`);
 				}
-				console.log('');
-				console.log(
-					`${chalk.bgGreenBright(
-						chalk.bold.hex('#000000')(' OUTPUT ')
-					)}`
-				);
-				console.log('');
+				printSuccessHeading('OUTPUT');
 				console.log(log);
 				console.log('');
+				if (status === 'warn' && Array.isArray(warnings)) {
+					printWarningHeading('WARNINGS');
+					warnings.forEach(w => {
+						console.log(w);
+						console.log('');
+					});
+				}
 				endBuildInfo();
 				console.log('');
 				process.exit(0);
 			})
 			.catch(err => {
 				spinner.fail(`${wpackLogoSmall} build failed.`);
+				printErrorHeading('ERROR');
 				console.error(err);
+				console.log('');
 				process.exit(1);
 			});
 	} catch (e) {

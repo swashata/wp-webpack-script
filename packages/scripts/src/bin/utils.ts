@@ -199,6 +199,14 @@ export function printWarningHeading(msg: string = 'WARNING'): void {
 	console.log('');
 }
 
+export function printSuccessHeading(msg: string = 'OUTPUT'): void {
+	console.log('');
+	console.log(
+		`${chalk.bgGreenBright(chalk.bold.hex('#000000')(` ${msg} `))}`
+	);
+	console.log('');
+}
+
 export const bulletSymbol = chalk.magenta(figures.pointer);
 
 export const wpackLink = `${chalk.blue.underline('https://wpack.io')}`;

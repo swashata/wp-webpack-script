@@ -23,6 +23,7 @@ export class Build {
 	public build(): Promise<{
 		status: 'error' | 'warn' | 'success';
 		log: string;
+		warnings?: string[];
 	}> {
 		return new Promise((resolve, reject) => {
 			const config = new CreateWebpackConfig(
@@ -47,6 +48,8 @@ export class Build {
 					modules: false,
 					builtAt: false,
 					timings: false,
+					warnings: false,
+					errors: false,
 				});
 
 				if (!messages.errors.length && !messages.warnings.length) {
@@ -57,11 +60,12 @@ export class Build {
 					});
 				}
 				if (messages.errors.length) {
-					reject(messages.errors.join('\n'));
+					reject(messages.errors.join('\n\n'));
 				}
 				resolve({
 					status: 'warn',
-					log: `${outputLog}\n\n${messages.warnings.join('\n')}`,
+					log: outputLog,
+					warnings: messages.warnings,
 				});
 			});
 		});
