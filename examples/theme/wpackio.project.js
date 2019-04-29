@@ -36,6 +36,12 @@ module.exports = {
 			webpackConfig: undefined,
 		},
 		// If has more length, then multi-compiler
+		{
+			name: 'single',
+			entry: {
+				main: ['./src/single/single.js'],
+			},
+		},
 	],
 	// Output path relative to the context directory
 	// We need relative path here, else, we can not map to publicPath

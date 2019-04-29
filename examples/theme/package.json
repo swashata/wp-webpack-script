@@ -8,13 +8,14 @@
   "private": true,
   "devDependencies": {
     "@wpackio/scripts": "file:../../packages/scripts",
-    "node-sass": "^4.10.0"
+    "node-sass": "^4.12.0"
   },
   "scripts": {
     "bootstrap": "wpackio-scripts bootstrap",
     "build": "wpackio-scripts build",
     "start": "wpackio-scripts start",
-    "archive": "wpackio-scripts pack"
+    "archive": "wpackio-scripts pack",
+    "dev": "../../packages/scripts/lib/bin/index.js"
   },
   "dependencies": {
     "@wpackio/entrypoint": "file:../../packages/entrypoint"

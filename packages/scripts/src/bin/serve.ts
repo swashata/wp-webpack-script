@@ -22,6 +22,8 @@ import {
 	printGeneralInfoMessage,
 	printCompileTimeMessages,
 	webpackStatToJsonOptions,
+	printErrorHeading,
+	printWarningHeading,
 } from './utils';
 
 /**
@@ -81,22 +83,28 @@ export function serve(options: ProgramOptions | undefined): void {
 			done: () => {
 				printSuccessfullyCompiledMessage();
 			},
+			onWatching() {
+				printWatchingMessage();
+			},
 			onError: msg => {
-				console.log('');
-				console.log(`${chalk.bgRed.black(' ERROR ')} please review`);
-				console.log('');
-				msg.errors.forEach(e => console.log(e));
-				console.log('');
+				printErrorHeading('ERROR');
+				msg.errors.forEach(e => {
+					console.log(e);
+					console.log('');
+				});
 				printFailedCompileMEssage();
 			},
 			onWarn: msg => {
+				printWarningHeading('WARNING');
+				msg.warnings.forEach(e => {
+					console.log(e);
+					console.log('');
+				});
 				printCompiledWithWarnMessage();
-				msg.warnings.forEach(e => console.log(e));
 			},
 			onEmit: stats => {
 				printCompileTimeMessages(stats, lastWebpackStat);
 				lastWebpackStat = stats.toJson(webpackStatToJsonOptions);
-				printWatchingMessage();
 			},
 			firstCompile: (stats: webpack.Stats) => {
 				spinner.stop();
@@ -107,26 +115,54 @@ export function serve(options: ProgramOptions | undefined): void {
 				console.log('');
 
 				if (stats.hasErrors()) {
-					console.log('');
-					console.log(
-						`${chalk.bgRed.black(' ERROR ')} please review`
-					);
-					messages.errors.forEach(e => console.log(e));
-					console.log('');
+					printErrorHeading('ERROR');
+					messages.errors.forEach(e => {
+						console.log(e);
+						console.log('');
+					});
 					printFailedCompileMEssage();
 				} else if (stats.hasWarnings()) {
+					printWarningHeading('WARNING');
+					messages.warnings.forEach(e => {
+						console.log(e);
+						console.log('');
+					});
 					printCompiledWithWarnMessage();
-					messages.warnings.forEach(e => console.log(e));
 				} else {
 					printSuccessfullyCompiledMessage();
 				}
 				printCompileTimeMessages(stats, lastWebpackStat);
-				printWatchingMessage();
 				lastWebpackStat = stats.toJson(webpackStatToJsonOptions);
 			},
 			onBsChange(file) {
 				printGeneralInfoMessage(`changed: ${chalk.bold(file)}`);
 				printGeneralInfoMessage('reloading browser');
+			},
+			onTcStart() {
+				printGeneralInfoMessage('waiting for typecheck results...');
+			},
+			onTcEnd(messages) {
+				if (messages.errors.length || messages.warnings.length) {
+					if (messages.errors.length) {
+						printErrorHeading('TS ERROR');
+						messages.errors.forEach(e => {
+							console.log(e);
+							console.log('');
+						});
+					}
+					if (messages.warnings.length) {
+						printWarningHeading('TS WARNING');
+						messages.warnings.forEach(e => {
+							console.log(e);
+							console.log('');
+						});
+					}
+				} else {
+					printGeneralInfoMessage(
+						'no typecheck errors',
+						logSymbols.success
+					);
+				}
 			},
 		});
 		server.serve();

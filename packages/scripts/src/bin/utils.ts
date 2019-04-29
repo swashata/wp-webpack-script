@@ -179,8 +179,24 @@ export function printFailedCompileMEssage() {
 	);
 }
 
-export function printGeneralInfoMessage(msg: string) {
-	console.info(addTimeStampToLog(`${logSymbols.info} ${msg}`));
+export function printGeneralInfoMessage(msg: string, symbol?: string) {
+	if (typeof symbol === 'undefined') {
+		// eslint-disable-next-line no-param-reassign
+		symbol = logSymbols.info;
+	}
+	console.info(addTimeStampToLog(`${symbol} ${msg}`));
+}
+
+export function printErrorHeading(msg: string = 'ERROR'): void {
+	console.log('');
+	console.log(`${chalk.bgRed.black(` ${msg} `)} please review`);
+	console.log('');
+}
+
+export function printWarningHeading(msg: string = 'WARNING'): void {
+	console.log('');
+	console.log(`${chalk.bgYellow.black(` ${msg} `)} please review`);
+	console.log('');
 }
 
 export const bulletSymbol = chalk.magenta(figures.pointer);

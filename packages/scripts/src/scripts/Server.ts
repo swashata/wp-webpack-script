@@ -1,6 +1,7 @@
 import browserSync from 'browser-sync';
 import devIp from 'dev-ip';
 import formatWebpackMessages from 'react-dev-utils/formatWebpackMessages';
+import typescriptFormatter from 'react-dev-utils/typescriptFormatter';
 import openBrowser from 'react-dev-utils/openBrowser';
 import webpack from 'webpack';
 import webpackDevMiddleware from 'webpack-dev-middleware';
@@ -9,15 +10,25 @@ import webpackHotMiddleware from 'webpack-hot-middleware';
 import { CreateWebpackConfig } from '../config/CreateWebpackConfig';
 import { ProjectConfig } from '../config/project.config.default';
 import { ServerConfig } from '../config/server.config.default';
+import { hasTypeScript } from '../config/WebpackConfigHelper';
+import { WpackioError } from '../errors/WpackioError';
+
+interface FormattedMessage {
+	errors: string[];
+	warnings: string[];
+}
 
 interface Callbacks {
 	invalid(): void;
 	done(stats: webpack.Stats): void;
 	firstCompile(stats: webpack.Stats): void;
-	onError(err: { errors: string[]; warnings: string[] }): void;
-	onWarn(warn: { errors: string[]; warnings: string[] }): void;
+	onError(err: FormattedMessage): void;
+	onWarn(warn: FormattedMessage): void;
 	onBsChange(file: string): void;
 	onEmit(stats: webpack.Stats): void;
+	onTcStart(): void;
+	onTcEnd(err: FormattedMessage): void;
+	onWatching(): void;
 }
 
 /**
@@ -44,6 +55,12 @@ export class Server {
 	private firstCompileCompleted: boolean = false;
 
 	private callbacks: Callbacks;
+
+	private hasTs: boolean;
+
+	private tsConfigPath: string;
+
+	private priorFirstCompileTsMessage: Promise<FormattedMessage>[] = [];
 
 	/**
 	 * Create an instance.
@@ -76,6 +93,10 @@ export class Server {
 			this.cwd,
 			true
 		);
+		// Check if project has typescript
+		const [hasTs, tsConfigPath] = hasTypeScript(this.cwd);
+		this.hasTs = hasTs;
+		this.tsConfigPath = tsConfigPath;
 	}
 
 	/**
@@ -169,6 +190,21 @@ export class Server {
 			if (!this.firstCompileCompleted) {
 				this.firstCompileCompleted = true;
 				this.callbacks.firstCompile(stats);
+				// Some stuff for async ts checking
+				if (this.priorFirstCompileTsMessage.length) {
+					const delayedMsg = setTimeout(() => {
+						this.callbacks.onTcStart();
+					}, 100);
+					Promise.all(this.priorFirstCompileTsMessage).then(msgs => {
+						clearTimeout(delayedMsg);
+						msgs.forEach(msg => {
+							this.callbacks.onTcEnd(msg);
+							this.callbacks.onWatching();
+						});
+					});
+				} else {
+					this.callbacks.onWatching();
+				}
 			}
 			this.openBrowser();
 		});
@@ -226,6 +262,68 @@ export class Server {
 		}
 	};
 
+	private addTsHooks = (compiler: webpack.Compiler, plugin: any): void => {
+		const { beforeCompile, done } = compiler.hooks;
+		const tsHooks = plugin.getCompilerHooks(compiler);
+
+		let tsMessagesPromise: Promise<FormattedMessage>;
+		let tsMessagesResolver: (msgs: FormattedMessage) => void;
+		let tsMessagesReject: any = null;
+
+		// Tap before run begins on watch mode to create a new tsmessage promise
+		beforeCompile.tap('wpackIoServerBeforeCompileTs', () => {
+			// reject the previous message queue if any
+			if (tsMessagesReject != null) {
+				try {
+					tsMessagesReject('overridden');
+				} catch (e) {
+					// do nothing
+				}
+			}
+			tsMessagesPromise = new Promise((resolve, reject) => {
+				tsMessagesResolver = msgs => resolve(msgs);
+				tsMessagesReject = reject;
+			});
+		});
+
+		tsHooks.receive.tap(
+			'afterTypeScriptCheck',
+			(diagnostics: any, lints: any) => {
+				const allMsgs = [...diagnostics, ...lints];
+				const format = (message: any) =>
+					`${typescriptFormatter(message, true)}`;
+
+				tsMessagesResolver({
+					errors: allMsgs
+						.filter(msg => msg.severity === 'error')
+						.map(format),
+					warnings: allMsgs
+						.filter(msg => msg.severity === 'warning')
+						.map(format),
+				});
+			}
+		);
+
+		// Once compilation is done, then show the message
+		done.tap('wpackIoServerDoneTs', async () => {
+			if (this.firstCompileCompleted) {
+				const delayedMsg = setTimeout(() => {
+					this.callbacks.onTcStart();
+				}, 100);
+				try {
+					const messages = await tsMessagesPromise;
+					clearTimeout(delayedMsg);
+					this.callbacks.onTcEnd(messages);
+					this.callbacks.onWatching();
+				} catch (e) {
+					// do thing, since it was cancelled
+				}
+			} else {
+				this.priorFirstCompileTsMessage.push(tsMessagesPromise);
+			}
+		});
+	};
+
 	/**
 	 * Add hooks to compiler instances.
 	 */
@@ -234,32 +332,66 @@ export class Server {
 		// in both single and multi-compiler instances.
 		const { done, invalid } = compiler.hooks;
 
-		// Run callbacks on events (taps)
-		done.tap('wpackio-hot-server', stats => {
+		// When compilation is done, call the callback
+		done.tap('wpackIoServerDone', stats => {
 			// don't do anything if firstCompile hasn't run
-			if (!this.firstCompileCompleted) {
-				return;
-			}
+			if (this.firstCompileCompleted) {
+				const raw = stats.toJson('verbose');
+				const messages = formatWebpackMessages(raw);
+				if (!messages.errors.length && !messages.warnings.length) {
+					// Here be pretty stuff.
+					this.callbacks.done(stats);
+				}
+				if (messages.errors.length) {
+					this.callbacks.onError(messages);
+				} else if (messages.warnings.length) {
+					this.callbacks.onWarn(messages);
+				}
 
-			const raw = stats.toJson('verbose');
-			const messages = formatWebpackMessages(raw);
-			if (!messages.errors.length && !messages.warnings.length) {
-				// Here be pretty stuff.
-				this.callbacks.done(stats);
-			}
-			if (messages.errors.length) {
-				this.callbacks.onError(messages);
-			} else if (messages.warnings.length) {
-				this.callbacks.onWarn(messages);
-			}
+				this.callbacks.onEmit(stats);
 
-			this.callbacks.onEmit(stats);
+				if (!this.hasTs) {
+					this.callbacks.onWatching();
+				}
+			}
 		});
 
 		// On compile start
-		invalid.tap('wpackio-hot-server', () => {
+		invalid.tap('wpackIoServerInvalid', () => {
 			this.callbacks.invalid();
 		});
+
+		// some additional work for typescript
+		// heavily based on create-react-script
+
+		// Some more hooks on typescript
+		if (this.hasTs) {
+			// try to get the fork ts checker webpack plugin
+			let ForkTsCheckerWebpackPlugin: any;
+			try {
+				// eslint-disable-next-line global-require, import/no-extraneous-dependencies, @typescript-eslint/no-var-requires
+				ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+			} catch (e) {
+				throw new WpackioError(
+					'please install fork-ts-checker-webpack-plugin package'
+				);
+			}
+
+			// Now here's the tricky thing, it could be either single compiler
+			// or multi-compiler
+			if ('compilers' in compiler) {
+				// It is a multi-compiler instance
+				// so tap the hook for every instance
+				((compiler as any).compilers as webpack.Compiler[]).forEach(
+					sCompiler => {
+						this.addTsHooks(sCompiler, ForkTsCheckerWebpackPlugin);
+					}
+				);
+			} else {
+				// single compiler instance, so just tap one
+				this.addTsHooks(compiler, ForkTsCheckerWebpackPlugin);
+			}
+		}
 	};
 
 	/**

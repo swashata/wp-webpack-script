@@ -35,7 +35,7 @@ module.exports = {
 				main: ['./src/app/index.js'],
 				mobile: ['./src/app/mobile.js'],
 			},
-			hasTypeScript: false,
+			// hasTypeScript: false,
 			// Extra webpack config to be passed directly
 			webpackConfig: (config, merge, appDir, isDev) => {
 				const svgoLoader = {
@@ -99,7 +99,7 @@ module.exports = {
 			entry: {
 				main: ['./src/foo/foo.js'],
 			},
-			hasTypeScript: false,
+			// hasTypeScript: false,
 			// Extra webpack config to be passed directly
 			webpackConfig: undefined,
 		},
@@ -110,7 +110,7 @@ module.exports = {
 			entry: {
 				main: ['./src/reactapp/index.jsx'],
 			},
-			hasTypeScript: false,
+			// hasTypeScript: false,
 			webpackConfig: (config, merge, appDir, isDev) => {
 				const customRules = {
 					module: {

@@ -64,6 +64,23 @@ interface CommonWebpackConfig {
 }
 
 /**
+ * Check if file exists or not using fs API.
+ */
+export function fileExists(filepath: string): boolean {
+	try {
+		// tslint:disable-next-line:non-literal-fs-path
+		return fs.statSync(filepath).isFile();
+	} catch (_) {
+		return false;
+	}
+}
+
+export function hasTypeScript(cwd: string): [boolean, string] {
+	const tsconfigPath = path.resolve(cwd, './tsconfig.json');
+	return [fileExists(tsconfigPath), tsconfigPath];
+}
+
+/**
  * A helper class to get different configuration of webpack.
  */
 export class WebpackConfigHelper {
@@ -283,11 +300,8 @@ export class WebpackConfigHelper {
 			}),
 		];
 		// Add ts checker plugin if project has tsconfig.json
-		const tsconfigPath = path.resolve(this.cwd, './tsconfig.json');
-		if (
-			this.fileExists(tsconfigPath) &&
-			this.file.hasTypeScript !== false
-		) {
+		const [isTs, tsconfigPath] = hasTypeScript(this.cwd);
+		if (isTs && this.file.hasTypeScript !== false) {
 			// dynamic require forktschecker otherwise it will throw error
 			try {
 				// eslint-disable-next-line import/no-extraneous-dependencies, global-require, @typescript-eslint/no-var-requires
@@ -296,9 +310,11 @@ export class WebpackConfigHelper {
 					new ForkTsCheckerWebpackPlugin({
 						tsconfig: tsconfigPath,
 						tslint: undefined,
-						async: false,
+						async: this.isDev,
 						silent: true,
 						formatter: 'codeframe',
+						useTypescriptIncrementalApi: true,
+						checkSyntacticErrors: true,
 						formatterOptions: {
 							highlightCode: true,
 						},
@@ -661,18 +677,6 @@ ${bannerConfig.copyrightText}${bannerConfig.credit ? creditNote : ''}`,
 		}
 		// Otherwise just return default
 		return defaults;
-	}
-
-	/**
-	 * Check if file exists or not using fs API.
-	 */
-	private fileExists(filepath: string): boolean {
-		try {
-			// tslint:disable-next-line:non-literal-fs-path
-			return fs.statSync(filepath).isFile();
-		} catch (_) {
-			return false;
-		}
 	}
 
 	/**
