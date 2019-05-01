@@ -51,6 +51,7 @@ describe('preset in module', () => {
 			'@babel/plugin-syntax-import-meta',
 			['@babel/plugin-proposal-class-properties'],
 			'@babel/plugin-proposal-json-strings',
+			['@babel/plugin-transform-runtime'],
 		];
 		activePlugins.forEach(plugin => {
 			if (Array.isArray(plugin)) {
@@ -71,7 +72,7 @@ describe('preset in module', () => {
 			noClassProperties: true,
 			noJsonStrings: true,
 		});
-		expect(plugins).toHaveLength(0);
+		expect(plugins).toHaveLength(1);
 	});
 
 	describe('for @babel/preset-env', () => {
