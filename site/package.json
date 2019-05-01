@@ -13,7 +13,7 @@
     "gatsby-plugin-catch-links": "2.0.13",
     "gatsby-plugin-google-analytics": "2.0.19",
     "gatsby-plugin-manifest": "2.0.29",
-    "gatsby-plugin-netlify": "2.0.15",
+    "gatsby-plugin-netlify": "2.0.16",
     "gatsby-plugin-netlify-cache": "1.1.0",
     "gatsby-plugin-offline": "2.0.25",
     "gatsby-plugin-react-helmet": "3.0.12",
