@@ -82,6 +82,18 @@ export const preset = (opts: PresetOptions | null = {}) => {
 		}
 	});
 
+	// We include @babel/plugin-transform-runtime by default in order to
+	// properly transform e.g. async/await
+	plugins.push([
+		'@babel/plugin-transform-runtime',
+		{
+			corejs: false,
+			helpers: false,
+			regenerator: true,
+			useESModules: false,
+		},
+	]);
+
 	// Return the preset and some of stage-3 plugins
 	// We will remove them, once it becomes stage-4, i.e included in preset-env
 	return {
