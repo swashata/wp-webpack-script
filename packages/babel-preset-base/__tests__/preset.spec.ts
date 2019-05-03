@@ -71,8 +71,9 @@ describe('preset in module', () => {
 			noImportMeta: true,
 			noClassProperties: true,
 			noJsonStrings: true,
+			noRuntime: true,
 		});
-		expect(plugins).toHaveLength(1);
+		expect(plugins).toHaveLength(0);
 	});
 
 	describe('for @babel/preset-env', () => {
