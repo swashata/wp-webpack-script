@@ -56,6 +56,7 @@ module.exports = api => {
 		noImportMeta: false,
 		noClassProperties: false,
 		noJsonStrings: false,
+		noRuntime: false,
 		hasReact: true,
 		presetEnv: {
 			// Override Options for @babel/preset-env
