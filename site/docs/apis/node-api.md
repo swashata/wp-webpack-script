@@ -32,6 +32,7 @@ module.exports = api => {
 		noImportMeta: false,
 		noClassProperties: false,
 		noJsonStrings: false,
+		noTuntime: false,
 		hasReact: true,
 		presetEnv: {
 			// Override Options for @babel/preset-env
@@ -71,6 +72,7 @@ interface PresetOptions {
 	noImportMeta?: boolean;
 	noClassProperties?: boolean;
 	noJsonStrings?: boolean;
+	noRuntime?: boolean;
 	hasReact?: boolean;
 	presetEnv?: {};
 	presetReact?: {};

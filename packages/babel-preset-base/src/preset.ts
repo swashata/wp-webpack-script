@@ -5,6 +5,7 @@ export interface PresetOptions {
 	noImportMeta?: boolean;
 	noClassProperties?: boolean;
 	noJsonStrings?: boolean;
+	noRuntime?: boolean;
 	hasReact?: boolean;
 	presetEnv?: {};
 	presetReact?: {};
