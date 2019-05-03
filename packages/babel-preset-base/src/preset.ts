@@ -74,6 +74,15 @@ export const preset = (opts: PresetOptions | null = {}) => {
 			{ loose: false },
 		],
 		noJsonStrings: '@babel/plugin-proposal-json-strings',
+		noRuntime: [
+			'@babel/plugin-transform-runtime',
+			{
+				corejs: false,
+				helpers: true,
+				regenerator: true,
+				useESModules: true,
+			},
+		],
 	};
 	// Add them, only if user hasn't explicitly disabled it
 	Object.keys(wannabePlugins).forEach((pKey: string) => {
@@ -81,18 +90,6 @@ export const preset = (opts: PresetOptions | null = {}) => {
 			plugins.push(wannabePlugins[pKey]);
 		}
 	});
-
-	// We include @babel/plugin-transform-runtime by default in order to
-	// properly transform e.g. async/await
-	plugins.push([
-		'@babel/plugin-transform-runtime',
-		{
-			corejs: false,
-			helpers: true,
-			regenerator: true,
-			useESModules: true,
-		},
-	]);
 
 	// Return the preset and some of stage-3 plugins
 	// We will remove them, once it becomes stage-4, i.e included in preset-env
