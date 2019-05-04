@@ -53,7 +53,10 @@ export const preset = (opts: PresetOptions | null = {}) => {
 
 	// Create the presets
 	const presets: babelPreset[] = [
-		['@babel/preset-env', { modules: false, ...presetEnv }],
+		[
+			'@babel/preset-env',
+			{ modules: env === 'test' ? 'commonjs' : false, ...presetEnv },
+		],
 	];
 	// Add react if needed
 	if (hasReact) {
