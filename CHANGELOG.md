@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.4.0](https://github.com/swashata/wp-webpack-script/compare/v3.3.0...v3.4.0) (2019-05-04)
+
+
+### Bug Fixes
+
+* **babel:** Make transform runtime optional ([6941288](https://github.com/swashata/wp-webpack-script/commit/6941288))
+* **babel:** Update transform runtime opts ([7cbc745](https://github.com/swashata/wp-webpack-script/commit/7cbc745))
+* **deps:** update dependency gatsby to v2.3.33 ([75867ad](https://github.com/swashata/wp-webpack-script/commit/75867ad))
+* **deps:** update dependency gatsby to v2.3.35 ([6c3ba53](https://github.com/swashata/wp-webpack-script/commit/6c3ba53))
+* **deps:** update dependency gatsby to v2.4.1 ([3f20322](https://github.com/swashata/wp-webpack-script/commit/3f20322))
+* **deps:** update dependency gatsby to v2.4.2 ([75ddd35](https://github.com/swashata/wp-webpack-script/commit/75ddd35))
+* **deps:** update dependency gatsby-plugin-netlify to v2.0.16 ([9c90b3e](https://github.com/swashata/wp-webpack-script/commit/9c90b3e))
+* **deps:** update dependency react-helmet to v5.2.1 ([08f619a](https://github.com/swashata/wp-webpack-script/commit/08f619a))
+* **deps:** update gatsby monorepo ([a613cbe](https://github.com/swashata/wp-webpack-script/commit/a613cbe))
+* **deps:** update gatsby monorepo ([95c9700](https://github.com/swashata/wp-webpack-script/commit/95c9700))
+* **deps:** update gatsby monorepo ([4238f4f](https://github.com/swashata/wp-webpack-script/commit/4238f4f))
+* **deps:** update gatsby monorepo ([cc450f4](https://github.com/swashata/wp-webpack-script/commit/cc450f4))
+
+
+### Features
+
+* **babel:** Add transform-runtime to preset ([5224cfe](https://github.com/swashata/wp-webpack-script/commit/5224cfe))
+
+
+
+
+
 # [3.3.0](https://github.com/swashata/wp-webpack-script/compare/v3.2.0...v3.3.0) (2019-04-29)
 
 

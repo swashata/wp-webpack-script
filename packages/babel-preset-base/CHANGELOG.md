@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.4.0](https://github.com/swashata/wp-webpack-script/compare/v3.3.0...v3.4.0) (2019-05-04)
+
+
+### Bug Fixes
+
+* **babel:** Make transform runtime optional ([6941288](https://github.com/swashata/wp-webpack-script/commit/6941288))
+* **babel:** Update transform runtime opts ([7cbc745](https://github.com/swashata/wp-webpack-script/commit/7cbc745))
+
+
+### Features
+
+* **babel:** Add transform-runtime to preset ([5224cfe](https://github.com/swashata/wp-webpack-script/commit/5224cfe))
+
+
+
+
+
 # [3.2.0](https://github.com/swashata/wp-webpack-script/compare/v3.1.0...v3.2.0) (2019-04-28)
 
 
