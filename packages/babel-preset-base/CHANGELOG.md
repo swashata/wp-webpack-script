@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.5.0](https://github.com/swashata/wp-webpack-script/compare/v3.4.0...v3.5.0) (2019-05-04)
+
+
+### Bug Fixes
+
+* module issue with plugin-transform-runtime ([e55528d](https://github.com/swashata/wp-webpack-script/commit/e55528d)), closes [#479](https://github.com/swashata/wp-webpack-script/issues/479)
+
+
+### Features
+
+* set modules automatically ([143d0fd](https://github.com/swashata/wp-webpack-script/commit/143d0fd))
+* **babel:** add performant destructuring ([c1ecbd7](https://github.com/swashata/wp-webpack-script/commit/c1ecbd7))
+
+
+
+
+
 # [3.4.0](https://github.com/swashata/wp-webpack-script/compare/v3.3.0...v3.4.0) (2019-05-04)
 
 

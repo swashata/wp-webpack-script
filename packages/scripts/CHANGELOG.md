@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.5.0](https://github.com/swashata/wp-webpack-script/compare/v3.4.0...v3.5.0) (2019-05-04)
+
+
+### Bug Fixes
+
+* **deps:** update dependencies ([01711b0](https://github.com/swashata/wp-webpack-script/commit/01711b0))
+* module issue with plugin-transform-runtime ([e55528d](https://github.com/swashata/wp-webpack-script/commit/e55528d)), closes [#479](https://github.com/swashata/wp-webpack-script/issues/479)
+
+
+
+
+
 # [3.4.0](https://github.com/swashata/wp-webpack-script/compare/v3.3.0...v3.4.0) (2019-05-04)
 
 **Note:** Version bump only for package @wpackio/scripts
