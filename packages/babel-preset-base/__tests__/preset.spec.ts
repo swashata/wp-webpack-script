@@ -73,7 +73,7 @@ describe('preset in module', () => {
 			noJsonStrings: true,
 			noRuntime: true,
 		});
-		expect(plugins).toHaveLength(0);
+		expect(plugins).toHaveLength(1);
 	});
 
 	describe('for @babel/preset-env', () => {

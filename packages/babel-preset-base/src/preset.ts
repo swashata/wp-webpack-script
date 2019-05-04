@@ -101,6 +101,30 @@ export const preset = (opts: PresetOptions | null = {}) => {
 		}
 	});
 
+	// Necessary to include regardless of the environment because
+	// in practice some other transforms (such as object-rest-spread)
+	// don't work without it: https://github.com/babel/babel/issues/7215
+	plugins.push([
+		'@babel/plugin-transform-destructuring',
+		{
+			// Use loose mode for performance:
+			// https://github.com/facebook/create-react-app/issues/5602
+			loose: false,
+			selectiveLoose: [
+				'useState',
+				'useEffect',
+				'useContext',
+				'useReducer',
+				'useCallback',
+				'useMemo',
+				'useRef',
+				'useImperativeHandle',
+				'useLayoutEffect',
+				'useDebugValue',
+			],
+		},
+	]);
+
 	// Return the preset and some of stage-3 plugins
 	// We will remove them, once it becomes stage-4, i.e included in preset-env
 	return {
