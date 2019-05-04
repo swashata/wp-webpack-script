@@ -494,6 +494,11 @@ ${bannerConfig.copyrightText}${bannerConfig.credit ? creditNote : ''}`,
 					options: {
 						// cache
 						...babelLoaderCacheOptions,
+						// Babel assumes ES Modules, which isn't safe until CommonJS
+						// dies. This changes the behavior to assume CommonJS unless
+						// an `import` or `export` is present in the file.
+						// https://github.com/webpack/webpack/issues/4039#issuecomment-419284940
+						sourceType: 'unambiguous',
 						// preset from our own package
 						presets: getBabelPresets({ hasReact: false }),
 						// If an error happens in a package, it's possible to be

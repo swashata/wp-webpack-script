@@ -29,6 +29,14 @@ export type babelPresetConfiguration = {
 export type babelPreset = [string] | [string, babelPresetConfiguration];
 
 export const preset = (opts: PresetOptions | null = {}) => {
+	// from CRA
+	// This is similar to how `env` works in Babel:
+	// https://babeljs.io/docs/usage/babelrc/#env-option
+	// We are not using `env` because it’s ignored in versions > babel-core@6.10.4:
+	// https://github.com/babel/babel/issues/4539
+	// https://github.com/facebook/create-react-app/issues/720
+	// It’s also nice that we can enforce `NODE_ENV` being specified.
+	const env = process.env.BABEL_ENV || process.env.NODE_ENV;
 	// Extract this preset specific options and pass the rest to @babel/preset-env
 	const {
 		presetEnv = {},
@@ -55,7 +63,7 @@ export const preset = (opts: PresetOptions | null = {}) => {
 				// Put development based on BABEL_ENV
 				// Adds component stack to warning messages
 				// Adds __self attribute to JSX which React will use for some warnings
-				development: process.env.BABEL_ENV !== 'production',
+				development: env !== 'production',
 				// Will use the native built-in instead of trying to polyfill
 				// behavior for any plugins that require one.
 				useBuiltIns: true,
@@ -81,7 +89,8 @@ export const preset = (opts: PresetOptions | null = {}) => {
 				corejs: false,
 				helpers: true,
 				regenerator: true,
-				useESModules: true,
+				// We might wanna turn it on once node LTS has ESModules support
+				useESModules: env !== 'test',
 			},
 		],
 	};

@@ -44,6 +44,7 @@ Object {
     ],
   ],
   "sourceMaps": false,
+  "sourceType": "unambiguous",
 }
 `;
 
@@ -137,6 +138,7 @@ Object {
               ],
             ],
             "sourceMaps": false,
+            "sourceType": "unambiguous",
           },
         },
       ],
