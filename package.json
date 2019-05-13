@@ -28,7 +28,7 @@
     "jest": "24.8.0",
     "lerna": "3.13.4",
     "plop": "2.3.0",
-    "prettier": "1.17.0",
+    "prettier": "1.17.1",
     "rimraf": "2.6.3",
     "typescript": "3.4.5"
   },
