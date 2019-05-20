@@ -24,7 +24,7 @@
 		"@babel/preset-flow": "^7.0.0",
 		"@babel/preset-typescript": "^7.3.3",
 		"@types/archiver": "^2.1.3",
-		"@types/browser-sync": "^0.0.43",
+		"@types/browser-sync": "^2.0.0",
 		"@types/execa": "^0.9.0",
 		"@types/find-up": "^2.1.1",
 		"@types/gradient-string": "^1.1.0",

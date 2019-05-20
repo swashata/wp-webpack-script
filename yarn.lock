@@ -1867,10 +1867,10 @@
   dependencies:
     "@babel/types" "^7.3.0"
 
-"@types/browser-sync@^0.0.43":
-  version "0.0.43"
-  resolved "https://registry.yarnpkg.com/@types/browser-sync/-/browser-sync-0.0.43.tgz#3aa435526f166d82663881e7dfa4e673bf18b52e"
-  integrity sha512-fo67IbR2K7MTH+1Ktipg35qICYS69NP5LhxCC3suMBvl4IYK3EGebOSQuyqOFkFOd41TAlUY3P3eOYsfYG0/OQ==
+"@types/browser-sync@^2.0.0":
+  version "2.26.0"
+  resolved "https://registry.yarnpkg.com/@types/browser-sync/-/browser-sync-2.26.0.tgz#969f3e54025f1f530001507c6ccc20e411fc6542"
+  integrity sha512-OCU71vMympGkON3mmqlURRXGVfM0gEcf5Ij0dYpekpBqPInx/PnCtLSvyTvT4oazmEoSBLHYvGgIgIWXK2+dQQ==
   dependencies:
     "@types/micromatch" "^2"
     "@types/node" "*"
