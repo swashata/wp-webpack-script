@@ -6340,10 +6340,10 @@ functional-red-black-tree@^1.0.1:
   resolved "https://registry.yarnpkg.com/functional-red-black-tree/-/functional-red-black-tree-1.0.1.tgz#1b0ab3bd553b2a0d6399d29c0e3ea0b252078327"
   integrity sha1-GwqzvVU7Kg1jmdKcDj6gslIHgyc=
 
-gatsby-cli@^2.6.0:
-  version "2.6.0"
-  resolved "https://registry.yarnpkg.com/gatsby-cli/-/gatsby-cli-2.6.0.tgz#dedbf70741c0a992317f1c42552a7310379f873c"
-  integrity sha512-4olYsYiuuaCMss7cZfJV8ue8vz8gMOf3yqP3hLyz9Z9OEgJD2DngmUAMg8OgpdcBExGPzUWfJxvq15PscHZH+g==
+gatsby-cli@^2.6.1:
+  version "2.6.1"
+  resolved "https://registry.yarnpkg.com/gatsby-cli/-/gatsby-cli-2.6.1.tgz#ff9cf68c8278680d388ff4a37976fd00439c11c6"
+  integrity sha512-znsLqmALa3AHK/I3uvG8GfBBFD+6dwGhKAQqTJQha4cPpi8efFDPBXeH8kaF56DMc8LjuFOAYcSTwtkPGE5ktg==
   dependencies:
     "@babel/code-frame" "^7.0.0"
     "@babel/runtime" "^7.0.0"
@@ -6361,8 +6361,6 @@ gatsby-cli@^2.6.0:
     fs-extra "^4.0.1"
     gatsby-telemetry "^1.0.9"
     hosted-git-info "^2.6.0"
-    ink "^2.0.5"
-    ink-spinner "^3.0.1"
     is-valid-path "^0.1.1"
     lodash "^4.17.10"
     meant "^1.0.1"
@@ -6374,13 +6372,16 @@ gatsby-cli@^2.6.0:
     react "^16.8.4"
     resolve-cwd "^2.0.0"
     semver "^6.0.0"
-    source-map "^0.5.7"
+    source-map "0.5.7"
     stack-trace "^0.0.10"
     strip-ansi "^5.2.0"
     update-notifier "^2.3.0"
     uuid "3.3.2"
     yargs "^12.0.5"
     yurnalist "^1.0.5"
+  optionalDependencies:
+    ink "^2.0.5"
+    ink-spinner "^3.0.1"
 
 gatsby-image@2.1.0:
   version "2.1.0"
@@ -6400,10 +6401,10 @@ gatsby-link@^2.1.1:
     "@types/reach__router" "^1.0.0"
     prop-types "^15.6.1"
 
-gatsby-plugin-catch-links@2.0.14:
-  version "2.0.14"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-catch-links/-/gatsby-plugin-catch-links-2.0.14.tgz#e6745f6ea9a55a1ac4a8f6703453b5f90c8a5745"
-  integrity sha512-Xe9BiJ2A7vJW6D5S0kIFtIuN2ShflMG1FFMk9W5bcKJPiig1Huon8jb6uA7TUvGs2xCaCtab2cRU4NWn3Y79WQ==
+gatsby-plugin-catch-links@2.0.15:
+  version "2.0.15"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-catch-links/-/gatsby-plugin-catch-links-2.0.15.tgz#f7ebef483280f6c4fcc19f8fa317c18b49944a97"
+  integrity sha512-JJms4zSzLrRSu2RKYWHED71TWWRImortYN3wkpgmQ/k9Gb25CEZUgQhDagEgLI9rMbVnp1pV/G2YC+quCGsuEQ==
   dependencies:
     "@babel/runtime" "^7.0.0"
     escape-string-regexp "^1.0.5"
@@ -6660,10 +6661,10 @@ gatsby-transformer-sharp@2.1.19:
     semver "^5.6.0"
     sharp "^0.22.1"
 
-gatsby@2.6.0:
-  version "2.6.0"
-  resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.6.0.tgz#deae99b6db0d6a7860ee15c17871b1c9f5fe69b7"
-  integrity sha512-233n1sfZGjqfmF9KJQSIMRyfU4XJP6bKVGgR6g9FSJ+iME2nERklLLeV6A+v5F8Gvio6NAkTV3ME1NtwgAQlqA==
+gatsby@2.6.2:
+  version "2.6.2"
+  resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.6.2.tgz#5ac5d26311dc213966e2cab6970c7af14698fb81"
+  integrity sha512-sEs77VmlbtQFmOAl30GgFD4VBpxh1Iebs3QqayTSTxIVvm5WLdAUBvc8AhVt+wdktDsTNGQToBx/BaSwgn1UTQ==
   dependencies:
     "@babel/code-frame" "^7.0.0"
     "@babel/core" "^7.0.0"
@@ -6721,7 +6722,7 @@ gatsby@2.6.0:
     flat "^4.0.0"
     fs-exists-cached "1.0.0"
     fs-extra "^5.0.0"
-    gatsby-cli "^2.6.0"
+    gatsby-cli "^2.6.1"
     gatsby-link "^2.1.1"
     gatsby-plugin-page-creator "^2.0.13"
     gatsby-react-router-scroll "^2.0.7"
@@ -13213,17 +13214,17 @@ source-map-url@^0.4.0:
   resolved "https://registry.yarnpkg.com/source-map-url/-/source-map-url-0.4.0.tgz#3e935d7ddd73631b97659956d55128e87b5084a3"
   integrity sha1-PpNdfd1zYxuXZZlW1VEo6HtQhKM=
 
+source-map@0.5.7, source-map@^0.5.0, source-map@^0.5.3, source-map@^0.5.6, source-map@^0.5.7:
+  version "0.5.7"
+  resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.5.7.tgz#8a039d2d1021d22d1ea14c80d8ea468ba2ef3fcc"
+  integrity sha1-igOdLRAh0i0eoUyA2OpGi6LvP8w=
+
 source-map@^0.4.2:
   version "0.4.4"
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.4.4.tgz#eba4f5da9c0dc999de68032d8b4f76173652036b"
   integrity sha1-66T12pwNyZneaAMti092FzZSA2s=
   dependencies:
     amdefine ">=0.0.4"
-
-source-map@^0.5.0, source-map@^0.5.3, source-map@^0.5.6, source-map@^0.5.7:
-  version "0.5.7"
-  resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.5.7.tgz#8a039d2d1021d22d1ea14c80d8ea468ba2ef3fcc"
-  integrity sha1-igOdLRAh0i0eoUyA2OpGi6LvP8w=
 
 source-map@^0.6.0, source-map@^0.6.1, source-map@~0.6.1:
   version "0.6.1"
