@@ -8,8 +8,8 @@
     "bulma": "0.7.5",
     "classnames": "2.2.6",
     "docsearch.js": "2.6.3",
-    "gatsby": "2.7.3",
-    "gatsby-image": "2.1.1",
+    "gatsby": "2.7.4",
+    "gatsby-image": "2.1.2",
     "gatsby-plugin-catch-links": "2.0.15",
     "gatsby-plugin-google-analytics": "2.0.20",
     "gatsby-plugin-manifest": "2.1.1",
@@ -21,7 +21,7 @@
     "gatsby-plugin-svgr": "2.0.2",
     "gatsby-remark-autolink-headers": "2.0.16",
     "gatsby-remark-copy-linked-files": "2.0.12",
-    "gatsby-remark-images": "3.0.13",
+    "gatsby-remark-images": "3.0.14",
     "gatsby-remark-prismjs": "3.2.9",
     "gatsby-remark-smartypants": "2.0.9",
     "gatsby-source-filesystem": "2.0.37",
@@ -47,8 +47,8 @@
   "devDependencies": {
     "@wpackio/eslint-config": "file:../packages/eslint-config",
     "eslint": "5.16.0",
-    "gatsby-plugin-sharp": "2.1.1",
-    "gatsby-transformer-sharp": "2.1.19",
+    "gatsby-plugin-sharp": "2.1.2",
+    "gatsby-transformer-sharp": "2.1.20",
     "prettier": "1.17.1"
   },
   "repository": {
