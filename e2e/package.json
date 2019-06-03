@@ -9,7 +9,7 @@
 	"devDependencies": {
 		"@types/jest": "24.0.13",
 		"@wpackio/scripts": "file:../packages/scripts",
-		"autoprefixer": "9.5.1",
+		"autoprefixer": "9.6.0",
 		"cssnano": "4.1.10",
 		"cypress": "3.3.1",
 		"fork-ts-checker-webpack-plugin": "1.3.4",
