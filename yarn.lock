@@ -4984,14 +4984,14 @@ dts-dom@latest:
   resolved "https://registry.yarnpkg.com/dts-dom/-/dts-dom-3.1.0.tgz#7f53cf58305180bfd9475d294ea028136162626c"
   integrity sha512-DXi4f32CeSbgXZ/iPUHOCj+Sq7D5jVWPk7Sn/O+TDAn7/A0qntq9AcmQPuV8JwfGFAAfssegJhOVs6mV020AxQ==
 
-dts-gen@0.5.7:
-  version "0.5.7"
-  resolved "https://registry.yarnpkg.com/dts-gen/-/dts-gen-0.5.7.tgz#122063dd662b5db4c9e799af7433ef59f9e5e133"
-  integrity sha512-XdLYIHwf1NtxZz6ps+VnDQVvEw7WENc26jpVGjNbVydT/1nhAOdjDQr/xsBj4rqw8kDW1tb5/c8mbW2FjEFQYw==
+dts-gen@0.5.8:
+  version "0.5.8"
+  resolved "https://registry.yarnpkg.com/dts-gen/-/dts-gen-0.5.8.tgz#802c892c6e1a687d99e79621a539b0568d8a37d4"
+  integrity sha512-kIAV6dlHaF7r5J+tIuOC1BJls2P72YM0cyWQUR88zcJEpX2ccRZe+HmXLfkkvfPwjvSO3FEqUiyC8On/grx5qw==
   dependencies:
     dts-dom latest
     parse-git-config "^1.1.1"
-    typescript "^2.2.0"
+    typescript "^3.5.1"
     yargs "^4.8.1"
 
 duplexer3@^0.1.4:
@@ -12315,15 +12315,10 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
-typescript@3.5.1:
+typescript@3.5.1, typescript@^3.5.1:
   version "3.5.1"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.5.1.tgz#ba72a6a600b2158139c5dd8850f700e231464202"
   integrity sha512-64HkdiRv1yYZsSe4xC1WVgamNigVYjlssIoaH2HcZF0+ijsk5YK2g0G34w9wJkze8+5ow4STd22AynfO6ZYYLw==
-
-typescript@^2.2.0:
-  version "2.9.2"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.9.2.tgz#1cbf61d05d6b96269244eb6a3bce4bd914e0f00c"
-  integrity sha512-Gr4p6nFNaoufRIY4NMdpQRNmgxVIGMs4Fcu/ujdYk3nAZqk7supzBE9idmvfZIlH/Cuj//dvi+019qEue9lV0w==
 
 ua-parser-js@0.7.17:
   version "0.7.17"
