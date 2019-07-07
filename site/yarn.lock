@@ -6902,10 +6902,10 @@ gatsby-transformer-sharp@2.2.1:
     semver "^5.6.0"
     sharp "^0.22.1"
 
-gatsby@2.13.6:
-  version "2.13.6"
-  resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.13.6.tgz#def000c60ecfa68596997dc06b35f3e98c1c9a67"
-  integrity sha512-QY9RnadbcpILE4ij9VnoDZU9vURpVvqIyEbb54/uk/vBSl+7u8qFhfMkleTk/mRS9yKs3LbOj/riM0ucpdCO3A==
+gatsby@2.13.7:
+  version "2.13.7"
+  resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.13.7.tgz#0d8c223612c6e77a8e9cef1d75c0bdf7c5a21896"
+  integrity sha512-wgPJSOUxto9BasEeIRn0BqoYFp4xkzjJ4J53PO8EpvOrEeA/r1MVTOMtG6+D1r74xL9yKwANYOWZxCYtpT+hDQ==
   dependencies:
     "@babel/code-frame" "^7.0.0"
     "@babel/core" "^7.0.0"
@@ -7005,7 +7005,7 @@ gatsby@2.13.6:
     raw-loader "^0.5.1"
     react-dev-utils "^4.2.3"
     react-error-overlay "^3.0.0"
-    react-hot-loader "^4.8.4"
+    react-hot-loader "^4.12.5"
     read-package-tree "^5.3.1"
     redux "^4.0.0"
     redux-thunk "^2.3.0"
@@ -12226,16 +12226,15 @@ react-helmet@5.2.1:
     react-fast-compare "^2.0.2"
     react-side-effect "^1.1.0"
 
-react-hot-loader@^4.8.4:
-  version "4.8.5"
-  resolved "https://registry.yarnpkg.com/react-hot-loader/-/react-hot-loader-4.8.5.tgz#9fb383345f8f059ed160c084f985744047e374d9"
-  integrity sha512-9Stc+7C2p23O9iOB78t+fKNxSxNfgXJpwsiToRuZZe7rNFJ0IMCyesXF2ls70XIxAzgnU36FzfW9c9mXhTz2xQ==
+react-hot-loader@^4.12.5:
+  version "4.12.5"
+  resolved "https://registry.yarnpkg.com/react-hot-loader/-/react-hot-loader-4.12.5.tgz#ebe5b6a68190b14fce42151fff03d1ad43634e9b"
+  integrity sha512-RH7mi2hSp+74pM/GCwFoQ+nHY6JnFKrzBNbSWnOfT9LJMMnCWf/Eg5CoaeJHMpvqF+x6hdT//T2GoSpqImEzfg==
   dependencies:
     fast-levenshtein "^2.0.6"
     global "^4.3.0"
     hoist-non-react-statics "^3.3.0"
     loader-utils "^1.1.0"
-    lodash "^4.17.11"
     prop-types "^15.6.1"
     react-lifecycles-compat "^3.0.4"
     shallowequal "^1.0.2"
