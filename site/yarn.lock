@@ -6856,10 +6856,10 @@ gatsby-telemetry@^1.1.6:
     stack-utils "1.0.2"
     uuid "3.3.2"
 
-gatsby-transformer-remark@2.6.5:
-  version "2.6.5"
-  resolved "https://registry.yarnpkg.com/gatsby-transformer-remark/-/gatsby-transformer-remark-2.6.5.tgz#b371be51a3714611f0b18ad3f92edd73382cb23f"
-  integrity sha512-N5voRl7m3oBW91kOSSe5vsI/27xVZX10KBOp59ROLTVvAePs3S79yl+CjnEqRGa83yTlKDmGEcEO4GJjzNf/yQ==
+gatsby-transformer-remark@2.6.6:
+  version "2.6.6"
+  resolved "https://registry.yarnpkg.com/gatsby-transformer-remark/-/gatsby-transformer-remark-2.6.6.tgz#14cc5c8c82991153449bb9460046f3232b21c5f8"
+  integrity sha512-rqKOCytFJh2HAHq28d+v6LLF1jTH15/5sKTCVsHZ/Uo0v5skDSTytCszZGhvICKBnx3ZPzWUpNq+BtRO0dMf+Q==
   dependencies:
     "@babel/runtime" "^7.0.0"
     bluebird "^3.5.0"
@@ -6895,10 +6895,10 @@ gatsby-transformer-sharp@2.2.3:
     semver "^5.6.0"
     sharp "^0.22.1"
 
-gatsby@2.13.21:
-  version "2.13.21"
-  resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.13.21.tgz#67146dd14a3daefe5e2f1deeda6c075084f65384"
-  integrity sha512-244wx6eaOWOkuupxbWQy/H/o7OGEwRGawUTEjISP8GwZ/M1xRaX8K/uXZymQibJ7ujKBVj9qmtjM7+ZGU0IIyA==
+gatsby@2.13.22:
+  version "2.13.22"
+  resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.13.22.tgz#4b167306da6fa61bb5744cb8e3005a0fa7d54aad"
+  integrity sha512-9pkfzkWk6CMmrAFU4HdBlGMDqnnejdJfRETnFdC+LNIZ1k8KX0VaLKWMCLbqEm0GZu1J9R7M2nGU4sm4oP2aZg==
   dependencies:
     "@babel/code-frame" "^7.0.0"
     "@babel/core" "^7.0.0"
