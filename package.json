@@ -29,7 +29,7 @@
     "lerna": "3.16.4",
     "plop": "2.4.0",
     "prettier": "1.17.1",
-    "rimraf": "2.7.0",
+    "rimraf": "2.7.1",
     "typescript": "3.5.3"
   },
   "scripts": {
