@@ -10,11 +10,11 @@ module.exports = {
 		// At this moment, it doesn't have any side-effect on anything else
 		__WPACKIO__: {
 			appName: 'foo',
-			outputPath: 'bar',
+			outputPath: 'bar/dist',
 		},
 		__webpack_public_path__: '',
 		window: {
-			__wpackIofoobar: '/biz/baz',
+			__wpackIofoobardist: '/biz/baz',
 		},
 	},
 };
