@@ -17,7 +17,7 @@ declare const window: { [x: string]: any };
 if (__WPACKIO__) {
 	const path = (__WPACKIO__.appName + __WPACKIO__.outputPath)
 		.toLowerCase()
-		.replace(/[^a-z0-9_-]/, '');
+		.replace(/[^a-z0-9_\-]/g, '');
 	// eslint-disable-next-line no-global-assign
 	__webpack_public_path__ = window[`__wpackIo${path}`] as string;
 }
