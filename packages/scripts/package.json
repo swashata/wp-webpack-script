@@ -29,7 +29,7 @@
 		"@types/inquirer": "^6.5.0",
 		"@types/node": "^11.13.8",
 		"@types/update-notifier": "^2.5.0",
-		"@types/webpack": "^4.4.27",
+		"@types/webpack": "^4.39.5",
 		"@types/webpack-assets-manifest": "^3.0.0",
 		"@types/webpack-dev-middleware": "^2.0.3",
 		"@types/webpack-env": "^1.14.1",

@@ -31,9 +31,7 @@ export async function bootstrap(
 
 			if (done.configured === 'project') {
 				console.log(
-					`${
-						logSymbols.success
-					} ${wpackLogoSmall} bootstrap complete!`
+					`${logSymbols.success} ${wpackLogoSmall} bootstrap complete!`
 				);
 				console.log(
 					`${
@@ -119,9 +117,7 @@ export async function bootstrap(
 				`${logSymbols.error} configuration files are already present.`
 			);
 			console.log(
-				`${
-					logSymbols.info
-				} change the file code if you wish to modify the tooling.`
+				`${logSymbols.info} change the file code if you wish to modify the tooling.`
 			);
 		}
 
