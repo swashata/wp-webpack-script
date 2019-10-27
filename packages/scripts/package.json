@@ -102,7 +102,7 @@
 	"devDependencies": {
 		"@wpackio/eslint-config": "^3.5.0",
 		"dts-gen": "0.5.8",
-		"fork-ts-checker-webpack-plugin": "1.5.0",
+		"fork-ts-checker-webpack-plugin": "1.6.0",
 		"less": "3.9.0"
 	}
 }
