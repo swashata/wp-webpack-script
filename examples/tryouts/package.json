@@ -1,0 +1,19 @@
+{
+  "name": "tryouts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "../../packages/scripts/lib/bin/index.js",
+    "cli": "../../packages/cli/lib/index.js",
+    "build": "wpackio-scripts build",
+    "start": "wpackio-scripts start",
+    "bootstrap": "wpackio-scripts bootstrap",
+    "archive": "wpackio-scripts pack"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {}
+}

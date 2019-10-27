@@ -21,7 +21,7 @@
   "dependencies": {
     "@types/shelljs": "0.8.5",
     "chalk": "2.4.2",
-    "commander": "2.20.0",
+    "commander": "3.0.2",
     "shelljs": "0.8.3"
   },
   "engines": {
