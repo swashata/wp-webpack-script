@@ -29,9 +29,12 @@ module.exports = {
 		'react/default-props-match-prop-types': 'off',
 		'react/no-unused-prop-types': 'off',
 		// typescript specific rules
+		'@typescript-eslint/prefer-interface': 'off',
 		'import/prefer-default-export': 'off',
 		'@typescript-eslint/explicit-function-return-type': 'off',
 		'@typescript-eslint/explicit-member-accessibility': 'off',
+		'@typescript-eslint/camelcase': 'off',
+		'@typescript-eslint/no-non-null-assertion': 'off',
 		'class-methods-use-this': 'off',
 		'@typescript-eslint/no-explicit-any': 'off',
 		'import/no-cycle': 'off',

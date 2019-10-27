@@ -11,4 +11,13 @@ module.exports = {
 			allowForLoopAfterthoughts: true,
 		},
 	],
+	'react/jsx-filename-extension': 'off',
+	'react-hooks/rules-of-hooks': 'error',
+	'react-hooks/exhaustive-deps': 'warn',
+	'react/destructuring-assignment': 'off',
+	'no-nested-ternary': 'off',
+	eqeqeq: ['error', 'smart'],
+	'prefer-destructuring': 'off',
+	'func-names': 'off',
+	'lines-between-class-members': 'off',
 };

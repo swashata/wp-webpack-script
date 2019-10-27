@@ -26,7 +26,7 @@ module.exports = {
 		},
 		sourceType: 'module',
 	},
-	plugins: ['babel'],
+	plugins: ['babel', 'react-hooks'],
 	rules: {
 		...rules,
 		// ===================================
