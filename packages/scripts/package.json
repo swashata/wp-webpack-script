@@ -68,7 +68,7 @@
 		"style-loader": "^1.0.0",
 		"time-fix-plugin": "^2.0.6",
 		"uglifyjs-webpack-plugin": "^2.2.0",
-		"update-notifier": "^2.5.0",
+		"update-notifier": "^3.0.1",
 		"webpack": "^4.41.2",
 		"webpack-assets-manifest": "^3.1.1",
 		"webpack-dev-middleware": "^3.7.2",
