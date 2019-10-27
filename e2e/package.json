@@ -31,7 +31,10 @@
 		"cypress:runprod": "cypress run --spec 'cypress/integration/build/prod.spec.js'",
 		"wait-for-test-server": "wait-on http://localhost:5000 --timeout 30000",
 		"wait-for-wpackio-server": "wait-on http://127.0.0.1:3000 --timeout 30000",
-		"test": "jest --color"
+    "test": "jest --color",
+    "dev": "../packages/scripts/lib/bin/index.js",
+    "start:dev": "../packages/scripts/lib/bin/index.js start",
+    "build:dev": "../packages/scripts/lib/bin/index.js build"
 	},
 	"dependencies": {
 		"@types/webpack-env": "1.14.1",

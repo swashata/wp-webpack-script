@@ -32,9 +32,8 @@ export class Build {
 				this.cwd,
 				false
 			);
-			const compiler = webpack(
-				config.getWebpackConfig() as webpack.Configuration
-			);
+			const webpackConfig = config.getWebpackConfig();
+			const compiler = webpack(webpackConfig as webpack.Configuration);
 			compiler.run((err, stats) => {
 				const raw = stats.toJson('verbose');
 				const messages = formatWebpackMessages(raw);

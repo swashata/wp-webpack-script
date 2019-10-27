@@ -277,7 +277,7 @@ export class WebpackConfigHelper {
 			// Clean dist directory
 			new CleanWebpackPlugin({
 				verbose: false,
-				cleanAfterEveryBuildPatterns: [
+				cleanOnceBeforeBuildPatterns: [
 					`${this.outputPath}/${this.appDir}`,
 				],
 			}),

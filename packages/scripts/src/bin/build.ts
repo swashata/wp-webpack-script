@@ -2,7 +2,6 @@ import chalk from 'chalk';
 import logSymbols from 'log-symbols';
 import ora from 'ora';
 import path from 'path';
-import clearConsole from 'react-dev-utils/clearConsole';
 import { getProjectConfig } from '../config/getProjectAndServerConfig';
 import { Build } from '../scripts/Build';
 import { ProgramOptions } from './index';
@@ -28,6 +27,7 @@ export function build(options: ProgramOptions | undefined): void {
 		text: `${wpackLogoSmall}: creating production builds${watchEllipsis}`,
 		spinner: 'dots',
 		color: 'yellow',
+		discardStdin: false,
 	});
 	// Set process.env.NODE_ENV to production
 	process.env.NODE_ENV = 'production';
@@ -51,7 +51,7 @@ export function build(options: ProgramOptions | undefined): void {
 				path.relative(cwd, projectConfigPath)
 			)}`
 		);
-		// Start the webpack/browserSync server
+		// Start the build process
 		spinner.start();
 		const builder: Build = new Build(projectConfig, cwd);
 		builder

@@ -56,7 +56,7 @@ export async function bootstrap(
 			const command = isYarn() ? 'yarn' : 'npm';
 			const add = isYarn() ? 'add' : 'i';
 			const devParam = isYarn() ? '--dev' : '-D';
-			const spinner = ora({ spinner: 'dots3' });
+			const spinner = ora({ spinner: 'dots3', discardStdin: false });
 
 			if (done.deps && done.deps.dependencies.length) {
 				console.log(

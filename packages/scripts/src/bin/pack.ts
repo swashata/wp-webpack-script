@@ -27,6 +27,7 @@ export function pack(options: ProgramOptions | undefined): void {
 		text: spinText,
 		spinner: 'dots',
 		color: 'yellow',
+		discardStdin: false,
 	});
 	// Get project and server config JSONs.
 	const cwd = resolveCWD(options);

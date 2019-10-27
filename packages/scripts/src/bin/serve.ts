@@ -45,6 +45,7 @@ export function serve(options: ProgramOptions | undefined): void {
 		text: `initiating ${wpackLogoSmall} development server`,
 		spinner: 'dots',
 		color: 'yellow',
+		discardStdin: false,
 	});
 
 	console.log(
