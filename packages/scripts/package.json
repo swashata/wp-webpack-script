@@ -44,7 +44,7 @@
 		"camelcase": "^5.3.1",
 		"chalk": "^2.4.2",
 		"clean-webpack-plugin": "^2.0.1",
-		"commander": "^2.20.0",
+		"commander": "^3.0.0",
 		"cpy": "^7.3.0",
 		"css-loader": "^2.1.1",
 		"del": "^4.1.1",
