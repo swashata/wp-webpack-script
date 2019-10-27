@@ -17,7 +17,7 @@
   "license": "MIT",
   "private": false,
   "dependencies": {
-    "@types/webpack-env": "^1.13.9"
+    "@types/webpack-env": "^1.14.1"
   },
   "devDependencies": {
     "@wpackio/eslint-config": "^3.5.0"

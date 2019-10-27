@@ -32,7 +32,9 @@
   "engines": {
     "node": ">=8.9.0"
   },
-  "scripts": {},
+  "scripts": {
+    "lint": "eslint . --ext='.js'"
+  },
   "publishConfig": {
     "access": "public"
   },

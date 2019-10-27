@@ -16,6 +16,7 @@ module.exports = {
 	'react-hooks/exhaustive-deps': 'warn',
 	'react/destructuring-assignment': 'off',
 	'no-nested-ternary': 'off',
+	'max-classes-per-file': 'off',
 	eqeqeq: ['error', 'smart'],
 	'prefer-destructuring': 'off',
 	'func-names': 'off',

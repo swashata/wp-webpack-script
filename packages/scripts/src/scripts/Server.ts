@@ -133,7 +133,6 @@ export class Server {
 		// we pass as webpack.Compiler, because ts don't like it otherwise
 		this.addHooks(compiler as webpack.Compiler);
 
-		// eslint-disable-next-line @typescript-eslint/no-object-literal-type-assertion
 		const devMiddleware = webpackDevMiddleware(compiler, {
 			stats: false,
 			publicPath: this.webpackConfig.getPublicPath(),

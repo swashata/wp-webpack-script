@@ -20,7 +20,7 @@ module.exports = {
 		'prettier/@typescript-eslint',
 	],
 	parser: '@typescript-eslint/parser',
-	plugins: ['babel'],
+	plugins: ['babel', 'react-hooks', '@typescript-eslint'],
 	rules: {
 		...rules,
 		// turn off react prop-types because we will be using typescript
@@ -29,10 +29,10 @@ module.exports = {
 		'react/default-props-match-prop-types': 'off',
 		'react/no-unused-prop-types': 'off',
 		// typescript specific rules
-		'@typescript-eslint/prefer-interface': 'off',
 		'import/prefer-default-export': 'off',
 		'@typescript-eslint/explicit-function-return-type': 'off',
 		'@typescript-eslint/explicit-member-accessibility': 'off',
+		'@typescript-eslint/no-inferrable-types': 'off',
 		'@typescript-eslint/camelcase': 'off',
 		'@typescript-eslint/no-non-null-assertion': 'off',
 		'class-methods-use-this': 'off',
