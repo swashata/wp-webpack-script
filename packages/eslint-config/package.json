@@ -14,10 +14,6 @@
   "author": "Swashata Ghosh &lt;swashata4u@gmail.com&gt; (https://swas.io)",
   "license": "MIT",
   "private": false,
-  "peerDependencies": {
-    "eslint": ">=5.3.0",
-    "prettier": ">=1.12.1"
-  },
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "1.7.0",
     "@typescript-eslint/parser": "1.7.0",
