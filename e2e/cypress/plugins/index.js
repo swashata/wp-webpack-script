@@ -23,7 +23,7 @@ module.exports = (on, config) => {
 	on('task', {
 		hmrJs: () => {
 			fs.writeFileSync(jsFilePath, `${jsFileContent}\n// HMR`);
-			execa.shellSync(`touch ${jsFilePath}`);
+			execa.commandSync(`touch ${jsFilePath}`);
 			return null;
 		},
 		hmrJsRestore: () => {
@@ -32,7 +32,7 @@ module.exports = (on, config) => {
 		},
 		hmrTs: () => {
 			fs.writeFileSync(tsFilePath, `${tsFileContent}\n// HMR`);
-			execa.shellSync(`touch ${tsFilePath}`);
+			execa.commandSync(`touch ${tsFilePath}`);
 			return null;
 		},
 		hmrTsRestore: () => {
