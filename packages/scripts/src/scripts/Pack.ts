@@ -93,7 +93,7 @@ export class Pack {
 		return makeDir(this.packageSlugPath);
 	}
 
-	private async copy(): Promise<void> {
+	private async copy(): Promise<any> {
 		return cpy(this.projectConfig.packageFiles, this.packageSlugPath, {
 			parents: true,
 			cwd: this.cwd,

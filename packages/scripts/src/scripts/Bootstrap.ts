@@ -125,7 +125,7 @@ export class Bootstrap {
 	}
 
 	public async getUserInput(): Promise<inquirer.Answers> {
-		const questions: inquirer.Question[] = [
+		const questions: inquirer.QuestionCollection = [
 			// Ask type (if style.css present, then theme)
 			{
 				message: 'Type of WordPress Project (plugin or theme)',
@@ -148,9 +148,7 @@ export class Bootstrap {
 			// Ask slug (default, directory name)
 			{
 				message: answers =>
-					`Slug (directory name) of your ${
-						answers.type
-					} (alphanumeric & dash)`,
+					`Slug (directory name) of your ${answers.type} (alphanumeric & dash)`,
 				name: 'slug',
 				type: 'input',
 				default: slugify(path.basename(this.cwd)),
@@ -200,9 +198,7 @@ export class Bootstrap {
 				// eslint-disable-next-line prefer-destructuring
 				author = this.pkg.author;
 			} else if (typeof this.pkg.author === 'object') {
-				author = `${this.pkg.author.name} (${this.pkg.author.email}) <${
-					this.pkg.author.url
-				}>`;
+				author = `${this.pkg.author.name} (${this.pkg.author.email}) <${this.pkg.author.url}>`;
 			}
 			const context: ProjectConfigContext = {
 				appName: answers.appName,
