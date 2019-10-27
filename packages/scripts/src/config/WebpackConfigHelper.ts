@@ -2,7 +2,7 @@ import {
 	babelPreset,
 	PresetOptions,
 } from '@wpackio/babel-preset-base/lib/preset';
-import CleanWebpackPlugin from 'clean-webpack-plugin';
+import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 import fs from 'fs';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import path from 'path';
@@ -22,7 +22,6 @@ import {
 } from './project.config.default';
 import { ServerConfig } from './server.config.default';
 import { getFileLoaderForJsAndStyleAssets } from './fileLoader';
-import { printGeneralInfoMessage } from '../bin/utils';
 
 interface NormalizedEntry {
 	[x: string]: string[];
@@ -241,9 +240,7 @@ export class WebpackConfigHelper {
 			// having combination of appName and file.name
 			// kind of ensures that billions of devs, don't
 			// override each other!!!!
-			jsonpFunction: `wpackio${this.config.appName}${
-				this.file.name
-			}Jsonp`,
+			jsonpFunction: `wpackio${this.config.appName}${this.file.name}Jsonp`,
 		};
 		// Add the publicPath if it is in devMode
 		if (this.isDev) {
@@ -280,9 +277,9 @@ export class WebpackConfigHelper {
 			// Clean dist directory
 			new CleanWebpackPlugin({
 				verbose: false,
-				cleanAfterEveryBuildPatterns: `${this.outputPath}/${
-					this.appDir
-				}`,
+				cleanAfterEveryBuildPatterns: [
+					`${this.outputPath}/${this.appDir}`,
+				],
 			}),
 			// Initiate mini css extract
 			new MiniCssExtractPlugin({
