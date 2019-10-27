@@ -16,7 +16,7 @@ declare const window: { [x: string]: any };
 // We would override __webpack_public_path__ only if __WPACKIO__ webpack plugin is set
 if (__WPACKIO__) {
 	const path = (__WPACKIO__.appName + __WPACKIO__.outputPath).replace(
-		/[^a-z0-9_-]/g,
+		/[^a-zA-Z0-9_-]/g,
 		''
 	);
 	// eslint-disable-next-line no-global-assign
