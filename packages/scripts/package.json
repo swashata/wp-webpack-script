@@ -23,7 +23,7 @@
 		"@babel/core": "^7.6.4",
 		"@babel/preset-flow": "^7.0.0",
 		"@babel/preset-typescript": "^7.6.0",
-		"@types/archiver": "^2.1.3",
+		"@types/archiver": "^3.0.0",
 		"@types/browser-sync": "^0.0.43",
 		"@types/execa": "^0.9.0",
 		"@types/find-up": "^2.1.1",
