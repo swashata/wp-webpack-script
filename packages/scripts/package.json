@@ -46,7 +46,7 @@
 		"clean-webpack-plugin": "^2.0.1",
 		"commander": "^2.20.0",
 		"cpy": "^7.3.0",
-		"css-loader": "^2.1.1",
+		"css-loader": "^3.0.0",
 		"del": "^4.1.1",
 		"dev-ip": "^1.0.1",
 		"execa": "^1.0.0",
