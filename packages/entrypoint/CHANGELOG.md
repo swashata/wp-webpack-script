@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.0.0](https://github.com/swashata/wp-webpack-script/compare/v3.5.0...v4.0.0) (2019-10-28)
+
+
+### Bug Fixes
+
+* issue with eslint, updated deps and typescript ([2625e7d](https://github.com/swashata/wp-webpack-script/commit/2625e7d))
+* issue with pathname sanitization ([f09f09f](https://github.com/swashata/wp-webpack-script/commit/f09f09f))
+
+
+
+
+
 # [3.5.0](https://github.com/swashata/wp-webpack-script/compare/v3.4.0...v3.5.0) (2019-05-04)
 
 **Note:** Version bump only for package @wpackio/entrypoint

@@ -1,6 +1,6 @@
 {
   "name": "@wpackio/entrypoint",
-  "version": "3.5.0",
+  "version": "4.0.0",
   "description": "An entrypoint for webpack which is added automatically for safe publicPath.",
   "keywords": [
     "wordpress",
@@ -20,7 +20,7 @@
     "@types/webpack-env": "^1.14.1"
   },
   "devDependencies": {
-    "@wpackio/eslint-config": "^3.5.0"
+    "@wpackio/eslint-config": "^4.0.0"
   },
   "engines": {
     "node": ">=8.9.0"

@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.0.0](https://github.com/swashata/wp-webpack-script/compare/v3.5.0...v4.0.0) (2019-10-28)
+
+
+### Bug Fixes
+
+* issue with babel override and preset options ([3052630](https://github.com/swashata/wp-webpack-script/commit/3052630)), closes [#692](https://github.com/swashata/wp-webpack-script/issues/692)
+* issue with eslint, updated deps and typescript ([2625e7d](https://github.com/swashata/wp-webpack-script/commit/2625e7d))
+* issue with spinner and empty output ([a4fb650](https://github.com/swashata/wp-webpack-script/commit/a4fb650))
+
+
+### Features
+
+* add progressbar to build process ([dbdf429](https://github.com/swashata/wp-webpack-script/commit/dbdf429))
+* make error output better ([79a9133](https://github.com/swashata/wp-webpack-script/commit/79a9133))
+* make error reports a tad better ([b6fa2b6](https://github.com/swashata/wp-webpack-script/commit/b6fa2b6))
+* update some more deps by semver ([83ed778](https://github.com/swashata/wp-webpack-script/commit/83ed778))
+* use mini-css-extract plugin hmr ([2116177](https://github.com/swashata/wp-webpack-script/commit/2116177))
+
+
+
+
+
 # [3.5.0](https://github.com/swashata/wp-webpack-script/compare/v3.4.0...v3.5.0) (2019-05-04)
 
 
