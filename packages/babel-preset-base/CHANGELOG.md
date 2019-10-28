@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.1.0-alpha.1](https://github.com/swashata/wp-webpack-script/compare/v4.0.0...v4.1.0-alpha.1) (2019-10-28)
+
+
+### Bug Fixes
+
+* use require.resolve on babel presets ([e89d4bd](https://github.com/swashata/wp-webpack-script/commit/e89d4bd))
+
+
+
+
+
 # [4.0.0](https://github.com/swashata/wp-webpack-script/compare/v3.5.0...v4.0.0) (2019-10-28)
 
 

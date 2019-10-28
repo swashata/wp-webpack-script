@@ -1,6 +1,6 @@
 {
   "name": "@wpackio/babel-preset-base",
-  "version": "4.0.0",
+  "version": "4.1.0-alpha.1",
   "description": "Babel preset for @wps/scripts, without react specific transforms.",
   "keywords": [
     "wordpress",
