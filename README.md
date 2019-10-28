@@ -5,7 +5,7 @@
 
 # wpack.io - Modern JavaScript tooling for WordPress
 
-[![Build Status](https://travis-ci.com/swashata/wp-webpack-script.svg?branch=master)](https://travis-ci.com/swashata/wp-webpack-script) [![codecov](https://codecov.io/gh/swashata/wp-webpack-script/branch/master/graph/badge.svg)](https://codecov.io/gh/swashata/wp-webpack-script) [![npm version](https://badge.fury.io/js/%40wpackio%2Fscripts.svg)](https://badge.fury.io/js/%40wpackio%2Fscripts) [![npm download](https://img.shields.io/npm/dt/@wpackio/scripts.svg?label=downloads)](https://www.npmjs.com/package/@wpackio/scripts) [![cypress dashboard](https://img.shields.io/badge/cypress-dashboard-brightgreen.svg)](https://dashboard.cypress.io/#/projects/r3p1vm/runs)
+[![Backers on Open Collective](https://opencollective.com/wpackio/backers/badge.svg)](#backers) [![Sponsors on Open Collective](https://opencollective.com/wpackio/sponsors/badge.svg)](#sponsors) [![Build Status](https://travis-ci.com/swashata/wp-webpack-script.svg?branch=master)](https://travis-ci.com/swashata/wp-webpack-script) [![codecov](https://codecov.io/gh/swashata/wp-webpack-script/branch/master/graph/badge.svg)](https://codecov.io/gh/swashata/wp-webpack-script) [![npm version](https://badge.fury.io/js/%40wpackio%2Fscripts.svg)](https://badge.fury.io/js/%40wpackio%2Fscripts) [![npm download](https://img.shields.io/npm/dt/@wpackio/scripts.svg?label=downloads)](https://www.npmjs.com/package/@wpackio/scripts) [![cypress dashboard](https://img.shields.io/badge/cypress-dashboard-brightgreen.svg)](https://dashboard.cypress.io/#/projects/r3p1vm/runs)
 
 ## What is wpack.io?
 
@@ -278,6 +278,27 @@ Our plugin/theme is now ready to go live.
 This Readme is not an extensive source of documentation. Please visit our website
 [wpack.io](https://wpack.io) to learn more.
 
-## Contributing
+## Contributors
 
-Well thank you ❤️. Please read [Contributing Guide](./CONTRIBUTION.md).
+This project exists thanks to all the people who contribute. [[Contribute]](CONTRIBUTING.md).
+<a href="graphs/contributors"><img src="https://opencollective.com/wpackio/contributors.svg?width=890" /></a>
+
+## Backers
+
+Thank you to all our backers! 🙏 [[Become a backer](https://opencollective.com/wpackio#backer)]
+<a href="https://opencollective.com/wpackio#backers" target="_blank"><img src="https://opencollective.com/wpackio/backers.svg?width=890"></a>
+
+## Sponsors
+
+Support this project by becoming a sponsor. Your logo will show up here with a link to your website. [[Become a sponsor](https://opencollective.com/wpackio#sponsor)]
+
+<a href="https://opencollective.com/wpackio/sponsor/0/website" target="_blank"><img src="https://opencollective.com/wpackio/sponsor/0/avatar.svg"></a>
+<a href="https://opencollective.com/wpackio/sponsor/1/website" target="_blank"><img src="https://opencollective.com/wpackio/sponsor/1/avatar.svg"></a>
+<a href="https://opencollective.com/wpackio/sponsor/2/website" target="_blank"><img src="https://opencollective.com/wpackio/sponsor/2/avatar.svg"></a>
+<a href="https://opencollective.com/wpackio/sponsor/3/website" target="_blank"><img src="https://opencollective.com/wpackio/sponsor/3/avatar.svg"></a>
+<a href="https://opencollective.com/wpackio/sponsor/4/website" target="_blank"><img src="https://opencollective.com/wpackio/sponsor/4/avatar.svg"></a>
+<a href="https://opencollective.com/wpackio/sponsor/5/website" target="_blank"><img src="https://opencollective.com/wpackio/sponsor/5/avatar.svg"></a>
+<a href="https://opencollective.com/wpackio/sponsor/6/website" target="_blank"><img src="https://opencollective.com/wpackio/sponsor/6/avatar.svg"></a>
+<a href="https://opencollective.com/wpackio/sponsor/7/website" target="_blank"><img src="https://opencollective.com/wpackio/sponsor/7/avatar.svg"></a>
+<a href="https://opencollective.com/wpackio/sponsor/8/website" target="_blank"><img src="https://opencollective.com/wpackio/sponsor/8/avatar.svg"></a>
+<a href="https://opencollective.com/wpackio/sponsor/9/website" target="_blank"><img src="https://opencollective.com/wpackio/sponsor/9/avatar.svg"></a>
