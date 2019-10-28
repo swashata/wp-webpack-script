@@ -56,7 +56,7 @@ describe('CreateWebPackConfig', () => {
 			const entry = cwc.getEntry();
 			Object.keys(entry).forEach(key => {
 				expect(Array.isArray(entry[key])).toBeTruthy();
-				const hotClient = entry[key].pop();
+				const hotClient = entry[key][0];
 				expect(hotClient).toMatch(/^webpack\-hot\-middleware/);
 				expect(hotClient).toMatch(/name\=config1/);
 			});
@@ -182,7 +182,7 @@ describe('CreateWebPackConfig', () => {
 					expect(jsTsRules).toHaveLength(2);
 					jsTsRules.forEach(rule => {
 						if (rule && rule.use) {
-							expect(rule.use[0].loader).toBe('babel-loader');
+							expect(rule.use[0].loader).toBe(require.resolve('babel-loader'));
 							expect(rule.use[0].options).toMatchObject({
 								cacheDirectory: true,
 								cacheCompression: !true,
@@ -210,7 +210,7 @@ describe('CreateWebPackConfig', () => {
 					expect(nmJsRules).toHaveLength(1);
 					nmJsRules.forEach(rule => {
 						if (rule && rule.use) {
-							expect(rule.use[0].loader).toBe('babel-loader');
+							expect(rule.use[0].loader).toBe(require.resolve('babel-loader'));
 							expect(rule.use[0].options).toMatchObject({
 								cacheDirectory: true,
 								cacheCompression: !true,
@@ -419,7 +419,7 @@ describe('CreateWebPackConfig', () => {
 			});
 		});
 
-		test('uses style loader when in dev mode', () => {
+		test('uses miniCssExtractPlugin when in dev mode', () => {
 			const cwc = new WebpackConfigHelper(
 				projectConfig.files[0],
 				getConfigFromProjectAndServer(projectConfig, serverConfig),
@@ -436,9 +436,9 @@ describe('CreateWebPackConfig', () => {
 						(test.toString() === '/\\.css$/' ||
 							test.toString() === '/\\.(sa|sc|c)ss$/')
 					);
-				}) as { use: string[] };
+				}) as { use: { loader: string }[] };
 				if (styleRule !== undefined) {
-					expect(styleRule.use[0]).toBe('style-loader');
+					expect(styleRule.use[0].loader).toBe(miniCssExtractPlugin.loader);
 				} else {
 					throw new Error('No style rule found');
 				}
@@ -490,7 +490,7 @@ describe('CreateWebPackConfig', () => {
 					const use = rule.use as { [_: string]: any }[];
 					return (
 						use !== undefined &&
-						use[0].loader === 'file-loader' &&
+						use[0].loader === require.resolve('file-loader') &&
 						use[0].options.publicPath === 'assets/'
 					);
 				});

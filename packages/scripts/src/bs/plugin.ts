@@ -1,5 +1,8 @@
+/* eslint-disable no-underscore-dangle */
+// eslint-disable-next-line
 /// <reference lib="dom" />
 
+/* istanbul ignore next */
 (function(socket: any) {
 	const MSG_EVENT = 'wpackio:message';
 	const CLEAR_EVENT = 'wpackio:clear';
@@ -30,8 +33,7 @@
 
 	socket.on(CLEAR_EVENT, () => {
 		if (elem.parentNode) {
-			body.removeChild(elem)
+			body.removeChild(elem);
 		}
-	})
-
+	});
 })((window as any).___browserSync___.socket);

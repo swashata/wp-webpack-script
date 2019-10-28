@@ -56,7 +56,7 @@ Object {
       "test": /\\\\\\.m\\?jsx\\?\\$/,
       "use": Array [
         Object {
-          "loader": "babel-loader",
+          "loader": "/Volumes/Development/PersonalProjects/wp-webpack-script/node_modules/babel-loader/lib/index.js",
           "options": Object {
             "babelrc": false,
             "cacheCompression": false,
@@ -87,7 +87,7 @@ Object {
       "test": /\\\\\\.tsx\\?\\$/,
       "use": Array [
         Object {
-          "loader": "babel-loader",
+          "loader": "/Volumes/Development/PersonalProjects/wp-webpack-script/node_modules/babel-loader/lib/index.js",
           "options": Object {
             "babelrc": false,
             "cacheCompression": false,
@@ -122,7 +122,7 @@ Object {
       "test": /\\\\\\.\\(js\\|mjs\\)\\$/,
       "use": Array [
         Object {
-          "loader": "babel-loader",
+          "loader": "/Volumes/Development/PersonalProjects/wp-webpack-script/node_modules/babel-loader/lib/index.js",
           "options": Object {
             "babelrc": false,
             "cacheCompression": false,
@@ -146,16 +146,23 @@ Object {
     Object {
       "test": /\\\\\\.css\\$/,
       "use": Array [
-        "style-loader",
         Object {
-          "loader": "css-loader",
+          "loader": "/Volumes/Development/PersonalProjects/wp-webpack-script/node_modules/mini-css-extract-plugin/dist/loader.js",
+          "options": Object {
+            "hmr": true,
+            "publicpath": "//localhost/wp-content/plugins/wpack-io/dist/",
+            "sourceMap": true,
+          },
+        },
+        Object {
+          "loader": "/Volumes/Development/PersonalProjects/wp-webpack-script/node_modules/css-loader/dist/cjs.js",
           "options": Object {
             "importLoaders": 1,
             "sourceMap": true,
           },
         },
         Object {
-          "loader": "postcss-loader",
+          "loader": "/Volumes/Development/PersonalProjects/wp-webpack-script/node_modules/postcss-loader/src/index.js",
           "options": Object {
             "sourceMap": true,
           },
@@ -165,22 +172,29 @@ Object {
     Object {
       "test": /\\\\\\.s\\(a\\|c\\)ss\\$/,
       "use": Array [
-        "style-loader",
         Object {
-          "loader": "css-loader",
+          "loader": "/Volumes/Development/PersonalProjects/wp-webpack-script/node_modules/mini-css-extract-plugin/dist/loader.js",
           "options": Object {
-            "importLoaders": 1,
+            "hmr": true,
+            "publicpath": "//localhost/wp-content/plugins/wpack-io/dist/",
             "sourceMap": true,
           },
         },
         Object {
-          "loader": "postcss-loader",
+          "loader": "/Volumes/Development/PersonalProjects/wp-webpack-script/node_modules/css-loader/dist/cjs.js",
+          "options": Object {
+            "importLoaders": 2,
+            "sourceMap": true,
+          },
+        },
+        Object {
+          "loader": "/Volumes/Development/PersonalProjects/wp-webpack-script/node_modules/postcss-loader/src/index.js",
           "options": Object {
             "sourceMap": true,
           },
         },
         Object {
-          "loader": "sass-loader",
+          "loader": "/Volumes/Development/PersonalProjects/wp-webpack-script/node_modules/sass-loader/dist/cjs.js",
           "options": Object {
             "sourceMap": true,
           },
@@ -192,7 +206,7 @@ Object {
       "test": /\\\\\\.\\(woff\\|woff2\\|eot\\|ttf\\|otf\\|png\\|jpg\\|gif\\)\\(\\\\\\?v=\\\\d\\+\\\\\\.\\\\d\\+\\\\\\.\\\\d\\+\\)\\?\\$/,
       "use": Array [
         Object {
-          "loader": "file-loader",
+          "loader": "/Volumes/Development/PersonalProjects/wp-webpack-script/node_modules/file-loader/dist/cjs.js",
           "options": Object {
             "name": "[name]-[hash:8].[ext]",
             "outputPath": "config1/assets/",
@@ -205,11 +219,11 @@ Object {
       "test": /\\\\\\.\\(woff\\|woff2\\|eot\\|ttf\\|otf\\|png\\|jpg\\|gif\\)\\(\\\\\\?v=\\\\d\\+\\\\\\.\\\\d\\+\\\\\\.\\\\d\\+\\)\\?\\$/,
       "use": Array [
         Object {
-          "loader": "file-loader",
+          "loader": "/Volumes/Development/PersonalProjects/wp-webpack-script/node_modules/file-loader/dist/cjs.js",
           "options": Object {
             "name": "[name]-[hash:8].[ext]",
             "outputPath": "config1/assets/",
-            "publicPath": undefined,
+            "publicPath": "assets/",
           },
         },
       ],
@@ -259,7 +273,7 @@ Array [
     "apply": [Function],
     "cleanAfterEveryBuildPatterns": Array [],
     "cleanOnceBeforeBuildPatterns": Array [
-      "**/*",
+      "/foo/bar/dist/config1",
     ],
     "cleanStaleWebpackAssets": true,
     "currentAssets": Array [],
@@ -277,6 +291,8 @@ Array [
     "options": Object {
       "chunkFilename": "config1/[name]-[contenthash:8].css",
       "filename": "config1/[name]-[contenthash:8].css",
+      "ignoreOrder": false,
+      "moduleFilename": [Function],
     },
   },
   Object {},
@@ -325,7 +341,7 @@ Array [
     "apply": [Function],
     "cleanAfterEveryBuildPatterns": Array [],
     "cleanOnceBeforeBuildPatterns": Array [
-      "**/*",
+      "/foo/bar/dist/config1",
     ],
     "cleanStaleWebpackAssets": true,
     "currentAssets": Array [],
@@ -343,6 +359,8 @@ Array [
     "options": Object {
       "chunkFilename": "config1/[name].css",
       "filename": "config1/[name].css",
+      "ignoreOrder": false,
+      "moduleFilename": [Function],
     },
   },
   Object {},
