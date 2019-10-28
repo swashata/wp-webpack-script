@@ -15,6 +15,10 @@ const pkgPath = path.resolve(__dirname, '../../package.json');
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const pkg = require(pkgPath);
 
+export const donationLink = chalk.bold.blue.underline(
+	'https://opencollective.com/wpackio'
+);
+
 let isYarnCache: boolean | null = null;
 
 export const wpackLogo = `${chalk.bold(gradient.instagram(`__      __`))}
@@ -29,6 +33,10 @@ ${chalk.bold(gradient.instagram(`  \\_/\\_/`))}   ${chalk.magenta(
 )}${chalk.bold.magenta(`${pkg.version}`)}`;
 
 export const wpackLogoSmall = gradient.instagram('wpack.io');
+
+export const donationSentence = `If ${wpackLogoSmall} is worthy, 🙏 consider donating.
+${donationLink}
+Every amount counts.`;
 
 export function addTimeStampToLog(log: string): string {
 	const time = new Date().toTimeString().split(' ')[0];
@@ -292,7 +300,9 @@ To create production build, run
 Thank you for using ${wpackLink}.
 To spread the ${chalk.red(figures.heart)} please ${chalk.yellowBright(
 		figures.star
-	)} our repo and tweet.`;
+	)} our repo and tweet.
+
+${donationSentence}`;
 
 	console.log(msg);
 }
@@ -311,7 +321,9 @@ dynamic import and multiple entry-points easily with ${wpackLogoSmall}.
 
 To spread the ${chalk.red(figures.heart)} please ${chalk.yellowBright(
 		figures.star
-	)} our repo and tweet.`;
+	)} our repo and tweet.
+
+${donationSentence}`;
 
 	console.log(msg);
 }
@@ -465,7 +477,9 @@ ${wpackLogoSmall} package and archive was ${chalk.green('successful')}.
 Thank you for using ${wpackLink}.
 To spread the ${chalk.red(figures.heart)} please ${chalk.yellowBright(
 		figures.star
-	)} our repo and tweet.`;
+	)} our repo and tweet.
+
+${donationSentence}`;
 
 	console.log(msg);
 }
