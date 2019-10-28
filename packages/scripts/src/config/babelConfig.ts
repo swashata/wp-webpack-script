@@ -68,15 +68,17 @@ export function getBabelPresets(
 	presetOptions: PresetOptions,
 	typeChecker?: typelang
 ): babelPreset[] {
-	const babelConfig: babelPreset[] = [['@wpackio/base', presetOptions]];
+	const babelConfig: babelPreset[] = [
+		[require.resolve('@wpackio/babel-preset-base'), presetOptions],
+	];
 
 	// If we have flow then push the preset
 	if (typeChecker === 'flow') {
-		babelConfig.push(['@babel/preset-flow']);
+		babelConfig.push([require.resolve('@babel/preset-flow')]);
 	}
 	// If we have typescript, then push the preset
 	if (typeChecker === 'typescript') {
-		babelConfig.push(['@babel/preset-typescript']);
+		babelConfig.push([require.resolve('@babel/preset-typescript')]);
 	}
 	return babelConfig;
 }

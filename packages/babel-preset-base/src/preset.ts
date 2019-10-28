@@ -53,14 +53,14 @@ export const preset = (opts: PresetOptions | null = {}) => {
 	// Create the presets
 	const presets: babelPreset[] = [
 		[
-			'@babel/preset-env',
+			require.resolve('@babel/preset-env'),
 			{ modules: env === 'test' ? 'commonjs' : false, ...presetEnv },
 		],
 	];
 	// Add react if needed
 	if (hasReact) {
 		presets.push([
-			'@babel/preset-react',
+			require.resolve('@babel/preset-react'),
 			{
 				// Put development based on BABEL_ENV
 				// Adds component stack to warning messages
@@ -78,15 +78,15 @@ export const preset = (opts: PresetOptions | null = {}) => {
 	// Create the plugins
 	const plugins: singleBabelPlugin[] = [];
 	const wannabePlugins: PossiblePlugins = {
-		noDynamicImport: '@babel/plugin-syntax-dynamic-import',
-		noImportMeta: '@babel/plugin-syntax-import-meta',
+		noDynamicImport: require.resolve('@babel/plugin-syntax-dynamic-import'),
+		noImportMeta: require.resolve('@babel/plugin-syntax-import-meta'),
 		noClassProperties: [
-			'@babel/plugin-proposal-class-properties',
+			require.resolve('@babel/plugin-proposal-class-properties'),
 			{ loose: false },
 		],
-		noJsonStrings: '@babel/plugin-proposal-json-strings',
+		noJsonStrings: require.resolve('@babel/plugin-proposal-json-strings'),
 		noRuntime: [
-			'@babel/plugin-transform-runtime',
+			require.resolve('@babel/plugin-transform-runtime'),
 			{
 				corejs: false,
 				helpers: true,
@@ -95,7 +95,9 @@ export const preset = (opts: PresetOptions | null = {}) => {
 				useESModules: env !== 'test',
 			},
 		],
-		noOptionalChaining: '@babel/plugin-proposal-optional-chaining',
+		noOptionalChaining: require.resolve(
+			'@babel/plugin-proposal-optional-chaining'
+		),
 	};
 	// Add them, only if user hasn't explicitly disabled it
 	Object.keys(wannabePlugins).forEach((pKey: string) => {
@@ -108,7 +110,7 @@ export const preset = (opts: PresetOptions | null = {}) => {
 	// in practice some other transforms (such as object-rest-spread)
 	// don't work without it: https://github.com/babel/babel/issues/7215
 	plugins.push([
-		'@babel/plugin-transform-destructuring',
+		require.resolve('@babel/plugin-transform-destructuring'),
 		{
 			// Use loose mode for performance:
 			// https://github.com/facebook/create-react-app/issues/5602

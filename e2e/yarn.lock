@@ -312,7 +312,7 @@
     "@babel/helper-remap-async-to-generator" "^7.1.0"
     "@babel/plugin-syntax-async-generators" "^7.2.0"
 
-"@babel/plugin-proposal-class-properties@^7.4.4":
+"@babel/plugin-proposal-class-properties@^7.5.5":
   version "7.5.5"
   resolved "https://registry.yarnpkg.com/@babel/plugin-proposal-class-properties/-/plugin-proposal-class-properties-7.5.5.tgz#a974cfae1e37c3110e71f3c6a2e48b8e71958cd4"
   integrity sha512-AF79FsnWFxjlaosgdi421vmYG6/jg79bVD0dpD44QdgobzHKuLZ6S3vl8la9qIeSwGi8i1fS0O1mfuDAAdo1/A==
@@ -351,6 +351,14 @@
   dependencies:
     "@babel/helper-plugin-utils" "^7.0.0"
     "@babel/plugin-syntax-optional-catch-binding" "^7.2.0"
+
+"@babel/plugin-proposal-optional-chaining@^7.6.0":
+  version "7.6.0"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-proposal-optional-chaining/-/plugin-proposal-optional-chaining-7.6.0.tgz#e9bf1f9b9ba10c77c033082da75f068389041af8"
+  integrity sha512-kj4gkZ6qUggkprRq3Uh5KP8XnE1MdIO0J7MhdDX8+rAbB6dJ2UrensGIS+0NPZAaaJ1Vr0PN6oLUgXMU1uMcSg==
+  dependencies:
+    "@babel/helper-plugin-utils" "^7.0.0"
+    "@babel/plugin-syntax-optional-chaining" "^7.2.0"
 
 "@babel/plugin-proposal-unicode-property-regex@^7.6.2":
   version "7.6.2"
@@ -417,6 +425,13 @@
   dependencies:
     "@babel/helper-plugin-utils" "^7.0.0"
 
+"@babel/plugin-syntax-optional-chaining@^7.2.0":
+  version "7.2.0"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-syntax-optional-chaining/-/plugin-syntax-optional-chaining-7.2.0.tgz#a59d6ae8c167e7608eaa443fda9fa8fa6bf21dff"
+  integrity sha512-HtGCtvp5Uq/jH/WNUPkK6b7rufnCPLLlDAFN7cmACoIjaOOiXxUt3SswU5loHqrhtqTsa/WoLQ1OQ1AGuZqaWA==
+  dependencies:
+    "@babel/helper-plugin-utils" "^7.0.0"
+
 "@babel/plugin-syntax-typescript@^7.2.0":
   version "7.3.3"
   resolved "https://registry.yarnpkg.com/@babel/plugin-syntax-typescript/-/plugin-syntax-typescript-7.3.3.tgz#a7cc3f66119a9f7ebe2de5383cce193473d65991"
@@ -476,7 +491,7 @@
   dependencies:
     "@babel/helper-plugin-utils" "^7.0.0"
 
-"@babel/plugin-transform-destructuring@^7.4.4", "@babel/plugin-transform-destructuring@^7.6.0":
+"@babel/plugin-transform-destructuring@^7.6.0":
   version "7.6.0"
   resolved "https://registry.yarnpkg.com/@babel/plugin-transform-destructuring/-/plugin-transform-destructuring-7.6.0.tgz#44bbe08b57f4480094d57d9ffbcd96d309075ba6"
   integrity sha512-2bGIS5P1v4+sWTCnKNDZDxbGvEqi0ijeqM/YqHtVGrvG2y0ySgnEEhXErvE9dA0bnIzY9bIzdFK0jFA46ASIIQ==
@@ -664,7 +679,7 @@
   dependencies:
     "@babel/helper-plugin-utils" "^7.0.0"
 
-"@babel/plugin-transform-runtime@^7.4.4":
+"@babel/plugin-transform-runtime@^7.6.2":
   version "7.6.2"
   resolved "https://registry.yarnpkg.com/@babel/plugin-transform-runtime/-/plugin-transform-runtime-7.6.2.tgz#2669f67c1fae0ae8d8bf696e4263ad52cb98b6f8"
   integrity sha512-cqULw/QB4yl73cS5Y0TZlQSjDvNkzDbu0FurTZyHlJpWE5T3PCMdnyV+xXoH1opr1ldyHODe3QAX3OMAii5NxA==
@@ -729,7 +744,7 @@
     "@babel/helper-regex" "^7.4.4"
     regexpu-core "^4.6.0"
 
-"@babel/preset-env@^7.4.4":
+"@babel/preset-env@^7.6.3":
   version "7.6.3"
   resolved "https://registry.yarnpkg.com/@babel/preset-env/-/preset-env-7.6.3.tgz#9e1bf05a2e2d687036d24c40e4639dc46cef2271"
   integrity sha512-CWQkn7EVnwzlOdR5NOm2+pfgSNEZmvGjOhlCHBDq0J8/EStr+G+FvPEiz9B56dR6MoiUFjXhfE4hjLoAKKJtIQ==
@@ -793,7 +808,7 @@
     "@babel/helper-plugin-utils" "^7.0.0"
     "@babel/plugin-transform-flow-strip-types" "^7.0.0"
 
-"@babel/preset-react@^7.0.0":
+"@babel/preset-react@^7.6.3":
   version "7.6.3"
   resolved "https://registry.yarnpkg.com/@babel/preset-react/-/preset-react-7.6.3.tgz#d5242c828322520205ae4eda5d4f4f618964e2f6"
   integrity sha512-07yQhmkZmRAfwREYIQgW0HEwMY9GBJVuPY4Q12UC72AbfaawuupVWa8zQs2tlL+yun45Nv/1KreII/0PLfEsgA==
@@ -826,17 +841,17 @@
   dependencies:
     regenerator-runtime "^0.13.2"
 
-"@babel/runtime@^7.4.4":
-  version "7.6.3"
-  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.6.3.tgz#935122c74c73d2240cafd32ddb5fc2a6cd35cf1f"
-  integrity sha512-kq6anf9JGjW8Nt5rYfEuGRaEAaH1mkv3Bbu6rYvLOpPh/RusSJXuKPEAoZ7L7gybZkchE8+NV5g9vKF4AGAtsA==
-  dependencies:
-    regenerator-runtime "^0.13.2"
-
 "@babel/runtime@^7.4.5":
   version "7.5.4"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.5.4.tgz#cb7d1ad7c6d65676e66b47186577930465b5271b"
   integrity sha512-Na84uwyImZZc3FKf4aUF1tysApzwf3p2yuFBIyBfbzT5glzKTdvYI4KVW4kcgjrzoGUjC7w3YyCHcJKaRxsr2Q==
+  dependencies:
+    regenerator-runtime "^0.13.2"
+
+"@babel/runtime@^7.6.3":
+  version "7.6.3"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.6.3.tgz#935122c74c73d2240cafd32ddb5fc2a6cd35cf1f"
+  integrity sha512-kq6anf9JGjW8Nt5rYfEuGRaEAaH1mkv3Bbu6rYvLOpPh/RusSJXuKPEAoZ7L7gybZkchE8+NV5g9vKF4AGAtsA==
   dependencies:
     regenerator-runtime "^0.13.2"
 
@@ -1655,29 +1670,30 @@
     "@webassemblyjs/wast-parser" "1.8.5"
     "@xtuc/long" "4.2.2"
 
-"@wpackio/babel-preset-base@^3.5.0":
-  version "3.5.0"
-  resolved "https://registry.yarnpkg.com/@wpackio/babel-preset-base/-/babel-preset-base-3.5.0.tgz#b099998dde459f96ede5465108eaf3c13748de7b"
-  integrity sha512-4qP+mVSHp3HqEY9FeLT9H0tiPL+kpGKwasWULpTz5wcZY+C+RYuFABYGQX2YArOALnCa65rQGg4w0qWBtQX2UQ==
+"@wpackio/babel-preset-base@^4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@wpackio/babel-preset-base/-/babel-preset-base-4.0.0.tgz#cab7d58251c278887d58942f74e1af2063bc61cc"
+  integrity sha512-Idxr+5KmeeNHrZBti01yTlqz+BWCrW00x3KIU1vIsc8akBa590Kj0iFUBGhyoqasFr7qQ2vKT47Jp2jJWxugag==
   dependencies:
     "@babel/helper-plugin-utils" "^7.0.0"
-    "@babel/plugin-proposal-class-properties" "^7.4.4"
+    "@babel/plugin-proposal-class-properties" "^7.5.5"
     "@babel/plugin-proposal-json-strings" "^7.2.0"
+    "@babel/plugin-proposal-optional-chaining" "^7.6.0"
     "@babel/plugin-syntax-dynamic-import" "^7.2.0"
     "@babel/plugin-syntax-import-meta" "^7.2.0"
-    "@babel/plugin-transform-destructuring" "^7.4.4"
-    "@babel/plugin-transform-runtime" "^7.4.4"
-    "@babel/preset-env" "^7.4.4"
-    "@babel/preset-react" "^7.0.0"
-    "@babel/runtime" "^7.4.4"
+    "@babel/plugin-transform-destructuring" "^7.6.0"
+    "@babel/plugin-transform-runtime" "^7.6.2"
+    "@babel/preset-env" "^7.6.3"
+    "@babel/preset-react" "^7.6.3"
+    "@babel/runtime" "^7.6.3"
 
 "@wpackio/entrypoint@file:../packages/entrypoint":
-  version "3.5.0"
+  version "4.0.0"
   dependencies:
     "@types/webpack-env" "^1.14.1"
 
 "@wpackio/scripts@file:../packages/scripts":
-  version "3.5.0"
+  version "4.0.0"
   dependencies:
     "@babel/core" "^7.6.4"
     "@babel/preset-flow" "^7.0.0"
@@ -1692,7 +1708,7 @@
     "@types/webpack-dev-middleware" "^2.0.3"
     "@types/webpack-env" "^1.14.1"
     "@types/webpack-hot-middleware" "^2.16.5"
-    "@wpackio/babel-preset-base" "^3.5.0"
+    "@wpackio/babel-preset-base" "^4.0.0"
     archiver "^3.1.1"
     autoprefixer "^9.7.0"
     babel-loader "^8.0.6"
