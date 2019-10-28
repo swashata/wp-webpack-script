@@ -14,6 +14,7 @@ import {
 	printErrorHeading,
 	printSuccessHeading,
 	printWarningHeading,
+	getProgressBar,
 } from './utils';
 
 /**
@@ -55,7 +56,9 @@ export function build(options: ProgramOptions | undefined): void {
 		spinner.start();
 		const builder: Build = new Build(projectConfig, cwd);
 		builder
-			.build()
+			.build((p, m) => {
+				spinner.text = `${getProgressBar(p * 100)} ${chalk.dim(m)}`;
+			})
 			.then(({ status, log, warnings }) => {
 				if (status === 'success') {
 					spinner.succeed(`${wpackLogoSmall} build successful.`);

@@ -20,7 +20,9 @@ export class Build {
 	/**
 	 * Build the files.
 	 */
-	public build(): Promise<{
+	public build(
+		progress: (p: number, m: string) => void
+	): Promise<{
 		status: 'error' | 'warn' | 'success';
 		log: string;
 		warnings?: string[];
@@ -32,41 +34,50 @@ export class Build {
 				this.cwd,
 				false
 			);
-			const webpackConfig = config.getWebpackConfig();
-			const compiler = webpack(webpackConfig as webpack.Configuration);
-			compiler.run((err, stats) => {
-				const raw = stats.toJson('verbose');
-				const messages = formatWebpackMessages(raw);
-				const outputLog = stats.toString({
-					colors: true,
-					assets: true,
-					chunks: false,
-					entrypoints: false,
-					hash: false,
-					version: false,
-					modules: false,
-					builtAt: false,
-					timings: false,
-					warnings: false,
-					errors: false,
-				});
-
-				if (!messages.errors.length && !messages.warnings.length) {
-					// All good
-					resolve({
-						status: 'success',
-						log: outputLog,
+			const webpackConfig = config.getWebpackConfig() as webpack.Configuration;
+			const compiler = webpack(webpackConfig);
+			new webpack.ProgressPlugin((percentage, msg) => {
+				progress(percentage, msg);
+			}).apply(compiler);
+			try {
+				compiler.run((err, stats) => {
+					const raw = stats.toJson('verbose');
+					const messages = formatWebpackMessages(raw);
+					const outputLog = stats.toString({
+						colors: true,
+						assets: true,
+						chunks: false,
+						entrypoints: false,
+						hash: false,
+						version: false,
+						modules: false,
+						builtAt: false,
+						timings: false,
+						warnings: false,
+						errors: false,
 					});
-				}
-				if (messages.errors.length) {
-					reject(messages.errors.join('\n\n'));
-				}
-				resolve({
-					status: 'warn',
-					log: outputLog,
-					warnings: messages.warnings,
+
+					if (!messages.errors.length && !messages.warnings.length) {
+						// All good
+						resolve({
+							status: 'success',
+							log: outputLog,
+						});
+					}
+					if (messages.errors.length) {
+						reject(messages.errors.join('\n\n'));
+					}
+					resolve({
+						status: 'warn',
+						log: outputLog,
+						warnings: messages.warnings,
+					});
 				});
-			});
+			} catch (e) {
+				console.log(e);
+				console.log(JSON.stringify(e, null, 2));
+				reject(e);
+			}
 		});
 	}
 }
