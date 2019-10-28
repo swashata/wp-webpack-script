@@ -95,6 +95,7 @@ export const preset = (opts: PresetOptions | null = {}) => {
 				useESModules: env !== 'test',
 			},
 		],
+		noOptionalChaining: '@babel/plugin-proposal-optional-chaining',
 	};
 	// Add them, only if user hasn't explicitly disabled it
 	Object.keys(wannabePlugins).forEach((pKey: string) => {
