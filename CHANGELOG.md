@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.1.0-alpha.2](https://github.com/swashata/wp-webpack-script/compare/v4.1.0-alpha.1...v4.1.0-alpha.2) (2019-10-28)
+
+
+### Features
+
+* export loaders from package for external usage ([3e99b3b](https://github.com/swashata/wp-webpack-script/commit/3e99b3b))
+
+
+
+
+
 # [4.1.0-alpha.1](https://github.com/swashata/wp-webpack-script/compare/v4.0.0...v4.1.0-alpha.1) (2019-10-28)
 
 
