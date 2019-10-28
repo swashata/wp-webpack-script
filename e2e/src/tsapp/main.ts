@@ -8,6 +8,12 @@ if (mainNode) {
 	updateText(mainNode, 'I am ts app');
 }
 
+function add(a:number): number {
+	return a + 10;
+}
+
+console.log(add(10));
+
 import('./dynamic').then(({ updateNode }) => {
 	const dynNode = document.querySelector('#ts-dyn-app');
 	if (dynNode) {

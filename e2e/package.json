@@ -34,7 +34,9 @@
 		"test": "jest --color",
 		"dev": "../packages/scripts/lib/bin/index.js",
 		"start:dev": "../packages/scripts/lib/bin/index.js start",
-		"build:dev": "../packages/scripts/lib/bin/index.js build"
+    "build:dev": "../packages/scripts/lib/bin/index.js build",
+    "archive:dev": "../packages/scripts/lib/bin/index.js pack",
+    "bootstrap:dev": "../packages/scripts/lib/bin/index.js bootstrap"
 	},
 	"dependencies": {
 		"@types/webpack-env": "1.14.1",

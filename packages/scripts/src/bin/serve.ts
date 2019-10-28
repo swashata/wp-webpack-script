@@ -90,7 +90,7 @@ export function serve(options: ProgramOptions | undefined): void {
 			onError: msg => {
 				printErrorHeading('ERROR');
 				msg.errors.forEach(e => {
-					console.log(e.split(cwd).join('.'));
+					console.log(e);
 					console.log('');
 				});
 				printFailedCompileMEssage();
@@ -98,7 +98,7 @@ export function serve(options: ProgramOptions | undefined): void {
 			onWarn: msg => {
 				printWarningHeading('WARNING');
 				msg.warnings.forEach(e => {
-					console.log(e.split(cwd).join('.'));
+					console.log(e);
 					console.log('');
 				});
 				printCompiledWithWarnMessage();

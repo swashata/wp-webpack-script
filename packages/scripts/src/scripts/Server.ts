@@ -265,72 +265,6 @@ export class Server {
 		}
 	};
 
-	private addTsHooks = (compiler: webpack.Compiler, plugin: any): void => {
-		const { beforeCompile, done } = compiler.hooks;
-		const tsHooks = plugin.getCompilerHooks(compiler);
-
-		let tsMessagesPromise: Promise<FormattedMessage>;
-		let tsMessagesResolver: (msgs: FormattedMessage) => void;
-		let tsMessagesReject: any = null;
-
-		// Tap before run begins on watch mode to create a new tsmessage promise
-		beforeCompile.tap('wpackIoServerBeforeCompileTs', () => {
-			// reject the previous message queue if any
-			if (tsMessagesReject != null) {
-				try {
-					tsMessagesReject('overridden');
-				} catch (e) {
-					// do nothing
-				}
-			}
-			tsMessagesPromise = new Promise((resolve, reject) => {
-				tsMessagesResolver = msgs => resolve(msgs);
-				tsMessagesReject = reject;
-			});
-			// silently reject the previous promise
-			tsMessagesPromise.catch(() => {
-				// do nothing because it might've been cancelled
-			});
-		});
-
-		tsHooks.receive.tap(
-			'afterTypeScriptCheck',
-			(diagnostics: any, lints: any) => {
-				const allMsgs = [...diagnostics, ...lints];
-				const format = (message: any) =>
-					`${typescriptFormatter(message, true)}`;
-
-				tsMessagesResolver({
-					errors: allMsgs
-						.filter(msg => msg.severity === 'error')
-						.map(format),
-					warnings: allMsgs
-						.filter(msg => msg.severity === 'warning')
-						.map(format),
-				});
-			}
-		);
-
-		// Once compilation is done, then show the message
-		done.tap('wpackIoServerDoneTs', async () => {
-			if (this.firstCompileCompleted) {
-				const delayedMsg = setTimeout(() => {
-					this.callbacks.onTcStart();
-				}, 100);
-				try {
-					const messages = await tsMessagesPromise;
-					clearTimeout(delayedMsg);
-					this.callbacks.onTcEnd(messages);
-					this.callbacks.onWatching();
-				} catch (e) {
-					// do thing, since it was cancelled
-				}
-			} else {
-				this.priorFirstCompileTsMessage.push(tsMessagesPromise);
-			}
-		});
-	};
-
 	/**
 	 * Add hooks to compiler instances.
 	 */
@@ -343,8 +277,19 @@ export class Server {
 		done.tap('wpackIoServerDone', stats => {
 			// don't do anything if firstCompile hasn't run
 			if (this.firstCompileCompleted) {
-				const raw = stats.toJson('verbose');
+				const raw = stats.toJson({
+					all: false,
+					warnings: true,
+					errors: true,
+				});
 				const messages = formatWebpackMessages(raw);
+				// further remove the absolute path
+				messages.errors = messages.errors.map(itm =>
+					itm.split(this.cwd).join('.')
+				);
+				messages.warnings = messages.warnings.map(itm =>
+					itm.split(this.cwd).join('.')
+				);
 				if (!messages.errors.length && !messages.warnings.length) {
 					// Here be pretty stuff.
 					this.callbacks.done(stats);
@@ -399,6 +344,87 @@ export class Server {
 				this.addTsHooks(compiler, ForkTsCheckerWebpackPlugin);
 			}
 		}
+	};
+
+	private addTsHooks = (compiler: webpack.Compiler, plugin: any): void => {
+		const { beforeCompile, done } = compiler.hooks;
+		const tsHooks = plugin.getCompilerHooks(compiler);
+
+		let tsMessagesPromise: Promise<FormattedMessage>;
+		let tsMessagesResolver: (msgs: FormattedMessage) => void;
+		let tsMessagesReject: any = null;
+
+		// Tap before run begins on watch mode to create a new tsmessage promise
+		beforeCompile.tap('wpackIoServerBeforeCompileTs', () => {
+			// reject the previous message queue if any
+			if (tsMessagesReject != null) {
+				try {
+					tsMessagesReject('overridden');
+				} catch (e) {
+					// do nothing
+				}
+			}
+			tsMessagesPromise = new Promise((resolve, reject) => {
+				tsMessagesResolver = msgs => resolve(msgs);
+				tsMessagesReject = reject;
+			});
+			// silently reject the previous promise
+			tsMessagesPromise.catch(() => {
+				// do nothing because it might've been cancelled
+			});
+		});
+
+		tsHooks.receive.tap(
+			'afterTypeScriptCheck',
+			(diagnostics: any, lints: any) => {
+				const allMsgs = [...diagnostics, ...lints];
+				const format = (message: any) =>
+					`${typescriptFormatter(message, true)
+						.split(this.cwd)
+						.join('.')}`;
+
+				tsMessagesResolver({
+					errors: allMsgs
+						.filter(msg => msg.severity === 'error')
+						.map(format),
+					warnings: allMsgs
+						.filter(msg => msg.severity === 'warning')
+						.map(format),
+				});
+			}
+		);
+
+		// Once compilation is done, then show the message
+		done.tap('wpackIoServerDoneTs', async stats => {
+			if (this.firstCompileCompleted) {
+				const delayedMsg = setTimeout(() => {
+					this.callbacks.onTcStart();
+				}, 100);
+				try {
+					const messages = await tsMessagesPromise;
+					// add ts errors to stats so that it shows up in the client/browser
+					stats.compilation.errors.push(...messages.errors);
+					stats.compilation.warnings.push(...messages.warnings);
+					// don't display the delayed message of "waiting for type result"
+					clearTimeout(delayedMsg);
+					// update the console by passing to the handler
+					this.callbacks.onTcEnd(messages);
+					this.callbacks.onWatching();
+				} catch (e) {
+					// do thing, since it was cancelled
+				}
+			} else {
+				this.priorFirstCompileTsMessage.push(tsMessagesPromise);
+				try {
+					const messages = await tsMessagesPromise;
+					// add ts errors to stats so that it shows up in the client/browser
+					stats.compilation.errors.push(...messages.errors);
+					stats.compilation.warnings.push(...messages.warnings);
+				} catch (e) {
+					// do nothing
+				}
+			}
+		});
 	};
 
 	/**
