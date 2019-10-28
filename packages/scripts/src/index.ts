@@ -46,7 +46,7 @@ export {
 	issuerForStyleFiles,
 	issuerForJsTsFiles,
 	issuerForNonJsTsFiles,
-} from './config/fileLoader';
+} from './config/loaderHelpers';
 
 // Expose all needed script classes
 export { Build } from './scripts/Build';

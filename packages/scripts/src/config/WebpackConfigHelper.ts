@@ -21,7 +21,10 @@ import {
 	webpackOptionsOverrideFunction,
 } from './project.config.default';
 import { ServerConfig } from './server.config.default';
-import { getFileLoaderForJsAndStyleAssets } from './fileLoader';
+import {
+	getFileLoaderForJsAndStyleAssets,
+	getStyleLoaderUses,
+} from './loaderHelpers';
 
 interface NormalizedEntry {
 	[x: string]: string[];
@@ -422,7 +425,7 @@ ${bannerConfig.copyrightText}${bannerConfig.credit ? creditNote : ''}`,
 			test: /\.m?jsx?$/,
 			use: [
 				{
-					loader: 'babel-loader',
+					loader: require.resolve('babel-loader'),
 					options: isBabelConfigPresent
 						? { ...babelLoaderCacheOptions }
 						: this.getOverrideWebpackRuleOptions(
@@ -455,7 +458,7 @@ ${bannerConfig.copyrightText}${bannerConfig.credit ? creditNote : ''}`,
 			test: /\.tsx?$/,
 			use: [
 				{
-					loader: 'babel-loader',
+					loader: require.resolve('babel-loader'),
 					options: isBabelConfigPresent
 						? { ...babelLoaderCacheOptions }
 						: this.getOverrideWebpackRuleOptions(
@@ -489,7 +492,7 @@ ${bannerConfig.copyrightText}${bannerConfig.credit ? creditNote : ''}`,
 			include: /node_modules/,
 			use: [
 				{
-					loader: 'babel-loader',
+					loader: require.resolve('babel-loader'),
 					options: {
 						// cache
 						...babelLoaderCacheOptions,
@@ -518,29 +521,11 @@ ${bannerConfig.copyrightText}${bannerConfig.credit ? creditNote : ''}`,
 			{
 				test: /\.css$/,
 				use: [
-					{
-						loader: MiniCssExtractPlugin.loader,
-						options: {
-							hmr: this.isDev,
-							publicpath: this.isDev
-								? this.config.publicPathUrl
-								: '',
-							sourceMap: true,
-						},
-					},
-					{
-						loader: 'css-loader',
-						options: {
-							importLoaders: 1,
-							sourceMap: true,
-						},
-					},
-					{
-						loader: 'postcss-loader',
-						options: {
-							sourceMap: true,
-						},
-					},
+					...getStyleLoaderUses(
+						this.isDev,
+						this.config.publicPathUrl,
+						false
+					),
 				],
 			},
 		];
@@ -549,31 +534,13 @@ ${bannerConfig.copyrightText}${bannerConfig.credit ? creditNote : ''}`,
 			styleRules.push({
 				test: /\.s(a|c)ss$/,
 				use: [
+					...getStyleLoaderUses(
+						this.isDev,
+						this.config.publicPathUrl,
+						true
+					),
 					{
-						loader: MiniCssExtractPlugin.loader,
-						options: {
-							hmr: this.isDev,
-							publicpath: this.isDev
-								? this.config.publicPathUrl
-								: '',
-							sourceMap: true,
-						},
-					},
-					{
-						loader: 'css-loader',
-						options: {
-							importLoaders: 2,
-							sourceMap: true,
-						},
-					},
-					{
-						loader: 'postcss-loader',
-						options: {
-							sourceMap: true,
-						},
-					},
-					{
-						loader: 'sass-loader',
+						loader: require.resolve('sass-loader'),
 						options: {
 							sourceMap: true,
 						},
@@ -586,31 +553,13 @@ ${bannerConfig.copyrightText}${bannerConfig.credit ? creditNote : ''}`,
 			styleRules.push({
 				test: /\.less$/,
 				use: [
+					...getStyleLoaderUses(
+						this.isDev,
+						this.config.publicPathUrl,
+						true
+					),
 					{
-						loader: MiniCssExtractPlugin.loader,
-						options: {
-							hmr: this.isDev,
-							publicpath: this.isDev
-								? this.config.publicPathUrl
-								: '',
-							sourceMap: true,
-						},
-					},
-					{
-						loader: 'css-loader',
-						options: {
-							importLoaders: 2,
-							sourceMap: true,
-						},
-					},
-					{
-						loader: 'postcss-loader',
-						options: {
-							sourceMap: true,
-						},
-					},
-					{
-						loader: 'less-loader',
+						loader: require.resolve('less-loader'),
 						options: {
 							sourceMap: true,
 							javascriptEnabled: true,

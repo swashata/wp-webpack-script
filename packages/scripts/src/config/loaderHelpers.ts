@@ -1,4 +1,5 @@
 import webpack from 'webpack';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
 /**
  * This file holds useful utility functions for file-loader
@@ -77,7 +78,7 @@ export function issuerForNonJsTsFiles(location: string): boolean {
 export function getFileLoaderForJsAndStyleAssets(
 	appDir: string,
 	isDev: boolean,
-	loader: string = 'file-loader'
+	loader: string = require.resolve('file-loader')
 ) {
 	// create file rules
 	// But use relativePath for style type resources like sass, scss or css
@@ -107,4 +108,36 @@ export function getFileLoaderForJsAndStyleAssets(
 	};
 
 	return { fileRulesNonStyle, fileRulesStyle };
+}
+
+export function getStyleLoaderUses(
+	isDev: boolean,
+	publicPathUrl: string,
+	preprocessor: boolean
+) {
+	const styleLoader: webpack.RuleSetRule['use'] = [
+		{
+			loader: MiniCssExtractPlugin.loader,
+			options: {
+				hmr: isDev,
+				publicpath: isDev ? publicPathUrl : '',
+				sourceMap: true,
+			},
+		},
+		{
+			loader: require.resolve('css-loader'),
+			options: {
+				importLoaders: preprocessor ? 2 : 1,
+				sourceMap: true,
+			},
+		},
+		{
+			loader: require.resolve('postcss-loader'),
+			options: {
+				sourceMap: true,
+			},
+		},
+	];
+
+	return styleLoader;
 }
