@@ -151,6 +151,7 @@ export function getResolvedLoader(loader: string) {
 	return require.resolve(loader);
 }
 
+// export all built-in loaders
 export const babelLoader = getResolvedLoader('babel-loader');
 export const fileLoader = getResolvedLoader('file-loader');
 export const cssLoader = getResolvedLoader('css-loader');

@@ -1670,10 +1670,10 @@
     "@webassemblyjs/wast-parser" "1.8.5"
     "@xtuc/long" "4.2.2"
 
-"@wpackio/babel-preset-base@^4.0.0":
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/@wpackio/babel-preset-base/-/babel-preset-base-4.0.0.tgz#cab7d58251c278887d58942f74e1af2063bc61cc"
-  integrity sha512-Idxr+5KmeeNHrZBti01yTlqz+BWCrW00x3KIU1vIsc8akBa590Kj0iFUBGhyoqasFr7qQ2vKT47Jp2jJWxugag==
+"@wpackio/babel-preset-base@^4.1.0-alpha.2":
+  version "4.1.0-alpha.2"
+  resolved "https://registry.yarnpkg.com/@wpackio/babel-preset-base/-/babel-preset-base-4.1.0-alpha.2.tgz#866551615f6e5388e10386320f5c164e0e65b1c0"
+  integrity sha512-cwP5wr2M843gQQKXdC1kGdWOlT5b7M3lMZXnB+IZCrDo+wW/aNgTcbCizdcpogmWkpFtYBiM7voD3MuhcaYcxQ==
   dependencies:
     "@babel/helper-plugin-utils" "^7.0.0"
     "@babel/plugin-proposal-class-properties" "^7.5.5"
@@ -1693,7 +1693,7 @@
     "@types/webpack-env" "^1.14.1"
 
 "@wpackio/scripts@file:../packages/scripts":
-  version "4.0.0"
+  version "4.1.0-alpha.2"
   dependencies:
     "@babel/core" "^7.6.4"
     "@babel/preset-flow" "^7.0.0"
@@ -1708,7 +1708,7 @@
     "@types/webpack-dev-middleware" "^2.0.3"
     "@types/webpack-env" "^1.14.1"
     "@types/webpack-hot-middleware" "^2.16.5"
-    "@wpackio/babel-preset-base" "^4.0.0"
+    "@wpackio/babel-preset-base" "^4.1.0-alpha.2"
     archiver "^3.1.1"
     autoprefixer "^9.7.0"
     babel-loader "^8.0.6"
@@ -1738,7 +1738,6 @@
     react-dev-utils "^9.1.0"
     sass-loader "^8.0.0"
     slugify "^1.3.5"
-    style-loader "^1.0.0"
     time-fix-plugin "^2.0.6"
     uglifyjs-webpack-plugin "^2.2.0"
     update-notifier "^3.0.1"
@@ -9372,7 +9371,7 @@ schema-utils@^1.0.0:
     ajv-errors "^1.0.0"
     ajv-keywords "^3.1.0"
 
-schema-utils@^2.0.0, schema-utils@^2.0.1, schema-utils@^2.1.0:
+schema-utils@^2.0.0, schema-utils@^2.1.0:
   version "2.5.0"
   resolved "https://registry.yarnpkg.com/schema-utils/-/schema-utils-2.5.0.tgz#8f254f618d402cc80257486213c8970edfd7c22f"
   integrity sha512-32ISrwW2scPXHUSusP8qMg5dLUawKkyV+/qIEV9JdXKx+rsM6mi8vZY8khg2M69Qom16rtroWXD3Ybtiws38gQ==
@@ -10082,14 +10081,6 @@ strip-json-comments@~2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/strip-json-comments/-/strip-json-comments-2.0.1.tgz#3c531942e908c2697c0ec344858c286c7ca0a60a"
   integrity sha1-PFMZQukIwml8DsNEhYwobHygpgo=
-
-style-loader@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/style-loader/-/style-loader-1.0.0.tgz#1d5296f9165e8e2c85d24eee0b7caf9ec8ca1f82"
-  integrity sha512-B0dOCFwv7/eY31a5PCieNwMgMhVGFe9w+rh7s/Bx8kfFkrth9zfTZquoYvdw8URgiqxObQKcpW51Ugz1HjfdZw==
-  dependencies:
-    loader-utils "^1.2.3"
-    schema-utils "^2.0.1"
 
 stylehacks@^4.0.0:
   version "4.0.3"
