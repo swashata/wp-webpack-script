@@ -272,3 +272,50 @@ module.exports = {
 	],
 };
 ```
+
+## `loader`
+
+When you want to extend webpack config you might run into issues when
+specifying loaders directly like
+
+```js
+const module = {
+	rules: [
+		test: /\.someext$/,
+		use: [
+			{
+				loader: 'file-loader',
+			}
+		],
+	],
+};
+```
+
+The above is would throw error saying, could not resolve `file-loader`. To
+ease up sharing loaders across configuration, `@wpackio/scripts` expose
+the following loaders.
+
+```js
+const {
+	cssLoader,
+	fileLoader,
+	lessLoader,
+	postCssLoader,
+	sassLoader,
+} = require('@wpackio/scripts');
+```
+
+All of the above corresponds to specific loaders. So you may now use
+
+```js
+const module = {
+	rules: [
+		test: /\.someext$/,
+		use: [
+			{
+				loader: fileLoader,
+			}
+		],
+	],
+};
+```

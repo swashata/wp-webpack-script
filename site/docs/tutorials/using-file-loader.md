@@ -8,7 +8,9 @@ If you want to use `file-loader` for your custom assets, then there are some
 options you need to pass to make things work properly. To help you with that
 we have exposed a few [nodejs APIs](/apis/node-api/).
 
-The apis we need to use for `file-loader` are `getFileLoaderOptions`, `issuerForNonStyleFiles`, `issuerForStyleFiles`.
+The apis we need to use for `file-loader` are `getFileLoaderOptions`, `issuerForNonStyleFiles`, `issuerForStyleFiles`, `fileLoader`.
+
+> Do not use `file-loader` as a direct value. Import `fileLoader` from API and use it instead.
 
 Say we want to load svg files with `file-loader`, for both JS/TS and CSS modules.
 
@@ -19,6 +21,7 @@ const {
 	getFileLoaderOptions,
 	issuerForNonStyleFiles,
 	issuerForStyleFiles,
+	fileLoader,
 } = require('@wpackio/scripts');
 
 const webpackOverrideCallback = (config, merge, appDir, isDev) => {
@@ -31,7 +34,7 @@ const webpackOverrideCallback = (config, merge, appDir, isDev) => {
 					test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
 					use: [
 						{
-							loader: 'file-loader',
+							loader: fileLoader,
 							options: getFileLoaderOptions(appDir, isDev, false),
 						},
 					],
@@ -42,7 +45,7 @@ const webpackOverrideCallback = (config, merge, appDir, isDev) => {
 					test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
 					use: [
 						{
-							loader: 'file-loader',
+							loader: fileLoader,
 							options: getFileLoaderOptions(appDir, isDev, true),
 						},
 					],

@@ -106,6 +106,16 @@ And it should return a valid webpack configuration object.
 An example could be
 
 ```js
+const {
+	getFileLoaderOptions,
+	getBabelPresets,
+	getDefaultBabelPresetOptions,
+	issuerForJsTsFiles,
+	issuerForNonJsTsFiles,
+	babelLoader,
+	fileLoader,
+} = require('@wpackio/scripts');
+
 module.exports = {
 	// ...
 	files: [
@@ -127,13 +137,16 @@ module.exports = {
 					{
 						test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
 						issuer: {
-							test: /\.(j|t)sx?$/,
+							test: issuerForJsTsFiles,
 						},
-						use: ['babel-loader', '@svgr/webpack', 'url-loader'],
+						use: [babelLoader, '@svgr/webpack', 'url-loader'],
 					},
 					// Use url-loader for everything else
 					{
 						test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+						issuer: {
+							test: issuerForNonJsTsFiles,
+						},
 						use: [
 							{
 								loader: 'url-loader',

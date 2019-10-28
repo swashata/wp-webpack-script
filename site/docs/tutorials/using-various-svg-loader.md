@@ -87,6 +87,8 @@ const {
 	getFileLoaderOptions,
 	issuerForNonStyleFiles,
 	issuerForStyleFiles,
+	babelLoader,
+	fileLoader,
 } = require('@wpackio/scripts');
 
 module.exports = {
@@ -121,7 +123,7 @@ module.exports = {
 								test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
 								use: [
 									{
-										loader: 'file-loader',
+										loader: fileLoader,
 										options: getFileLoaderOptions(
 											appDir,
 											isDev,
@@ -137,7 +139,7 @@ module.exports = {
 								test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
 								use: [
 									{
-										loader: 'file-loader',
+										loader: fileLoader,
 										options: getFileLoaderOptions(
 											appDir,
 											isDev,
@@ -185,6 +187,8 @@ const {
 	getDefaultBabelPresetOptions,
 	issuerForJsTsFiles,
 	issuerForNonJsTsFiles,
+	babelLoader,
+	fileLoader,
 	// eslint-disable-next-line import/no-extraneous-dependencies
 } = require('@wpackio/scripts');
 
@@ -208,7 +212,7 @@ module.exports = {
 								issuer: issuerForJsTsFiles,
 								use: [
 									{
-										loader: 'babel-loader',
+										loader: babelLoader,
 										options: {
 											presets: getBabelPresets(
 												getDefaultBabelPresetOptions(
@@ -224,7 +228,7 @@ module.exports = {
 										options: { babel: false },
 									},
 									{
-										loader: 'file-loader',
+										loader: fileLoader,
 										options: getFileLoaderOptions(
 											appDir,
 											isDev,
@@ -239,7 +243,7 @@ module.exports = {
 								issuer: issuerForNonJsTsFiles,
 								use: [
 									{
-										loader: 'file-loader',
+										loader: fileLoader,
 										options: getFileLoaderOptions(
 											appDir,
 											isDev,
