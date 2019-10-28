@@ -38,7 +38,7 @@ $color-background: fade-out($color, 0.96);
 		}
 
 		.control {
-			width: 7rem;
+			width: 8rem;
 			&:hover {
 				.wpackio-docsearch__input {
 					&::placeholder {
@@ -53,7 +53,7 @@ $color-background: fade-out($color, 0.96);
 
 		&--focused {
 			.control {
-				width: 10rem;
+				width: 14rem;
 				.wpackio-docsearch__input {
 					background: $color-background;
 					box-shadow: none;

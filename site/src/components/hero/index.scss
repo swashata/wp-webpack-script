@@ -31,10 +31,19 @@
 		}
 	}
 
+	// CTA
+	& &__ctas {
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: center;
+		align-items: center;
+	}
+
 	& &__cta {
 		display: block;
-		max-width: 250px;
-		margin: 0 auto;
+		flex: 0 0 250px;
+		width: 250px;
+		margin: 8px;
 		text-transform: uppercase;
 		font-size: 1.25rem;
 		height: auto;

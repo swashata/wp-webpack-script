@@ -24,6 +24,7 @@ const IndexPage = ({ data: { mission, steps }, location }) => (
 				</>
 			}
 			cta={<Link to="/guides/">Get Started</Link>}
+			cta2={<a href="https://opencollective.com/wpackio">Support</a>}
 			subtitle={
 				<>
 					<Wpackio isFlat /> is a fine-tuned{' '}

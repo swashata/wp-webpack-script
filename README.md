@@ -286,7 +286,8 @@ This project exists thanks to all the people who contribute. [[Contribute]](CONT
 ## Backers
 
 Thank you to all our backers! 🙏 [[Become a backer](https://opencollective.com/wpackio#backer)]
-<a href="https://opencollective.com/wpackio#backers" target="_blank"><img src="https://opencollective.com/wpackio/backers.svg?width=890"></a>
+
+<a href="https://opencollective.com/wpackio#backers" target="_blank"><img src="https://opencollective.com/wpackio/tiers/backers.svg?avatarHeight=36&width=890"></a>
 
 ## Sponsors
 
