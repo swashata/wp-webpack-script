@@ -500,16 +500,6 @@ describe('CreateWebPackConfig', () => {
 			}
 		});
 
-		test('matches snapshot', () => {
-			const cwc = new WebpackConfigHelper(
-				projectConfig.files[0],
-				getConfigFromProjectAndServer(projectConfig, serverConfig),
-				'/foo/bar',
-				true
-			);
-			const modules = cwc.getModule();
-			expect(modules).toMatchSnapshot();
-		});
 	});
 
 	// getResolve()
