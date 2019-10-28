@@ -46,6 +46,14 @@ export {
 	issuerForStyleFiles,
 	issuerForJsTsFiles,
 	issuerForNonJsTsFiles,
+	getResolvedLoader,
+	babelLoader,
+	cssLoader,
+	fileLoader,
+	lessLoader,
+	getStyleLoaderUses,
+	postCssLoader,
+	sassLoader,
 } from './config/loaderHelpers';
 
 // Expose all needed script classes

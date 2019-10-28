@@ -141,3 +141,19 @@ export function getStyleLoaderUses(
 
 	return styleLoader;
 }
+
+/**
+ * Get resolved loader from @wpackio/scripts for your own usage.
+ *
+ * @param loader Webpack Loader.
+ */
+export function getResolvedLoader(loader: string) {
+	return require.resolve(loader);
+}
+
+export const babelLoader = getResolvedLoader('babel-loader');
+export const fileLoader = getResolvedLoader('file-loader');
+export const cssLoader = getResolvedLoader('css-loader');
+export const sassLoader = getResolvedLoader('sass-loader');
+export const lessLoader = getResolvedLoader('less-loader');
+export const postCssLoader = getResolvedLoader('postcss-loader');
