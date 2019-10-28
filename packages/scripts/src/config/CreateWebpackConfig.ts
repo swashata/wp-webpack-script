@@ -155,6 +155,10 @@ export class CreateWebpackConfig {
 			errorOverlay,
 			externals,
 			useBabelConfig,
+			jsBabelOverride,
+			jsBabelPresetOptions,
+			tsBabelOverride,
+			tsBabelPresetOptions,
 		} = this.projectConfig;
 		const { host, port } = this.serverConfig;
 		const helper: WebpackConfigHelper = new WebpackConfigHelper(
@@ -178,6 +182,10 @@ export class CreateWebpackConfig {
 				errorOverlay,
 				externals,
 				useBabelConfig,
+				jsBabelOverride,
+				jsBabelPresetOptions,
+				tsBabelOverride,
+				tsBabelPresetOptions,
 			},
 			this.cwd,
 			this.isDev

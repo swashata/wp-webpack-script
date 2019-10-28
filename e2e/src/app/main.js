@@ -23,6 +23,9 @@ import('./dynamic').then(({ dynamic }) => {
 	dynamic(dynamicNode);
 });
 
+// const nested = {foo: {bar: 'bam'}};
+// console.log(foo?.bar?.biz);
+
 // HMR
 if (module.hot) {
 	module.hot.accept('./dynamic', () => {
