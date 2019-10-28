@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CreateWebPackConfig getCommon sends proper stuff depending on isDev 1`] = `
+exports[`WebpackConfigHelper getCommon sends proper stuff depending on isDev 1`] = `
 Object {
   "context": "/foo/bar",
   "devtool": "source-map",
@@ -14,7 +14,7 @@ Object {
 }
 `;
 
-exports[`CreateWebPackConfig getCommon sends proper stuff depending on isDev 2`] = `
+exports[`WebpackConfigHelper getCommon sends proper stuff depending on isDev 2`] = `
 Object {
   "context": "/foo/bar",
   "devtool": "cheap-module-eval-source-map",
@@ -28,27 +28,7 @@ Object {
 }
 `;
 
-exports[`CreateWebPackConfig getModule babel-loader for typescript and javascript has babel-loader for node_modules with caching 1`] = `
-Object {
-  "babelrc": false,
-  "cacheCompression": false,
-  "cacheDirectory": true,
-  "compact": false,
-  "configFile": false,
-  "presets": Array [
-    Array [
-      "@wpackio/base",
-      Object {
-        "hasReact": false,
-      },
-    ],
-  ],
-  "sourceMaps": false,
-  "sourceType": "unambiguous",
-}
-`;
-
-exports[`CreateWebPackConfig getOptimization returns object when in use 1`] = `
+exports[`WebpackConfigHelper getOptimization returns object when in use 1`] = `
 Object {
   "runtimeChunk": "single",
   "splitChunks": Object {
@@ -73,7 +53,7 @@ Object {
 }
 `;
 
-exports[`CreateWebPackConfig getPlugins has proper plugins for build mode 1`] = `
+exports[`WebpackConfigHelper getPlugins has proper plugins for build mode 1`] = `
 Array [
   DefinePlugin {
     "definitions": Object {
@@ -138,7 +118,7 @@ A zero setup Webpack Bundler Script for WordPress",
 ]
 `;
 
-exports[`CreateWebPackConfig getPlugins has proper plugins for dev mode 1`] = `
+exports[`WebpackConfigHelper getPlugins has proper plugins for dev mode 1`] = `
 Array [
   TimeFixPlugin {
     "watchOffset": 11000,

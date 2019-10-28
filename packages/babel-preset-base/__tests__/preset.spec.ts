@@ -31,7 +31,9 @@ describe('preset in module', () => {
 	test('has @babel/preset-react present by default', () => {
 		const babelConfig = preset();
 		const presetReact = babelConfig.presets.filter(
-			ps => Array.isArray(ps) && ps[0] === '@babel/preset-react'
+			ps =>
+				Array.isArray(ps) &&
+				ps[0] === require.resolve('@babel/preset-react')
 		);
 		expect(presetReact).toHaveLength(1);
 	});
@@ -39,7 +41,9 @@ describe('preset in module', () => {
 	test('disables @babel/preset-react with hasReact=false', () => {
 		const babelConfig = preset({ hasReact: false });
 		const presetReact = babelConfig.presets.filter(
-			ps => Array.isArray(ps) && ps[0] === '@babel/preset-react'
+			ps =>
+				Array.isArray(ps) &&
+				ps[0] === require.resolve('@babel/preset-react')
 		);
 		expect(presetReact).toHaveLength(0);
 	});
@@ -47,11 +51,12 @@ describe('preset in module', () => {
 	test('activates all plugins by default', () => {
 		const { plugins } = preset();
 		const activePlugins = [
-			'@babel/plugin-syntax-dynamic-import',
-			'@babel/plugin-syntax-import-meta',
-			['@babel/plugin-proposal-class-properties'],
-			'@babel/plugin-proposal-json-strings',
-			['@babel/plugin-transform-runtime'],
+			require.resolve('@babel/plugin-syntax-dynamic-import'),
+			require.resolve('@babel/plugin-syntax-import-meta'),
+			[require.resolve('@babel/plugin-proposal-class-properties')],
+			require.resolve('@babel/plugin-proposal-json-strings'),
+			[require.resolve('@babel/plugin-transform-runtime')],
+			require.resolve('@babel/plugin-proposal-optional-chaining'),
 		];
 		activePlugins.forEach(plugin => {
 			if (Array.isArray(plugin)) {
@@ -81,7 +86,9 @@ describe('preset in module', () => {
 		test('has @babel/preset-env present by default', () => {
 			const babelConfig = preset();
 			const presetEnv = babelConfig.presets.filter(
-				ps => Array.isArray(ps) && ps[0] === '@babel/preset-env'
+				ps =>
+					Array.isArray(ps) &&
+					ps[0] === require.resolve('@babel/preset-env')
 			);
 			expect(presetEnv).toHaveLength(1);
 		});
@@ -99,7 +106,9 @@ describe('preset in module', () => {
 			expect(config.presets).toBeInstanceOf(Array);
 			// Now find the one with preset-env
 			const presetEnv = config.presets.find(
-				p => Array.isArray(p) && p[0] === '@babel/preset-env'
+				p =>
+					Array.isArray(p) &&
+					p[0] === require.resolve('@babel/preset-env')
 			) as babelPreset;
 			expect(presetEnv).toHaveLength(2);
 			Object.keys(envOptions.presetEnv).forEach(key => {
@@ -123,7 +132,9 @@ describe('preset in module', () => {
 			};
 			const babelConfig = preset({ presetReact });
 			const presetReactConfig = babelConfig.presets.find(
-				ps => Array.isArray(ps) && ps[0] === '@babel/preset-react'
+				ps =>
+					Array.isArray(ps) &&
+					ps[0] === require.resolve('@babel/preset-react')
 			) as babelPreset;
 			Object.keys(presetReact).forEach(pKey => {
 				if (typeof presetReactConfig[1] === 'object') {
@@ -145,7 +156,9 @@ describe('preset in module', () => {
 			const presetReactConfigWithProduction = preset({
 				presetReact,
 			}).presets.find(
-				ps => Array.isArray(ps) && ps[0] === '@babel/preset-react'
+				ps =>
+					Array.isArray(ps) &&
+					ps[0] === require.resolve('@babel/preset-react')
 			) as babelPreset;
 			if (typeof presetReactConfigWithProduction[1] === 'object') {
 				expect(presetReactConfigWithProduction[1].development).toBe(
@@ -161,7 +174,9 @@ describe('preset in module', () => {
 			const presetReactConfigWithDevelopment = preset({
 				presetReact,
 			}).presets.find(
-				ps => Array.isArray(ps) && ps[0] === '@babel/preset-react'
+				ps =>
+					Array.isArray(ps) &&
+					ps[0] === require.resolve('@babel/preset-react')
 			) as babelPreset;
 			if (typeof presetReactConfigWithDevelopment[1] === 'object') {
 				expect(presetReactConfigWithDevelopment[1].development).toBe(
@@ -182,7 +197,9 @@ describe('preset in module', () => {
 			const presetReactConfigWithDevelopment = preset({
 				presetReact,
 			}).presets.find(
-				ps => Array.isArray(ps) && ps[0] === '@babel/preset-react'
+				ps =>
+					Array.isArray(ps) &&
+					ps[0] === require.resolve('@babel/preset-react')
 			) as babelPreset;
 			if (typeof presetReactConfigWithDevelopment[1] === 'object') {
 				expect(presetReactConfigWithDevelopment[1].development).toBe(

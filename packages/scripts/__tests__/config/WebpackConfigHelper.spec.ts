@@ -31,7 +31,7 @@ afterAll(() => {
 
 beforeEach(initConfig);
 
-describe('CreateWebPackConfig', () => {
+describe('WebpackConfigHelper', () => {
 	// Now do the testing
 
 	test('can be instantiated with proper config', () => {
@@ -219,7 +219,6 @@ describe('CreateWebPackConfig', () => {
 								configFile: false,
 								babelrc: false,
 							});
-							expect(rule.use[0].options).toMatchSnapshot();
 						} else {
 							throw new Error('JavaScript rule is undefined');
 						}
@@ -260,7 +259,7 @@ describe('CreateWebPackConfig', () => {
 					});
 					if (jsRule[0].use[0].options) {
 						expect(jsRule[0].use[0].options.presets[1]).toEqual([
-							'@babel/preset-flow',
+							require.resolve('@babel/preset-flow'),
 						]);
 					} else {
 						throw new Error(
