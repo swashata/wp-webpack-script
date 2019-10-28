@@ -281,17 +281,20 @@ This Readme is not an extensive source of documentation. Please visit our websit
 ## Contributors
 
 This project exists thanks to all the people who contribute. [[Contribute]](CONTRIBUTING.md).
-<a href="graphs/contributors"><img src="https://opencollective.com/wpackio/contributors.svg?width=890" /></a>
 
 ## Backers
 
-Thank you to all our backers! 🙏 [[Become a backer](https://opencollective.com/wpackio#backer)]
+Thank you to all our backers! 🙏 [[Become a backer](https://opencollective.com/wpackio#backer)].
+
+---
 
 <a href="https://opencollective.com/wpackio#backers" target="_blank"><img src="https://opencollective.com/wpackio/tiers/backers.svg?avatarHeight=36&width=890"></a>
 
 ## Sponsors
 
-Support this project by becoming a sponsor. Your logo will show up here with a link to your website. [[Become a sponsor](https://opencollective.com/wpackio#sponsor)]
+Support this project by becoming a sponsor. Your logo will show up here with a link to your website. [[Become a sponsor](https://opencollective.com/wpackio#sponsor)]. (please ask your company to also support this open source project by [becoming a sponsor](https://opencollective.com/wpackio#sponsor)).
+
+---
 
 <a href="https://opencollective.com/wpackio/sponsor/0/website" target="_blank"><img src="https://opencollective.com/wpackio/sponsor/0/avatar.svg"></a>
 <a href="https://opencollective.com/wpackio/sponsor/1/website" target="_blank"><img src="https://opencollective.com/wpackio/sponsor/1/avatar.svg"></a>
