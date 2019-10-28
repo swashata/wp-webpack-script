@@ -285,7 +285,8 @@ export class WebpackConfigHelper {
 			new MiniCssExtractPlugin({
 				filename: `${this.appDir}/${
 					this.isDev ? '[name]' : '[name]-[contenthash:8]'
-				}.css`,
+				}.css`, // we do it this way, so that we can easily setup e2e tests, we can always predict what the name would be
+				ignoreOrder: false,
 			}),
 			// Create Manifest for PHP Consumption
 			new WebpackAssetsManifest({
@@ -512,35 +513,34 @@ ${bannerConfig.copyrightText}${bannerConfig.credit ? creditNote : ''}`,
 		};
 
 		// Create style rules
-		const styleRulesUse: webpack.RuleSetRule['use'] = [
-			this.isDev
-				? 'style-loader'
-				: {
-						loader: MiniCssExtractPlugin.loader,
-						options: {
-							sourceMap: true,
-						},
-				  },
-			{
-				loader: 'css-loader',
-				options: {
-					importLoaders: 1,
-					sourceMap: true,
-				},
-			},
-			{
-				loader: 'postcss-loader',
-				options: {
-					sourceMap: true,
-				},
-			},
-		];
-
-		// Create style rules
 		const styleRules: webpack.RuleSetRule[] = [
 			{
 				test: /\.css$/,
-				use: [...styleRulesUse],
+				use: [
+					{
+						loader: MiniCssExtractPlugin.loader,
+						options: {
+							hmr: this.isDev,
+							publicpath: this.isDev
+								? this.config.publicPathUrl
+								: '',
+							sourceMap: true,
+						},
+					},
+					{
+						loader: 'css-loader',
+						options: {
+							importLoaders: 1,
+							sourceMap: true,
+						},
+					},
+					{
+						loader: 'postcss-loader',
+						options: {
+							sourceMap: true,
+						},
+					},
+				],
 			},
 		];
 		// If we have sass, then add the stuff
@@ -548,7 +548,29 @@ ${bannerConfig.copyrightText}${bannerConfig.credit ? creditNote : ''}`,
 			styleRules.push({
 				test: /\.s(a|c)ss$/,
 				use: [
-					...styleRulesUse,
+					{
+						loader: MiniCssExtractPlugin.loader,
+						options: {
+							hmr: this.isDev,
+							publicpath: this.isDev
+								? this.config.publicPathUrl
+								: '',
+							sourceMap: true,
+						},
+					},
+					{
+						loader: 'css-loader',
+						options: {
+							importLoaders: 2,
+							sourceMap: true,
+						},
+					},
+					{
+						loader: 'postcss-loader',
+						options: {
+							sourceMap: true,
+						},
+					},
 					{
 						loader: 'sass-loader',
 						options: {
@@ -563,7 +585,29 @@ ${bannerConfig.copyrightText}${bannerConfig.credit ? creditNote : ''}`,
 			styleRules.push({
 				test: /\.less$/,
 				use: [
-					...styleRulesUse,
+					{
+						loader: MiniCssExtractPlugin.loader,
+						options: {
+							hmr: this.isDev,
+							publicpath: this.isDev
+								? this.config.publicPathUrl
+								: '',
+							sourceMap: true,
+						},
+					},
+					{
+						loader: 'css-loader',
+						options: {
+							importLoaders: 2,
+							sourceMap: true,
+						},
+					},
+					{
+						loader: 'postcss-loader',
+						options: {
+							sourceMap: true,
+						},
+					},
 					{
 						loader: 'less-loader',
 						options: {
@@ -598,7 +642,7 @@ ${bannerConfig.copyrightText}${bannerConfig.credit ? creditNote : ''}`,
 	 */
 	public getResolve(): webpack.Resolve {
 		return {
-			extensions: ['.js', '.jsx', '.ts', '.tsx'],
+			extensions: ['.mjs', '.js', '.jsx', '.ts', '.tsx'],
 			alias:
 				this.config.alias !== undefined ? { ...this.config.alias } : {},
 		};

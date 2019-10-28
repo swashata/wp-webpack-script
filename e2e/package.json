@@ -12,7 +12,7 @@
 		"autoprefixer": "9.7.0",
 		"cssnano": "4.1.10",
 		"cypress": "3.5.0",
-		"fork-ts-checker-webpack-plugin": "2.0.0",
+		"fork-ts-checker-webpack-plugin": "1.6.0",
 		"jest": "24.9.0",
 		"less": "3.10.3",
 		"node-sass": "4.13.0",
@@ -31,10 +31,10 @@
 		"cypress:runprod": "cypress run --spec 'cypress/integration/build/prod.spec.js'",
 		"wait-for-test-server": "wait-on http://localhost:5000 --timeout 30000",
 		"wait-for-wpackio-server": "wait-on http://127.0.0.1:3000 --timeout 30000",
-    "test": "jest --color",
-    "dev": "../packages/scripts/lib/bin/index.js",
-    "start:dev": "../packages/scripts/lib/bin/index.js start",
-    "build:dev": "../packages/scripts/lib/bin/index.js build"
+		"test": "jest --color",
+		"dev": "../packages/scripts/lib/bin/index.js",
+		"start:dev": "../packages/scripts/lib/bin/index.js start",
+		"build:dev": "../packages/scripts/lib/bin/index.js build"
 	},
 	"dependencies": {
 		"@types/webpack-env": "1.14.1",

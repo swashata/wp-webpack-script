@@ -406,7 +406,7 @@ export function getProgressBar(done: number): string {
 
 	const pbDone = gFunc('='.repeat(pbDoneLength));
 	const pbDoing = chalk.gray('-'.repeat(20 - pbDoneLength));
-	return `[${pbDone}${pbDoing}] ${chalk.yellow(done.toString())}%`;
+	return `[${pbDone}${pbDoing}] ${chalk.yellow(done.toFixed(2))}%`;
 }
 
 export function getFileCopyProgress(progress?: ProgressData): string {

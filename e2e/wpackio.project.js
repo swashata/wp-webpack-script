@@ -27,12 +27,12 @@ module.exports = {
 			// Extra webpack config to be passed directly
 			webpackConfig: undefined,
 		},
-		// {
-		// 	name: 'tsapp',
-		// 	entry: {
-		// 		main: './src/tsapp/main.ts',
-		// 	},
-		// },
+		{
+			name: 'tsapp',
+			entry: {
+				main: './src/tsapp/main.ts',
+			},
+		},
 		// If has more length, then multi-compiler
 	],
 	// Output path relative to the context directory

@@ -47,6 +47,7 @@
 		"del": "^5.1.0",
 		"dev-ip": "^1.0.1",
 		"execa": "^3.2.0",
+		"extract-css-chunks-webpack-plugin": "^4.6.0",
 		"figures": "^3.0.0",
 		"file-loader": "^4.2.0",
 		"find-up": "^4.1.0",
@@ -57,7 +58,6 @@
 		"log-symbols": "^3.0.0",
 		"make-dir": "^3.0.0",
 		"mini-css-extract-plugin": "^0.8.0",
-		"optimize-css-assets-webpack-plugin": "^5.0.3",
 		"ora": "^4.0.2",
 		"postcss-loader": "^3.0.0",
 		"pretty-error": "^2.1.1",
@@ -99,7 +99,7 @@
 	"devDependencies": {
 		"@wpackio/eslint-config": "^3.5.0",
 		"dts-gen": "0.5.8",
-		"fork-ts-checker-webpack-plugin": "2.0.0",
+		"fork-ts-checker-webpack-plugin": "1.6.0",
 		"less": "3.10.3"
 	}
 }

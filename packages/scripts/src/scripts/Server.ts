@@ -194,13 +194,17 @@ export class Server {
 					const delayedMsg = setTimeout(() => {
 						this.callbacks.onTcStart();
 					}, 100);
-					Promise.all(this.priorFirstCompileTsMessage).then(msgs => {
-						clearTimeout(delayedMsg);
-						msgs.forEach(msg => {
-							this.callbacks.onTcEnd(msg);
-							this.callbacks.onWatching();
+					Promise.all(this.priorFirstCompileTsMessage)
+						.then(msgs => {
+							clearTimeout(delayedMsg);
+							msgs.forEach(msg => {
+								this.callbacks.onTcEnd(msg);
+								this.callbacks.onWatching();
+							});
+						})
+						.catch(() => {
+							// do nothing because it might be that it has been cancelled.
 						});
-					});
 				} else {
 					this.callbacks.onWatching();
 				}
@@ -282,6 +286,10 @@ export class Server {
 			tsMessagesPromise = new Promise((resolve, reject) => {
 				tsMessagesResolver = msgs => resolve(msgs);
 				tsMessagesReject = reject;
+			});
+			// silently reject the previous promise
+			tsMessagesPromise.catch(() => {
+				// do nothing because it might've been cancelled
 			});
 		});
 

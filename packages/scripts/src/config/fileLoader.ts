@@ -25,9 +25,9 @@ export function getFileLoaderOptions(
 	};
 	if (publicPath) {
 		// Here mention the public path relative to the css
-		// file directory, but only during production mode
-		// for development mode, it is still undefined
-		fileLoaderOptions.publicPath = isDev ? undefined : `assets/`;
+		// file directory. Since we are now using mini-css-extract-plugin
+		// this would be always the assets directory
+		fileLoaderOptions.publicPath = `assets/`;
 	}
 	return fileLoaderOptions;
 }
@@ -37,7 +37,7 @@ export function getFileLoaderOptions(
  * a style file (scss, sass, css).
  */
 export function issuerForStyleFiles(location: string): boolean {
-	return /\.(sa|sc|c)ss$/.test(location);
+	return /\.(sa|sc|c|le)ss$/.test(location);
 }
 
 /**
@@ -45,7 +45,7 @@ export function issuerForStyleFiles(location: string): boolean {
  * a style file (scss, sass, css).
  */
 export function issuerForNonStyleFiles(location: string): boolean {
-	return !/\.(sa|sc|c)ss$/.test(location);
+	return !/\.(sa|sc|c|le)ss$/.test(location);
 }
 
 /**

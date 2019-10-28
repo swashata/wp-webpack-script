@@ -1,6 +1,16 @@
-import './style.scss';
 import './style.less';
 import img from './assets/img.jpg';
+
+import './lib';
+
+console.log(__webpack_public_path__);
+console.log(__WPACKIO__);
+
+const path = (__WPACKIO__.appName + __WPACKIO__.outputPath).replace(
+	/[^a-z0-9_-]/g,
+	''
+);
+console.log(path);
 
 const mainNode = document.querySelector('#main-app');
 const dynamicNode = document.querySelector('#dyn-app');
