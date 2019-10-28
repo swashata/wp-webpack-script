@@ -47,7 +47,6 @@
 		"del": "^5.1.0",
 		"dev-ip": "^1.0.1",
 		"execa": "^3.2.0",
-		"extract-css-chunks-webpack-plugin": "^4.6.0",
 		"figures": "^3.0.0",
 		"file-loader": "^4.2.0",
 		"find-up": "^4.1.0",

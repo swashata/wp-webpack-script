@@ -194,9 +194,10 @@ export class WebpackConfigHelper {
 			// not think ahead of ourselves
 			Object.keys(normalizedEntry).forEach((key: string) => {
 				normalizedEntry[key] = [
-					...normalizedEntry[key],
-					// put webpack hot client in the entry
+					// put webpack hot client in the entry at the top
+					// otherwise HMR will stop working after an update
 					webpackHotClient,
+					...normalizedEntry[key],
 				];
 			});
 		} else {
