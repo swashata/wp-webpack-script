@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.2.0](https://github.com/swashata/wp-webpack-script/compare/v4.1.0...v4.2.0) (2019-10-29)
+
+
+### Bug Fixes
+
+* **deps:** update gatsby monorepo ([33d1760](https://github.com/swashata/wp-webpack-script/commit/33d1760))
+* **deps:** update typescript-eslint monorepo to v2.6.0 ([9ddf114](https://github.com/swashata/wp-webpack-script/commit/9ddf114))
+
+
+
+
+
 # [4.1.0](https://github.com/swashata/wp-webpack-script/compare/v4.1.0-alpha.2...v4.1.0) (2019-10-28)
 
 **Note:** Version bump only for package wp-webpack-script

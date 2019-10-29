@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.2.0](https://github.com/swashata/wp-webpack-script/compare/v4.1.0...v4.2.0) (2019-10-29)
+
+
+### Bug Fixes
+
+* **deps:** update typescript-eslint monorepo to v2.6.0 ([9ddf114](https://github.com/swashata/wp-webpack-script/commit/9ddf114))
+
+
+
+
+
 # [4.0.0](https://github.com/swashata/wp-webpack-script/compare/v3.5.0...v4.0.0) (2019-10-28)
 
 
