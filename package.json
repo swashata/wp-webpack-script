@@ -18,7 +18,7 @@
     "@babel/plugin-proposal-object-rest-spread": "7.6.2",
     "@babel/preset-env": "7.7.1",
     "@babel/preset-typescript": "7.7.0",
-    "@types/jest": "24.0.21",
+    "@types/jest": "24.0.22",
     "@types/node": "11.15.2",
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "24.9.0",
