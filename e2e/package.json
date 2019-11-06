@@ -45,7 +45,7 @@
 		"react": "16.11.0",
 		"react-bootstrap": "1.0.0-beta.14",
 		"react-dom": "16.11.0",
-		"react-hot-loader": "4.12.15",
+		"react-hot-loader": "4.12.16",
 		"uuid": "3.3.3"
 	}
 }
