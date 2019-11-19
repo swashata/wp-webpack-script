@@ -7544,10 +7544,10 @@ gatsby-transformer-sharp@2.3.5:
     semver "^5.7.1"
     sharp "^0.23.2"
 
-gatsby@2.17.17:
-  version "2.17.17"
-  resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.17.17.tgz#f0999ce134d9abc8f29fc783abe90f69d3b08269"
-  integrity sha512-YaKjOs9RMircBU54IkULcsVOj9z4mg2Yjcd/ixtLiKveRpgIDZj/BllkyH1PNYgii7r8LZ3PAX2CLtFmiNHUXw==
+gatsby@2.18.0:
+  version "2.18.0"
+  resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.18.0.tgz#d21e4f0f56006bff913c940e79732db4e42ea319"
+  integrity sha512-zEMd+6sJ4tkggqkAzVfJouRY5g0+MtqMOBz8tQ7bk04WIkaZJrDVyDJXcnVnmaW9y8MJmHVdHA675t4I0vZc3A==
   dependencies:
     "@babel/code-frame" "^7.5.5"
     "@babel/core" "^7.7.2"
