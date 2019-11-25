@@ -19,7 +19,7 @@
     "@babel/preset-env": "7.7.1",
     "@babel/preset-typescript": "7.7.2",
     "@types/jest": "24.0.23",
-    "@types/node": "11.15.2",
+    "@types/node": "11.15.3",
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "24.9.0",
     "cross-env": "6.0.3",
