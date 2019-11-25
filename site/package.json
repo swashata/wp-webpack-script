@@ -13,7 +13,7 @@
     "gatsby-plugin-catch-links": "2.1.17",
     "gatsby-plugin-google-analytics": "2.1.28",
     "gatsby-plugin-manifest": "2.2.29",
-    "gatsby-plugin-netlify": "2.1.25",
+    "gatsby-plugin-netlify": "2.1.26",
     "gatsby-plugin-netlify-cache": "1.2.0",
     "gatsby-plugin-offline": "3.0.22",
     "gatsby-plugin-react-helmet": "3.1.15",
@@ -47,7 +47,7 @@
   "devDependencies": {
     "@wpackio/eslint-config": "file:../packages/eslint-config",
     "eslint": "6.7.1",
-    "gatsby-plugin-sharp": "2.3.2",
+    "gatsby-plugin-sharp": "2.3.3",
     "gatsby-transformer-sharp": "2.3.5",
     "prettier": "1.19.1"
   },
