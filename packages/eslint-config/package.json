@@ -39,7 +39,7 @@
     "access": "public"
   },
   "devDependencies": {
-    "eslint": "6.7.1",
+    "eslint": "6.7.2",
     "prettier": "1.19.1"
   }
 }
