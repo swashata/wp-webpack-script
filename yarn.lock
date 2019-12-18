@@ -5691,10 +5691,10 @@ dts-dom@latest:
   resolved "https://registry.yarnpkg.com/dts-dom/-/dts-dom-3.1.0.tgz#7f53cf58305180bfd9475d294ea028136162626c"
   integrity sha512-DXi4f32CeSbgXZ/iPUHOCj+Sq7D5jVWPk7Sn/O+TDAn7/A0qntq9AcmQPuV8JwfGFAAfssegJhOVs6mV020AxQ==
 
-dts-gen@0.5.8:
-  version "0.5.8"
-  resolved "https://registry.yarnpkg.com/dts-gen/-/dts-gen-0.5.8.tgz#802c892c6e1a687d99e79621a539b0568d8a37d4"
-  integrity sha512-kIAV6dlHaF7r5J+tIuOC1BJls2P72YM0cyWQUR88zcJEpX2ccRZe+HmXLfkkvfPwjvSO3FEqUiyC8On/grx5qw==
+dts-gen@0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/dts-gen/-/dts-gen-0.6.0.tgz#f556f1c3a98a56ad44192d8281c3e3f0e9808ff7"
+  integrity sha512-+LKOXiE3L5mvwz6GedgjiFM7PO1jbqXuM40JlhW/WPIef1/wSO4JPCAou2RrOcAjceX58ncZCt3wx+n8I5Nyyg==
   dependencies:
     dts-dom latest
     parse-git-config "^1.1.1"
