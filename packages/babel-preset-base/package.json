@@ -55,6 +55,6 @@
   "devDependencies": {
     "@babel/core": "7.7.5",
     "@wpackio/eslint-config": "^4.2.0",
-    "dts-gen": "0.5.8"
+    "dts-gen": "0.6.0"
   }
 }
