@@ -10,5 +10,8 @@ module.exports = {
 				directory: __dirname,
 			},
 		},
+		react: {
+			version: '16.12'
+		}
 	},
 };

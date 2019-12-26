@@ -13,6 +13,7 @@ module.exports = {
 	env,
 	extends: [
 		...ex,
+		'plugin:import/typescript',
 		'plugin:prettier/recommended',
 		'plugin:@typescript-eslint/recommended',
 		'prettier',
@@ -45,5 +46,6 @@ module.exports = {
 		'import/parsers': {
 			'@typescript-eslint/parser': ['.ts', '.tsx'],
 		},
+		'import/extensions': ['.js', '.jsx', '.ts', '.tsx'],
 	},
 };

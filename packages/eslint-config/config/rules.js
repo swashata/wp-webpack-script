@@ -21,4 +21,5 @@ module.exports = {
 	'prefer-destructuring': 'off',
 	'func-names': 'off',
 	'lines-between-class-members': 'off',
+	'import/extensions': ['error', 'never'],
 };
