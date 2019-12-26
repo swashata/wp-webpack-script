@@ -28,31 +28,6 @@ Object {
 }
 `;
 
-exports[`WebpackConfigHelper getOptimization returns object when in use 1`] = `
-Object {
-  "runtimeChunk": "single",
-  "splitChunks": Object {
-    "cacheGroups": Object {
-      "default": Object {
-        "minChunks": 2,
-        "priority": -20,
-        "reuseExistingChunk": true,
-      },
-      "vendors": Object {
-        "priority": -10,
-        "test": /\\[\\\\\\\\\\\\/\\]node_modules\\[\\\\\\\\\\\\/\\]/,
-      },
-    },
-    "chunks": "all",
-    "maxAsyncRequests": 5,
-    "maxInitialRequests": 3,
-    "minChunks": 1,
-    "minSize": 30000,
-    "name": true,
-  },
-}
-`;
-
 exports[`WebpackConfigHelper getPlugins has proper plugins for build mode 1`] = `
 Array [
   DefinePlugin {

@@ -565,7 +565,6 @@ describe('WebpackConfigHelper', () => {
 				(cwc.getOptimization() as webpack.Options.Optimization)
 					.runtimeChunk
 			).toBe('single');
-			expect(cwc.getOptimization()).toMatchSnapshot();
 		});
 	});
 

@@ -78,6 +78,7 @@ describe('preset in module', () => {
 			noJsonStrings: true,
 			noRuntime: true,
 			noOptionalChaining: true,
+			noNullishCoalescingOperator: true,
 		});
 		expect(plugins).toHaveLength(1);
 	});
