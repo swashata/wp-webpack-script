@@ -168,6 +168,14 @@ export class Server {
 			host: this.serverConfig.host,
 			open: false, // We don't want to open right away
 			notify: this.serverConfig.notify,
+			ghostMode:
+				this.serverConfig.ghostMode === undefined
+					? {
+							clicks: true,
+							forms: true,
+							scroll: true,
+					  }
+					: this.serverConfig.ghostMode,
 			snippetOptions: {
 				whitelist: [
 					// Add WP REST API
