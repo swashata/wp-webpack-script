@@ -60,7 +60,7 @@
 		"ora": "^4.0.3",
 		"postcss-loader": "^3.0.0",
 		"pretty-error": "^2.1.1",
-		"react-dev-utils": "^9.1.0",
+		"react-dev-utils": "^10.0.0",
 		"sass-loader": "^8.0.0",
 		"slugify": "^1.3.6",
 		"time-fix-plugin": "^2.0.6",
