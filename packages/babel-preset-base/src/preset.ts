@@ -98,6 +98,9 @@ export const preset = (opts: PresetOptions | null = {}) => {
 		noOptionalChaining: require.resolve(
 			'@babel/plugin-proposal-optional-chaining'
 		),
+		noNullishCoalescingOperator: require.resolve(
+			'@babel/plugin-proposal-nullish-coalescing-operator'
+		),
 	};
 	// Add them, only if user hasn't explicitly disabled it
 	Object.keys(wannabePlugins).forEach((pKey: string) => {

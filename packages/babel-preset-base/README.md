@@ -73,6 +73,7 @@ be loaded by default, but you can disable it through options.
 -   `@babel/plugin-proposal-class-properties` - with option `{ "loose": false }`.
 -   `@babel/plugin-proposal-json-strings`
 -   `@babel/plugin-transform-runtime` - with options `{corejs: false, helpers: true, regenerator: true, useESModules: true }`
+-   `@babel/plugin-proposal-nullish-coalescing-operator`
 
 `@wpackio/babel-preset-base` can be configured to select which `stage-3` plugins to
 exclude.
@@ -125,9 +126,21 @@ Set to `true` to disable [`@babel/plugin-proposal-json-strings`](https://babeljs
 
 #### `noRuntime`
 
-`boolean`, defaults to false.
+`boolean`, defaults to `false`.
 
 Set to `true` to disable [`@babel/plugin-transform-runtime`](https://babeljs.io/docs/en/babel-plugin-transform-runtime).
+
+#### `noOptionalChaining`
+
+`boolean`, defaults to `false`.
+
+Set to `true` to disable [`@babel/plugin-proposal-optional-chaining`](https://babeljs.io/docs/en/babel-plugin-proposal-optional-chaining).
+
+#### `noNullishCoalescingOperator`
+
+`boolean`, defaults to `false`.
+
+Set to `true` to disable [`@babel/plugin-proposal-nullish-coalescing-operator`](https://babeljs.io/docs/en/babel-plugin-proposal-nullish-coalescing-operator).
 
 #### `presetEnv` Options for `@babel/preset-env`
 
