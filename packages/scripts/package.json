@@ -1,6 +1,6 @@
 {
 	"name": "@wpackio/scripts",
-	"version": "4.2.0",
+	"version": "4.3.0",
 	"description": "Main single dependency of @wpackio build tool.",
 	"keywords": [
 		"wordpress",
@@ -33,7 +33,7 @@
 		"@types/webpack-dev-middleware": "^2.0.3",
 		"@types/webpack-env": "^1.14.1",
 		"@types/webpack-hot-middleware": "^2.25.0",
-		"@wpackio/babel-preset-base": "^4.2.0",
+		"@wpackio/babel-preset-base": "^4.3.0",
 		"archiver": "^3.1.1",
 		"autoprefixer": "^9.7.3",
 		"babel-loader": "^8.0.6",
@@ -95,7 +95,7 @@
 		"access": "public"
 	},
 	"devDependencies": {
-		"@wpackio/eslint-config": "^4.2.0",
+		"@wpackio/eslint-config": "^4.3.0",
 		"dts-gen": "0.6.0",
 		"fork-ts-checker-webpack-plugin": "1.6.0",
 		"less": "3.10.3"

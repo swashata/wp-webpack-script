@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.3.0](https://github.com/swashata/wp-webpack-script/compare/v4.2.0...v4.3.0) (2019-12-26)
+
+
+### Bug Fixes
+
+* fix failing tests ([a6b0409](https://github.com/swashata/wp-webpack-script/commit/a6b0409))
+
+
+### Features
+
+* add @babel/plugin-proposal-nullish-coalescing-operator ([5a34177](https://github.com/swashata/wp-webpack-script/commit/5a34177))
+
+
+
+
+
 # [4.2.0](https://github.com/swashata/wp-webpack-script/compare/v4.1.0...v4.2.0) (2019-10-29)
 
 **Note:** Version bump only for package @wpackio/babel-preset-base
