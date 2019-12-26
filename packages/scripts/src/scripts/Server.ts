@@ -367,7 +367,9 @@ export class Server {
 			// reject the previous message queue if any
 			if (tsMessagesReject != null) {
 				try {
-					tsMessagesReject('overridden');
+					tsMessagesReject(
+						'typecheck no longer viable or has been cancelled.'
+					);
 				} catch (e) {
 					// do nothing
 				}

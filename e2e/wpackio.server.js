@@ -26,8 +26,8 @@ module.exports = {
 	open: false,
 	// BrowserSync ghostMode, set to false to completely disable
 	ghostMode: {
-		clicks: true,
-		scroll: true,
-		forms: true,
+		clicks: false,
+		scroll: false,
+		forms: false,
 	},
 };
