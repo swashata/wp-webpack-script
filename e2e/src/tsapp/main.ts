@@ -3,6 +3,8 @@ import { updateText } from './module';
 import './style.scss';
 import './style.less';
 
+declare const module: NodeModule;
+
 const mainNode = document.querySelector('#ts-app');
 if (mainNode) {
 	updateText(mainNode, 'I am ts app');

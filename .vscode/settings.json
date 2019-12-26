@@ -17,5 +17,8 @@
   "spellright.documentTypes": [
     "latex",
     "markdown"
-  ]
+  ],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  }
 }

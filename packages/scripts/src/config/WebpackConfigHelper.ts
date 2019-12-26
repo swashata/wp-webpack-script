@@ -279,12 +279,12 @@ export class WebpackConfigHelper {
 				},
 			}),
 			// Clean dist directory
-			new CleanWebpackPlugin({
+			(new CleanWebpackPlugin({
 				verbose: false,
 				cleanOnceBeforeBuildPatterns: [
 					`${this.outputPath}/${this.appDir}`,
 				],
-			}),
+			}) as unknown) as webpack.Plugin,
 			// Initiate mini css extract
 			new MiniCssExtractPlugin({
 				filename: `${this.appDir}/${
@@ -293,13 +293,13 @@ export class WebpackConfigHelper {
 				ignoreOrder: false,
 			}),
 			// Create Manifest for PHP Consumption
-			new WebpackAssetsManifest({
+			(new WebpackAssetsManifest({
 				writeToDisk: true,
 				output: `${this.outputPath}/${this.appDir}/manifest.json`,
 				publicPath: ``, // We dont put ${this.config.outputPath}/ here because, PHP will pick it up anyway.
 				entrypoints: true,
 				entrypointsKey: 'wpackioEp',
-			}),
+			}) as unknown) as webpack.Plugin,
 		];
 		// Add ts checker plugin if project has tsconfig.json
 		const [isTs, tsconfigPath] = hasTypeScript(this.cwd);
