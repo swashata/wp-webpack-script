@@ -7344,10 +7344,10 @@ gatsby-plugin-google-analytics@2.1.34:
   dependencies:
     "@babel/runtime" "^7.7.6"
 
-gatsby-plugin-manifest@2.2.38:
-  version "2.2.38"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-manifest/-/gatsby-plugin-manifest-2.2.38.tgz#365d679dc815b301b38eff7893f35c62036f5e2b"
-  integrity sha512-3DXS7FTK4qJnKLAZ/8x2/UfSOVCwTykg/kp0erYbdJ2roxPvUd3paCqGm3WfzbfwKVGVBpZgMaYO/whNw/bdbQ==
+gatsby-plugin-manifest@2.2.39:
+  version "2.2.39"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-manifest/-/gatsby-plugin-manifest-2.2.39.tgz#6690db911dc5c20ef34a2d89c4db845def9c3d15"
+  integrity sha512-pNn6YAmMkAcHCQHjFRnAaU17Bz0nvYX7PPDrXmqKvTcKpkfgj9JzwFZimdPtjhGjh74aXNTdduO4lIiRdmjjKA==
   dependencies:
     "@babel/runtime" "^7.7.6"
     gatsby-core-utils "^1.0.26"
@@ -7414,10 +7414,10 @@ gatsby-plugin-sass@2.1.27:
     "@babel/runtime" "^7.7.6"
     sass-loader "^7.3.1"
 
-gatsby-plugin-sharp@2.4.2:
-  version "2.4.2"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-sharp/-/gatsby-plugin-sharp-2.4.2.tgz#30f010fcc3559282eaa24e4c9cb1644d491efb9b"
-  integrity sha512-30bl2nq0E36TfstcMCx9Zuo1FcRG3VB7dIhbNi6hPdONAvLv08K/SEvERkYVKPPQ7coh2L4DpStz+M/0auT+Vg==
+gatsby-plugin-sharp@2.4.3:
+  version "2.4.3"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-sharp/-/gatsby-plugin-sharp-2.4.3.tgz#b5c72a8e5eeeaedd13f49e6056ab6275a93882fc"
+  integrity sha512-d7nxPHbswrpCccUf0HtzWf9dvAqmcVXLQllqgvfeoQ/nOetFwFAqT14aQaVXV+nOcbzGQIMEA/ShTNnrpF8Hag==
   dependencies:
     "@babel/runtime" "^7.7.6"
     async "^2.6.3"
@@ -7598,10 +7598,10 @@ gatsby-transformer-sharp@2.3.13:
     semver "^5.7.1"
     sharp "^0.23.4"
 
-gatsby@2.19.6:
-  version "2.19.6"
-  resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.19.6.tgz#469dbeb3d3edf22be0cb3f50b101e0d98573b328"
-  integrity sha512-eixOxHe2ji79MkTCxCZVODriJTpg6Mlv+6FJ1YEWM129j2TixOc5amwsoCrY5HRjd6yE9VBTzqbc4gEh8znNvQ==
+gatsby@2.19.7:
+  version "2.19.7"
+  resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.19.7.tgz#670d04f25259a914db0049ebd56c14bc04f62d38"
+  integrity sha512-pdCXdzH7Ht0KcpGJPV//WIWgZ10vxO5Gqs4N3NvfAAAKnhZotJ8W5pbSfbw+7ec5zxNw57SWPE5hV6Unm9rIYA==
   dependencies:
     "@babel/code-frame" "^7.5.5"
     "@babel/core" "^7.7.5"
