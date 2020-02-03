@@ -20,7 +20,7 @@
   "private": false,
   "dependencies": {
     "@types/shelljs": "0.8.6",
-    "chalk": "2.4.2",
+    "chalk": "3.0.0",
     "commander": "4.1.1",
     "shelljs": "0.8.3"
   },
