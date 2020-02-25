@@ -7329,10 +7329,10 @@ gatsby-page-utils@^0.0.39:
     lodash "^4.17.15"
     micromatch "^3.1.10"
 
-gatsby-plugin-catch-links@2.1.25:
-  version "2.1.25"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-catch-links/-/gatsby-plugin-catch-links-2.1.25.tgz#163332de7708317146239250f95dff16af748914"
-  integrity sha512-6B+oTJLrqY3gJOO3G3DdyazSemcl/CFe7XLuBQmB5OfiReUsulu/w6NbgWP5KRRhXYQHtNoL2z19Z1xbRHJNOg==
+gatsby-plugin-catch-links@2.1.26:
+  version "2.1.26"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-catch-links/-/gatsby-plugin-catch-links-2.1.26.tgz#d1c030e339ff100f53367babf40ecbcff8c03990"
+  integrity sha512-q+ZVVEXV2eku9w5fu0tHjcIHijcgvQIghsPARCS3oGvykezPZHwXI2JgwvLEv+ZdqdK7pejg/fMEyn8uG7kaUw==
   dependencies:
     "@babel/runtime" "^7.7.6"
     escape-string-regexp "^1.0.5"
@@ -7598,10 +7598,10 @@ gatsby-transformer-sharp@2.3.14:
     semver "^5.7.1"
     sharp "^0.23.4"
 
-gatsby@2.19.21:
-  version "2.19.21"
-  resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.19.21.tgz#4e9cdb6c56150cf38897795996ff509a22b44942"
-  integrity sha512-Ufgw++wkgx0YV8I7ihGxpTa3XYR47VyLDmUzj6xnvv59EQWLnMILA4ie67xnzX0gMXi5qsJuywTQ+NGYYLi19Q==
+gatsby@2.19.22:
+  version "2.19.22"
+  resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.19.22.tgz#23696b9d9e0ef5195fcda8f8f6c00bfc60695891"
+  integrity sha512-Q64XdeMcI4wv/kr6CZCMTCF0PLOGUQ9fYal68cqMDuIPWdLB+0b5roMw/GZMnc0EOyv3GsXQrcvbjH24NzHGGQ==
   dependencies:
     "@babel/code-frame" "^7.5.5"
     "@babel/core" "^7.7.5"
