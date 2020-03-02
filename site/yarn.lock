@@ -2213,12 +2213,12 @@
     "@types/unist" "*"
     "@types/vfile-message" "*"
 
-"@typescript-eslint/eslint-plugin@2.21.0":
-  version "2.21.0"
-  resolved "https://registry.yarnpkg.com/@typescript-eslint/eslint-plugin/-/eslint-plugin-2.21.0.tgz#a34de84a0791cae0357c4dda805c5b4e8203b6c6"
-  integrity sha512-b5jjjDMxzcjh/Sbjuo7WyhrQmVJg0WipTHQgXh5Xwx10uYm6nPWqN1WGOsaNq4HR3Zh4wUx4IRQdDkCHwyewyw==
+"@typescript-eslint/eslint-plugin@2.22.0":
+  version "2.22.0"
+  resolved "https://registry.yarnpkg.com/@typescript-eslint/eslint-plugin/-/eslint-plugin-2.22.0.tgz#218ce6d4aa0244c6a40baba39ca1e021b26bb017"
+  integrity sha512-BvxRLaTDVQ3N+Qq8BivLiE9akQLAOUfxNHIEhedOcg8B2+jY8Rc4/D+iVprvuMX1AdezFYautuGDwr9QxqSxBQ==
   dependencies:
-    "@typescript-eslint/experimental-utils" "2.21.0"
+    "@typescript-eslint/experimental-utils" "2.22.0"
     eslint-utils "^1.4.3"
     functional-red-black-tree "^1.0.1"
     regexpp "^3.0.0"
@@ -2244,13 +2244,13 @@
     "@typescript-eslint/typescript-estree" "2.11.0"
     eslint-scope "^5.0.0"
 
-"@typescript-eslint/experimental-utils@2.21.0":
-  version "2.21.0"
-  resolved "https://registry.yarnpkg.com/@typescript-eslint/experimental-utils/-/experimental-utils-2.21.0.tgz#71de390a3ec00b280b69138d80733406e6e86bfa"
-  integrity sha512-olKw9JP/XUkav4lq0I7S1mhGgONJF9rHNhKFn9wJlpfRVjNo3PPjSvybxEldvCXnvD+WAshSzqH5cEjPp9CsBA==
+"@typescript-eslint/experimental-utils@2.22.0":
+  version "2.22.0"
+  resolved "https://registry.yarnpkg.com/@typescript-eslint/experimental-utils/-/experimental-utils-2.22.0.tgz#4d00c91fbaaa68e56e7869be284999a265707f85"
+  integrity sha512-sJt1GYBe6yC0dWOQzXlp+tiuGglNhJC9eXZeC8GBVH98Zv9jtatccuhz0OF5kC/DwChqsNfghHx7OlIDQjNYAQ==
   dependencies:
     "@types/json-schema" "^7.0.3"
-    "@typescript-eslint/typescript-estree" "2.21.0"
+    "@typescript-eslint/typescript-estree" "2.22.0"
     eslint-scope "^5.0.0"
 
 "@typescript-eslint/experimental-utils@^2.5.0":
@@ -2262,14 +2262,14 @@
     "@typescript-eslint/typescript-estree" "2.14.0"
     eslint-scope "^5.0.0"
 
-"@typescript-eslint/parser@2.21.0":
-  version "2.21.0"
-  resolved "https://registry.yarnpkg.com/@typescript-eslint/parser/-/parser-2.21.0.tgz#4f200995517c3d5fc5ef51b17527bc948992e438"
-  integrity sha512-VrmbdrrrvvI6cPPOG7uOgGUFXNYTiSbnRq8ZMyuGa4+qmXJXVLEEz78hKuqupvkpwJQNk1Ucz1TenrRP90gmBg==
+"@typescript-eslint/parser@2.22.0":
+  version "2.22.0"
+  resolved "https://registry.yarnpkg.com/@typescript-eslint/parser/-/parser-2.22.0.tgz#8eeb6cb6de873f655e64153397d4790898e149d0"
+  integrity sha512-FaZKC1X+nvD7qMPqKFUYHz3H0TAioSVFGvG29f796Nc5tBluoqfHgLbSFKsh7mKjRoeTm8J9WX2Wo9EyZWjG7w==
   dependencies:
     "@types/eslint-visitor-keys" "^1.0.0"
-    "@typescript-eslint/experimental-utils" "2.21.0"
-    "@typescript-eslint/typescript-estree" "2.21.0"
+    "@typescript-eslint/experimental-utils" "2.22.0"
+    "@typescript-eslint/typescript-estree" "2.22.0"
     eslint-visitor-keys "^1.1.0"
 
 "@typescript-eslint/parser@^2.11.0":
@@ -2308,10 +2308,10 @@
     semver "^6.3.0"
     tsutils "^3.17.1"
 
-"@typescript-eslint/typescript-estree@2.21.0":
-  version "2.21.0"
-  resolved "https://registry.yarnpkg.com/@typescript-eslint/typescript-estree/-/typescript-estree-2.21.0.tgz#7e4be29f2e338195a2e8c818949ed0ff727cc943"
-  integrity sha512-NC/nogZNb9IK2MEFQqyDBAciOT8Lp8O3KgAfvHx2Skx6WBo+KmDqlU3R9KxHONaijfTIKtojRe3SZQyMjr3wBw==
+"@typescript-eslint/typescript-estree@2.22.0":
+  version "2.22.0"
+  resolved "https://registry.yarnpkg.com/@typescript-eslint/typescript-estree/-/typescript-estree-2.22.0.tgz#a16ed45876abf743e1f5857e2f4a1c3199fd219e"
+  integrity sha512-2HFZW2FQc4MhIBB8WhDm9lVFaBDy6h9jGrJ4V2Uzxe/ON29HCHBTj3GkgcsgMWfsl2U5as+pTOr30Nibaw7qRQ==
   dependencies:
     debug "^4.1.1"
     eslint-visitor-keys "^1.1.0"
@@ -2470,8 +2470,8 @@
 "@wpackio/eslint-config@file:../packages/eslint-config":
   version "4.3.0"
   dependencies:
-    "@typescript-eslint/eslint-plugin" "2.21.0"
-    "@typescript-eslint/parser" "2.21.0"
+    "@typescript-eslint/eslint-plugin" "2.22.0"
+    "@typescript-eslint/parser" "2.22.0"
     babel-eslint "^10.0.3"
     eslint-config-airbnb "^18.0.1"
     eslint-config-prettier "^6.8.0"
@@ -7522,10 +7522,10 @@ gatsby-remark-images@3.1.44:
     unist-util-select "^1.5.0"
     unist-util-visit-parents "^2.1.2"
 
-gatsby-remark-prismjs@3.3.31:
-  version "3.3.31"
-  resolved "https://registry.yarnpkg.com/gatsby-remark-prismjs/-/gatsby-remark-prismjs-3.3.31.tgz#b5df868642dc78e3d38576d7e9f6eab23d2b6a80"
-  integrity sha512-n6tczCq/w5LazZ5yk9UXu/6YjyLR7p1rQbBxqgkOL1xEFRmQcK5BwFhcpmCh5OKiqWBvqLDJq561UIFL0jcI/A==
+gatsby-remark-prismjs@3.3.32:
+  version "3.3.32"
+  resolved "https://registry.yarnpkg.com/gatsby-remark-prismjs/-/gatsby-remark-prismjs-3.3.32.tgz#df9842b3f6615d922e871d2032ad049d84e5f4bd"
+  integrity sha512-n/9VLOs5xNOgGQj4m1//PVmvQLEgbmLPqQo5/Hmuw4b+x76KFHfZGVrvwUHpSB0/yCrv6UCykOFI5J8ZxPXjkg==
   dependencies:
     "@babel/runtime" "^7.7.6"
     parse-numeric-range "^0.0.2"
@@ -7625,10 +7625,10 @@ gatsby-transformer-sharp@2.3.16:
     semver "^5.7.1"
     sharp "^0.23.4"
 
-gatsby@2.19.24:
-  version "2.19.24"
-  resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.19.24.tgz#db2a59862dc52035b2a79c06a81d585dbb035383"
-  integrity sha512-g3KEmu0HKXaPYYrML+GHrugFs1hbMsFiSjtM2OvTi5z1nkE2DwfTIKdGFQjFDCVYu49fw3me5e/Csfe+ZFk/QQ==
+gatsby@2.19.25:
+  version "2.19.25"
+  resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.19.25.tgz#1a7a03755f7746b6f64da5b36b3e2b3665bb285b"
+  integrity sha512-ywFEHCXUD6f/EVExxfQZ8CTny7cy8XCL6/AlBumcHvXf4XADGwARjcAaQakCiT5tbmYfN02OvAFVhBiNM8NRUQ==
   dependencies:
     "@babel/code-frame" "^7.5.5"
     "@babel/core" "^7.7.5"
@@ -7728,8 +7728,8 @@ gatsby@2.19.24:
     parseurl "^1.3.3"
     physical-cpu-count "^2.0.0"
     pnp-webpack-plugin "^1.5.0"
-    postcss-flexbugs-fixes "^3.3.1"
-    postcss-loader "^2.1.6"
+    postcss-flexbugs-fixes "^4.2.0"
+    postcss-loader "^3.0.0"
     prompts "^2.3.0"
     prop-types "^15.7.2"
     raw-loader "^0.5.1"
@@ -12495,12 +12495,12 @@ postcss-discard-overridden@^4.0.1:
   dependencies:
     postcss "^7.0.0"
 
-postcss-flexbugs-fixes@^3.3.1:
-  version "3.3.1"
-  resolved "https://registry.yarnpkg.com/postcss-flexbugs-fixes/-/postcss-flexbugs-fixes-3.3.1.tgz#0783cc7212850ef707f97f8bc8b6fb624e00c75d"
-  integrity sha512-9y9kDDf2F9EjKX6x9ueNa5GARvsUbXw4ezH8vXItXHwKzljbu8awP7t5dCaabKYm18Vs1lo5bKQcnc0HkISt+w==
+postcss-flexbugs-fixes@^4.2.0:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/postcss-flexbugs-fixes/-/postcss-flexbugs-fixes-4.2.0.tgz#662b3dcb6354638b9213a55eed8913bcdc8d004a"
+  integrity sha512-QRE0n3hpkxxS/OGvzOa+PDuy4mh/Jg4o9ui22/ko5iGYOG3M5dfJabjnAZjTdh2G9F85c7Hv8hWcEDEKW/xceQ==
   dependencies:
-    postcss "^6.0.1"
+    postcss "^7.0.26"
 
 postcss-load-config@^2.0.0:
   version "2.0.0"
@@ -12510,15 +12510,15 @@ postcss-load-config@^2.0.0:
     cosmiconfig "^4.0.0"
     import-cwd "^2.0.0"
 
-postcss-loader@^2.1.6:
-  version "2.1.6"
-  resolved "https://registry.yarnpkg.com/postcss-loader/-/postcss-loader-2.1.6.tgz#1d7dd7b17c6ba234b9bed5af13e0bea40a42d740"
-  integrity sha512-hgiWSc13xVQAq25cVw80CH0l49ZKlAnU1hKPOdRrNj89bokRr/bZF2nT+hebPPF9c9xs8c3gw3Fr2nxtmXYnNg==
+postcss-loader@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/postcss-loader/-/postcss-loader-3.0.0.tgz#6b97943e47c72d845fa9e03f273773d4e8dd6c2d"
+  integrity sha512-cLWoDEY5OwHcAjDnkyRQzAXfs2jrKjXpO/HQFcc5b5u/r7aa471wdmChmwfnv7x2u840iat/wi0lQ5nbRgSkUA==
   dependencies:
     loader-utils "^1.1.0"
-    postcss "^6.0.0"
+    postcss "^7.0.0"
     postcss-load-config "^2.0.0"
-    schema-utils "^0.4.0"
+    schema-utils "^1.0.0"
 
 postcss-merge-longhand@^4.0.11:
   version "4.0.11"
@@ -12770,7 +12770,7 @@ postcss-value-parser@^4.0.2:
   resolved "https://registry.yarnpkg.com/postcss-value-parser/-/postcss-value-parser-4.0.2.tgz#482282c09a42706d1fc9a069b73f44ec08391dc9"
   integrity sha512-LmeoohTpp/K4UiyQCwuGWlONxXamGzCMtFxLq4W1nZVGIQLYvMCJx3yAF9qyyuFpflABI9yVdtJAqbihOsCsJQ==
 
-postcss@^6.0.0, postcss@^6.0.1, postcss@^6.0.23:
+postcss@^6.0.1, postcss@^6.0.23:
   version "6.0.23"
   resolved "https://registry.yarnpkg.com/postcss/-/postcss-6.0.23.tgz#61c82cc328ac60e677645f979054eb98bc0e3324"
   integrity sha512-soOk1h6J3VMTZtVeVpv15/Hpdl2cBLX3CAw4TAbkpTJiNPk9YP/zWcD1ND+xEtvyuuvKzbxliTOIyvkSeSJ6ag==
@@ -12792,6 +12792,15 @@ postcss@^7.0.23:
   version "7.0.23"
   resolved "https://registry.yarnpkg.com/postcss/-/postcss-7.0.23.tgz#9f9759fad661b15964f3cfc3140f66f1e05eadc1"
   integrity sha512-hOlMf3ouRIFXD+j2VJecwssTwbvsPGJVMzupptg+85WA+i7MwyrydmQAgY3R+m0Bc0exunhbJmijy8u8+vufuQ==
+  dependencies:
+    chalk "^2.4.2"
+    source-map "^0.6.1"
+    supports-color "^6.1.0"
+
+postcss@^7.0.26:
+  version "7.0.27"
+  resolved "https://registry.yarnpkg.com/postcss/-/postcss-7.0.27.tgz#cc67cdc6b0daa375105b7c424a85567345fc54d9"
+  integrity sha512-WuQETPMcW9Uf1/22HWUWP9lgsIC+KEHg2kozMflKjbeUtw9ujvFX6QmIfozaErDkmLWS9WEnEdEe6Uo9/BNTdQ==
   dependencies:
     chalk "^2.4.2"
     source-map "^0.6.1"
@@ -14075,7 +14084,7 @@ scheduler@^0.19.0:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
 
-schema-utils@^0.4.0, schema-utils@^0.4.5:
+schema-utils@^0.4.5:
   version "0.4.7"
   resolved "https://registry.yarnpkg.com/schema-utils/-/schema-utils-0.4.7.tgz#ba74f597d2be2ea880131746ee17d0a093c68187"
   integrity sha512-v/iwU6wvwGK8HbU9yi3/nhGzP0yGSuhQMzL6ySiec1FSrZZDkhm4noOSWzrNFo/jEc+SJY6jRTwuwbSXJPDUnQ==
