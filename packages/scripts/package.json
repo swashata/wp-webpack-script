@@ -60,7 +60,7 @@
 		"ora": "^4.0.3",
 		"postcss-loader": "^3.0.0",
 		"pretty-error": "^2.1.1",
-		"react-dev-utils": "^9.1.0",
+		"react-dev-utils": "^10.2.0",
 		"sass-loader": "^8.0.2",
 		"slugify": "^1.4.0",
 		"time-fix-plugin": "^2.0.6",
@@ -104,6 +104,7 @@
 		"fork-ts-checker-webpack-plugin": "1.6.0",
 		"jest": "25.1.0",
 		"less": "3.11.1",
+		"node-sass": "^4.13.1",
 		"typescript": "3.8.3"
 	}
 }

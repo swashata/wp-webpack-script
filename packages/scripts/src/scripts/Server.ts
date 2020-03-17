@@ -210,7 +210,9 @@ export class Server {
 								this.callbacks.onWatching();
 							});
 						})
-						.catch(() => {
+						.catch(e => {
+							console.log(e);
+							console.log('first compile ts message failed');
 							// do nothing because it might be that it has been cancelled.
 						});
 				} else {
@@ -360,25 +362,26 @@ export class Server {
 
 		let tsMessagesPromise: Promise<FormattedMessage>;
 		let tsMessagesResolver: (msgs: FormattedMessage) => void;
-		let tsMessagesReject: any = null;
 
 		// Tap before run begins on watch mode to create a new tsmessage promise
 		beforeCompile.tap('wpackIoServerBeforeCompileTs', () => {
-			// reject the previous message queue if any
-			if (tsMessagesReject != null) {
-				try {
-					tsMessagesReject(
-						'typecheck no longer viable or has been cancelled.'
-					);
-				} catch (e) {
-					// do nothing
+			if (!this.firstCompileCompleted) {
+				// if this first compilation isn't done yet, and there is a pending
+				// resolver, then call it with empty message. For some reason, during
+				// initialization, beforeCompile seems to be called multiple times.
+				// This is how we cancel the previous resolver and start fresh
+				if (tsMessagesResolver) {
+					tsMessagesResolver({
+						errors: [],
+						warnings: [],
+					});
 				}
 			}
-			tsMessagesPromise = new Promise((resolve, reject) => {
+			tsMessagesPromise = new Promise(resolve => {
 				tsMessagesResolver = msgs => resolve(msgs);
-				tsMessagesReject = reject;
 			});
 			// silently reject the previous promise
+			// although it should never happen
 			tsMessagesPromise.catch(() => {
 				// do nothing because it might've been cancelled
 			});
