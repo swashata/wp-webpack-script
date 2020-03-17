@@ -21,7 +21,7 @@ interface FormattedMessage {
 interface Callbacks {
 	invalid(): void;
 	done(stats: webpack.Stats): void;
-	firstCompile(stats: webpack.Stats): void;
+	firstCompile(stats: webpack.Stats | undefined): void;
 	onError(err: FormattedMessage): void;
 	onWarn(warn: FormattedMessage): void;
 	onBsChange(file: string): void;

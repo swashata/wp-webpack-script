@@ -107,8 +107,12 @@ export function serve(options: ProgramOptions | undefined): void {
 				printCompileTimeMessages(stats, lastWebpackStat);
 				lastWebpackStat = stats.toJson(webpackStatToJsonOptions);
 			},
-			firstCompile: (stats: webpack.Stats) => {
+			firstCompile: (stats: webpack.Stats | undefined) => {
 				spinner.stop();
+				if (!stats) {
+					printSuccessfullyCompiledMessage();
+					return;
+				}
 				const raw = stats.toJson('verbose');
 				const messages = formatWebpackMessages(raw);
 				console.log('');
