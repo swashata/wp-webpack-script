@@ -43,6 +43,6 @@
   },
   "resolutions": {
     "@types/webpack": "^4.41.0",
-    "fsevents": "1.2.11"
+    "fsevents": "2.1.2"
   }
 }
