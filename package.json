@@ -42,7 +42,6 @@
     "nuke": "rm -r node_modules; for d in packages/*/node_modules; do echo $d; rm -r $d; done"
   },
   "resolutions": {
-    "@types/webpack": "^4.41.0",
-    "fsevents": "2.1.2"
+    "@types/webpack": "^4.41.0"
   }
 }
