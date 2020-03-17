@@ -30,7 +30,7 @@
   ],
   "scripts": {
     "clean": "rimraf './lib' && rm -f ./tsconfig.tsbuildinfo ",
-    "type-check": "tsc --noEmit",
+    "type-check": "tsc --emitDeclarationsOnly",
     "type-check:watch": "yarn type-check --watch",
     "build:js": "babel ./src --out-dir lib --extensions '.ts,.tsx'",
     "build:types": "tsc --emitDeclarationOnly",
