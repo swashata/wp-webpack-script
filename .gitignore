@@ -1,6 +1,7 @@
 ## Project specifics ##
 examples/tryouts/*
 !examples/tryouts/package.json
+!examples/tryouts/package-empty.json
 
 # Compiled libraries
 packages/*/lib
