@@ -48,7 +48,7 @@
 		"dev-ip": "^1.0.1",
 		"execa": "^3.2.0",
 		"figures": "^3.0.0",
-		"file-loader": "^5.0.2",
+		"file-loader": "^6.0.0",
 		"find-up": "^4.1.0",
 		"gradient-string": "^1.2.0",
 		"handlebars": "^4.5.3",
