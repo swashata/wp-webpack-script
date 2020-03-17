@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.4.0](https://github.com/swashata/wp-webpack-script/compare/v4.3.0...v4.4.0) (2020-03-17)
+
+
+### Bug Fixes
+
+* issue with ts checker and first compile ([a49290a](https://github.com/swashata/wp-webpack-script/commit/a49290afd27d11eb4a541ac0dfbbd3b5d0a5b118))
+
+
+### Features
+
+* simplify whm socket path ([ec800e0](https://github.com/swashata/wp-webpack-script/commit/ec800e0cb4efd0fd4687b47e0e6adf99ba61e402))
+
+
+
+
+
 # [4.3.0](https://github.com/swashata/wp-webpack-script/compare/v4.2.0...v4.3.0) (2019-12-26)
 
 

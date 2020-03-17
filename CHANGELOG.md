@@ -3,6 +3,96 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.4.0](https://github.com/swashata/wp-webpack-script/compare/v4.3.0...v4.4.0) (2020-03-17)
+
+
+### Bug Fixes
+
+* issue with ts checker and first compile ([a49290a](https://github.com/swashata/wp-webpack-script/commit/a49290afd27d11eb4a541ac0dfbbd3b5d0a5b118))
+* **deps:** update dependency @types/webpack-env to v1.15.0 ([cf49f45](https://github.com/swashata/wp-webpack-script/commit/cf49f45b6816de9cd737d3f1aba93603a3e8db30))
+* **deps:** update dependency @types/webpack-env to v1.15.1 ([9c54055](https://github.com/swashata/wp-webpack-script/commit/9c54055e8f489bc94490220b7c19b2d58a676eac))
+* **deps:** update dependency commander to v4.1.0 ([3ca04f6](https://github.com/swashata/wp-webpack-script/commit/3ca04f6a2846ba2de3a7c330d26206038675f9c0))
+* **deps:** update dependency commander to v4.1.1 ([b740b3a](https://github.com/swashata/wp-webpack-script/commit/b740b3a934485d1ece69e82de16c1e5e2618f8c3))
+* **deps:** update dependency gatsby to v2.18.23 ([84eec58](https://github.com/swashata/wp-webpack-script/commit/84eec58c55211022e6ddf03a87992d7c63234c45))
+* **deps:** update dependency gatsby to v2.18.25 ([d939e7f](https://github.com/swashata/wp-webpack-script/commit/d939e7f28bf6c5dd53e74e25708a6ee106a4f2a6))
+* **deps:** update dependency gatsby to v2.19.1 ([ac39037](https://github.com/swashata/wp-webpack-script/commit/ac390375c0b66a05ad6814f4aee3964064be9fd7))
+* **deps:** update dependency gatsby to v2.19.12 ([7037ff7](https://github.com/swashata/wp-webpack-script/commit/7037ff73ea2a583dde72af28af1ca3554b9e6730))
+* **deps:** update dependency gatsby to v2.19.13 ([89474e5](https://github.com/swashata/wp-webpack-script/commit/89474e5385d9573df93c455846d39c97ba4b46b9))
+* **deps:** update dependency gatsby to v2.19.14 ([0dc3397](https://github.com/swashata/wp-webpack-script/commit/0dc3397793600b4461fd40afe9fdc0fae3c66a69))
+* **deps:** update dependency gatsby to v2.19.15 ([ab1cf86](https://github.com/swashata/wp-webpack-script/commit/ab1cf864aedecb1b008660f55b31004f8a70f6a8))
+* **deps:** update dependency gatsby to v2.19.16 ([03904b0](https://github.com/swashata/wp-webpack-script/commit/03904b087f8d7b0094dd4879f1f209bf6a0e7b32))
+* **deps:** update dependency gatsby to v2.19.21 ([8063bd8](https://github.com/swashata/wp-webpack-script/commit/8063bd840bdb871019fac979014f5ff9b5c93223))
+* **deps:** update dependency gatsby to v2.19.23 ([498cfb9](https://github.com/swashata/wp-webpack-script/commit/498cfb940641978ad368384bd6412469a9bc975f))
+* **deps:** update dependency gatsby to v2.19.26 ([7389d4e](https://github.com/swashata/wp-webpack-script/commit/7389d4e61bc78a008e1ad9e603509c91663c47bf))
+* **deps:** update dependency gatsby to v2.19.27 ([c033835](https://github.com/swashata/wp-webpack-script/commit/c033835bfea36e2ab7ac154966d515fd2d38f0ed))
+* **deps:** update dependency gatsby to v2.19.28 ([e9c62ca](https://github.com/swashata/wp-webpack-script/commit/e9c62caf12569eddc24321f4cfb3d9892812f27f))
+* **deps:** update dependency gatsby to v2.19.29 ([20af4a9](https://github.com/swashata/wp-webpack-script/commit/20af4a986d31a4534aed6726a9a94171aacb3fb2))
+* **deps:** update dependency gatsby to v2.19.30 ([4a524e2](https://github.com/swashata/wp-webpack-script/commit/4a524e25ab1749356e33271a5248f39a5a10d283))
+* **deps:** update dependency gatsby to v2.19.34 ([287d162](https://github.com/swashata/wp-webpack-script/commit/287d1626891d75068fa073c2c242035a881f47db))
+* **deps:** update dependency gatsby to v2.19.37 ([057cdf8](https://github.com/swashata/wp-webpack-script/commit/057cdf84fd77fd8457d5833ab9fc90dee0cca6b4))
+* **deps:** update dependency gatsby to v2.19.40 ([8a5dcfc](https://github.com/swashata/wp-webpack-script/commit/8a5dcfc5ad66ec1a2c9820859e8c705eeb004bc4))
+* **deps:** update dependency gatsby to v2.19.5 ([519625b](https://github.com/swashata/wp-webpack-script/commit/519625b15400238c971a8a2103eb221ef8dd2226))
+* **deps:** update dependency gatsby to v2.19.8 ([9099ef4](https://github.com/swashata/wp-webpack-script/commit/9099ef4d7a65ee392632b88bf0c31ad91092246d))
+* **deps:** update dependency gatsby to v2.19.9 ([486f06e](https://github.com/swashata/wp-webpack-script/commit/486f06ec4517872c004dea13843bf73c6a65a3e8))
+* **deps:** update dependency gatsby-plugin-netlify to v2.1.33 ([3110788](https://github.com/swashata/wp-webpack-script/commit/311078803800248c89c5ffd63a31921361a14efc))
+* **deps:** update dependency gatsby-plugin-offline to v3.0.32 ([46c41aa](https://github.com/swashata/wp-webpack-script/commit/46c41aa276b7eefb8676d0caad034bc77d85cb73))
+* **deps:** update dependency node-sass to v4.13.1 ([d560034](https://github.com/swashata/wp-webpack-script/commit/d560034fb79019b6087b93b33ab8cd6363589c56))
+* **deps:** update dependency prismjs to v1.18.0 ([95e09ab](https://github.com/swashata/wp-webpack-script/commit/95e09ab16fbef9ee2c529073118f7233ef87453b))
+* **deps:** update dependency prismjs to v1.19.0 ([75a5e9e](https://github.com/swashata/wp-webpack-script/commit/75a5e9e0f52aef305440a97aa5b75db1fb5717da))
+* **deps:** update dependency react-bootstrap to v1.0.0-beta.17 ([a8b8e24](https://github.com/swashata/wp-webpack-script/commit/a8b8e24b244c85a0060928f7a15d8a7a4842a7a4))
+* **deps:** update dependency react-hot-loader to v4.12.19 ([dc7c07e](https://github.com/swashata/wp-webpack-script/commit/dc7c07eb1f27ba57352a0337f4dc92babe7b036b))
+* **deps:** update dependency react-hot-loader to v4.12.20 ([a342b89](https://github.com/swashata/wp-webpack-script/commit/a342b89955cd4b3bc8e02e2189aea9b207dee348))
+* **deps:** update dependency uuid to v3.4.0 ([64c2af0](https://github.com/swashata/wp-webpack-script/commit/64c2af028f9847939c9b044bace935f70a3cccd8))
+* **deps:** update gatsby monorepo ([9e64144](https://github.com/swashata/wp-webpack-script/commit/9e641448a6e688a8692f855bcb005429d52cd62d))
+* **deps:** update gatsby monorepo ([428b16a](https://github.com/swashata/wp-webpack-script/commit/428b16a5266723b1152a516b533ceb194ae11875))
+* **deps:** update gatsby monorepo ([c76db46](https://github.com/swashata/wp-webpack-script/commit/c76db463d0d9bbae5015ceeed71532ed9978267b))
+* **deps:** update gatsby monorepo ([dc48694](https://github.com/swashata/wp-webpack-script/commit/dc48694ab877cab75a8a6c80051254b9adc478a6))
+* **deps:** update gatsby monorepo ([e266e20](https://github.com/swashata/wp-webpack-script/commit/e266e20018125cf3eb1d363a40bdfa324e45b191))
+* **deps:** update gatsby monorepo ([7115655](https://github.com/swashata/wp-webpack-script/commit/7115655a95709619139b47e56fae4c250b03aaa3))
+* **deps:** update gatsby monorepo ([2a8de85](https://github.com/swashata/wp-webpack-script/commit/2a8de8549d774f394976c83283a9b5b77e55a1a4))
+* **deps:** update gatsby monorepo ([6d0bdcc](https://github.com/swashata/wp-webpack-script/commit/6d0bdccca80a382075bf7fb9c8e1fd86faca78ff))
+* **deps:** update gatsby monorepo ([257a1ed](https://github.com/swashata/wp-webpack-script/commit/257a1edbb92b5cff8ae22110812d1fedd90224d5))
+* **deps:** update gatsby monorepo ([2062d1d](https://github.com/swashata/wp-webpack-script/commit/2062d1dc611fbd7f4d1b8d48909f2777e4820942))
+* **deps:** update gatsby monorepo ([9910d4e](https://github.com/swashata/wp-webpack-script/commit/9910d4e24b9b9dd7cff8eaf67aa34865abb5d2e2))
+* **deps:** update gatsby monorepo ([4003c5a](https://github.com/swashata/wp-webpack-script/commit/4003c5a1bf8e346ed6ce36db9854b5328c112149))
+* **deps:** update gatsby monorepo ([1e09bec](https://github.com/swashata/wp-webpack-script/commit/1e09becb7a2f41b8eebaaa101f2464b247ad4e74))
+* **deps:** update gatsby monorepo ([3aa766d](https://github.com/swashata/wp-webpack-script/commit/3aa766d7d2f34c8b8361633d64e4db2cbab064ff))
+* **deps:** update gatsby monorepo ([7c1dfeb](https://github.com/swashata/wp-webpack-script/commit/7c1dfeb0d6d4adfc258f699ed329019c6bb5361b))
+* **deps:** update gatsby monorepo ([4e623b8](https://github.com/swashata/wp-webpack-script/commit/4e623b8edb159cb2c5e24588ee3a29f7230b806f))
+* **deps:** update gatsby monorepo ([c724dbf](https://github.com/swashata/wp-webpack-script/commit/c724dbffdc03ccc65b435365413094ca486280b1))
+* **deps:** update gatsby monorepo ([03a9213](https://github.com/swashata/wp-webpack-script/commit/03a92133fa65cb11ab18d4d05ec556f1b73dc520))
+* **deps:** update gatsby monorepo ([b93b13f](https://github.com/swashata/wp-webpack-script/commit/b93b13f82fccc283b62683e6daddce8ec69bf8c5))
+* **deps:** update gatsby monorepo ([45017cf](https://github.com/swashata/wp-webpack-script/commit/45017cf7bce25567df3bf799d54ad82ff53fbbe3))
+* **deps:** update gatsby monorepo ([9ec7572](https://github.com/swashata/wp-webpack-script/commit/9ec757207936cd78ed2dff8da6b7cfd0be1e5b1a))
+* **deps:** update gatsby monorepo ([f0552e0](https://github.com/swashata/wp-webpack-script/commit/f0552e07b1029cbd216a7b56e0c54ab9c15dae72))
+* **deps:** update gatsby monorepo ([fc3dab5](https://github.com/swashata/wp-webpack-script/commit/fc3dab5e93f9a7640847697a951feb3552879f8b))
+* **deps:** update gatsby monorepo ([4ca5747](https://github.com/swashata/wp-webpack-script/commit/4ca5747622b749ea2c3920f7a13e405dafae7317))
+* **deps:** update gatsby monorepo ([57d2d5a](https://github.com/swashata/wp-webpack-script/commit/57d2d5a3c112a821c6e79f861af6593311c8ff32))
+* **deps:** update gatsby monorepo ([fdef22f](https://github.com/swashata/wp-webpack-script/commit/fdef22f6850716c4d85e322cc66852ba38b461b0))
+* **deps:** update gatsby monorepo ([0a9d4e9](https://github.com/swashata/wp-webpack-script/commit/0a9d4e93fb52974c0c99243ad7348ca2528fa679))
+* **deps:** update react monorepo to v16.13.0 ([aedb1a6](https://github.com/swashata/wp-webpack-script/commit/aedb1a6229b7c642de1da0e3f20a029799d008c6))
+* **deps:** update typescript-eslint monorepo to v2.14.0 ([dd84488](https://github.com/swashata/wp-webpack-script/commit/dd844889b6862d7693ecf92778faa5724e865553))
+* **deps:** update typescript-eslint monorepo to v2.15.0 ([395edd1](https://github.com/swashata/wp-webpack-script/commit/395edd16fab781d4415e226829c4e071c4ed6d32))
+* **deps:** update typescript-eslint monorepo to v2.16.0 ([0b22306](https://github.com/swashata/wp-webpack-script/commit/0b22306b516eb707126def8fa7a658c4d7531ef7))
+* **deps:** update typescript-eslint monorepo to v2.17.0 ([8a73f52](https://github.com/swashata/wp-webpack-script/commit/8a73f52db06334b81c2a430c0c76721f3d7e056d))
+* **deps:** update typescript-eslint monorepo to v2.18.0 ([9b55d96](https://github.com/swashata/wp-webpack-script/commit/9b55d96b330d051b2cc82bdba25443a3f23811e5))
+* **deps:** update typescript-eslint monorepo to v2.19.0 ([b820955](https://github.com/swashata/wp-webpack-script/commit/b820955cc688b2963f08a3170e5596418de976eb))
+* **deps:** update typescript-eslint monorepo to v2.19.2 ([ca47d4d](https://github.com/swashata/wp-webpack-script/commit/ca47d4d83ca583198702debf072120609d9801f6))
+* **deps:** update typescript-eslint monorepo to v2.20.0 ([33f3476](https://github.com/swashata/wp-webpack-script/commit/33f347631be6794d511b0d6b385e567cd53fff3f))
+* **deps:** update typescript-eslint monorepo to v2.21.0 ([7089dc0](https://github.com/swashata/wp-webpack-script/commit/7089dc0d54d406292d48297e7578dfb62588fbcf))
+* **deps:** update typescript-eslint monorepo to v2.22.0 ([ab188ca](https://github.com/swashata/wp-webpack-script/commit/ab188caa450dd08c7139b2a6659b1d5080f8015a))
+* **deps:** update typescript-eslint monorepo to v2.23.0 ([39c1bd2](https://github.com/swashata/wp-webpack-script/commit/39c1bd22ccd5a7b09b172648d1195619ca9d7bdd))
+* **deps:** update typescript-eslint monorepo to v2.24.0 ([be3fabf](https://github.com/swashata/wp-webpack-script/commit/be3fabf08fb6b23e5fa398625d2964732ecd17b2))
+
+
+### Features
+
+* simplify whm socket path ([ec800e0](https://github.com/swashata/wp-webpack-script/commit/ec800e0cb4efd0fd4687b47e0e6adf99ba61e402))
+
+
+
+
+
 # [4.3.0](https://github.com/swashata/wp-webpack-script/compare/v4.2.0...v4.3.0) (2019-12-26)
 
 

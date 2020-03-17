@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.4.0](https://github.com/swashata/wp-webpack-script/compare/v4.3.0...v4.4.0) (2020-03-17)
+
+
+### Bug Fixes
+
+* **deps:** update dependency commander to v4.1.0 ([3ca04f6](https://github.com/swashata/wp-webpack-script/commit/3ca04f6a2846ba2de3a7c330d26206038675f9c0))
+* **deps:** update dependency commander to v4.1.1 ([b740b3a](https://github.com/swashata/wp-webpack-script/commit/b740b3a934485d1ece69e82de16c1e5e2618f8c3))
+
+
+
+
+
 # [4.3.0](https://github.com/swashata/wp-webpack-script/compare/v4.2.0...v4.3.0) (2019-12-26)
 
 

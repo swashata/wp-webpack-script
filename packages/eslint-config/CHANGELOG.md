@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.4.0](https://github.com/swashata/wp-webpack-script/compare/v4.3.0...v4.4.0) (2020-03-17)
+
+
+### Bug Fixes
+
+* **deps:** update typescript-eslint monorepo to v2.14.0 ([dd84488](https://github.com/swashata/wp-webpack-script/commit/dd844889b6862d7693ecf92778faa5724e865553))
+* **deps:** update typescript-eslint monorepo to v2.15.0 ([395edd1](https://github.com/swashata/wp-webpack-script/commit/395edd16fab781d4415e226829c4e071c4ed6d32))
+* **deps:** update typescript-eslint monorepo to v2.16.0 ([0b22306](https://github.com/swashata/wp-webpack-script/commit/0b22306b516eb707126def8fa7a658c4d7531ef7))
+* **deps:** update typescript-eslint monorepo to v2.17.0 ([8a73f52](https://github.com/swashata/wp-webpack-script/commit/8a73f52db06334b81c2a430c0c76721f3d7e056d))
+* **deps:** update typescript-eslint monorepo to v2.18.0 ([9b55d96](https://github.com/swashata/wp-webpack-script/commit/9b55d96b330d051b2cc82bdba25443a3f23811e5))
+* **deps:** update typescript-eslint monorepo to v2.19.0 ([b820955](https://github.com/swashata/wp-webpack-script/commit/b820955cc688b2963f08a3170e5596418de976eb))
+* **deps:** update typescript-eslint monorepo to v2.19.2 ([ca47d4d](https://github.com/swashata/wp-webpack-script/commit/ca47d4d83ca583198702debf072120609d9801f6))
+* **deps:** update typescript-eslint monorepo to v2.20.0 ([33f3476](https://github.com/swashata/wp-webpack-script/commit/33f347631be6794d511b0d6b385e567cd53fff3f))
+* **deps:** update typescript-eslint monorepo to v2.21.0 ([7089dc0](https://github.com/swashata/wp-webpack-script/commit/7089dc0d54d406292d48297e7578dfb62588fbcf))
+* **deps:** update typescript-eslint monorepo to v2.22.0 ([ab188ca](https://github.com/swashata/wp-webpack-script/commit/ab188caa450dd08c7139b2a6659b1d5080f8015a))
+* **deps:** update typescript-eslint monorepo to v2.23.0 ([39c1bd2](https://github.com/swashata/wp-webpack-script/commit/39c1bd22ccd5a7b09b172648d1195619ca9d7bdd))
+* **deps:** update typescript-eslint monorepo to v2.24.0 ([be3fabf](https://github.com/swashata/wp-webpack-script/commit/be3fabf08fb6b23e5fa398625d2964732ecd17b2))
+
+
+
+
+
 # [4.3.0](https://github.com/swashata/wp-webpack-script/compare/v4.2.0...v4.3.0) (2019-12-26)
 
 
