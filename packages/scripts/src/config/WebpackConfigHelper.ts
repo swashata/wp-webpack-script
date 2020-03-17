@@ -141,6 +141,10 @@ export class WebpackConfigHelper {
 		this.outputPath = path.join(this.cwd, outputPath);
 	}
 
+	public static getHmrPath(): string {
+		return `/__webpack_hmr`;
+	}
+
 	/**
 	 * Get webpack compatible entry configuration.
 	 *
@@ -182,12 +186,11 @@ export class WebpackConfigHelper {
 			};
 			// Define the hot client string
 			// Here we need
-			// 1. dynamicPublicPath - Because we intend to use __webpack_public_path__
-			// we can not know if user is going to use it in development too, but maybe it doesn't need to be?
+			// 1. client - because it needs to be consistent across this and WHM.
 			// 2. overlay and overlayStypes - To enable overlay on errors, we don't need warnings here
 			// 3. path - The output path, We need to make sure both server and client has the same value.
 			// 4. name - Because it could be multicompiler
-			const webpackHotClient: string = `webpack-hot-middleware/client?path=__wpackio&name=${name}&dynamicPublicPath=true${
+			const webpackHotClient: string = `webpack-hot-middleware/client?path=${WebpackConfigHelper.getHmrPath()}&name=${name}${
 				this.config.errorOverlay ? '&overlay=true' : ''
 			}&reload=true&overlayStyles=${encodeURIComponent(
 				JSON.stringify(overlayStyles)

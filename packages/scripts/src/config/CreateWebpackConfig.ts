@@ -110,11 +110,13 @@ export class CreateWebpackConfig {
 	}
 
 	/**
-	 * Get Hot Module Reload Path, which takes into consideration
-	 * the dynamicPublicPath.
+	 * Get Hot Module Reload Path, which we get from WebpackConfigHelper
+	 * for consistency.
+	 *
+	 * This is tweaked so that react fast refresh works.
 	 */
 	public getHmrPath(): string {
-		return `${this.publicPath}__wpackio`;
+		return WebpackConfigHelper.getHmrPath();
 	}
 
 	/**
