@@ -148,9 +148,7 @@ describe('CreateWebpackConfig', () => {
 				'/foo/bar'
 			);
 			expect(cwc.getHmrPath()).toBe(
-				`/wp-content/${projectConfig.type}s/${projectConfig.slug}/${
-					projectConfig.outputPath
-				}/__wpackio`
+				`/__webpack_hmr`
 			);
 		});
 		test('getPublicPathUrl sends proper stuff', () => {
