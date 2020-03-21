@@ -645,7 +645,7 @@ ${bannerConfig.copyrightText}${bannerConfig.credit ? creditNote : ''}`,
 	public getCommon(): CommonWebpackConfig {
 		return {
 			context: this.cwd,
-			devtool: this.isDev ? 'cheap-module-eval-source-map' : 'source-map',
+			devtool: this.isDev ? 'cheap-module-source-map' : 'source-map',
 			target: 'web',
 			watch: this.isDev,
 			mode: this.env,
