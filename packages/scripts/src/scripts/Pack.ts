@@ -86,7 +86,7 @@ export class Pack {
 	}
 
 	private async clean(): Promise<string[]> {
-		return del(`${this.packageDirPath}/**`);
+		return del([`${this.packageDirPath}/**`, `!${this.packageDirPath}`]);
 	}
 
 	private async mkDirPackageSlug(): Promise<string> {
