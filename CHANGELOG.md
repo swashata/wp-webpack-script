@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.4.1](https://github.com/swashata/wp-webpack-script/compare/v4.4.0...v4.4.1) (2020-03-21)
+
+
+### Bug Fixes
+
+* archive not deleting old files ([a170f2b](https://github.com/swashata/wp-webpack-script/commit/a170f2b50af2724fa7ab9f55a159063ecac18ce1)), closes [#890](https://github.com/swashata/wp-webpack-script/issues/890)
+* use cheap module source map for devtool to work ([d4e696f](https://github.com/swashata/wp-webpack-script/commit/d4e696f98d92d7df47371513db461bc408702f09))
+* **deps:** update dependency gatsby to v2.19.49 ([002751b](https://github.com/swashata/wp-webpack-script/commit/002751b97f89fabe9da12cada383aa811b3b0a13))
+* **deps:** update gatsby monorepo ([eac59fd](https://github.com/swashata/wp-webpack-script/commit/eac59fd34c0e66771339d0a420a8fd3a1fbb9894))
+* **deps:** update gatsby monorepo ([4dbfa28](https://github.com/swashata/wp-webpack-script/commit/4dbfa287730734ce9ffa5d6acd5a469846b0ea6e))
+
+
+
+
+
 # [4.4.0](https://github.com/swashata/wp-webpack-script/compare/v4.3.0...v4.4.0) (2020-03-17)
 
 
