@@ -95,7 +95,7 @@
 		"access": "public"
 	},
 	"devDependencies": {
-		"@types/jest": "25.1.4",
+		"@types/jest": "25.2.3",
 		"@types/node": "13.9.2",
 		"@wpackio/eslint-config": "^4.4.1",
 		"babel-jest": "25.1.0",
