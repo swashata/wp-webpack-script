@@ -36,6 +36,10 @@ Either `"plugin"` or "`theme`", depending on your project.
 Absolute path to the main plugin file. If you are using it for `theme`, then don't
 pass it, or just use `false`.
 
+#### `$themeType` (`string`)
+
+Defaults to `"regular"`. If you are applying this to a child theme, then make the value `"child"`.
+
 ## Instance API: `getAssets`
 
 Get handle and Url of all assets from the entry-point.
