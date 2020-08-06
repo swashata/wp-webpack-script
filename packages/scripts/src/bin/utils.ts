@@ -89,7 +89,7 @@ export function printCompileTimeMessage(stat: any, lastStat: any | null) {
 			} else if (stat.warnings.length) {
 				name = chalk.yellow(entryName);
 			}
-			name = `${name} `;
+			name = `[${name}] `;
 		}
 
 		// get log symbol
@@ -108,7 +108,7 @@ export function printCompileTimeMessage(stat: any, lastStat: any | null) {
 
 		console.log(
 			addTimeStampToLog(
-				`${symbol} bundle ${name}${msg} ${chalk.magenta(
+				`${symbol} ${name}bundle ${msg} ${chalk.magenta(
 					`${stat.time}ms`
 				)}.`
 			)

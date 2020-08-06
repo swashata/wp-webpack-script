@@ -21,6 +21,7 @@ import { WpackioError } from '../errors/WpackioError';
 interface FormattedMessage {
 	errors: string[];
 	warnings: string[];
+	name?: string;
 }
 
 interface Callbacks {
@@ -31,7 +32,7 @@ interface Callbacks {
 	onWarn(warn: FormattedMessage): void;
 	onBsChange(file: string): void;
 	onEmit(stats: webpack.Stats): void;
-	onTcStart(): void;
+	onTcStart(name?: string): void;
 	onTcEnd(err: FormattedMessage): void;
 	onWatching(): void;
 	onInfo(msg: string, symbol: string): void;
@@ -414,6 +415,7 @@ export class Server {
 					tsMessagesResolver({
 						errors: [],
 						warnings: [],
+						name: compiler.name,
 					});
 				}
 			}
@@ -438,6 +440,7 @@ export class Server {
 				warnings: issues
 					.filter(msg => msg.severity === 'warning')
 					.map(format),
+				name: compiler.name,
 			});
 		});
 
@@ -445,7 +448,7 @@ export class Server {
 		done.tap('wpackIoServerDoneTs', async () => {
 			if (this.firstCompileCompleted) {
 				const delayedMsg = setTimeout(() => {
-					this.callbacks.onTcStart();
+					this.callbacks.onTcStart(compiler.name);
 				}, 100);
 				try {
 					const messages = await tsMessagesPromise;

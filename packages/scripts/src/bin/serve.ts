@@ -162,33 +162,41 @@ export function serve(options: ProgramOptions | undefined): void {
 					printGeneralInfoMessage(`changed: ${chalk.bold(file)}`);
 					printGeneralInfoMessage('reloading browser');
 				},
-				onTcStart() {
-					printGeneralInfoMessage('waiting for typecheck results...');
+				onTcStart(name) {
+					const msg = `${
+						name ? `[${chalk.green(name)}] ` : ''
+					}waiting for typecheck results...`;
+					printGeneralInfoMessage(msg);
 				},
 				onInfo(msg: string, symbol: string) {
 					printGeneralInfoMessage(msg, symbol);
 				},
 				onTcEnd(messages) {
+					const name = messages.name;
 					if (messages.errors.length || messages.warnings.length) {
 						if (messages.errors.length) {
-							printErrorHeading('TS ERROR');
+							printErrorHeading(
+								`${name ? `[${name}] ` : ''}TS ERROR`
+							);
 							messages.errors.forEach(e => {
 								console.log(e);
 								console.log('');
 							});
 						}
 						if (messages.warnings.length) {
-							printWarningHeading('TS WARNING');
+							printWarningHeading(
+								`${name ? `[${name}] ` : ''}TS WARNING`
+							);
 							messages.warnings.forEach(e => {
 								console.log(e);
 								console.log('');
 							});
 						}
 					} else {
-						printGeneralInfoMessage(
-							'no typecheck errors',
-							logSymbols.success
-						);
+						const msg = `${
+							name ? `[${chalk.green(name)}] ` : ''
+						}no typecheck errors`;
+						printGeneralInfoMessage(msg, logSymbols.success);
 					}
 				},
 			},
