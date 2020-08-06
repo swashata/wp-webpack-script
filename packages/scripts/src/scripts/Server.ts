@@ -5,6 +5,7 @@ import webpack from 'webpack';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 import logSymbols from 'log-symbols';
+import inquirer from 'inquirer';
 
 import {
 	formatWebpackMessages,
@@ -67,6 +68,25 @@ export class Server {
 
 	private priorFirstCompileTsMessage: Promise<FormattedMessage>[] = [];
 
+	static async getEntriesSelection(
+		projectConfig: ProjectConfig
+	): Promise<number[]> {
+		const questions: inquirer.QuestionCollection = [
+			{
+				message: 'Select projects to start',
+				name: 'entries',
+				type: 'checkbox',
+				choices: projectConfig.files.map((f, i) => ({
+					value: i,
+					name: `[${i}] ${f.name || `CONFIG ${i}`}`,
+				})),
+			},
+		];
+
+		const answer = await inquirer.prompt(questions);
+		return answer.entries.map((i: string) => Number.parseInt(i, 10));
+	}
+
 	/**
 	 * Create an instance.
 	 *
@@ -77,7 +97,8 @@ export class Server {
 		projectConfig: ProjectConfig,
 		serverConfig: ServerConfig,
 		cwd: string,
-		callbacks: Callbacks
+		callbacks: Callbacks,
+		entries?: number[]
 	) {
 		this.projectConfig = projectConfig;
 		this.serverConfig = serverConfig;
@@ -96,7 +117,8 @@ export class Server {
 			this.projectConfig,
 			this.serverConfig,
 			this.cwd,
-			true
+			true,
+			entries
 		);
 		// Check if project has typescript
 		const [hasTs, tsConfigPath] = hasTypeScript(this.cwd);

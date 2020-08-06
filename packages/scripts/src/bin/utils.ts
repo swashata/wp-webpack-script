@@ -15,9 +15,16 @@ const pkgPath = path.resolve(__dirname, '../../package.json');
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const pkg = require(pkgPath);
 
-export const donationLink = chalk.bold.blue.underline(
+export const bulletSymbol = chalk.magenta(figures.pointer);
+
+export const donationLink = `
+    ${bulletSymbol} PATRON: ${chalk.bold.blue.underline(
+	'https://www.patreon.com/swashata'
+)}
+    ${bulletSymbol} OPENCOLLECTIVE: ${chalk.bold.blue.underline(
 	'https://opencollective.com/wpackio'
-);
+)}
+`;
 
 let isYarnCache: boolean | null = null;
 
@@ -215,8 +222,6 @@ export function printSuccessHeading(msg: string = 'OUTPUT'): void {
 	console.log('');
 }
 
-export const bulletSymbol = chalk.magenta(figures.pointer);
-
 export const wpackLink = `${chalk.blue.underline('https://wpack.io')}`;
 
 export const wpackIntro = `${wpackLogo}\n`;
@@ -286,6 +291,18 @@ To create production build, run
 
 ${chalk.dim('No files are written on disk during development mode.')}`;
 
+	console.log(msg);
+}
+
+export function serveEntryInfo() {
+	const msg = `${
+		logSymbols.info
+	} you can also start selective entries by running
+
+    ${bulletSymbol} ${chalk.yellow(
+		isYarn() ? 'yarn start -e 0 1' : 'npm run start -e 0 1'
+	)}
+`;
 	console.log(msg);
 }
 

@@ -15,6 +15,7 @@ export interface ProgramOptions {
 	context?: string;
 	projectConfig?: string;
 	serverConfig?: string;
+	entries?: string[];
 }
 
 let isValidCommand = false;
@@ -67,14 +68,18 @@ because it would differ for team members.
 program
 	.command('start')
 	.description('Start the development server.')
-	.option('-c, --context [path]', contextHelp)
+	.option('-c, --context <path>', contextHelp)
 	.option(
-		'-p, --project-config [path]',
+		'-p, --project-config <path>',
 		'Path to project config. If it differs from ./wpackio.project.js'
 	)
 	.option(
-		'-s, --server-config [path]',
+		'-s, --server-config <path>',
 		'Path to server config. If it differs from ./wpackio.server.js'
+	)
+	.option(
+		'-e, --entries <numbers...>',
+		'Select entries from wpackio.project.js for which we start the server.'
 	)
 	.action((options: ProgramOptions | undefined) => {
 		isValidCommand = true;

@@ -2276,6 +2276,14 @@
     "@types/through" "*"
     rxjs "^6.4.0"
 
+"@types/inquirer@^7.3.0":
+  version "7.3.0"
+  resolved "https://registry.yarnpkg.com/@types/inquirer/-/inquirer-7.3.0.tgz#a1233632ea6249f14eb481dae91138e747b85664"
+  integrity sha512-wcPs5jTrZYQBzzPlvUEzBcptzO4We2sijSvkBq8oAKRMJoH8PvrmP6QQnxLB5RScNUmRfujxA+ngxD4gk4xe7Q==
+  dependencies:
+    "@types/through" "*"
+    rxjs "^6.4.0"
+
 "@types/interpret@*":
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/@types/interpret/-/interpret-1.1.1.tgz#b1bf85b0420e2414b989ce237658ad20dc03719b"
@@ -7026,7 +7034,7 @@ inquirer@^6.2.0:
     strip-ansi "^5.1.0"
     through "^2.3.6"
 
-inquirer@^7.1.0:
+inquirer@^7.1.0, inquirer@^7.3.3:
   version "7.3.3"
   resolved "https://registry.yarnpkg.com/inquirer/-/inquirer-7.3.3.tgz#04d176b2af04afc157a83fd7c100e98ee0aad003"
   integrity sha512-JG3eIAj5V9CwcGvuOmoo6LB9kbAYT8HXffUl6memuszlwDC/qvFAJw49XJ5NROSFNPxp3iQg1GqkFhaY/CR0IA==

@@ -24,6 +24,7 @@ import {
 	webpackStatToJsonOptions,
 	printErrorHeading,
 	printWarningHeading,
+	serveEntryInfo,
 } from './utils';
 
 /**
@@ -71,108 +72,128 @@ export function serve(options: ProgramOptions | undefined): void {
 			)}`
 		);
 
+		let entries: number[] = [];
+
+		if (options?.entries) {
+			entries = options.entries.map(e => {
+				let entry = Number.parseInt(e, 10);
+				if (Number.isNaN(entry)) {
+					entry = 0;
+				}
+				return entry;
+			});
+		} else if (projectConfig.files.length > 1) {
+			serveEntryInfo();
+		}
+
 		spinner.start();
 
 		let lastWebpackStat: any | null = null;
 
 		// Start the webpack/browserSync server
-		const server: Server = new Server(projectConfig, serverConfig, cwd, {
-			// tslint:disable:no-empty
-			invalid: () => {
-				printCompilingMessage();
-			},
-			done: () => {
-				printSuccessfullyCompiledMessage();
-			},
-			onWatching() {
-				printWatchingMessage();
-			},
-			onError: msg => {
-				printErrorHeading('ERROR');
-				msg.errors.forEach(e => {
-					console.log(e);
-					console.log('');
-				});
-				printFailedCompileMEssage();
-			},
-			onWarn: msg => {
-				printWarningHeading('WARNING');
-				msg.warnings.forEach(e => {
-					console.log(e);
-					console.log('');
-				});
-				printCompiledWithWarnMessage();
-			},
-			onEmit: stats => {
-				printCompileTimeMessages(stats, lastWebpackStat);
-				lastWebpackStat = stats.toJson(webpackStatToJsonOptions);
-			},
-			firstCompile: (stats: webpack.Stats | undefined) => {
-				spinner.stop();
-				if (!stats) {
+		const server: Server = new Server(
+			projectConfig,
+			serverConfig,
+			cwd,
+			{
+				// tslint:disable:no-empty
+				invalid: () => {
+					printCompilingMessage();
+				},
+				done: () => {
 					printSuccessfullyCompiledMessage();
-					return;
-				}
-				const raw = stats.toJson('verbose');
-				const messages = formatWebpackMessages(raw);
-				console.log('');
-				serverInfo(server.getServerUrl(), server.getBsUiUrl());
-				console.log('');
-
-				if (stats.hasErrors()) {
+				},
+				onWatching() {
+					printWatchingMessage();
+				},
+				onError: msg => {
 					printErrorHeading('ERROR');
-					messages.errors.forEach(e => {
+					msg.errors.forEach(e => {
 						console.log(e);
 						console.log('');
 					});
 					printFailedCompileMEssage();
-				} else if (stats.hasWarnings()) {
+				},
+				onWarn: msg => {
 					printWarningHeading('WARNING');
-					messages.warnings.forEach(e => {
+					msg.warnings.forEach(e => {
 						console.log(e);
 						console.log('');
 					});
 					printCompiledWithWarnMessage();
-				} else {
-					printSuccessfullyCompiledMessage();
-				}
-				printCompileTimeMessages(stats, lastWebpackStat);
-				lastWebpackStat = stats.toJson(webpackStatToJsonOptions);
-			},
-			onBsChange(file) {
-				printGeneralInfoMessage(`changed: ${chalk.bold(file)}`);
-				printGeneralInfoMessage('reloading browser');
-			},
-			onTcStart() {
-				printGeneralInfoMessage('waiting for typecheck results...');
-			},
-			onInfo(msg: string, symbol: string) {
-				printGeneralInfoMessage(msg, symbol);
-			},
-			onTcEnd(messages) {
-				if (messages.errors.length || messages.warnings.length) {
-					if (messages.errors.length) {
-						printErrorHeading('TS ERROR');
+				},
+				onEmit: stats => {
+					printCompileTimeMessages(stats, lastWebpackStat);
+					lastWebpackStat = stats.toJson(webpackStatToJsonOptions);
+				},
+				firstCompile: (stats: webpack.Stats | undefined) => {
+					spinner.stop();
+					if (!stats) {
+						printSuccessfullyCompiledMessage();
+						return;
+					}
+					const raw = stats.toJson('verbose');
+					const messages = formatWebpackMessages(raw);
+					console.log('');
+					serverInfo(server.getServerUrl(), server.getBsUiUrl());
+					console.log('');
+
+					if (stats.hasErrors()) {
+						printErrorHeading('ERROR');
 						messages.errors.forEach(e => {
 							console.log(e);
 							console.log('');
 						});
-					}
-					if (messages.warnings.length) {
-						printWarningHeading('TS WARNING');
+						printFailedCompileMEssage();
+					} else if (stats.hasWarnings()) {
+						printWarningHeading('WARNING');
 						messages.warnings.forEach(e => {
 							console.log(e);
 							console.log('');
 						});
+						printCompiledWithWarnMessage();
+					} else {
+						printSuccessfullyCompiledMessage();
 					}
-				} else {
-					printGeneralInfoMessage(
-						'no typecheck errors',
-						logSymbols.success
-					);
-				}
+					printCompileTimeMessages(stats, lastWebpackStat);
+					lastWebpackStat = stats.toJson(webpackStatToJsonOptions);
+				},
+				onBsChange(file) {
+					printGeneralInfoMessage(`changed: ${chalk.bold(file)}`);
+					printGeneralInfoMessage('reloading browser');
+				},
+				onTcStart() {
+					printGeneralInfoMessage('waiting for typecheck results...');
+				},
+				onInfo(msg: string, symbol: string) {
+					printGeneralInfoMessage(msg, symbol);
+				},
+				onTcEnd(messages) {
+					if (messages.errors.length || messages.warnings.length) {
+						if (messages.errors.length) {
+							printErrorHeading('TS ERROR');
+							messages.errors.forEach(e => {
+								console.log(e);
+								console.log('');
+							});
+						}
+						if (messages.warnings.length) {
+							printWarningHeading('TS WARNING');
+							messages.warnings.forEach(e => {
+								console.log(e);
+								console.log('');
+							});
+						}
+					} else {
+						printGeneralInfoMessage(
+							'no typecheck errors',
+							logSymbols.success
+						);
+					}
+				},
 			},
-		});
+			entries
+		);
 		server.serve();
 
 		const stopServer = () => {
