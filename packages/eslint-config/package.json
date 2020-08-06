@@ -27,7 +27,7 @@
     "eslint-plugin-jsx-a11y": "^6.3.1",
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.20.5",
-    "eslint-plugin-react-hooks": "^2.5.1"
+    "eslint-plugin-react-hooks": "^4.0.8"
   },
   "engines": {
     "node": ">=8.9.0"
@@ -39,7 +39,7 @@
     "access": "public"
   },
   "devDependencies": {
-    "eslint": "6.8.0",
+    "eslint": "7.6.0",
     "prettier": "2.0.5"
   }
 }
