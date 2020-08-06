@@ -132,7 +132,7 @@ export function getProjectConfig(
 
 	// First check to see if the files are present
 	try {
-		// eslint-disable-next-line global-require
+		// eslint-disable-next-line global-require, @typescript-eslint/no-var-requires
 		projectConfig = require(projectConfigPath) as ProjectConfig;
 	} catch (e) {
 		throw new WpackioError(
@@ -182,7 +182,7 @@ export function getServerConfig(
 	let serverConfig: ServerConfig;
 
 	try {
-		// eslint-disable-next-line global-require
+		// eslint-disable-next-line global-require, @typescript-eslint/no-var-requires
 		serverConfig = require(serverConfigPath) as ServerConfig;
 	} catch (e) {
 		throw new WpackioError(

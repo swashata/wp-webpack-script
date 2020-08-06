@@ -72,7 +72,7 @@ interface Package {
 interface ProgramOption {
 	client?: string;
 }
-// eslint-disable-next-line global-require
+// eslint-disable-next-line global-require, @typescript-eslint/no-var-requires
 const pkg = require('../package.json') as Package;
 
 program
@@ -139,7 +139,7 @@ program
 			console.log(`${symSucc} added dependencies`);
 		}
 		console.log(`${symInfo} adding scripts`);
-		// eslint-disable-next-line global-require
+		// eslint-disable-next-line global-require, @typescript-eslint/no-var-requires
 		const pkgJson = require(pkgJsonPath) as Package;
 		pkgJson.scripts = pkgJson.scripts || {};
 		if (pkgJson.scripts) {

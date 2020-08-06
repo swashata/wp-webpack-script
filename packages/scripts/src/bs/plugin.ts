@@ -3,7 +3,7 @@
 /// <reference lib="dom" />
 
 /* istanbul ignore next */
-(function(socket: any) {
+(function (socket: any) {
 	const MSG_EVENT = 'wpackio:message';
 	const CLEAR_EVENT = 'wpackio:clear';
 

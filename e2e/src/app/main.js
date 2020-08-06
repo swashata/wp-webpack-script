@@ -23,7 +23,7 @@ import('./dynamic').then(({ dynamic }) => {
 	dynamic(dynamicNode);
 });
 
-const nested = {foo: {bar: 'bam'}};
+const nested = { foo: { bar: 'bam' } };
 console.log(nested?.foo?.bar?.biz);
 console.log(nested?.foo?.bar);
 

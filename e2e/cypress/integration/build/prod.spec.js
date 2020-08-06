@@ -1,4 +1,3 @@
-/* eslint-disable spaced-comment, jest/valid-expect */
 /* globals context, cy */
 /// <reference types="Cypress" />
 

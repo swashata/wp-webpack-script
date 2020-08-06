@@ -1,4 +1,5 @@
-/* eslint-disable @typescript-eslint/camelcase */
+/* eslint-disable camelcase */
+/* eslint-disable babel/camelcase */
 /* eslint-disable no-underscore-dangle */
 // eslint-disable-next-line no-unused-vars
 // eslint-disable-next-line @typescript-eslint/no-unused-vars

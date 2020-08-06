@@ -87,7 +87,7 @@ export class Bootstrap {
 		this.serverConfigPath = path.resolve(this.cwd, 'wpackio.server.js');
 		this.packageJsonPath = path.resolve(this.cwd, './package.json');
 		try {
-			// eslint-disable-next-line global-require
+			// eslint-disable-next-line global-require, @typescript-eslint/no-var-requires
 			const pkg = require(this.packageJsonPath) as Pkg;
 			this.pkg = pkg;
 		} catch (e) {

@@ -10,7 +10,7 @@ if (mainNode) {
 	updateText(mainNode, 'I am ts app');
 }
 
-function add(a:number): number {
+function add(a: number): number {
 	return a + 10;
 }
 
@@ -25,7 +25,6 @@ import('./dynamic').then(({ updateNode }) => {
 
 if (module.hot) {
 	module.hot.accept('./module', () => {
-		// tslint:disable-next-line:no-shadowed-variable
 		const { updateText } = require('./module');
 		updateText(mainNode, 'I am HMRed');
 	});
