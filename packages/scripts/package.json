@@ -28,7 +28,7 @@
 		"@types/babel__code-frame": "^7.0.1",
 		"@types/browser-sync": "^2.26.1",
 		"@types/gradient-string": "^1.1.1",
-		"@types/inquirer": "^6.5.0",
+		"@types/inquirer": "^7.0.0",
 		"@types/update-notifier": "^4.1.0",
 		"@types/webpack": "^4.41.8",
 		"@types/webpack-assets-manifest": "^3.0.1",
