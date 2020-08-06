@@ -1,5 +1,5 @@
 import webpack from 'webpack';
-import merge from 'webpack-merge';
+import { merge } from 'webpack-merge';
 
 import { PresetOptions } from '@wpackio/babel-preset-base/lib/preset';
 
@@ -37,7 +37,7 @@ export interface FileConfig {
 		| webpack.Configuration
 		| ((
 				config: webpack.Configuration,
-				api: merge,
+				api: typeof merge,
 				appDir: string,
 				isDev: boolean
 		  ) => webpack.Configuration);

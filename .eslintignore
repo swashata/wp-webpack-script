@@ -1,1 +1,2 @@
 packages/**/lib/**
+packages/**/@types/**

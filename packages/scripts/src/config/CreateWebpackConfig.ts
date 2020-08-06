@@ -1,5 +1,5 @@
 import webpack from 'webpack';
-import webpackMerge from 'webpack-merge';
+import { merge as webpackMerge } from 'webpack-merge';
 
 import {
 	FileConfig,
