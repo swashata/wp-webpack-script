@@ -610,7 +610,7 @@ describe('WebpackConfigHelper', () => {
 				true
 			);
 			expect(cwcDev.getCommon().devtool).toBe(
-				'cheap-module-eval-source-map'
+				'cheap-module-source-map'
 			);
 			expect(cwcDev.getCommon()).toMatchSnapshot();
 		});
