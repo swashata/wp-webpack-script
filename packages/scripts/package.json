@@ -97,7 +97,7 @@
 		"access": "public"
 	},
 	"devDependencies": {
-		"@types/node": "13.9.2",
+		"@types/node": "13.13.15",
 		"@wpackio/eslint-config": "^4.4.1",
 		"cross-env": "7.0.2",
 		"dts-gen": "0.6.0",
