@@ -2,8 +2,8 @@ import chalk from 'chalk';
 import logSymbols from 'log-symbols';
 import ora from 'ora';
 import path from 'path';
-import formatWebpackMessages from 'react-dev-utils/formatWebpackMessages';
 import webpack from 'webpack';
+import { formatWebpackMessages } from '../dev-utils';
 import { getProjectAndServerConfig } from '../config/getProjectAndServerConfig';
 import { Server } from '../scripts/Server';
 import { ProgramOptions } from './index';
@@ -145,6 +145,9 @@ export function serve(options: ProgramOptions | undefined): void {
 			},
 			onTcStart() {
 				printGeneralInfoMessage('waiting for typecheck results...');
+			},
+			onInfo(msg: string, symbol: string) {
+				printGeneralInfoMessage(msg, symbol);
 			},
 			onTcEnd(messages) {
 				if (messages.errors.length || messages.warnings.length) {

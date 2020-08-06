@@ -1,12 +1,16 @@
 import browserSync from 'browser-sync';
 import devIp from 'dev-ip';
-import formatWebpackMessages from 'react-dev-utils/formatWebpackMessages';
-import typescriptFormatter from 'react-dev-utils/typescriptFormatter';
-import openBrowser from 'react-dev-utils/openBrowser';
+import open from 'open';
 import webpack from 'webpack';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
+import logSymbols from 'log-symbols';
 
+import {
+	formatWebpackMessages,
+	typescriptFormatter,
+	issueType,
+} from '../dev-utils';
 import { CreateWebpackConfig } from '../config/CreateWebpackConfig';
 import { ProjectConfig } from '../config/project.config.default';
 import { ServerConfig } from '../config/server.config.default';
@@ -29,6 +33,7 @@ interface Callbacks {
 	onTcStart(): void;
 	onTcEnd(err: FormattedMessage): void;
 	onWatching(): void;
+	onInfo(msg: string, symbol: string): void;
 }
 
 /**
@@ -267,13 +272,26 @@ export class Server {
 	/**
 	 * Open browser if not already opened and config says so.
 	 */
-	public openBrowser = (): void => {
+	public async openBrowser() {
 		const serverUrl = this.getServerUrl();
 		if (!this.isBrowserOpened && this.serverConfig.open) {
-			openBrowser(serverUrl);
+			this.callbacks.onInfo(`trying to open URL`, logSymbols.info);
+			try {
+				await open(serverUrl, {});
+				this.callbacks.onInfo(
+					`opened browser with URL ${serverUrl}`,
+					logSymbols.success
+				);
+			} catch (e) {
+				// do nothing
+				this.callbacks.onInfo(
+					`could not open browser`,
+					logSymbols.error
+				);
+			}
 			this.isBrowserOpened = true;
 		}
-	};
+	}
 
 	/**
 	 * Add hooks to compiler instances.
@@ -387,37 +405,29 @@ export class Server {
 			});
 		});
 
-		tsHooks.receive.tap(
-			'afterTypeScriptCheck',
-			(diagnostics: any, lints: any) => {
-				const allMsgs = [...diagnostics, ...lints];
-				const format = (message: any) =>
-					`${typescriptFormatter(message, true)
-						.split(this.cwd)
-						.join('.')}`;
+		tsHooks.issues.tap('afterTypeScriptCheck', (issues: issueType[]) => {
+			const format = (message: any) =>
+				typescriptFormatter(message, this.cwd);
 
-				tsMessagesResolver({
-					errors: allMsgs
-						.filter(msg => msg.severity === 'error')
-						.map(format),
-					warnings: allMsgs
-						.filter(msg => msg.severity === 'warning')
-						.map(format),
-				});
-			}
-		);
+			tsMessagesResolver({
+				errors: issues
+					.filter(msg => msg.severity === 'error')
+					.map(format),
+				warnings: issues
+					.filter(msg => msg.severity === 'warning')
+					.map(format),
+			});
+		});
 
 		// Once compilation is done, then show the message
-		done.tap('wpackIoServerDoneTs', async stats => {
+		done.tap('wpackIoServerDoneTs', async () => {
 			if (this.firstCompileCompleted) {
 				const delayedMsg = setTimeout(() => {
 					this.callbacks.onTcStart();
 				}, 100);
 				try {
 					const messages = await tsMessagesPromise;
-					// add ts errors to stats so that it shows up in the client/browser
-					stats.compilation.errors.push(...messages.errors);
-					stats.compilation.warnings.push(...messages.warnings);
+
 					// don't display the delayed message of "waiting for type result"
 					clearTimeout(delayedMsg);
 					// update the console by passing to the handler
@@ -428,14 +438,6 @@ export class Server {
 				}
 			} else {
 				this.priorFirstCompileTsMessage.push(tsMessagesPromise);
-				try {
-					const messages = await tsMessagesPromise;
-					// add ts errors to stats so that it shows up in the client/browser
-					stats.compilation.errors.push(...messages.errors);
-					stats.compilation.warnings.push(...messages.warnings);
-				} catch (e) {
-					// do nothing
-				}
 			}
 		});
 	};

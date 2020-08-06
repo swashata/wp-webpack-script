@@ -2,8 +2,9 @@
 import chalk from 'chalk';
 import program from 'commander';
 import path from 'path';
-import clearConsole from 'react-dev-utils/clearConsole';
 import updateNotifier from 'update-notifier';
+
+import { clearConsole } from '../dev-utils';
 import { bootstrap } from './bootstrap';
 import { build } from './build';
 import { pack } from './pack';
@@ -18,7 +19,7 @@ export interface ProgramOptions {
 
 let isValidCommand = false;
 
-// eslint-disable-next-line global-require
+// eslint-disable-next-line @typescript-eslint/no-var-requires, global-require
 const pkg = require('../../package.json') as updateNotifier.Package;
 
 // Notify for updates

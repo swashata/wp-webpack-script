@@ -41,6 +41,8 @@ module.exports = {
 		'import/no-cycle': 'off',
 		'import/no-dynamic-require': 'off',
 		'import/named': 'off',
+		'@typescript-eslint/explicit-module-boundary-types': 'off',
+		'@typescript-eslint/ban-types': 'off',
 	},
 	settings: {
 		'import/parsers': {

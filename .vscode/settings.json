@@ -11,6 +11,9 @@
   "[typescript]": {
     "editor.formatOnSave": true
   },
+  "[javascript]": {
+    "editor.formatOnSave": true
+  },
   "typescript.tsdk": "node_modules/typescript/lib",
   "spellright.language": [
     "en"

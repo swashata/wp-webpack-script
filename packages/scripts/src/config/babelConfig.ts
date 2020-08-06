@@ -78,7 +78,12 @@ export function getBabelPresets(
 	}
 	// If we have typescript, then push the preset
 	if (typeChecker === 'typescript') {
-		babelConfig.push([require.resolve('@babel/preset-typescript')]);
+		babelConfig.push([
+			require.resolve('@babel/preset-typescript'),
+			{
+				onlyRemoveTypeImports: true,
+			},
+		]);
 	}
 	return babelConfig;
 }

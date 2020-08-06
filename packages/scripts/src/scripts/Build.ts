@@ -1,5 +1,6 @@
-import formatWebpackMessages from 'react-dev-utils/formatWebpackMessages';
 import webpack from 'webpack';
+
+import { formatWebpackMessages } from '../dev-utils';
 import { CreateWebpackConfig } from '../config/CreateWebpackConfig';
 import { ProjectConfig } from '../config/project.config.default';
 import { serverConfigDefault } from '../config/server.config.default';

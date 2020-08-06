@@ -26,5 +26,6 @@ module.exports = api => {
 			'./src/__tests__',
 			'./src/**/*.{spec|test}.{j|t}sx?',
 		],
+		sourceMaps: 'inline',
 	};
 };

@@ -6,11 +6,11 @@ import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 import fs from 'fs';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import path from 'path';
-import WatchMissingNodeModulesPlugin from 'react-dev-utils/WatchMissingNodeModulesPlugin';
 import slugify from 'slugify';
 import TimeFixPlugin from 'time-fix-plugin';
 import webpack from 'webpack';
 import WebpackAssetsManifest from 'webpack-assets-manifest';
+import { WatchMissingNodeModulesPlugin } from '../dev-utils';
 import { WpackioError } from '../errors/WpackioError';
 import { getBabelPresets, overrideBabelPresetOptions } from './babelConfig';
 import {
@@ -313,25 +313,24 @@ export class WebpackConfigHelper {
 				const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 				plugins.push(
 					new ForkTsCheckerWebpackPlugin({
-						tsconfig: tsconfigPath,
-						tslint: undefined,
 						async: this.isDev,
-						silent: true,
-						formatter: 'codeframe',
-						useTypescriptIncrementalApi: true,
-						checkSyntacticErrors: true,
-						formatterOptions: {
-							highlightCode: true,
+						typescript: {
+							configFile: tsconfigPath,
+							mode: 'write-references',
 						},
-						reportFiles: this.file.typeWatchFiles
-							? this.file.typeWatchFiles
-							: [],
+						eslint: undefined,
+						formatter: 'codeframe',
+						logger: {
+							infrastructure: 'silent',
+							issues: 'silent',
+						},
 					})
 				);
 			} catch (e) {
-				throw new WpackioError(
-					'please install fork-ts-checker-webpack-plugin package'
-				);
+				throw new WpackioError(e);
+				// throw new WpackioError(
+				// 	'please install fork-ts-checker-webpack-plugin package'
+				// );
 			}
 		}
 		// Add development specific plugins
