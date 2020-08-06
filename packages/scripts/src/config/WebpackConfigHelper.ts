@@ -565,7 +565,9 @@ ${bannerConfig.copyrightText}${bannerConfig.credit ? creditNote : ''}`,
 						loader: require.resolve('less-loader'),
 						options: {
 							sourceMap: true,
-							javascriptEnabled: true,
+							lessOptions: {
+								javascriptEnabled: true,
+							},
 						},
 					},
 				],

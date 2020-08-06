@@ -1,6 +1,4 @@
 {
-  "eslint.autoFixOnSave": true,
-  "tslint.autoFixOnSave": true,
 	"[markdown]": {
 		"editor.formatOnSave": true
 	},
@@ -9,6 +7,9 @@
 	},
 	"[css]": {
 		"editor.formatOnSave": true
+  },
+  "[typescript]": {
+    "editor.formatOnSave": true
   },
   "typescript.tsdk": "node_modules/typescript/lib",
   "spellright.language": [
