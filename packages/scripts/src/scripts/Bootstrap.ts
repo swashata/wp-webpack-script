@@ -348,9 +348,9 @@ module.exports = {
 		) {
 			devDependencies.push('@wpackio/scripts');
 		}
-		// If has Sass, then push node-sass
+		// If has Sass, then push sass (dart sass)
 		if (projectContext.hasSass === 'true') {
-			devDependencies.push('node-sass');
+			devDependencies.push('sass');
 		}
 		// if has Less, then push less
 		if (projectContext.hasLess === 'true') {
@@ -358,6 +358,7 @@ module.exports = {
 		}
 		// if has ts, then push fork-ts-checker-webpack-plugin
 		if (projectContext.hasTS === 'true') {
+			devDependencies.push('typescript');
 			devDependencies.push('fork-ts-checker-webpack-plugin');
 		}
 
