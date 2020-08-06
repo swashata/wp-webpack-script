@@ -54,7 +54,7 @@
     "access": "public"
   },
   "devDependencies": {
-    "@babel/core": "7.9.0",
+    "@babel/core": "7.11.1",
     "@wpackio/eslint-config": "^4.4.1",
     "dts-gen": "0.6.0"
   }
