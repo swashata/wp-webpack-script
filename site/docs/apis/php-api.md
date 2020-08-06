@@ -12,7 +12,14 @@ class which comes with the composer package.
 While creating a class instance, you can pass in up-to 5 parameters.
 
 ```php
-new \WPackio\Enqueue( $appName, $outputPath, $version, $type = 'plugin', $pluginPath = false );
+new \WPackio\Enqueue(
+	$appName,
+	$outputPath,
+	$version,
+	$type = 'plugin',
+	$pluginPath = false, // if $type === 'plugin'
+	$themeType = 'regular' // if $type === 'theme'
+);
 ```
 
 #### `$appName` (`string`)
