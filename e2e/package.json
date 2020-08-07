@@ -41,9 +41,7 @@
 	"dependencies": {
 		"@types/webpack-env": "1.15.2",
 		"@wpackio/entrypoint": "file:../packages/entrypoint",
-		"execa": "4.0.3",
 		"react": "16.13.1",
-		"react-bootstrap": "1.3.0",
 		"react-dom": "16.13.1",
 		"react-hot-loader": "4.12.21"
 	}
