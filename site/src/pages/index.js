@@ -125,7 +125,7 @@ const IndexPage = ({ data: { mission, steps }, location }) => (
 						>
 							<p>
 								We give you best possible developer experience
-								with hot reloading, automatic file watching,
+								with hot reloading, react fast refresh, automatic file watching,
 								terminal preview and much more.
 							</p>
 						</Feature>

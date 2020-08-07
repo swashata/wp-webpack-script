@@ -64,6 +64,8 @@ module.exports = {
 	// Project specific config
 	// Needs react?
 	hasReact: true,
+	// Disable react refresh
+	disableReactRefresh: false,
 	// Needs sass?
 	hasSass: true,
 	// Externals
@@ -288,6 +290,12 @@ You can not pass `rel/path/to/dist` here.
 ## `hasReact` (`boolean`):
 
 Where you need support for react specific presets, like `jsx`.
+
+## `disableReactRefresh` (`boolean`):
+
+When you have react for your project, wpackio will use react fast refresh
+for seamless updates of components. Set this to `true` if you want to disable
+it.
 
 ## `hasSass` (`boolean`):
 
