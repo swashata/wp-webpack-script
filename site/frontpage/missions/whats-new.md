@@ -3,14 +3,14 @@ order: 4
 title: What's new?
 ---
 
-#### VERSION 5
+#### 📦 VERSION 5
 
-##### ✅ Support for React Fast Refresh.
+###### 🚀 Support for React Fast Refresh.
 
 Simply have `hasReact: true` in your project config and all your components will
 hot reload using [react refresh plugin](https://github.com/pmmmwh/react-refresh-webpack-plugin).
 
-##### ✅ Start selective entries during development
+###### 🚀 Start selective entries during development
 
 If you have multiple entries inside `files` of project config, wpackio will
 start all of them when you do `yarn start`, running a multi compiler instance.
