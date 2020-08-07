@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0](https://github.com/swashata/wp-webpack-script/compare/v4.4.1...v5.0.0) (2020-08-07)
+
+
+### Features
+
+* add react refresh support ([1f4cb57](https://github.com/swashata/wp-webpack-script/commit/1f4cb579a0191dbcdc5a277d41944ad5acdf520f))
+* make fork-ts plugin 5 compatible and remove react-dev-utils ([a6f414d](https://github.com/swashata/wp-webpack-script/commit/a6f414d644dc9552942b9b23172ff35c49b5ea78))
+
+
+
+
+
 ## [4.4.1](https://github.com/swashata/wp-webpack-script/compare/v4.4.0...v4.4.1) (2020-03-21)
 
 **Note:** Version bump only for package @wpackio/eslint-config

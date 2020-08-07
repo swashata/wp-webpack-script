@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0](https://github.com/swashata/wp-webpack-script/compare/v4.4.1...v5.0.0) (2020-08-07)
+
+
+### Bug Fixes
+
+* do not add react refresh in production ([bf4279b](https://github.com/swashata/wp-webpack-script/commit/bf4279ba611520ce251c4fbe7c6577fa95027771))
+* failing tests due to changes in sourcemap ([2d6fc07](https://github.com/swashata/wp-webpack-script/commit/2d6fc076ee2e0ca5aa1cabed87554d2af0cf890c))
+* remove duplicate packages in scripts ([74a8ccb](https://github.com/swashata/wp-webpack-script/commit/74a8ccbb09d0088887bd489e42ab96d5ef64be34))
+
+
+### Features
+
+* add entry name in console output ([e1e4599](https://github.com/swashata/wp-webpack-script/commit/e1e45996d74232f0d61e16661b9817ce98a00619))
+* add options for selective entries during serve ([d4ee6f1](https://github.com/swashata/wp-webpack-script/commit/d4ee6f1b4dfa456d51fc3603f3b3c107c813f47b))
+* add react refresh support ([1f4cb57](https://github.com/swashata/wp-webpack-script/commit/1f4cb579a0191dbcdc5a277d41944ad5acdf520f))
+* make fork-ts plugin 5 compatible and remove react-dev-utils ([a6f414d](https://github.com/swashata/wp-webpack-script/commit/a6f414d644dc9552942b9b23172ff35c49b5ea78))
+* update listed deps and devDeps ([d85f5ae](https://github.com/swashata/wp-webpack-script/commit/d85f5ae8c50fd2536380e17b5c23fe3e5d2b104f))
+* upgrade less, css and sass loader ([3dc914e](https://github.com/swashata/wp-webpack-script/commit/3dc914eb38bbb41d29702b2a9b2fa224297b879f))
+* use consistent eslint throughout the repo ([720efbf](https://github.com/swashata/wp-webpack-script/commit/720efbff7bcec03295ec06301191037bc96fe672))
+
+
+
+
+
 ## [4.4.1](https://github.com/swashata/wp-webpack-script/compare/v4.4.0...v4.4.1) (2020-03-21)
 
 

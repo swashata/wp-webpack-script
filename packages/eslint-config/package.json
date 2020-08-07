@@ -1,6 +1,6 @@
 {
   "name": "@wpackio/eslint-config",
-  "version": "4.4.1",
+  "version": "5.0.0",
   "description": "Shared ESLint config for all @wpackio packages.",
   "keywords": [
     "eslint",

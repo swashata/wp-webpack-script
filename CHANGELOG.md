@@ -3,6 +3,42 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0](https://github.com/swashata/wp-webpack-script/compare/v4.4.1...v5.0.0) (2020-08-07)
+
+
+### Bug Fixes
+
+* accidentally removed execa ([0823836](https://github.com/swashata/wp-webpack-script/commit/0823836996540c2c6f2e6d04219b7b6388d2813b))
+* do not add react refresh in production ([bf4279b](https://github.com/swashata/wp-webpack-script/commit/bf4279ba611520ce251c4fbe7c6577fa95027771))
+* **deps:** update dependency @svgr/webpack to v5.3.1 ([c04d2b3](https://github.com/swashata/wp-webpack-script/commit/c04d2b358c92927b62ac610003b0741062aed47f))
+* **deps:** update dependency @svgr/webpack to v5.4.0 ([ead78b2](https://github.com/swashata/wp-webpack-script/commit/ead78b2e1918ec4e6380d49d05847241621fd2d9))
+* **deps:** update dependency bulma to v0.8.2 ([d8f1acf](https://github.com/swashata/wp-webpack-script/commit/d8f1acf86bb6d8c46418d10494cba8daaff4a8a0))
+* **deps:** update dependency bulma to v0.9.0 ([59e55d5](https://github.com/swashata/wp-webpack-script/commit/59e55d500cc1525afe3da1f0e78ee7bc59453050))
+* **deps:** update dependency node-sass to v4.14.1 ([dc342cd](https://github.com/swashata/wp-webpack-script/commit/dc342cd53c72d4363eeb43b317e469f716b8f43d))
+* **deps:** update dependency prismjs to v1.20.0 ([2bcfde8](https://github.com/swashata/wp-webpack-script/commit/2bcfde825486b72d26ceac1475085dbae9ffd4c5))
+* **deps:** update dependency prismjs to v1.21.0 ([40843d5](https://github.com/swashata/wp-webpack-script/commit/40843d5f8f785d6e39703e561db8b271ddb5bef4))
+* **deps:** update gatsby monorepo ([7f3662f](https://github.com/swashata/wp-webpack-script/commit/7f3662f3aa81ba6cb750e93f44cea3bbc9329700))
+* **deps:** update react monorepo to v16.13.1 ([ba8bd5c](https://github.com/swashata/wp-webpack-script/commit/ba8bd5c10f75417ad0d94c8e561db426aed7f84d))
+* failing tests due to changes in sourcemap ([2d6fc07](https://github.com/swashata/wp-webpack-script/commit/2d6fc076ee2e0ca5aa1cabed87554d2af0cf890c))
+* remove duplicate packages in scripts ([74a8ccb](https://github.com/swashata/wp-webpack-script/commit/74a8ccbb09d0088887bd489e42ab96d5ef64be34))
+
+
+### Features
+
+* add entry name in console output ([e1e4599](https://github.com/swashata/wp-webpack-script/commit/e1e45996d74232f0d61e16661b9817ce98a00619))
+* add options for selective entries during serve ([d4ee6f1](https://github.com/swashata/wp-webpack-script/commit/d4ee6f1b4dfa456d51fc3603f3b3c107c813f47b))
+* add react refresh support ([1f4cb57](https://github.com/swashata/wp-webpack-script/commit/1f4cb579a0191dbcdc5a277d41944ad5acdf520f))
+* make fork-ts plugin 5 compatible and remove react-dev-utils ([a6f414d](https://github.com/swashata/wp-webpack-script/commit/a6f414d644dc9552942b9b23172ff35c49b5ea78))
+* update listed deps and devDeps ([d85f5ae](https://github.com/swashata/wp-webpack-script/commit/d85f5ae8c50fd2536380e17b5c23fe3e5d2b104f))
+* update website ([72c6b73](https://github.com/swashata/wp-webpack-script/commit/72c6b734edaa269b019d91831fa2af3dda0292cb))
+* **docs:** update themetype docs ([63da05e](https://github.com/swashata/wp-webpack-script/commit/63da05ef9265c5f0a5500b1326f621f2c56ee72f))
+* upgrade less, css and sass loader ([3dc914e](https://github.com/swashata/wp-webpack-script/commit/3dc914eb38bbb41d29702b2a9b2fa224297b879f))
+* use consistent eslint throughout the repo ([720efbf](https://github.com/swashata/wp-webpack-script/commit/720efbff7bcec03295ec06301191037bc96fe672))
+
+
+
+
+
 ## [4.4.1](https://github.com/swashata/wp-webpack-script/compare/v4.4.0...v4.4.1) (2020-03-21)
 
 
