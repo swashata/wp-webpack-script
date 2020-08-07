@@ -141,7 +141,13 @@ describe('WebpackConfigHelper', () => {
 		test('has proper plugins for dev mode', () => {
 			const cwc = new WebpackConfigHelper(
 				projectConfig.files[0],
-				getConfigFromProjectAndServer(projectConfig, serverConfig),
+				{
+					...getConfigFromProjectAndServer(
+						projectConfig,
+						serverConfig
+					),
+					hasReact: false,
+				},
 				'/foo/bar',
 				true
 			);

@@ -144,16 +144,5 @@ Array [
   WatchMissingNodeModulesPlugin {
     "nodeModulesPath": "/foo/bar/node_modules",
   },
-  ReactRefreshPlugin {
-    "options": Object {
-      "exclude": /node_modules/,
-      "include": /\\\\\\.\\(\\[jt\\]sx\\?\\|flow\\)\\$/,
-      "overlay": Object {
-        "entry": "/Volumes/Development/PersonalProjects/wp-webpack-script/node_modules/@pmmmwh/react-refresh-webpack-plugin/client/ErrorOverlayEntry.js",
-        "module": "/Volumes/Development/PersonalProjects/wp-webpack-script/node_modules/@pmmmwh/react-refresh-webpack-plugin/overlay/index.js",
-        "sockIntegration": "whm",
-      },
-    },
-  },
 ]
 `;
