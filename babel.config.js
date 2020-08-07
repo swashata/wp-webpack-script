@@ -5,7 +5,7 @@ module.exports = api => {
 			'@babel/preset-env',
 			{
 				targets: {
-					node: '8.9.0',
+					node: '12.18.3',
 				},
 				modules: 'cjs',
 			},
@@ -26,6 +26,7 @@ module.exports = api => {
 			'./src/__tests__',
 			'./src/**/*.{spec|test}.{j|t}sx?',
 		],
+		sourceType: 'unambiguous',
 		sourceMaps: 'inline',
 	};
 };

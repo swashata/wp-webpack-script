@@ -18,7 +18,7 @@ const pkg = require(pkgPath);
 export const bulletSymbol = chalk.magenta(figures.pointer);
 
 export const donationLink = `
-    ${bulletSymbol} PATRON: ${chalk.bold.blue.underline(
+    ${bulletSymbol} PATREON: ${chalk.bold.blue.underline(
 	'https://www.patreon.com/swashata'
 )}
     ${bulletSymbol} OPENCOLLECTIVE: ${chalk.bold.blue.underline(

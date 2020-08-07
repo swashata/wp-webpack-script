@@ -1,9 +1,9 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 import chalk from 'chalk';
 import logSymbols from 'log-symbols';
 import ora from 'ora';
 import path from 'path';
 import webpack from 'webpack';
-import { formatWebpackMessages } from '../dev-utils';
 import { getProjectAndServerConfig } from '../config/getProjectAndServerConfig';
 import { Server } from '../scripts/Server';
 import { ProgramOptions } from './index';
@@ -26,6 +26,7 @@ import {
 	printWarningHeading,
 	serveEntryInfo,
 } from './utils';
+import { formatWebpackMessages } from '../dev-utils';
 
 /**
  * Start the `wpackio-scripts serve` command.
@@ -140,14 +141,14 @@ export function serve(options: ProgramOptions | undefined): void {
 
 					if (stats.hasErrors()) {
 						printErrorHeading('ERROR');
-						messages.errors.forEach(e => {
+						messages.errors.forEach((e: string) => {
 							console.log(e);
 							console.log('');
 						});
 						printFailedCompileMEssage();
 					} else if (stats.hasWarnings()) {
 						printWarningHeading('WARNING');
-						messages.warnings.forEach(e => {
+						messages.warnings.forEach((e: string) => {
 							console.log(e);
 							console.log('');
 						});

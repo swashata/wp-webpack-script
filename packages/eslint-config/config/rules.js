@@ -11,6 +11,7 @@ module.exports = {
 			allowForLoopAfterthoughts: true,
 		},
 	],
+	camelcase: 'off',
 	'react/jsx-filename-extension': 'off',
 	'react-hooks/rules-of-hooks': 'error',
 	'react-hooks/exhaustive-deps': 'warn',

@@ -77,6 +77,7 @@ export interface ProjectConfig {
 	 */
 	outputPath: string;
 	hasReact: boolean;
+	disableReactRefresh?: boolean;
 	hasSass: boolean;
 	hasLess?: boolean;
 	hasFlow: boolean;
@@ -141,6 +142,8 @@ export const projectConfigDefault: ProjectConfig = {
 	useBabelConfig: false,
 	// Needs react?
 	hasReact: true,
+	// Disable react refresh
+	disableReactRefresh: false,
 	// Needs sass?
 	hasSass: true,
 	// Needs flow?

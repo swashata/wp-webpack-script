@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 import browserSync from 'browser-sync';
 import devIp from 'dev-ip';
 import open from 'open';
@@ -8,9 +9,9 @@ import logSymbols from 'log-symbols';
 import inquirer from 'inquirer';
 
 import {
-	formatWebpackMessages,
 	typescriptFormatter,
 	issueType,
+	formatWebpackMessages,
 } from '../dev-utils';
 import { CreateWebpackConfig } from '../config/CreateWebpackConfig';
 import { ProjectConfig } from '../config/project.config.default';
@@ -335,10 +336,10 @@ export class Server {
 				});
 				const messages = formatWebpackMessages(raw);
 				// further remove the absolute path
-				messages.errors = messages.errors.map(itm =>
+				messages.errors = messages.errors.map((itm: string) =>
 					itm.split(this.cwd).join('.')
 				);
-				messages.warnings = messages.warnings.map(itm =>
+				messages.warnings = messages.warnings.map((itm: string) =>
 					itm.split(this.cwd).join('.')
 				);
 				if (!messages.errors.length && !messages.warnings.length) {

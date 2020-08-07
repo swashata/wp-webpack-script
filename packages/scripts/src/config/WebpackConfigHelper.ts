@@ -10,6 +10,8 @@ import slugify from 'slugify';
 import TimeFixPlugin from 'time-fix-plugin';
 import webpack from 'webpack';
 import WebpackAssetsManifest from 'webpack-assets-manifest';
+import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
+
 import { WatchMissingNodeModulesPlugin } from '../dev-utils';
 import { WpackioError } from '../errors/WpackioError';
 import { getBabelPresets, overrideBabelPresetOptions } from './babelConfig';
@@ -39,6 +41,7 @@ export interface WebpackConfigHelperConfig {
 	outputPath: ProjectConfig['outputPath'];
 	useBabelConfig: ProjectConfig['useBabelConfig'];
 	hasReact: ProjectConfig['hasReact'];
+	disableReactRefresh: ProjectConfig['disableReactRefresh'];
 	hasSass: ProjectConfig['hasSass'];
 	hasFlow: ProjectConfig['hasFlow'];
 	hasLess: ProjectConfig['hasLess'];
@@ -142,7 +145,7 @@ export class WebpackConfigHelper {
 	}
 
 	public static getHmrPath(): string {
-		return `/__webpack_hmr`;
+		return `/__wpackio_hmr`;
 	}
 
 	/**
@@ -175,6 +178,8 @@ export class WebpackConfigHelper {
 		});
 		// Now, if in dev mode, then add the hot middleware client
 		if (this.isDev) {
+			// Whether or not we use the react-refresh and family, we need the default
+			// whm client for this to work.
 			// Custom overlay and it's styling
 			// Custom style
 			const overlayStyles: object = {
@@ -185,6 +190,7 @@ export class WebpackConfigHelper {
 				padding: '32px 16px',
 			};
 			// Define the hot client string
+			//
 			// Here we need
 			// 1. client - because it needs to be consistent across this and WHM.
 			// 2. overlay and overlayStypes - To enable overlay on errors, we don't need warnings here
@@ -195,6 +201,7 @@ export class WebpackConfigHelper {
 			}&reload=true&overlayStyles=${encodeURIComponent(
 				JSON.stringify(overlayStyles)
 			)}`;
+
 			// Now add to each of the entries
 			// We don't know if user want to specifically disable for some, but let's
 			// not think ahead of ourselves
@@ -328,9 +335,6 @@ export class WebpackConfigHelper {
 				);
 			} catch (e) {
 				throw new WpackioError(e);
-				// throw new WpackioError(
-				// 	'please install fork-ts-checker-webpack-plugin package'
-				// );
 			}
 		}
 		// Add development specific plugins
@@ -349,6 +353,17 @@ export class WebpackConfigHelper {
 			// Add timewatch plugin to avoid multiple successive build
 			// https://github.com/webpack/watchpack/issues/25
 			plugins = [new TimeFixPlugin(), ...plugins];
+
+			// Add react refresh if needed
+			if (this.config.hasReact && !this.config.disableReactRefresh) {
+				plugins.push(
+					new ReactRefreshWebpackPlugin({
+						overlay: {
+							sockIntegration: 'whm',
+						},
+					})
+				);
+			}
 		} else {
 			// Add Production specific plugins
 			const { bannerConfig } = this.config;
@@ -389,15 +404,6 @@ ${bannerConfig.copyrightText}${bannerConfig.credit ? creditNote : ''}`,
 			hasReact,
 		};
 
-		const babelLoaderCacheOptions = {
-			// This is a feature of `babel-loader` for webpack (not Babel itself).
-			// It enables caching results in ./node_modules/.cache/babel-loader/
-			// directory for faster rebuilds.
-			cacheDirectory: true,
-			cacheCompression: !this.isDev,
-			compact: !this.isDev,
-		};
-
 		// check if babel.config.js is present
 		const isBabelConfigPresent = this.config.useBabelConfig;
 
@@ -428,20 +434,21 @@ ${bannerConfig.copyrightText}${bannerConfig.credit ? creditNote : ''}`,
 			use: [
 				{
 					loader: require.resolve('babel-loader'),
-					options: isBabelConfigPresent
-						? { ...babelLoaderCacheOptions }
-						: this.getOverrideWebpackRuleOptions(
-								{
-									presets: jsPresets,
-									// disable babelrc and babel.config.js
-									// as it could potentially break stuff
-									// rather use the jsBabelOverride
-									configFile: false,
-									babelrc: false,
-									...babelLoaderCacheOptions,
-								},
-								this.config.jsBabelOverride
-						  ),
+					options: this.getFinalBabelLoaderOptions(
+						isBabelConfigPresent
+							? {}
+							: this.getOverrideWebpackRuleOptions(
+									{
+										presets: jsPresets,
+										// disable babelrc and babel.config.js
+										// as it could potentially break stuff
+										// rather use the jsBabelOverride
+										configFile: false,
+										babelrc: false,
+									},
+									this.config.jsBabelOverride
+							  )
+					),
 				},
 			],
 			exclude: /(node_modules|bower_components)/,
@@ -461,26 +468,27 @@ ${bannerConfig.copyrightText}${bannerConfig.credit ? creditNote : ''}`,
 			use: [
 				{
 					loader: require.resolve('babel-loader'),
-					options: isBabelConfigPresent
-						? { ...babelLoaderCacheOptions }
-						: this.getOverrideWebpackRuleOptions(
-								{
-									presets: tsPresets,
-									// disable babelrc and babel.config.js
-									// as it could potentially break stuff
-									// rather use the jsBabelOverride
-									configFile: false,
-									babelrc: false,
-									...babelLoaderCacheOptions,
-									// We don't need plugin-proposal-class-properties
-									// because taken care of by @wpackio/base
-									// '@babel/proposal-class-properties',
-									// We don't need object-rest-spread because it is
-									// already in stage-4 and taken care of by preset-env
-									// '@babel/proposal-object-rest-spread',
-								},
-								this.config.tsBabelOverride
-						  ),
+					options: this.getFinalBabelLoaderOptions(
+						isBabelConfigPresent
+							? {}
+							: this.getOverrideWebpackRuleOptions(
+									{
+										presets: tsPresets,
+										// disable babelrc and babel.config.js
+										// as it could potentially break stuff
+										// rather use the jsBabelOverride
+										configFile: false,
+										babelrc: false,
+										// We don't need plugin-proposal-class-properties
+										// because taken care of by @wpackio/base
+										// '@babel/proposal-class-properties',
+										// We don't need object-rest-spread because it is
+										// already in stage-4 and taken care of by preset-env
+										// '@babel/proposal-object-rest-spread',
+									},
+									this.config.tsBabelOverride
+							  )
+					),
 				},
 			],
 			exclude: /(node_modules)/,
@@ -495,25 +503,28 @@ ${bannerConfig.copyrightText}${bannerConfig.credit ? creditNote : ''}`,
 			use: [
 				{
 					loader: require.resolve('babel-loader'),
-					options: {
-						// cache
-						...babelLoaderCacheOptions,
-						// Babel assumes ES Modules, which isn't safe until CommonJS
-						// dies. This changes the behavior to assume CommonJS unless
-						// an `import` or `export` is present in the file.
-						// https://github.com/webpack/webpack/issues/4039#issuecomment-419284940
-						sourceType: 'unambiguous',
-						// preset from our own package
-						presets: getBabelPresets({ hasReact: false }),
-						// If an error happens in a package, it's possible to be
-						// because it was compiled. Thus, we don't want the browser
-						// debugger to show the original code. Instead, the code
-						// being evaluated would be much more helpful.
-						sourceMaps: false,
-						// disable babelrc and babel.config.js for node_modules
-						configFile: false,
-						babelrc: false,
-					},
+					options: this.getFinalBabelLoaderOptions(
+						{
+							// preset from our own package
+							presets: getBabelPresets({
+								hasReact: false,
+							}),
+							// If an error happens in a package, it's possible to be
+							// because it was compiled. Thus, we don't want the browser
+							// debugger to show the original code. Instead, the code
+							// being evaluated would be much more helpful.
+							sourceMaps: false,
+							// Babel assumes ES Modules, which isn't safe until CommonJS
+							// dies. This changes the behavior to assume CommonJS unless
+							// an `import` or `export` is present in the file.
+							// https://github.com/webpack/webpack/issues/4039#issuecomment-419284940
+							sourceType: 'unambiguous',
+							// disable babelrc and babel.config.js for node_modules
+							configFile: false,
+							babelrc: false,
+						},
+						false
+					),
 				},
 			],
 		};
@@ -652,6 +663,45 @@ ${bannerConfig.copyrightText}${bannerConfig.credit ? creditNote : ''}`,
 			mode: this.env,
 			name: this.file.name,
 			externals: this.config.externals,
+		};
+	}
+
+	/**
+	 * Get final babel loader options. This adds anything necessary for
+	 * wpackio functions.
+	 *
+	 * @param options Existing babel loader options.
+	 */
+	private getFinalBabelLoaderOptions(
+		options: webpack.RuleSetLoader['options'],
+		addReactRefresh: boolean = true
+	): webpack.RuleSetLoader['options'] {
+		const finalOptions: webpack.RuleSetLoader['options'] =
+			options && typeof options === 'object' ? { ...options } : {};
+
+		if (
+			this.config.hasReact &&
+			!this.config.disableReactRefresh &&
+			addReactRefresh
+		) {
+			if (!finalOptions.plugins) {
+				finalOptions.plugins = [];
+			}
+			finalOptions.plugins.push(require.resolve('react-refresh/babel'));
+		}
+
+		const babelLoaderCacheOptions = {
+			// This is a feature of `babel-loader` for webpack (not Babel itself).
+			// It enables caching results in ./node_modules/.cache/babel-loader/
+			// directory for faster rebuilds.
+			cacheDirectory: true,
+			cacheCompression: !this.isDev,
+			compact: !this.isDev,
+		};
+
+		return {
+			...finalOptions,
+			...babelLoaderCacheOptions,
 		};
 	}
 
