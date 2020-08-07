@@ -136,9 +136,7 @@ describe('CreateWebpackConfig', () => {
 				'/foo/bar'
 			);
 			expect(cwc.getPublicPath()).toBe(
-				`/wp-content/${projectConfig.type}s/${projectConfig.slug}/${
-					projectConfig.outputPath
-				}/`
+				`/wp-content/${projectConfig.type}s/${projectConfig.slug}/${projectConfig.outputPath}/`
 			);
 		});
 		test('getHmrPath sends proper stuff', () => {
@@ -147,9 +145,7 @@ describe('CreateWebpackConfig', () => {
 				serverConfig,
 				'/foo/bar'
 			);
-			expect(cwc.getHmrPath()).toBe(
-				`/__webpack_hmr`
-			);
+			expect(cwc.getHmrPath()).toBe(`/__wpackio_hmr`);
 		});
 		test('getPublicPathUrl sends proper stuff', () => {
 			const cwc = new CreateWebpackConfig(

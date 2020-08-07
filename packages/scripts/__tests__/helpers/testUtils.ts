@@ -53,17 +53,15 @@ export function getConfigFromProjectAndServer(
 		port: sCfg.port,
 		outputPath: pCfg.outputPath,
 		hasReact: pCfg.hasReact,
+		disableReactRefresh: pCfg.disableReactRefresh,
 		hasSass: pCfg.hasSass,
+		hasLess: pCfg.hasLess,
 		hasFlow: pCfg.hasFlow,
 		bannerConfig: pCfg.bannerConfig,
 		alias: pCfg.alias,
 		optimizeSplitChunks: pCfg.optimizeSplitChunks,
-		publicPath: `/wp-content/${pCfg.type}s/${pCfg.slug}/${
-			pCfg.outputPath
-		}/`,
-		publicPathUrl: `//localhost/wp-content/${pCfg.type}s/${pCfg.slug}/${
-			pCfg.outputPath
-		}/`,
+		publicPath: `/wp-content/${pCfg.type}s/${pCfg.slug}/${pCfg.outputPath}/`,
+		publicPathUrl: `//localhost/wp-content/${pCfg.type}s/${pCfg.slug}/${pCfg.outputPath}/`,
 		errorOverlay: true,
 		externals: pCfg.externals,
 		useBabelConfig: false,

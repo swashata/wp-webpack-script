@@ -182,7 +182,9 @@ describe('WebpackConfigHelper', () => {
 					expect(jsTsRules).toHaveLength(2);
 					jsTsRules.forEach(rule => {
 						if (rule && rule.use) {
-							expect(rule.use[0].loader).toBe(require.resolve('babel-loader'));
+							expect(rule.use[0].loader).toBe(
+								require.resolve('babel-loader')
+							);
 							expect(rule.use[0].options).toMatchObject({
 								cacheDirectory: true,
 								cacheCompression: !true,
@@ -210,7 +212,9 @@ describe('WebpackConfigHelper', () => {
 					expect(nmJsRules).toHaveLength(1);
 					nmJsRules.forEach(rule => {
 						if (rule && rule.use) {
-							expect(rule.use[0].loader).toBe(require.resolve('babel-loader'));
+							expect(rule.use[0].loader).toBe(
+								require.resolve('babel-loader')
+							);
 							expect(rule.use[0].options).toMatchObject({
 								cacheDirectory: true,
 								cacheCompression: !true,
@@ -294,6 +298,9 @@ describe('WebpackConfigHelper', () => {
 								cacheDirectory: true,
 								cacheCompression: !true,
 								compact: !true,
+								plugins: [
+									require.resolve('react-refresh/babel'),
+								],
 							});
 						} else {
 							throw new Error('JavaScript rule is undefined');
@@ -406,7 +413,10 @@ describe('WebpackConfigHelper', () => {
 					jsTsRules.forEach(rule => {
 						if (rule && rule.use && rule.use[0].options) {
 							expect(rule.use[0].options).toMatchObject({
-								plugins: ['react-hot-loader/babel'],
+								plugins: [
+									'react-hot-loader/babel',
+									require.resolve('react-refresh/babel'),
+								],
 							});
 						} else {
 							throw new Error('JavaScript rule is undefined');
@@ -437,7 +447,9 @@ describe('WebpackConfigHelper', () => {
 					);
 				}) as { use: { loader: string }[] };
 				if (styleRule !== undefined) {
-					expect(styleRule.use[0].loader).toBe(miniCssExtractPlugin.loader);
+					expect(styleRule.use[0].loader).toBe(
+						miniCssExtractPlugin.loader
+					);
 				} else {
 					throw new Error('No style rule found');
 				}
@@ -498,7 +510,6 @@ describe('WebpackConfigHelper', () => {
 				throw new Error('Module.rules is not an array');
 			}
 		});
-
 	});
 
 	// getResolve()
@@ -609,9 +620,7 @@ describe('WebpackConfigHelper', () => {
 				'/foo/bar',
 				true
 			);
-			expect(cwcDev.getCommon().devtool).toBe(
-				'cheap-module-source-map'
-			);
+			expect(cwcDev.getCommon().devtool).toBe('cheap-module-source-map');
 			expect(cwcDev.getCommon()).toMatchSnapshot();
 		});
 	});
