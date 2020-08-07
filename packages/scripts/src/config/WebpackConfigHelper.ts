@@ -682,7 +682,8 @@ ${bannerConfig.copyrightText}${bannerConfig.credit ? creditNote : ''}`,
 		if (
 			this.config.hasReact &&
 			!this.config.disableReactRefresh &&
-			addReactRefresh
+			addReactRefresh &&
+			this.isDev
 		) {
 			if (!finalOptions.plugins) {
 				finalOptions.plugins = [];
