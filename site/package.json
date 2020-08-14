@@ -46,7 +46,7 @@
   },
   "devDependencies": {
     "@wpackio/eslint-config": "file:../packages/eslint-config",
-    "eslint": "7.6.0",
+    "eslint": "7.7.0",
     "gatsby-plugin-sharp": "2.6.27",
     "gatsby-transformer-sharp": "2.5.13",
     "prettier": "2.0.5"
