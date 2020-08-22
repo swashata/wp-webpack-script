@@ -13,7 +13,7 @@
 		"cssnano": "4.1.10",
 		"cypress": "4.12.1",
 		"fork-ts-checker-webpack-plugin": "5.1.0",
-		"jest": "26.4.1",
+		"jest": "26.4.2",
 		"less": "3.12.2",
 		"node-sass": "4.14.1",
 		"serve": "11.3.2",
