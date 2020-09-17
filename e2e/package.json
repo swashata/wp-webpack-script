@@ -39,7 +39,7 @@
 		"bootstrap:dev": "../packages/scripts/lib/bin/index.js bootstrap"
 	},
 	"dependencies": {
-		"@types/webpack-env": "1.15.2",
+		"@types/webpack-env": "1.15.3",
 		"@wpackio/entrypoint": "file:../packages/entrypoint",
 		"execa": "4.0.3",
 		"react": "16.13.1",
