@@ -7615,10 +7615,10 @@ gatsby-plugin-catch-links@2.3.15:
     "@babel/runtime" "^7.11.2"
     escape-string-regexp "^1.0.5"
 
-gatsby-plugin-google-analytics@2.3.16:
-  version "2.3.16"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-google-analytics/-/gatsby-plugin-google-analytics-2.3.16.tgz#df34cf35f0a6878adfb3e7f645dc58bad03f711e"
-  integrity sha512-yNTjXJMIuiO48hssLVKrD7EWQT8UP9OW5WPkbsjmPGLtmCfVQ+3Th+5ptBOjtYuyoifRoWmKXdIVgimUs0l5Sw==
+gatsby-plugin-google-analytics@2.3.17:
+  version "2.3.17"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-google-analytics/-/gatsby-plugin-google-analytics-2.3.17.tgz#61207d253b69e8ab606ebff75e074c1774d108bb"
+  integrity sha512-0s8m2BPBBsccCIFE2rUl98Ir/JE273cyPwfFB1PrtNz6rVmbRrm8AWKJvGXlZiPAfMUuBhT39vCgTvrCDp4phw==
   dependencies:
     "@babel/runtime" "^7.11.2"
     minimatch "3.0.4"
@@ -7686,10 +7686,10 @@ gatsby-plugin-react-helmet@3.3.13:
   dependencies:
     "@babel/runtime" "^7.11.2"
 
-gatsby-plugin-sass@2.3.15:
-  version "2.3.15"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-sass/-/gatsby-plugin-sass-2.3.15.tgz#b981929c361d264ab76067bbaf7f687957fe83f3"
-  integrity sha512-VQXub6M8zjuuj2LMq6sNW1zLMPMKfSNIDhzTda+F1lX5X4IzBIksMwxu8BAcFw9uPavfGUHthrqZ9xq+cguscw==
+gatsby-plugin-sass@2.3.16:
+  version "2.3.16"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-sass/-/gatsby-plugin-sass-2.3.16.tgz#aa9f375993b44d03c721e82363dec35fceeb1fce"
+  integrity sha512-gY2Ankprpn0TEIboDqco4bycjveZNYTrpiwJYLPtnFPCgmxoQzld44Uj/9bbZXxsV/tIqubulenr+TymCbe/hg==
   dependencies:
     "@babel/runtime" "^7.11.2"
     sass-loader "^7.3.1"
