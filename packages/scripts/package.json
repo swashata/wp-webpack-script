@@ -63,7 +63,7 @@
 		"open": "^7.1.0",
 		"ora": "^4.1.0",
 		"postcss-loader": "^3.0.0",
-		"pretty-error": "^2.1.1",
+		"pretty-error": "^3.0.0",
 		"react-refresh": "^0.8.3",
 		"sass-loader": "^9.0.3",
 		"slugify": "^1.4.5",
