@@ -65,7 +65,7 @@
 		"postcss-loader": "^3.0.0",
 		"pretty-error": "^2.1.1",
 		"react-refresh": "^0.9.0",
-		"sass-loader": "^9.0.3",
+		"sass-loader": "^10.0.0",
 		"slugify": "^1.4.5",
 		"time-fix-plugin": "^2.0.6",
 		"uglifyjs-webpack-plugin": "^2.2.0",
