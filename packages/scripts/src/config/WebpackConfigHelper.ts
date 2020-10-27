@@ -113,6 +113,14 @@ export class WebpackConfigHelper {
 	private env: 'development' | 'production';
 
 	/**
+	 * User passed WPACKIO_ env variables, which will be defined
+	 * in webpack with webpack.DefinePlugin.
+	 */
+	private customEnv: {
+		[key: string]: string;
+	};
+
+	/**
 	 * Create an instance of GetEntryAndOutput class.
 	 */
 	constructor(
@@ -130,6 +138,14 @@ export class WebpackConfigHelper {
 		} else {
 			this.env = 'production';
 		}
+
+		// add any env variables that start with WPACKIO_
+		this.customEnv = {};
+		Object.keys(process?.env || {}).forEach(key => {
+			if (key.startsWith('WPACKIO_')) {
+				this.customEnv[key] = JSON.stringify(process?.env?.[key]);
+			}
+		});
 
 		// Create the outputPath, because we would be needing that
 		const { outputPath } = this.config;
@@ -279,6 +295,7 @@ export class WebpackConfigHelper {
 		let plugins: webpack.Plugin[] = [
 			// Define env
 			new webpack.DefinePlugin({
+				...this.customEnv,
 				'process.env.NODE_ENV': JSON.stringify(this.env),
 				'process.env.BABEL_ENV': JSON.stringify(this.env),
 				// Our own access to project config from the modules

@@ -630,4 +630,38 @@ describe('WebpackConfigHelper', () => {
 			expect(cwcDev.getCommon()).toMatchSnapshot();
 		});
 	});
+
+	describe('getEnv', () => {
+		test('Can set custom ENV variables', () => {
+			process.env.WPACKIO_ENV = 'test';
+			process.env.SECRET = 'secret';
+			const cwc = new WebpackConfigHelper(
+				projectConfig.files[0],
+				{
+					...getConfigFromProjectAndServer(
+						projectConfig,
+						serverConfig
+					),
+				},
+				'/foo/bar',
+				false
+			);
+
+			// check in class
+			// @ts-ignore (since this is private). Check it's set.
+			expect(JSON.parse(cwc.customEnv.WPACKIO_ENV)).toBe('test');
+			// @ts-ignore (since this is private). Check secrets can't be exposed client-side
+			expect(cwc.customEnv.SECRET).toBeUndefined();
+
+			// check in define plugin
+			expect(
+				// @ts-ignore (since this is private).
+				JSON.parse(cwc.getPlugins()[0].definitions.WPACKIO_ENV)
+			).toBe('test');
+			expect(
+				// @ts-ignore (since this is private).
+				cwc.customEnv.SECRET
+			).toBeUndefined();
+		});
+	});
 });
