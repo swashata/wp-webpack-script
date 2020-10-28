@@ -42,8 +42,8 @@
 		"@types/webpack-env": "1.15.3",
 		"@wpackio/entrypoint": "file:../packages/entrypoint",
 		"execa": "4.1.0",
-		"react": "16.14.0",
-		"react-dom": "16.14.0",
+		"react": "17.0.1",
+		"react-dom": "17.0.1",
 		"react-hot-loader": "4.13.0"
 	}
 }

@@ -29,8 +29,8 @@
     "node-sass": "4.14.1",
     "prismjs": "1.22.0",
     "prop-types": "15.7.2",
-    "react": "16.14.0",
-    "react-dom": "16.14.0",
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
     "react-helmet": "6.1.0",
     "react-typing-animation": "1.6.2"
   },
