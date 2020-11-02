@@ -8,7 +8,7 @@
     "bulma": "0.9.1",
     "classnames": "2.2.6",
     "docsearch.js": "2.6.3",
-    "gatsby": "2.24.91",
+    "gatsby": "2.24.92",
     "gatsby-image": "2.4.21",
     "gatsby-plugin-catch-links": "2.3.15",
     "gatsby-plugin-google-analytics": "2.3.19",
@@ -47,8 +47,8 @@
   "devDependencies": {
     "@wpackio/eslint-config": "file:../packages/eslint-config",
     "eslint": "7.12.1",
-    "gatsby-plugin-sharp": "2.6.43",
-    "gatsby-transformer-sharp": "2.5.20",
+    "gatsby-plugin-sharp": "2.6.44",
+    "gatsby-transformer-sharp": "2.5.21",
     "prettier": "2.1.2"
   },
   "repository": {
