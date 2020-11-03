@@ -7328,10 +7328,10 @@ gatsby-plugin-netlify@2.4.0:
     lodash "^4.17.20"
     webpack-assets-manifest "^3.1.1"
 
-gatsby-plugin-offline@3.3.0:
-  version "3.3.0"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-offline/-/gatsby-plugin-offline-3.3.0.tgz#f2c92fd140504c52f232e6f2ef4b87d3fcb39c98"
-  integrity sha512-v3FBCSh9AVQwY1WDJQhAxNtajuy9cwY3BHxJCEGKo3DBykg4A0hVFktpdO3sxrJXl0I3F3RBeUDQoPF2NJTG/A==
+gatsby-plugin-offline@3.3.1:
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-offline/-/gatsby-plugin-offline-3.3.1.tgz#bee136cabccf6effc5e7f1d313c3d898f1ec7bf8"
+  integrity sha512-OzMn78YqCXMcG0sR7SBWE7ak2J+0wd4vzODELGMXoOQYaRmKRTnTp79jVTV2/scZZoAnW6ebZTvJ2djBJqqd+A==
   dependencies:
     "@babel/runtime" "^7.11.2"
     cheerio "^1.0.0-rc.3"
@@ -7362,10 +7362,10 @@ gatsby-plugin-react-helmet@3.3.14:
   dependencies:
     "@babel/runtime" "^7.11.2"
 
-gatsby-plugin-sass@2.4.0:
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-sass/-/gatsby-plugin-sass-2.4.0.tgz#47a622683ab9456b359b7a8b04a3dd948630e3b1"
-  integrity sha512-DnGa1ddsGt/stv4xcuKsgBnukKj+0RGKKJr6EAptEGg7sNFdr8zYWkyPGmjjb81WfrJzpHpYe78Et4DEyg3ujg==
+gatsby-plugin-sass@2.4.1:
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-sass/-/gatsby-plugin-sass-2.4.1.tgz#f68246a2f7917bd56ae7f6f52eee3c6c3323379b"
+  integrity sha512-Wg1l9WL0P/IvEV1mr7rH0RF8SKOY4AnM4V2L1inZ2ApQlObSnOSwMqaWsK/YqauhjU87vl3n8ank9bZP8t0cxA==
   dependencies:
     "@babel/runtime" "^7.11.2"
     sass-loader "^7.3.1"
