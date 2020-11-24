@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
-    "@svgr/webpack": "5.4.0",
+    "@svgr/webpack": "5.5.0",
     "bulma": "0.9.1",
     "classnames": "2.2.6",
     "docsearch.js": "2.6.3",
