@@ -102,7 +102,7 @@
 		"@wpackio/eslint-config": "^5.0.0",
 		"cross-env": "7.0.2",
 		"dts-gen": "0.6.0",
-		"fork-ts-checker-webpack-plugin": "5.2.1",
+		"fork-ts-checker-webpack-plugin": "6.1.0",
 		"less": "3.12.2",
 		"node-sass": "4.14.1",
 		"typescript": "3.9.7"
