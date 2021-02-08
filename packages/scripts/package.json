@@ -100,7 +100,7 @@
 	},
 	"devDependencies": {
 		"@wpackio/eslint-config": "^5.0.0",
-		"cross-env": "7.0.2",
+		"cross-env": "7.0.3",
 		"dts-gen": "0.6.0",
 		"fork-ts-checker-webpack-plugin": "5.2.1",
 		"less": "3.12.2",
