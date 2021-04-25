@@ -106,6 +106,7 @@
 		"dts-gen": "0.6.0",
 		"eslint": "7.25.0",
 		"fork-ts-checker-webpack-plugin": "5.2.1",
+		"lerna": "4.0.0",
 		"less": "^4.1.1",
 		"node-sass": "^5.0.0",
 		"postcss": "^8.2.12",
