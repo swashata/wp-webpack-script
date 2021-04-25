@@ -61,7 +61,7 @@
 		"make-dir": "^3.1.0",
 		"mini-css-extract-plugin": "^1.5.0",
 		"open": "^8.0.6",
-		"ora": "^4.1.0",
+		"ora": "^5.4.0",
 		"postcss-loader": "4.2.0",
 		"pretty-error": "^2.1.1",
 		"react-refresh": "^0.10.0",
