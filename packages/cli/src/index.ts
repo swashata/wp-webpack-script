@@ -82,6 +82,8 @@ program
 	)
 	.action(() => {
 		const options = program.opts();
+		console.log(options);
+		return;
 		// Select the client
 		let client: 'yarn' | 'npm' = isYarn ? 'yarn' : 'npm';
 		if (options && options.client) {
