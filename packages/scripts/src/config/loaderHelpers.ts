@@ -119,9 +119,7 @@ export function getStyleLoaderUses(
 		{
 			loader: MiniCssExtractPlugin.loader,
 			options: {
-				hmr: isDev,
-				publicpath: isDev ? publicPathUrl : '',
-				sourceMap: true,
+				publicPath: isDev ? publicPathUrl : '',
 			},
 		},
 		{
