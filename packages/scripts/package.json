@@ -52,7 +52,7 @@
 		"execa": "^5.0.0",
 		"figures": "^3.2.0",
 		"file-loader": "^6.0.0",
-		"find-up": "^4.1.0",
+		"find-up": "^5.0.0",
 		"gradient-string": "^1.2.0",
 		"handlebars": "^4.7.7",
 		"inquirer": "^7.3.3",
