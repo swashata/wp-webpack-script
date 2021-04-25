@@ -1,9 +1,9 @@
 import camelCase from 'camelcase';
 import fs from 'fs';
 import handlebars from 'handlebars';
-import inquirer from 'inquirer';
 import path from 'path';
 import slugify from 'slugify';
+import prompts from 'prompts';
 
 interface Pkg {
 	name: string;
@@ -122,73 +122,92 @@ export class Bootstrap {
 		);
 	}
 
-	public async getUserInput(): Promise<inquirer.Answers> {
-		const questions: inquirer.QuestionCollection = [
+	public async getUserInput() {
+		type promptAnswerKeys =
+			| 'type'
+			| 'appName'
+			| 'slug'
+			| 'outputPath'
+			| 'features'
+			| 'watch';
+		// 'plugin', 'theme'
+		const isTheme = this.fileExists(path.resolve(this.cwd, './style.css'));
+		const questions: prompts.PromptObject<promptAnswerKeys>[] = [
 			// Ask type (if style.css present, then theme)
 			{
 				message: 'Type of WordPress Project (plugin or theme)',
 				name: 'type',
-				type: 'list',
-				choices: ['plugin', 'theme'],
-				default: this.fileExists(path.resolve(this.cwd, './style.css'))
-					? 'theme'
-					: 'plugin',
+				type: 'select',
+				choices: [
+					{
+						title: 'Plugin',
+						value: 'plugin',
+					},
+					{
+						title: 'Theme',
+						value: 'theme',
+					},
+				],
+				initial: isTheme ? 'theme' : 'plugin',
+				hint: isTheme
+					? 'We think yours is a THEME'
+					: 'We think yours is a PLUGIN',
 			},
 			// Ask appName (auto-generate from package.json)
 			{
 				message: answers => `Name of WordPress ${answers.type} (camelCase)`,
 				name: 'appName',
-				type: 'input',
-				default: camelCase(this.pkg.name) || '',
-				filter: camelCase,
+				type: 'text',
+				initial: camelCase(this.pkg.name) || '',
+				format: (val: string) => camelCase(val),
 			},
 			// Ask slug (default, directory name)
 			{
 				message: answers =>
 					`Slug (directory name) of your ${answers.type} (alphanumeric & dash)`,
 				name: 'slug',
-				type: 'input',
-				default: slugify(path.basename(this.cwd)),
-				filter: slugify,
+				type: 'text',
+				initial: slugify(path.basename(this.cwd)),
+				format: (val: string) => slugify(val),
 			},
 			// Ask outputPath (relative), defaults 'dist'
 			{
 				message: 'Output path (relative) of compiled files',
 				name: 'outputPath',
-				type: 'input',
-				default: 'dist',
+				type: 'text',
+				initial: 'dist',
 			},
 			// Ask if react, sass, flow needed.
 			{
 				message: 'Check all the features/support you need',
 				name: 'features',
-				type: 'checkbox',
+				type: 'multiselect',
 				choices: [
-					{ name: 'React', value: 'hasReact' },
-					{ name: 'Flowtype', value: 'hasFlow' },
-					{ name: 'Typescript', value: 'hasTS' },
-					{ name: 'Sass/Scss', value: 'hasSass' },
-					{ name: 'Less', value: 'hasLess' },
+					{ title: 'React', value: 'hasReact', selected: true },
+					{ title: 'Flowtype', value: 'hasFlow' },
+					{ title: 'Typescript', value: 'hasTS' },
+					{ title: 'Sass/Scss', value: 'hasSass' },
+					{ title: 'Less', value: 'hasLess', selected: true },
 				],
-				default: ['hasReact', 'hasSass'],
+				hint: '- Space to select. ⏎ Return to submit',
 			},
 			// Ask glob pattern for .php files.
 			{
 				message: 'Glob pattern for watching PHP files for changes',
 				name: 'watch',
-				type: 'input',
-				default: './inc|includes/**/*.php',
+				type: 'text',
+				initial: './inc|includes/**/*.php',
 			},
 		];
 
-		return inquirer.prompt(questions);
+		return prompts(questions);
 	}
 
 	/**
 	 * Create project config file and return user provided context.
 	 */
 	private async initProjectConfig(): Promise<ProjectConfigContext> {
-		// Return the resolved inquirer for further processing
+		// Return the resolved prompts for further processing
 		return this.getUserInput().then(answers => {
 			let author = '';
 			if (typeof this.pkg.author === 'string') {
@@ -227,16 +246,17 @@ export class Bootstrap {
 	 * Create server config file and return user provided context.
 	 */
 	private async initServerConfig(): Promise<ServerConfigContext> {
+		type promptAnswerKeys = 'proxy';
 		// 1. Ask proxy URL.
-		const questions: inquirer.Question[] = [
+		const questions: prompts.PromptObject<promptAnswerKeys>[] = [
 			{
 				name: 'proxy',
 				message: 'URL (with http://) of local development server',
-				type: 'input',
-				default: 'http://localhost:8080',
+				type: 'text',
+				initial: 'http://localhost:8080',
 			},
 		];
-		return inquirer.prompt(questions).then(answers => {
+		return prompts(questions).then(answers => {
 			const context: ServerConfigContext = {
 				proxy: answers.proxy,
 			};
