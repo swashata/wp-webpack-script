@@ -105,9 +105,7 @@ export class Bootstrap {
 			// If project config is present, then just configure the server
 			if (this.isConfigPresent('server')) {
 				// Server is also present, so just bail
-				return Promise.reject(
-					new Error('project is already bootstrapped.')
-				);
+				return Promise.reject(new Error('project is already bootstrapped.'));
 			}
 			// Configure the server
 			const serverContext = await this.initServerConfig();
@@ -138,8 +136,7 @@ export class Bootstrap {
 			},
 			// Ask appName (auto-generate from package.json)
 			{
-				message: answers =>
-					`Name of WordPress ${answers.type} (camelCase)`,
+				message: answers => `Name of WordPress ${answers.type} (camelCase)`,
 				name: 'appName',
 				type: 'input',
 				default: camelCase(this.pkg.name) || '',
@@ -208,31 +205,16 @@ export class Bootstrap {
 				license: this.pkg.license || 'UNLICENSED',
 				outputPath: answers.outputPath,
 				hasReact:
-					answers.features.indexOf('hasReact') !== -1
-						? 'true'
-						: 'false',
-				hasFlow:
-					answers.features.indexOf('hasFlow') !== -1
-						? 'true'
-						: 'false',
-				hasTS:
-					answers.features.indexOf('hasTS') !== -1 ? 'true' : 'false',
-				hasSass:
-					answers.features.indexOf('hasSass') !== -1
-						? 'true'
-						: 'false',
-				hasLess:
-					answers.features.indexOf('hasLess') !== -1
-						? 'true'
-						: 'false',
+					answers.features.indexOf('hasReact') !== -1 ? 'true' : 'false',
+				hasFlow: answers.features.indexOf('hasFlow') !== -1 ? 'true' : 'false',
+				hasTS: answers.features.indexOf('hasTS') !== -1 ? 'true' : 'false',
+				hasSass: answers.features.indexOf('hasSass') !== -1 ? 'true' : 'false',
+				hasLess: answers.features.indexOf('hasLess') !== -1 ? 'true' : 'false',
 				watch: answers.watch,
 			};
 			const source: string = fs
 				.readFileSync(
-					path.resolve(
-						__dirname,
-						'../../templates/wpackio.project.js.hbs'
-					)
+					path.resolve(__dirname, '../../templates/wpackio.project.js.hbs')
 				)
 				.toString();
 			const compiler = handlebars.compile(source);
@@ -260,10 +242,7 @@ export class Bootstrap {
 			};
 			const source: string = fs
 				.readFileSync(
-					path.resolve(
-						__dirname,
-						'../../templates/wpackio.server.js.hbs'
-					)
+					path.resolve(__dirname, '../../templates/wpackio.server.js.hbs')
 				)
 				.toString();
 			const compiler = handlebars.compile(source);
@@ -360,6 +339,11 @@ module.exports = {
 		if (projectContext.hasTS === 'true') {
 			devDependencies.push('typescript');
 			devDependencies.push('fork-ts-checker-webpack-plugin');
+		}
+
+		// always push postcss, starting version 6.0
+		if (!packageFileData.devDependencies['postcss']) {
+			devDependencies.push('postcss');
 		}
 
 		// Write it
