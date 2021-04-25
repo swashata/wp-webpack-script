@@ -59,11 +59,17 @@ Array [
     "verbose": false,
   },
   MiniCssExtractPlugin {
+    "_sortedModulesCache": WeakMap {},
     "options": Object {
       "chunkFilename": "config1/[name]-[contenthash:8].css",
+      "experimentalUseImportModule": false,
       "filename": "config1/[name]-[contenthash:8].css",
       "ignoreOrder": false,
-      "moduleFilename": [Function],
+    },
+    "runtimeOptions": Object {
+      "attributes": undefined,
+      "insert": undefined,
+      "linkType": "text/css",
     },
   },
   Object {},
@@ -127,11 +133,17 @@ Array [
     "verbose": false,
   },
   MiniCssExtractPlugin {
+    "_sortedModulesCache": WeakMap {},
     "options": Object {
       "chunkFilename": "config1/[name].css",
+      "experimentalUseImportModule": false,
       "filename": "config1/[name].css",
       "ignoreOrder": false,
-      "moduleFilename": [Function],
+    },
+    "runtimeOptions": Object {
+      "attributes": undefined,
+      "insert": undefined,
+      "linkType": "text/css",
     },
   },
   Object {},
