@@ -61,9 +61,7 @@ export function printWatchingMessage() {
 
 export function printCompilingMessage() {
 	console.log(
-		addTimeStampToLog(
-			`${logSymbols.info} compiling changes${watchEllipsis}`
-		)
+		addTimeStampToLog(`${logSymbols.info} compiling changes${watchEllipsis}`)
 	);
 }
 
@@ -108,9 +106,7 @@ export function printCompileTimeMessage(stat: any, lastStat: any | null) {
 
 		console.log(
 			addTimeStampToLog(
-				`${symbol} ${name}bundle ${msg} ${chalk.magenta(
-					`${stat.time}ms`
-				)}.`
+				`${symbol} ${name}bundle ${msg} ${chalk.magenta(`${stat.time}ms`)}.`
 			)
 		);
 	}
@@ -173,9 +169,7 @@ export function printCompileTimeMessages(
 }
 
 export function printSuccessfullyCompiledMessage() {
-	console.log(
-		addTimeStampToLog(`${logSymbols.success} compiled successfully`)
-	);
+	console.log(addTimeStampToLog(`${logSymbols.success} compiled successfully`));
 }
 
 export function printCompiledWithWarnMessage() {
@@ -188,9 +182,7 @@ export function printCompiledWithWarnMessage() {
 
 export function printFailedCompileMEssage() {
 	console.error(
-		addTimeStampToLog(
-			`${logSymbols.error} ${chalk.dim('failed to compile')}`
-		)
+		addTimeStampToLog(`${logSymbols.error} ${chalk.dim('failed to compile')}`)
 	);
 }
 
@@ -216,9 +208,7 @@ export function printWarningHeading(msg: string = 'WARNING'): void {
 
 export function printSuccessHeading(msg: string = 'OUTPUT'): void {
 	console.log('');
-	console.log(
-		`${chalk.bgGreenBright(chalk.bold.hex('#000000')(` ${msg} `))}`
-	);
+	console.log(`${chalk.bgGreenBright(chalk.bold.hex('#000000')(` ${msg} `))}`);
 	console.log('');
 }
 
@@ -279,9 +269,7 @@ export function serverInfo(url: string, uiUrl: string | boolean): void {
 and BrowserSync UI running at
 
     ${bulletSymbol} ${
-		typeof uiUrl === 'string'
-			? chalk.blue.underline(uiUrl)
-			: chalk.red('N/A')
+		typeof uiUrl === 'string' ? chalk.blue.underline(uiUrl) : chalk.red('N/A')
 	}
 
 Press ${chalk.yellow('r')} to recompile and ${chalk.yellow('q')} to force quit.
@@ -444,9 +432,7 @@ export function getFileCopyProgress(progress?: ProgressData): string {
 	let filesDone = 0;
 	let size = 0;
 	if (progress) {
-		done = Math.round(
-			(progress.completedFiles / progress.totalFiles) * 100
-		);
+		done = Math.round((progress.completedFiles / progress.totalFiles) * 100);
 		// eslint-disable-next-line prefer-destructuring
 		totalFiles = progress.totalFiles;
 		filesDone = progress.completedFiles;
@@ -474,11 +460,9 @@ export function getZipProgress(data?: archiver.ProgressData): string {
 	const done = Math.round((entriesProcessed / entriesTotal) * 100);
 	return `creating zip ${getProgressBar(done)} ${chalk.magenta(
 		entriesProcessed.toString()
-	)}${chalk.dim('/')}${chalk.cyan(
-		entriesTotal.toString()
-	)} Files ${chalk.blue((bytesProcessed / 1024).toFixed(2))}${chalk.dim(
-		'/'
-	)}${chalk.cyan((bytesTotal / 1024).toFixed(2))} KB`;
+	)}${chalk.dim('/')}${chalk.cyan(entriesTotal.toString())} Files ${chalk.blue(
+		(bytesProcessed / 1024).toFixed(2)
+	)}${chalk.dim('/')}${chalk.cyan((bytesTotal / 1024).toFixed(2))} KB`;
 }
 
 export function endPackInfo(results: ArchiveResolve): void {

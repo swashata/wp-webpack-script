@@ -53,9 +53,7 @@ export function validateProjectConfig(projectConfig: ProjectConfig): boolean {
 	if (
 		!projectConfig.files.every(
 			file =>
-				typeof file === 'object' &&
-				file.name != null &&
-				file.entry != null
+				typeof file === 'object' && file.name != null && file.entry != null
 		)
 	) {
 		throw new WpackioError(
@@ -174,9 +172,7 @@ export function getServerConfig(
 	// This is how path.resolve works.
 	const serverConfigPath = path.resolve(
 		cwd,
-		options && options.serverConfig
-			? options.serverConfig
-			: 'wpackio.server.js'
+		options && options.serverConfig ? options.serverConfig : 'wpackio.server.js'
 	);
 	// Now create the configuration objects
 	let serverConfig: ServerConfig;

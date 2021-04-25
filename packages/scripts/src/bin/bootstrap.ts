@@ -38,15 +38,19 @@ export async function bootstrap(
 						'./wpackio.project.js'
 					)}`
 				);
-			} else {
+			} else if (done.configured === 'server') {
 				console.log(`${logSymbols.success} server configuration complete!`);
+				console.log(
+					`${logSymbols.success} server config created at ${chalk.yellow(
+						'./wpackio.server.js'
+					)}`
+				);
+			} else {
+				console.log(
+					`${logSymbols.info} project and server configuration already present.`
+				);
+				console.log(`${logSymbols.info} updating dependencies.`);
 			}
-
-			console.log(
-				`${logSymbols.success} server config created at ${chalk.yellow(
-					'./wpackio.server.js'
-				)}`
-			);
 
 			// Install all dependencies from `done` if any
 			const command = isYarn() ? 'yarn' : 'npm';
@@ -101,13 +105,10 @@ export async function bootstrap(
 				}
 			}
 		} catch (e) {
-			console.log(e);
 			console.log(
-				`${logSymbols.error} configuration files are already present.`
+				`${logSymbols.error} something went wrong trying to bootstrap.`
 			);
-			console.log(
-				`${logSymbols.info} change the file code if you wish to modify the tooling.`
-			);
+			console.log(pe.render(e));
 		}
 
 		// Log how to access and start, develop, build etc.
