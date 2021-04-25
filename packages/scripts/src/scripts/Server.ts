@@ -164,8 +164,6 @@ export class Server {
 		const devMiddleware = webpackDevMiddleware(compiler, {
 			stats: false,
 			publicPath: this.webpackConfig.getPublicPath(),
-			logLevel: 'silent',
-			logTime: false,
 		} as webpackDevMiddleware.Options);
 
 		const hotMiddleware = webpackHotMiddleware(compiler, {

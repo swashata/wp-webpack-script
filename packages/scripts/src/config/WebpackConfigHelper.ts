@@ -66,6 +66,7 @@ interface CommonWebpackConfig {
 	mode: webpack.Configuration['mode'];
 	name: webpack.Configuration['name'];
 	externals: webpack.Configuration['externals'];
+	infrastructureLogging: any;
 }
 
 /**
@@ -648,6 +649,9 @@ ${bannerConfig.copyrightText}${bannerConfig.credit ? creditNote : ''}`,
 			mode: this.env,
 			name: this.file.name,
 			externals: this.config.externals,
+			infrastructureLogging: {
+				level: 'none',
+			},
 		};
 	}
 
