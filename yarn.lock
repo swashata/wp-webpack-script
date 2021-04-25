@@ -2294,13 +2294,6 @@
     "@types/interpret" "*"
     "@types/node" "*"
 
-"@types/memory-fs@*":
-  version "0.3.3"
-  resolved "https://registry.yarnpkg.com/@types/memory-fs/-/memory-fs-0.3.3.tgz#9b63b353d4b9b190db19caa765778bede3fe5d95"
-  integrity sha512-rLEYzl1xODshz+Lm+YX8NYws8Xw7/qcYbQInMkotl96VpLZmUvoCfYYGxfajMSiugANV02QO5Fc+R98KKeE4gQ==
-  dependencies:
-    "@types/node" "*"
-
 "@types/micromatch@^2":
   version "2.3.30"
   resolved "https://registry.yarnpkg.com/@types/micromatch/-/micromatch-2.3.30.tgz#c2a143675f200fbcebe57fb0dab0cbf58093d4b0"
@@ -2421,15 +2414,13 @@
     "@types/tapable" "^1"
     "@types/webpack" "^4"
 
-"@types/webpack-dev-middleware@^3.7.1":
-  version "3.7.4"
-  resolved "https://registry.yarnpkg.com/@types/webpack-dev-middleware/-/webpack-dev-middleware-3.7.4.tgz#5190360d93cbfff51ab09167e92ea5f3a0e251dc"
-  integrity sha512-NV7qwBHYYOxgUo3PB12bBngpW7I4JY2AZTVLszmeNkmGH8DCgBTXKyc9t9KLaaATE07A9bXeJmyHFaE5OiV6mA==
+"@types/webpack-dev-middleware@^4.1.2":
+  version "4.1.2"
+  resolved "https://registry.yarnpkg.com/@types/webpack-dev-middleware/-/webpack-dev-middleware-4.1.2.tgz#c683adc6a44d0b66e98f1932ab33d1c32d558142"
+  integrity sha512-SxXzPCqeZ03fJ2dg3iD7cSXvqZymmS5/2GD9fANRcyWN7HYK1H3ty6q7IInXZKvPrdUqij831G3RLIeKK6aGdw==
   dependencies:
     "@types/connect" "*"
-    "@types/memory-fs" "*"
     "@types/webpack" "^4"
-    loglevel "^1.6.2"
 
 "@types/webpack-env@^1.15.2":
   version "1.16.0"
@@ -8421,11 +8412,6 @@ log-symbols@^4.0.0, log-symbols@^4.1.0:
   dependencies:
     chalk "^4.1.0"
     is-unicode-supported "^0.1.0"
-
-loglevel@^1.6.2:
-  version "1.7.1"
-  resolved "https://registry.yarnpkg.com/loglevel/-/loglevel-1.7.1.tgz#005fde2f5e6e47068f935ff28573e125ef72f197"
-  integrity sha512-Hesni4s5UkWkwCGJMQGAh71PaLUmKFM60dHvq0zi/vDhhrzuk+4GgNbTXJ12YYQJn6ZKBDNIjYcuQGKudvqrIw==
 
 loose-envify@^1.4.0:
   version "1.4.0"

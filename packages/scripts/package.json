@@ -33,7 +33,7 @@
 		"@types/update-notifier": "^5.0.0",
 		"@types/webpack": "^4.41.8",
 		"@types/webpack-assets-manifest": "^3.0.1",
-		"@types/webpack-dev-middleware": "^3.7.1",
+		"@types/webpack-dev-middleware": "^4.1.2",
 		"@types/webpack-env": "^1.15.2",
 		"@types/webpack-hot-middleware": "^2.25.3",
 		"@wpackio/babel-preset-base": "^5.0.0",
