@@ -58,8 +58,8 @@ export class CreateWebpackConfig {
 
 		// filter project if needed
 		if (entries && entries.length) {
-			this.projectConfig.files = this.projectConfig.files.filter(
-				(f, index) => entries.includes(index)
+			this.projectConfig.files = this.projectConfig.files.filter((f, index) =>
+				entries.includes(index)
 			);
 		}
 
