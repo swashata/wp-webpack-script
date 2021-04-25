@@ -11,13 +11,7 @@ const ex = require('./config/extends');
 
 module.exports = {
 	env,
-	extends: [
-		...ex,
-		'prettier/babel',
-		'plugin:prettier/recommended',
-		'prettier',
-		'prettier/react',
-	],
+	extends: [...ex, 'plugin:prettier/recommended'],
 	parser: 'babel-eslint',
 	parserOptions: {
 		ecmaVersion: 2018,

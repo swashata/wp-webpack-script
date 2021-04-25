@@ -15,19 +15,19 @@
   "license": "MIT",
   "private": false,
   "dependencies": {
-    "@typescript-eslint/eslint-plugin": "3.10.1",
-    "@typescript-eslint/parser": "3.10.1",
+    "@typescript-eslint/eslint-plugin": "4.22.0",
+    "@typescript-eslint/parser": "4.22.0",
     "babel-eslint": "^10.1.0",
-    "eslint-config-airbnb": "^18.2.0",
-    "eslint-config-prettier": "^6.11.0",
-    "eslint-import-resolver-typescript": "2.3.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-import-resolver-typescript": "2.4.0",
     "eslint-plugin-babel": "^5.3.1",
-    "eslint-plugin-import": "^2.22.0",
-    "eslint-plugin-jest": "^23.20.0",
-    "eslint-plugin-jsx-a11y": "^6.3.1",
-    "eslint-plugin-prettier": "^3.1.4",
-    "eslint-plugin-react": "^7.20.5",
-    "eslint-plugin-react-hooks": "^4.0.8"
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jest": "^24.3.5",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-react": "^7.23.2",
+    "eslint-plugin-react-hooks": "^4.2.0"
   },
   "engines": {
     "node": ">=8.9.0"
@@ -39,7 +39,7 @@
     "access": "public"
   },
   "devDependencies": {
-    "eslint": "7.14.0",
+    "eslint": "7.25.0",
     "prettier": "2.2.1"
   }
 }
