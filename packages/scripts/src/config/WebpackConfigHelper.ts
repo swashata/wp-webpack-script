@@ -291,9 +291,7 @@ export class WebpackConfigHelper {
 			// Clean dist directory
 			(new CleanWebpackPlugin({
 				verbose: false,
-				cleanOnceBeforeBuildPatterns: [
-					`${this.outputPath}/${this.appDir}`,
-				],
+				cleanOnceBeforeBuildPatterns: [`${this.outputPath}/${this.appDir}`],
 			}) as unknown) as webpack.Plugin,
 			// Initiate mini css extract
 			new MiniCssExtractPlugin({
@@ -534,11 +532,7 @@ ${bannerConfig.copyrightText}${bannerConfig.credit ? creditNote : ''}`,
 			{
 				test: /\.css$/,
 				use: [
-					...getStyleLoaderUses(
-						this.isDev,
-						this.config.publicPathUrl,
-						false
-					),
+					...getStyleLoaderUses(this.isDev, this.config.publicPathUrl, false),
 				],
 			},
 		];
@@ -547,11 +541,7 @@ ${bannerConfig.copyrightText}${bannerConfig.credit ? creditNote : ''}`,
 			styleRules.push({
 				test: /\.s(a|c)ss$/,
 				use: [
-					...getStyleLoaderUses(
-						this.isDev,
-						this.config.publicPathUrl,
-						true
-					),
+					...getStyleLoaderUses(this.isDev, this.config.publicPathUrl, true),
 					{
 						loader: require.resolve('sass-loader'),
 						options: {
@@ -566,11 +556,7 @@ ${bannerConfig.copyrightText}${bannerConfig.credit ? creditNote : ''}`,
 			styleRules.push({
 				test: /\.less$/,
 				use: [
-					...getStyleLoaderUses(
-						this.isDev,
-						this.config.publicPathUrl,
-						true
-					),
+					...getStyleLoaderUses(this.isDev, this.config.publicPathUrl, true),
 					{
 						loader: require.resolve('less-loader'),
 						options: {
@@ -608,8 +594,7 @@ ${bannerConfig.copyrightText}${bannerConfig.credit ? creditNote : ''}`,
 	public getResolve(): webpack.Resolve {
 		return {
 			extensions: ['.mjs', '.js', '.jsx', '.ts', '.tsx'],
-			alias:
-				this.config.alias !== undefined ? { ...this.config.alias } : {},
+			alias: this.config.alias !== undefined ? { ...this.config.alias } : {},
 		};
 	}
 

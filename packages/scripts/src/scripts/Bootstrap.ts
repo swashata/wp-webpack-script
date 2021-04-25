@@ -4,6 +4,8 @@ import handlebars from 'handlebars';
 import path from 'path';
 import slugify from 'slugify';
 import prompts from 'prompts';
+import { getProjectConfig } from '../config/getProjectAndServerConfig';
+import { hasTypeScript } from '../config/WebpackConfigHelper';
 
 interface Pkg {
 	name: string;
@@ -46,7 +48,7 @@ export interface ProjectDependencies {
 }
 
 class InitResolve {
-	public configured: 'project' | 'server';
+	public configured: 'project' | 'server' | 'deps';
 
 	public projectConfigContext?: ProjectConfigContext;
 
@@ -55,7 +57,7 @@ class InitResolve {
 	public deps?: ProjectDependencies;
 
 	constructor(
-		configured: 'project' | 'server',
+		configured: 'project' | 'server' | 'deps',
 		serverConfigContext?: ServerConfigContext,
 		projectConfigContext?: ProjectConfigContext,
 		deps?: ProjectDependencies
@@ -102,14 +104,34 @@ export class Bootstrap {
 
 	public async bootstrap(): Promise<InitResolve> {
 		if (this.isConfigPresent('project')) {
+			const config = getProjectConfig(this.cwd).projectConfig;
+			const projectContext: ProjectConfigContext = {
+				appName: config.appName,
+				author: '',
+				hasFlow: config.hasFlow ? 'true' : 'false',
+				hasLess: config.hasLess ? 'true' : 'false',
+				hasReact: config.hasReact ? 'true' : 'false',
+				hasSass: config.hasSass ? 'true' : 'false',
+				hasTS: hasTypeScript(this.cwd)[0] ? 'true' : 'false',
+				license: '',
+				outputPath: config.outputPath,
+				slug: config.slug,
+				type: config.type,
+				watch: '',
+			};
+			const deps = this.getDependencies(projectContext);
 			// If project config is present, then just configure the server
 			if (this.isConfigPresent('server')) {
-				// Server is also present, so just bail
-				return Promise.reject(new Error('project is already bootstrapped.'));
+				// since server config is present, we make a dep type resolver
+				return Promise.resolve(
+					new InitResolve('deps', undefined, undefined, deps)
+				);
 			}
 			// Configure the server
 			const serverContext = await this.initServerConfig();
-			return Promise.resolve(new InitResolve('server', serverContext));
+			return Promise.resolve(
+				new InitResolve('server', serverContext, projectContext, deps)
+			);
 		}
 		// When project config is not present, we don't care about other stuff
 		// We will override them. So call everything
@@ -334,6 +356,23 @@ module.exports = {
 			}
 		});
 
+		// Write it
+		fs.writeFileSync(
+			this.packageJsonPath,
+			JSON.stringify(packageFileData, null, 2)
+		);
+
+		// Return dependencies
+		return this.getDependencies(projectContext);
+	}
+
+	private getDependencies(projectContext: ProjectConfigContext) {
+		const packageFileData: Pkg = this.fileExists(this.packageJsonPath)
+			? // eslint-disable-next-line global-require
+			  require(this.packageJsonPath)
+			: {
+					name: projectContext.appName,
+			  };
 		// Add dependencies of @wpackio/entrypoint and @wpackio/scripts if needed
 		const dependencies: string[] = ['@wpackio/entrypoint'];
 		const devDependencies: string[] = [];
@@ -364,13 +403,6 @@ module.exports = {
 		// always push postcss, starting version 6.0
 		devDependencies.push('postcss');
 
-		// Write it
-		fs.writeFileSync(
-			this.packageJsonPath,
-			JSON.stringify(packageFileData, null, 2)
-		);
-
-		// Return dependencies
 		return { dependencies, devDependencies };
 	}
 
