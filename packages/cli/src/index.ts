@@ -69,9 +69,7 @@ interface Package {
 	private: boolean;
 	scripts?: { [x: string]: string };
 }
-interface ProgramOption {
-	client?: string;
-}
+
 // eslint-disable-next-line global-require, @typescript-eslint/no-var-requires
 const pkg = require('../package.json') as Package;
 
@@ -80,11 +78,10 @@ program
 	.description('Bootstrap @wpackio/scripts into your project.')
 	.option(
 		'-c, --client [client]',
-		`Which npm client to use. ${chalk.yellow('npm')} or ${chalk.yellow(
-			'yarn'
-		)}`
+		`Which npm client to use. ${chalk.yellow('npm')} or ${chalk.yellow('yarn')}`
 	)
-	.action((options?: ProgramOption) => {
+	.action(() => {
+		const options = program.opts();
 		// Select the client
 		let client: 'yarn' | 'npm' = isYarn ? 'yarn' : 'npm';
 		if (options && options.client) {
@@ -104,22 +101,15 @@ program
 		// Get path of packagejson
 		const pkgJsonPath = path.resolve(cwd, './package.json');
 		// Execute
-		console.log(
-			`${symInfo} bootstrapping @wpackio/scripts into your project`
-		);
+		console.log(`${symInfo} bootstrapping @wpackio/scripts into your project`);
 		console.log(`${symInfo} using client ${chalk.yellow(client)}`);
 		if (hasPackageJson) {
 			console.log(`${symInfo} ${chalk.yellow('package.json')} found`);
 		} else {
 			console.log(
-				`${symInfo} ${chalk.red(
-					'package.json'
-				)} not found, creating one`
+				`${symInfo} ${chalk.red('package.json')} not found, creating one`
 			);
-			fs.writeFileSync(
-				pkgJsonPath,
-				JSON.stringify(packageJson, undefined, 2)
-			);
+			fs.writeFileSync(pkgJsonPath, JSON.stringify(packageJson, undefined, 2));
 			console.log(`${symSucc} created package.json file`);
 		}
 		console.log(`${symInfo} adding dependencies`);
@@ -129,12 +119,8 @@ program
 			console.log(
 				`${symWarn} there was some error installing the dependencies`
 			);
-			console.log(
-				`${symWarn} please check and take corresponding actions`
-			);
-			console.log(
-				`${symWarn} trying to continue since this can be non-fatal`
-			);
+			console.log(`${symWarn} please check and take corresponding actions`);
+			console.log(`${symWarn} trying to continue since this can be non-fatal`);
 		} else {
 			console.log(`${symSucc} added dependencies`);
 		}
