@@ -342,9 +342,7 @@ module.exports = {
 		}
 
 		// always push postcss, starting version 6.0
-		if (!packageFileData.devDependencies['postcss']) {
-			devDependencies.push('postcss');
-		}
+		devDependencies.push('postcss');
 
 		// Write it
 		fs.writeFileSync(
