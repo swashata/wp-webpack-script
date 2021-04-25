@@ -5,11 +5,21 @@
   "main": "index.js",
   "scripts": {
     "dev": "../../packages/scripts/lib/bin/index.js",
-    "cli": "../../packages/cli/lib/index.js"
+    "cli": "../../packages/cli/lib/index.js",
+    "bootstrap": "wpackio-scripts bootstrap",
+    "build": "wpackio-scripts build",
+    "start": "wpackio-scripts start",
+    "archive": "wpackio-scripts pack"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {},
-  "devDependencies": {}
+  "dependencies": {
+    "@wpackio/entrypoint": "^5.0.0"
+  },
+  "devDependencies": {
+    "@wpackio/scripts": "^5.0.0",
+    "less": "^4.1.1",
+    "postcss": "^8.2.12"
+  }
 }

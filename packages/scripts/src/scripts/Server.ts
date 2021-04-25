@@ -6,7 +6,7 @@ import webpack from 'webpack';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 import logSymbols from 'log-symbols';
-import inquirer from 'inquirer';
+import prompts from 'prompts';
 
 import {
 	typescriptFormatter,
@@ -73,19 +73,20 @@ export class Server {
 	static async getEntriesSelection(
 		projectConfig: ProjectConfig
 	): Promise<number[]> {
-		const questions: inquirer.QuestionCollection = [
+		type promptAnswerKeys = 'entries';
+		const questions: prompts.PromptObject<promptAnswerKeys>[] = [
 			{
 				message: 'Select projects to start',
 				name: 'entries',
-				type: 'checkbox',
+				type: 'multiselect',
 				choices: projectConfig.files.map((f, i) => ({
 					value: i,
-					name: `[${i}] ${f.name || `CONFIG ${i}`}`,
+					title: `[${i}] ${f.name || `CONFIG ${i}`}`,
 				})),
 			},
 		];
 
-		const answer = await inquirer.prompt(questions);
+		const answer = await prompts(questions);
 		return answer.entries.map((i: string) => Number.parseInt(i, 10));
 	}
 
@@ -134,9 +135,7 @@ export class Server {
 	public serve(): void {
 		// If server is already running, then throw
 		if (this.isServing) {
-			throw new Error(
-				'Can not serve while the server is already running.'
-			);
+			throw new Error('Can not serve while the server is already running.');
 		}
 		// Create browserSync Instance
 		const bs = browserSync.create();
@@ -308,10 +307,7 @@ export class Server {
 				);
 			} catch (e) {
 				// do nothing
-				this.callbacks.onInfo(
-					`could not open browser`,
-					logSymbols.error
-				);
+				this.callbacks.onInfo(`could not open browser`, logSymbols.error);
 			}
 			this.isBrowserOpened = true;
 		}
@@ -431,16 +427,11 @@ export class Server {
 		});
 
 		tsHooks.issues.tap('afterTypeScriptCheck', (issues: issueType[]) => {
-			const format = (message: any) =>
-				typescriptFormatter(message, this.cwd);
+			const format = (message: any) => typescriptFormatter(message, this.cwd);
 
 			tsMessagesResolver({
-				errors: issues
-					.filter(msg => msg.severity === 'error')
-					.map(format),
-				warnings: issues
-					.filter(msg => msg.severity === 'warning')
-					.map(format),
+				errors: issues.filter(msg => msg.severity === 'error').map(format),
+				warnings: issues.filter(msg => msg.severity === 'warning').map(format),
 				name: compiler.name,
 			});
 		});

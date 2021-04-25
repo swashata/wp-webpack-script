@@ -34,16 +34,12 @@ export async function bootstrap(
 					`${logSymbols.success} ${wpackLogoSmall} bootstrap complete!`
 				);
 				console.log(
-					`${
-						logSymbols.success
-					} project config created at ${chalk.yellow(
+					`${logSymbols.success} project config created at ${chalk.yellow(
 						'./wpackio.project.js'
 					)}`
 				);
 			} else {
-				console.log(
-					`${logSymbols.success} server configuration complete!`
-				);
+				console.log(`${logSymbols.success} server configuration complete!`);
 			}
 
 			console.log(
@@ -60,9 +56,7 @@ export async function bootstrap(
 
 			if (done.deps && done.deps.dependencies.length) {
 				console.log(
-					`${
-						logSymbols.info
-					} need to install following ${chalk.yellow(
+					`${logSymbols.info} need to install following ${chalk.yellow(
 						'dependencies'
 					)}\n`
 				);
@@ -85,9 +79,7 @@ export async function bootstrap(
 			}
 			if (done.deps && done.deps.devDependencies.length) {
 				console.log(
-					`${
-						logSymbols.info
-					} need to install following ${chalk.yellow(
+					`${logSymbols.info} need to install following ${chalk.yellow(
 						'dev dependencies'
 					)}\n`
 				);
@@ -101,11 +93,7 @@ export async function bootstrap(
 				);
 
 				try {
-					await execa(command, [
-						add,
-						...done.deps.devDependencies,
-						devParam,
-					]);
+					await execa(command, [add, ...done.deps.devDependencies, devParam]);
 					spinner.succeed('done installing devDependencies\n');
 				} catch (e) {
 					spinner.fail('could not install all devDependencies');
@@ -113,6 +101,7 @@ export async function bootstrap(
 				}
 			}
 		} catch (e) {
+			console.log(e);
 			console.log(
 				`${logSymbols.error} configuration files are already present.`
 			);
