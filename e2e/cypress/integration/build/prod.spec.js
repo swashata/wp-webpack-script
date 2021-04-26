@@ -13,6 +13,9 @@ context('wpackio-scripts serve', () => {
 		it('dynamic import should work', () => {
 			cy.get('#dyn-app').should('have.text', 'I am dynamically imported');
 		});
+		it('custom env should work', () => {
+			cy.get('#env-app').should('have.text', 'Hello Tryout undefined');
+		});
 		it('SASS should work', () => {
 			cy.get('#blue').should('have.css', 'color', 'rgb(0, 0, 255)');
 		});

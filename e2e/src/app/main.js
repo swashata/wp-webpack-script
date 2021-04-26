@@ -13,10 +13,12 @@ const path = (__WPACKIO__.appName + __WPACKIO__.outputPath).replace(
 console.log(path);
 
 const mainNode = document.querySelector('#main-app');
+const envNode = document.querySelector('#env-app');
 const dynamicNode = document.querySelector('#dyn-app');
 const imgTag = document.querySelector('#img-tag');
 
 mainNode.textContent = 'This is main app';
+envNode.textContent = `${process.env.E2E_ENV} ${process.env.NOT_PRESENT}`;
 imgTag.innerHTML = `<img src="${img}" />`;
 
 import('./dynamic').then(({ dynamic }) => {
