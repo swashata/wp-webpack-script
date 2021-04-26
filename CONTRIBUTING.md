@@ -6,10 +6,10 @@ First off, thank you for considering contributing to `wpackio`. It's people like
 
 Prerequisites:
 
--   Familiarity with [pull requests](https://help.github.com/articles/using-pull-requests) and [issues](https://guides.github.com/features/issues/).
--   Knowledge of [JavaScript](https://developer.mozilla.org/bm/docs/Web/JavaScript), [Typescript](https://www.typescriptlang.org/), [webpack](https://webpack.js.org/) and [WordPress API](https://developer.wordpress.org).
--   Concepts of [monorepo and lerna](https://lernajs.io/).
--   A strong passion 🔥.
+- Familiarity with [pull requests](https://help.github.com/articles/using-pull-requests) and [issues](https://guides.github.com/features/issues/).
+- Knowledge of [JavaScript](https://developer.mozilla.org/bm/docs/Web/JavaScript), [Typescript](https://www.typescriptlang.org/), [webpack](https://webpack.js.org/) and [WordPress API](https://developer.wordpress.org).
+- Concepts of [monorepo and lerna](https://lernajs.io/).
+- A strong passion 🔥.
 
 Now let's dive in.
 
@@ -45,6 +45,18 @@ We don't use `tsc` to compile, we use `babel 7`.
 
 This will bump version and publish. Make sure you have access to `@wpackio` npm org
 or ask a maintainer.
+
+#### RELEASING CANARY
+
+```bash
+yarn lerna publish --canary --preid next
+```
+
+#### RELEASING CANARY FOR NEXT MAJOR VERSION
+
+```bash
+yarn lerna publish premajor --canary --preid next
+```
 
 ## Financial contributions
 
