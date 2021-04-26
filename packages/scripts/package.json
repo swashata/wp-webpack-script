@@ -56,7 +56,6 @@
 		"find-up": "^5.0.0",
 		"gradient-string": "^1.2.0",
 		"handlebars": "^4.7.7",
-		"json2php": "^0.0.4",
 		"less-loader": "7.3.0",
 		"lockfile": "^1.0.4",
 		"log-symbols": "^4.0.0",
