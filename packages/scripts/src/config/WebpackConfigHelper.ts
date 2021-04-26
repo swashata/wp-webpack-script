@@ -268,6 +268,7 @@ export class WebpackConfigHelper {
 			new webpack.DefinePlugin({
 				'process.env.NODE_ENV': JSON.stringify(this.env),
 				'process.env.BABEL_ENV': JSON.stringify(this.env),
+				...this.getEnvVariables(),
 				// Our own access to project config from the modules
 				// mainly needed for the publicPath entrypoint
 				__WPACKIO__: {
@@ -716,6 +717,19 @@ ${bannerConfig.copyrightText}${bannerConfig.credit ? creditNote : ''}`,
 		}
 		// Otherwise just return default
 		return defaults;
+	}
+
+	private getEnvVariables() {
+		const envVariables: Record<string, any> = {};
+		const match = 'WPACKIO_';
+		Object.keys(process.env ?? {}).forEach(key => {
+			if (key.startsWith(match)) {
+				envVariables[
+					`process.env.${key.substring(match.length)}`
+				] = JSON.stringify(process.env[key]);
+			}
+		});
+		return envVariables;
 	}
 
 	/**

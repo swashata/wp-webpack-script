@@ -3,6 +3,7 @@ import chalk from 'chalk';
 import program from 'commander';
 import path from 'path';
 import updateNotifier from 'update-notifier';
+import dotenv from 'dotenv';
 
 import { clearConsole } from '../dev-utils';
 import { bootstrap } from './bootstrap';
@@ -10,6 +11,8 @@ import { build } from './build';
 import { pack } from './pack';
 import { serve } from './serve';
 import { bulletSymbol, contextHelp, printIntro } from './utils';
+
+dotenv.config();
 
 export interface ProgramOptions {
 	context?: string;
