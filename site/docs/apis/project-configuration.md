@@ -38,6 +38,12 @@ module.exports = {
 				main: ['./src/app/index.js'],
 				mobile: ['./src/app/mobile.js'],
 			},
+			// If enabled, all WordPress provided external scripts, including React
+			// and ReactDOM are aliased automatically. Do note that all `@wordpress`
+			// namespaced imports are automatically aliased and enqueued by the
+			// PHP library. It will not change the JSX pragma because of external
+			// dependencies.
+			optimizeForGutenberg: false,
 			// Extra webpack config to be passed directly
 			webpackConfig: undefined,
 		},
@@ -64,6 +70,10 @@ module.exports = {
 	// Project specific config
 	// Needs react?
 	hasReact: true,
+	// Whether or not to use the new jsx runtime introduced in React 17
+	// this is opt-in
+	// @see {https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html}
+	useReactJsxRuntime: false,
 	// Disable react refresh
 	disableReactRefresh: false,
 	// Needs sass?
@@ -155,17 +165,14 @@ it has to be an array of object of a certain shape. First let us see an example.
 
 ```js
 module.exports = {
-	// ...
-	// Files we need to compile, and where to put
 	files: [
-		// If this has length === 1, then single compiler
 		{
 			name: 'app',
 			entry: {
 				main: ['./src/app/index.js'],
 				mobile: ['./src/app/mobile.js'],
 			},
-			// Extra webpack config to be passed directly
+			optimizeForGutenberg: false,
 			webpackConfig: undefined,
 		},
 	],
@@ -197,7 +204,6 @@ interface EntryConfig {
 interface FileConfig {
 	name: string;
 	entry: EntryConfig;
-	typeWatchFiles?: string[];
 	hasTypeScript?: boolean;
 	webpackConfig?:
 		| webpack.Configuration
@@ -239,6 +245,17 @@ code.
 
 It can support both webpack configuration objects or function to get further
 control. Kindly read the [_Extending Webpack Config_](/tutorials/extending-webpack-config/) under [tutorials](/tutorials/).
+
+#### `optimizeForGutenberg` (`boolean`):
+
+_since v6.0.0_
+
+If enabled, then all of WordPress managed JavaScript files, including, React,
+ReactDOM, lodash, lodash-es, jQuery and everything under `@wordpress` namespace
+are automatically marked externals and loaded from global `wp` object.
+
+The new PHP library automatically takes care of loading those WordPress scripts
+so you don't have to do anything from your part.
 
 ##### Callback Function
 
@@ -291,6 +308,13 @@ You can not pass `rel/path/to/dist` here.
 
 Where you need support for react specific presets, like `jsx`.
 
+## `useReactJsxRuntime` (`boolean`):
+
+_since v6.0.0_
+
+Whether or not to use the new jsx runtime introduced in React 17. This is opt-in
+as of now. Please see [here for implications](https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html).
+
 ## `disableReactRefresh` (`boolean`):
 
 When you have react for your project, wpackio will use react fast refresh
@@ -341,8 +365,6 @@ incorporate [react hot loader](https://github.com/gaearon/react-hot-loader).
 
 ```js
 module.exports = {
-	// ...
-	// Hook into babeloverride so that we can add react-hot-loader plugin
 	jsBabelOverride: defaults => ({
 		...defaults,
 		plugins: ['react-hot-loader/babel'],
@@ -382,7 +404,6 @@ files and reload browser on change. Useful for watching `.php` files.
 
 ```js
 module.exports = {
-	// ...
 	watch: './(inc|includes)/**/*.php',
 };
 ```
