@@ -1,6 +1,5 @@
 /* eslint-disable no-restricted-syntax */
 import webpack, { Compiler } from 'webpack';
-import json2php from 'json2php';
 import path from 'path';
 import fs from 'fs';
 
@@ -86,7 +85,7 @@ export class DependencyExtractionWebpackPlugin {
 	}
 
 	stringify(asset: any) {
-		return `<?php return ${json2php(JSON.parse(JSON.stringify(asset)))};`;
+		return JSON.stringify(asset, null, 2);
 	}
 
 	/**
@@ -144,7 +143,9 @@ export class DependencyExtractionWebpackPlugin {
 
 			const assetString = this.stringify(assetData);
 
-			const fileName = `${entrypointName.split('?', 2)[0]}.dependencies.wp.php`;
+			const fileName = `${
+				entrypointName.split('?', 2)[0]
+			}.dependencies.wp.json`;
 			const outputPath = path.resolve(
 				this.compiler.outputPath,
 				this.options.appDir,
