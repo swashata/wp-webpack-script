@@ -47,6 +47,9 @@ context('wpackio-scripts serve', () => {
 				});
 			});
 		});
+		it('custom env should work', () => {
+			cy.get('#env-app').should('have.text', 'Hello Tryout undefined');
+		});
 		it('SASS should work', () => {
 			cy.get('#blue').then(el => {
 				expect(el).to.have.css('color', 'rgb(0, 0, 255)');
