@@ -44,7 +44,7 @@ export function serve(options: ProgramOptions | undefined): void {
 
 	// For spinner
 	const spinner = ora({
-		text: `initiating ${wpackLogoSmall} development server`,
+		text: `starting ${wpackLogoSmall} development server`,
 		spinner: 'dots',
 		color: 'yellow',
 		discardStdin: false,
@@ -63,9 +63,9 @@ export function serve(options: ProgramOptions | undefined): void {
 			serverConfigPath,
 		} = getProjectAndServerConfig(cwd, options);
 		console.log(
-			`${logSymbols.success} ${chalk.bold(
-				'project config'
-			)}: ${chalk.cyan(path.relative(cwd, projectConfigPath))}`
+			`${logSymbols.success} ${chalk.bold('project config')}: ${chalk.cyan(
+				path.relative(cwd, projectConfigPath)
+			)}`
 		);
 		console.log(
 			`${logSymbols.success} ${chalk.bold('server config')}: ${chalk.cyan(
@@ -176,18 +176,14 @@ export function serve(options: ProgramOptions | undefined): void {
 					const name = messages.name;
 					if (messages.errors.length || messages.warnings.length) {
 						if (messages.errors.length) {
-							printErrorHeading(
-								`${name ? `[${name}] ` : ''}TS ERROR`
-							);
+							printErrorHeading(`${name ? `[${name}] ` : ''}TS ERROR`);
 							messages.errors.forEach(e => {
 								console.log(e);
 								console.log('');
 							});
 						}
 						if (messages.warnings.length) {
-							printWarningHeading(
-								`${name ? `[${name}] ` : ''}TS WARNING`
-							);
+							printWarningHeading(`${name ? `[${name}] ` : ''}TS WARNING`);
 							messages.warnings.forEach(e => {
 								console.log(e);
 								console.log('');
