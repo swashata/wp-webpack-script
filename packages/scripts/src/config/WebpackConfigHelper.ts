@@ -3,7 +3,7 @@ import {
 	PresetOptions,
 } from '@wpackio/babel-preset-base/lib/preset';
 import { CleanWebpackPlugin } from 'clean-webpack-plugin';
-import fs from 'fs';
+
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import path from 'path';
 import slugify from 'slugify';
@@ -11,6 +11,7 @@ import TimeFixPlugin from 'time-fix-plugin';
 import webpack from 'webpack';
 import WebpackAssetsManifest from 'webpack-assets-manifest';
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
+import { DependencyExtractionWebpackPlugin } from '../plugins/DependencyExtractionWebpackPlugin';
 
 import { WatchMissingNodeModulesPlugin } from '../dev-utils';
 import { WpackioError } from '../errors/WpackioError';
@@ -27,6 +28,7 @@ import {
 	getFileLoaderForJsAndStyleAssets,
 	getStyleLoaderUses,
 } from './loaderHelpers';
+import { hasTypeScript } from '../dev-utils/ops';
 
 interface NormalizedEntry {
 	[x: string]: string[];
@@ -67,23 +69,6 @@ interface CommonWebpackConfig {
 	name: webpack.Configuration['name'];
 	externals: webpack.Configuration['externals'];
 	infrastructureLogging: any;
-}
-
-/**
- * Check if file exists or not using fs API.
- */
-export function fileExists(filepath: string): boolean {
-	try {
-		// tslint:disable-next-line:non-literal-fs-path
-		return fs.statSync(filepath).isFile();
-	} catch (_) {
-		return false;
-	}
-}
-
-export function hasTypeScript(cwd: string): [boolean, string] {
-	const tsconfigPath = path.resolve(cwd, './tsconfig.json');
-	return [fileExists(tsconfigPath), tsconfigPath];
 }
 
 /**
@@ -336,6 +321,15 @@ export class WebpackConfigHelper {
 				throw new WpackioError(e);
 			}
 		}
+
+		// Add wordpress dependency extract plugin
+		plugins.push(
+			new DependencyExtractionWebpackPlugin({
+				gutenbergOptimized: this.file.optimizeForGutenberg ?? false,
+				appDir: this.appDir,
+			})
+		);
+
 		// Add development specific plugins
 		if (this.isDev) {
 			// Hot Module Replacement

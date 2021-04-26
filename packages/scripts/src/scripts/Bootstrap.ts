@@ -5,7 +5,7 @@ import path from 'path';
 import slugify from 'slugify';
 import prompts from 'prompts';
 import { getProjectConfig } from '../config/getProjectAndServerConfig';
-import { hasTypeScript } from '../config/WebpackConfigHelper';
+import { hasTypeScript } from '../dev-utils/ops';
 
 interface Pkg {
 	name: string;
