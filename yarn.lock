@@ -2449,7 +2449,7 @@
     "@types/source-list-map" "*"
     source-map "^0.7.3"
 
-"@types/webpack@^4", "@types/webpack@^4.4.31", "@types/webpack@^4.41.8":
+"@types/webpack@^4", "@types/webpack@^4.4.31", "@types/webpack@^4.41.0", "@types/webpack@^4.41.8":
   version "4.41.27"
   resolved "https://registry.yarnpkg.com/@types/webpack/-/webpack-4.41.27.tgz#f47da488c8037e7f1b2dbf2714fbbacb61ec0ffc"
   integrity sha512-wK/oi5gcHi72VMTbOaQ70VcDxSQ1uX8S2tukBK9ARuGXrYM/+u4ou73roc7trXDNmCxCoerE8zruQqX/wuHszA==
@@ -8122,14 +8122,12 @@ lerna@4.0.0, lerna@^4.0.0:
     import-local "^3.0.2"
     npmlog "^4.1.2"
 
-less-loader@7.3.0:
-  version "7.3.0"
-  resolved "https://registry.yarnpkg.com/less-loader/-/less-loader-7.3.0.tgz#f9d6d36d18739d642067a05fb5bd70c8c61317e5"
-  integrity sha512-Mi8915g7NMaLlgi77mgTTQvK022xKRQBIVDSyfl3ErTuBhmZBQab0mjeJjNNqGbdR+qrfTleKXqbGI4uEFavxg==
+less-loader@8.1.1:
+  version "8.1.1"
+  resolved "https://registry.yarnpkg.com/less-loader/-/less-loader-8.1.1.tgz#ababe912580457ad00a4318146aac5b53e023f42"
+  integrity sha512-K93jJU7fi3n6rxVvzp8Cb88Uy9tcQKfHlkoezHwKILXhlNYiRQl4yowLIkQqmBXOH/5I8yoKiYeIf781HGkW9g==
   dependencies:
     klona "^2.0.4"
-    loader-utils "^2.0.0"
-    schema-utils "^3.0.0"
 
 less@^4.1.1:
   version "4.1.1"

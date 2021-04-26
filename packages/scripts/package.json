@@ -57,7 +57,7 @@
 		"find-up": "^5.0.0",
 		"gradient-string": "^1.2.0",
 		"handlebars": "^4.7.7",
-		"less-loader": "7.3.0",
+		"less-loader": "8.1.1",
 		"lockfile": "^1.0.4",
 		"log-symbols": "^4.0.0",
 		"make-dir": "^3.1.0",
