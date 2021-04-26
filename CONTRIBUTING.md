@@ -55,7 +55,7 @@ yarn lerna publish --canary --preid next
 #### RELEASING CANARY FOR NEXT MAJOR VERSION
 
 ```bash
-yarn lerna publish premajor --canary --preid next
+yarn lerna publish premajor --canary --preid beta --dist-tag next
 ```
 
 ## Financial contributions
