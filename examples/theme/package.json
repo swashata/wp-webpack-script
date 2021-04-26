@@ -8,7 +8,7 @@
   "private": true,
   "devDependencies": {
     "@wpackio/scripts": "file:../../packages/scripts",
-    "node-sass": "^4.13.0"
+    "node-sass": "^4.13.1"
   },
   "scripts": {
     "bootstrap": "wpackio-scripts bootstrap",
