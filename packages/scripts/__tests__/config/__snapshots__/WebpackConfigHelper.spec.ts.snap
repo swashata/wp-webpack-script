@@ -7,6 +7,9 @@ Object {
   "externals": Object {
     "jquery": "jQuery",
   },
+  "infrastructureLogging": Object {
+    "level": "none",
+  },
   "mode": "production",
   "name": "config1",
   "target": "web",
@@ -20,6 +23,9 @@ Object {
   "devtool": "cheap-module-source-map",
   "externals": Object {
     "jquery": "jQuery",
+  },
+  "infrastructureLogging": Object {
+    "level": "none",
   },
   "mode": "development",
   "name": "config1",
@@ -73,6 +79,19 @@ Array [
     },
   },
   Object {},
+  DependencyExtractionWebpackPlugin {
+    "assetDependenciesData": Array [],
+    "compiler": null,
+    "externalizedDeps": Set {},
+    "externalsPlugin": ExternalsPlugin {
+      "externals": [Function],
+      "type": "window",
+    },
+    "options": Object {
+      "appDir": "config1",
+      "gutenbergOptimized": false,
+    },
+  },
   BannerPlugin {
     "banner": [Function],
     "options": Object {
@@ -147,6 +166,19 @@ Array [
     },
   },
   Object {},
+  DependencyExtractionWebpackPlugin {
+    "assetDependenciesData": Array [],
+    "compiler": null,
+    "externalizedDeps": Set {},
+    "externalsPlugin": ExternalsPlugin {
+      "externals": [Function],
+      "type": "window",
+    },
+    "options": Object {
+      "appDir": "config1",
+      "gutenbergOptimized": false,
+    },
+  },
   HotModuleReplacementPlugin {
     "fullBuildTimeout": 200,
     "multiStep": undefined,
