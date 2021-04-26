@@ -79,6 +79,7 @@ export interface ProjectConfig {
 	hasReact: boolean;
 	disableReactRefresh?: boolean;
 	hasSass: boolean;
+	useReactJsxRuntime?: boolean;
 	hasLess?: boolean;
 	hasFlow: boolean;
 	// Use babel.config.js instead of built-in options
@@ -142,6 +143,10 @@ export const projectConfigDefault: ProjectConfig = {
 	useBabelConfig: false,
 	// Needs react?
 	hasReact: true,
+	// Whether or not to use the new jsx runtime introduced in React 17
+	// this is opt-in
+	// @see {https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html}
+	useReactJsxRuntime: false,
 	// Disable react refresh
 	disableReactRefresh: false,
 	// Needs sass?

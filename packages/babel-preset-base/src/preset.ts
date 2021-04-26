@@ -7,6 +7,7 @@ export interface PresetOptions {
 	noJsonStrings?: boolean;
 	noRuntime?: boolean;
 	hasReact?: boolean;
+	useReactJsxRuntime?: boolean;
 	presetEnv?: {};
 	presetReact?: {};
 	[x: string]: any;
@@ -41,6 +42,7 @@ export const preset = (opts: PresetOptions | null = {}) => {
 		presetEnv = {},
 		presetReact = {},
 		hasReact = true,
+		useReactJsxRuntime = false,
 		// Put everything else inside noPlugins, which we will use later
 		// to put or cancel out stage-3 plugins.
 		// noDynamicImport = false,
@@ -69,6 +71,7 @@ export const preset = (opts: PresetOptions | null = {}) => {
 				// Will use the native built-in instead of trying to polyfill
 				// behavior for any plugins that require one.
 				useBuiltIns: true,
+				runtime: useReactJsxRuntime ? 'automatic' : 'classic',
 				// But spread later, so that user can override it
 				...presetReact,
 			},
