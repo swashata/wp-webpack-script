@@ -33,13 +33,13 @@
 		function mountApp(path) {
 			fetch(`/dist/${path}/manifest.json`).then(d => d.json()).then(manifest => {
 				const head = document.head;
-				manifest.wpackioEp.main.js.forEach(js => {
+				manifest.wpackioEp.main.assets.js.forEach(js => {
 					const script = document.createElement('script');
 					script.setAttribute('src', `/dist/${js}`);
 					script.setAttribute('type', 'text/javascript');
 					head.appendChild(script);
 				});
-				manifest.wpackioEp.main.css.forEach(css => {
+				manifest.wpackioEp.main.assets.css.forEach(css => {
 					const link = document.createElement('link');
 					link.setAttribute('rel', 'stylesheet');
 					link.setAttribute('href', `/dist/${css}`);
