@@ -9,17 +9,24 @@
     "bootstrap": "wpackio-scripts bootstrap",
     "build": "wpackio-scripts build",
     "start": "wpackio-scripts start",
-    "archive": "wpackio-scripts pack"
+    "archive": "wpackio-scripts pack",
+    "serve": "serve -l 8080"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@wpackio/entrypoint": "^5.0.0"
+    "@wordpress/i18n": "^3.19.2",
+    "@wpackio/entrypoint": "^5.0.0",
+    "jQuery": "^1.7.4",
+    "lodash": "^4.17.21",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   },
   "devDependencies": {
     "@wpackio/scripts": "^5.0.0",
     "less": "^4.1.1",
-    "postcss": "^8.2.12"
+    "postcss": "^8.2.12",
+    "serve": "^11.3.2"
   }
 }

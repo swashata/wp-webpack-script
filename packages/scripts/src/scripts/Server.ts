@@ -16,7 +16,7 @@ import {
 import { CreateWebpackConfig } from '../config/CreateWebpackConfig';
 import { ProjectConfig } from '../config/project.config.default';
 import { ServerConfig } from '../config/server.config.default';
-import { hasTypeScript } from '../config/WebpackConfigHelper';
+import { hasTypeScript } from '../dev-utils/ops';
 import { WpackioError } from '../errors/WpackioError';
 
 interface FormattedMessage {

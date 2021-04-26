@@ -31,7 +31,6 @@ export interface EntryConfig {
 export interface FileConfig {
 	name: string;
 	entry: EntryConfig;
-	typeWatchFiles?: string[];
 	hasTypeScript?: boolean;
 	webpackConfig?:
 		| webpack.Configuration
@@ -41,6 +40,7 @@ export interface FileConfig {
 				appDir: string,
 				isDev: boolean
 		  ) => webpack.Configuration);
+	optimizeForGutenberg?: boolean;
 }
 
 export type webpackOptionsOverrideFunction = (
