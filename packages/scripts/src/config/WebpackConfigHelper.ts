@@ -43,6 +43,7 @@ export interface WebpackConfigHelperConfig {
 	outputPath: ProjectConfig['outputPath'];
 	useBabelConfig: ProjectConfig['useBabelConfig'];
 	hasReact: ProjectConfig['hasReact'];
+	useReactJsxRuntime: ProjectConfig['useReactJsxRuntime'];
 	disableReactRefresh: ProjectConfig['disableReactRefresh'];
 	hasSass: ProjectConfig['hasSass'];
 	hasFlow: ProjectConfig['hasFlow'];
@@ -395,6 +396,10 @@ ${bannerConfig.copyrightText}${bannerConfig.credit ? creditNote : ''}`,
 		const { hasReact, hasSass, hasFlow, hasLess } = this.config;
 		const wpackioBabelOptions: PresetOptions = {
 			hasReact,
+			// use react jsx runtime only if enabled explicitly
+			// and not optimizing for gutenberg
+			useReactJsxRuntime:
+				this.config.useReactJsxRuntime && !this.file.optimizeForGutenberg,
 		};
 
 		// check if babel.config.js is present

@@ -171,6 +171,7 @@ export class CreateWebpackConfig {
 			jsBabelPresetOptions,
 			tsBabelOverride,
 			tsBabelPresetOptions,
+			useReactJsxRuntime,
 		} = this.projectConfig;
 		const { host, port } = this.serverConfig;
 		const helper: WebpackConfigHelper = new WebpackConfigHelper(
@@ -199,6 +200,7 @@ export class CreateWebpackConfig {
 				jsBabelPresetOptions,
 				tsBabelOverride,
 				tsBabelPresetOptions,
+				useReactJsxRuntime,
 			},
 			this.cwd,
 			this.isDev
