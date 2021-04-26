@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.0.0](https://github.com/swashata/wp-webpack-script/compare/v5.0.0...v6.0.0) (2021-04-26)
+
+
+### Features
+
+* add option for using new jsx runtime for react 17 ([7c88193](https://github.com/swashata/wp-webpack-script/commit/7c88193976d4351772bcf117da89023a22dadd5b))
+
+
+
+
+
 # [5.0.0](https://github.com/swashata/wp-webpack-script/compare/v4.4.1...v5.0.0) (2020-08-07)
 
 

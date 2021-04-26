@@ -3,6 +3,40 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.0.0](https://github.com/swashata/wp-webpack-script/compare/v5.0.0...v6.0.0) (2021-04-26)
+
+
+### Bug Fixes
+
+* always install postcss to the latest version in bootstrap ([3b3291a](https://github.com/swashata/wp-webpack-script/commit/3b3291ab73c5a2c104d4eaa16ea06ca1af870f7b))
+* mini-css-extract-plugin configuration options ([368e528](https://github.com/swashata/wp-webpack-script/commit/368e528690463c372288e50a821df73d0d71de30))
+* upgrade webpack-dev-middleware type and fix code ([84c7d48](https://github.com/swashata/wp-webpack-script/commit/84c7d48744bdfbbd5607e5a18c183e8b9af0d162))
+* **deps:** update dependency cpy to v8.1.1 ([d205ebf](https://github.com/swashata/wp-webpack-script/commit/d205ebf44b2dc29f77327a06bb2bf491de6a319e))
+* **deps:** update dependency mini-css-extract-plugin to ^0.10.0 ([7c463f2](https://github.com/swashata/wp-webpack-script/commit/7c463f2e73152ff800fbd0ce2cf33792ea0e40e0))
+* **deps:** update dependency mini-css-extract-plugin to ^0.11.0 ([460a5bd](https://github.com/swashata/wp-webpack-script/commit/460a5bdd09d016b58cff7ce5b217fd6b8ea1391b))
+* **deps:** update dependency mini-css-extract-plugin to ^0.12.0 ([ea3d884](https://github.com/swashata/wp-webpack-script/commit/ea3d884606f1525497979777fabf1e53fc1c94a3))
+* **deps:** update dependency react-refresh to ^0.9.0 ([29b2b8a](https://github.com/swashata/wp-webpack-script/commit/29b2b8abee2ce6f27298ca561ac4994358b8ab17))
+
+
+### Features
+
+* add custom plugin to auto extract wp dependencies ([18ccb5a](https://github.com/swashata/wp-webpack-script/commit/18ccb5a661a30e39bb9ed59a8b9fe7cccb27e9a4))
+* add optimizeForGutenberg in files template ([0249b7f](https://github.com/swashata/wp-webpack-script/commit/0249b7fa96ccfbaf30d677397bfa831921c6de55))
+* add option for using new jsx runtime for react 17 ([7c88193](https://github.com/swashata/wp-webpack-script/commit/7c88193976d4351772bcf117da89023a22dadd5b))
+* auto insert matching env from dotenv file ([7925cd5](https://github.com/swashata/wp-webpack-script/commit/7925cd56ddb4b13b4a0ecb1a714050d85d7115fb)), closes [#1134](https://github.com/swashata/wp-webpack-script/issues/1134)
+* change wording a little ([5c4202a](https://github.com/swashata/wp-webpack-script/commit/5c4202a2276d690e1d9437d1e75a411b8ffddfa3))
+* let bootstrap update dependencies even if config present ([e69da48](https://github.com/swashata/wp-webpack-script/commit/e69da48f8969aaa5dce87110dac60262765d88c9))
+* replace inquirer with prompts ([a505dec](https://github.com/swashata/wp-webpack-script/commit/a505decc07a7d57b196914ed2036738c73335c2c))
+* safely upgrade less and postcss loader for webpack 4 ([acf6872](https://github.com/swashata/wp-webpack-script/commit/acf6872e02ccb6c82f4ba032a6f053e31b0572a7))
+* save external dependencies as json instead of php ([4e6b7df](https://github.com/swashata/wp-webpack-script/commit/4e6b7df31d9e421b57993acaa450c12718222f39))
+* upgrade all postcss dependencies ([3f27990](https://github.com/swashata/wp-webpack-script/commit/3f27990e17210af18e8a20d4ef183b61236d3958))
+* upgrade package del to 6.0 ([a5f7014](https://github.com/swashata/wp-webpack-script/commit/a5f7014fa5314516077f688c0c6f58a102dffaab))
+* upgrade webpack dev server and account for breaking changes ([73281f5](https://github.com/swashata/wp-webpack-script/commit/73281f5a38b31969318a775f0d2eeb7cd8aa85de))
+
+
+
+
+
 # [5.0.0](https://github.com/swashata/wp-webpack-script/compare/v4.4.1...v5.0.0) (2020-08-07)
 
 

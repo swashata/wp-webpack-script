@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.0.0](https://github.com/swashata/wp-webpack-script/compare/v5.0.0...v6.0.0) (2021-04-26)
+
+**Note:** Version bump only for package @wpackio/entrypoint
+
+
+
+
+
 # [5.0.0](https://github.com/swashata/wp-webpack-script/compare/v4.4.1...v5.0.0) (2020-08-07)
 
 

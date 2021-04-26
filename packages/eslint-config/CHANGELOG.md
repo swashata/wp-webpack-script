@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.0.0](https://github.com/swashata/wp-webpack-script/compare/v5.0.0...v6.0.0) (2021-04-26)
+
+
+### Bug Fixes
+
+* **deps:** update dependency eslint-import-resolver-typescript to v2.2.1 ([144d55f](https://github.com/swashata/wp-webpack-script/commit/144d55f2f5a01e9467383b3797a2a886f1f1c992))
+* **deps:** update dependency eslint-import-resolver-typescript to v2.3.0 ([e9d4c04](https://github.com/swashata/wp-webpack-script/commit/e9d4c04a758f0996b7627d98992cc5e6731a293b))
+* **deps:** update typescript-eslint monorepo to v3.10.0 ([7401373](https://github.com/swashata/wp-webpack-script/commit/74013737c6d4d3fce44e9d055a573f998ee5687f))
+* **deps:** update typescript-eslint monorepo to v3.10.1 ([637aec0](https://github.com/swashata/wp-webpack-script/commit/637aec0ffb98a0bb4cb3945a8909805f0afeab11))
+* **deps:** update typescript-eslint monorepo to v3.9.0 ([e5ab0c7](https://github.com/swashata/wp-webpack-script/commit/e5ab0c7180e72b7c960a5af1a04ca0bd96f60473))
+* **deps:** update typescript-eslint monorepo to v3.9.1 ([ee659ec](https://github.com/swashata/wp-webpack-script/commit/ee659ecca4f846c3e5215eb2ee29ab876a435335))
+
+
+### Features
+
+* upgrade all eslint related dependencies ([42cd20b](https://github.com/swashata/wp-webpack-script/commit/42cd20ba62c8cef69909c08c648180c9083e1f1d))
+
+
+
+
+
 # [5.0.0](https://github.com/swashata/wp-webpack-script/compare/v4.4.1...v5.0.0) (2020-08-07)
 
 
