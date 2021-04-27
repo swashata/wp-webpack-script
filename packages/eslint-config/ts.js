@@ -40,6 +40,8 @@ module.exports = {
 		'import/named': 'off',
 		'@typescript-eslint/explicit-module-boundary-types': 'off',
 		'@typescript-eslint/ban-types': 'off',
+		'@typescript-eslint/no-use-before-define': ['error'],
+		'no-use-before-define': 'off',
 	},
 	settings: {
 		'import/parsers': {
