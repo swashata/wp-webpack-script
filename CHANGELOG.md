@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.0.1](https://github.com/swashata/wp-webpack-script/compare/v6.0.0...v6.0.1) (2021-04-27)
+
+
+### Bug Fixes
+
+* eslint typescript issue with no-use-before-define ([bce027a](https://github.com/swashata/wp-webpack-script/commit/bce027ad2f3d5571eda2e9d180c488b0955e6a8b)), closes [typescript-eslint/typescript-eslint#2502](https://github.com/typescript-eslint/typescript-eslint/issues/2502)
+
+
+
+
+
 # [6.0.0](https://github.com/swashata/wp-webpack-script/compare/v5.0.0...v6.0.0) (2021-04-26)
 
 
