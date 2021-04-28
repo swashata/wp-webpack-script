@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.1.0](https://github.com/swashata/wp-webpack-script/compare/v6.0.1...v6.1.0) (2021-04-28)
+
+
+### Features
+
+* add option to disable handling wordpress externals ([bb99130](https://github.com/swashata/wp-webpack-script/commit/bb991303b5c047641cb13d3d61fc4f0b7fe506f4))
+
+
+
+
+
 ## [6.0.1](https://github.com/swashata/wp-webpack-script/compare/v6.0.0...v6.0.1) (2021-04-27)
 
 **Note:** Version bump only for package @wpackio/scripts
