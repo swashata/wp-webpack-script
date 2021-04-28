@@ -59,6 +59,8 @@ export interface WebpackConfigHelperConfig {
 	publicPathUrl: string;
 	errorOverlay: ProjectConfig['errorOverlay'];
 	externals: ProjectConfig['externals'];
+	// whether or not to disable wordpress external scripts handling
+	disableWordPressExternals?: boolean;
 }
 
 interface CommonWebpackConfig {
@@ -325,12 +327,14 @@ export class WebpackConfigHelper {
 		}
 
 		// Add wordpress dependency extract plugin
-		plugins.push(
-			new DependencyExtractionWebpackPlugin({
-				gutenbergOptimized: this.file.optimizeForGutenberg ?? false,
-				appDir: this.appDir,
-			})
-		);
+		if (this.config.disableWordPressExternals !== true) {
+			plugins.push(
+				new DependencyExtractionWebpackPlugin({
+					gutenbergOptimized: this.file.optimizeForGutenberg ?? false,
+					appDir: this.appDir,
+				})
+			);
+		}
 
 		// Add development specific plugins
 		if (this.isDev) {

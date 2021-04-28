@@ -100,6 +100,8 @@ export interface ProjectConfig {
 	packageFiles: string[];
 	packageDirPath: string;
 	zlibLevel?: number;
+	// whether or not to disable wordpress external scripts handling
+	disableWordPressExternals?: boolean;
 }
 
 /**
@@ -187,4 +189,6 @@ export const projectConfigDefault: ProjectConfig = {
 	packageDirPath: 'package',
 	// Level of zlib compression, when creating archive
 	zlibLevel: 4,
+	// whether or not to disable wordpress external scripts handling
+	disableWordPressExternals: false,
 };

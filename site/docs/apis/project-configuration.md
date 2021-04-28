@@ -428,3 +428,10 @@ The generated package file will also have name like `<slug>.zip`.
 ## zlibLevel (`number`)
 
 The level of zlib compression to use when creating the zip.
+
+## disableWordPressExternals (`boolean`)
+
+Whether or not to disable wordpress external scripts handling. If this option
+is set to true, then no `@wordpress` name-spaced dependencies will be extracted
+as an external. Also the dependencies json file which the PHP library depends on
+(but will not fail if is not present) will not be created.

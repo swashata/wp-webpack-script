@@ -172,6 +172,7 @@ export class CreateWebpackConfig {
 			tsBabelOverride,
 			tsBabelPresetOptions,
 			useReactJsxRuntime,
+			disableWordPressExternals,
 		} = this.projectConfig;
 		const { host, port } = this.serverConfig;
 		const helper: WebpackConfigHelper = new WebpackConfigHelper(
@@ -201,6 +202,7 @@ export class CreateWebpackConfig {
 				tsBabelOverride,
 				tsBabelPresetOptions,
 				useReactJsxRuntime,
+				disableWordPressExternals,
 			},
 			this.cwd,
 			this.isDev
