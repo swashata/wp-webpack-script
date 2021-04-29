@@ -34,14 +34,12 @@ export class CreateWebpackConfig {
 	 * @param projectConfig Project configuration as recovered from user directory.
 	 * @param serverConfig Server configuration as recovered from user directory.
 	 * @param isDev Whether this is development mode.
-	 * @param entries Whether to select specified entries from project
 	 */
 	constructor(
 		projectConfig: ProjectConfig,
 		serverConfig: ServerConfig,
 		cwd: string,
-		isDev: boolean = true,
-		entries?: number[]
+		isDev: boolean = true
 	) {
 		// Create final configuration
 		// By doing a shallow override
@@ -55,13 +53,6 @@ export class CreateWebpackConfig {
 		};
 		this.cwd = cwd;
 		this.isDev = isDev;
-
-		// filter project if needed
-		if (entries && entries.length) {
-			this.projectConfig.files = this.projectConfig.files.filter((f, index) =>
-				entries.includes(index)
-			);
-		}
 
 		// Also figure out the publicPath beforehand, because we do need it
 		const { slug, outputPath, type } = this.projectConfig;

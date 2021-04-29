@@ -103,7 +103,13 @@ export class Server {
 		callbacks: Callbacks,
 		entries?: number[]
 	) {
-		this.projectConfig = projectConfig;
+		this.projectConfig = { ...projectConfig };
+		// filter project if needed
+		if (entries && entries.length) {
+			this.projectConfig.files = this.projectConfig.files.filter((f, index) =>
+				entries.includes(index)
+			);
+		}
 		this.serverConfig = serverConfig;
 		this.cwd = cwd;
 		this.callbacks = callbacks;
@@ -120,8 +126,7 @@ export class Server {
 			this.projectConfig,
 			this.serverConfig,
 			this.cwd,
-			true,
-			entries
+			true
 		);
 		// Check if project has typescript
 		const [hasTs, tsConfigPath] = hasTypeScript(this.cwd);
