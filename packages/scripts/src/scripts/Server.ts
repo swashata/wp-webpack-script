@@ -363,7 +363,10 @@ export class Server {
 		// heavily based on create-react-script
 
 		// Some more hooks on typescript
-		if (this.hasTs) {
+		if (
+			this.hasTs &&
+			this.projectConfig.files.some(f => f.hasTypeScript !== false)
+		) {
 			// try to get the fork ts checker webpack plugin
 			let ForkTsCheckerWebpackPlugin: any;
 			try {
