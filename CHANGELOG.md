@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.1.1](https://github.com/swashata/wp-webpack-script/compare/v6.1.0...v6.1.1) (2021-04-29)
+
+
+### Bug Fixes
+
+* do not use ts checker plugin if hasTypeScript is explicitly false ([b6c35cb](https://github.com/swashata/wp-webpack-script/commit/b6c35cb6fdd692e4f7de46e52f01d54e5ef6d8e5))
+
+
+
+
+
 # [6.1.0](https://github.com/swashata/wp-webpack-script/compare/v6.0.1...v6.1.0) (2021-04-28)
 
 
