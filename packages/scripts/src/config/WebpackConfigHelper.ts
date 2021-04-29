@@ -354,7 +354,11 @@ export class WebpackConfigHelper {
 			plugins = [new TimeFixPlugin(), ...plugins];
 
 			// Add react refresh if needed
-			if (this.config.hasReact && !this.config.disableReactRefresh) {
+			if (
+				this.config.hasReact &&
+				!this.config.disableReactRefresh &&
+				!this.file.optimizeForGutenberg
+			) {
 				plugins.push(
 					new ReactRefreshWebpackPlugin({
 						overlay: {
