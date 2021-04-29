@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.1.3](https://github.com/swashata/wp-webpack-script/compare/v6.1.2...v6.1.3) (2021-04-29)
+
+
+### Bug Fixes
+
+* disable react refresh if optimized for gutenberg ([eedf6b6](https://github.com/swashata/wp-webpack-script/commit/eedf6b6d610965ed1239fd76c41c278c4c42540a))
+
+
+
+
+
 ## [6.1.2](https://github.com/swashata/wp-webpack-script/compare/v6.1.1...v6.1.2) (2021-04-29)
 
 
