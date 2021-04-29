@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.1.2](https://github.com/swashata/wp-webpack-script/compare/v6.1.1...v6.1.2) (2021-04-29)
+
+
+### Bug Fixes
+
+* issue with entries in server script ([022daa7](https://github.com/swashata/wp-webpack-script/commit/022daa7dad1a358749f334b3dec47e1a62c0b5a2))
+
+
+
+
+
 ## [6.1.1](https://github.com/swashata/wp-webpack-script/compare/v6.1.0...v6.1.1) (2021-04-29)
 
 
