@@ -679,6 +679,7 @@ ${bannerConfig.copyrightText}${bannerConfig.credit ? creditNote : ''}`,
 		if (
 			this.config.hasReact &&
 			!this.config.disableReactRefresh &&
+			!this.file.optimizeForGutenberg &&
 			addReactRefresh &&
 			this.isDev
 		) {
