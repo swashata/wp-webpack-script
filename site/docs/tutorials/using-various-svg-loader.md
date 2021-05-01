@@ -105,11 +105,9 @@ module.exports = {
 				const svgoLoader = {
 					loader: 'svgo-loader',
 					options: {
-						plugins: [
-							{ removeTitle: true },
-							{ convertColors: { shorthex: false } },
-							{ convertPathData: false },
-						],
+						{ removeTitle: true },
+						{ convertColors: { shorthex: false } },
+						{ convertPathData: false },
 					},
 				};
 				// create module rules
