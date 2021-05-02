@@ -281,7 +281,10 @@ export class Server {
 	 * Get URL to network IP where the server is alive.
 	 */
 	public getServerUrl(): string {
-		return `http:${this.webpackConfig.getServerUrl()}`;
+		const protocol = this.serverConfig.proxy.startsWith('https')
+			? 'https'
+			: 'http';
+		return `${protocol}:${this.webpackConfig.getServerUrl()}`;
 	}
 
 	/**
