@@ -17,7 +17,7 @@
   "license": "ISC",
   "dependencies": {
     "@wordpress/i18n": "^3.19.2",
-    "@wpackio/entrypoint": "^5.0.0",
+    "@wpackio/entrypoint": "^6.0.1",
     "jQuery": "^1.7.4",
     "lodash": "^4.17.21",
     "react": "^17.0.2",
@@ -25,8 +25,10 @@
   },
   "devDependencies": {
     "@wpackio/scripts": "^5.0.0",
+    "fork-ts-checker-webpack-plugin": "^6.2.5",
     "less": "^4.1.1",
-    "postcss": "^8.2.12",
-    "serve": "^11.3.2"
+    "postcss": "^8.2.13",
+    "serve": "^11.3.2",
+    "typescript": "^4.2.4"
   }
 }

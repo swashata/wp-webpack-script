@@ -170,14 +170,16 @@ export class Bootstrap {
 						value: 'theme',
 					},
 				],
-				initial: isTheme ? 'theme' : 'plugin',
+				initial: isTheme ? 1 : 0,
 				hint: isTheme
 					? 'We think yours is a THEME'
 					: 'We think yours is a PLUGIN',
 			},
 			// Ask appName (auto-generate from package.json)
 			{
-				message: answers => `Name of WordPress ${answers.type} (camelCase)`,
+				message: prev => {
+					return `Name of WordPress ${prev} (camelCase)`;
+				},
 				name: 'appName',
 				type: 'text',
 				initial: camelCase(this.pkg.name) || '',
