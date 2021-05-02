@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.2.0](https://github.com/swashata/wp-webpack-script/compare/v6.1.4...v6.2.0) (2021-05-02)
+
+
+### Bug Fixes
+
+* issue with bootstrap script ([6985639](https://github.com/swashata/wp-webpack-script/commit/698563917fb1654d299ea1a378c3f982efe9b950)), closes [#1220](https://github.com/swashata/wp-webpack-script/issues/1220)
+* use https if proxy url is https ([54d9a44](https://github.com/swashata/wp-webpack-script/commit/54d9a44b06ca44863340b681523eb0ec4e62b7fc)), closes [#1180](https://github.com/swashata/wp-webpack-script/issues/1180)
+
+
+
+
+
 ## [6.1.4](https://github.com/swashata/wp-webpack-script/compare/v6.1.3...v6.1.4) (2021-04-29)
 
 
