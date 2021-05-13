@@ -68,7 +68,7 @@
 		"pretty-error": "^3.0.3",
 		"prompts": "^2.4.1",
 		"react-refresh": "^0.10.0",
-		"sass-loader": "10.1.1",
+		"sass-loader": "11.1.1",
 		"slugify": "^1.4.5",
 		"time-fix-plugin": "^2.0.7",
 		"uglifyjs-webpack-plugin": "^2.2.0",
