@@ -157,7 +157,6 @@ export class CreateWebpackConfig {
 			appName,
 			errorOverlay,
 			externals,
-			useBabelConfig,
 			jsBabelOverride,
 			jsBabelPresetOptions,
 			tsBabelOverride,
@@ -165,6 +164,11 @@ export class CreateWebpackConfig {
 			useReactJsxRuntime,
 			disableWordPressExternals,
 		} = this.projectConfig;
+		// get useBabelConfig from project, but override from file
+		let useBabelConfig = this.projectConfig.useBabelConfig;
+		if (file.useBabelConfig !== undefined) {
+			useBabelConfig = file.useBabelConfig;
+		}
 		const { host, port } = this.serverConfig;
 		const helper: WebpackConfigHelper = new WebpackConfigHelper(
 			file,

@@ -41,6 +41,7 @@ export interface FileConfig {
 				isDev: boolean
 		  ) => webpack.Configuration);
 	optimizeForGutenberg?: boolean;
+	useBabelConfig?: boolean;
 }
 
 export type webpackOptionsOverrideFunction = (
