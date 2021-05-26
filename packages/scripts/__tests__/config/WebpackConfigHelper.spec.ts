@@ -232,6 +232,88 @@ describe('WebpackConfigHelper', () => {
 				}
 			});
 
+			test('does not set babel-loader for node_modules in dev mode per config', () => {
+				const newProjectConfig = { ...projectConfig };
+				newProjectConfig.compileNodeModules = {
+					dev: false,
+					prod: true,
+				};
+				const cwc = new WebpackConfigHelper(
+					newProjectConfig.files[0],
+					getConfigFromProjectAndServer(newProjectConfig, serverConfig),
+					'/foo/bar',
+					true
+				);
+				const modules = cwc.getModule();
+				if (Array.isArray(modules.rules)) {
+					const nmJsRules = findWpackIoBabelOnNm(modules);
+					expect(nmJsRules).toHaveLength(0);
+				} else {
+					throw new Error('Module is not an array');
+				}
+			});
+			test('does set babel-loader for node_modules in dev mode per config', () => {
+				const newProjectConfig = { ...projectConfig };
+				newProjectConfig.compileNodeModules = {
+					dev: true,
+					prod: false,
+				};
+				const cwc = new WebpackConfigHelper(
+					newProjectConfig.files[0],
+					getConfigFromProjectAndServer(newProjectConfig, serverConfig),
+					'/foo/bar',
+					true
+				);
+				const modules = cwc.getModule();
+				if (Array.isArray(modules.rules)) {
+					const nmJsRules = findWpackIoBabelOnNm(modules);
+					expect(nmJsRules).toHaveLength(1);
+				} else {
+					throw new Error('Module is not an array');
+				}
+			});
+
+			test('does not set babel-loader for node_modules in prod mode per config', () => {
+				const newProjectConfig = { ...projectConfig };
+				newProjectConfig.compileNodeModules = {
+					dev: true,
+					prod: false,
+				};
+				const cwc = new WebpackConfigHelper(
+					newProjectConfig.files[0],
+					getConfigFromProjectAndServer(newProjectConfig, serverConfig),
+					'/foo/bar',
+					false
+				);
+				const modules = cwc.getModule();
+				if (Array.isArray(modules.rules)) {
+					const nmJsRules = findWpackIoBabelOnNm(modules);
+					expect(nmJsRules).toHaveLength(0);
+				} else {
+					throw new Error('Module is not an array');
+				}
+			});
+			test('does set babel-loader for node_modules in prod mode per config', () => {
+				const newProjectConfig = { ...projectConfig };
+				newProjectConfig.compileNodeModules = {
+					dev: false,
+					prod: true,
+				};
+				const cwc = new WebpackConfigHelper(
+					newProjectConfig.files[0],
+					getConfigFromProjectAndServer(newProjectConfig, serverConfig),
+					'/foo/bar',
+					false
+				);
+				const modules = cwc.getModule();
+				if (Array.isArray(modules.rules)) {
+					const nmJsRules = findWpackIoBabelOnNm(modules);
+					expect(nmJsRules).toHaveLength(1);
+				} else {
+					throw new Error('Module is not an array');
+				}
+			});
+
 			test('obeys hasFlow & hasRect', () => {
 				const cwc = new WebpackConfigHelper(
 					projectConfig.files[0],

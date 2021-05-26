@@ -45,6 +45,10 @@ export function getConfigFromProjectAndServer(
 	pCfg: ProjectConfig,
 	sCfg: ServerConfig
 ): WebpackConfigHelperConfig {
+	const compileNodeModules = pCfg.compileNodeModules ?? {
+		dev: true,
+		prod: true,
+	};
 	return {
 		appName: pCfg.appName,
 		type: pCfg.type,
@@ -66,8 +70,8 @@ export function getConfigFromProjectAndServer(
 		externals: pCfg.externals,
 		useBabelConfig: false,
 		compileNodeModules: {
-			dev: true,
-			prod: true,
+			dev: compileNodeModules.dev ?? true,
+			prod: compileNodeModules.prod ?? true,
 		},
 		useReactJsxRuntime: true,
 	};
