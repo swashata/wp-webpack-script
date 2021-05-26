@@ -18,8 +18,11 @@ import {
 const currentDate: Date = new Date('2018-01-01T12:00:00');
 const realDate = Date;
 
+declare const expect: jest.Expect;
+
 beforeAll(() => {
 	// @ts-ignore
+	// eslint-disable-next-line new-cap
 	global.Date = jest.fn(() => new realDate(currentDate.toISOString()));
 	Object.assign(Date, realDate);
 });
@@ -57,8 +60,8 @@ describe('WebpackConfigHelper', () => {
 			Object.keys(entry).forEach(key => {
 				expect(Array.isArray(entry[key])).toBeTruthy();
 				const hotClient = entry[key][0];
-				expect(hotClient).toMatch(/^webpack\-hot\-middleware/);
-				expect(hotClient).toMatch(/name\=config1/);
+				expect(hotClient).toMatch(/^webpack-hot-middleware/);
+				expect(hotClient).toMatch(/name=config1/);
 			});
 		});
 		test('does not have webpack hot client but publicPath wntrypoint when isDev != true', () => {
@@ -71,9 +74,7 @@ describe('WebpackConfigHelper', () => {
 			const entry = cwc.getEntry();
 			Object.keys(entry).forEach(key => {
 				expect(Array.isArray(entry[key])).toBeTruthy();
-				expect(entry[key].pop()).not.toMatch(
-					/^webpack\-hot\-middleware/
-				);
+				expect(entry[key].pop()).not.toMatch(/^webpack-hot-middleware/);
 				expect(entry[key][0]).toBe(`@wpackio/entrypoint/lib/index`);
 			});
 		});
@@ -142,10 +143,7 @@ describe('WebpackConfigHelper', () => {
 			const cwc = new WebpackConfigHelper(
 				projectConfig.files[0],
 				{
-					...getConfigFromProjectAndServer(
-						projectConfig,
-						serverConfig
-					),
+					...getConfigFromProjectAndServer(projectConfig, serverConfig),
 					hasReact: false,
 				},
 				'/foo/bar',
@@ -188,9 +186,7 @@ describe('WebpackConfigHelper', () => {
 					expect(jsTsRules).toHaveLength(2);
 					jsTsRules.forEach(rule => {
 						if (rule && rule.use) {
-							expect(rule.use[0].loader).toBe(
-								require.resolve('babel-loader')
-							);
+							expect(rule.use[0].loader).toBe(require.resolve('babel-loader'));
 							expect(rule.use[0].options).toMatchObject({
 								cacheDirectory: true,
 								cacheCompression: !true,
@@ -218,9 +214,7 @@ describe('WebpackConfigHelper', () => {
 					expect(nmJsRules).toHaveLength(1);
 					nmJsRules.forEach(rule => {
 						if (rule && rule.use) {
-							expect(rule.use[0].loader).toBe(
-								require.resolve('babel-loader')
-							);
+							expect(rule.use[0].loader).toBe(require.resolve('babel-loader'));
 							expect(rule.use[0].options).toMatchObject({
 								cacheDirectory: true,
 								cacheCompression: !true,
@@ -242,10 +236,7 @@ describe('WebpackConfigHelper', () => {
 				const cwc = new WebpackConfigHelper(
 					projectConfig.files[0],
 					{
-						...getConfigFromProjectAndServer(
-							projectConfig,
-							serverConfig
-						),
+						...getConfigFromProjectAndServer(projectConfig, serverConfig),
 						hasFlow: true,
 						hasReact: true,
 					},
@@ -260,9 +251,9 @@ describe('WebpackConfigHelper', () => {
 					expect(tsRule).toHaveLength(1);
 					[...jsRule, ...tsRule].forEach(rule => {
 						if (rule && rule.use && rule.use[0].options) {
-							expect(
-								rule.use[0].options.presets[0][1]
-							).toMatchObject({ hasReact: true });
+							expect(rule.use[0].options.presets[0][1]).toMatchObject({
+								hasReact: true,
+							});
 						} else {
 							throw new Error('babel rule is undefined');
 						}
@@ -272,9 +263,7 @@ describe('WebpackConfigHelper', () => {
 							require.resolve('@babel/preset-flow'),
 						]);
 					} else {
-						throw new Error(
-							'JavaScript babel-loader options not present'
-						);
+						throw new Error('JavaScript babel-loader options not present');
 					}
 				} else {
 					throw new Error('Module is not an array');
@@ -285,10 +274,7 @@ describe('WebpackConfigHelper', () => {
 				const cwc = new WebpackConfigHelper(
 					projectConfig.files[0],
 					{
-						...getConfigFromProjectAndServer(
-							projectConfig,
-							serverConfig
-						),
+						...getConfigFromProjectAndServer(projectConfig, serverConfig),
 						useBabelConfig: true,
 					},
 					'/foo/bar',
@@ -304,9 +290,7 @@ describe('WebpackConfigHelper', () => {
 								cacheDirectory: true,
 								cacheCompression: !true,
 								compact: !true,
-								plugins: [
-									require.resolve('react-refresh/babel'),
-								],
+								plugins: [require.resolve('react-refresh/babel')],
 							});
 						} else {
 							throw new Error('JavaScript rule is undefined');
@@ -326,10 +310,7 @@ describe('WebpackConfigHelper', () => {
 				const cwc = new WebpackConfigHelper(
 					projectConfig.files[0],
 					{
-						...getConfigFromProjectAndServer(
-							projectConfig,
-							serverConfig
-						),
+						...getConfigFromProjectAndServer(projectConfig, serverConfig),
 						jsBabelPresetOptions: override,
 						tsBabelPresetOptions: override,
 					},
@@ -343,9 +324,7 @@ describe('WebpackConfigHelper', () => {
 					expect(jsTsRules).toHaveLength(2);
 					jsTsRules.forEach(rule => {
 						if (rule && rule.use && rule.use[0].options) {
-							expect(
-								rule.use[0].options.presets[0][1]
-							).toMatchObject(override);
+							expect(rule.use[0].options.presets[0][1]).toMatchObject(override);
 						} else {
 							throw new Error('JavaScript rule is undefined');
 						}
@@ -363,10 +342,7 @@ describe('WebpackConfigHelper', () => {
 				const cwc = new WebpackConfigHelper(
 					projectConfig.files[0],
 					{
-						...getConfigFromProjectAndServer(
-							projectConfig,
-							serverConfig
-						),
+						...getConfigFromProjectAndServer(projectConfig, serverConfig),
 						jsBabelOverride: override,
 						tsBabelOverride: override,
 					},
@@ -402,10 +378,7 @@ describe('WebpackConfigHelper', () => {
 				const cwc = new WebpackConfigHelper(
 					projectConfig.files[0],
 					{
-						...getConfigFromProjectAndServer(
-							projectConfig,
-							serverConfig
-						),
+						...getConfigFromProjectAndServer(projectConfig, serverConfig),
 						jsBabelOverride: override,
 						tsBabelOverride: override,
 					},
@@ -453,9 +426,7 @@ describe('WebpackConfigHelper', () => {
 					);
 				}) as { use: { loader: string }[] };
 				if (styleRule !== undefined) {
-					expect(styleRule.use[0].loader).toBe(
-						miniCssExtractPlugin.loader
-					);
+					expect(styleRule.use[0].loader).toBe(miniCssExtractPlugin.loader);
 				} else {
 					throw new Error('No style rule found');
 				}
@@ -483,9 +454,7 @@ describe('WebpackConfigHelper', () => {
 					);
 				}) as { use: { loader: string }[] };
 				if (styleRule !== undefined) {
-					expect(styleRule.use[0].loader).toBe(
-						miniCssExtractPlugin.loader
-					);
+					expect(styleRule.use[0].loader).toBe(miniCssExtractPlugin.loader);
 				} else {
 					throw new Error('No style rule found');
 				}
@@ -528,10 +497,7 @@ describe('WebpackConfigHelper', () => {
 			const cwc = new WebpackConfigHelper(
 				projectConfig.files[0],
 				{
-					...getConfigFromProjectAndServer(
-						projectConfig,
-						serverConfig
-					),
+					...getConfigFromProjectAndServer(projectConfig, serverConfig),
 					alias,
 				},
 				'/foo/bar',
@@ -552,10 +518,7 @@ describe('WebpackConfigHelper', () => {
 			const cwc = new WebpackConfigHelper(
 				projectConfig.files[0],
 				{
-					...getConfigFromProjectAndServer(
-						projectConfig,
-						serverConfig
-					),
+					...getConfigFromProjectAndServer(projectConfig, serverConfig),
 					optimizeSplitChunks: false,
 				},
 				'/foo/bar',
@@ -568,10 +531,7 @@ describe('WebpackConfigHelper', () => {
 			const cwc = new WebpackConfigHelper(
 				projectConfig.files[0],
 				{
-					...getConfigFromProjectAndServer(
-						projectConfig,
-						serverConfig
-					),
+					...getConfigFromProjectAndServer(projectConfig, serverConfig),
 					optimizeSplitChunks: true,
 				},
 				'/foo/bar',
@@ -579,8 +539,7 @@ describe('WebpackConfigHelper', () => {
 			);
 			expect(cwc.getOptimization()).not.toBeUndefined();
 			expect(
-				(cwc.getOptimization() as webpack.Options.Optimization)
-					.runtimeChunk
+				(cwc.getOptimization() as webpack.Options.Optimization).runtimeChunk
 			).toBe('single');
 		});
 	});
@@ -591,10 +550,7 @@ describe('WebpackConfigHelper', () => {
 			const cwc = new WebpackConfigHelper(
 				projectConfig.files[0],
 				{
-					...getConfigFromProjectAndServer(
-						projectConfig,
-						serverConfig
-					),
+					...getConfigFromProjectAndServer(projectConfig, serverConfig),
 				},
 				'/foo/bar',
 				true
@@ -605,10 +561,7 @@ describe('WebpackConfigHelper', () => {
 			const cwc = new WebpackConfigHelper(
 				projectConfig.files[0],
 				{
-					...getConfigFromProjectAndServer(
-						projectConfig,
-						serverConfig
-					),
+					...getConfigFromProjectAndServer(projectConfig, serverConfig),
 				},
 				'/foo/bar',
 				false
@@ -618,10 +571,7 @@ describe('WebpackConfigHelper', () => {
 			const cwcDev = new WebpackConfigHelper(
 				projectConfig.files[0],
 				{
-					...getConfigFromProjectAndServer(
-						projectConfig,
-						serverConfig
-					),
+					...getConfigFromProjectAndServer(projectConfig, serverConfig),
 				},
 				'/foo/bar',
 				true

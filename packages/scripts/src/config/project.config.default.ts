@@ -103,6 +103,10 @@ export interface ProjectConfig {
 	zlibLevel?: number;
 	// whether or not to disable wordpress external scripts handling
 	disableWordPressExternals?: boolean;
+	compileNodeModules?: {
+		dev?: boolean;
+		prod?: boolean;
+	};
 }
 
 /**

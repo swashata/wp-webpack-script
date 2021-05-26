@@ -169,6 +169,11 @@ export class CreateWebpackConfig {
 		if (file.useBabelConfig !== undefined) {
 			useBabelConfig = file.useBabelConfig;
 		}
+		// figure out compile node modules
+		const compileNodeModules = {
+			dev: this.projectConfig.compileNodeModules?.dev ?? true,
+			prod: this.projectConfig.compileNodeModules?.prod ?? true,
+		};
 		const { host, port } = this.serverConfig;
 		const helper: WebpackConfigHelper = new WebpackConfigHelper(
 			file,
@@ -198,6 +203,7 @@ export class CreateWebpackConfig {
 				tsBabelPresetOptions,
 				useReactJsxRuntime,
 				disableWordPressExternals,
+				compileNodeModules,
 			},
 			this.cwd,
 			this.isDev

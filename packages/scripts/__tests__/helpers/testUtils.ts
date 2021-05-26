@@ -65,5 +65,10 @@ export function getConfigFromProjectAndServer(
 		errorOverlay: true,
 		externals: pCfg.externals,
 		useBabelConfig: false,
+		compileNodeModules: {
+			dev: true,
+			prod: true,
+		},
+		useReactJsxRuntime: true,
 	};
 }

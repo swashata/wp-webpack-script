@@ -61,6 +61,10 @@ export interface WebpackConfigHelperConfig {
 	externals: ProjectConfig['externals'];
 	// whether or not to disable wordpress external scripts handling
 	disableWordPressExternals?: boolean;
+	compileNodeModules: {
+		dev: boolean;
+		prod: boolean;
+	};
 }
 
 interface CommonWebpackConfig {
@@ -585,15 +589,16 @@ ${bannerConfig.copyrightText}${bannerConfig.credit ? creditNote : ''}`,
 			fileRulesStyle,
 		} = getFileLoaderForJsAndStyleAssets(this.appDir, this.isDev);
 
+		const rules: webpack.RuleSetRule[] = [jsRules, tsRules];
+		if (this.isDev && this.config.compileNodeModules.dev) {
+			rules.push(nmJsRules);
+		} else if (!this.isDev && this.config.compileNodeModules.prod) {
+			rules.push(nmJsRules);
+		}
+		rules.push(...styleRules, fileRulesNonStyle, fileRulesStyle);
+
 		return {
-			rules: [
-				jsRules,
-				tsRules,
-				nmJsRules,
-				...styleRules,
-				fileRulesNonStyle,
-				fileRulesStyle,
-			],
+			rules,
 		};
 	}
 
