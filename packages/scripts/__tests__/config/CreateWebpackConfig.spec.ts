@@ -1,7 +1,9 @@
+import webpack from 'webpack';
 import webpackMerge from 'webpack-merge';
 import { CreateWebpackConfig } from '../../src/config/CreateWebpackConfig';
 import { ProjectConfig } from '../../src/config/project.config.default';
 import { initConfig, projectConfig, serverConfig } from '../helpers/testConfig';
+import { findWpackIoBabelOnTJs } from '../helpers/testUtils';
 
 jest.mock('webpack-merge');
 ((webpackMerge as unknown) as jest.Mock).mockImplementation(() => ({
@@ -21,6 +23,62 @@ describe('CreateWebpackConfig', () => {
 			true
 		);
 		expect(cwc).not.toBeFalsy();
+	});
+
+	test('entry level useBabelConfig overrides project level config', () => {
+		const newProjectConfig = { ...projectConfig };
+		newProjectConfig.files = [
+			{
+				name: 'config1',
+				entry: { foo: 'bar.js', biz: ['baz.js'] },
+				useBabelConfig: false,
+			},
+		];
+		newProjectConfig.useBabelConfig = true;
+		const config = new CreateWebpackConfig(
+			newProjectConfig,
+			serverConfig,
+			'/foo/bar',
+			true
+		).getWebpackConfig() as webpack.Configuration;
+		const module = config.module;
+		if (Array.isArray(module.rules)) {
+			const jsTsRules = findWpackIoBabelOnTJs(module);
+			expect(jsTsRules).toHaveLength(2);
+			jsTsRules.forEach(rule => {
+				if (rule && rule.use && rule.use[0].options) {
+					expect(rule.use[0].options).toHaveProperty('babelrc', false);
+					expect(rule.use[0].options).toHaveProperty('configFile', false);
+				} else {
+					throw new Error('JavaScript rule is undefined');
+				}
+			});
+		} else {
+			throw new Error('Invalid module.rules');
+		}
+		newProjectConfig.files[0].useBabelConfig = true;
+		newProjectConfig.useBabelConfig = false;
+		const config2 = new CreateWebpackConfig(
+			newProjectConfig,
+			serverConfig,
+			'/foo/bar',
+			true
+		).getWebpackConfig() as webpack.Configuration;
+		const module2 = config2.module;
+		if (Array.isArray(module2.rules)) {
+			const jsTsRules = findWpackIoBabelOnTJs(module2);
+			expect(jsTsRules).toHaveLength(2);
+			jsTsRules.forEach(rule => {
+				if (rule && rule.use && rule.use[0].options) {
+					expect(rule.use[0].options).not.toHaveProperty('babelrc', false);
+					expect(rule.use[0].options).not.toHaveProperty('configFile', false);
+				} else {
+					throw new Error('JavaScript rule is undefined');
+				}
+			});
+		} else {
+			throw new Error('Invalid module.rules');
+		}
 	});
 
 	describe('getWebpackConfig & isMultiCompiler', () => {

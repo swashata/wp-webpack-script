@@ -46,6 +46,8 @@ module.exports = {
 			optimizeForGutenberg: false,
 			// Extra webpack config to be passed directly
 			webpackConfig: undefined,
+			// override project `useBabelConfig` for this entry
+			useBabelConfig: undefined,
 		},
 		// If has more length, then multi-compiler
 		{
@@ -100,6 +102,13 @@ module.exports = {
 		...defaults,
 		plugins: ['react-hot-loader/babel'],
 	}),
+	// configure how node_modules is compiled
+	compileNodeModules: {
+		// compile node_modules in development
+		dev: true,
+		// compile node_modules in production
+		prod: true,
+	},
 	// Files that you want to copy to your ultimate theme/plugin package
 	// Supports glob matching from minimatch
 	// @link <https://github.com/isaacs/minimatch#usage>
@@ -147,13 +156,13 @@ A configuration object for banner put above all minified code.
 
 It has the following properties:
 
--   `name` (`string`): Name of application.
--   `author` (`string`): Author of application.
--   `version` (`string`): Version of application.
--   `link` (`string`): Homepage link of application.
--   `license` (`string`): License of application.
--   `copyrightText` (`string`): Additional copyright text.
--   `credit` (`boolean`): Whether to give wpackio a little credit ❤️.
+- `name` (`string`): Name of application.
+- `author` (`string`): Author of application.
+- `version` (`string`): Version of application.
+- `link` (`string`): Homepage link of application.
+- `license` (`string`): License of application.
+- `copyrightText` (`string`): Additional copyright text.
+- `credit` (`boolean`): Whether to give wpackio a little credit ❤️.
 
 ## `files` (`Array`)
 
