@@ -2183,10 +2183,10 @@
     "@webassemblyjs/wast-parser" "1.9.0"
     "@xtuc/long" "4.2.2"
 
-"@wpackio/babel-preset-base@^6.0.0":
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/@wpackio/babel-preset-base/-/babel-preset-base-6.0.0.tgz#3977ba509ac51d737bad42774befe663ba11a44c"
-  integrity sha512-7CnPK7w0sx8gTl5VHrzAsLgaT1GyTcR9GQNDiHnhf9tMYtgj/10nZAfwPHqIlWJUbr5i5xER9WTIDwdMh0epaQ==
+"@wpackio/babel-preset-base@^6.3.0":
+  version "6.3.0"
+  resolved "https://registry.yarnpkg.com/@wpackio/babel-preset-base/-/babel-preset-base-6.3.0.tgz#c1b92cf459c308a5b84e3da835d7eccac6968e7c"
+  integrity sha512-c8isTu5cFIWpjveS0eV7dSrftYJ++5Kp+zz19RqC3xXn0zWa7HBJM1naF3xR+oG8ZzBeCvohkp2baNGiy0y0zQ==
   dependencies:
     "@babel/helper-plugin-utils" "^7.13.0"
     "@babel/plugin-proposal-class-properties" "^7.13.0"
@@ -2202,12 +2202,12 @@
     "@babel/runtime" "^7.13.17"
 
 "@wpackio/entrypoint@file:../packages/entrypoint":
-  version "6.0.0"
+  version "6.3.0"
   dependencies:
     "@types/webpack-env" "^1.15.2"
 
 "@wpackio/scripts@file:../packages/scripts":
-  version "6.0.0"
+  version "6.3.0"
   dependencies:
     "@babel/code-frame" "^7.12.13"
     "@babel/core" "^7.13.16"
@@ -2226,7 +2226,7 @@
     "@types/webpack-dev-middleware" "^4.1.2"
     "@types/webpack-env" "^1.15.2"
     "@types/webpack-hot-middleware" "^2.25.3"
-    "@wpackio/babel-preset-base" "^6.0.0"
+    "@wpackio/babel-preset-base" "^6.3.0"
     archiver "^5.3.0"
     autoprefixer "^10.2.5"
     babel-loader "^8.2.2"
@@ -3923,6 +3923,13 @@ cookie@~0.4.1:
   version "0.4.1"
   resolved "https://registry.yarnpkg.com/cookie/-/cookie-0.4.1.tgz#afd713fe26ebd21ba95ceb61f9a8116e50a537d1"
   integrity sha512-ZwrFkGJxUR3EIoXtO+yVE69Eb7KlixbaeAWfBQB9vVsNn/o+Yw69gBWSSDK825hQNdN+wF8zELf3dFNl/kxkUA==
+
+copy-anything@^2.0.1:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/copy-anything/-/copy-anything-2.0.3.tgz#842407ba02466b0df844819bbe3baebbe5d45d87"
+  integrity sha512-GK6QUtisv4fNS+XcI7shX0Gx9ORg7QqIznyfho79JTnX1XhLiyZHfftvGiziqzRiEi/Bjhgpi+D2o7HxJFPnDQ==
+  dependencies:
+    is-what "^3.12.0"
 
 copy-concurrently@^1.0.0:
   version "1.0.5"
@@ -6612,6 +6619,11 @@ is-utf8@^0.2.0:
   resolved "https://registry.yarnpkg.com/is-utf8/-/is-utf8-0.2.1.tgz#4b0da1442104d1b336340e80797e865cf39f7d72"
   integrity sha1-Sw2hRCEE0bM2NA6AeX6GXPOffXI=
 
+is-what@^3.12.0:
+  version "3.14.1"
+  resolved "https://registry.yarnpkg.com/is-what/-/is-what-3.14.1.tgz#e1222f46ddda85dead0fd1c9df131760e77755c1"
+  integrity sha512-sNxgpk9793nzSs7bA6JQJGeIuRBQhAaNGG77kzYQgMkrID+lS6SlK07K5LaptscDlSaIgH+GPFzf+d75FVxozA==
+
 is-windows@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/is-windows/-/is-windows-1.0.2.tgz#d1850eb9791ecd18e6182ce12a30f396634bb19d"
@@ -7342,11 +7354,12 @@ less-loader@7.3.0:
     loader-utils "^2.0.0"
     schema-utils "^3.0.0"
 
-less@3.12.2:
-  version "3.12.2"
-  resolved "https://registry.yarnpkg.com/less/-/less-3.12.2.tgz#157e6dd32a68869df8859314ad38e70211af3ab4"
-  integrity sha512-+1V2PCMFkL+OIj2/HrtrvZw0BC0sYLMICJfbQjuj/K8CEnlrFX6R5cKKgzzttsZDHyxQNL1jqMREjKN3ja/E3Q==
+less@3.13.1:
+  version "3.13.1"
+  resolved "https://registry.yarnpkg.com/less/-/less-3.13.1.tgz#0ebc91d2a0e9c0c6735b83d496b0ab0583077909"
+  integrity sha512-SwA1aQXGUvp+P5XdZslUOhhLnClSLIjWvJhmd+Vgib5BFIr9lMNlQwmwUNOjXThF/A0x+MCYYPeWEfeWiLRnTw==
   dependencies:
+    copy-anything "^2.0.1"
     tslib "^1.10.0"
   optionalDependencies:
     errno "^0.1.1"
