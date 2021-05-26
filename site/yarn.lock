@@ -2513,7 +2513,7 @@
     "@xtuc/long" "4.2.2"
 
 "@wpackio/eslint-config@file:../packages/eslint-config":
-  version "5.0.0"
+  version "6.3.0"
   dependencies:
     "@typescript-eslint/eslint-plugin" "4.22.0"
     "@typescript-eslint/parser" "4.22.0"
@@ -7281,10 +7281,10 @@ gatsby-plugin-sharp@2.9.0:
     svgo "1.3.2"
     uuid "3.4.0"
 
-gatsby-plugin-svgr@2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-svgr/-/gatsby-plugin-svgr-2.0.2.tgz#22e08fb67ec63b68aca6ac3e89962af20214e2a5"
-  integrity sha512-54REIMe79qFBAwpcnWHBkvEE9CKoEVkefF9rDXai0k642r91SZ4UeWFuAmsegPG+sPVub7tHfHu/2LVXK1I9kg==
+gatsby-plugin-svgr@2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-svgr/-/gatsby-plugin-svgr-2.1.0.tgz#7ba4e53cc6b61ddb4653a021be2fe7a8f0830e4c"
+  integrity sha512-OgJ+M9EWMMXsEwhxefNvxCu2jmHmUHx/PgP+7A9pn7XUt1IYiZmEKteJ1ZP5tAPuUI2S539yYgW76H3u9u19SA==
 
 gatsby-plugin-typescript@^2.7.0:
   version "2.7.0"
