@@ -22,7 +22,7 @@ declare const expect: jest.Expect;
 
 beforeAll(() => {
 	// @ts-ignore
-	// eslint-disable-next-line new-cap
+	// eslint-disable-next-line babel/new-cap
 	global.Date = jest.fn(() => new realDate(currentDate.toISOString()));
 	Object.assign(Date, realDate);
 });

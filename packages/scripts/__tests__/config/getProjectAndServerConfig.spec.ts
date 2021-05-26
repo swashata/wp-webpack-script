@@ -6,6 +6,8 @@ import {
 } from '../../src/config/getProjectAndServerConfig';
 import { ProjectConfig } from '../../src/config/project.config.default';
 
+declare const expect: jest.Expect;
+
 const pathToDummyRight = path.resolve(
 	__dirname,
 	'../helpers/dummyConfigRight.js'
@@ -82,16 +84,13 @@ describe('getProjectAndServerConfig', () => {
 		});
 	});
 	test('looks for default file under cwd', () => {
-		const {
-			projectConfigPath,
-			serverConfigPath,
-		} = getProjectAndServerConfig(validCwd);
+		const { projectConfigPath, serverConfigPath } = getProjectAndServerConfig(
+			validCwd
+		);
 		expect(projectConfigPath).toBe(
 			path.resolve(validCwd, 'wpackio.project.js')
 		);
-		expect(serverConfigPath).toBe(
-			path.resolve(validCwd, 'wpackio.server.js')
-		);
+		expect(serverConfigPath).toBe(path.resolve(validCwd, 'wpackio.server.js'));
 	});
 });
 

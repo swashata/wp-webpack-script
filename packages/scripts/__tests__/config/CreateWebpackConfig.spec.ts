@@ -10,6 +10,8 @@ jest.mock('webpack-merge');
 
 beforeEach(initConfig);
 
+declare const expect: jest.Expect;
+
 describe('CreateWebpackConfig', () => {
 	test('instantiates', () => {
 		const cwc = new CreateWebpackConfig(
@@ -100,9 +102,7 @@ describe('CreateWebpackConfig', () => {
 			const config = cwc.getWebpackConfig();
 			expect(mocker).toHaveBeenCalledTimes(1);
 			expect(config).toHaveProperty('testSuccess');
-			expect(
-				(config as { testSuccess: boolean }).testSuccess
-			).toBeTruthy();
+			expect((config as { testSuccess: boolean }).testSuccess).toBeTruthy();
 		});
 		test('calls merge when files[n].webpackConfig is an object', () => {
 			const multiProjectConfig: ProjectConfig = {

@@ -5,7 +5,7 @@ module.exports = {
 			files: ['**/*.ts', '**/*.tsx'],
 			extends: ['@wpackio/eslint-config/ts'],
 			parserOptions: {
-				project: './tsconfig.json',
+				project: './tsconfig.eslint.json',
 				tsconfigRootDir: __dirname,
 			},
 			settings: {
