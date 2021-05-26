@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.3.0](https://github.com/swashata/wp-webpack-script/compare/v6.2.0...v6.3.0) (2021-05-26)
+
+
+### Bug Fixes
+
+* babel plugin not being configured properly for ts ([2b8b2df](https://github.com/swashata/wp-webpack-script/commit/2b8b2dfbc35b9b31f10ef4851add069d611ca1d7))
+
+
+### Features
+
+* add option useBabelConfig in file config to override project config ([32954a6](https://github.com/swashata/wp-webpack-script/commit/32954a6fe18ecdd9a0795a5cd57683d08363f5a0))
+* new project config compileNodeModules ([a9d5951](https://github.com/swashata/wp-webpack-script/commit/a9d5951854cb70fc167e0e10639779341754852d))
+
+
+
+
+
 # [6.2.0](https://github.com/swashata/wp-webpack-script/compare/v6.1.4...v6.2.0) (2021-05-02)
 
 
