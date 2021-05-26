@@ -5,7 +5,7 @@ module.exports = {
 			files: ['**/*.ts', '**/*.tsx'],
 			extends: ['@wpackio/eslint-config/ts'],
 			parserOptions: {
-				project: './tsconfig.json',
+				project: './tsconfig.eslint.json',
 				tsconfigRootDir: __dirname,
 			},
 			settings: {
@@ -17,6 +17,8 @@ module.exports = {
 			},
 			rules: {
 				'no-console': 'off',
+				'jest/no-conditional-expect': 'off',
+				'@typescript-eslint/ban-ts-comment': 'off',
 			},
 		},
 	],
