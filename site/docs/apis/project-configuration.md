@@ -202,7 +202,7 @@ under `entry`, then also (if needed) chunk-splitting will be applied.
 If we were to pass multiple file object, then webpack would run in [multi-compiler](https://webpack.js.org/api/node/#multicompiler)
 mode, separating dependency tree from each of the file object.
 
-Each file object has two required and three optional properties. Here's the
+Each file object has two required and four optional properties. Here's the
 interface.
 
 ```ts
@@ -222,6 +222,8 @@ interface FileConfig {
 				appDir: string,
 				isDev: boolean
 		  ) => webpack.Configuration);
+	// NEW in v6.3.0, to override project level useBabelConfig settings
+	useBabelConfig?: boolean;
 }
 ```
 
@@ -405,6 +407,22 @@ like to do things manually.
 We have the default config from [webpack optimization split-chunks plugin](https://webpack.js.org/plugins/split-chunks-plugin/#optimization-splitchunks)
 with only exception of setting `chunks` to `'all'`. We can do it safely because
 our PHP consumer library handles the enqueue.
+
+## `compileNodeModules` (`object`)
+
+Determines how `node_modules` is compiled during development and production mode.
+If this is not present, then `node_modules` is compiled in both dev and prod.
+However it can be configured like this.
+
+```js
+module.exports = {
+	// ...
+	compileNodeModules: {
+		dev: false,
+		prod: true,
+	},
+};
+```
 
 ## `watch` (`string`)
 
