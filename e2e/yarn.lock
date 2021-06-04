@@ -2183,10 +2183,10 @@
     "@webassemblyjs/wast-parser" "1.9.0"
     "@xtuc/long" "4.2.2"
 
-"@wpackio/babel-preset-base@^6.0.0":
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/@wpackio/babel-preset-base/-/babel-preset-base-6.0.0.tgz#3977ba509ac51d737bad42774befe663ba11a44c"
-  integrity sha512-7CnPK7w0sx8gTl5VHrzAsLgaT1GyTcR9GQNDiHnhf9tMYtgj/10nZAfwPHqIlWJUbr5i5xER9WTIDwdMh0epaQ==
+"@wpackio/babel-preset-base@^6.3.0":
+  version "6.3.0"
+  resolved "https://registry.yarnpkg.com/@wpackio/babel-preset-base/-/babel-preset-base-6.3.0.tgz#c1b92cf459c308a5b84e3da835d7eccac6968e7c"
+  integrity sha512-c8isTu5cFIWpjveS0eV7dSrftYJ++5Kp+zz19RqC3xXn0zWa7HBJM1naF3xR+oG8ZzBeCvohkp2baNGiy0y0zQ==
   dependencies:
     "@babel/helper-plugin-utils" "^7.13.0"
     "@babel/plugin-proposal-class-properties" "^7.13.0"
@@ -2202,12 +2202,12 @@
     "@babel/runtime" "^7.13.17"
 
 "@wpackio/entrypoint@file:../packages/entrypoint":
-  version "6.0.0"
+  version "6.3.0"
   dependencies:
     "@types/webpack-env" "^1.15.2"
 
 "@wpackio/scripts@file:../packages/scripts":
-  version "6.0.0"
+  version "6.3.0"
   dependencies:
     "@babel/code-frame" "^7.12.13"
     "@babel/core" "^7.13.16"
@@ -2226,7 +2226,7 @@
     "@types/webpack-dev-middleware" "^4.1.2"
     "@types/webpack-env" "^1.15.2"
     "@types/webpack-hot-middleware" "^2.25.3"
-    "@wpackio/babel-preset-base" "^6.0.0"
+    "@wpackio/babel-preset-base" "^6.3.0"
     archiver "^5.3.0"
     autoprefixer "^10.2.5"
     babel-loader "^8.2.2"
@@ -5005,19 +5005,19 @@ exec-sh@^0.3.2:
   resolved "https://registry.yarnpkg.com/exec-sh/-/exec-sh-0.3.2.tgz#6738de2eb7c8e671d0366aea0b0db8c6f7d7391b"
   integrity sha512-9sLAvzhI5nc8TpuQUh4ahMdCrWT00wPWz7j47/emR5+2qEfoZP5zzUXvx+vdx+H6ohhnsYC31iX04QLYJK8zTg==
 
-execa@4.1.0:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/execa/-/execa-4.1.0.tgz#4e5491ad1572f2f17a77d388c6c857135b22847a"
-  integrity sha512-j5W0//W7f8UxAn8hXVnwG8tLwdiUy4FJLcSupCg6maBYZDpyBvTApK7KyuI4bKj8KOh1r2YH+6ucuYtJv1bTZA==
+execa@5.1.1:
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/execa/-/execa-5.1.1.tgz#f80ad9cbf4298f7bd1d4c9555c21e93741c411dd"
+  integrity sha512-8uSpZZocAZRBAPIEINJj3Lo9HyGitllczc27Eh5YYojjMFMn8yHMDMaUHE2Jqfq05D/wucwI4JGURyXt1vchyg==
   dependencies:
-    cross-spawn "^7.0.0"
-    get-stream "^5.0.0"
-    human-signals "^1.1.1"
+    cross-spawn "^7.0.3"
+    get-stream "^6.0.0"
+    human-signals "^2.1.0"
     is-stream "^2.0.0"
     merge-stream "^2.0.0"
-    npm-run-path "^4.0.0"
-    onetime "^5.1.0"
-    signal-exit "^3.0.2"
+    npm-run-path "^4.0.1"
+    onetime "^5.1.2"
+    signal-exit "^3.0.3"
     strip-final-newline "^2.0.0"
 
 execa@^0.7.0:
