@@ -2183,10 +2183,10 @@
     "@webassemblyjs/wast-parser" "1.9.0"
     "@xtuc/long" "4.2.2"
 
-"@wpackio/babel-preset-base@^6.0.0":
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/@wpackio/babel-preset-base/-/babel-preset-base-6.0.0.tgz#3977ba509ac51d737bad42774befe663ba11a44c"
-  integrity sha512-7CnPK7w0sx8gTl5VHrzAsLgaT1GyTcR9GQNDiHnhf9tMYtgj/10nZAfwPHqIlWJUbr5i5xER9WTIDwdMh0epaQ==
+"@wpackio/babel-preset-base@^6.3.0":
+  version "6.3.0"
+  resolved "https://registry.yarnpkg.com/@wpackio/babel-preset-base/-/babel-preset-base-6.3.0.tgz#c1b92cf459c308a5b84e3da835d7eccac6968e7c"
+  integrity sha512-c8isTu5cFIWpjveS0eV7dSrftYJ++5Kp+zz19RqC3xXn0zWa7HBJM1naF3xR+oG8ZzBeCvohkp2baNGiy0y0zQ==
   dependencies:
     "@babel/helper-plugin-utils" "^7.13.0"
     "@babel/plugin-proposal-class-properties" "^7.13.0"
@@ -2202,12 +2202,12 @@
     "@babel/runtime" "^7.13.17"
 
 "@wpackio/entrypoint@file:../packages/entrypoint":
-  version "6.0.0"
+  version "6.3.0"
   dependencies:
     "@types/webpack-env" "^1.15.2"
 
 "@wpackio/scripts@file:../packages/scripts":
-  version "6.0.0"
+  version "6.3.0"
   dependencies:
     "@babel/code-frame" "^7.12.13"
     "@babel/core" "^7.13.16"
@@ -2226,7 +2226,7 @@
     "@types/webpack-dev-middleware" "^4.1.2"
     "@types/webpack-env" "^1.15.2"
     "@types/webpack-hot-middleware" "^2.25.3"
-    "@wpackio/babel-preset-base" "^6.0.0"
+    "@wpackio/babel-preset-base" "^6.3.0"
     archiver "^5.3.0"
     autoprefixer "^10.2.5"
     babel-loader "^8.2.2"
@@ -11246,10 +11246,10 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
-typescript@3.9.7:
-  version "3.9.7"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.9.7.tgz#98d600a5ebdc38f40cb277522f12dc800e9e25fa"
-  integrity sha512-BLbiRkiBzAwsjut4x/dsibSTB6yWpwT5qWmC2OfuCg3GgVQCSgMs4vEctYPhsaGtd0AeuuHMkjZ2h2WG8MSzRw==
+typescript@3.9.10:
+  version "3.9.10"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.9.10.tgz#70f3910ac7a51ed6bef79da7800690b19bf778b8"
+  integrity sha512-w6fIxVE/H1PkLKcCPsFqKE7Kv7QUwhU8qQY2MueZXWx5cPZdwFupLgKK3vntcK98BtNHZtAF4LA/yl2a7k8R6Q==
 
 ua-parser-js@^0.7.18:
   version "0.7.21"
