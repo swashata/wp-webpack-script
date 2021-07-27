@@ -124,7 +124,7 @@ module.exports = {
 								test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
 								use: [
 									{
-										loader: fileLoader,
+										loader: 'file-loader',
 										options: getFileLoaderOptions(
 											appDir,
 											isDev,
@@ -140,7 +140,7 @@ module.exports = {
 								test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
 								use: [
 									{
-										loader: fileLoader,
+										loader: 'file-loader',
 										options: getFileLoaderOptions(
 											appDir,
 											isDev,
