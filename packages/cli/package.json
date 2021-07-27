@@ -1,6 +1,6 @@
 {
   "name": "@wpackio/cli",
-  "version": "6.3.0",
+  "version": "6.4.0",
   "description": "Commandline tool to quickly bootstrap wpackio-scripts to your project.",
   "keywords": [
     "wordpress",
@@ -46,7 +46,7 @@
     "access": "public"
   },
   "devDependencies": {
-    "@wpackio/eslint-config": "^6.3.0",
+    "@wpackio/eslint-config": "^6.4.0",
     "typescript": "4.3.5"
   }
 }

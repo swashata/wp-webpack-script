@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.4.0](https://github.com/swashata/wp-webpack-script/compare/v6.3.0...v6.4.0) (2021-07-27)
+
+
+### Bug Fixes
+
+* eslint and typescript issues after upgrade ([12cc73f](https://github.com/swashata/wp-webpack-script/commit/12cc73f700e3297dc31696486e18d32b969a8939))
+
+
+
+
+
 # [6.3.0](https://github.com/swashata/wp-webpack-script/compare/v6.2.0...v6.3.0) (2021-05-26)
 
 ### Bug Fixes

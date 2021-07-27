@@ -1,6 +1,6 @@
 {
   "name": "@wpackio/babel-preset-base",
-  "version": "6.3.0",
+  "version": "6.4.0",
   "description": "Babel preset for @wps/scripts, without react specific transforms.",
   "keywords": [
     "wordpress",
@@ -56,7 +56,7 @@
   },
   "devDependencies": {
     "@babel/core": "7.14.8",
-    "@wpackio/eslint-config": "^6.3.0",
+    "@wpackio/eslint-config": "^6.4.0",
     "dts-gen": "0.6.0"
   }
 }
