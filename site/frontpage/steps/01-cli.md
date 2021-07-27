@@ -8,9 +8,9 @@ image: ./01-cli.gif
 npx @wpackio/cli
 ```
 
-This command will install `@wpackio/scripts` to your project's `devDependencies`.
-It will also create a `package.json` if necessary and will add a `bootstrap` script
-to your `package.json`.
+This command will install `@wpackio/scripts` to your project's
+`devDependencies`. It will also create a `package.json` if necessary and will
+add a `bootstrap` script to your `package.json`.
 
 It provides an on-boarding experience where you don't need to worry about adding
 scripts and dependencies.

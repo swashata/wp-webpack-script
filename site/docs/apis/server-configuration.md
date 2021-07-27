@@ -4,11 +4,11 @@ order: 2
 shortTitle: Server Configuration
 ---
 
-The `wpackio.server.js` file at the root of your workspace tells wpackio
-how your development server is handled.
+The `wpackio.server.js` file at the root of your workspace tells wpackio how
+your development server is handled.
 
-It is used to proxy an existing development server and run webpack and browsersync
-on top of it, to give you the ultimate developer experience.
+It is used to proxy an existing development server and run webpack and
+browsersync on top of it, to give you the ultimate developer experience.
 
 > You should NOT commit `wpackio.server.js` with your VCS, if you do not have
 > docker based development. In case of mamp, wamp, vvv, local server generally
@@ -56,8 +56,8 @@ Let's dive in deep with different options.
 ## `host` (`string`)
 
 The IP Address of your local network. An IP is needed because only then can we
-properly have browser-sync accessible across network and have our service workers
-work.
+properly have browser-sync accessible across network and have our service
+workers work.
 
 wpackio will try to determine the best possible IP address from your interfaces
 and will use that.
@@ -69,8 +69,8 @@ If you pass a specific value (`192.168.1.102`), then it will be used instead.
 The URL of the local WordPress development server where your theme/plugin is
 installed and being developed upon.
 
-Right now, we recommend having a Root WordPress installation (not sub-folder). If
-you have sub-folder installation, then put the whole URL as proxy like
+Right now, we recommend having a Root WordPress installation (not sub-folder).
+If you have sub-folder installation, then put the whole URL as proxy like
 `http://localhost/wp-plugin`
 
 ## `port` (`number`)
@@ -79,7 +79,8 @@ A port where the development hot server will live.
 
 ## `ui` (`Object`)
 
-Passed directly to [browser-sync](https://browsersync.io/docs/options#option-ui).
+Passed directly to
+[browser-sync](https://browsersync.io/docs/options#option-ui).
 
 ## `notify` (`boolean`)
 
@@ -91,7 +92,8 @@ Whether to automatically open the local server on your browser.
 
 ## `ghostMode` (`boolean`|`Object`)
 
-Passed directly to [browser-sync](https://browsersync.io/docs/options#option-ghostMode).
+Passed directly to
+[browser-sync](https://browsersync.io/docs/options#option-ghostMode).
 
 ## `distPublicPath` (`string`)
 
@@ -107,13 +109,13 @@ By default `wpackio-scripts` calculates the URL of the `outputPath` in this way
 
 So this assumes that
 
--   WordPress proxy server is installed in root and not in sub-directory.
--   The directory structures of plugins, themes are set as default.
--   You have entered the correct `slug` in your project configuration
-    and it matches with the directory structure of your development server.
+- WordPress proxy server is installed in root and not in sub-directory.
+- The directory structures of plugins, themes are set as default.
+- You have entered the correct `slug` in your project configuration and it
+  matches with the directory structure of your development server.
 
-In case, your development server doesn't work like this, you can specify
-your `distPublicPath` manually.
+In case, your development server doesn't work like this, you can specify your
+`distPublicPath` manually.
 
 ```
 /wp-custom-content/secret-plug-directory/overriden-slug/dist/

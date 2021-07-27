@@ -4,26 +4,33 @@ order: 3
 shortTitle: Adding Typescript
 ---
 
-`@wpackio/scripts` has first-class support for both [typescript](https://www.typescriptlang.org/)
-and [flow type](https://flow.org/). While flow works right out of the box
-there are some configuration needed for typescript.
+`@wpackio/scripts` has first-class support for both
+[typescript](https://www.typescriptlang.org/) and
+[flow type](https://flow.org/). While flow works right out of the box there are
+some configuration needed for typescript.
 
 ## Provided tooling
 
-`@wpackio/scripts` comes with the build tooling for typescript, not typescript and
-webpack plugins. Also note that, we use [babel 7](https://babeljs.io/docs/en/babel-preset-typescript)
-to compile typescript and [Fork TS Checked Webpack Plugin](https://github.com/Realytics/fork-ts-checker-webpack-plugin)
+`@wpackio/scripts` comes with the build tooling for typescript, not typescript
+and webpack plugins. Also note that, we use
+[babel 7](https://babeljs.io/docs/en/babel-preset-typescript) to compile
+typescript and
+[Fork TS Checked Webpack Plugin](https://github.com/Realytics/fork-ts-checker-webpack-plugin)
 to show type-errors during build/development time. So there are some gotchas.
 
 ## What doesn't work
 
-As [explained in microsoft blog](https://blogs.msdn.microsoft.com/typescript/2018/08/27/typescript-and-babel-7/)
+As
+[explained in microsoft blog](https://blogs.msdn.microsoft.com/typescript/2018/08/27/typescript-and-babel-7/)
 the following doesn't work when using babel to compile typescript.
 
--   namespaces.
--   bracket style type-assertion/cast syntax regardless of when JSX is enabled (i.e. writing `<Foo>x` won’t work even in `.ts` files if JSX support is turned on, but you can instead write `x as Foo`).
--   enums that span multiple declarations (i.e. enum merging).
--   legacy-style import/export syntax (i.e. `import foo = require(...)` and `export = foo`).
+- namespaces.
+- bracket style type-assertion/cast syntax regardless of when JSX is enabled
+  (i.e. writing `<Foo>x` won’t work even in `.ts` files if JSX support is turned
+  on, but you can instead write `x as Foo`).
+- enums that span multiple declarations (i.e. enum merging).
+- legacy-style import/export syntax (i.e. `import foo = require(...)` and
+  `export = foo`).
 
 So keep these in mind.
 
@@ -78,32 +85,35 @@ module.exports = {
 };
 ```
 
-Now you are good to go. The compiler will also show any `ts` error you might have.
+Now you are good to go. The compiler will also show any `ts` error you might
+have.
 
-> **NOTE** - Internally wpack.io depends on [`fork-ts-checker-webpack-plugin`](https://github.com/Realytics/fork-ts-checker-webpack-plugin)
+> **NOTE** - Internally wpack.io depends on
+> [`fork-ts-checker-webpack-plugin`](https://github.com/Realytics/fork-ts-checker-webpack-plugin)
 > to show type errors during build time. So make sure you install it, otherwise
 > it will not work.
 
 ## Optimization
 
-By default `@wpackio/scripts` will create an instance of `fork-ts-checker-webpack-plugin`
-if a `tsconfig.json` is found in the current project root.
+By default `@wpackio/scripts` will create an instance of
+`fork-ts-checker-webpack-plugin` if a `tsconfig.json` is found in the current
+project root.
 
-The same plugin would go into all multi-entry compiler instances and would enable
-typechecking for all entries.
+The same plugin would go into all multi-entry compiler instances and would
+enable typechecking for all entries.
 
-Sometimes, this could not be the desired feature. For instance, you might have
-a plain JS app, alongside a TS app and you don't want the typechecker for the JS
-app. Luckily it is not possible to explicitly disable typechecking for individual
-file entry using `hasTypeScript`.
+Sometimes, this could not be the desired feature. For instance, you might have a
+plain JS app, alongside a TS app and you don't want the typechecker for the JS
+app. Luckily it is not possible to explicitly disable typechecking for
+individual file entry using `hasTypeScript`.
 
 Furthermore, due to the nature of TypeScript, you might notice duplicate error
-reports across multiple files entry. This can also be remedied using `typeWatchFiles`
-config variable.
+reports across multiple files entry. This can also be remedied using
+`typeWatchFiles` config variable.
 
 Under your [`FileConfig`](/apis/project-configuration/#files-array) add the
-`hasTypeScript` option. Below is an example of two apps, one explicitly disabling
-the typecheck.
+`hasTypeScript` option. Below is an example of two apps, one explicitly
+disabling the typecheck.
 
 **wpackio.project.js**
 

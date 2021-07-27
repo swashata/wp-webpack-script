@@ -38,9 +38,7 @@ const Layout = ({ children, decorate = true, path = undefined }) => (
 		render={data => (
 			<>
 				<Helmet
-					title={`${
-						data.site.siteMetadata.title
-					} - javascript & css tooling for WordPress themes & plugins`}
+					title={`${data.site.siteMetadata.title} - javascript & css tooling for WordPress themes & plugins`}
 					meta={[
 						{
 							name: 'description',

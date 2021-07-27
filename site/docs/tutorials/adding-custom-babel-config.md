@@ -5,8 +5,8 @@ shortTitle: Adding Babel Config
 ---
 
 By default `@wpackio/scripts` ignores all `babel.config.js` and `.babelrc` files
-and passes its own configuration to `babel-loader`. This works great for most
-of the projects. But you might want to pass custom babel configuration which is
+and passes its own configuration to `babel-loader`. This works great for most of
+the projects. But you might want to pass custom babel configuration which is
 aware of tests or perhaps needs some other custom plugins.
 
 There are two safe approach to do this.
@@ -14,9 +14,11 @@ There are two safe approach to do this.
 ## Using project config
 
 If your babel configuration is only needed for `@wpackio/scripts` and not any
-other tooling (like jest), then you should be able to use the project configurations.
+other tooling (like jest), then you should be able to use the project
+configurations.
 
-You will need to use [`babelPresetOptions` and `babelOverride`](https://wpack.io/apis/project-configuration/#jsbabelpresetoptions-object--tsbabelpresetoptions-object)
+You will need to use
+[`babelPresetOptions` and `babelOverride`](https://wpack.io/apis/project-configuration/#jsbabelpresetoptions-object--tsbabelpresetoptions-object)
 options to pass in custom values directly to `@wpackio/scripts`.
 
 ## Using custom babel.config.js
@@ -37,12 +39,12 @@ module.exports = {
 Now `@wpackio/scripts` will not pass any options to `babel-loader` and it will
 fallback to your own `babel.config.js` file.
 
-Note that when doing this, you will lose the built-in abilities for react, typescript
-etc. Because internally `@wpackio/scripts` passes the needed babel options to
-`babel-loader` to parse and compile those files.
+Note that when doing this, you will lose the built-in abilities for react,
+typescript etc. Because internally `@wpackio/scripts` passes the needed babel
+options to `babel-loader` to parse and compile those files.
 
-However you can easily achieve the same with the `getBabelPresets` [node.js API](/apis/node-api/).
-Your `babel.config.js` file may look like this.
+However you can easily achieve the same with the `getBabelPresets`
+[node.js API](/apis/node-api/). Your `babel.config.js` file may look like this.
 
 ```js
 import { getBabelPresets } from '@wpackio/scripts';

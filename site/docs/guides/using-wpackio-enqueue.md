@@ -4,20 +4,22 @@ order: 2
 shortTitle: Hook WordPress
 ---
 
-While `@wpackio/scripts` will generate the assets for you, you still need a
-way to actually `wp_enqueue_script` the assets and define dynamic `publicPath`
-to make them actually work.
+While `@wpackio/scripts` will generate the assets for you, you still need a way
+to actually `wp_enqueue_script` the assets and define dynamic `publicPath` to
+make them actually work.
 
 [`wpackio/enqueue`](https://github.com/swashata/wpackio-enqueue) is the PHP
 companion of @wpackio/scripts.
 
-It gives you all the APIs you will need to properly consume assets generated from `@wpackio/scripts` from your WordPress plugins or themes.
+It gives you all the APIs you will need to properly consume assets generated
+from `@wpackio/scripts` from your WordPress plugins or themes.
 
 ## Installation
 
 ### Using Composer
 
-We recommend using [composer](https://getcomposer.org/) for using this [library](https://packagist.org/packages/wpackio/enqueue).
+We recommend using [composer](https://getcomposer.org/) for using this
+[library](https://packagist.org/packages/wpackio/enqueue).
 
 ```bash
 composer require wpackio/enqueue
@@ -38,13 +40,15 @@ $enqueue = new \WPackio\Enqueue( 'appName', 'outputPath', '1.0.0', 'plugin', __F
 
 ### Manual
 
-If you do not wish to use composer, then download the file [`Enqueue.php`](inc/Enqueue.php).
+If you do not wish to use composer, then download the file
+[`Enqueue.php`](inc/Enqueue.php).
 
 Remove the namespace line `namespace WPackio;` and rename the classname from
 `Enqueue` to something less generic, like `MyPluginEnqueue`. This ensures
 conflict-free loading.
 
-Then require the file in your plugin entry-point or `functions.php` file of your theme.
+Then require the file in your plugin entry-point or `functions.php` file of your
+theme.
 
 ```php
 <?php
@@ -58,16 +62,17 @@ $enqueue = new MyPluginEnqueue( 'appName', 'outputPath', '1.0.0', 'plugin', __FI
 
 ## Getting Started
 
-Which ever way, you choose to install, you have to make sure to
-**instantiate the class early** during the entry-point of your plugin or theme.
+Which ever way, you choose to install, you have to make sure to **instantiate
+the class early** during the entry-point of your plugin or theme.
 
-This ensures that we have necessary javascript in our website frontend and admin-end
-to make webpack code-splitting and dynamic import work.
+This ensures that we have necessary javascript in our website frontend and
+admin-end to make webpack code-splitting and dynamic import work.
 
 ### Consuming assets for project
 
 The PHP API must be instantiated in a way that it understands what you have
-written in your `wpackio.project.js` file. Say your `appName` is `awesomePlugin` and your `files` entry look like this.
+written in your `wpackio.project.js` file. Say your `appName` is `awesomePlugin`
+and your `files` entry look like this.
 
 ```js
 module.exports = {
@@ -115,8 +120,8 @@ module.exports = {
 };
 ```
 
-The following code shows you how you can consume, i.e, `wp_enqueue` all of
-the assets.
+The following code shows you how you can consume, i.e, `wp_enqueue` all of the
+assets.
 
 ```php
 <?php
@@ -180,6 +185,9 @@ early to print a small javascript like this:
 </script>
 ```
 
-This is single-handedly responsible for making webpack [dynamic publicPath](https://webpack.js.org/guides/public-path/#on-the-fly) work.
+This is single-handedly responsible for making webpack
+[dynamic publicPath](https://webpack.js.org/guides/public-path/#on-the-fly)
+work.
 
-More information can be found about available methods in [PHP API](/apis/php-api/) docs.
+More information can be found about available methods in
+[PHP API](/apis/php-api/) docs.

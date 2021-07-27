@@ -58,8 +58,7 @@ const Sidebarnav = props => (
 								<p className="menu-label">
 									<Link
 										className={classNames({
-											'is-active':
-												currentSlug === `/${docType}/`,
+											'is-active': currentSlug === `/${docType}/`,
 										})}
 										to={`/${docType}/`}
 									>
@@ -72,16 +71,13 @@ const Sidebarnav = props => (
 											<Link
 												to={doc.fields.slug}
 												className={classNames({
-													'is-active':
-														currentSlug ===
-														doc.fields.slug,
+													'is-active': currentSlug === doc.fields.slug,
 												})}
 												title={doc.frontmatter.title}
 											>
 												{doc.frontmatter.shortTitle}
 											</Link>
-											{currentSlug === doc.fields.slug &&
-											toc ? (
+											{currentSlug === doc.fields.slug && toc ? (
 												<div
 													dangerouslySetInnerHTML={{
 														__html: toc,

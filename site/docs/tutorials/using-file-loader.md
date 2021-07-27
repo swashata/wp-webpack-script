@@ -5,14 +5,17 @@ shortTitle: Using file-loader
 ---
 
 If you want to use `file-loader` for your custom assets, then there are some
-options you need to pass to make things work properly. To help you with that
-we have exposed a few [nodejs APIs](/apis/node-api/).
+options you need to pass to make things work properly. To help you with that we
+have exposed a few [nodejs APIs](/apis/node-api/).
 
-The apis we need to use for `file-loader` are `getFileLoaderOptions`, `issuerForNonStyleFiles`, `issuerForStyleFiles`, `fileLoader`.
+The apis we need to use for `file-loader` are `getFileLoaderOptions`,
+`issuerForNonStyleFiles`, `issuerForStyleFiles`, `fileLoader`.
 
-> Do not use `file-loader` as a direct value. Import `fileLoader` from API and use it instead.
+> Do not use `file-loader` as a direct value. Import `fileLoader` from API and
+> use it instead.
 
-Say we want to load svg files with `file-loader`, for both JS/TS and CSS modules.
+Say we want to load svg files with `file-loader`, for both JS/TS and CSS
+modules.
 
 Here's what the `wpackio.project.js` would look like.
 

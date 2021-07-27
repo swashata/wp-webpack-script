@@ -4,11 +4,11 @@ order: 4
 shortTitle: Development Server
 ---
 
-Now that we have all dependencies installed, it is time to start the
-development server. Remember that
+Now that we have all dependencies installed, it is time to start the development
+server. Remember that
 
--   `wpackio-scripts` doesn't provide any WordPress development server.
--   You are free to use any local server, like wamp, mamp, vvv.
+- `wpackio-scripts` doesn't provide any WordPress development server.
+- You are free to use any local server, like wamp, mamp, vvv.
 
 Let's start by editing our `wpackio.server.js` file.
 
@@ -32,13 +32,14 @@ module.exports = {
 };
 ```
 
-If your local WordPress development server is going to produce and URL to
-the [`outputPath`](/apis/project-configuration/#outputpath-string)
-which is not of the type `/wp-content/plugins/<slug>/<outputPath>/` then
-you can override it with the [`distPublicPath`](/apis/server-configuration/#distpublicpath-string) settings.
+If your local WordPress development server is going to produce and URL to the
+[`outputPath`](/apis/project-configuration/#outputpath-string) which is not of
+the type `/wp-content/plugins/<slug>/<outputPath>/` then you can override it
+with the [`distPublicPath`](/apis/server-configuration/#distpublicpath-string)
+settings.
 
-Say you have local WordPress hosted under `http://localhost/wp-one`. Then
-put `distPublicPath` like
+Say you have local WordPress hosted under `http://localhost/wp-one`. Then put
+`distPublicPath` like
 
 ```js
 module.exports = {
@@ -72,9 +73,9 @@ depending on your configuration.
 
 ## Fine tune some proxy stuff
 
-Under the hood, we proxy WordPress server that you have. It will work for
-90% of the time. But in some cases, like with REST API or customizer, things
-might not work at first. Luckily there's an easy fix.
+Under the hood, we proxy WordPress server that you have. It will work for 90% of
+the time. But in some cases, like with REST API or customizer, things might not
+work at first. Luckily there's an easy fix.
 
 Create a file `wpackio-fix.php` under `wp-contents/mu-plugins` and put the
 following content

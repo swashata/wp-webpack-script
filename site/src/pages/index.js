@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, graphql } from 'gatsby';
-import Typing, { Cursor } from 'react-typing-animation';
+import Typing from 'react-typing-animation';
 
 import './index.scss';
 
@@ -13,30 +13,29 @@ import Wpackio from '../components/wpackio';
 import { ReactComponent as Development } from '../components/svgs/development.svg';
 import { ReactComponent as Cloud } from '../components/svgs/cloud.svg';
 import { ReactComponent as Dependendable } from '../components/svgs/dependable.svg';
+import WPEFormPromo from '../components/WPEFormPromo';
 
 const IndexPage = ({ data: { mission, steps }, location }) => (
 	<Layout path={location.pathname}>
 		<Hero
 			title={
 				<>
-					front-end <em>tooling</em> for WordPress themes &amp;
-					plugins
+					front-end <em>tooling</em> for WordPress themes &amp; plugins
 				</>
 			}
 			cta={<Link to="/guides/">Get Started</Link>}
 			cta2={<a href="https://opencollective.com/wpackio">Support</a>}
 			subtitle={
 				<>
-					<Wpackio isFlat /> is a fine-tuned{' '}
-					<em>webpack/browser-sync</em> configuration made
-					specifically for{' '}
-					<em>WordPress Theme and Plugin Development</em>. It gives a
-					fine Developer Experience (DX) and a single dev dependency
-					for all your <em>javascript</em> and <em>css/sass/scss</em>{' '}
-					bundling requirements.
+					<Wpackio isFlat /> is a fine-tuned <em>webpack/browser-sync</em>{' '}
+					configuration made specifically for{' '}
+					<em>WordPress Theme and Plugin Development</em>. It gives a fine
+					Developer Experience (DX) and a single dev dependency for all your{' '}
+					<em>javascript</em> and <em>css/sass/scss</em> bundling requirements.
 				</>
 			}
 			terminalTitle="🔥wpackio-scripts start (node)"
+			promo={<WPEFormPromo background="dark" />}
 		>
 			<Typing
 				cursor={
@@ -55,8 +54,7 @@ const IndexPage = ({ data: { mission, steps }, location }) => (
 			>
 				<p className="comment"># navigate to your project directory</p>
 				<p>
-					<span className="command">cd</span>{' '}
-					~/my-awesome-plugin-or-theme
+					<span className="command">cd</span> ~/my-awesome-plugin-or-theme
 				</p>
 				<Typing.Delay ms={1000} />
 				<p className="comment">
@@ -92,15 +90,13 @@ const IndexPage = ({ data: { mission, steps }, location }) => (
 				<div className="columns">
 					<div className="column is-one-third">
 						<Feature
-							icon={
-								<Dependendable height="128px" width="128px" />
-							}
+							icon={<Dependendable height="128px" width="128px" />}
 							title="Single Dependency"
 						>
 							<p>
-								Forget worrying about webpack, browser-sync,
-								loaders, babel etc. <code>wpackio-scripts</code>{' '}
-								comes with everything packed and ready to use.
+								Forget worrying about webpack, browser-sync, loaders, babel etc.{' '}
+								<code>wpackio-scripts</code> comes with everything packed and
+								ready to use.
 							</p>
 						</Feature>
 					</div>
@@ -110,10 +106,9 @@ const IndexPage = ({ data: { mission, steps }, location }) => (
 							title="Lightning Fast"
 						>
 							<p>
-								Built with webpack and browser-sync, wpackio
-								development server is lightning fast. In
-								development mode, compilation takes only a few (
-								<em>milli</em>
+								Built with webpack and browser-sync, wpackio development server
+								is lightning fast. In development mode, compilation takes only a
+								few (<em>milli</em>
 								)seconds.
 							</p>
 						</Feature>
@@ -124,10 +119,9 @@ const IndexPage = ({ data: { mission, steps }, location }) => (
 							title="Best DX"
 						>
 							<p>
-								We give you best possible developer experience
-								with hot reloading, react fast refresh,
-								automatic file watching, terminal preview and
-								much more.
+								We give you best possible developer experience with hot
+								reloading, react fast refresh, automatic file watching, terminal
+								preview and much more.
 							</p>
 						</Feature>
 					</div>

@@ -10,13 +10,14 @@ configuration it creates.
 
 Since wpackio can operate in both single and multi compiler mode, we provide
 method to extend webpack configuration for each of the webpack compiler. The
-extend option is actually accepted through the `files` property of `project config`.
+extend option is actually accepted through the `files` property of
+`project config`.
 
 ## Extending through `files` property
 
-As written in the `project-configuration` section, `files` is what defines different
-entry-point of your project and decides whether webpack should be run in single
-compiler mode or multi-compiler mode (without any compromise).
+As written in the `project-configuration` section, `files` is what defines
+different entry-point of your project and decides whether webpack should be run
+in single compiler mode or multi-compiler mode (without any compromise).
 
 A typical `files` entry may look like this:
 
@@ -40,7 +41,8 @@ module.exports = {
 };
 ```
 
-As you might have guessed, we patch through `webpackConfig` to extend configuration.
+As you might have guessed, we patch through `webpackConfig` to extend
+configuration.
 
 ### Extend with Object
 
@@ -94,12 +96,15 @@ type webpackConfigCallback = (
 
 So it will take four parameters:
 
--   `webpackConfig` (`Object`) : What the system has generated as your webpack
-    config.
--   `webpackMergeApi` (`Function`): The [webpack merge](https://github.com/survivejs/webpack-merge)
-    instance for direct usage.
--   `appDir` (`string`): Directory inside `outputPath` where all the assets are to be emitted.
--   `isDev` (`boolean`) : Whether the operation is going for development mode or production build.
+- `webpackConfig` (`Object`) : What the system has generated as your webpack
+  config.
+- `webpackMergeApi` (`Function`): The
+  [webpack merge](https://github.com/survivejs/webpack-merge) instance for
+  direct usage.
+- `appDir` (`string`): Directory inside `outputPath` where all the assets are to
+  be emitted.
+- `isDev` (`boolean`) : Whether the operation is going for development mode or
+  production build.
 
 And it should return a valid webpack configuration object.
 
@@ -166,10 +171,10 @@ module.exports = {
 ## Word of caution
 
 The consumer PHP library, publicPath, development server and many internals
-actually depend upon the proper structuring of `entry`, `output` and `publicPath`
-of webpack configuration. If you override those, then the system may not work
-correctly.
+actually depend upon the proper structuring of `entry`, `output` and
+`publicPath` of webpack configuration. If you override those, then the system
+may not work correctly.
 
 In most of the situations, you would actually want to add more loaders or modify
-existing loaders. Feel free to do that by changing `config.module.rules` and
-you should be good to go.
+existing loaders. Feel free to do that by changing `config.module.rules` and you
+should be good to go.

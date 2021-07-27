@@ -13,9 +13,9 @@ First add the dependencies.
 npm i @wpackio/entrypoint
 ```
 
-**NOTE**: It needs to go into your project's `dependencies`, not in `devDepencencies`.
-The reason is, it provides an entry-point (automatically inserted for you) which
-handles the dynamic `publicPath` for webpack.
+**NOTE**: It needs to go into your project's `dependencies`, not in
+`devDepencencies`. The reason is, it provides an entry-point (automatically
+inserted for you) which handles the dynamic `publicPath` for webpack.
 
 Now add `devDepencencies`.
 
@@ -182,4 +182,5 @@ Also edit your `package.json` and put the following in `scripts`.
 }
 ```
 
-Now you are ready to go. From here on, follow the guide on [Bootstrap](/guides/getting-started/).
+Now you are ready to go. From here on, follow the guide on
+[Bootstrap](/guides/getting-started/).

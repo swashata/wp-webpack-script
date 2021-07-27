@@ -1,6 +1,8 @@
 {
+	"root": true,
 	"extends": "@wpackio/eslint-config",
 	"rules": {
+		"prettier/prettier": "off",
 		"react/jsx-filename-extension": "off",
 		"react/prop-types": "off",
 		"import/prefer-default-export": "off",

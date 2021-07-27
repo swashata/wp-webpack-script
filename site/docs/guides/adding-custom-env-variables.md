@@ -6,8 +6,8 @@ shortTitle: ENV Variables
 
 Starting version `6.0.0` `@wpackio/scripts` can handle custom env variables from
 
--   `.env` file at the root of your project.
--   Anything in `process.env` available during `yarn start` or `yarn build`.
+- `.env` file at the root of your project.
+- Anything in `process.env` available during `yarn start` or `yarn build`.
 
 All variables starting with `WPAKCIO_` will be available in your application
 code without the `WPACKIO_` prefix. So if you have `WPACKIO_SECRET_KEY` in your
@@ -23,9 +23,9 @@ WPACKIO_STRIPE_PUBLIC_KEY="some-super-secret-key"
 WPACKIO_SENDY_PUBLIC_KEY="some-super-secret-key"
 ```
 
-The above values would be available through `process.env.STRIPE_PUBLIC_KEY`
-and `process.env.SENDY_PUBLIC_KEY`. The prefix `WPACKIO_` is automatically
-stripped in application code.
+The above values would be available through `process.env.STRIPE_PUBLIC_KEY` and
+`process.env.SENDY_PUBLIC_KEY`. The prefix `WPACKIO_` is automatically stripped
+in application code.
 
 ```js
 const stripeSdk = Stripe(process.env.STRIPE_PUBLIC_KEY);

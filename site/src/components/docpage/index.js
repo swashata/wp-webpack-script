@@ -6,6 +6,7 @@ import Footer from '../footer';
 import { ReactComponent as Chevron } from '../svgs/chevron.svg';
 
 import './index.scss';
+import WPEFormPromo from '../WPEFormPromo';
 
 /* eslint-disable react/no-danger */
 
@@ -79,19 +80,15 @@ class Docpage extends React.Component {
 					</button>
 				</div>
 				<div className="wpackio-docpage__sidebar" ref={this.sidebarRef}>
-					<Sidebarnav
-						currentSlug={currentSlug}
-						toc={tableOfContents}
-					/>
+					<Sidebarnav currentSlug={currentSlug} toc={tableOfContents} />
 				</div>
 				<div className="wpackio-docpage__main">
 					<section className="section">
 						<div className="container">
 							{html ? (
 								<>
-									<h1 className="title wpackio-docpage__title">
-										{title}
-									</h1>
+									<h1 className="title wpackio-docpage__title">{title}</h1>
+									<WPEFormPromo utmCampaign="docpage" />
 									<div
 										className="content wpackio-docpage__content"
 										dangerouslySetInnerHTML={{

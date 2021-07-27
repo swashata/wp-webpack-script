@@ -53,20 +53,15 @@ class Header extends React.Component {
 						</a>
 					</div>
 					<div
-						className={classNames(
-							'site-header__nav',
-							'navbar-menu',
-							{
-								'is-active': this.state.isOpen,
-							}
-						)}
+						className={classNames('site-header__nav', 'navbar-menu', {
+							'is-active': this.state.isOpen,
+						})}
 					>
 						<div className="navbar-start site-header__main-nav">
 							{docTypes.map(docType => (
 								<Link
 									className={classNames('navbar-item', {
-										'is-active':
-											path === `/${docType.docType}/`,
+										'is-active': path === `/${docType.docType}/`,
 									})}
 									key={docType.docType}
 									to={`/${docType.docType}/`}

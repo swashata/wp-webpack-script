@@ -4,9 +4,8 @@ order: 1
 shortTitle: Project Configuration
 ---
 
-The `wpackio.project.js` file at the root of your workspace tells wpackio
-how your project is to be compiled. When you bootstrap this file is created
-for you.
+The `wpackio.project.js` file at the root of your workspace tells wpackio how
+your project is to be compiled. When you bootstrap this file is created for you.
 
 > You should commit `wpackio.project.js` with your VCS.
 
@@ -166,10 +165,11 @@ It has the following properties:
 
 ## `files` (`Array`)
 
-An array of file object. It defines which files to compile and supports code-splitting
-with different entry-points.
+An array of file object. It defines which files to compile and supports
+code-splitting with different entry-points.
 
-Unlike [webpack entry-point](https://webpack.js.org/configuration/entry-context/#entry)
+Unlike
+[webpack entry-point](https://webpack.js.org/configuration/entry-context/#entry)
 it has to be an array of object of a certain shape. First let us see an example.
 
 ```js
@@ -189,18 +189,20 @@ module.exports = {
 };
 ```
 
-Here we have passed only one file object to the `files` entry. In most of the cases
-this is what we'd need. Our main `entry` will split codes depending on different
-entry-points and the tooling will handle chunk-splitting, optimization, prevent
-duplicates etc. More information is found [here](https://webpack.js.org/guides/code-splitting/).
+Here we have passed only one file object to the `files` entry. In most of the
+cases this is what we'd need. Our main `entry` will split codes depending on
+different entry-points and the tooling will handle chunk-splitting,
+optimization, prevent duplicates etc. More information is found
+[here](https://webpack.js.org/guides/code-splitting/).
 
-Once again, do note that you do not really need to do anything apart from defining
-`entry.property = string[]` logically. Just think about which single JS file
-you will need to run a particular application. Even if you have only one property
-under `entry`, then also (if needed) chunk-splitting will be applied.
+Once again, do note that you do not really need to do anything apart from
+defining `entry.property = string[]` logically. Just think about which single JS
+file you will need to run a particular application. Even if you have only one
+property under `entry`, then also (if needed) chunk-splitting will be applied.
 
-If we were to pass multiple file object, then webpack would run in [multi-compiler](https://webpack.js.org/api/node/#multicompiler)
-mode, separating dependency tree from each of the file object.
+If we were to pass multiple file object, then webpack would run in
+[multi-compiler](https://webpack.js.org/api/node/#multicompiler) mode,
+separating dependency tree from each of the file object.
 
 Each file object has two required and four optional properties. Here's the
 interface.
@@ -227,11 +229,15 @@ interface FileConfig {
 }
 ```
 
+> When you've passed multiple files entry on the project config, you can also
+> start the dev server with selective entry or entries. This is useful for large
+> projects. Please read about it [here](/tutorials/starting-selective-entries/).
+
 #### `name` (`string`) **required**:
 
 A unique name of this file entry. If you are using more than one file entry,
-then make sure to give different names, otherwise the compiler might not work
-in development mode.
+then make sure to give different names, otherwise the compiler might not work in
+development mode.
 
 #### `entry` (`object`) **required**:
 
@@ -244,10 +250,12 @@ const entry = {
 };
 ```
 
-As you can see, we only support [Object Syntax of webpack entry](https://webpack.js.org/concepts/entry-points/#object-syntax).
+As you can see, we only support
+[Object Syntax of webpack entry](https://webpack.js.org/concepts/entry-points/#object-syntax).
 
-The reason is, we do our own little magic ([covered in the concepts section](/concepts/)) to
-define dynamic `publicPath` from WordPress API itself.
+The reason is, we do our own little magic
+([covered in the concepts section](/concepts/)) to define dynamic `publicPath`
+from WordPress API itself.
 
 #### `webpackConfig` (`Function` | `Object` | `undefined`)
 
@@ -255,7 +263,9 @@ If you'd like to extend webpack configuration, then this is where you'd put your
 code.
 
 It can support both webpack configuration objects or function to get further
-control. Kindly read the [_Extending Webpack Config_](/tutorials/extending-webpack-config/) under [tutorials](/tutorials/).
+control. Kindly read the
+[_Extending Webpack Config_](/tutorials/extending-webpack-config/) under
+[tutorials](/tutorials/).
 
 #### `optimizeForGutenberg` (`boolean`):
 
@@ -283,7 +293,8 @@ type webpackConfigCallback = (
 
 ###### `config` (`webpack.Configuration`)
 
-The configuration calculated by `@wpackio/scripts` is passed as the first parameter.
+The configuration calculated by `@wpackio/scripts` is passed as the first
+parameter.
 
 ###### `merge` (`webpackMerge`)
 
@@ -305,7 +316,8 @@ Array of glob pattern for which typescript reports are to be notified.
 
 Explicitly disable typescript type assertions.
 
-> More information about typescript related options can be found [here](/tutorials/adding-typescript/).
+> More information about typescript related options can be found
+> [here](/tutorials/adding-typescript/).
 
 ## `outputPath` (`string`):
 
@@ -324,13 +336,13 @@ Where you need support for react specific presets, like `jsx`.
 _since v6.0.0_
 
 Whether or not to use the new jsx runtime introduced in React 17. This is opt-in
-as of now. Please see [here for implications](https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html).
+as of now. Please see
+[here for implications](https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html).
 
 ## `disableReactRefresh` (`boolean`):
 
-When you have react for your project, wpackio will use react fast refresh
-for seamless updates of components. Set this to `true` if you want to disable
-it.
+When you have react for your project, wpackio will use react fast refresh for
+seamless updates of components. Set this to `true` if you want to disable it.
 
 ## `hasSass` (`boolean`):
 
@@ -344,23 +356,26 @@ Whether you need support for [flowtype](https://flow.org/).
 ## `useBabelConfig` (`boolean`)
 
 wpackio-scripts knowingly avoids any `babel.config.js` and `.babelrc` file from
-`babel-loader`. If you wish to avoid this behavior and want to be in control
-of babel configuration, set this option to true.
+`babel-loader`. If you wish to avoid this behavior and want to be in control of
+babel configuration, set this option to true.
 
-More information about it can be [read here](/tutorials/adding-custom-babel-config/).
+More information about it can be
+[read here](/tutorials/adding-custom-babel-config/).
 
 ## `jsBabelPresetOptions` (`object`) | `tsBabelPresetOptions` (`object`)
 
-wpackio script uses its own [preset](https://github.com/swashata/wp-webpack-script/tree/master/packages/babel-preset-base)
-for javascript and typescript files. Using this option you can pass in additional
-config and it will be spread over the default one.
+wpackio script uses its own
+[preset](https://github.com/swashata/wp-webpack-script/tree/master/packages/babel-preset-base)
+for javascript and typescript files. Using this option you can pass in
+additional config and it will be spread over the default one.
 
-> `jsBabelPresetOptions` is applied for `js,jsx` files and `tsBabelPresetOptions`
-> is applied for `ts.tsx` files.
+> `jsBabelPresetOptions` is applied for `js,jsx` files and
+> `tsBabelPresetOptions` is applied for `ts.tsx` files.
 
 ## `jsBabelOverride` (`Function`) | `tsBabelOverride` (`Function`)
 
-Pass in a callback function to completely override options for [`babel-loader`](https://github.com/babel/babel-loader#options)
+Pass in a callback function to completely override options for
+[`babel-loader`](https://github.com/babel/babel-loader#options)
 
 The signature is
 
@@ -384,16 +399,18 @@ module.exports = {
 };
 ```
 
-> `jsBabelOverride` is applied for `js,jsx` files and `tsBabelOverride`
-> is applied for `ts.tsx` files.
+> `jsBabelOverride` is applied for `js,jsx` files and `tsBabelOverride` is
+> applied for `ts.tsx` files.
 
 ## `externals` (`Object`)
 
-Configure [webpack external runtime dependency](https://webpack.js.org/configuration/externals/#externals).
+Configure
+[webpack external runtime dependency](https://webpack.js.org/configuration/externals/#externals).
 
 ## `alias` (`Object`)
 
-Configure [webpack `resolve.alias`](https://webpack.js.org/configuration/resolve/#resolve-alias).
+Configure
+[webpack `resolve.alias`](https://webpack.js.org/configuration/resolve/#resolve-alias).
 
 ## `errorOverlay` (`boolean`)
 
@@ -404,15 +421,16 @@ Whether to show overlay during development mode when some error has occurred.
 Whether or not to apply built-in optimization presets. Turn it off if you would
 like to do things manually.
 
-We have the default config from [webpack optimization split-chunks plugin](https://webpack.js.org/plugins/split-chunks-plugin/#optimization-splitchunks)
+We have the default config from
+[webpack optimization split-chunks plugin](https://webpack.js.org/plugins/split-chunks-plugin/#optimization-splitchunks)
 with only exception of setting `chunks` to `'all'`. We can do it safely because
 our PHP consumer library handles the enqueue.
 
 ## `compileNodeModules` (`object`)
 
-Determines how `node_modules` is compiled during development and production mode.
-If this is not present, then `node_modules` is compiled in both dev and prod.
-However it can be configured like this.
+Determines how `node_modules` is compiled during development and production
+mode. If this is not present, then `node_modules` is compiled in both dev and
+prod. However it can be configured like this.
 
 ```js
 module.exports = {
@@ -441,14 +459,15 @@ Array of [glob patterns](https://github.com/sindresorhus/cpy#usage) to copy
 files to the `packageDirPath` directory. This is used to create the
 distributable zip file.
 
-WordPress allows uploading `.zip` files to install both theme and plugins.
-This option provides you a way to create such `.zip` file with `wpackio-scripts pack` command.
+WordPress allows uploading `.zip` files to install both theme and plugins. This
+option provides you a way to create such `.zip` file with `wpackio-scripts pack`
+command.
 
 ## packageDirPath (`string`)
 
-Relative path of directory where we would put the package files. You should
-add it to your `.gitignore` file. A subdirectory with name same as [`slug`](#slug-string)
-will always be created inside it.
+Relative path of directory where we would put the package files. You should add
+it to your `.gitignore` file. A subdirectory with name same as
+[`slug`](#slug-string) will always be created inside it.
 
 The generated package file will also have name like `<slug>.zip`.
 
@@ -458,7 +477,7 @@ The level of zlib compression to use when creating the zip.
 
 ## disableWordPressExternals (`boolean`)
 
-Whether or not to disable wordpress external scripts handling. If this option
-is set to true, then no `@wordpress` name-spaced dependencies will be extracted
-as an external. Also the dependencies json file which the PHP library depends on
+Whether or not to disable wordpress external scripts handling. If this option is
+set to true, then no `@wordpress` name-spaced dependencies will be extracted as
+an external. Also the dependencies json file which the PHP library depends on
 (but will not fail if is not present) will not be created.

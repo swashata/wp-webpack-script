@@ -4,9 +4,10 @@ order: 3
 shortTitle: Use React Hot Loader
 ---
 
-Let's focus on an example where we use the great [react hot loader](https://github.com/gaearon/react-hot-loader)
-to have the best in class DX when developing react app. It can be found in action
-under [`examples/plugin`](https://github.com/swashata/wp-webpack-script/tree/master/examples/plugin)
+Let's focus on an example where we use the great
+[react hot loader](https://github.com/gaearon/react-hot-loader) to have the best
+in class DX when developing react app. It can be found in action under
+[`examples/plugin`](https://github.com/swashata/wp-webpack-script/tree/master/examples/plugin)
 of the repo.
 
 ## Installation
@@ -19,9 +20,9 @@ npm i react-hot-loader
 
 ## Modify wpackio project config
 
-From the documentation of react hot loader, it states that we need to add a plugin
-to `babel-loader`. For that, let's hack into webpack config using `jsBabelOverride`
-from `wpackio.project.io`.
+From the documentation of react hot loader, it states that we need to add a
+plugin to `babel-loader`. For that, let's hack into webpack config using
+`jsBabelOverride` from `wpackio.project.io`.
 
 **`wpackio.project.io`**
 
@@ -37,13 +38,14 @@ module.exports = {
 };
 ```
 
-This would instruct wpackio to extend [`babel-loader`](https://github.com/babel/babel-loader)
-options and include the babel plugin provided by react-hot-loader.
+This would instruct wpackio to extend
+[`babel-loader`](https://github.com/babel/babel-loader) options and include the
+babel plugin provided by react-hot-loader.
 
 ## Customize our App
 
-Let's say we have `src/app/main.jsx` as our primary entry-point. It has the following
-code.
+Let's say we have `src/app/main.jsx` as our primary entry-point. It has the
+following code.
 
 ```jsx
 import React from 'react';

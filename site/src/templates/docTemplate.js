@@ -65,7 +65,7 @@ export default function DocTemplate({
 }
 
 export const pageQuery = graphql`
-	query($path: String!) {
+	query ($path: String!) {
 		markdownRemark(fields: { slug: { eq: $path } }) {
 			html
 			frontmatter {

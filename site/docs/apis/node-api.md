@@ -7,9 +7,10 @@ shortTitle: Nodejs API
 While `@wpackio/scripts` is meant to be used as a CLI tool, it does expose all
 of the necessary node.js APIs to create your own CLI.
 
-For now, the best place to check the exports is [the file](https://github.com/swashata/wp-webpack-script/blob/master/packages/scripts/src/index.ts) itself. Since we
-develop in typescript and ship all `.d.ts` files, you will get IDE intellisense
-by default.
+For now, the best place to check the exports is
+[the file](https://github.com/swashata/wp-webpack-script/blob/master/packages/scripts/src/index.ts)
+itself. Since we develop in typescript and ship all `.d.ts` files, you will get
+IDE intellisense by default.
 
 Here are the documentation for a few APIs which are useful.
 
@@ -80,18 +81,21 @@ interface PresetOptions {
 }
 ```
 
-More information can be found in the [source repository](https://github.com/swashata/wp-webpack-script/tree/master/packages/babel-preset-base).
+More information can be found in the
+[source repository](https://github.com/swashata/wp-webpack-script/tree/master/packages/babel-preset-base).
 
 #### `typeChecker`
 
-Whether to include preset for `'flow'` or `'typescript'`. Leave `undefined` to ignore both.
+Whether to include preset for `'flow'` or `'typescript'`. Leave `undefined` to
+ignore both.
 
 Possible values are `'flow'`, `'typescript'` or `undefined`.
 
 ## `getDefaultBabelPresetOptions`
 
-Get default options for [@wpackio/babel-preset-base](https://github.com/swashata/wp-webpack-script/tree/master/packages/babel-preset-base) considering whether project
-has react and whether it is in development mode.
+Get default options for
+[@wpackio/babel-preset-base](https://github.com/swashata/wp-webpack-script/tree/master/packages/babel-preset-base)
+considering whether project has react and whether it is in development mode.
 
 ### Usage
 
@@ -125,10 +129,7 @@ module.exports = {
 										loader: 'babel-loader',
 										options: {
 											presets: getBabelPresets(
-												getDefaultBabelPresetOptions(
-													true,
-													isDev
-												),
+												getDefaultBabelPresetOptions(true, isDev),
 												undefined
 											),
 										},
@@ -150,15 +151,17 @@ module.exports = {
 ## `getFileLoaderOptions`
 
 Get options for file-loader. This takes into account the application directory,
-development or production mode and public path for file-loader usage from css files.
+development or production mode and public path for file-loader usage from css
+files.
 
-If you want to use `file-loader` for your own custom asset management, then
-do use this API for dynamically setting the option. This ensures a few things, like
+If you want to use `file-loader` for your own custom asset management, then do
+use this API for dynamically setting the option. This ensures a few things, like
 
 1. All assets are put inside `assets` directory.
 2. Assets works for CSS files where relative path is necessary.
 
-More information can be found in [`file-loader` tutorial](/tutorials/using-file-loader/).
+More information can be found in
+[`file-loader` tutorial](/tutorials/using-file-loader/).
 
 ### Usage
 
@@ -184,11 +187,7 @@ module.exports = {
 								use: [
 									{
 										loader: 'file-loader',
-										options: getFileLoaderOptions(
-											appDir,
-											isDev,
-											false
-										),
+										options: getFileLoaderOptions(appDir, isDev, false),
 									},
 								],
 							},
@@ -218,13 +217,15 @@ Whether or not to set publicPath for `file-loader`, depending on `isDev`.
 
 ## `issuer`
 
-The API consists a family of [`webpack issuer`](https://webpack.js.org/configuration/module/#ruleissuer) utilities. Use them in conjunction with [`file-loader`](/tutorials/using-file-loader/) or
-`url-loader`.
+The API consists a family of
+[`webpack issuer`](https://webpack.js.org/configuration/module/#ruleissuer)
+utilities. Use them in conjunction with
+[`file-loader`](/tutorials/using-file-loader/) or `url-loader`.
 
--   `issuerForNonStyleFiles`: Tests if files are not, `css`, `sass` and `scss`.
--   `issuerForStyleFiles`: Tests if files are one of `css`, `sass` or `scss`.
--   `issuerForNonJsTsFiles`: Tests if files are not, `js`, `jsx`, `ts` and `tsx`.
--   `issuerForJsTsFiles`: Tests if files are one of `js`, `jsx`, `ts` and `tsx`.
+- `issuerForNonStyleFiles`: Tests if files are not, `css`, `sass` and `scss`.
+- `issuerForStyleFiles`: Tests if files are one of `css`, `sass` or `scss`.
+- `issuerForNonJsTsFiles`: Tests if files are not, `js`, `jsx`, `ts` and `tsx`.
+- `issuerForJsTsFiles`: Tests if files are one of `js`, `jsx`, `ts` and `tsx`.
 
 ### Usage
 
@@ -255,11 +256,7 @@ module.exports = {
 								use: [
 									{
 										loader: 'file-loader',
-										options: getFileLoaderOptions(
-											appDir,
-											isDev,
-											false
-										),
+										options: getFileLoaderOptions(appDir, isDev, false),
 									},
 								],
 							},
@@ -275,8 +272,8 @@ module.exports = {
 
 ## `loader`
 
-When you want to extend webpack config you might run into issues when
-specifying loaders directly like
+When you want to extend webpack config you might run into issues when specifying
+loaders directly like
 
 ```js
 const module = {
@@ -291,9 +288,9 @@ const module = {
 };
 ```
 
-The above is would throw error saying, could not resolve `file-loader`. To
-ease up sharing loaders across configuration, `@wpackio/scripts` expose
-the following loaders.
+The above is would throw error saying, could not resolve `file-loader`. To ease
+up sharing loaders across configuration, `@wpackio/scripts` expose the following
+loaders.
 
 ```js
 const {

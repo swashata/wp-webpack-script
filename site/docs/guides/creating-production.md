@@ -7,8 +7,8 @@ shortTitle: Production Build
 Now that you know how to start development server, it's time to create
 production build. In most of the cases it is a single command away.
 
-But if you want to create distributable `.zip` file for your WordPress theme
-or plugin, then we have you covered too.
+But if you want to create distributable `.zip` file for your WordPress theme or
+plugin, then we have you covered too.
 
 ## Create production assets
 
@@ -20,20 +20,21 @@ npm run build
 
 ![npm run build](../../frontpage/steps/06-build.gif)
 
-This will create the production assets (`.js` and `.css` files along with any image files).
+This will create the production assets (`.js` and `.css` files along with any
+image files).
 
 ## Create distributable zip file
 
-Now you may want to copy over the `dist` files, along with your PHP files
-so that you can create a `.zip` out of it. It is needed when uploading themes
-to WordPress too.
+Now you may want to copy over the `dist` files, along with your PHP files so
+that you can create a `.zip` out of it. It is needed when uploading themes to
+WordPress too.
 
 With `wpackio-scripts`, it's just a command away.
 
 #### Mention files you want to copy
 
-Edit your `wpackio.project.js` file to mention the files you want to copy
-and where you want to copy.
+Edit your `wpackio.project.js` file to mention the files you want to copy and
+where you want to copy.
 
 ```js
 module.exports = {
@@ -58,8 +59,8 @@ module.exports = {
 };
 ```
 
-The above config will copy the files matching the pattern in `packageFiles`
-to `package` directory. So be sure to add it to your `.gitignore` file.
+The above config will copy the files matching the pattern in `packageFiles` to
+`package` directory. So be sure to add it to your `.gitignore` file.
 
 #### Run command
 
@@ -75,8 +76,9 @@ This will produce the files for you to copy and deploy.
 
 ## Bonus: Deploy from Gitlab CI
 
-We use [gitlab CI/CD](https://docs.gitlab.com/ee/ci/) within our workflow. And with `wpackio-scripts`, deploying
-a theme or plugin is very easy. Our `.gitlab-ci.yml` file looks like this.
+We use [gitlab CI/CD](https://docs.gitlab.com/ee/ci/) within our workflow. And
+with `wpackio-scripts`, deploying a theme or plugin is very easy. Our
+`.gitlab-ci.yml` file looks like this.
 
 ```yaml
 # Our base image

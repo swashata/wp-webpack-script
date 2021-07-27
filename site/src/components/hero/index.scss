@@ -16,7 +16,12 @@
 		color: #fff;
 		font-family: 'dm', monospace;
 		text-align: center;
-		margin: 0 0 5rem;
+		margin: 0 0 2rem;
+	}
+
+	& &__promo {
+		margin: 0 0 30px;
+		color: #fff;
 	}
 
 	// Subtitle

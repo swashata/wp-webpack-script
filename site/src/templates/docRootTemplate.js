@@ -3,12 +3,14 @@ import { graphql, Link } from 'gatsby';
 
 import Layout from '../components/layout';
 import Docpage from '../components/docpage';
+import WPEFormPromo from '../components/WPEFormPromo';
 
 const DocRootTemplate = props => {
 	const { data, location } = props;
 	return (
 		<Layout decorate={false} path={location.pathname}>
 			<Docpage currentSlug={location.pathname}>
+				<WPEFormPromo utmCampaign="docroot" />
 				{data.docTypes.edges.map(docType => {
 					const {
 						node: {
@@ -27,10 +29,7 @@ const DocRootTemplate = props => {
 								<div className="content">
 									<p>{excerpt}</p>
 								</div>
-								<Link
-									className="button is-regular is-link"
-									to={slug}
-								>
+								<Link className="button is-regular is-link" to={slug}>
 									Read More
 								</Link>
 							</article>

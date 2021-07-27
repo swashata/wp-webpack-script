@@ -5,7 +5,8 @@ shortTitle: '@wpackio/cli'
 ---
 
 The package `@wpackio/cli` comes with one binary `wpackio-cli`. We do not
-recommend installing it directly. It is best to use it with `npx` (which comes with npm 5.2+).
+recommend installing it directly. It is best to use it with `npx` (which comes
+with npm 5.2+).
 
 ## Install globally
 
@@ -23,8 +24,7 @@ npx @wpackio/cli --help
 ## Usage
 
 The command doesn't take any parameters. It is used to
-[bootstrap `@wpackio/scripts`](/guides/getting-started/)
-in your project.
+[bootstrap `@wpackio/scripts`](/guides/getting-started/) in your project.
 
 Simply navigate to your project.
 

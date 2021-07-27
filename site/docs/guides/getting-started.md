@@ -42,13 +42,16 @@ yarn bootstrap
 
 This will create the following files:
 
--   `wpackio.project.js` - Information and entry-points for your project (plugin or theme).
--   `wpackio.server.js` - Information about your local development server. Make sure
-    to add it to `.gitignore` file because it may differ for team members.
--   `.browserslistrc` - For targeting your environment. More info [here](https://github.com/browserslist/browserslist).
-    It is used by both babel and autoprefixer to make sure your javascript and css
-    files work as expected.
--   `postcss.config.js` - Additional configuration for your css files. Read [more](https://github.com/postcss/postcss#webpack). We have `autoprefixer` setup by default.
+- `wpackio.project.js` - Information and entry-points for your project (plugin
+  or theme).
+- `wpackio.server.js` - Information about your local development server. Make
+  sure to add it to `.gitignore` file because it may differ for team members.
+- `.browserslistrc` - For targeting your environment. More info
+  [here](https://github.com/browserslist/browserslist). It is used by both babel
+  and autoprefixer to make sure your javascript and css files work as expected.
+- `postcss.config.js` - Additional configuration for your css files. Read
+  [more](https://github.com/postcss/postcss#webpack). We have `autoprefixer`
+  setup by default.
 
 **NOTE** You must use `camelCase` format when defining `appName`. Otherwise it
 will not work.
@@ -76,11 +79,12 @@ Please read [here](/tutorials/manual-project-bootstrap/).
 Now edit your `wpackio.project.js` file and at the very least, mention the
 entry-points.
 
-Here you start thinking in terms of [ES6 Modules](http://2ality.com/2014/09/es6-modules-final.html)
-and specify the files, which imports other files.
+Here you start thinking in terms of
+[ES6 Modules](http://2ality.com/2014/09/es6-modules-final.html) and specify the
+files, which imports other files.
 
-If you have, files `src/main.js` and `src/mobile.js`, which are ES6 Modules
-and runs everything, then you can have your project config something like this.
+If you have, files `src/main.js` and `src/mobile.js`, which are ES6 Modules and
+runs everything, then you can have your project config something like this.
 
 ```js
 module.exports = {
@@ -134,11 +138,12 @@ npm run bootstrap
 ```
 
 `@wpackio/scripts` will realize that the project is already configured and will
-only ask the user for the URL of the `development` server. It is usually the
-URL provided by wamp, mamp, vvv etc. Just enter that and the `wpackio.server.js`
+only ask the user for the URL of the `development` server. It is usually the URL
+provided by wamp, mamp, vvv etc. Just enter that and the `wpackio.server.js`
 will be automatically created for you.
 
 ---
 
 Now we have the node dependencies set. It is time to use PHP dependency to
-actually enqueue the files. Keep on reading [the next part of quick start guide](/guides/using-wpackio-enqueue/).
+actually enqueue the files. Keep on reading
+[the next part of quick start guide](/guides/using-wpackio-enqueue/).

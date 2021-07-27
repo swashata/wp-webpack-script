@@ -4,15 +4,16 @@ order: 1
 shortTitle: Dynamic Imports & publicPath
 ---
 
-Glad you asked. The documentation at [webpack `output.publicPath`](https://webpack.js.org/configuration/output/#output-publicpath)
+Glad you asked. The documentation at
+[webpack `output.publicPath`](https://webpack.js.org/configuration/output/#output-publicpath)
 says this is one `free` variable `__webpack_public_path__` which can be used to
-define the `publicPath` where webpack would look to lazy-load
-(or on-demand load) chunks.
+define the `publicPath` where webpack would look to lazy-load (or on-demand
+load) chunks.
 
 ## Concept of `publicPath`
 
-When creating an SPA (Single Page Application), all the assets usually
-resides at the root `dist` directory.
+When creating an SPA (Single Page Application), all the assets usually resides
+at the root `dist` directory.
 
 So given the following `webpack.config.js` file
 
@@ -41,7 +42,8 @@ Relying on this theory, we have set `output.publicPath` to be `/dist/`. So if
 webpack will look for the file `http://example.com/dist/chunkName.js` to load
 the dynamic import.
 
-This theory works really good, when we are in control of our HTML assets and URL.
+This theory works really good, when we are in control of our HTML assets and
+URL.
 
 For example, we could very much put all the files inside `dist` to a CDN, and
 change `publicPath` to `https://cdn.example.com/path/to/asset/dir`.
@@ -62,14 +64,15 @@ There is no way, we can know what the URL would be, during build-time.
 ### The Solution
 
 Luckily, from WordPress itself, we can very easily get the public URL of our
-asset (`dist`) directory using functions like `plugins_url` or `get_stylesheet_directory_uri`.
+asset (`dist`) directory using functions like `plugins_url` or
+`get_stylesheet_directory_uri`.
 
 This is the concept we use at wpackio. So it boils down to:
 
 #### 1: Generate publicPath with PHP library
 
-With the PHP script, we generate the publicPath URL and put it in website
-head within a `<script>` tag.
+With the PHP script, we generate the publicPath URL and put it in website head
+within a `<script>` tag.
 
 ```html
 <script type="text/javascript">
@@ -83,8 +86,8 @@ combination of your `appName` and `outputPath` from `wpackio.project.js` file.
 
 #### 2: Modify JavaScript entry-point
 
-Now a special entry-point is injected to all the `entry` members by wpackio.
-Say you have (in your **`wpackio.project.js`**) something like this:
+Now a special entry-point is injected to all the `entry` members by wpackio. Say
+you have (in your **`wpackio.project.js`**) something like this:
 
 ```js
 module.exports = {
@@ -126,10 +129,12 @@ if (__WPACKIO__) {
 ```
 
 Notice that we already have `window.__wpackIoAppNameOutputPath` set through PHP
-script. But this runtime script has no knowledge of the runtime variable `__WPACKIO__`.
+script. But this runtime script has no knowledge of the runtime variable
+`__WPACKIO__`.
 
-This is where [webpack definePlugin](https://webpack.js.org/plugins/define-plugin/)
-comes in handy.
+This is where
+[webpack definePlugin](https://webpack.js.org/plugins/define-plugin/) comes in
+handy.
 
 ## Passing needed variable with `webpack.DefinePlugin`
 
@@ -156,16 +161,18 @@ files.
 
 ## Why in production build
 
-Now you may wonder why we couldn't use the same technique for development server?
+Now you may wonder why we couldn't use the same technique for development
+server?
 
 The reason is:
 
--   We would like to have `webpack-dev-middleware` serve files from memory, instead of
-    files. This gives greater speed and doesn't pollute your disk during HMR.
--   For the above to work, we need to tell `webpack-dev-middleware` which URL the files
-    should be served from.
--   Hence, we assume our local dev server is always running from a domain root and
-    the files are served from `/wp-content/plugins/my-plugin/dist`.
+- We would like to have `webpack-dev-middleware` serve files from memory,
+  instead of files. This gives greater speed and doesn't pollute your disk
+  during HMR.
+- For the above to work, we need to tell `webpack-dev-middleware` which URL the
+  files should be served from.
+- Hence, we assume our local dev server is always running from a domain root and
+  the files are served from `/wp-content/plugins/my-plugin/dist`.
 
 So if you have some plugin to change the path to `wp-content` or the directory
 slug of `themes` and/or `plugins` within your development server, wpackio will
@@ -177,9 +184,11 @@ have settled with the compromise.
 Do note that the limitation is valid only for development server. In production
 build, the publicPath is generated dynamically which will always work.
 
-Even so, if you are using `@wpackio/scripts` v2.8.0 or greater, you have
-another option [`distPublicPath`](/apis/server-configuration/#distpublicpath-string)
+Even so, if you are using `@wpackio/scripts` v2.8.0 or greater, you have another
+option [`distPublicPath`](/apis/server-configuration/#distpublicpath-string)
 which you can mention in your server configuration. This is useful if your
-WordPress development server gives an URL to the [`outputPath`](/apis/project-configuration/#outputpath-string) directory which
+WordPress development server gives an URL to the
+[`outputPath`](/apis/project-configuration/#outputpath-string) directory which
 is not the standard output or if your WordPress isn't installed at the root
-domain (like `http://localhost`), rather a directory (like `http://localhost/proj1`).
+domain (like `http://localhost`), rather a directory (like
+`http://localhost/proj1`).

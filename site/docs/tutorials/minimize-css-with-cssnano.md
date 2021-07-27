@@ -4,11 +4,13 @@ order: 2
 shortTitle: Minimize CSS assets
 ---
 
-wpack.io uses [`postcss-loader`](https://github.com/postcss/postcss-loader) and thereby [PostCSS](https://postcss.org/). So
-we can take advantage of it to minify our CSS/SASS files during production builds.
+wpack.io uses [`postcss-loader`](https://github.com/postcss/postcss-loader) and
+thereby [PostCSS](https://postcss.org/). So we can take advantage of it to
+minify our CSS/SASS files during production builds.
 
 > **NOTE** - wpackio-scripts only extracts CSS/SASS, doesn't minify it. It is
-> purposefully kept in the user-land because there are other options than cssnano.
+> purposefully kept in the user-land because there are other options than
+> cssnano.
 
 ## Install and use cssnano
 
@@ -28,8 +30,8 @@ yarn add --dev cssnano
 
 ## Edit `postcss.config.js` file
 
-When you [install](/guides/getting-started/) wpackio a `postcss.config.js`
-file is created for you. Edit it and replace it's content with
+When you [install](/guides/getting-started/) wpackio a `postcss.config.js` file
+is created for you. Edit it and replace it's content with
 
 ```js
 /* eslint-disable global-require, import/no-extraneous-dependencies */

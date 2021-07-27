@@ -4,16 +4,17 @@ order: 3
 shortTitle: Use SVG Loaders
 ---
 
-SVGs are all the rage in today's web. There are may ways, especially with webpack,
-to consume SVGs, that I felt, it is best to leave it to the user-land to decide
-which method to pick.
+SVGs are all the rage in today's web. There are may ways, especially with
+webpack, to consume SVGs, that I felt, it is best to leave it to the user-land
+to decide which method to pick.
 
 Each of them has their purpose and depending on your project, you should decide
 which method (or combination of methods) to use.
 
 ## [Webpack Inline SVG Loader](https://webpack.js.org/loaders/svg-inline-loader/#configuration)
 
-This one is from [official webpack contrib.](https://webpack.js.org/loaders/svg-inline-loader/).
+This one is from
+[official webpack contrib.](https://webpack.js.org/loaders/svg-inline-loader/).
 It simply inlines the SVG within your code and gives you a string representing
 the SVG (XML) code.
 
@@ -66,8 +67,10 @@ module.exports = {
 
 ## [SVGO Loader](https://github.com/rpominov/svgo-loader)
 
-A loader for webpack to pass your SVG files through [svgo](https://github.com/svg/svgo) optimizer. It needs to work with either
-[`file-loader`](https://github.com/webpack-contrib/file-loader) or [`url-loader`](https://github.com/webpack-contrib/url-loader).
+A loader for webpack to pass your SVG files through
+[svgo](https://github.com/svg/svgo) optimizer. It needs to work with either
+[`file-loader`](https://github.com/webpack-contrib/file-loader) or
+[`url-loader`](https://github.com/webpack-contrib/url-loader).
 
 ### Configure
 
@@ -213,10 +216,7 @@ module.exports = {
 										loader: babelLoader,
 										options: {
 											presets: getBabelPresets(
-												getDefaultBabelPresetOptions(
-													true,
-													isDev
-												),
+												getDefaultBabelPresetOptions(true, isDev),
 												undefined
 											),
 										},
@@ -227,11 +227,7 @@ module.exports = {
 									},
 									{
 										loader: fileLoader,
-										options: getFileLoaderOptions(
-											appDir,
-											isDev,
-											false
-										),
+										options: getFileLoaderOptions(appDir, isDev, false),
 									},
 								],
 							},
@@ -242,11 +238,7 @@ module.exports = {
 								use: [
 									{
 										loader: fileLoader,
-										options: getFileLoaderOptions(
-											appDir,
-											isDev,
-											true
-										),
+										options: getFileLoaderOptions(appDir, isDev, true),
 									},
 								],
 							},
@@ -263,11 +255,12 @@ module.exports = {
 };
 ```
 
-There are may other ways to configure svgr. Be sure to check their [documentation](https://github.com/smooth-code/svgr).
+There are may other ways to configure svgr. Be sure to check their
+[documentation](https://github.com/smooth-code/svgr).
 
 The things to watch here are
 
-1. We disable `babel-loader` from `@svgr/webpack` and use `babel-loader` manually
-   with `@wpackio/scripts` API.
+1. We disable `babel-loader` from `@svgr/webpack` and use `babel-loader`
+   manually with `@wpackio/scripts` API.
 2. We use `@svgr/webpack` only for JS/TS files using the `issuer` option along
    with `issuerForNonJsTsFiles` and `issuerForJsTsFiles` APIs.

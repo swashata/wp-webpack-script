@@ -21,9 +21,7 @@ const Steps = props => {
 					</div>
 					<div className="column is-half wpackio-steps__desc">
 						<div className="wpackio-steps__content">
-							<h3 className="subtitle wpackio-steps__subtitle">
-								{title}
-							</h3>
+							<h3 className="subtitle wpackio-steps__subtitle">{title}</h3>
 							<div
 								className="content wpackio-steps__html"
 								dangerouslySetInnerHTML={{ __html: html }}

@@ -14,5 +14,6 @@ Or if using `yarn`
 yarn build
 ```
 
-Now create production builds with this single command. By default `@wpackio/scripts`
-will optimize build, minify output and create source-maps in different files.
+Now create production builds with this single command. By default
+`@wpackio/scripts` will optimize build, minify output and create source-maps in
+different files.

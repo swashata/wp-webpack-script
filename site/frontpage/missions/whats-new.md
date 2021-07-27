@@ -8,7 +8,8 @@ title: What's new?
 ###### 🚀 Support for React Fast Refresh.
 
 Simply have `hasReact: true` in your project config and all your components will
-hot reload using [react refresh plugin](https://github.com/pmmmwh/react-refresh-webpack-plugin).
+hot reload using
+[react refresh plugin](https://github.com/pmmmwh/react-refresh-webpack-plugin).
 
 ###### 🚀 Start selective entries during development
 
@@ -33,5 +34,6 @@ will start the first and third entries of your `files` array.
 
 ---
 
-Kindly see the [roadmap](https://github.com/swashata/wp-webpack-script/issues/977)
-for more info.
+Kindly see the
+[roadmap](https://github.com/swashata/wp-webpack-script/issues/977) for more
+info.

@@ -11,12 +11,14 @@ const Hero = props => {
 		cta2,
 		terminalTitle,
 		minHeight,
+		promo = null,
 	} = props;
 	return (
 		<div className="wpackio-hero hero">
 			<div className="hero-body">
 				<div className="container">
 					<h2 className="wpackio-hero__title title">{title}</h2>
+					<div className="wpackio-hero__promo">{promo}</div>
 					<Window
 						className="wpackio-hero__terminal"
 						title={terminalTitle}
@@ -25,17 +27,13 @@ const Hero = props => {
 					>
 						{children}
 					</Window>
-					<h3 className="wpackio-hero__subtitle subtitle">
-						{subtitle}
-					</h3>
+					<h3 className="wpackio-hero__subtitle subtitle">{subtitle}</h3>
 					<div className="wpackio-hero__ctas">
 						{React.cloneElement(cta, {
-							className:
-								'wpackio-hero__cta button is-large is-white',
+							className: 'wpackio-hero__cta button is-large is-white',
 						})}
 						{React.cloneElement(cta2, {
-							className:
-								'wpackio-hero__cta button is-large is-white',
+							className: 'wpackio-hero__cta button is-large is-white',
 						})}
 					</div>
 				</div>

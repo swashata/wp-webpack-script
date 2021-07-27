@@ -5,12 +5,11 @@ shortTitle: Customizer & REST
 ---
 
 Due to reverse proxy nature of browser-sync, some things like
-[WordPress Customizer]()
-and [REST API]()
-may not behave correctly when opened from the proxy URL.
+[WordPress Customizer]() and [REST API]() may not behave correctly when opened
+from the proxy URL.
 
-This happens during development time only and has no side-effect on
-your production server.
+This happens during development time only and has no side-effect on your
+production server.
 
 To fix it, add the following snippet in `wp-content/mu-plugins/wpackio-fix.php`
 of your local development server.

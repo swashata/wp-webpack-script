@@ -4,17 +4,17 @@ order: 4
 shortTitle: Use Jest & ESLint
 ---
 
-If you are using [jest](https://jestjs.io) to test your project, and [ESLint](https://eslint.org)
-for linting then you might want to add a `babel.config.js` file for uniform
-babel rules.
+If you are using [jest](https://jestjs.io) to test your project, and
+[ESLint](https://eslint.org) for linting then you might want to add a
+`babel.config.js` file for uniform babel rules.
 
 ## Using Same rule without customization
 
-By default, `@wpackio/scripts` ignores any `babel.config.js` and `.babelrc` files.
-So even if you do put such files in your project root, those will be picked up
-by Jest or ESLint, but not by `@wpackio/scripts`. In small use cases, this is
-perhaps the intended feature. In this case, create a `babel.config.js` file
-in the root of your project and put the following code.
+By default, `@wpackio/scripts` ignores any `babel.config.js` and `.babelrc`
+files. So even if you do put such files in your project root, those will be
+picked up by Jest or ESLint, but not by `@wpackio/scripts`. In small use cases,
+this is perhaps the intended feature. In this case, create a `babel.config.js`
+file in the root of your project and put the following code.
 
 **babel.config.js**
 
@@ -62,8 +62,8 @@ The above will create same babel rule for jest and eslint as used internally by
 
 ## Override `@wpackio/scripts` rules
 
-If you want to completely remove any babel rule set by `@wpackio/scripts`
-and would only want to use one single `babel.config.js` instead, do the followings.
+If you want to completely remove any babel rule set by `@wpackio/scripts` and
+would only want to use one single `babel.config.js` instead, do the followings.
 
 #### Instruct `@wpackio/scripts` to not pass any rule to babel-loader
 
@@ -84,5 +84,5 @@ Now go ahead and write your custom `babel.config.js` file making sure it matches
 your project requirements. From now on, all tools including Jest, ESLint and
 `@wpackio/scripts` will follow the same config.
 
-For more information, do read the [custom babel configuration](/tutorials/adding-custom-babel-config/)
-tutorial.
+For more information, do read the
+[custom babel configuration](/tutorials/adding-custom-babel-config/) tutorial.
