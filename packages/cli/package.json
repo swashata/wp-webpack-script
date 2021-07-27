@@ -19,7 +19,7 @@
   "license": "MIT",
   "private": false,
   "dependencies": {
-    "@types/shelljs": "0.8.8",
+    "@types/shelljs": "0.8.9",
     "chalk": "4.1.1",
     "commander": "7.2.0",
     "shelljs": "0.8.4"
@@ -46,6 +46,6 @@
   },
   "devDependencies": {
     "@wpackio/eslint-config": "^6.3.0",
-    "typescript": "4.2.4"
+    "typescript": "4.3.5"
   }
 }
