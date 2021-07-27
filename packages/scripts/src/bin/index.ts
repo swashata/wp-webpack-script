@@ -23,7 +23,7 @@ export interface ProgramOptions {
 
 let isValidCommand = false;
 
-// eslint-disable-next-line @typescript-eslint/no-var-requires, global-require
+// eslint-disable-next-line import/extensions, @typescript-eslint/no-var-requires, global-require
 const pkg = require('../../package.json') as updateNotifier.Package;
 
 // Notify for updates

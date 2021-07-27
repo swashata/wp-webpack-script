@@ -166,10 +166,13 @@ export class Server {
 		// we pass as webpack.Compiler, because ts don't like it otherwise
 		this.addHooks(compiler as webpack.Compiler);
 
-		const devMiddleware = webpackDevMiddleware(compiler, {
-			stats: false,
-			publicPath: this.webpackConfig.getPublicPath(),
-		} as webpackDevMiddleware.Options);
+		const devMiddleware = webpackDevMiddleware(
+			compiler as any,
+			{
+				stats: false,
+				publicPath: this.webpackConfig.getPublicPath(),
+			} as webpackDevMiddleware.Options
+		);
 
 		const hotMiddleware = webpackHotMiddleware(compiler, {
 			// Now because we are already using publicPath(dynamicPublicPath = true) in client
@@ -227,7 +230,7 @@ export class Server {
 		devMiddleware.waitUntilValid(stats => {
 			if (!this.firstCompileCompleted) {
 				this.firstCompileCompleted = true;
-				this.callbacks.firstCompile(stats);
+				this.callbacks.firstCompile(stats as any);
 				// Some stuff for async ts checking
 				if (this.priorFirstCompileTsMessage.length) {
 					const delayedMsg = setTimeout(() => {

@@ -84,9 +84,8 @@ describe('getProjectAndServerConfig', () => {
 		});
 	});
 	test('looks for default file under cwd', () => {
-		const { projectConfigPath, serverConfigPath } = getProjectAndServerConfig(
-			validCwd
-		);
+		const { projectConfigPath, serverConfigPath } =
+			getProjectAndServerConfig(validCwd);
 		expect(projectConfigPath).toBe(
 			path.resolve(validCwd, 'wpackio.project.js')
 		);
@@ -114,55 +113,55 @@ describe('validateProjectConfig', () => {
 			} as ProjectConfig);
 		}).toThrow('must be an array');
 		expect(() => {
-			validateProjectConfig(({
+			validateProjectConfig({
 				appName: 'fooBar',
 				files: [
 					{
 						foo: 'bar',
 					},
 				],
-			} as unknown) as ProjectConfig);
+			} as unknown as ProjectConfig);
 		}).toThrow('must have objects with');
 		expect(() => {
-			validateProjectConfig(({
+			validateProjectConfig({
 				appName: 'fooBar',
 				files: ['foo'],
-			} as unknown) as ProjectConfig);
+			} as unknown as ProjectConfig);
 		}).toThrow('must have objects with');
 		expect(() => {
-			validateProjectConfig(({
+			validateProjectConfig({
 				appName: 'fooBar',
 				files: [
 					{
 						name: 'foo',
 					},
 				],
-			} as unknown) as ProjectConfig);
+			} as unknown as ProjectConfig);
 		}).toThrow('must have objects with');
 	});
 	test('validates packageDirPath', () => {
 		expect(() => {
-			validateProjectConfig(({
+			validateProjectConfig({
 				appName: 'adasdAsdasd',
 				files: [{ name: 'foo', entry: './src/js.js' }],
-			} as unknown) as ProjectConfig);
+			} as unknown as ProjectConfig);
 		}).toThrow('It defines the path to package output directory');
 		expect(() => {
-			validateProjectConfig(({
+			validateProjectConfig({
 				appName: 'adasdAsdasd',
 				files: [{ name: 'foo', entry: './src/js.js' }],
 				packageDirPath: '',
-			} as unknown) as ProjectConfig);
+			} as unknown as ProjectConfig);
 		}).toThrow('It defines the path to package output directory');
 	});
 	test('validates packageFiles', () => {
 		expect(() => {
-			validateProjectConfig(({
+			validateProjectConfig({
 				appName: 'adasdAsdasd',
 				files: [{ name: 'foo', entry: './src/js.js' }],
 				packageDirPath: 'package',
 				packageFiles: [],
-			} as unknown) as ProjectConfig);
+			} as unknown as ProjectConfig);
 		}).toThrow('must be valid glob patterns');
 	});
 });

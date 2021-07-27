@@ -15,6 +15,7 @@ module.exports = {
 		...ex,
 		'plugin:import/typescript',
 		'plugin:prettier/recommended',
+		'plugin:@typescript-eslint/eslint-recommended',
 		'plugin:@typescript-eslint/recommended',
 	],
 	parser: '@typescript-eslint/parser',
@@ -42,6 +43,10 @@ module.exports = {
 		'@typescript-eslint/ban-types': 'off',
 		'@typescript-eslint/no-use-before-define': ['error'],
 		'no-use-before-define': 'off',
+		'no-unused-vars': 'off',
+		'@typescript-eslint/no-unused-vars': 'warn',
+		'no-shadow': 'off',
+		'@typescript-eslint/no-shadow': ['error'],
 	},
 	settings: {
 		'import/parsers': {

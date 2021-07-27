@@ -21,9 +21,7 @@ export class Build {
 	/**
 	 * Build the files.
 	 */
-	public build(
-		progress: (p: number, m: string) => void
-	): Promise<{
+	public build(progress: (p: number, m: string) => void): Promise<{
 		status: 'error' | 'warn' | 'success';
 		log: string;
 		warnings?: string[];

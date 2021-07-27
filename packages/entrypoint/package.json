@@ -37,7 +37,8 @@
     "build": "yarn clean && yarn build:types && yarn build:js",
     "lint": "eslint src --ext='.ts,.js'",
     "test": "jest --color",
-    "prepare": "cross-env NODE_ENV=production yarn build"
+    "prepare": "cross-env NODE_ENV=production yarn build",
+    "format": "prettier --write ./src ./__tests__"
   },
   "publishConfig": {
     "access": "public"

@@ -56,12 +56,8 @@ export function serve(options: ProgramOptions | undefined): void {
 		)}`
 	);
 	try {
-		const {
-			projectConfig,
-			serverConfig,
-			projectConfigPath,
-			serverConfigPath,
-		} = getProjectAndServerConfig(cwd, options);
+		const { projectConfig, serverConfig, projectConfigPath, serverConfigPath } =
+			getProjectAndServerConfig(cwd, options);
 		console.log(
 			`${logSymbols.success} ${chalk.bold('project config')}: ${chalk.cyan(
 				path.relative(cwd, projectConfigPath)

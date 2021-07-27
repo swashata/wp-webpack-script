@@ -11,7 +11,7 @@ module.exports = {
 			settings: {
 				'import/resolver': {
 					typescript: {
-						directory: __dirname,
+						project: __dirname,
 					},
 				},
 			},

@@ -62,17 +62,13 @@ function formatMessage(message: string) {
 			lines[0],
 			lines[1]
 				.replace('Error: ', '')
-				.replace(
-					'Module not found: Cannot find file:',
-					'Cannot find file:'
-				),
+				.replace('Module not found: Cannot find file:', 'Cannot find file:'),
 		];
 	}
 
 	// Add helpful message for users trying to use Sass for the first time
 	if (lines[1] && lines[1].match(/Cannot find module.+node-sass/)) {
-		lines[1] =
-			'To import Sass files, you first need to install node-sass.\n';
+		lines[1] = 'To import Sass files, you first need to install node-sass.\n';
 		lines[1] +=
 			'Run `npm install node-sass` or `yarn add node-sass` inside your workspace.';
 	}
@@ -92,9 +88,7 @@ function formatMessage(message: string) {
 	// Remove duplicated newlines
 	lines = lines.filter(
 		(line, index, arr) =>
-			index === 0 ||
-			line.trim() !== '' ||
-			line.trim() !== arr[index - 1].trim()
+			index === 0 || line.trim() !== '' || line.trim() !== arr[index - 1].trim()
 	);
 
 	// Reassemble the message

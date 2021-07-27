@@ -3,42 +3,39 @@
 export = webpack_dashboard;
 
 declare namespace webpack_dashboard {
-    namespace prototype {
-        function clear(...args: any[]): void;
+	namespace prototype {
+		function clear(...args: any[]): void;
 
-        function layoutAssets(...args: any[]): void;
+		function layoutAssets(...args: any[]): void;
 
-        function layoutLog(...args: any[]): void;
+		function layoutLog(...args: any[]): void;
 
-        function layoutModules(...args: any[]): void;
+		function layoutModules(...args: any[]): void;
 
-        function layoutProblems(...args: any[]): void;
+		function layoutProblems(...args: any[]): void;
 
-        function layoutStatus(...args: any[]): void;
+		function layoutStatus(...args: any[]): void;
 
-        function mapNavigationKeysToScrollLog(...args: any[]): void;
+		function mapNavigationKeysToScrollLog(...args: any[]): void;
 
-        function setData(...args: any[]): void;
+		function setData(...args: any[]): void;
 
-        function setLog(...args: any[]): void;
+		function setLog(...args: any[]): void;
 
-        function setOperations(...args: any[]): void;
+		function setOperations(...args: any[]): void;
 
-        function setProblems(...args: any[]): void;
+		function setProblems(...args: any[]): void;
 
-        function setProblemsError(...args: any[]): void;
+		function setProblemsError(...args: any[]): void;
 
-        function setProgress(...args: any[]): void;
+		function setProgress(...args: any[]): void;
 
-        function setSizes(...args: any[]): void;
+		function setSizes(...args: any[]): void;
 
-        function setSizesError(...args: any[]): void;
+		function setSizesError(...args: any[]): void;
 
-        function setStats(...args: any[]): void;
+		function setStats(...args: any[]): void;
 
-        function setStatus(...args: any[]): void;
-
-    }
-
+		function setStatus(...args: any[]): void;
+	}
 }
-

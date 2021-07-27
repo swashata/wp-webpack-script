@@ -39,7 +39,8 @@
     "build": "lerna run build",
     "plop": "plop",
     "lerna": "lerna",
-    "nuke": "rm -r node_modules; for d in packages/*/node_modules; do echo $d; rm -r $d; done"
+    "nuke": "rm -r node_modules; for d in packages/*/node_modules; do echo $d; rm -r $d; done",
+    "format": "lerna run format"
   },
   "resolutions": {
     "@types/webpack": "^4.41.0"

@@ -1,3 +1,3 @@
 declare module 'dev-ip' {
-	export default function devIp():string[]|false;
+	export default function devIp(): string[] | false;
 }

@@ -33,7 +33,8 @@
     "node": ">=8.9.0"
   },
   "scripts": {
-    "lint": "eslint . --ext='.js'"
+    "lint": "eslint . --ext='.js'",
+    "format": "prettier --write ./config index.js ts.js"
   },
   "publishConfig": {
     "access": "public"

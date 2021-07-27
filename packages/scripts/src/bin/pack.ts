@@ -33,15 +33,10 @@ export function pack(options: ProgramOptions | undefined): void {
 	const cwd = resolveCWD(options);
 	const relCwd = path.relative(process.cwd(), cwd);
 	console.log(
-		`${logSymbols.success} startup: ${chalk.cyan(
-			relCwd === '' ? '.' : relCwd
-		)}`
+		`${logSymbols.success} startup: ${chalk.cyan(relCwd === '' ? '.' : relCwd)}`
 	);
 	try {
-		const { projectConfig, projectConfigPath } = getProjectConfig(
-			cwd,
-			options
-		);
+		const { projectConfig, projectConfigPath } = getProjectConfig(cwd, options);
 		console.log(
 			`${logSymbols.success} project config: ${chalk.cyan(
 				path.relative(cwd, projectConfigPath)
@@ -53,9 +48,7 @@ export function pack(options: ProgramOptions | undefined): void {
 			projectConfig,
 			{
 				onMkDirPackage: p => {
-					spinner.succeed(
-						`created directory ${path.relative(cwd, p)}`
-					);
+					spinner.succeed(`created directory ${path.relative(cwd, p)}`);
 					spinner.start(`cleaning up package directory`);
 				},
 				onClean: paths => {
@@ -67,12 +60,8 @@ export function pack(options: ProgramOptions | undefined): void {
 					spinner.start(`creating installable package directory`);
 				},
 				onMkDirSlug: p => {
-					spinner.succeed(
-						`created package directory ${path.relative(cwd, p)}`
-					);
-					spinner.start(
-						`copying files to installable package directory`
-					);
+					spinner.succeed(`created package directory ${path.relative(cwd, p)}`);
+					spinner.start(`copying files to installable package directory`);
 				},
 				onBeforeCopy: () => {
 					spinner.text = getFileCopyProgress();

@@ -10,11 +10,7 @@ declare module '@babel/helper-plugin-utils' {
 		interface Options {
 			[x: string]: string | Options[] | Options;
 		}
-		type declareHandler = (
-			api: Api,
-			opts: Options,
-			dirname?: string
-		) => any;
+		type declareHandler = (api: Api, opts: Options, dirname?: string) => any;
 		function declare(
 			builder: declareHandler
 		): (api: Api, options: Options, dirname?: string) => any;

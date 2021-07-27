@@ -32,8 +32,7 @@ describe('preset in module', () => {
 		const babelConfig = preset();
 		const presetReact = babelConfig.presets.filter(
 			ps =>
-				Array.isArray(ps) &&
-				ps[0] === require.resolve('@babel/preset-react')
+				Array.isArray(ps) && ps[0] === require.resolve('@babel/preset-react')
 		);
 		expect(presetReact).toHaveLength(1);
 	});
@@ -42,8 +41,7 @@ describe('preset in module', () => {
 		const babelConfig = preset({ hasReact: false });
 		const presetReact = babelConfig.presets.filter(
 			ps =>
-				Array.isArray(ps) &&
-				ps[0] === require.resolve('@babel/preset-react')
+				Array.isArray(ps) && ps[0] === require.resolve('@babel/preset-react')
 		);
 		expect(presetReact).toHaveLength(0);
 	});
@@ -88,8 +86,7 @@ describe('preset in module', () => {
 			const babelConfig = preset();
 			const presetEnv = babelConfig.presets.filter(
 				ps =>
-					Array.isArray(ps) &&
-					ps[0] === require.resolve('@babel/preset-env')
+					Array.isArray(ps) && ps[0] === require.resolve('@babel/preset-env')
 			);
 			expect(presetEnv).toHaveLength(1);
 		});
@@ -107,9 +104,7 @@ describe('preset in module', () => {
 			expect(config.presets).toBeInstanceOf(Array);
 			// Now find the one with preset-env
 			const presetEnv = config.presets.find(
-				p =>
-					Array.isArray(p) &&
-					p[0] === require.resolve('@babel/preset-env')
+				p => Array.isArray(p) && p[0] === require.resolve('@babel/preset-env')
 			) as babelPreset;
 			expect(presetEnv).toHaveLength(2);
 			Object.keys(envOptions.presetEnv).forEach(key => {
@@ -134,8 +129,7 @@ describe('preset in module', () => {
 			const babelConfig = preset({ presetReact });
 			const presetReactConfig = babelConfig.presets.find(
 				ps =>
-					Array.isArray(ps) &&
-					ps[0] === require.resolve('@babel/preset-react')
+					Array.isArray(ps) && ps[0] === require.resolve('@babel/preset-react')
 			) as babelPreset;
 			Object.keys(presetReact).forEach(pKey => {
 				if (typeof presetReactConfig[1] === 'object') {
@@ -158,13 +152,10 @@ describe('preset in module', () => {
 				presetReact,
 			}).presets.find(
 				ps =>
-					Array.isArray(ps) &&
-					ps[0] === require.resolve('@babel/preset-react')
+					Array.isArray(ps) && ps[0] === require.resolve('@babel/preset-react')
 			) as babelPreset;
 			if (typeof presetReactConfigWithProduction[1] === 'object') {
-				expect(presetReactConfigWithProduction[1].development).toBe(
-					false
-				);
+				expect(presetReactConfigWithProduction[1].development).toBe(false);
 			} else {
 				throw new Error(
 					'preset does not produce development config for react.'
@@ -176,13 +167,10 @@ describe('preset in module', () => {
 				presetReact,
 			}).presets.find(
 				ps =>
-					Array.isArray(ps) &&
-					ps[0] === require.resolve('@babel/preset-react')
+					Array.isArray(ps) && ps[0] === require.resolve('@babel/preset-react')
 			) as babelPreset;
 			if (typeof presetReactConfigWithDevelopment[1] === 'object') {
-				expect(presetReactConfigWithDevelopment[1].development).toBe(
-					true
-				);
+				expect(presetReactConfigWithDevelopment[1].development).toBe(true);
 			} else {
 				throw new Error(
 					'preset does not produce development config for react.'
@@ -199,13 +187,10 @@ describe('preset in module', () => {
 				presetReact,
 			}).presets.find(
 				ps =>
-					Array.isArray(ps) &&
-					ps[0] === require.resolve('@babel/preset-react')
+					Array.isArray(ps) && ps[0] === require.resolve('@babel/preset-react')
 			) as babelPreset;
 			if (typeof presetReactConfigWithDevelopment[1] === 'object') {
-				expect(presetReactConfigWithDevelopment[1].development).toBe(
-					false
-				);
+				expect(presetReactConfigWithDevelopment[1].development).toBe(false);
 			} else {
 				throw new Error(
 					'preset does not produce development config for react.'

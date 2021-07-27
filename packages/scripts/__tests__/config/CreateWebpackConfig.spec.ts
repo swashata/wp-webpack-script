@@ -6,7 +6,7 @@ import { initConfig, projectConfig, serverConfig } from '../helpers/testConfig';
 import { findWpackIoBabelOnTJs } from '../helpers/testUtils';
 
 jest.mock('webpack-merge');
-((webpackMerge as unknown) as jest.Mock).mockImplementation(() => ({
+(webpackMerge as unknown as jest.Mock).mockImplementation(() => ({
 	foo: 'bar',
 }));
 

@@ -38,15 +38,10 @@ export function build(options: ProgramOptions | undefined): void {
 	const cwd = resolveCWD(options);
 	const relCwd = path.relative(process.cwd(), cwd);
 	console.log(
-		`${logSymbols.success} startup: ${chalk.cyan(
-			relCwd === '' ? '.' : relCwd
-		)}`
+		`${logSymbols.success} startup: ${chalk.cyan(relCwd === '' ? '.' : relCwd)}`
 	);
 	try {
-		const { projectConfig, projectConfigPath } = getProjectConfig(
-			cwd,
-			options
-		);
+		const { projectConfig, projectConfigPath } = getProjectConfig(cwd, options);
 		console.log(
 			`${logSymbols.success} project config: ${chalk.cyan(
 				path.relative(cwd, projectConfigPath)

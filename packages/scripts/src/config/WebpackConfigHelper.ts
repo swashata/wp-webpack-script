@@ -21,7 +21,6 @@ import {
 	FileConfig,
 	ProjectConfig,
 	webpackLoaderOptionsOverride,
-	webpackOptionsOverrideFunction,
 } from './project.config.default';
 import { ServerConfig } from './server.config.default';
 import {
@@ -283,10 +282,10 @@ export class WebpackConfigHelper {
 				},
 			}),
 			// Clean dist directory
-			(new CleanWebpackPlugin({
+			new CleanWebpackPlugin({
 				verbose: false,
 				cleanOnceBeforeBuildPatterns: [`${this.outputPath}/${this.appDir}`],
-			}) as unknown) as webpack.Plugin,
+			}) as unknown as webpack.Plugin,
 			// Initiate mini css extract
 			new MiniCssExtractPlugin({
 				filename: `${this.appDir}/${
@@ -295,13 +294,13 @@ export class WebpackConfigHelper {
 				ignoreOrder: false,
 			}),
 			// Create Manifest for PHP Consumption
-			(new WebpackAssetsManifest({
+			new WebpackAssetsManifest({
 				writeToDisk: true,
 				output: `${this.outputPath}/${this.appDir}/manifest.json`,
 				publicPath: ``, // We dont put ${this.config.outputPath}/ here because, PHP will pick it up anyway.
 				entrypoints: true,
 				entrypointsKey: 'wpackioEp',
-			}) as unknown) as webpack.Plugin,
+			}) as unknown as webpack.Plugin,
 		];
 		// Add ts checker plugin if project has tsconfig.json
 		const [isTs, tsconfigPath] = hasTypeScript(this.cwd);
@@ -584,10 +583,8 @@ ${bannerConfig.copyrightText}${bannerConfig.credit ? creditNote : ''}`,
 		}
 
 		// create file rules
-		const {
-			fileRulesNonStyle,
-			fileRulesStyle,
-		} = getFileLoaderForJsAndStyleAssets(this.appDir, this.isDev);
+		const { fileRulesNonStyle, fileRulesStyle } =
+			getFileLoaderForJsAndStyleAssets(this.appDir, this.isDev);
 
 		const rules: webpack.RuleSetRule[] = [jsRules, tsRules];
 		if (this.isDev && this.config.compileNodeModules.dev) {
@@ -723,9 +720,7 @@ ${bannerConfig.copyrightText}${bannerConfig.credit ? creditNote : ''}`,
 		if (override !== undefined) {
 			// If it is a function
 			if (typeof override === 'function') {
-				return (override as webpackOptionsOverrideFunction)(
-					defaults || {}
-				) as webpack.RuleSetLoader['options'];
+				return override(defaults || {}) as webpack.RuleSetLoader['options'];
 			}
 			return override;
 		}
@@ -738,9 +733,8 @@ ${bannerConfig.copyrightText}${bannerConfig.credit ? creditNote : ''}`,
 		const match = 'WPACKIO_';
 		Object.keys(process.env ?? {}).forEach(key => {
 			if (key.startsWith(match)) {
-				envVariables[
-					`process.env.${key.substring(match.length)}`
-				] = JSON.stringify(process.env[key]);
+				envVariables[`process.env.${key.substring(match.length)}`] =
+					JSON.stringify(process.env[key]);
 			}
 		});
 		return envVariables;

@@ -37,18 +37,11 @@ export class Pack {
 
 	private callbacks: Callbacks;
 
-	constructor(
-		projectConfig: ProjectConfig,
-		callbacks: Callbacks,
-		cwd: string
-	) {
+	constructor(projectConfig: ProjectConfig, callbacks: Callbacks, cwd: string) {
 		this.projectConfig = projectConfig;
 		this.cwd = cwd;
 		this.callbacks = callbacks;
-		this.packageDirPath = path.resolve(
-			this.cwd,
-			projectConfig.packageDirPath
-		);
+		this.packageDirPath = path.resolve(this.cwd, projectConfig.packageDirPath);
 		this.packageSlugPath = path.resolve(
 			this.cwd,
 			this.packageDirPath,
@@ -130,10 +123,7 @@ export class Pack {
 			archive.pipe(output);
 
 			// Append the directory
-			archive.directory(
-				`${this.packageSlugPath}/`,
-				this.projectConfig.slug
-			);
+			archive.directory(`${this.packageSlugPath}/`, this.projectConfig.slug);
 
 			// finalize
 			archive.finalize();

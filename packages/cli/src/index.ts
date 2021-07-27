@@ -70,7 +70,7 @@ interface Package {
 	scripts?: { [x: string]: string };
 }
 
-// eslint-disable-next-line global-require, @typescript-eslint/no-var-requires
+// eslint-disable-next-line global-require, @typescript-eslint/no-var-requires, import/extensions
 const pkg = require('../package.json') as Package;
 
 program

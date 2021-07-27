@@ -84,7 +84,8 @@ export function getFileLoaderForJsAndStyleAssets(
 	// But use relativePath for style type resources like sass, scss or css
 	// This is needed because we can't know the absolute publicPath
 	// of CSS imported assets.
-	const fileLoaderTest = /\.(woff|woff2|eot|ttf|otf|png|jpg|gif)(\?v=\d+\.\d+\.\d+)?$/;
+	const fileLoaderTest =
+		/\.(woff|woff2|eot|ttf|otf|png|jpg|gif)(\?v=\d+\.\d+\.\d+)?$/;
 
 	const fileRulesNonStyle: webpack.RuleSetRule = {
 		test: fileLoaderTest,

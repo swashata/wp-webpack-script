@@ -72,8 +72,8 @@ Now you are ready to go.
 Install the [eslint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
 plugin for VSCode. Enable autoFormat for `javascript` and `javascriptreact` files.
 
--   Go to Code > Preference [File > Preference for Windows & Linux].
--   Edit the WorkSpace Settings (Recommended).
+- Go to Code > Preference [File > Preference for Windows & Linux].
+- Edit the WorkSpace Settings (Recommended).
 
 ```json
 {
@@ -105,7 +105,7 @@ If you are using for typescript files, the following additional settings are nee
 This package has the same `npm scripts` as this monorepo. These should be run
 using `lerna run <script>`. More information can be found under [CONTRIBUTION.md](../../CONTRIBUTION.md).
 
--   `build`: Use babel to build for nodejs 8.6+. Files inside `src` are compiled and put under `lib`. All type definitions are stripped and individual type declaration files are created.
--   `prepare`: Run `build` after `yarn` and before `publish`.
--   `lint`: Lint all files using tslint.
--   `test`: Run tests on files using jest.
+- `build`: Use babel to build for nodejs 8.6+. Files inside `src` are compiled and put under `lib`. All type definitions are stripped and individual type declaration files are created.
+- `prepare`: Run `build` after `yarn` and before `publish`.
+- `lint`: Lint all files using tslint.
+- `test`: Run tests on files using jest.

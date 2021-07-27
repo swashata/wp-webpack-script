@@ -33,8 +33,7 @@ export function typescriptFormatter(issue: issueType, cwd: string) {
 	const messageColor = severity === 'warning' ? colors.yellow : colors.red;
 	const fileAndNumberColor = colors.bold.cyan;
 
-	const source =
-		file && fs.existsSync(file) && fs.readFileSync(file, 'utf-8');
+	const source = file && fs.existsSync(file) && fs.readFileSync(file, 'utf-8');
 	const frame = source
 		? codeFrame(source, location, {
 				highlightCode: true,
@@ -48,9 +47,7 @@ export function typescriptFormatter(issue: issueType, cwd: string) {
 		: '';
 
 	return [
-		messageColor.bold(
-			`${issueOrigins[origin]} ${severity.toLowerCase()} in `
-		) +
+		messageColor.bold(`${issueOrigins[origin]} ${severity.toLowerCase()} in `) +
 			fileAndNumberColor(
 				`${file.replace(cwd, '.')}(${location.start.line},${
 					location.start.column
