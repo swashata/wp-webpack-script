@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 const pkg = require('./package.json');
 
 module.exports = {

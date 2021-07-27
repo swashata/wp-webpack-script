@@ -1,3 +1,4 @@
+/* eslint-disable no-lonely-if */
 /* eslint-disable @typescript-eslint/no-var-requires */
 import chalk from 'chalk';
 import logSymbols from 'log-symbols';
@@ -72,13 +73,51 @@ export function serve(options: ProgramOptions | undefined): void {
 		let entries: number[] = [];
 
 		if (options?.entries) {
-			entries = options.entries.map(e => {
-				let entry = Number.parseInt(e, 10);
-				if (Number.isNaN(entry)) {
-					entry = 0;
-				}
-				return entry;
-			});
+			console.log(
+				`${logSymbols.info} ${chalk.bold('cli')}: ${chalk.cyan(
+					`starting with selective ${options.entries.length} ${
+						options.entries.length === 1 ? 'entry' : 'entries'
+					}`
+				)}`
+			);
+			// make sure to remove duplicates from the entries before looping
+			entries = [...new Set(options.entries)]
+				.map(e => {
+					let entry = Number.parseInt(e, 10);
+					if (Number.isNaN(entry)) {
+						entry = projectConfig.files.findIndex(file => file.name === e);
+						if (entry === -1) {
+							console.log(
+								`${logSymbols.error} ${chalk.bold('cli')}: ${chalk.red(
+									`no entry found for `
+								)}${chalk.bold(chalk.yellow(e))} ${chalk.bold('skipping...')}`
+							);
+							return false;
+						}
+						console.log(
+							`${logSymbols.success} ${chalk.bold('cli')}: ${chalk.green(
+								`entry found for `
+							)}${chalk.bold(chalk.yellow(e))}`
+						);
+					} else {
+						if (projectConfig.files[entry]) {
+							console.log(
+								`${logSymbols.success} ${chalk.bold('cli')}: ${chalk.green(
+									`entry found for ${chalk.bold(e)} is`
+								)} ${chalk.bold(chalk.yellow(projectConfig.files[entry].name))}`
+							);
+						} else {
+							console.log(
+								`${logSymbols.error} ${chalk.bold('cli')}: ${chalk.red(
+									`no entry found for `
+								)}${chalk.bold(chalk.yellow(e))} ${chalk.bold('skipping...')}`
+							);
+							return false;
+						}
+					}
+					return entry;
+				})
+				.filter(entry => typeof entry === 'number') as number[];
 		} else if (projectConfig.files.length > 1) {
 			serveEntryInfo();
 		}

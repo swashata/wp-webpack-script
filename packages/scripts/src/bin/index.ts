@@ -10,7 +10,7 @@ import { bootstrap } from './bootstrap';
 import { build } from './build';
 import { pack } from './pack';
 import { serve } from './serve';
-import { bulletSymbol, contextHelp, printIntro } from './utils';
+import { bulletSymbol, contextHelp, entriesHelp, printIntro } from './utils';
 
 dotenv.config();
 
@@ -80,10 +80,7 @@ program
 		'-s, --server-config <path>',
 		'Path to server config. If it differs from ./wpackio.server.js'
 	)
-	.option(
-		'-e, --entries <numbers...>',
-		'Select entries from wpackio.project.js for which we start the server.'
-	)
+	.option('-e, --entries <entries...>', entriesHelp)
 	.action((options: ProgramOptions | undefined) => {
 		isValidCommand = true;
 		serve(options);

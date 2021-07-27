@@ -233,6 +233,7 @@ export function isYarn(): boolean {
 }
 
 export const contextHelp: string = `Path to context or project root directory. Defaults to current working directory. It is recommended to use absolute path, else it is calculated from current working directory. The path you mention here should be what the URL 'localhost/wp-content/<themes|plugins>/<slug>/' map to. In most cases, you should leave it, because calling the program from npm or yarn script should automatically set it.`;
+export const entriesHelp: string = `Select entries from wpackio.project.js file for which we start the server. Either 0 based index of the entry, like \`-e 0 2\` will start the 0th and 2nd entry of wpackio project. You can also supply the name of the entries, like \`-e app admin\`. The tool will search wpackio for entries with name set to app and admin. If found, it will start them.`;
 export function printIntro(): void {
 	console.log(wpackIntro);
 }
