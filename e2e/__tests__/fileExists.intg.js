@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 /* eslint-disable spaced-comment, jest/valid-expect */
 /// <reference types="jest" />
 
@@ -17,8 +18,8 @@ function fileExists(filepath) {
 describe('after build', () => {
 	test('all javascript app got compiled', () => {
 		const jsApps = [
-			...jsManifest.wpackioEp.main.js,
-			...jsManifest.wpackioEp.main.css,
+			...jsManifest.wpackioEp.main.assets.js,
+			...jsManifest.wpackioEp.main.assets.css,
 		];
 		jsApps.forEach(file => {
 			expect(
@@ -28,8 +29,8 @@ describe('after build', () => {
 	});
 	test('all typescript app got compiled', () => {
 		const tsApps = [
-			...tsManifest.wpackioEp.main.js,
-			...tsManifest.wpackioEp.main.css,
+			...tsManifest.wpackioEp.main.assets.js,
+			...tsManifest.wpackioEp.main.assets.css,
 		];
 		tsApps.forEach(file => {
 			expect(
@@ -44,16 +45,14 @@ describe('after pack', () => {
 		const zipFiles = [
 			'index.html',
 			'README.md',
-			...jsManifest.wpackioEp.main.js.map(item => `dist/${item}`),
-			...tsManifest.wpackioEp.main.js.map(item => `dist/${item}`),
+			...jsManifest.wpackioEp.main.assets.js.map(item => `dist/${item}`),
+			...tsManifest.wpackioEp.main.assets.js.map(item => `dist/${item}`),
 			'dist/app/manifest.json',
 			'dist/tsapp/manifest.json',
 		];
 		zipFiles.forEach(file => {
 			expect(
-				fileExists(
-					path.resolve(__dirname, '../package/e2e-plug/', file)
-				)
+				fileExists(path.resolve(__dirname, '../package/e2e-plug/', file))
 			).toBeTruthy();
 		});
 	});

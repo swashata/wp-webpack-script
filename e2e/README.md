@@ -35,6 +35,7 @@ Once it is complete, we would check for build (production) files.
 
 ```bash
 yarn build
+yarn archive
 yarn test
 ```
 
@@ -55,15 +56,15 @@ We use travis CI and the following sequence of commands take care of e2e testing
 
 ```yml
 script:
-    - yarn
-    - yarn serve &>/dev/null &
-    - yarn wait-for-test-server
-    - yarn start &>/dev/null &
-    - yarn wait-for-wpackio-server
-    - yarn cypress:runapp
-    - yarn build
-    - yarn cypress:runprod
-    - yarn test
+  - yarn
+  - yarn serve &>/dev/null &
+  - yarn wait-for-test-server
+  - yarn start &>/dev/null &
+  - yarn wait-for-wpackio-server
+  - yarn cypress:runapp
+  - yarn build
+  - yarn cypress:runprod
+  - yarn test
 ```
 
 We use the public version of cypress dashboard, which can be found [here](https://dashboard.cypress.io/#/projects/r3p1vm/runs).
