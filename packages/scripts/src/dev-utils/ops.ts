@@ -32,7 +32,7 @@ export function hasTypeScript(cwd: string): [boolean, string] {
 }
 
 export const WORDPRESS_NAMESPACE = '@wordpress/';
-export const BUNDLED_PACKAGES = ['@wordpress/icons', '@wordpress/interface'];
+export const BUNDLED_PACKAGES = ['@wordpress/icons', '@wordpress/interface', '@wordpress/react-i18n'];
 
 /**
  * Given a string, returns a new string with dash separators converted to
