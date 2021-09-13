@@ -26,7 +26,7 @@
     "gatsby-remark-smartypants": "2.5.0",
     "gatsby-source-filesystem": "2.6.1",
     "gatsby-transformer-remark": "2.11.0",
-    "node-sass": "^4.14.1",
+    "node-sass": "4.14.1",
     "prismjs": "1.24.1",
     "prop-types": "15.7.2",
     "react": "16.14.0",
@@ -45,7 +45,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
-    "@wpackio/eslint-config": "^6.4.0",
+    "@wpackio/eslint-config": "6.4.0",
     "eslint": "7.31.0",
     "gatsby-plugin-sharp": "2.9.0",
     "gatsby-transformer-sharp": "2.7.0",
